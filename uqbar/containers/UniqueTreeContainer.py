@@ -1,7 +1,8 @@
-from uqbar.containers.TreeNode import TreeNode
+import copy
+from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 
-class TreeContainer(TreeNode):
+class UniqueTreeContainer(UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 
@@ -12,7 +13,7 @@ class TreeContainer(TreeNode):
     ### INITIALIZER ###
 
     def __init__(self, children=None, name=None):
-        TreeNode.__init__(self, name=name)
+        UniqueTreeNode.__init__(self, name=name)
         self._children = []
         self._named_children = {}
         if children is not None:
@@ -59,7 +60,7 @@ class TreeContainer(TreeNode):
             expr._set_parent(self)
             self._children.insert(i, expr)
         else:
-            if isinstance(expr, TreeContainer):
+            if isinstance(expr, UniqueTreeContainer):
                 # Prevent mutating while iterating by copying.
                 expr = expr[:]
             assert all(isinstance(x, self._node_class) for x in expr)
@@ -78,6 +79,15 @@ class TreeContainer(TreeNode):
                 node._set_parent(self)
             self._children.__setitem__(slice(start, start), expr)
         self._mark_entire_tree_for_later_update()
+
+    ### PRIVATE METHODS ###
+
+    def _cache_named_children(self):
+        name_dictionary = super(UniqueTreeContainer, self)._cache_named_children()
+        if hasattr(self, '_named_children'):
+            for name, children in self._named_children.items():
+                name_dictionary[name] = copy.copy(children)
+        return name_dictionary
 
     ### PUBLIC METHODS ###
 
