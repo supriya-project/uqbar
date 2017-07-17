@@ -18,6 +18,7 @@ classifiers = [
 
 install_requires = [
     'Sphinx>=1.4.0',
+    'cython',
     ]
 
 keywords = [
