@@ -1,0 +1,9 @@
+[run]
+branch = True
+cover_pylib = False
+source =
+    uqbar
+
+[report]
+exclude_lines = 
+    raise NotImplementedError
