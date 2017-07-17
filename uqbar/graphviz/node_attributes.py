@@ -3,6 +3,9 @@ from uqbar.graphviz.attributes import Attributes
 
 class NodeAttributes:
 
+    _styles = frozenset(['solid', 'dashed', 'dotted', 'bold', 'rounded',
+        'diagonals', 'filled', 'striped', 'wedged'])
+
     _valid_attributes = frozenset([
         'area',
         'color',

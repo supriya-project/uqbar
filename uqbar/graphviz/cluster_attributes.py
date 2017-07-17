@@ -3,6 +3,9 @@ from uqbar.graphviz.attributes import Attributes
 
 class ClusterAttributes:
 
+    _styles = frozenset(['bold', 'dashed', 'dotted', 'filled', 'rounded',
+        'solid', 'striped'])
+
     _valid_attributes = frozenset([
         'area',
         'bgcolor',

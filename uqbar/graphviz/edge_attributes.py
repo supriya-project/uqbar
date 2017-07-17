@@ -3,6 +3,8 @@ from uqbar.graphviz.attributes import Attributes
 
 class EdgeAttributes:
 
+    _styles = frozenset(['bold', 'dashed', 'dotted', 'solid'])
+
     _valid_attributes = frozenset([
         'arrowhead',
         'arrowsize',
