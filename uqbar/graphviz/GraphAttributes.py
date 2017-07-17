@@ -8,7 +8,7 @@ class GraphAttributes(Attributes):
     ::
 
         >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphiz.GraphAttributes(
+        >>> attributes = uqbar.graphviz.GraphAttributes(
         ...     fontname='Arial',
         ...     fontcolor='grey50',
         ...     )
@@ -18,6 +18,8 @@ class GraphAttributes(Attributes):
         >>> for item in sorted(attributes.items()):
         ...     item
         ...
+        ('fontcolor', <Color 'grey50'>)
+        ('fontname', 'Arial')
 
     """
 

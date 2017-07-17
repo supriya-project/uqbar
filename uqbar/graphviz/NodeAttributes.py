@@ -8,7 +8,7 @@ class NodeAttributes(Attributes):
     ::
 
         >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphiz.NodeAttributes(
+        >>> attributes = uqbar.graphviz.NodeAttributes(
         ...     shape='ellipse',
         ...     style=['rounded', 'bold'],
         ...     )
@@ -18,8 +18,8 @@ class NodeAttributes(Attributes):
         >>> for item in sorted(attributes.items()):
         ...     item
         ...
-
-
+        ('shape', 'ellipse')
+        ('style', ('rounded', 'bold'))
 
     """
 

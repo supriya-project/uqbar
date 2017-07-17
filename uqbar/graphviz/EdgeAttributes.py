@@ -8,7 +8,7 @@ class EdgeAttributes(Attributes):
     ::
 
         >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphiz.EdgeAttributes(
+        >>> attributes = uqbar.graphviz.EdgeAttributes(
         ...     color='green',
         ...     style='dotted',
         ...     )
@@ -18,6 +18,8 @@ class EdgeAttributes(Attributes):
         >>> for item in sorted(attributes.items()):
         ...     item
         ...
+        ('color', <Color 'green'>)
+        ('style', 'dotted')
 
     """
 

@@ -69,9 +69,14 @@ class Attributes(collections.Mapping):
                 if isinstance(validator, str) and str(value) == validator:
                     value = str(value)
                     break
-                else:
+                elif isinstance(validator, type):
                     try:
                         value = validator(value)
+                    except:
+                        continue
+                else:
+                    try:
+                        value = validator(self, value)
                     except:
                         continue
             self._attributes[key] = value
@@ -100,12 +105,19 @@ class Attributes(collections.Mapping):
         return value
 
     def _validate_color(self, value):
+        if isinstance(value, Color):
+            return value
         value = Color(value)
         return value
 
     def _validate_colors(self, value):
+        if isinstance(value, (Color, str)):
+            return self._validate_color(value)
         assert len(value)
-        return tuple(self._validate_color(_) for _ in value)
+        value = tuple(self._validate_color(_) for _ in value)
+        if len(value) == 1:
+            return value[0]
+        return value
 
     def _validate_dir_type(self, value):
         value = str(value)
@@ -331,7 +343,7 @@ class Attributes(collections.Mapping):
         'sortv': int,
         'splines': ('none', 'line', 'polyline', 'curved', 'ortho', 'spline', bool),
         'start': str,
-        'style': _validate_style,
+        'style': _validate_styles,
         'stylesheet': str,
         'tailURL': str,
         'tail_lp': _validate_point,

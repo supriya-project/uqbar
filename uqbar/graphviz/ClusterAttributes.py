@@ -18,7 +18,7 @@ class ClusterAttributes(Attributes):
         >>> for item in sorted(attributes.items()):
         ...     item
         ...
-        ('color', 'red')
+        ('color', <Color 'red'>)
         ('style', 'dashed')
 
     """
