@@ -1,0 +1,29 @@
+language: python
+
+sudo: false
+
+python:
+  - 2.7
+  - 3.4
+  - 3.5
+  - pypy
+
+addons:
+  apt:
+    packages:
+      - graphviz
+
+before_install:
+  - pip install -U pip
+  - pip install coveralls
+  - pip install coverage
+
+install:
+  - pip install -e .[development]
+
+script:
+  - if [[ $TRAVIS_PYTHON_VERSION != pypy ]]; then coverage run -a `which py.test` -vv; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == pypy ]]; then `which py.test` -vv; fi
+
+after_success:
+    - if [[ $TRAVIS_PYTHON_VERSION != pypy ]]; then coveralls; fi
