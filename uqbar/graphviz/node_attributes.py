@@ -7,6 +7,7 @@ class NodeAttributes:
         'diagonals', 'filled', 'striped', 'wedged'])
 
     _valid_attributes = frozenset([
+        'URL',
         'area',
         'color',
         'colorscheme',

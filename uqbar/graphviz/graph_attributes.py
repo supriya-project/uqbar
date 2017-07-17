@@ -4,6 +4,9 @@ from uqbar.graphviz.attributes import Attributes
 class GraphAttributes:
 
     _valid_attributes = frozenset([
+        'Damping',
+        'K',
+        'URL',
         'bb',
         'bgcolor',
         'center',

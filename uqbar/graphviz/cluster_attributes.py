@@ -7,6 +7,8 @@ class ClusterAttributes:
         'solid', 'striped'])
 
     _valid_attributes = frozenset([
+        'K',
+        'URL',
         'area',
         'bgcolor',
         'color',
