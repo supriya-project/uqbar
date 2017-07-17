@@ -6,7 +6,10 @@ class UniqueTreeNode:
 
     ### CLASS VARIABLES ###
 
-    __slots__ = ()
+    __slots__ = (
+        '_name',
+        '_parent',
+        )
 
     ### INITIALIZER ###
 
@@ -101,6 +104,10 @@ class UniqueTreeNode:
         self.parent[index + 1:index + 1] = expr
 
     ### PUBLIC PROPERTIES ###
+
+    @property
+    def depth(self):
+        return len(self.parentage) - 1
 
     @property
     def name(self):

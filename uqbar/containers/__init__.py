@@ -1,2 +1,2 @@
-from uqbar.containers import TreeNode  # noqa
-from uqbar.containers import TreeContainer  # noqa
+from uqbar.containers.UniqueTreeNode import UniqueTreeNode  # noqa
+from uqbar.containers.UniqueTreeContainer import UniqueTreeContainer  # noqa
