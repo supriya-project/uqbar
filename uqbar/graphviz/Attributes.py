@@ -1,5 +1,7 @@
 import abc
 import collections
+from uqbar.graphviz.Color import Color
+from uqbar.graphviz.Point import Point
 
 
 class Attributes(collections.Mapping):
@@ -98,8 +100,7 @@ class Attributes(collections.Mapping):
         return value
 
     def _validate_color(self, value):
-        # TODO: Actually verify the input.
-        value = str(value)
+        value = Color(value)
         return value
 
     def _validate_colors(self, value):
@@ -131,8 +132,9 @@ class Attributes(collections.Mapping):
         return value
 
     def _validate_point(self, value):
-        value = tuple(float(_) for _ in value)
-        assert len(value) == 2
+        if isinstance(value, Point):
+            return value
+        value = Point(*value)
         return value
 
     def _validate_points(self, value_list):
