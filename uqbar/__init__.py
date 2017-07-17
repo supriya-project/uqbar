@@ -1,2 +1,2 @@
-from uqbar import trees  # noqa
-from uqbar import graphviz  # noqa
+from uqbar import containers  # noqa
+from uqbar import graphs  # noqa

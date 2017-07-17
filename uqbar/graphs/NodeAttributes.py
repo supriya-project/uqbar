@@ -1,4 +1,4 @@
-from uqbar.graphviz.Attributes import Attributes
+from uqbar.graphs.Attributes import Attributes
 
 
 class NodeAttributes(Attributes):
@@ -7,8 +7,8 @@ class NodeAttributes(Attributes):
 
     ::
 
-        >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphviz.NodeAttributes(
+        >>> import uqbar.graphs
+        >>> attributes = uqbar.graphs.NodeAttributes(
         ...     shape='ellipse',
         ...     style=['rounded', 'bold'],
         ...     )

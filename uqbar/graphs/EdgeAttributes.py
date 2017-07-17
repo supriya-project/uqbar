@@ -1,4 +1,4 @@
-from uqbar.graphviz.Attributes import Attributes
+from uqbar.graphs.Attributes import Attributes
 
 
 class EdgeAttributes(Attributes):
@@ -7,8 +7,8 @@ class EdgeAttributes(Attributes):
 
     ::
 
-        >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphviz.EdgeAttributes(
+        >>> import uqbar.graphs
+        >>> attributes = uqbar.graphs.EdgeAttributes(
         ...     color='green',
         ...     style='dotted',
         ...     )

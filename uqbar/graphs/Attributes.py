@@ -1,7 +1,7 @@
 import abc
 import collections
-from uqbar.graphviz.Color import Color
-from uqbar.graphviz.Point import Point
+from uqbar.graphs.Color import Color
+from uqbar.graphs.Point import Point
 
 
 class Attributes(collections.Mapping):

@@ -1,4 +1,4 @@
-from uqbar.graphviz.Attributes import Attributes
+from uqbar.graphs.Attributes import Attributes
 
 
 class ClusterAttributes(Attributes):
@@ -7,8 +7,8 @@ class ClusterAttributes(Attributes):
 
     ::
 
-        >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphviz.ClusterAttributes(
+        >>> import uqbar.graphs
+        >>> attributes = uqbar.graphs.ClusterAttributes(
         ...     color='red',
         ...     style='dashed',
         ...     )

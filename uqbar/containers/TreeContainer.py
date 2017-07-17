@@ -1,4 +1,4 @@
-from uqbar.trees.TreeNode import TreeNode
+from uqbar.containers.TreeNode import TreeNode
 
 
 class TreeContainer(TreeNode):

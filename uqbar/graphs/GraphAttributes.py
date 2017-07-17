@@ -1,4 +1,4 @@
-from uqbar.graphviz.Attributes import Attributes
+from uqbar.graphs.Attributes import Attributes
 
 
 class GraphAttributes(Attributes):
@@ -7,8 +7,8 @@ class GraphAttributes(Attributes):
 
     ::
 
-        >>> import uqbar.graphviz
-        >>> attributes = uqbar.graphviz.GraphAttributes(
+        >>> import uqbar.graphs
+        >>> attributes = uqbar.graphs.GraphAttributes(
         ...     fontname='Arial',
         ...     fontcolor='grey50',
         ...     )
