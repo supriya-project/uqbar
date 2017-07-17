@@ -1,7 +1,25 @@
-from uqbar.graphviz.attributes import Attributes
+from uqbar.graphviz.Attributes import Attributes
 
 
-class GraphAttributes:
+class GraphAttributes(Attributes):
+    """
+    Graphviz graph object attributes manifest.
+
+    ::
+
+        >>> import uqbar.graphviz
+        >>> attributes = uqbar.graphiz.GraphAttributes(
+        ...     fontname='Arial',
+        ...     fontcolor='grey50',
+        ...     )
+
+    ::
+
+        >>> for item in sorted(attributes.items()):
+        ...     item
+        ...
+
+    """
 
     _valid_attributes = frozenset([
         'Damping',

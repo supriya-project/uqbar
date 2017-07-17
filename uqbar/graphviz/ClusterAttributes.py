@@ -1,7 +1,27 @@
-from uqbar.graphviz.attributes import Attributes
+from uqbar.graphviz.Attributes import Attributes
 
 
-class ClusterAttributes:
+class ClusterAttributes(Attributes):
+    """
+    Graphviz cluster object attributes manifest.
+
+    ::
+
+        >>> import uqbar.graphviz
+        >>> attributes = uqbar.graphviz.ClusterAttributes(
+        ...     color='red',
+        ...     style='dashed',
+        ...     )
+
+    ::
+
+        >>> for item in sorted(attributes.items()):
+        ...     item
+        ...
+        ('color', 'red')
+        ('style', 'dashed')
+
+    """
 
     _styles = frozenset(['bold', 'dashed', 'dotted', 'filled', 'rounded',
         'solid', 'striped'])

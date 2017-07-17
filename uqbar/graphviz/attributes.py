@@ -1,7 +1,11 @@
 import abc
+import collections
 
 
-class Attributes:
+class Attributes(collections.Mapping):
+    """
+    Abstract base for Graphviz attributes classes.
+    """
 
     ### CLASS VARIABLES ###
 
@@ -69,6 +73,17 @@ class Attributes:
                     except:
                         continue
             self._attributes[key] = value
+
+    ### SPECIAL METHODS ###
+
+    def __getitem__(self, key):
+        return self._attributes[key]
+
+    def __iter__(self):
+        return iter(self._attributes)
+
+    def __len__(self):
+        return len(self._attributes)
 
     ### VALIDATORS ###
 

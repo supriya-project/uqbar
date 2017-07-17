@@ -1,7 +1,27 @@
-from uqbar.graphviz.attributes import Attributes
+from uqbar.graphviz.Attributes import Attributes
 
 
-class NodeAttributes:
+class NodeAttributes(Attributes):
+    """
+    Graphviz node object attributes manifest.
+
+    ::
+
+        >>> import uqbar.graphviz
+        >>> attributes = uqbar.graphiz.NodeAttributes(
+        ...     shape='ellipse',
+        ...     style=['rounded', 'bold'],
+        ...     )
+
+    ::
+
+        >>> for item in sorted(attributes.items()):
+        ...     item
+        ...
+
+
+
+    """
 
     _styles = frozenset(['solid', 'dashed', 'dotted', 'bold', 'rounded',
         'diagonals', 'filled', 'striped', 'wedged'])

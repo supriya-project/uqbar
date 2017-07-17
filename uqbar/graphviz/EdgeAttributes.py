@@ -1,7 +1,25 @@
-from uqbar.graphviz.attributes import Attributes
+from uqbar.graphviz.Attributes import Attributes
 
 
-class EdgeAttributes:
+class EdgeAttributes(Attributes):
+    """
+    Graphviz edge object attributes manifest.
+
+    ::
+
+        >>> import uqbar.graphviz
+        >>> attributes = uqbar.graphiz.EdgeAttributes(
+        ...     color='green',
+        ...     style='dotted',
+        ...     )
+
+    ::
+
+        >>> for item in sorted(attributes.items()):
+        ...     item
+        ...
+
+    """
 
     _styles = frozenset(['bold', 'dashed', 'dotted', 'solid'])
 
