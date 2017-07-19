@@ -1,4 +1,4 @@
-class Color:
+class Color(object):
 
     def __init__(self, color):
         self.color = str(color)
