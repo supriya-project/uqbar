@@ -2,7 +2,7 @@ import collections
 import copy
 
 
-class UniqueTreeNode:
+class UniqueTreeNode(object):
 
     ### CLASS VARIABLES ###
 
