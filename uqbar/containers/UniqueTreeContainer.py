@@ -6,9 +6,7 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 
-    __slots__ = ()
-
-    _node_class = ()
+    _node_class = UniqueTreeNode
 
     ### INITIALIZER ###
 
@@ -29,7 +27,11 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def __delitem__(self, i):
         if isinstance(i, str):
-            i = self.index(self._named_children[i])
+            children = tuple(self._named_children[i])
+            for child in children:
+                parent = child.parent
+                del(parent[parent.index(child)])
+            return
         if isinstance(i, int):
             if i < 0:
                 i = len(self) + i
@@ -41,7 +43,13 @@ class UniqueTreeContainer(UniqueTreeNode):
         if isinstance(expr, (int, slice)):
             return self._children[expr]
         elif isinstance(expr, str):
-            return self._named_children[expr]
+            result = sorted(
+                self._named_children[expr],
+                key=lambda x: x.graph_order,
+                )
+            if len(result) == 1:
+                return result[0]
+            return result
         raise ValueError(expr)
 
     def __iter__(self):
@@ -56,6 +64,8 @@ class UniqueTreeContainer(UniqueTreeNode):
             assert isinstance(expr, self._node_class)
             old = self[i]
             assert expr not in self.parentage
+            if expr in self.parentage:
+                raise ValueError('Cannot set parent node as child.')
             old._set_parent(None)
             expr._set_parent(self)
             self._children.insert(i, expr)
@@ -71,8 +81,8 @@ class UniqueTreeContainer(UniqueTreeNode):
                 start, stop, stride = i.indices(len(self))
             old = self[start:stop]
             parentage = self.parentage
-            for node in expr:
-                assert node not in parentage
+            if any(node in parentage for node in expr):
+                raise ValueError('Cannot set parent node as child.')
             for node in old:
                 node._set_parent(None)
             for node in expr:

@@ -6,10 +6,7 @@ class UniqueTreeNode:
 
     ### CLASS VARIABLES ###
 
-    __slots__ = (
-        '_name',
-        '_parent',
-        )
+    _state_flag_names = ()
 
     ### INITIALIZER ###
 
@@ -39,14 +36,14 @@ class UniqueTreeNode:
         state_flags = {}
         for name in self._state_flag_names:
             state_flags[name] = True
-            for node in self.improper_parentage:
+            for node in self.parentage:
                 if not getattr(node, name):
                     state_flags[name] = False
                     break
         return state_flags
 
     def _mark_entire_tree_for_later_update(self):
-        for node in self.improper_parentage:
+        for node in self.parentage:
             for name in self._state_flag_names:
                 setattr(node, name, False)
 
@@ -108,6 +105,15 @@ class UniqueTreeNode:
     @property
     def depth(self):
         return len(self.parentage) - 1
+
+    @property
+    def graph_order(self):
+        parentage = tuple(reversed(self.parentage))
+        graph_order = []
+        for i in range(len(parentage) - 1):
+            parent, child = parentage[i:i + 2]
+            graph_order.append(parent.index(child))
+        return tuple(graph_order)
 
     @property
     def name(self):
