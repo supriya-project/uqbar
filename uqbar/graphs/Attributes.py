@@ -111,10 +111,15 @@ class Attributes(collections.Mapping):
 
     ### INITIALIZER ###
 
-    def __init__(self, **kwargs):
-        self._attributes = kwargs.copy()
+    def __init__(self, mode, **kwargs):
+        assert mode in ('cluster', 'edge', 'graph', 'node')
+        self._mode = mode
+        self._attributes = self._validate_attributes(mode, **kwargs)
 
     ### SPECIAL METHODS ###
+
+    def __delitem__(self, key):
+        del(self._attributes[key])
 
     def __getitem__(self, key):
         return self._attributes[key]
@@ -125,13 +130,43 @@ class Attributes(collections.Mapping):
     def __len__(self):
         return len(self._attributes)
 
-    ### VALIDATORS ###
+    def __setitem__(self, key, value):
+        self._attributes.update(**self._validate_attributes(
+            self.mode, key=value))
+
+    ### PRIVATE METHODS ###
 
     @classmethod
     def _validate_arrow_type(cls, value, **kwargs):
         value = str(value)
         assert value in cls._arrow_types
         return value
+
+    @classmethod
+    def _validate_attributes(cls, mode, **kwargs):
+        valid_attributes, valid_styles = dict(
+            cluster=(cls._cluster_attributes, cls._cluster_styles),
+            edge=(cls._edge_attributes, cls._edge_styles),
+            graph=(cls._graph_attributes, cls._graph_styles),
+            node=(cls._node_attributes, cls._node_styles),
+            )[mode]
+        attributes = {}
+        for key, value in kwargs.items():
+            if key not in valid_attributes:
+                raise ValueError(key)
+            validators = cls._validators[key]
+            if not isinstance(validators, tuple):
+                validators = (validators,)
+            for validator in validators:
+                if isinstance(validator, str) and str(value) == validator:
+                    value = str(value)
+                    break
+                elif isinstance(validator, type):
+                    value = validator(value)
+                else:
+                    value = validator(value, valid_styles=valid_styles)
+            attributes[key] = value
+        return attributes
 
     @classmethod
     def _validate_cluster_mode(cls, value, **kwargs):
@@ -252,55 +287,11 @@ class Attributes(collections.Mapping):
             _, valid_styles=valid_styles, **kwargs
             ) for _ in value)
 
-    ### PRIVATE METHODS ###
+    ### PUBLIC PROPERTIES ###
 
-    @classmethod
-    def _validate_attributes(cls, mode, **kwargs):
-        valid_attributes, valid_styles = dict(
-            cluster=(cls._cluster_attributes, cls._cluster_styles),
-            edge=(cls._edge_attributes, cls._edge_styles),
-            graph=(cls._graph_attributes, cls._graph_styles),
-            node=(cls._node_attributes, cls._node_styles),
-            )[mode]
-        attributes = {}
-        for key, value in kwargs.items():
-            if key not in valid_attributes:
-                continue
-            validators = cls._validators[key]
-            if not isinstance(validators, tuple):
-                validators = (validators,)
-            for validator in validators:
-                if isinstance(validator, str) and str(value) == validator:
-                    value = str(value)
-                    break
-                elif isinstance(validator, type):
-                    value = validator(value)
-                else:
-                    value = validator(value, valid_styles=valid_styles)
-            attributes[key] = value
-        return attributes
-
-    ### PUBLIC METHODS ###
-
-    @classmethod
-    def from_cluster_attributes(cls, **kwargs):
-        attributes = cls._validate_attributes('cluster', **kwargs)
-        return cls(attributes)
-
-    @classmethod
-    def from_edge_attributes(cls, **kwargs):
-        attributes = cls._validate_attributes('edge', **kwargs)
-        return cls(attributes)
-
-    @classmethod
-    def from_graph_attributes(cls, **kwargs):
-        attributes = cls._validate_attributes('graph', **kwargs)
-        return cls(attributes)
-
-    @classmethod
-    def from_node_attributes(cls, **kwargs):
-        attributes = cls._validate_attributes('node', **kwargs)
-        return cls(attributes)
+    @property
+    def mode(self):
+        return self._mode
 
 
 Attributes._validators = {
