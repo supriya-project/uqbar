@@ -4,10 +4,6 @@ from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 class UniqueTreeContainer(UniqueTreeNode):
 
-    ### CLASS VARIABLES ###
-
-    _node_class = UniqueTreeNode
-
     ### INITIALIZER ###
 
     def __init__(self, children=None, name=None):
@@ -98,6 +94,12 @@ class UniqueTreeContainer(UniqueTreeNode):
             for name, children in self._named_children.items():
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
+
+    ### PRIVATE PROPERTIES ###
+
+    @property
+    def _node_class(self):
+        return UniqueTreeNode
 
     ### PUBLIC METHODS ###
 
