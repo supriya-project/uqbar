@@ -1,6 +1,4 @@
 import collections
-from uqbar.graphs.Color import Color
-from uqbar.graphs.Point import Point
 
 
 class Attributes(collections.Mapping):
@@ -9,6 +7,24 @@ class Attributes(collections.Mapping):
     """
 
     ### CLASS VARIABLES ###
+
+    class Color(object):
+
+        __slots__ = ('color',)
+
+        def __init__(self, color):
+            self.color = str(color)
+
+        def __repr__(self):
+            return '<Color {!r}>'.format(self.color)
+
+    class Point(object):
+
+        __slots__ = ('x', 'y')
+
+        def __init__(self, x, y):
+            self.x = float(x)
+            self.y = float(y)
 
     _arrow_types = frozenset(['box', 'circle', 'crow', 'diamond', 'dot',
         'ediamond', 'empty', 'halfopen', 'inv', 'invdot', 'invempty',
@@ -176,14 +192,14 @@ class Attributes(collections.Mapping):
 
     @classmethod
     def _validate_color(cls, value, **kwargs):
-        if isinstance(value, Color):
+        if isinstance(value, cls.Color):
             return value
-        value = Color(value)
+        value = cls.Color(value)
         return value
 
     @classmethod
     def _validate_colors(cls, value, **kwargs):
-        if isinstance(value, (Color, str)):
+        if isinstance(value, (cls.Color, str)):
             return cls._validate_color(value, **kwargs)
         assert len(value)
         value = tuple(cls._validate_color(_, **kwargs) for _ in value)
@@ -222,9 +238,9 @@ class Attributes(collections.Mapping):
 
     @classmethod
     def _validate_point(cls, value, **kwargs):
-        if isinstance(value, Point):
+        if isinstance(value, cls.Point):
             return value
-        value = Point(*value)
+        value = cls.Point(*value)
         return value
 
     @classmethod
