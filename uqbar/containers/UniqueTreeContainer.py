@@ -135,6 +135,13 @@ class UniqueTreeContainer(UniqueTreeNode):
         del(self[i])
         return node
 
+    def recurse(self):
+        for child in self:
+            yield child
+            if isinstance(child, type(self)):
+                for grandchild in child.recurse():
+                    yield grandchild
+
     def remove(self, node):
         i = self.index(node)
         del(self[i])

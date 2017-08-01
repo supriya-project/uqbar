@@ -44,7 +44,7 @@ class TestCase(unittest.TestCase):
         node_a = uqbar.graphs.Node(name='foo')
         node_b = uqbar.graphs.Node(name='bar')
         edge = uqbar.graphs.Edge(node_a, node_b)
-        assert format(edge, 'graphviz') == 'node_foo -> node_bar;'
+        assert format(edge, 'graphviz') == 'foo -> bar;'
 
         node_a = uqbar.graphs.Node(name='foo')
         node_b = uqbar.graphs.Node(name='bar')

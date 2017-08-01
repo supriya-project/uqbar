@@ -76,6 +76,10 @@ class Graph(UniqueTreeContainer):
                         format(child, 'graphviz').split('\n')
                         )
                 result.extend(lines)
+            if node in edge_parents:
+                for edge in edge_parents[node]:
+                    lines = format(edge, 'graphviz').split('\n')
+                    result.extend(indent + line for line in lines)
             result.append('}')
             return result
 
