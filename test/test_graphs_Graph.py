@@ -66,4 +66,41 @@ class TestCase(unittest.TestCase):
         # format them
         assert format(graph) == repr(graph)
         assert format(graph, 'graphviz') == self.normalize('''
+            digraph G {
+                subgraph cluster_0 {
+                    graph [color=lightgrey,
+                        label="process #1",
+                        style=filled];
+                    node [color=white,
+                        style=filled];
+                    a0;
+                    a1;
+                    a2;
+                    a3;
+                    a0 -> a1;
+                    a1 -> a2;
+                    a2 -> a3;
+                    a3 -> a0;
+                }
+                subgraph cluster_1 {
+                    graph [color=blue,
+                        label="process #2"];
+                    node [style="filled, rounded"];
+                    b0;
+                    b1;
+                    b2;
+                    b3;
+                    b0 -> b1;
+                    b1 -> b2;
+                    b2 -> b3;
+                }
+                start [shape=Mdiamond];
+                end [shape=Msquare];
+                a1 -> b3;
+                a3 -> end;
+                b2 -> a3;
+                b3 -> end;
+                start -> a0;
+                start -> b0;
+            }
         ''')
