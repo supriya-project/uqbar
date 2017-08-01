@@ -60,14 +60,14 @@ class Node(UniqueTreeNode):
         **attributes
         ):
         import uqbar.graphs
-        return uqbar.graphs.Edge(
+        edge = uqbar.graphs.Edge(
             attributes=attributes,
-            head=node,
             head_port_position=head_port_position,
             is_directed=is_directed,
-            tail=self,
             tail_port_position=tail_port_position,
             )
+        edge.attach(self, node)
+        return edge
 
     ### PUBLIC PROPERTIES ###
 

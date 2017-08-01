@@ -22,12 +22,12 @@ class TestCase(unittest.TestCase):
     def test___init__(self):
         node_a = uqbar.graphs.Node(name='foo')
         node_b = uqbar.graphs.Node(name='bar')
-        uqbar.graphs.Edge(node_a, node_b)
+        uqbar.graphs.Edge().attach(node_a, node_b)
 
     def test___format___str(self):
         node_a = uqbar.graphs.Node(name='foo')
         node_b = uqbar.graphs.Node(name='bar')
-        edge = uqbar.graphs.Edge(node_a, node_b)
+        edge = uqbar.graphs.Edge().attach(node_a, node_b)
         assert format(edge) == repr(edge)
 
         node_a = uqbar.graphs.Node(name='foo')
@@ -37,13 +37,13 @@ class TestCase(unittest.TestCase):
             color='blue',
             style=['dotted'],
             )
-        edge = uqbar.graphs.Edge(node_a, node_b, attributes=attributes)
+        edge = uqbar.graphs.Edge(attributes=attributes).attach(node_a, node_b)
         assert format(edge) == repr(edge)
 
     def test___format___graphviz(self):
         node_a = uqbar.graphs.Node(name='foo')
         node_b = uqbar.graphs.Node(name='bar')
-        edge = uqbar.graphs.Edge(node_a, node_b)
+        edge = uqbar.graphs.Edge().attach(node_a, node_b)
         assert format(edge, 'graphviz') == 'foo -> bar;'
 
         node_a = uqbar.graphs.Node(name='foo')
@@ -53,7 +53,7 @@ class TestCase(unittest.TestCase):
             color='blue',
             style=['dotted'],
             )
-        edge = uqbar.graphs.Edge(node_a, node_b, attributes=attributes)
+        edge = uqbar.graphs.Edge(attributes=attributes).attach(node_a, node_b)
         assert format(edge, 'graphviz') == self.normalize('''
             foo -> bar [color=blue,
                 style=dotted];

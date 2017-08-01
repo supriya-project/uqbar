@@ -7,21 +7,16 @@ class Edge(object):
 
     def __init__(
         self,
-        tail,
-        head,
         attributes=None,
         is_directed=True,
         head_port_position=None,
         tail_port_position=None,
         ):
-        from uqbar.graphs import Node
-        assert isinstance(head, Node)
-        assert isinstance(tail, Node)
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head = head
+        self._head = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail = tail
+        self._tail = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -55,6 +50,48 @@ class Edge(object):
         else:
             result[-1] += ';'
         return '\n'.join(result)
+
+    ### PRIVATE METHODS ###
+
+    def _get_highest_parent(self):
+        highest_parent = None
+        tail_parentage = list(self.tail.parentage[1:])
+        head_parentage = list(self.head.parentage[1:])
+        while (
+            len(tail_parentage) and
+            len(head_parentage) and
+            tail_parentage[-1] is head_parentage[-1]
+            ):
+            highest_parent = tail_parentage[-1]
+            tail_parentage.pop()
+            head_parentage.pop()
+        if highest_parent is None:
+            message = 'highest parent can not be none.'
+            raise Exception(message)
+        return highest_parent
+
+    ### PUBLIC METHODS ###
+
+    def attach(self, tail, head):
+        from uqbar.graphs import Node
+        prototype = (Node,)
+        assert isinstance(tail, prototype)
+        assert isinstance(head, prototype)
+        self.detach()
+        tail._edges.add(self)
+        head._edges.add(self)
+        self._tail = tail
+        self._head = head
+        return self
+
+    def detach(self):
+        if self.tail is not None:
+            self.tail._edges.remove(self)
+            self._tail = None
+        if self.head is not None:
+            self.head._edges.remove(self)
+            self._head = None
+        return self
 
     ### PUBLIC PROPERTIES ###
 
