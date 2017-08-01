@@ -1,4 +1,5 @@
 import collections
+import re
 
 
 class Attributes(collections.Mapping):
@@ -15,6 +16,12 @@ class Attributes(collections.Mapping):
         def __init__(self, color):
             self.color = str(color)
 
+        def __eq__(self, other):
+            return (
+                type(self) == type(other) and
+                self.color == other.color
+                )
+
         def __repr__(self):
             return '<Color {!r}>'.format(self.color)
 
@@ -25,6 +32,13 @@ class Attributes(collections.Mapping):
         def __init__(self, x, y):
             self.x = float(x)
             self.y = float(y)
+
+        def __eq__(self, other):
+            return (
+                type(self) == type(other) and
+                self.x == other.x and
+                self.y == other.y
+                )
 
     _arrow_types = frozenset(['box', 'circle', 'crow', 'diamond', 'dot',
         'ediamond', 'empty', 'halfopen', 'inv', 'invdot', 'invempty',
@@ -63,6 +77,8 @@ class Attributes(collections.Mapping):
         'rng', 'spring', 'triangle'])
 
     _styles = frozenset()
+
+    _word_pattern = re.compile('^\w[\w\-:]*$')
 
     ### GRAPH OBJECT SPECIFICS ###
 
@@ -137,6 +153,35 @@ class Attributes(collections.Mapping):
     def __delitem__(self, key):
         del(self._attributes[key])
 
+    def __eq__(self, other):
+        return (
+            type(self) == type(other) and
+            self._mode == other._mode and
+            self._attributes == other._attributes
+            )
+
+    def __format__(self, format_spec=None):
+        if format_spec == 'graphviz':
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self):
+        if not self._attributes:
+            return ''
+        result = []
+        attributes = sorted(self._attributes.items())
+        for i, (key, value) in enumerate(attributes, 1):
+            value = self._format_value(value).split('\n')
+            value[0] = '{}={}'.format(key, value[0])
+            if i < len(attributes):
+                value[-1] += ','
+            if i == 1:
+                result.append(value.pop(0))
+            result.extend('    ' + _ for _ in value)
+        result[0] = '[' + result[0]
+        result[-1] = result[-1] + '];'
+        return '\n'.join(result)
+
     def __getitem__(self, key):
         return self._attributes[key]
 
@@ -151,6 +196,38 @@ class Attributes(collections.Mapping):
             self.mode, key=value))
 
     ### PRIVATE METHODS ###
+
+    @classmethod
+    def _format_value(cls, value):
+        if isinstance(value, bool):
+            return str(value).lower()
+        elif isinstance(value, (int, float)):
+            return str(value)
+        elif isinstance(value, (list, tuple)):
+            return '"{}"'.format(', '.join(
+                cls._format_value(x) for x in value))
+        elif isinstance(value, cls.Color):
+            return str(value.color)
+        elif isinstance(value, str):
+            if value.startswith('<') and value.endswith('>'):
+                return value
+            should_quote = False
+            if not cls._word_pattern.match(value):
+                should_quote = True
+            elif value and value[0].isdigit():
+                should_quote = True
+            elif value.lower() in (
+                'digraph',
+                'graph',
+                'node',
+                'subgraph',
+                ):
+                should_quote = True
+            if should_quote:
+                value = value.replace('"', r'\"')
+                value = '"{}"'.format(value)
+            return value
+        raise ValueError(value)
 
     @classmethod
     def _validate_arrow_type(cls, value, **kwargs):
@@ -302,6 +379,11 @@ class Attributes(collections.Mapping):
         return tuple(cls._validate_style(
             _, valid_styles=valid_styles, **kwargs
             ) for _ in value)
+
+    ### PUBLIC METHODS ###
+
+    def copy(self):
+        return type(self)(self.mode, self._attributes.copy())
 
     ### PUBLIC PROPERTIES ###
 
