@@ -1,5 +1,6 @@
 from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs.Attributes import Attributes
+from uqbar.graphs.Node import Node
 
 
 class Graph(UniqueTreeContainer):
@@ -11,6 +12,7 @@ class Graph(UniqueTreeContainer):
         name=None,
         children=None,
         is_cluster=None,
+        is_digraph=True,
         attributes=None,
         edge_attributes=None,
         node_attributes=None,
@@ -25,12 +27,82 @@ class Graph(UniqueTreeContainer):
         self._edge_attributes = Attributes('edge', **(attributes or {}))
         self._node_attributes = Attributes('node', **(attributes or {}))
         self._is_cluster = is_cluster
+        self._is_digraph = bool(is_digraph)
 
     ### SPECIAL METHODS ###
 
     def __format__(self, format_spec=None):
         # TODO: make the format specification options machine-readable
-        pass
+        if format_spec == 'graphviz':
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self):
+        def recurse(graph):
+            indent = '    '
+            result = []
+            if not graph.parent:
+                if graph.is_digraph:
+                    string = 'digraph {} {{'.format(
+                        Attributes._format_value(graph.name))
+                else:
+                    string = 'graph {} {{'.format(
+                        Attributes._format_value(graph.name))
+            elif graph.is_cluster:
+                string = 'subgraph {} {{'.format(
+                    Attributes._format_value('cluster_{}'.format(graph.name)))
+            else:
+                string = 'subgraph {} {{'.format(
+                    Attributes._format_value(graph.name))
+            result.append(string)
+            if graph.attributes:
+                attributes = 'graph {}'.format(
+                    format(graph.attributes, 'graphviz')).split('\n')
+                result.extend(indent + line for line in attributes)
+            if graph.node_attributes:
+                attributes = 'node {}'.format(
+                    format(graph.node_attributes, 'graphviz')).split('\n')
+                result.extend(indent + line for line in attributes)
+            if graph.edge_attributes:
+                attributes = 'edge {}'.format(
+                    format(graph.edge_attributes, 'graphviz')).split('\n')
+                result.extend(indent + line for line in attributes)
+            for child in graph:
+                if isinstance(child, type(self)):
+                    lines = (indent + line for line in recurse(child))
+                else:
+                    lines = (
+                        indent + line for line in
+                        format(child, 'graphviz').split('\n')
+                        )
+                result.extend(lines)
+            result.append('}')
+            return result
+
+        all_edges = set()
+        all_nodes = {}
+        for node in self.recurse():
+            canonical_name = node._get_canonical_name()
+            if canonical_name in all_nodes:
+                raise ValueError(node.name, canonical_name)
+            all_nodes[canonical_name] = node
+            if not isinstance(node, Node):
+                continue
+            for edge in node.edges:
+                if edge in all_edges:
+                    continue
+                elif edge.tail.root is not edge.head.root:
+                    continue
+                all_edges.add(edge)
+        all_edges = sorted(all_edges, key=lambda edge: (
+            edge.tail.graph_order, edge.head.graph_order,
+            ))
+        edge_parents = {}
+        for edge in all_edges:
+            highest_parent = edge._get_highest_parent()
+            edge_parents.setdefault(highest_parent, []).append(edge)
+
+        return '\n'.join(recurse(self))
 
     ### PRIVATE METHODS ###
 
@@ -75,6 +147,10 @@ class Graph(UniqueTreeContainer):
     @property
     def is_cluster(self):
         return self._is_cluster
+
+    @property
+    def is_digraph(self):
+        return self._is_digraph
 
     @property
     def node_attributes(self):

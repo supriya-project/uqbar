@@ -193,7 +193,7 @@ class Attributes(collections.Mapping):
 
     def __setitem__(self, key, value):
         self._attributes.update(**self._validate_attributes(
-            self.mode, key=value))
+            self.mode, **{key: value}))
 
     ### PRIVATE METHODS ###
 
@@ -204,8 +204,8 @@ class Attributes(collections.Mapping):
         elif isinstance(value, (int, float)):
             return str(value)
         elif isinstance(value, (list, tuple)):
-            return '"{}"'.format(', '.join(
-                cls._format_value(x) for x in value))
+            value = ', '.join(cls._format_value(x) for x in value)
+            return cls._format_value(value)
         elif isinstance(value, cls.Color):
             return str(value.color)
         elif isinstance(value, str):

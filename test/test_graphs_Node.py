@@ -38,10 +38,10 @@ class TestCase(unittest.TestCase):
         assert node._get_canonical_name() == 'node_0'
 
         node = uqbar.graphs.Node(name='foo')
-        assert node._get_canonical_name() == 'node_foo'
+        assert node._get_canonical_name() == 'foo'
 
         node = uqbar.graphs.Node(name='Foo Bar Baz')
-        assert node._get_canonical_name() == 'node_Foo Bar Baz'
+        assert node._get_canonical_name() == 'Foo Bar Baz'
 
         graph = uqbar.graphs.Graph()
         node = uqbar.graphs.Node()
@@ -60,9 +60,9 @@ class TestCase(unittest.TestCase):
         node_b = uqbar.graphs.Node(name='foo')
         node_c = uqbar.graphs.Node(name='bar')
         graph.extend([node_a, node_b, node_c])
-        assert node_a._get_canonical_name() == 'node_foo_0'
-        assert node_b._get_canonical_name() == 'node_foo_1'
-        assert node_c._get_canonical_name() == 'node_bar'
+        assert node_a._get_canonical_name() == 'foo_0'
+        assert node_b._get_canonical_name() == 'foo_1'
+        assert node_c._get_canonical_name() == 'bar'
 
     def test___format___str(self):
         node = uqbar.graphs.Node()
@@ -80,7 +80,7 @@ class TestCase(unittest.TestCase):
         assert format(node, 'graphviz') == 'node_0;'
 
         node = uqbar.graphs.Node(name='foo')
-        assert format(node, 'graphviz') == 'node_foo;'
+        assert format(node, 'graphviz') == 'foo;'
 
         attributes = uqbar.graphs.Attributes(
             mode='node',
@@ -91,7 +91,7 @@ class TestCase(unittest.TestCase):
             )
         node = uqbar.graphs.Node(name='foo', attributes=attributes)
         assert format(node, 'graphviz') == self.normalize('''
-            node_foo [color=blue,
+            foo [color=blue,
                 fontname="Times New Roman",
                 fontsize=11.5,
                 shape=oval];

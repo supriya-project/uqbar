@@ -37,18 +37,37 @@ class Node(UniqueTreeNode):
     def _get_canonical_name(self):
         prefix = 'node'
         if self.name is not None:
-            name = self.name
             root = self.root
             if root:
                 instances = root[self.name]
-                if not isinstance(instances, type(self)):
-                    name = '{}_{}'.format(name, instances.index(self))
-            suffix = name
+                if instances is not self:
+                    return '{}_{}'.format(self.name, instances.index(self))
+            return self.name
         elif self.graph_order:
             suffix = '_'.join(str(x) for x in self.graph_order)
         else:
             suffix = '0'
         return '{}_{}'.format(prefix, suffix)
+
+    ### PUBLIC METHODS ###
+
+    def attach(
+        self,
+        node,
+        is_directed=True,
+        head_port_position=None,
+        tail_port_position=None,
+        **attributes
+        ):
+        import uqbar.graphs
+        return uqbar.graphs.Edge(
+            attributes=attributes,
+            head=node,
+            head_port_position=head_port_position,
+            is_directed=is_directed,
+            tail=self,
+            tail_port_position=tail_port_position,
+            )
 
     ### PUBLIC PROPERTIES ###
 
