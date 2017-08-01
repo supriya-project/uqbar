@@ -104,3 +104,88 @@ class TestCase(unittest.TestCase):
                 start -> b0;
             }
         ''')
+
+    def test___format___graphviz_01(self):
+        graph = uqbar.graphs.Graph(name='G')
+        cluster_foo = uqbar.graphs.Graph(name='foo', is_cluster=True)
+        subgraph_bar = uqbar.graphs.Graph(name='bar')
+        node_a = uqbar.graphs.Node(name='a')
+        node_b = uqbar.graphs.Node(name='b')
+        node_c = uqbar.graphs.Node(name='c')
+        graph.extend([cluster_foo, subgraph_bar, node_a])
+        cluster_foo.append(node_b)
+        subgraph_bar.append(node_c)
+        node_a.attach(node_b)
+        node_a.attach(node_c)
+        node_b.attach(node_c)
+        assert format(graph, 'graphviz') == self.normalize('''
+        digraph G {
+            subgraph cluster_foo {
+                b;
+            }
+            subgraph bar {
+                c;
+            }
+            a;
+            b -> c;
+            a -> b;
+            a -> c;
+        }
+        ''')
+        cluster_foo.append(node_c)
+        assert format(graph, 'graphviz') == self.normalize('''
+            digraph G {
+                subgraph cluster_foo {
+                    b;
+                    c;
+                    b -> c;
+                }
+                subgraph bar {
+                }
+                a;
+                a -> b;
+                a -> c;
+            }
+        ''')
+        subgraph_bar.extend([node_a, node_b, node_c])
+        assert format(graph, 'graphviz') == self.normalize('''
+            digraph G {
+                subgraph cluster_foo {
+                }
+                subgraph bar {
+                    a;
+                    b;
+                    c;
+                    a -> b;
+                    a -> c;
+                    b -> c;
+                }
+            }
+        ''')
+        subgraph_bar.append(node_a)
+        assert format(graph, 'graphviz') == self.normalize('''
+            digraph G {
+                subgraph cluster_foo {
+                }
+                subgraph bar {
+                    b;
+                    c;
+                    a;
+                    b -> c;
+                    a -> b;
+                    a -> c;
+                }
+            }
+        ''')
+        subgraph_bar.remove(node_a)
+        assert format(graph, 'graphviz') == self.normalize('''
+            digraph G {
+                subgraph cluster_foo {
+                }
+                subgraph bar {
+                    b;
+                    c;
+                    b -> c;
+                }
+            }
+        ''')
