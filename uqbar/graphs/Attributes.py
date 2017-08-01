@@ -383,7 +383,7 @@ class Attributes(collections.Mapping):
     ### PUBLIC METHODS ###
 
     def copy(self):
-        return type(self)(self.mode, self._attributes.copy())
+        return type(self)(self.mode, **self._attributes.copy())
 
     ### PUBLIC PROPERTIES ###
 

@@ -148,3 +148,10 @@ class UniqueTreeNode(object):
             parentage.append(node)
             node = node.parent
         return tuple(parentage)
+
+    @property
+    def root(self):
+        proper_parentage = self.parentage[1:]
+        if not proper_parentage:
+            return None
+        return proper_parentage[-1]

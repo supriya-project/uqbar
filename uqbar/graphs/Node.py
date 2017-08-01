@@ -8,7 +8,7 @@ class Node(UniqueTreeNode):
 
     def __init__(self, name=None, attributes=None):
         UniqueTreeNode.__init__(self, name=name)
-        self._attributes = Attributes('edge', **(attributes or {}))
+        self._attributes = Attributes('node', **(attributes or {}))
         self._edges = set()
 
     ### SPECIAL METHODS ###
@@ -28,7 +28,8 @@ class Node(UniqueTreeNode):
             attributes = format(attributes, 'graphviz').split('\n')
             result[0] = '{} {}'.format(result[0], attributes[0])
             result.extend(attributes[1:])
-        result[-1] += ';'
+        else:
+            result[-1] += ';'
         return '\n'.join(result)
 
     ### PRIVATE METHODS ###

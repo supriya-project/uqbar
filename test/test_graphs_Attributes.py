@@ -10,9 +10,11 @@ class TestCase(unittest.TestCase):
             line.rstrip() for line in
             string.replace('\t', '    ').split('\n')
             ]
-        while not lines[0]:
+        if not lines:
+            return ''
+        while lines and not lines[0]:
             lines.pop(0)
-        while not lines[-1]:
+        while lines and not lines[-1]:
             lines.pop()
         string = '\n'.join(lines)
         return textwrap.dedent(string)
@@ -30,10 +32,10 @@ class TestCase(unittest.TestCase):
     def test___format___str_02(self):
         attributes = uqbar.graphs.Attributes(
             mode='node',
-            shape='oval',
             color='blue',
             fontname='Times New Roman',
             fontsize=11.5,
+            shape='oval',
             )
         assert format(attributes) == repr(attributes)
 
@@ -44,10 +46,10 @@ class TestCase(unittest.TestCase):
     def test___format___graphviz_02(self):
         attributes = uqbar.graphs.Attributes(
             mode='node',
-            shape='oval',
             color='blue',
             fontname='Times New Roman',
             fontsize=11.5,
+            shape='oval',
             )
         assert format(attributes, 'graphviz') == self.normalize('''
             [color=blue,
