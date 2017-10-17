@@ -1,5 +1,20 @@
 #!/usr/bin/env python
+import pathlib
 import setuptools
+
+
+package_name = 'uqbar'
+
+
+def read_version():
+    root_path = pathlib.Path(__file__).parent
+    version_path = root_path / package_name / 'version.py'
+    with version_path.open() as file_pointer:
+        file_contents = file_pointer.read()
+    local_dict = {}
+    exec(file_contents, None, local_dict)
+    return local_dict['__version__']
+
 
 description = 'Tools for building documentation with Sphinx, Graphviz and LaTeX'
 
@@ -11,9 +26,9 @@ classifiers = [
     'Natural Language :: English',
     'Operating System :: MacOS',
     'Operating System :: POSIX',
-    'Programming Language :: Python :: 3.3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
     ]
 
 install_requires = [
@@ -28,7 +43,10 @@ keywords = [
     'documentation',
     ]
 
-long_description = description
+with open('README.md', 'r') as file_pointer:
+    long_description = file_pointer.read()
+
+version = read_version()
 
 if __name__ == '__main__':
     setuptools.setup(
@@ -39,9 +57,9 @@ if __name__ == '__main__':
         install_requires=install_requires,
         keywords=keywords,
         long_description=description,
-        name='uqbar',
-        packages=['uqbar'],
+        name=package_name,
+        packages=[package_name],
         url='https://github.com/josiah-wolf-oberholtzer/uqbar',
-        version='0.1',
+        version=version,
         zip_safe=False,
         )
