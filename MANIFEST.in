@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include setup.py
+include MANIFEST.in
+recursive-include uqbar *
+recursive-exclude *.pyc

@@ -54,6 +54,7 @@ if __name__ == '__main__':
         author_email='josiah.oberholtzer@gmail.com',
         classifiers=classifiers,
         description=description,
+        include_package_data=True,
         install_requires=install_requires,
         keywords=keywords,
         long_description=description,
