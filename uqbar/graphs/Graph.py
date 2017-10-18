@@ -42,18 +42,21 @@ class Graph(UniqueTreeContainer):
             indent = '    '
             result = []
             if not graph.parent:
+                name = graph.name or 'G'
                 if graph.is_digraph:
                     string = 'digraph {} {{'.format(
-                        Attributes._format_value(graph.name))
+                        Attributes._format_value(name))
                 else:
                     string = 'graph {} {{'.format(
-                        Attributes._format_value(graph.name))
+                        Attributes._format_value(name))
             elif graph.is_cluster:
+                name = graph.name or graph._get_canonical_name()
                 string = 'subgraph {} {{'.format(
-                    Attributes._format_value('cluster_{}'.format(graph.name)))
+                    Attributes._format_value('cluster_{}'.format(name)))
             else:
+                name = graph.name or graph._get_canonical_name()
                 string = 'subgraph {} {{'.format(
-                    Attributes._format_value(graph.name))
+                    Attributes._format_value(name))
             result.append(string)
             if graph.attributes:
                 attributes = 'graph {}'.format(
