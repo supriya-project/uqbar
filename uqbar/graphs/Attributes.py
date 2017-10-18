@@ -78,7 +78,7 @@ class Attributes(collections.Mapping):
 
     _styles = frozenset()
 
-    _word_pattern = re.compile('^\w[\w\-:]*$')
+    _word_pattern = re.compile('^\w+$')
 
     ### GRAPH OBJECT SPECIFICS ###
 
