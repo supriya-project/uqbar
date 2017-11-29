@@ -189,3 +189,48 @@ class TestCase(unittest.TestCase):
                 }
             }
         ''')
+
+    def test_initialized_with_attributes(self):
+        graph = uqbar.graphs.Graph(
+            name='g',
+            attributes=dict(
+                bgcolor='transparent',
+                color='lightslategrey',
+                dpi=72,
+                fontname='Arial',
+                outputorder='edgesfirst',
+                overlap='prism',
+                rankdir='LR',
+                ranksep=1,
+                splines='spline',
+                style=('dotted', 'rounded'),
+                ),
+            edge_attributes=dict(
+                penwidth=2,
+                ),
+            node_attributes=dict(
+                fontname='Arial',
+                fontsize=12,
+                penwidth=2,
+                style=('filled', 'rounded'),
+                ),
+            )
+        assert format(graph, 'graphviz') == self.normalize('''
+            digraph g {
+                graph [bgcolor=transparent,
+                    color=lightslategrey,
+                    dpi=72.0,
+                    fontname=Arial,
+                    outputorder=edgesfirst,
+                    overlap=prism,
+                    rankdir=LR,
+                    ranksep=1.0,
+                    splines=spline,
+                    style="dotted, rounded"];
+                node [fontname=Arial,
+                    fontsize=12.0,
+                    penwidth=2.0,
+                    style="filled, rounded"];
+                edge [penwidth=2.0];
+            }
+        ''')

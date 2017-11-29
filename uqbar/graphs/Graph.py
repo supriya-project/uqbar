@@ -24,8 +24,8 @@ class Graph(UniqueTreeContainer):
         if is_cluster:
             mode = 'cluster'
         self._attributes = Attributes(mode, **(attributes or {}))
-        self._edge_attributes = Attributes('edge', **(attributes or {}))
-        self._node_attributes = Attributes('node', **(attributes or {}))
+        self._edge_attributes = Attributes('edge', **(edge_attributes or {}))
+        self._node_attributes = Attributes('node', **(node_attributes or {}))
         self._is_cluster = is_cluster
         self._is_digraph = bool(is_digraph)
 

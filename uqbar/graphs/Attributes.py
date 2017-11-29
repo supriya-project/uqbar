@@ -71,7 +71,7 @@ class Attributes(collections.Mapping):
         'proteinstab', 'rarrow', 'rect', 'rectangle', 'restrictionsite',
         'ribosite', 'rnastab', 'rpromoter', 'septagon', 'signature', 'square',
         'star', 'tab', 'terminator', 'threepoverhang', 'trapezium', 'triangle',
-        'tripleoctagon', 'underline', 'utr'])
+        'tripleoctagon', 'underline', 'utr', 'record', 'Mrecord'])
 
     _smooth_types = frozenset(['avg_dist', 'graph_dist', 'none', 'power_dist',
         'rng', 'spring', 'triangle'])
@@ -109,7 +109,7 @@ class Attributes(collections.Mapping):
     _edge_styles = frozenset(['bold', 'dashed', 'dotted', 'solid'])
 
     _graph_attributes = frozenset(['Damping', 'K', 'URL', 'bb', 'bgcolor',
-        'center', 'charset', 'clusterrank', 'colorscheme', 'comment',
+        'center', 'charset', 'clusterrank', 'color', 'colorscheme', 'comment',
         'compound', 'concentrate', 'defaultdist', 'dim', 'dimen',
         'diredgeconstraints', 'dpi', 'epsilon', 'esep', 'fontcolor',
         'fontname', 'fontnames', 'fontpath', 'fontsize', 'forcedlabels',
@@ -127,7 +127,7 @@ class Attributes(collections.Mapping):
         'stylesheet', 'target', 'truecolor', 'viewport', 'voro_margin',
         'xdotversion', 'xlabel', 'xlp'])
 
-    _graph_styles = frozenset()
+    _graph_styles = _cluster_styles
 
     _node_attributes = frozenset(['URL', 'area', 'color', 'colorscheme',
         'comment', 'distortion', 'fillcolor', 'fixedsize', 'fontcolor',
@@ -251,13 +251,17 @@ class Attributes(collections.Mapping):
             if not isinstance(validators, tuple):
                 validators = (validators,)
             for validator in validators:
-                if isinstance(validator, str) and str(value) == validator:
-                    value = str(value)
-                    break
+                if isinstance(validator, str):
+                    if str(value) == validator:
+                        value = str(value)
+                        break
+                    continue
                 elif isinstance(validator, type):
                     value = validator(value)
+                    break
                 else:
                     value = validator(value, valid_styles=valid_styles)
+                    break
             attributes[key] = value
         return attributes
 
