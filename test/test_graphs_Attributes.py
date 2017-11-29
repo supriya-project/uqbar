@@ -1,23 +1,9 @@
-import textwrap
 import unittest
 import uqbar.graphs
+from uqbar.strings import normalize
 
 
 class TestCase(unittest.TestCase):
-
-    def normalize(self, string):
-        lines = [
-            line.rstrip() for line in
-            string.replace('\t', '    ').split('\n')
-            ]
-        if not lines:
-            return ''
-        while lines and not lines[0]:
-            lines.pop(0)
-        while lines and not lines[-1]:
-            lines.pop()
-        string = '\n'.join(lines)
-        return textwrap.dedent(string)
 
     def test_mode(self):
         uqbar.graphs.Attributes(mode='cluster')
@@ -51,7 +37,7 @@ class TestCase(unittest.TestCase):
             fontsize=11.5,
             shape='oval',
             )
-        assert format(attributes, 'graphviz') == self.normalize('''
+        assert format(attributes, 'graphviz') == normalize('''
             [color=blue,
                 fontname="Times New Roman",
                 fontsize=11.5,

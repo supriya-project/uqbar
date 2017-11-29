@@ -8,7 +8,7 @@ package_name = 'uqbar'
 
 def read_version():
     root_path = pathlib.Path(__file__).parent
-    version_path = root_path / package_name / 'version.py'
+    version_path = root_path / package_name / '_version.py'
     with version_path.open() as file_pointer:
         file_contents = file_pointer.read()
     local_dict = {}
@@ -33,7 +33,7 @@ classifiers = [
 
 install_requires = [
     'Sphinx>=1.4.0',
-    'cython',
+    'sphinx-rtd-theme',
     ]
 
 keywords = [

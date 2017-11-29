@@ -1,5 +1,5 @@
 import unittest
-import uqbar.unique_trees
+import uqbar.containers
 
 
 class TestCase(unittest.TestCase):
@@ -8,7 +8,7 @@ class TestCase(unittest.TestCase):
         """
         Initialize without name.
         """
-        node = uqbar.unique_trees.UniqueTreeNode()
+        node = uqbar.containers.UniqueTreeNode()
         assert node.name is None
         assert node.parent is None
         assert node.depth == 0
@@ -17,21 +17,21 @@ class TestCase(unittest.TestCase):
         """
         Initialize with name.
         """
-        node = uqbar.unique_trees.UniqueTreeNode(name='foo')
+        node = uqbar.containers.UniqueTreeNode(name='foo')
         assert node.name == 'foo'
         assert node.parent is None
         assert node.depth == 0
 
     def test_name_01(self):
-        node = uqbar.unique_trees.UniqueTreeNode(name='foo')
+        node = uqbar.containers.UniqueTreeNode(name='foo')
         node.name = 'bar'
         assert node.name == 'bar'
 
     def test_name_02(self):
-        node_a = uqbar.unique_trees.UniqueTreeContainer()
-        node_b = uqbar.unique_trees.UniqueTreeContainer()
-        node_c = uqbar.unique_trees.UniqueTreeNode(name='foo')
-        node_d = uqbar.unique_trees.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeContainer()
+        node_b = uqbar.containers.UniqueTreeContainer()
+        node_c = uqbar.containers.UniqueTreeNode(name='foo')
+        node_d = uqbar.containers.UniqueTreeContainer()
         node_a.append(node_b)
         node_b.append(node_c)
         assert node_a['foo'] is node_c
