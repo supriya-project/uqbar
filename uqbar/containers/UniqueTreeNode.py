@@ -3,6 +3,12 @@ import copy
 
 
 class UniqueTreeNode(object):
+    """
+    A node in a "unique" tree.
+
+    Unique tree nodes may have at most one parent and may appear only once in
+    the tree.
+    """
 
     ### CLASS VARIABLES ###
 

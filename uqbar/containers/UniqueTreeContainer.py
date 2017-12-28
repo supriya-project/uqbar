@@ -1,8 +1,16 @@
 import copy
-from uqbar.unique_trees.UniqueTreeNode import UniqueTreeNode
+from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 
 class UniqueTreeContainer(UniqueTreeNode):
+    """
+    A container node in a "unique" tree.
+
+    Container nodes may contain zero or more other nodes.
+
+    Unique tree nodes may have at most one parent and may appear only once in
+    the tree.
+    """
 
     ### INITIALIZER ###
 
@@ -108,6 +116,16 @@ class UniqueTreeContainer(UniqueTreeNode):
             slice(len(self), len(self)),
             [expr]
             )
+
+    def depth_first(self, top_down=True):
+        for child in self:
+            if top_down:
+                yield child
+            if isinstance(child, type(self)):
+                for grandchild in child.depth_first(top_down=top_down):
+                    yield grandchild
+            if not top_down:
+                yield child
 
     def extend(self, expr):
         self.__setitem__(

@@ -1,23 +1,9 @@
-import textwrap
 import unittest
 import uqbar.graphs
+import uqbar.strings
 
 
 class TestCase(unittest.TestCase):
-
-    def normalize(self, string):
-        lines = [
-            line.rstrip() for line in
-            string.replace('\t', '    ').split('\n')
-            ]
-        if not lines:
-            return ''
-        while lines and not lines[0]:
-            lines.pop(0)
-        while lines and not lines[-1]:
-            lines.pop()
-        string = '\n'.join(lines)
-        return textwrap.dedent(string)
 
     def test_functional(self):
         # instantiate them
@@ -65,7 +51,7 @@ class TestCase(unittest.TestCase):
         end.attributes['shape'] = 'Msquare'
         # format them
         assert format(graph) == repr(graph)
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph G {
                 subgraph cluster_0 {
                     graph [color=lightgrey,
@@ -118,7 +104,7 @@ class TestCase(unittest.TestCase):
         node_a.attach(node_b)
         node_a.attach(node_c)
         node_b.attach(node_c)
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
         digraph G {
             subgraph cluster_foo {
                 b;
@@ -133,7 +119,7 @@ class TestCase(unittest.TestCase):
         }
         ''')
         cluster_foo.append(node_c)
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph G {
                 subgraph cluster_foo {
                     b;
@@ -148,7 +134,7 @@ class TestCase(unittest.TestCase):
             }
         ''')
         subgraph_bar.extend([node_a, node_b, node_c])
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph G {
                 subgraph cluster_foo {
                 }
@@ -163,7 +149,7 @@ class TestCase(unittest.TestCase):
             }
         ''')
         subgraph_bar.append(node_a)
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph G {
                 subgraph cluster_foo {
                 }
@@ -178,7 +164,7 @@ class TestCase(unittest.TestCase):
             }
         ''')
         subgraph_bar.remove(node_a)
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph G {
                 subgraph cluster_foo {
                 }
@@ -215,7 +201,7 @@ class TestCase(unittest.TestCase):
                 style=('filled', 'rounded'),
                 ),
             )
-        assert format(graph, 'graphviz') == self.normalize('''
+        assert format(graph, 'graphviz') == uqbar.strings.normalize('''
             digraph g {
                 graph [bgcolor=transparent,
                     color=lightslategrey,

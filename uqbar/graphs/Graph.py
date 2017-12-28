@@ -1,4 +1,4 @@
-from uqbar.unique_trees import UniqueTreeContainer
+from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs.Attributes import Attributes
 from uqbar.graphs.Node import Node
 
