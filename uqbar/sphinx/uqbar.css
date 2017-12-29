@@ -1,0 +1,13 @@
+p.rubric.section-header {
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+    font-size: 125%;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+p.rubric.class-header {
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+    font-size: 100%;
+    font-weight: 700;
+    margin-bottom: 24px !important;
+}

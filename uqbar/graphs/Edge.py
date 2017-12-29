@@ -2,6 +2,9 @@ from uqbar.graphs.Attributes import Attributes
 
 
 class Edge(object):
+    """
+    A Graphviz edge.
+    """
 
     ### INITIALIZER ###
 

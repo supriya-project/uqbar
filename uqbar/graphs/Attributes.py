@@ -2,9 +2,31 @@ import collections
 import re
 
 
-class Attributes(collections.Mapping):
+class Attributes(collections.MutableMapping):
     """
-    Abstract base for Graphviz attributes classes.
+    An attributes listing for a Graphviz graph, cluster, node or edge.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> attributes = uqbar.graphs.Attributes(
+        ...     'node',
+        ...     color='black',
+        ...     fillcolor='white',
+        ...     shape='Mrecord',
+        ...     style=['rounded', 'filled'],
+        ...     )
+
+    ::
+        
+        >>> print(format(attributes, 'graphviz'))
+        [color=black,
+            fillcolor=white,
+            shape=Mrecord,
+            style="rounded, filled"];
+
+    The ``mode`` argument must be one of ``graph``, ``cluster``, ``node`` or
+    ``edge``.
     """
 
     ### CLASS VARIABLES ###

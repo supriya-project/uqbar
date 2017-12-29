@@ -1,7 +1,9 @@
 import pathlib
 import shutil
+import uqbar.io
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
+from uqbar.apis.MemberDocumenter import MemberDocumenter
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 from uqbar.apis.RootDocumenter import RootDocumenter
 from uqbar.apis.ModuleNode import ModuleNode
@@ -35,6 +37,8 @@ class APIBuilder(object):
 
         if member_documenter_classes is None:
             member_documenter_classes = [ClassDocumenter, FunctionDocumenter]
+        for _ in member_documenter_classes:
+            assert issubclass(_, MemberDocumenter), _
         self._member_documenter_classes = tuple(member_documenter_classes)
 
         if module_documenter_class is None:
@@ -207,29 +211,13 @@ class APIBuilder(object):
             new_documentation = str(documenter)
             path = self._target_directory.joinpath(
                 documenter.documentation_path
-                )
-            if path.exists():
-                with path.open('r') as file_pointer:
-                    old_documentation = file_pointer.read()
-                if old_documentation == new_documentation:
-                    self._print('preserved', path)
-                    visited_paths.add(path)
-                    continue
-            if not path.parent.exists():
-                path.parent.mkdir(parents=True)
-            if path.exists():
-                with path.open('w') as file_pointer:
-                    file_pointer.write(new_documentation)
-                self._print('rewrote', path)
-            else:
-                with path.open('w') as file_pointer:
-                    file_pointer.write(new_documentation)
-                self._print('wrote', path)
-            visited_paths.add(path)
+                ).relative_to(pathlib.Path.cwd())
+            uqbar.io.write(new_documentation, path, verbose=True)
+            visited_paths.add(path.absolute())
         return visited_paths
 
     def prune(self, visited_paths):
-        generator = self.walk(self._target_directory, top_down=False)
+        generator = uqbar.io.walk(self._target_directory, top_down=False)
         for root_path, directory_paths, file_paths in generator:
             for file_path in file_paths[:]:
                 if file_path.suffix != '.rst':
@@ -242,23 +230,7 @@ class APIBuilder(object):
                 if root_path == self._target_directory:
                     continue
                 shutil.rmtree(str(root_path))
-                self._print('pruned:', root_path)
-
-    @classmethod
-    def walk(cls, root_path, top_down=True):
-        root_path = pathlib.Path(root_path)
-        directory_paths, file_paths = [], []
-        for path in sorted(root_path.iterdir()):
-            if path.is_dir():
-                directory_paths.append(path)
-            else:
-                file_paths.append(path)
-        if top_down:
-            yield root_path, directory_paths, file_paths
-        for directory_path in directory_paths:
-            yield from cls.walk(directory_path, top_down=top_down)
-        if not top_down:
-            yield root_path, directory_paths, file_paths
+                self._print('pruned', root_path)
 
     ### PUBLIC PROPERTIES ###
 

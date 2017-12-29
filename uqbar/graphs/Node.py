@@ -3,6 +3,9 @@ from uqbar.graphs.Attributes import Attributes
 
 
 class Node(UniqueTreeNode):
+    """
+    A Graphviz node.
+    """
 
     ### INITIALIZER ###
 

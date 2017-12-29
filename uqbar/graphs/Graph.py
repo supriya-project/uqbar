@@ -4,6 +4,9 @@ from uqbar.graphs.Node import Node
 
 
 class Graph(UniqueTreeContainer):
+    """
+    A Graphviz graph or cluster.
+    """
 
     ### INITIALIZER ###
 
