@@ -3,6 +3,7 @@ import pathlib
 import types
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
+from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
 class ModuleDocumenter:
@@ -30,6 +31,8 @@ class ModuleDocumenter:
 
         if member_documenter_classes is None:
             member_documenter_classes = [ClassDocumenter, FunctionDocumenter]
+        for _ in member_documenter_classes:
+            assert issubclass(_, MemberDocumenter), _
         self._member_documenter_classes = tuple(member_documenter_classes)
 
         if module_documenters is not None:
