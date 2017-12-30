@@ -1,5 +1,5 @@
 """
-Specialized containers.
+Specialized container classes.
 """
 
 from .UniqueTreeNode import UniqueTreeNode  # noqa

@@ -225,7 +225,7 @@ class APIBuilder(object):
                 if file_path not in visited_paths:
                     file_paths.remove(file_path)
                     file_path.unlink()
-                    self._print('pruned:', file_path)
+                    self._print('pruned', file_path)
             if not file_paths and not directory_paths:
                 if root_path == self._target_directory:
                     continue

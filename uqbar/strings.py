@@ -1,5 +1,5 @@
 """
-Utilities for manipulating strings.
+Tools for string manipulation.
 """
 
 import textwrap
