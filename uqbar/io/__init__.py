@@ -1,11 +1,15 @@
 """
-Tools for file-system manipulation.
+Tools for IO and file-system manipulation.
 """
 
 import pathlib
 
 
 def walk(root_path, top_down=True):
+    """
+    Like :py:func:`os.walk` but yielding instances of :py:class:`pathlib.Path`
+    instead of strings.
+    """
     root_path = pathlib.Path(root_path)
     directory_paths, file_paths = [], []
     for path in sorted(root_path.iterdir()):
@@ -27,6 +31,8 @@ def write(contents, path, verbose=False):
 
     Check if ``path`` already exists and only write out new
     contents if the old contents do not match.
+
+    Create any intermediate missing directories.
     """
     path = pathlib.Path(path)
     if path.exists():
