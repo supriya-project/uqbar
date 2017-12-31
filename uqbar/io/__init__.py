@@ -5,6 +5,11 @@ Tools for IO and file-system manipulation.
 import pathlib
 import typing
 
+from .DirectoryChange import DirectoryChange  # noqa
+from .Profiler import Profiler  # noqa
+from .RedirectedStreams import RedirectedStreams  # noqa
+from .Timer import Timer  # noqa
+
 
 def walk(
     root_path: typing.Union[str, pathlib.Path],
