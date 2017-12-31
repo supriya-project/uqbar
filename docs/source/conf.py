@@ -53,6 +53,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    'sphinx_autodoc_typehints',
     'uqbar.sphinx.style',
     ]
 
@@ -193,9 +194,10 @@ texinfo_documents = [
 ]
 
 
-
-
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/3.6/': None}
+intersphinx_mapping = {
+    'https://docs.python.org/3.6/': None,
+    'http://www.sphinx-doc.org/en/stable/': None,
+    }
 
 add_module_names = False

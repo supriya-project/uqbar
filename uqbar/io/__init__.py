@@ -1,11 +1,29 @@
 """
-Tools for file-system manipulation.
+Tools for IO and file-system manipulation.
 """
 
 import pathlib
+import typing
+
+from .DirectoryChange import DirectoryChange  # noqa
+from .Profiler import Profiler  # noqa
+from .RedirectedStreams import RedirectedStreams  # noqa
+from .Timer import Timer  # noqa
 
 
-def walk(root_path, top_down=True):
+def walk(
+    root_path: typing.Union[str, pathlib.Path],
+    top_down: bool=True,
+    ) -> None:
+    """
+    Walks a directory tree.
+
+    Like :py:func:`os.walk` but yielding instances of :py:class:`pathlib.Path`
+    instead of strings.
+
+    :param root_path: foo
+    :param top_down: bar
+    """
     root_path = pathlib.Path(root_path)
     directory_paths, file_paths = [], []
     for path in sorted(root_path.iterdir()):
@@ -21,12 +39,22 @@ def walk(root_path, top_down=True):
         yield root_path, directory_paths, file_paths
 
 
-def write(contents, path, verbose=False):
+def write(
+    contents: str,
+    path: typing.Union[str, pathlib.Path],
+    verbose: bool=False,
+    ) -> None:
     """
-    Write ``contents`` to ``path``.
+    Writes ``contents`` to ``path``.
 
-    Check if ``path`` already exists and only write out new
-    contents if the old contents do not match.
+    Checks if ``path`` already exists and only write out new contents if the
+    old contents do not match.
+
+    Creates any intermediate missing directories.
+
+    :param contents: the file contents to write
+    :param path: the path to write to
+    :param verbose: whether to print output
     """
     path = pathlib.Path(path)
     if path.exists():

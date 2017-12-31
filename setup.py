@@ -33,6 +33,7 @@ classifiers = [
 
 install_requires = [
     'Sphinx>=1.6.0',
+    'sphinx-autodoc-typehints>=1.2.3',
     'sphinx-rtd-theme>=0.2.4',
     'sphinx-testing>=0.7.2',
     ]
