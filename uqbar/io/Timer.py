@@ -1,4 +1,5 @@
 import time
+import typing
 
 
 class Timer:
@@ -7,13 +8,17 @@ class Timer:
 
     This context manager is not reentrant. Use a separate instance when nesting
     multiple timers.
+
+    :param exit_message: message to print on entering the context
+    :param enter_message: message to print on exiting the context
+    :param verbose: whether to print output
     """
 
     def __init__(
         self,
-        exit_message=None,
-        enter_message=None,
-        verbose=True,
+        exit_message: typing.Optional[str]=None,
+        enter_message: typing.Optional[str]=None,
+        verbose: bool=True,
         ):
         if enter_message is not None:
             enter_message = str(enter_message)
@@ -27,14 +32,14 @@ class Timer:
 
     ### SPECIAL METHODS ###
 
-    def __enter__(self):
+    def __enter__(self) -> 'Timer':
         if self.enter_message and self.verbose:
             print(self.enter_message)
         self._stop_time = None
         self._start_time = time.time()
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
         self._stop_time = time.time()
         if self.exit_message and self.verbose:
             print(self.exit_message, self.elapsed_time)
@@ -42,7 +47,7 @@ class Timer:
     ### PUBLIC PROPERTIES ###
 
     @property
-    def elapsed_time(self):
+    def elapsed_time(self) -> typing.Optional[float]:
         if self.start_time is not None:
             if self.stop_time is not None:
                 return self.stop_time - self.start_time
@@ -50,21 +55,21 @@ class Timer:
         return None
 
     @property
-    def enter_message(self):
+    def enter_message(self) -> typing.Optional[str]:
         return self._enter_message
 
     @property
-    def exit_message(self):
+    def exit_message(self) -> typing.Optional[str]:
         return self._exit_message
 
     @property
-    def start_time(self):
+    def start_time(self) -> typing.Optional[float]:
         return self._start_time
 
     @property
-    def stop_time(self):
+    def stop_time(self) -> typing.Optional[float]:
         return self._stop_time
 
     @property
-    def verbose(self):
+    def verbose(self) -> bool:
         return self._verbose

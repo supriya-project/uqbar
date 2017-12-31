@@ -53,7 +53,9 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    #'sphinx_autodoc_annotation',
     'sphinx_autodoc_typehints',
+    #'sphinx_autodoc_napoleon_typehints',
     'uqbar.sphinx.style',
     ]
 
