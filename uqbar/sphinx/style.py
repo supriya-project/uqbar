@@ -93,7 +93,7 @@ def handle_method(signature_node, module, object_name, cache):
 
 def on_doctree_read(app, document):
     """
-    Hooks into ``doctree-read`` event.
+    Hooks into Sphinx's ``doctree-read`` event.
     """
     cache = {}
     for desc_node in document.traverse(addnodes.desc):
@@ -116,7 +116,7 @@ def on_doctree_read(app, document):
 
 def on_builder_inited(app):
     """
-    Hooks into ``builder-inited`` event.
+    Hooks into Sphinx's ``builder-inited`` event.
 
     Used for copying over CSS files to theme directory.
     """

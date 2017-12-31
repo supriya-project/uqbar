@@ -1,12 +1,14 @@
 import cProfile
 import io
 import pstats
-import subprocess
 
 
 class Profiler:
+    """
+    A context manager for profiling blocks of code.
+    """
 
-    def __enter__(self):
+    def __enter__(self) -> 'Profiler':
         self._profiler = cProfile.Profile()
         self._profiler.enable()
 
@@ -18,12 +20,3 @@ class Profiler:
         profiler_stats.print_stats()
         print(stream.getvalue())
         profiler_stats.dump_stats('stats.profile')
-        gprof2dot_command = 'gprof2dot -f pstats -o stats.dot stats.profile'
-        exit_code = subprocess.call(gprof2dot_command)
-        if exit_code:
-            return
-        dot_command = 'dot -Tpdf -ostats.pdf'
-        exit_code = subprocess.call(dot_command)
-        if exit_code:
-            return
-        subprocess.call('open stats.pdf')
