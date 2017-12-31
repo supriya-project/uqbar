@@ -11,3 +11,15 @@ p.rubric.class-header {
     font-weight: 700;
     margin-bottom: 24px !important;
 }
+
+.rst-content table.field-list td.field-body > a {
+    line-height: 24px;
+}
+
+.rst-content table.field-list td.field-body > p {
+    line-height: 24px;
+}
+
+.rst-content table.field-list td.field-body > p > a {
+    font-size: 90%;
+}
