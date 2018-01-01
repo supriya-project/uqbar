@@ -27,7 +27,7 @@ class ClassDocumenter(MemberDocumenter):
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '\n'.join([
             '.. autoclass:: {}'.format(
                 self.client.__name__,
@@ -40,7 +40,7 @@ class ClassDocumenter(MemberDocumenter):
     ### PUBLIC METHODS ###
 
     @classmethod
-    def validate_client(cls, client, module_path):
+    def validate_client(cls, client: object, module_path: str) -> bool:
         return (
             isinstance(client, type) and
             client.__module__ == module_path
@@ -49,7 +49,7 @@ class ClassDocumenter(MemberDocumenter):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def documentation_section(self):
+    def documentation_section(self) -> str:
         if hasattr(self.client, '__documentation_section__'):
             return self.client.__documentation_section__
         elif inspect.isabstract(self.client):

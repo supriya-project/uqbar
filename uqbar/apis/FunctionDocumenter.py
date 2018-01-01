@@ -23,7 +23,7 @@ class FunctionDocumenter(MemberDocumenter):
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '.. autofunction:: {}'.format(
             self.client.__name__,
             )
@@ -31,7 +31,7 @@ class FunctionDocumenter(MemberDocumenter):
     ### PUBLIC METHODS ###
 
     @classmethod
-    def validate_client(cls, client, module_path):
+    def validate_client(cls, client: object, module_path: str) -> bool:
         return (
             isinstance(client, types.FunctionType) and
             client.__module__ == module_path
@@ -40,5 +40,5 @@ class FunctionDocumenter(MemberDocumenter):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def documentation_section(self):
+    def documentation_section(self) -> str:
         return 'Functions'

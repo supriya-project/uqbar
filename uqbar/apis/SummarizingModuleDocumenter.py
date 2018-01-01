@@ -1,3 +1,4 @@
+import typing
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 
 
@@ -9,7 +10,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         result = self.build_preamble()
         if self.is_nominative:
             result.extend(['', str(self.member_documenters[0])])
@@ -55,7 +56,11 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
 
     ### PUBLIC METHODS ###
 
-    def build_toc(self, documenters, show_full_paths=False):
+    def build_toc(
+        self,
+        documenters,
+        show_full_paths: bool=False,
+        ) -> typing.Sequence[str]:
         result = []
         if not documenters:
             return result

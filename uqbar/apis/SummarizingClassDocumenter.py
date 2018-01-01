@@ -1,4 +1,5 @@
 import inspect
+import typing
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 
@@ -25,7 +26,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         (
             class_methods,
             data,
@@ -69,7 +70,12 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     ### PRIVATE METHODS ###
 
-    def _build_attribute_section(self, attributes, directive, title):
+    def _build_attribute_section(
+        self,
+        attributes,
+        directive: str,
+        title: str,
+        ) -> typing.Sequence[str]:
         result = []
         if not attributes:
             return result

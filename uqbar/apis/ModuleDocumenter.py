@@ -1,5 +1,6 @@
 import importlib
 import pathlib
+import typing
 import types
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
@@ -7,6 +8,9 @@ from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
 class ModuleDocumenter:
+    """
+    A basic module documenter.
+    """
 
     ### CLASS VARIABLES ###
 
@@ -16,10 +20,12 @@ class ModuleDocumenter:
 
     def __init__(
         self,
-        package_path,
-        document_private_members=False,
-        member_documenter_classes=None,
-        module_documenters=None,
+        package_path: str,
+        document_private_members: bool=False,
+        member_documenter_classes: typing.Optional[
+            typing.Iterable[typing.Type[MemberDocumenter]]]=None,
+        module_documenters: typing.Optional[
+            typing.Iterable['ModuleDocumenter']]=None,
         ):
         self._package_path = package_path
 
@@ -45,7 +51,7 @@ class ModuleDocumenter:
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         result = self.build_preamble()
         result.extend(self.build_toc())
         for documenter in self._member_documenters:
@@ -54,7 +60,7 @@ class ModuleDocumenter:
 
     ### PRIVATE METHODS ###
 
-    def _populate(self):
+    def _populate(self) -> None:
         documenters = []
         for name in sorted(dir(self.client)):
             if name.startswith('_') and not self.document_private_members:
@@ -70,7 +76,7 @@ class ModuleDocumenter:
 
     ### PUBLIC METHODS ###
 
-    def build_preamble(self):
+    def build_preamble(self) -> typing.Sequence[str]:
         return [
             '.. _{}:'.format(self.reference_name),
             '',
@@ -82,7 +88,11 @@ class ModuleDocumenter:
             '.. currentmodule:: {}'.format(self.package_path),
             ]
 
-    def build_toc(self, hidden=False, include_modules=True):
+    def build_toc(
+        self,
+        hidden: bool=False,
+        include_modules: bool=True,
+        ) -> typing.Sequence[str]:
         result = []
         if not self.module_documenters:
             return result
@@ -106,41 +116,43 @@ class ModuleDocumenter:
     ### PUBLIC PROPERTIES ###
 
     @property
-    def client(self):
+    def client(self) -> object:
         return self._client
 
     @property
-    def is_package(self):
+    def is_package(self) -> bool:
         return hasattr(self.client, '__path__')
 
     @property
-    def document_private_members(self):
+    def document_private_members(self) -> bool:
         return self._document_private_members
 
     @property
-    def documentation_path(self):
+    def documentation_path(self) -> pathlib.Path:
         path = pathlib.Path('.').joinpath(*self.package_path.split('.'))
         if self.is_package:
             path = path.joinpath('index')
         return path.with_suffix('.rst')
 
     @property
-    def is_nominative(self):
+    def is_nominative(self) -> bool:
         if self.is_package or len(self.member_documenters) != 1:
             return False
         parts = self.member_documenters[0].package_path.split('.')
         return parts[-1] == parts[-2]
 
     @property
-    def member_documenter_classes(self):
+    def member_documenter_classes(self) -> typing.Sequence[
+        typing.Type[MemberDocumenter]]:
         return self._member_documenter_classes
 
     @property
-    def member_documenters(self):
+    def member_documenters(self) -> typing.Sequence[MemberDocumenter]:
         return self._member_documenters
 
     @property
-    def member_documenters_by_section(self):
+    def member_documenters_by_section(self) -> typing.Sequence[
+        typing.Tuple[str, typing.Sequence[MemberDocumenter]]]:
         result = {}
         for documenter in self.member_documenters:
             result.setdefault(
@@ -148,21 +160,21 @@ class ModuleDocumenter:
         return sorted(result.items())
 
     @property
-    def module_documenters(self):
+    def module_documenters(self) -> typing.Sequence['ModuleDocumenter']:
         return self._module_documenters
 
     @property
-    def package_name(self):
+    def package_name(self) -> str:
         if '.' in self.package_path:
             return self._package_path.rpartition('.')[-1]
         return self._package_path
 
     @property
-    def package_path(self):
+    def package_path(self) -> str:
         return self._package_path
 
     @property
-    def reference_name(self):
+    def reference_name(self) -> str:
         return self.package_path \
             .replace('_', '-') \
             .replace('.', '--')
