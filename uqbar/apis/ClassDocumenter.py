@@ -1,10 +1,25 @@
 import enum
-import importlib
 import inspect
 from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
 class ClassDocumenter(MemberDocumenter):
+    """
+    A basic documenter for classes.
+
+    ::
+
+        >>> import uqbar.apis
+        >>> path = 'uqbar.apis.ClassDocumenter:ClassDocumenter'
+        >>> documenter = uqbar.apis.ClassDocumenter(path)
+        >>> documentation = str(documenter)
+        >>> print(documentation)
+        .. autoclass:: ClassDocumenter
+           :members:
+           :undoc-members:
+           :show-inheritance:
+
+    """
 
     ### CLASS VARIABLES ###
 

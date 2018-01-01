@@ -11,6 +11,9 @@ from uqbar.apis.PackageNode import PackageNode
 
 
 class APIBuilder(object):
+    """
+    A builder of reStructuredText API documentation for Python packages.
+    """
 
     ### INITIALIZER ###
 

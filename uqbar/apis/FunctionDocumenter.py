@@ -3,6 +3,19 @@ from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
 class FunctionDocumenter(MemberDocumenter):
+    """
+    A basic documenter for functions.
+
+    ::
+
+        >>> import uqbar.apis
+        >>> path = 'uqbar.io:walk'
+        >>> documenter = uqbar.apis.FunctionDocumenter(path)
+        >>> documentation = str(documenter)
+        >>> print(documentation)
+        .. autofunction:: walk
+
+    """
 
     ### CLASS VARIABLES ###
 
