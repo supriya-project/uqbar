@@ -7,7 +7,8 @@ class SummarizingClassDocumenter(ClassDocumenter):
     """
     A summarizing documenter for classes.
 
-    Organizes class members by category.
+    Organizes class members by category, separated by category title and
+    horizontal rule.
 
     ::
 
@@ -34,9 +35,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
            .. rubric:: Class & static methods
               :class: class-header
         <BLANKLINE>
-           .. container:: inherited
-        <BLANKLINE>
-              .. automethod:: SummarizingClassDocumenter.validate_client
+           .. automethod:: SummarizingClassDocumenter.validate_client
         <BLANKLINE>
            .. raw:: html
         <BLANKLINE>
@@ -45,17 +44,11 @@ class SummarizingClassDocumenter(ClassDocumenter):
            .. rubric:: Read-only properties
               :class: class-header
         <BLANKLINE>
-           .. container:: inherited
+           .. autoattribute:: SummarizingClassDocumenter.client
         <BLANKLINE>
-              .. autoattribute:: SummarizingClassDocumenter.client
+           .. autoattribute:: SummarizingClassDocumenter.documentation_section
         <BLANKLINE>
-           .. container:: inherited
-        <BLANKLINE>
-              .. autoattribute:: SummarizingClassDocumenter.documentation_section
-        <BLANKLINE>
-           .. container:: inherited
-        <BLANKLINE>
-              .. autoattribute:: SummarizingClassDocumenter.package_path
+           .. autoattribute:: SummarizingClassDocumenter.package_path
 
     :param package_path: the module path and name of the member to document
     """
@@ -85,7 +78,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
         (
             class_methods,
             data,
-            inherited_attributes,
             methods,
             readonly_properties,
             readwrite_properties,
@@ -146,20 +138,12 @@ class SummarizingClassDocumenter(ClassDocumenter):
             result.append('')
             autodoc_directive = '   .. {}:: {}.{}'.format(
                 directive, self.client.__name__, attribute.name)
-            if self.client is not attribute.defining_class:
-                result.extend([
-                    '   .. container:: inherited',
-                    '',
-                    '   {}'.format(autodoc_directive),
-                    ])
-            else:
-                result.append(autodoc_directive)
+            result.append(autodoc_directive)
         return result
 
     def _classify_class_attributes(self):
         class_methods = []
         data = []
-        inherited_attributes = []
         methods = []
         readonly_properties = []
         readwrite_properties = []
@@ -169,8 +153,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
         for attr in attrs:
             if attr.defining_class is object:
                 continue
-            if attr.defining_class is not self.client:
-                inherited_attributes.append(attr)
             if attr.kind == 'method':
                 if attr.name not in self.ignored_special_methods:
                     if attr.name.startswith('__'):
@@ -199,7 +181,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
                 data.append(attr)
         class_methods = tuple(sorted(class_methods))
         data = tuple(sorted(data))
-        inherited_attributes = tuple(sorted(inherited_attributes))
         methods = tuple(sorted(methods))
         readonly_properties = tuple(sorted(readonly_properties))
         readwrite_properties = tuple(sorted(readwrite_properties))
@@ -208,7 +189,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
         result = (
             class_methods,
             data,
-            inherited_attributes,
             methods,
             readonly_properties,
             readwrite_properties,
