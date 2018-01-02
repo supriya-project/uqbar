@@ -66,7 +66,7 @@ class ModuleDocumenter:
             client = getattr(self.client, name)
             for class_ in self.member_documenter_classes:
                 if class_.validate_client(client, self.package_path):
-                    path = '{}:{}'.format(client.__module__, client.__name__)
+                    path = '{}.{}'.format(client.__module__, client.__name__)
                     documenter = class_(path)
                     documenters.append(documenter)
                     break

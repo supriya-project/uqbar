@@ -10,15 +10,15 @@ class ClassDocumenter(MemberDocumenter):
     ::
 
         >>> import uqbar.apis
-        >>> path = 'uqbar.apis.ClassDocumenter:ClassDocumenter'
+        >>> path = 'uqbar.apis.ClassDocumenter.ClassDocumenter'
         >>> documenter = uqbar.apis.ClassDocumenter(path)
         >>> documentation = str(documenter)
         >>> print(documentation)
         .. autoclass:: ClassDocumenter
            :members:
            :undoc-members:
-           :show-inheritance:
 
+    :param package_path: the module path and name of the member to document
     """
 
     ### CLASS VARIABLES ###
@@ -34,7 +34,6 @@ class ClassDocumenter(MemberDocumenter):
                 ),
             '   :members:',
             '   :undoc-members:',
-            '   :show-inheritance:',
             ])
 
     ### PUBLIC METHODS ###

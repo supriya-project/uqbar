@@ -14,10 +14,9 @@ def test_path():
 
 def test_str_01(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:PublicClass')
+        'fake_package.module.PublicClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: PublicClass
-           :show-inheritance:
 
            .. raw:: html
 
@@ -74,10 +73,9 @@ def test_str_01(test_path):
 
 def test_str_02(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:ChildClass')
+        'fake_package.module.ChildClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: ChildClass
-           :show-inheritance:
 
            .. raw:: html
 
@@ -150,8 +148,7 @@ def test_str_02(test_path):
 
 def test_str_03(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:_PrivateClass')
+        'fake_package.module._PrivateClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: _PrivateClass
-           :show-inheritance:
         ''')

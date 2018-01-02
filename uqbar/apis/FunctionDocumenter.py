@@ -9,12 +9,13 @@ class FunctionDocumenter(MemberDocumenter):
     ::
 
         >>> import uqbar.apis
-        >>> path = 'uqbar.io:walk'
+        >>> path = 'uqbar.io.walk'
         >>> documenter = uqbar.apis.FunctionDocumenter(path)
         >>> documentation = str(documenter)
         >>> print(documentation)
         .. autofunction:: walk
 
+    :param package_path: the module path and name of the member to document
     """
 
     ### CLASS VARIABLES ###

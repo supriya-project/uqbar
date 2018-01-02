@@ -4,6 +4,61 @@ from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 
 class SummarizingClassDocumenter(ClassDocumenter):
+    """
+    A summarizing documenter for classes.
+
+    Organizes class members by category.
+
+    ::
+
+        >>> import uqbar.apis
+        >>> path = 'uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter'
+        >>> documenter = uqbar.apis.SummarizingClassDocumenter(path)
+        >>> documentation = str(documenter)
+        >>> print(documentation)
+        .. autoclass:: SummarizingClassDocumenter
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Special methods
+              :class: class-header
+        <BLANKLINE>
+           .. automethod:: SummarizingClassDocumenter.__str__
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Class & static methods
+              :class: class-header
+        <BLANKLINE>
+           .. container:: inherited
+        <BLANKLINE>
+              .. automethod:: SummarizingClassDocumenter.validate_client
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Read-only properties
+              :class: class-header
+        <BLANKLINE>
+           .. container:: inherited
+        <BLANKLINE>
+              .. autoattribute:: SummarizingClassDocumenter.client
+        <BLANKLINE>
+           .. container:: inherited
+        <BLANKLINE>
+              .. autoattribute:: SummarizingClassDocumenter.documentation_section
+        <BLANKLINE>
+           .. container:: inherited
+        <BLANKLINE>
+              .. autoattribute:: SummarizingClassDocumenter.package_path
+
+    :param package_path: the module path and name of the member to document
+    """
 
     ### CLASS VARIABLES ###
 
@@ -39,7 +94,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
             ) = self._classify_class_attributes()
         result = [
             '.. autoclass:: {}'.format(self.client.__name__),
-            '   :show-inheritance:',
             ]
         result.extend(self._build_attribute_section(
             special_methods,

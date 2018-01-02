@@ -35,12 +35,10 @@ def test_str_01(test_path):
         .. autoclass:: ChildClass
            :members:
            :undoc-members:
-           :show-inheritance:
 
         .. autoclass:: PublicClass
            :members:
            :undoc-members:
-           :show-inheritance:
 
         .. raw:: html
 
@@ -78,17 +76,14 @@ def test_str_02(test_path):
         .. autoclass:: ChildClass
            :members:
            :undoc-members:
-           :show-inheritance:
 
         .. autoclass:: PublicClass
            :members:
            :undoc-members:
-           :show-inheritance:
 
         .. autoclass:: _PrivateClass
            :members:
            :undoc-members:
-           :show-inheritance:
 
         .. raw:: html
 
@@ -129,7 +124,6 @@ def test_str_03(test_path):
            :class: section-header
 
         .. autoclass:: ChildClass
-           :show-inheritance:
 
            .. raw:: html
 
@@ -199,7 +193,6 @@ def test_str_03(test_path):
               .. autoattribute:: ChildClass.read_only_property
 
         .. autoclass:: PublicClass
-           :show-inheritance:
 
            .. raw:: html
 

@@ -14,32 +14,29 @@ def test_path():
 
 def test_str_01(test_path):
     documenter = uqbar.apis.ClassDocumenter(
-        'fake_package.module:PublicClass')
+        'fake_package.module.PublicClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: PublicClass
            :members:
            :undoc-members:
-           :show-inheritance:
         ''')
 
 
 def test_str_02(test_path):
     documenter = uqbar.apis.ClassDocumenter(
-        'fake_package.module:ChildClass')
+        'fake_package.module.ChildClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: ChildClass
            :members:
            :undoc-members:
-           :show-inheritance:
         ''')
 
 
 def test_str_03(test_path):
     documenter = uqbar.apis.ClassDocumenter(
-        'fake_package.module:_PrivateClass')
+        'fake_package.module._PrivateClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: _PrivateClass
            :members:
            :undoc-members:
-           :show-inheritance:
         ''')
