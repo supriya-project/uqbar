@@ -1,7 +1,7 @@
 import importlib
 import pathlib
-import typing
 import types
+from typing import Sequence, Tuple, Type
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
 from uqbar.apis.MemberDocumenter import MemberDocumenter
@@ -22,10 +22,8 @@ class ModuleDocumenter:
         self,
         package_path: str,
         document_private_members: bool=False,
-        member_documenter_classes: typing.Optional[
-            typing.Iterable[typing.Type[MemberDocumenter]]]=None,
-        module_documenters: typing.Optional[
-            typing.Iterable['ModuleDocumenter']]=None,
+        member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
+        module_documenters: Sequence['ModuleDocumenter']=None,
         ):
         self._package_path = package_path
 
@@ -76,7 +74,7 @@ class ModuleDocumenter:
 
     ### PUBLIC METHODS ###
 
-    def build_preamble(self) -> typing.Sequence[str]:
+    def build_preamble(self) -> Sequence[str]:
         return [
             '.. _{}:'.format(self.reference_name),
             '',
@@ -92,7 +90,7 @@ class ModuleDocumenter:
         self,
         hidden: bool=False,
         include_modules: bool=True,
-        ) -> typing.Sequence[str]:
+        ) -> Sequence[str]:
         result = []
         if not self.module_documenters:
             return result
@@ -142,17 +140,17 @@ class ModuleDocumenter:
         return parts[-1] == parts[-2]
 
     @property
-    def member_documenter_classes(self) -> typing.Sequence[
-        typing.Type[MemberDocumenter]]:
+    def member_documenter_classes(self) -> Sequence[
+        Type[MemberDocumenter]]:
         return self._member_documenter_classes
 
     @property
-    def member_documenters(self) -> typing.Sequence[MemberDocumenter]:
+    def member_documenters(self) -> Sequence[MemberDocumenter]:
         return self._member_documenters
 
     @property
-    def member_documenters_by_section(self) -> typing.Sequence[
-        typing.Tuple[str, typing.Sequence[MemberDocumenter]]]:
+    def member_documenters_by_section(self) -> Sequence[
+        Tuple[str, Sequence[MemberDocumenter]]]:
         result = {}
         for documenter in self.member_documenters:
             result.setdefault(
@@ -160,7 +158,7 @@ class ModuleDocumenter:
         return sorted(result.items())
 
     @property
-    def module_documenters(self) -> typing.Sequence['ModuleDocumenter']:
+    def module_documenters(self) -> Sequence['ModuleDocumenter']:
         return self._module_documenters
 
     @property

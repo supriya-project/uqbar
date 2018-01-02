@@ -16,8 +16,8 @@ class Timer:
 
     def __init__(
         self,
-        exit_message: typing.Optional[str]=None,
-        enter_message: typing.Optional[str]=None,
+        exit_message: str=None,
+        enter_message: str=None,
         verbose: bool=True,
         ):
         if enter_message is not None:
@@ -47,7 +47,7 @@ class Timer:
     ### PUBLIC PROPERTIES ###
 
     @property
-    def elapsed_time(self) -> typing.Optional[float]:
+    def elapsed_time(self) -> typing.Union[float, None]:
         if self.start_time is not None:
             if self.stop_time is not None:
                 return self.stop_time - self.start_time
@@ -55,19 +55,19 @@ class Timer:
         return None
 
     @property
-    def enter_message(self) -> typing.Optional[str]:
+    def enter_message(self) -> typing.Union[str, None]:
         return self._enter_message
 
     @property
-    def exit_message(self) -> typing.Optional[str]:
+    def exit_message(self) -> typing.Union[str, None]:
         return self._exit_message
 
     @property
-    def start_time(self) -> typing.Optional[float]:
+    def start_time(self) -> typing.Union[float, None]:
         return self._start_time
 
     @property
-    def stop_time(self) -> typing.Optional[float]:
+    def stop_time(self) -> typing.Union[float, None]:
         return self._stop_time
 
     @property

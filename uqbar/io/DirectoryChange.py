@@ -12,8 +12,8 @@ class DirectoryChange:
     ### INITIALIZER ###
 
     def __init__(self, directory, verbose=False):
-        directory = pathlib.Path(directory)
-        if not directory.is_dir(directory):
+        directory = pathlib.Path(directory).resolve().absolute()
+        if not directory.is_dir():
             directory = directory.parent
         self._directory = directory
         self._directory_stack = []

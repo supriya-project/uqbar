@@ -1,6 +1,7 @@
 import pathlib
 import shutil
 import uqbar.io
+from typing import Sequence, Type, Union
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
 from uqbar.apis.MemberDocumenter import MemberDocumenter
@@ -13,19 +14,55 @@ from uqbar.apis.PackageNode import PackageNode
 class APIBuilder(object):
     """
     A builder of reStructuredText API documentation for Python packages.
+
+    ::
+
+        >>> import uqbar
+        >>> import tempfile
+        >>> with tempfile.TemporaryDirectory() as target_directory:
+        ...     with uqbar.io.DirectoryChange(target_directory):
+        ...         builder = uqbar.apis.APIBuilder(
+        ...             initial_source_paths=uqbar.apis.__path__,
+        ...             target_directory=target_directory,
+        ...             )
+        ...         visited_paths = builder()
+        ...
+        wrote: index.rst
+        wrote: uqbar/index.rst
+        wrote: uqbar/apis/index.rst
+        wrote: uqbar/apis/APIBuilder.rst
+        wrote: uqbar/apis/ClassDocumenter.rst
+        wrote: uqbar/apis/FunctionDocumenter.rst
+        wrote: uqbar/apis/MemberDocumenter.rst
+        wrote: uqbar/apis/ModuleDocumenter.rst
+        wrote: uqbar/apis/ModuleNode.rst
+        wrote: uqbar/apis/PackageNode.rst
+        wrote: uqbar/apis/RootDocumenter.rst
+        wrote: uqbar/apis/SummarizingClassDocumenter.rst
+        wrote: uqbar/apis/SummarizingModuleDocumenter.rst
+        wrote: uqbar/apis/SummarizingRootDocumenter.rst
+
+    :param initial_source_paths: a list of paths to scan for Python sources
+    :param target_directory: where to write reStructuredText output
+    :param document_private_members: whether to documenter private modules members
+    :param document_private_modules: whether to document private modules
+    :param member_documenter_classes: a list of :py:class:`~uqbar.apis.MemberDocumenter` subclasses
+    :param module_documenter_class: a :py:class:`~uqbar.apis.ModuleDocumenter` subclass
+    :param root_documenter_class: a :py:class:`~uqbar.apis.RootDocumenter` subclass
+
     """
 
     ### INITIALIZER ###
 
     def __init__(
         self,
-        initial_source_paths,
-        target_directory,
-        document_private_members=False,
-        document_private_modules=False,
-        member_documenter_classes=None,
-        module_documenter_class=None,
-        root_documenter_class=None,
+        initial_source_paths: Sequence[Union[str, pathlib.Path]],
+        target_directory: Union[str, pathlib.Path],
+        document_private_members: bool=False,
+        document_private_modules: bool=False,
+        member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
+        module_documenter_class: Type[ModuleDocumenter]=None,
+        root_documenter_class: Type[RootDocumenter]=None,
         ):
         assert initial_source_paths
         assert target_directory
@@ -60,6 +97,10 @@ class APIBuilder(object):
         """
         Generate documentation.
         """
+        # Make sure target directory exists.
+        if not self._target_directory.exists():
+            self._target_directory.mkdir(parents=True)
+        self._target_directory = self._target_directory.resolve()
         # What files to document?
         source_paths = self.collect_source_paths(self._initial_source_paths)
         # Build the node tree
@@ -70,15 +111,15 @@ class APIBuilder(object):
         visited_paths = self.write(documenters)
         # Iterate the target directory, removing un-touched files.
         self.prune(visited_paths)
-        return documenters
+        return visited_paths
 
     ### PRIVATE METHODS ###
 
     def _print(self, message, path):
-        print('{} {}'.format(
-            (message + ':').ljust(11),
-            path.relative_to(pathlib.Path.cwd()),
-            ))
+        cwd = pathlib.Path.cwd()
+        if str(path).startswith(str(cwd)):
+            path = path.relative_to(cwd)
+        print('{} {}'.format((message + ':').ljust(11), path))
 
     ### PUBLIC METHODS ###
 
@@ -214,7 +255,10 @@ class APIBuilder(object):
             new_documentation = str(documenter)
             path = self._target_directory.joinpath(
                 documenter.documentation_path
-                ).relative_to(pathlib.Path.cwd())
+                )
+            cwd = pathlib.Path.cwd()
+            if str(path).startswith(str(cwd)):
+                path = path.relative_to(pathlib.Path.cwd())
             uqbar.io.write(new_documentation, path, verbose=True)
             visited_paths.add(path.absolute())
         return visited_paths
