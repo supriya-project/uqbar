@@ -3,10 +3,13 @@ Tools for string manipulation.
 """
 
 import textwrap
-import unicodedata
+import unidecode
 
 
 def delimit_words(string):
+    """
+    Delimit a string at word boundaries.
+    """
     wordlike_characters = ('<', '>', '!')
     current_word = ''
     for character in string:
@@ -49,6 +52,12 @@ def delimit_words(string):
 
 
 def normalize(string):
+    """
+    Normalizes whitespace.
+
+    Strips leading and trailing blank lines, dedents, and removes trailing
+    whitespace from the result.
+    """
     string = string.replace('\t', '    ')
     lines = string.split('\n')
     while lines and (not lines[0] or lines[0].isspace()):
@@ -62,14 +71,25 @@ def normalize(string):
     return string
 
 
-def strip_diacritics(string):
-    string = unicodedata.normalize('NFKD', string)
-    string = string.encode('ascii', 'ignore')
-    return string.decode()
-
-
 def to_dash_case(string):
-    string = strip_diacritics(string)
+    """
+    Convert a string to dash-delimited words.
+
+    ::
+
+        >>> import uqbar.strings
+        >>> string = 'Tô Đặc Biệt Xe Lửa'
+        >>> print(uqbar.strings.to_dash_case(string))
+        to-dac-biet-xe-lua
+
+    ::
+
+        >>> string = 'alpha.beta.gamma'
+        >>> print(uqbar.strings.to_dash_case(string))
+        alpha-beta-gamma
+
+    """
+    string = unidecode.unidecode(string)
     words = delimit_words(string)
     words = (_.lower() for _ in words)
     string = '-'.join(words)
@@ -77,7 +97,24 @@ def to_dash_case(string):
 
 
 def to_snake_case(string):
-    string = strip_diacritics(string)
+    """
+    Convert a string to underscore-delimited words.
+
+    ::
+
+        >>> import uqbar.strings
+        >>> string = 'Tô Đặc Biệt Xe Lửa'
+        >>> print(uqbar.strings.to_snake_case(string))
+        to_dac_biet_xe_lua
+
+    ::
+
+        >>> string = 'alpha.beta.gamma'
+        >>> print(uqbar.strings.to_snake_case(string))
+        alpha_beta_gamma
+
+    """
+    string = unidecode.unidecode(string)
     words = delimit_words(string)
     words = (_.lower() for _ in words)
     string = '_'.join(words)

@@ -2,6 +2,10 @@ import uqbar.containers
 
 
 class PackageNode(uqbar.containers.UniqueTreeContainer):
+    """
+    A :py:class:`~uqbar.containers.UniqueTreeContainer` subclass used during
+    API construction to proxy packages.
+    """
 
     ### CLASS VARIABLES ###
 

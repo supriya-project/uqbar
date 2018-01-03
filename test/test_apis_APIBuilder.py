@@ -169,12 +169,10 @@ def test_output_01(test_path):
             .. autoclass:: ChildClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autoclass:: PublicClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autofunction:: public_function
             ''')
@@ -249,12 +247,10 @@ def test_output_02(test_path):
             .. autoclass:: ChildClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autoclass:: PublicClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autofunction:: public_function
             ''')
@@ -330,17 +326,14 @@ def test_output_03(test_path):
             .. autoclass:: ChildClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autoclass:: PublicClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autoclass:: _PrivateClass
                :members:
                :undoc-members:
-               :show-inheritance:
 
             .. autofunction:: _private_function
 

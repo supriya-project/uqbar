@@ -2,6 +2,40 @@ import collections
 
 
 class DependencyGraph:
+    """
+    A dependency graph of hashables.
+
+    TODO: Switch parent/child terminology.
+
+    ::
+
+        >>> import uqbar.containers
+        >>> graph = uqbar.containers.DependencyGraph()
+        >>> graph.add('A', parent='B')
+        >>> graph.add('C', parent='A')
+        >>> graph.add('C', parent='B')
+        >>> graph.add('D', parent='C')
+        >>> graph.add('E')
+        >>> graph.add('F', parent='B')
+        >>> graph.add('F', parent='C')
+
+    ::
+
+        >>> graph.is_acyclic()
+        True
+
+    ::
+
+        >>> list(graph)
+        ['D', 'E', 'F', 'C', 'A', 'B']
+
+    ::
+
+        >>> graph.add('A', parent='F')
+        >>> graph.is_acyclic()
+        False
+
+    """
 
     ### CLASS VARIABLES ###
 

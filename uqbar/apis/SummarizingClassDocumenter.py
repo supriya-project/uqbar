@@ -1,8 +1,65 @@
 import inspect
+import typing
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 
 class SummarizingClassDocumenter(ClassDocumenter):
+    """
+    A summarizing class documenter.
+
+    Organizes class members by category, separated by category title and
+    horizontal rule.
+
+    Categories include:
+
+    -  Special methods
+    -  Methods
+    -  Class and static methods
+    -  Read/write properties
+    -  Read-only properties
+
+    ::
+
+        >>> import uqbar.apis
+        >>> path = 'uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter'
+        >>> documenter = uqbar.apis.SummarizingClassDocumenter(path)
+        >>> documentation = str(documenter)
+        >>> print(documentation)
+        .. autoclass:: SummarizingClassDocumenter
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Special methods
+              :class: class-header
+        <BLANKLINE>
+           .. automethod:: SummarizingClassDocumenter.__str__
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Class & static methods
+              :class: class-header
+        <BLANKLINE>
+           .. automethod:: SummarizingClassDocumenter.validate_client
+        <BLANKLINE>
+           .. raw:: html
+        <BLANKLINE>
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Read-only properties
+              :class: class-header
+        <BLANKLINE>
+           .. autoattribute:: SummarizingClassDocumenter.client
+        <BLANKLINE>
+           .. autoattribute:: SummarizingClassDocumenter.documentation_section
+        <BLANKLINE>
+           .. autoattribute:: SummarizingClassDocumenter.package_path
+
+    :param package_path: the module path and name of the member to document
+    """
 
     ### CLASS VARIABLES ###
 
@@ -25,11 +82,10 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     ### SPECIAL METHODS ###
 
-    def __str__(self):
+    def __str__(self) -> str:
         (
             class_methods,
             data,
-            inherited_attributes,
             methods,
             readonly_properties,
             readwrite_properties,
@@ -38,7 +94,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
             ) = self._classify_class_attributes()
         result = [
             '.. autoclass:: {}'.format(self.client.__name__),
-            '   :show-inheritance:',
             ]
         result.extend(self._build_attribute_section(
             special_methods,
@@ -69,7 +124,12 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     ### PRIVATE METHODS ###
 
-    def _build_attribute_section(self, attributes, directive, title):
+    def _build_attribute_section(
+        self,
+        attributes,
+        directive: str,
+        title: str,
+        ) -> typing.Sequence[str]:
         result = []
         if not attributes:
             return result
@@ -86,20 +146,12 @@ class SummarizingClassDocumenter(ClassDocumenter):
             result.append('')
             autodoc_directive = '   .. {}:: {}.{}'.format(
                 directive, self.client.__name__, attribute.name)
-            if self.client is not attribute.defining_class:
-                result.extend([
-                    '   .. container:: inherited',
-                    '',
-                    '   {}'.format(autodoc_directive),
-                    ])
-            else:
-                result.append(autodoc_directive)
+            result.append(autodoc_directive)
         return result
 
     def _classify_class_attributes(self):
         class_methods = []
         data = []
-        inherited_attributes = []
         methods = []
         readonly_properties = []
         readwrite_properties = []
@@ -109,8 +161,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
         for attr in attrs:
             if attr.defining_class is object:
                 continue
-            if attr.defining_class is not self.client:
-                inherited_attributes.append(attr)
             if attr.kind == 'method':
                 if attr.name not in self.ignored_special_methods:
                     if attr.name.startswith('__'):
@@ -139,7 +189,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
                 data.append(attr)
         class_methods = tuple(sorted(class_methods))
         data = tuple(sorted(data))
-        inherited_attributes = tuple(sorted(inherited_attributes))
         methods = tuple(sorted(methods))
         readonly_properties = tuple(sorted(readonly_properties))
         readwrite_properties = tuple(sorted(readwrite_properties))
@@ -148,7 +197,6 @@ class SummarizingClassDocumenter(ClassDocumenter):
         result = (
             class_methods,
             data,
-            inherited_attributes,
             methods,
             readonly_properties,
             readwrite_properties,

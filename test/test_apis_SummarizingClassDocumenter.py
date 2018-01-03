@@ -14,10 +14,9 @@ def test_path():
 
 def test_str_01(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:PublicClass')
+        'fake_package.module.PublicClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: PublicClass
-           :show-inheritance:
 
            .. raw:: html
 
@@ -74,10 +73,9 @@ def test_str_01(test_path):
 
 def test_str_02(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:ChildClass')
+        'fake_package.module.ChildClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: ChildClass
-           :show-inheritance:
 
            .. raw:: html
 
@@ -86,9 +84,7 @@ def test_str_02(test_path):
            .. rubric:: Special methods
               :class: class-header
 
-           .. container:: inherited
-
-              .. automethod:: ChildClass.__str__
+           .. automethod:: ChildClass.__str__
 
            .. raw:: html
 
@@ -99,15 +95,11 @@ def test_str_02(test_path):
 
            .. automethod:: ChildClass.inheritable_method
 
-           .. container:: inherited
-
-              .. automethod:: ChildClass.method
+           .. automethod:: ChildClass.method
 
            .. automethod:: ChildClass.new_method
 
-           .. container:: inherited
-
-              .. automethod:: ChildClass.other_method
+           .. automethod:: ChildClass.other_method
 
            .. raw:: html
 
@@ -116,13 +108,9 @@ def test_str_02(test_path):
            .. rubric:: Class & static methods
               :class: class-header
 
-           .. container:: inherited
+           .. automethod:: ChildClass.class_method
 
-              .. automethod:: ChildClass.class_method
-
-           .. container:: inherited
-
-              .. automethod:: ChildClass.static_method
+           .. automethod:: ChildClass.static_method
 
            .. raw:: html
 
@@ -131,9 +119,7 @@ def test_str_02(test_path):
            .. rubric:: Read/write properties
               :class: class-header
 
-           .. container:: inherited
-
-              .. autoattribute:: ChildClass.read_write_property
+           .. autoattribute:: ChildClass.read_write_property
 
            .. raw:: html
 
@@ -142,16 +128,13 @@ def test_str_02(test_path):
            .. rubric:: Read-only properties
               :class: class-header
 
-           .. container:: inherited
-
-              .. autoattribute:: ChildClass.read_only_property
+           .. autoattribute:: ChildClass.read_only_property
             ''')
 
 
 def test_str_03(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module:_PrivateClass')
+        'fake_package.module._PrivateClass')
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: _PrivateClass
-           :show-inheritance:
         ''')
