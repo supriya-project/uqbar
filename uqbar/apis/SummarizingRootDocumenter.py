@@ -62,7 +62,6 @@ class SummarizingRootDocumenter(RootDocumenter):
         <BLANKLINE>
               ~uqbar.strings.delimit_words
               ~uqbar.strings.normalize
-              ~uqbar.strings.strip_diacritics
               ~uqbar.strings.to_dash_case
               ~uqbar.strings.to_snake_case
 

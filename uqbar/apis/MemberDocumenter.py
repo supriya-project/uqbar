@@ -6,6 +6,26 @@ class MemberDocumenter(metaclass=abc.ABCMeta):
     """
     Abstract base class for module member documenters.
 
+    Member documenters generate reStructuredText output for classes, functions
+    and other objects defined in modules. They also implement the logic for
+    identifying which of those objects should be selected for documenting via
+    their
+    :py:meth:`~uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client`
+    method. Module documenters loop over their client module's dict and try
+    each of their member documenter class' validation method against each dict
+    member in turn in order to identify documentable content and associate it
+    with a member documenter class.
+
+    .. tip::
+
+       Subclass :py:class:`~uqbar.apis.MemberDocumenter` to implement your own
+       custom module member documentation output. You'll need to override
+       :py:meth:`~uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client`
+       with custom identification logic, and provide your desired
+       reStructuredText output via an overridden
+       :py:meth:`~uqbar.apis.MemberDocumenter.MemberDocumenter.__str__`
+       implementation.
+
     :param package_path: the module path and name of the member to document
     """
 

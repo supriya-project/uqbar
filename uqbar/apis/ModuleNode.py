@@ -2,6 +2,10 @@ import uqbar.containers
 
 
 class ModuleNode(uqbar.containers.UniqueTreeNode):
+    """
+    A :py:class:`~uqbar.containers.UniqueTreeNode` subclass used during API
+    construction to proxy modules.
+    """
 
     ### CLASS VARIABLES ###
 

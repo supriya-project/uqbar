@@ -4,7 +4,7 @@ from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 class FunctionDocumenter(MemberDocumenter):
     """
-    A basic documenter for functions.
+    A basic function documenter.
 
     ::
 
@@ -15,8 +15,14 @@ class FunctionDocumenter(MemberDocumenter):
         >>> print(documentation)
         .. autofunction:: walk
 
-    Subclass :py:class:`~uqbar.apis.FunctionDocumenter` to implement your own
-    custom function documentation output.
+    .. tip::
+
+       Subclass :py:class:`~uqbar.apis.FunctionDocumenter` to
+       implement your own custom module documentation output.
+       You'll need to provide your desired reStructuredText output
+       via an overridden
+       :py:meth:`~uqbar.apis.FunctionDocumenter.FunctionDocumenter.__str__`
+       implementation.
 
     :param package_path: the module path and name of the member to document
     """

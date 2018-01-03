@@ -4,7 +4,7 @@ from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 
 class SummarizingModuleDocumenter(ModuleDocumenter):
     """
-    A summarizing documenter for modules.
+    A summarizing module documenter.
 
     Organizes member documenters by their *documentation section*.
 

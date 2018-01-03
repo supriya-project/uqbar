@@ -5,7 +5,7 @@ from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 class ClassDocumenter(MemberDocumenter):
     """
-    A basic documenter for classes.
+    A basic class documenter.
 
     ::
 
@@ -18,8 +18,16 @@ class ClassDocumenter(MemberDocumenter):
            :members:
            :undoc-members:
 
-    Subclass :py:class:`~uqbar.apis.ClassDocumenter` to implement your own
-    custom class documentation output.
+    .. tip::
+
+       Subclass :py:class:`~uqbar.apis.ClassDocumenter` to
+       implement your own custom class documentation output. You'll
+       need to provide your desired reStructuredText output via an
+       overridden
+       :py:meth:`~uqbar.apis.ClassDocumenter.ClassDocumenter.__str__`
+       implementation.
+
+       See :py:class:`~uqbar.apis.SummarizingClassDocumenter` for an example.
 
     :param package_path: the module path and name of the member to document
     """

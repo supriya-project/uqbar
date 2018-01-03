@@ -38,8 +38,16 @@ class ModuleDocumenter:
         <BLANKLINE>
         .. autofunction:: write
 
-    Subclass :py:class:`~uqbar.apis.ModuleDocumenter` to implement your own
-    custom module documentation output.
+    .. tip::
+
+       Subclass :py:class:`~uqbar.apis.ModuleDocumenter` to implement your own
+       custom module documentation output.
+       You'll need to provide your desired reStructuredText output
+       via an overridden
+       :py:meth:`~uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__`
+       implementation.
+
+       See :py:class:`~uqbar.apis.SummarizingModuleDocumenter` for an example.
 
     :param package_path: the module path of the module to document
     :param document_private_members: whether to documenter private module members

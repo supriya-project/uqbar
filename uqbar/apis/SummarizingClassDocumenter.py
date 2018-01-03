@@ -5,10 +5,18 @@ from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 class SummarizingClassDocumenter(ClassDocumenter):
     """
-    A summarizing documenter for classes.
+    A summarizing class documenter.
 
     Organizes class members by category, separated by category title and
     horizontal rule.
+
+    Categories include:
+
+    -  Special methods
+    -  Methods
+    -  Class and static methods
+    -  Read/write properties
+    -  Read-only properties
 
     ::
 
