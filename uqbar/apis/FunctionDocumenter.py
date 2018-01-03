@@ -15,6 +15,9 @@ class FunctionDocumenter(MemberDocumenter):
         >>> print(documentation)
         .. autofunction:: walk
 
+    Subclass :py:class:`~uqbar.apis.FunctionDocumenter` to implement your own
+    custom function documentation output.
+
     :param package_path: the module path and name of the member to document
     """
 

@@ -18,6 +18,9 @@ class ClassDocumenter(MemberDocumenter):
            :members:
            :undoc-members:
 
+    Subclass :py:class:`~uqbar.apis.ClassDocumenter` to implement your own
+    custom class documentation output.
+
     :param package_path: the module path and name of the member to document
     """
 

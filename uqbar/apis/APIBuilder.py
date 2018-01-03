@@ -46,7 +46,9 @@ class APIBuilder(object):
     :param target_directory: where to write reStructuredText output
     :param document_private_members: whether to documenter private module members
     :param document_private_modules: whether to document private modules
-    :param member_documenter_classes: a list of :py:class:`~uqbar.apis.MemberDocumenter` subclasses
+    :param member_documenter_classes: a list of
+        :py:class:`~uqbar.apis.MemberDocumenter` subclasses, defining what classes
+        to use to identify and document module members
     :param module_documenter_class: a :py:class:`~uqbar.apis.ModuleDocumenter` subclass
     :param root_documenter_class: a :py:class:`~uqbar.apis.RootDocumenter` subclass
 
