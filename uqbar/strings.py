@@ -73,7 +73,7 @@ def normalize(string):
 
 def to_dash_case(string):
     """
-    Convert a string dash-delimited words.
+    Convert a string to dash-delimited words.
 
     ::
 
@@ -98,7 +98,7 @@ def to_dash_case(string):
 
 def to_snake_case(string):
     """
-    Convert a string underscore-delimited words.
+    Convert a string to underscore-delimited words.
 
     ::
 
