@@ -33,6 +33,7 @@ class APIBuilder(object):
         wrote: uqbar/apis/APIBuilder.rst
         wrote: uqbar/apis/ClassDocumenter.rst
         wrote: uqbar/apis/FunctionDocumenter.rst
+        wrote: uqbar/apis/InheritanceGraph.rst
         wrote: uqbar/apis/MemberDocumenter.rst
         wrote: uqbar/apis/ModuleDocumenter.rst
         wrote: uqbar/apis/ModuleNode.rst
@@ -51,7 +52,6 @@ class APIBuilder(object):
         to use to identify and document module members
     :param module_documenter_class: a :py:class:`~uqbar.apis.ModuleDocumenter` subclass
     :param root_documenter_class: a :py:class:`~uqbar.apis.RootDocumenter` subclass
-
     """
 
     ### INITIALIZER ###
@@ -68,26 +68,21 @@ class APIBuilder(object):
         ):
         assert initial_source_paths
         assert target_directory
-
         self._initial_source_paths = frozenset(
             pathlib.Path(_).resolve().absolute() for _ in initial_source_paths
             )
         self._target_directory = pathlib.Path(target_directory).absolute()
-
         self._document_private_members = bool(document_private_members)
         self._document_private_modules = bool(document_private_modules)
-
         if member_documenter_classes is None:
             member_documenter_classes = [ClassDocumenter, FunctionDocumenter]
         for _ in member_documenter_classes:
             assert issubclass(_, MemberDocumenter), _
         self._member_documenter_classes = tuple(member_documenter_classes)
-
         if module_documenter_class is None:
             module_documenter_class = ModuleDocumenter
         assert issubclass(module_documenter_class, ModuleDocumenter)
         self._module_documenter_class = module_documenter_class
-
         if root_documenter_class is None:
             root_documenter_class = RootDocumenter
         assert issubclass(root_documenter_class, RootDocumenter)
@@ -99,12 +94,13 @@ class APIBuilder(object):
         """
         Generate documentation.
         """
+        import uqbar.apis
         # Make sure target directory exists.
         if not self._target_directory.exists():
             self._target_directory.mkdir(parents=True)
         self._target_directory = self._target_directory.resolve()
         # What files to document?
-        source_paths = self.collect_source_paths(self._initial_source_paths)
+        source_paths = uqbar.apis.collect_source_paths(self._initial_source_paths)
         # Build the node tree
         node_tree = self.build_node_tree(source_paths)
         # Get the documenters, in depth-first order.
@@ -129,10 +125,11 @@ class APIBuilder(object):
         """
         Build a node tree.
         """
+        import uqbar.apis
         root = PackageNode()
         # Build node tree, top-down
         for source_path in sorted(source_paths):
-            package_path = self.source_path_to_package_path(source_path)
+            package_path = uqbar.apis.source_path_to_package_path(source_path)
             parts = package_path.split('.')
             if (
                 not self.document_private_modules and
@@ -215,41 +212,6 @@ class APIBuilder(object):
         for node in root_node.depth_first():
             if node is not root_node:
                 yield node.documenter
-
-    @classmethod
-    def collect_source_paths(cls, initial_source_paths):
-        visited_paths = set()
-        path_stack = []
-        for source_path in initial_source_paths:
-            source_path = pathlib.Path(source_path).resolve().absolute()
-            assert source_path.exists()
-            path_stack.append(source_path)
-        while path_stack:
-            current_path = path_stack.pop()
-            if current_path in visited_paths:
-                continue
-            if current_path.is_dir():
-                if not (current_path / '__init__.py').exists():
-                    continue
-                for path in current_path.iterdir():
-                    path_stack.append(path)
-            elif current_path.suffix in ('.py', '.pyx'):
-                visited_paths.add(current_path)
-        return sorted(visited_paths)
-
-    @classmethod
-    def source_path_to_package_path(cls, path):
-        path = pathlib.Path(path)
-        root = path
-        while (root.parent / '__init__.py').exists():
-            root = root.parent
-        path = path.with_suffix('')
-        if path == root:
-            return path.name
-        parts = (root.name,) + path.relative_to(root).parts
-        if parts[-1] == '__init__':
-            parts = parts[:-1]
-        return '.'.join(parts)
 
     def write(self, documenters):
         visited_paths = set()

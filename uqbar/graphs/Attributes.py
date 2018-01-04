@@ -18,7 +18,7 @@ class Attributes(collections.MutableMapping):
         ...     )
 
     ::
-        
+
         >>> print(format(attributes, 'graphviz'))
         [color=black,
             fillcolor=white,
@@ -147,7 +147,7 @@ class Attributes(collections.MutableMapping):
         'root', 'rotate', 'rotation', 'scale', 'searchsize', 'sep',
         'showboxes', 'size', 'smoothing', 'sortv', 'splines', 'start', 'style',
         'stylesheet', 'target', 'truecolor', 'viewport', 'voro_margin',
-        'xdotversion', 'xlabel', 'xlp'])
+        'xdotversion', 'xlabel', 'xlp', 'penwidth'])
 
     _graph_styles = _cluster_styles
 
@@ -214,8 +214,9 @@ class Attributes(collections.MutableMapping):
         return len(self._attributes)
 
     def __setitem__(self, key, value):
-        self._attributes.update(**self._validate_attributes(
-            self.mode, **{key: value}))
+        new_attributes = self._validate_attributes(
+            self.mode, **{key: value})
+        self._attributes.update(new_attributes)
 
     ### PRIVATE METHODS ###
 
@@ -240,6 +241,7 @@ class Attributes(collections.MutableMapping):
                 should_quote = True
             elif value.lower() in (
                 'digraph',
+                'edge',
                 'graph',
                 'node',
                 'subgraph',
@@ -302,7 +304,7 @@ class Attributes(collections.MutableMapping):
 
     @classmethod
     def _validate_colors(cls, value, **kwargs):
-        if isinstance(value, (cls.Color, str)):
+        if isinstance(value, (cls.Color, int, str)):
             return cls._validate_color(value, **kwargs)
         assert len(value)
         value = tuple(cls._validate_color(_, **kwargs) for _ in value)

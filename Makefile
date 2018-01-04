@@ -8,4 +8,4 @@ clean:
 	rm -Rif build/
 
 docs:
-	make -C docs/ clean html
+	make -C docs/ html 

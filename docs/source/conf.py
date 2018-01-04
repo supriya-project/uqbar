@@ -50,10 +50,12 @@ api_builder()
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.githubpages',
+    'sphinx.ext.graphviz',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx_autodoc_typehints',
+    'uqbar.sphinx.inheritance',
     'uqbar.sphinx.style',
     ]
 
@@ -201,3 +203,6 @@ intersphinx_mapping = {
     }
 
 add_module_names = False
+
+# Graphviz
+graphviz_output_format = 'svg'
