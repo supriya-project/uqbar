@@ -125,9 +125,10 @@ def html_visit_inheritance_diagram(
     self: nodes.NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
-    graph = node['graph']
+    inheritance_graph = node['graph']
     urls = build_urls(self, node)
-    dot_code = format(graph.build_graph(urls), 'graphviz')
+    graphviz_graph = inheritance_graph.build_graph(urls)
+    dot_code = format(graphviz_graph, 'graphviz')
     render_dot_html(self, node, dot_code, {}, 'inheritance', 'inheritance')
     raise nodes.SkipNode
 
@@ -136,9 +137,10 @@ def latex_visit_inheritance_diagram(
     self: nodes.NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
-    graph = node['graph']
-    graph.attributes['size'] = [6.0, 6.0]
-    dot_code = graph.build_graph()
+    inheritance_graph = node['graph']
+    graphviz_graph = inheritance_graph.build_graph()
+    graphviz_graph.attributes['size'] = 6.0
+    dot_code = format(graphviz_graph, 'graphviz')
     render_dot_latex(self, node, dot_code, {}, 'inheritance')
     raise nodes.SkipNode
 
