@@ -83,9 +83,26 @@ def write(
 def find_common_prefix(
     paths: Sequence[Union[str, pathlib.Path]]
     ) -> pathlib.Path:
+    """
+    Find the common prefix of two or more paths.
+
+    ::
+
+        >>> one = pathlib.Path('foo/bar/baz')
+        >>> two = pathlib.Path('foo/quux/biz')
+        >>> three = pathlib.Path('foo/quux/wuux')
+
+    ::
+
+        >>> import uqbar.io
+        >>> str(uqbar.io.find_common_prefix([one, two, three]))
+        'foo'
+
+    :param paths: paths to inspect
+    """
     counter = collections.Counter()
     for path in paths:
-        path = pathlib.Path(path).absolute()
+        path = pathlib.Path(path)
         counter.update([path])
         counter.update(path.parents)
     paths = sorted([
@@ -96,7 +113,36 @@ def find_common_prefix(
         return paths[-1]
 
 
-def relative_to(source_path, target_path):
+def relative_to(
+    source_path: Union[str, pathlib.Path],
+    target_path: Union[str, pathlib.Path],
+    ) -> pathlib.Path:
+    """
+    Generates relative path from ``source_path`` to ``target_path``.
+
+    Handles the case of paths without a common prefix.
+
+    ::
+
+        >>> source = pathlib.Path('foo/bar/baz')
+        >>> target = pathlib.Path('foo/quux/biz')
+
+    ::
+
+        >>> target.relative_to(source)
+        Traceback (most recent call last):
+        ...
+        ValueError: 'foo/quux/biz' does not start with 'foo/bar/baz'
+
+    ::
+
+        >>> import uqbar.io
+        >>> str(uqbar.io.relative_to(source, target))
+        '../../quux/biz'
+
+    :param source_path: the source path
+    :param target_path: the target path
+    """
     source_path = pathlib.Path(source_path).absolute()
     if source_path.is_file():
         source_path = source_path.parent

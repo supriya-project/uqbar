@@ -46,7 +46,7 @@ class inheritance_diagram(nodes.General, nodes.Element):
 
 class InheritanceDiagram(Directive):
     """
-    Run when the inheritance_diagram directive is first encountered.
+    Runs when the inheritance_diagram directive is first encountered.
     """
     has_content = False
     required_arguments = 1
@@ -98,6 +98,9 @@ def build_urls(
     self: nodes.NodeVisitor,
     node: inheritance_diagram,
     ) -> Mapping[str, str]:
+    """
+    Builds a mapping of class paths to URLs.
+    """
     current_filename = self.builder.current_docname + self.builder.out_suffix
     urls = {}
     for child in node:
@@ -125,6 +128,9 @@ def html_visit_inheritance_diagram(
     self: nodes.NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
+    """
+    Builds HTML output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
+    """
     inheritance_graph = node['graph']
     urls = build_urls(self, node)
     graphviz_graph = inheritance_graph.build_graph(urls)
@@ -137,6 +143,9 @@ def latex_visit_inheritance_diagram(
     self: nodes.NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
+    """
+    Builds LaTeX output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
+    """
     inheritance_graph = node['graph']
     graphviz_graph = inheritance_graph.build_graph()
     graphviz_graph.attributes['size'] = 6.0
@@ -146,10 +155,16 @@ def latex_visit_inheritance_diagram(
 
 
 def skip(self: nodes.NodeVisitor, node: inheritance_diagram) -> None:
+    """
+    Skip generating output, for non-supported builders.
+    """
     raise nodes.SkipNode
 
 
-def setup(app):
+def setup(app) -> None:
+    """
+    Sets up Sphinx extension.
+    """
     app.setup_extension('sphinx.ext.graphviz')
     app.add_node(
         inheritance_diagram,
