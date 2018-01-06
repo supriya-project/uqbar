@@ -2,8 +2,9 @@
 Tools for IO and file-system manipulation.
 """
 
+import collections
 import pathlib
-import typing
+from typing import Sequence, Union
 
 from .DirectoryChange import DirectoryChange  # noqa
 from .Profiler import Profiler  # noqa
@@ -12,7 +13,7 @@ from .Timer import Timer  # noqa
 
 
 def walk(
-    root_path: typing.Union[str, pathlib.Path],
+    root_path: Union[str, pathlib.Path],
     top_down: bool=True,
     ) -> None:
     """
@@ -41,7 +42,7 @@ def walk(
 
 def write(
     contents: str,
-    path: typing.Union[str, pathlib.Path],
+    path: Union[str, pathlib.Path],
     verbose: bool=False,
     ) -> None:
     """
@@ -63,11 +64,13 @@ def write(
         if old_contents == contents:
             if verbose:
                 print('preserved: {}'.format(path))
+            return False
         else:
             with path.open('w') as file_pointer:
                 file_pointer.write(contents)
             if verbose:
                 print('rewrote: {}'.format(path))
+            return True
     elif not path.exists():
         if not path.parent.exists():
             path.parent.mkdir(parents=True)
@@ -75,3 +78,33 @@ def write(
             file_pointer.write(contents)
         if verbose:
             print('wrote: {}'.format(path))
+
+
+def find_common_prefix(
+    paths: Sequence[Union[str, pathlib.Path]]
+    ) -> pathlib.Path:
+    counter = collections.Counter()
+    for path in paths:
+        path = pathlib.Path(path).absolute()
+        counter.update([path])
+        counter.update(path.parents)
+    paths = sorted([
+        path for path, count in counter.items()
+        if count >= len(paths)
+        ], key=lambda x: len(x.parts))
+    if paths:
+        return paths[-1]
+
+
+def relative_to(source_path, target_path):
+    source_path = pathlib.Path(source_path).absolute()
+    if source_path.is_file():
+        source_path = source_path.parent
+    target_path = pathlib.Path(target_path).absolute()
+    common_prefix = find_common_prefix([source_path, target_path])
+    if not common_prefix:
+        raise ValueError('No common prefix')
+    source_path = source_path.relative_to(common_prefix)
+    target_path = target_path.relative_to(common_prefix)
+    result = pathlib.Path(*['..'] * len(source_path.parts))
+    return result / target_path

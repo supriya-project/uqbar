@@ -24,7 +24,8 @@ def test_collection_01(test_path):
         [test_path / 'fake_package'],
         test_path / 'docs',
         )
-    source_paths = builder.collect_source_paths(builder._initial_source_paths)
+    source_paths = uqbar.apis.collect_source_paths(
+        builder._initial_source_paths)
     node_tree = builder.build_node_tree(source_paths)
     assert normalize(str(node_tree)) == normalize('''
         None/
@@ -57,7 +58,8 @@ def test_collection_02(test_path):
         test_path / 'docs',
         document_private_modules=True,
         )
-    source_paths = builder.collect_source_paths(builder._initial_source_paths)
+    source_paths = uqbar.apis.collect_source_paths(
+        builder._initial_source_paths)
     node_tree = builder.build_node_tree(source_paths)
     assert normalize(str(node_tree)) == normalize('''
         None/
@@ -93,7 +95,8 @@ def test_collection_03(test_path):
         [test_path / 'fake_package' / 'multi'],
         test_path / 'docs',
         )
-    source_paths = builder.collect_source_paths(builder._initial_source_paths)
+    source_paths = uqbar.apis.collect_source_paths(
+        builder._initial_source_paths)
     node_tree = builder.build_node_tree(source_paths)
     documenters = list(builder.collect_module_documenters(node_tree))
     assert isinstance(documenters[0], uqbar.apis.RootDocumenter)

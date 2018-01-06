@@ -24,6 +24,8 @@ class UniqueTreeContainer(UniqueTreeNode):
     ### SPECIAL METHODS ###
 
     def __contains__(self, expr):
+        if isinstance(expr, str):
+            return expr in self._named_children
         for x in self._children:
             if x is expr:
                 return True

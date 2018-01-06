@@ -45,6 +45,8 @@ class SummarizingRootDocumenter(RootDocumenter):
            .. autosummary::
               :nosignatures:
         <BLANKLINE>
+              ~uqbar.io.find_common_prefix
+              ~uqbar.io.relative_to
               ~uqbar.io.walk
               ~uqbar.io.write
         <BLANKLINE>

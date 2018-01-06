@@ -25,6 +25,11 @@ def test_str_01(test_path):
 
         .. currentmodule:: fake_package.module
 
+        .. container:: svg-container
+
+           .. inheritance-diagram:: fake_package
+              :lineage: fake_package.module
+
         .. raw:: html
 
            <hr/>
@@ -65,6 +70,11 @@ def test_str_02(test_path):
         .. automodule:: fake_package.module
 
         .. currentmodule:: fake_package.module
+
+        .. container:: svg-container
+
+           .. inheritance-diagram:: fake_package
+              :lineage: fake_package.module
 
         .. raw:: html
 
@@ -115,6 +125,11 @@ def test_str_03(test_path):
         .. automodule:: fake_package.module
 
         .. currentmodule:: fake_package.module
+
+        .. container:: svg-container
+
+           .. inheritance-diagram:: fake_package
+              :lineage: fake_package.module
 
         .. raw:: html
 

@@ -182,6 +182,11 @@ def test_str_01(test_path):
 
             .. currentmodule:: fake_package
 
+            .. container:: svg-container
+
+               .. inheritance-diagram:: fake_package
+                  :lineage: fake_package
+
             .. raw:: html
 
                <hr/>

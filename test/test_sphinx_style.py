@@ -35,6 +35,7 @@ def test_path():
             extensions = [
                 'sphinx.ext.autodoc',
                 'sphinx.ext.autosummary',
+                'uqbar.sphinx.inheritance',
                 'uqbar.sphinx.style',
                 ]
 
