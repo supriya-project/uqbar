@@ -137,8 +137,9 @@ def latex_visit_inheritance_diagram(
     node: inheritance_diagram,
     ) -> None:
     graph = node['graph']
+    graph.attributes['size'] = [6.0, 6.0]
     dot_code = graph.build_graph()
-    render_dot_latex(self, node, dot_code, {}, 'inheritance', 'inheritance')
+    render_dot_latex(self, node, dot_code, {}, 'inheritance')
     raise nodes.SkipNode
 
 
