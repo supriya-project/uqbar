@@ -10,6 +10,7 @@ Sphinx configuration.
 import importlib
 import inspect
 import pathlib
+import sphinx
 import uqbar.io
 from docutils import nodes
 from sphinx import addnodes
@@ -91,7 +92,10 @@ def handle_method(signature_node, module, object_name, cache):
         signature_node.insert(0, label_node)
 
 
-def on_doctree_read(app, document):
+def on_doctree_read(
+    app: sphinx.application.Sphinx,
+    document,
+    ):
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
@@ -114,7 +118,7 @@ def on_doctree_read(app, document):
             handle_method(signature_node, module, object_name, cache)
 
 
-def on_builder_inited(app):
+def on_builder_inited(app: sphinx.application.Sphinx):
     """
     Hooks into Sphinx's ``builder-inited`` event.
 
@@ -131,7 +135,7 @@ def on_builder_inited(app):
     uqbar.io.write(local_css_contents, theme_css_path)
 
 
-def setup(app):
+def setup(app: sphinx.application.Sphinx):
     """
     Sets up Sphinx extension.
     """
