@@ -1,5 +1,6 @@
 import enum
 import inspect
+from typing import cast
 from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
@@ -20,10 +21,9 @@ class ClassDocumenter(MemberDocumenter):
 
     .. tip::
 
-       Subclass :py:class:`~uqbar.apis.ClassDocumenter` to
-       implement your own custom class documentation output. You'll
-       need to provide your desired reStructuredText output via an
-       overridden
+       Subclass :py:class:`~uqbar.apis.ClassDocumenter` to implement your own
+       custom class documentation output. You'll need to provide your desired
+       reStructuredText output via an overridden
        :py:meth:`~uqbar.apis.ClassDocumenter.ClassDocumenter.__str__`
        implementation.
 
@@ -41,7 +41,7 @@ class ClassDocumenter(MemberDocumenter):
     def __str__(self) -> str:
         return '\n'.join([
             '.. autoclass:: {}'.format(
-                self.client.__name__,
+                getattr(self.client, '__name__'),
                 ),
             '   :members:',
             '   :undoc-members:',
@@ -53,19 +53,20 @@ class ClassDocumenter(MemberDocumenter):
     def validate_client(cls, client: object, module_path: str) -> bool:
         return (
             isinstance(client, type) and
-            client.__module__ == module_path
+            getattr(client, '__module__') == module_path
             )
 
     ### PUBLIC PROPERTIES ###
 
     @property
     def documentation_section(self) -> str:
-        if hasattr(self.client, '__documentation_section__'):
-            return self.client.__documentation_section__
-        elif inspect.isabstract(self.client):
+        client = cast(type, self.client)
+        if hasattr(client, '__documentation_section__'):
+            return getattr(client, '__documentation_section__')
+        elif inspect.isabstract(client):
             return 'Abstract Classes'
-        elif issubclass(self.client, enum.Enum):
+        elif issubclass(client, enum.Enum):
             return 'Enumerations'
-        elif issubclass(self.client, Exception):
+        elif issubclass(client, Exception):
             return 'Exceptions'
         return 'Classes'

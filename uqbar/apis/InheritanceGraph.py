@@ -4,7 +4,9 @@ import inspect
 import types
 import uqbar.graphs
 import uqbar.strings
-from typing import Any, Mapping, Sequence, Tuple, Union
+from typing import (  # noqa
+    Any, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
+    )
 
 
 class InheritanceGraph:
@@ -149,31 +151,30 @@ class InheritanceGraph:
         self,
         package_paths: Sequence[Union[str, type, types.ModuleType]],
         lineage_paths: Sequence[Union[str, type, types.ModuleType]]=None,
-        ):
+        ) -> None:
         self._package_paths = self._initialize_package_paths(package_paths)
         self._lineage_paths = self._initialize_package_paths(
             lineage_paths or [])
-        self._classes = self._collect_classes(self._package_paths)
+        initial_classes = self._collect_classes(self._package_paths)
         self._lineage_classes = self._collect_classes(
             self._lineage_paths, recurse_subpackages=False)
         (
             self._parents_to_children,
             self._children_to_parents,
-            ) = self._build_mappings(self._classes)
+            ) = self._build_mappings(initial_classes)
         if lineage_paths:
             self._strip_nonlineage_classes()
-        self._classes = frozenset(
-            list(self._parents_to_children) +
-            list(self._children_to_parents)
-            )
+        parent_classes = set(self._parents_to_children)
+        child_classes = set(self._children_to_parents)
+        self._classes = parent_classes.union(child_classes)
 
     ### SPECIAL METHODS ###
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(set(self._parents_to_children).union(
             set(self._children_to_parents)))
 
-    def __str__(self):
+    def __str__(self) -> str:
         graph = self.build_graph()
         return format(graph, 'graphviz')
 
@@ -280,9 +281,9 @@ class InheritanceGraph:
         """
         Collect all bases and organize into parent/child mappings.
         """
-        parents_to_children = {}
-        children_to_parents = {}
-        visited_classes = set()
+        parents_to_children = {}  # type: MutableMapping[type, Set[type]]
+        children_to_parents = {}  # type: MutableMapping[type, Set[type]]
+        visited_classes = set()  # type: Set[type]
         class_stack = list(classes)
         while class_stack:
             class_ = class_stack.pop()
@@ -294,14 +295,14 @@ class InheritanceGraph:
                     class_stack.append(base)
                 parents_to_children.setdefault(base, set()).add(class_)
                 children_to_parents.setdefault(class_, set()).add(base)
-        sorted_parents_to_children = collections.OrderedDict()
+        sorted_parents_to_children = collections.OrderedDict()  # type: MutableMapping[type, List[type]]
         for parent, children in sorted(
             parents_to_children.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
             ):
             sorted_parents_to_children[parent] = sorted(
                 children, key=lambda x: (x.__module__, x.__name__))
-        sorted_children_to_parents = collections.OrderedDict()
+        sorted_children_to_parents = collections.OrderedDict()  # type: MutableMapping[type, List[type]]
         for child, parents in sorted(
             children_to_parents.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
@@ -320,13 +321,13 @@ class InheritanceGraph:
         """
         import uqbar.apis
         classes = []
-        initial_source_paths = set()
+        initial_source_paths = set()  # type: Set[str]
         # Graph source paths and classes
         for path in package_paths:
             try:
                 module = importlib.import_module(path)
                 if hasattr(module, '__path__'):
-                    initial_source_paths.update(module.__path__)
+                    initial_source_paths.update(getattr(module, '__path__'))
                 else:
                     initial_source_paths.add(module.__file__)
             except ModuleNotFoundError:

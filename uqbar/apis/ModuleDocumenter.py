@@ -2,7 +2,7 @@ import importlib
 import pathlib
 import types
 import uqbar  # noqa
-from typing import Sequence, Tuple, Type
+from typing import List, MutableMapping, Sequence, Tuple, Type  # noqa
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
 from uqbar.apis.MemberDocumenter import MemberDocumenter
@@ -78,7 +78,7 @@ class ModuleDocumenter:
         document_private_members: bool=False,
         member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
         module_documenters: Sequence['ModuleDocumenter']=None,
-        ):
+        ) -> None:
         self._package_path = package_path
         client = importlib.import_module(package_path)
         assert isinstance(client, types.ModuleType)
@@ -103,14 +103,14 @@ class ModuleDocumenter:
 
     def __str__(self) -> str:
         result = self._build_preamble()
-        result.extend(self._build_toc())
+        result.extend(self._build_toc(self.module_documenters or []))
         for documenter in self._member_documenters:
             result.extend(['', str(documenter)])
         return '\n'.join(result)
 
     ### PRIVATE METHODS ###
 
-    def _populate(self) -> None:
+    def _populate(self) -> Sequence[MemberDocumenter]:
         documenters = []
         for name in sorted(dir(self.client)):
             if name.startswith('_') and not self.document_private_members:
@@ -128,31 +128,28 @@ class ModuleDocumenter:
 
     def _build_toc(
         self,
-        hidden: bool=False,
-        include_modules: bool=True,
-        ) -> Sequence[str]:
-        result = []
-        if not self.module_documenters:
+        documenters,
+        **kwargs
+        ) -> List[str]:
+        result = []  # type: List[str]
+        if not documenters:
             return result
         result.extend(['', '.. toctree::'])
-        if hidden:
-            result.append('   :hidden:')
         result.append('')
-        for submodule_documenter in self.module_documenters or []:
-            if (
-                not submodule_documenter.is_package and
-                not include_modules
-                ):
-                continue
-            path = submodule_documenter.package_path
+        module_documenters = [
+            _ for _ in documenters
+            if isinstance(_, type(self))
+            ]
+        for module_documenter in module_documenters:
+            path = module_documenter.package_path
             path = path[len(self.package_path) + 1:]
-            if submodule_documenter.is_package:
+            if module_documenter.is_package:
                 path = '{}/index'.format(path)
             result.append('   {}'.format(path))
         return result
 
-    def _build_preamble(self) -> Sequence[str]:
-        return [
+    def _build_preamble(self) -> List[str]:
+        result = [
             '.. _{}:'.format(self.reference_name),
             '',
             self.package_name,
@@ -161,7 +158,8 @@ class ModuleDocumenter:
             '.. automodule:: {}'.format(self.package_path),
             '',
             '.. currentmodule:: {}'.format(self.package_path),
-            ]
+            ]  # type: List[str]
+        return result
 
     ### PUBLIC PROPERTIES ###
 
@@ -203,7 +201,7 @@ class ModuleDocumenter:
     @property
     def member_documenters_by_section(self) -> Sequence[
         Tuple[str, Sequence[MemberDocumenter]]]:
-        result = {}
+        result = {}  # type: MutableMapping[str, List[MemberDocumenter]]
         for documenter in self.member_documenters:
             result.setdefault(
                 documenter.documentation_section, []).append(documenter)

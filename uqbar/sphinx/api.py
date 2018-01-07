@@ -19,9 +19,10 @@ the initialization arguments to the :py:class:`uqbar.apis.APIBuilder` class.
 """
 import importlib
 import pathlib
-import sphinx
+import sphinx.application  # type: ignore
 import types
 import uqbar.apis
+from typing import List  # noqa
 
 
 def on_builder_inited(app: sphinx.application.Sphinx):
@@ -37,19 +38,19 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         config.uqbar_api_directory_name
         )
 
-    initial_source_paths = []
+    initial_source_paths = []  # type: List[str]
     source_paths = config.uqbar_api_source_paths
     for source_path in source_paths:
         if isinstance(source_path, types.ModuleType):
             if hasattr(source_path, '__path__'):
-                initial_source_paths.extend(source_path.__path__)
+                initial_source_paths.extend(getattr(source_path, '__path__'))
             else:
                 initial_source_paths.extend(source_path.__file__)
             continue
         try:
             module = importlib.import_module(source_path)
             if hasattr(module, '__path__'):
-                initial_source_paths.extend(module.__path__)
+                initial_source_paths.extend(getattr(module, '__path__'))
             else:
                 initial_source_paths.append(module.__file__)
         except ImportError:

@@ -1,3 +1,5 @@
+import uqbar.graphs  # noqa
+from typing import Mapping, Union
 from uqbar.graphs.Attributes import Attributes
 
 
@@ -10,27 +12,27 @@ class Edge(object):
 
     def __init__(
         self,
-        attributes=None,
-        is_directed=True,
-        head_port_position=None,
-        tail_port_position=None,
-        ):
+        attributes: Union[Mapping[str, object], Attributes]=None,
+        is_directed: bool=True,
+        head_port_position: str=None,
+        tail_port_position: str=None,
+        ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head = None
+        self._head = None  # type: 'uqbar.graphs.Node.Node'
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail = None
+        self._tail = None  # type: 'uqbar.graphs.Node.Node'
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec=None):
+    def __format__(self, format_spec=None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
         return str(self)
 
-    def __format_graphviz__(self):
+    def __format_graphviz__(self) -> str:
         connection = '->'
         if not self.is_directed:
             connection = '--'
@@ -56,8 +58,8 @@ class Edge(object):
 
     ### PRIVATE METHODS ###
 
-    def _get_highest_parent(self):
-        highest_parent = None
+    def _get_highest_parent(self) -> 'uqbar.graphs.Graph':
+        highest_parent = None  # type: 'uqbar.graphs.Graph'
         tail_parentage = list(self.tail.parentage[1:])
         head_parentage = list(self.head.parentage[1:])
         while (
@@ -75,9 +77,13 @@ class Edge(object):
 
     ### PUBLIC METHODS ###
 
-    def attach(self, tail, head):
-        from uqbar.graphs import Node
-        prototype = (Node,)
+    def attach(
+        self,
+        tail: 'uqbar.graphs.Node',
+        head: 'uqbar.graphs.Node',
+        ) -> 'Edge':
+        from uqbar.graphs.Node import Node
+        prototype = Node
         assert isinstance(tail, prototype)
         assert isinstance(head, prototype)
         self.detach()
@@ -87,7 +93,7 @@ class Edge(object):
         self._head = head
         return self
 
-    def detach(self):
+    def detach(self) -> 'Edge':
         if self.tail is not None:
             self.tail._edges.remove(self)
             self._tail = None
@@ -99,25 +105,25 @@ class Edge(object):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def attributes(self):
+    def attributes(self) -> Attributes:
         return self._attributes
 
     @property
-    def head(self):
+    def head(self) -> 'uqbar.graphs.Node':
         return self._head
 
     @property
-    def head_port_position(self):
+    def head_port_position(self) -> str:
         return self._head_port_position
 
     @property
-    def is_directed(self):
+    def is_directed(self) -> bool:
         return self._is_directed
 
     @property
-    def tail(self):
+    def tail(self) -> 'uqbar.graphs.Node':
         return self._tail
 
     @property
-    def tail_port_position(self):
+    def tail_port_position(self) -> str:
         return self._tail_port_position

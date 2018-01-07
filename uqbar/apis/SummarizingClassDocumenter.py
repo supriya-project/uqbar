@@ -1,5 +1,5 @@
 import inspect
-import typing
+from typing import List
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 
@@ -93,7 +93,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             static_methods,
             ) = self._classify_class_attributes()
         result = [
-            '.. autoclass:: {}'.format(self.client.__name__),
+            '.. autoclass:: {}'.format(getattr(self.client, '__name__')),
             ]
         result.extend(self._build_attribute_section(
             special_methods,
@@ -129,8 +129,8 @@ class SummarizingClassDocumenter(ClassDocumenter):
         attributes,
         directive: str,
         title: str,
-        ) -> typing.Sequence[str]:
-        result = []
+        ) -> List[str]:
+        result = []  # type: List[str]
         if not attributes:
             return result
         result.extend([
@@ -145,7 +145,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         for attribute in attributes:
             result.append('')
             autodoc_directive = '   .. {}:: {}.{}'.format(
-                directive, self.client.__name__, attribute.name)
+                directive, getattr(self.client, '__name__'), attribute.name)
             result.append(autodoc_directive)
         return result
 

@@ -31,7 +31,7 @@ class MemberDocumenter(metaclass=abc.ABCMeta):
 
     ### INITIALIZER ###
 
-    def __init__(self, package_path: str):
+    def __init__(self, package_path: str) -> None:
         module_path, _, client_name = package_path.rpartition('.')
         module = importlib.import_module(module_path)
         client = getattr(module, client_name)

@@ -4,7 +4,7 @@ Tools for IO and file-system manipulation.
 
 import collections
 import pathlib
-from typing import Sequence, Union
+from typing import Generator, Optional, Sequence, Tuple, Union
 
 from .DirectoryChange import DirectoryChange  # noqa
 from .Profiler import Profiler  # noqa
@@ -15,7 +15,9 @@ from .Timer import Timer  # noqa
 def walk(
     root_path: Union[str, pathlib.Path],
     top_down: bool=True,
-    ) -> None:
+    ) -> Generator[
+        Tuple[pathlib.Path, Sequence[pathlib.Path], Sequence[pathlib.Path]],
+        None, None]:
     """
     Walks a directory tree.
 
@@ -44,7 +46,7 @@ def write(
     contents: str,
     path: Union[str, pathlib.Path],
     verbose: bool=False,
-    ) -> None:
+    ) -> bool:
     """
     Writes ``contents`` to ``path``.
 
@@ -78,11 +80,12 @@ def write(
             file_pointer.write(contents)
         if verbose:
             print('wrote: {}'.format(path))
+    return True
 
 
 def find_common_prefix(
     paths: Sequence[Union[str, pathlib.Path]]
-    ) -> pathlib.Path:
+    ) -> Optional[pathlib.Path]:
     """
     Find the common prefix of two or more paths.
 
@@ -100,17 +103,18 @@ def find_common_prefix(
 
     :param paths: paths to inspect
     """
-    counter = collections.Counter()
+    counter = collections.Counter()  # type: collections.Counter
     for path in paths:
         path = pathlib.Path(path)
         counter.update([path])
         counter.update(path.parents)
-    paths = sorted([
+    valid_paths = sorted([
         path for path, count in counter.items()
         if count >= len(paths)
         ], key=lambda x: len(x.parts))
-    if paths:
-        return paths[-1]
+    if valid_paths:
+        return valid_paths[-1]
+    return None
 
 
 def relative_to(

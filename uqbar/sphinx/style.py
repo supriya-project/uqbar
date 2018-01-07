@@ -10,10 +10,11 @@ Sphinx configuration.
 import importlib
 import inspect
 import pathlib
-import sphinx
+import sphinx  # type:ignore
 import uqbar.io
+import typing
 from docutils import nodes
-from sphinx import addnodes
+from sphinx import addnodes  # type: ignore
 
 
 def handle_class(signature_node, module, object_name, cache):
@@ -99,7 +100,7 @@ def on_doctree_read(
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
-    cache = {}
+    cache = {}  # type: typing.Dict[type, typing.Dict[str, object]]
     for desc_node in document.traverse(addnodes.desc):
         if desc_node.get('domain') != 'py':
             continue
