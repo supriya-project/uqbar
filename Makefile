@@ -1,4 +1,7 @@
-.PHONY: docs
+.PHONY: docs build
+
+build:
+	python setup.py sdist
 
 clean:
 	find . -name '*.pyc' | xargs rm -Rif

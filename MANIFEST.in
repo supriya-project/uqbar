@@ -3,5 +3,6 @@ include LICENSE
 include setup.py
 include MANIFEST.in
 recursive-exclude test *
-recursive-include uqbar *
 recursive-exclude *.pyc
+recursive-exclude __pycache__
+recursive-include uqbar *
