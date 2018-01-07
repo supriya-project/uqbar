@@ -53,18 +53,19 @@ class RootDocumenter:
 
     ### INITIALIZER ###
 
-    def __init__(self, module_documenters=None):
+    def __init__(self, module_documenters=None, title='API'):
         import uqbar.apis
         if module_documenters is not None:
             assert all(isinstance(_, uqbar.apis.ModuleDocumenter)
                 for _ in module_documenters), module_documenters
             module_documenters = tuple(module_documenters)
         self._module_documenters = module_documenters or ()
+        self._title = title
 
     ### SPECIAL METHODS ###
 
     def __str__(self):
-        result = ['API', '===', '']
+        result = [self.title, '=' * len(self.title), '']
         if self.module_documenters:
             result.extend(['.. toctree::', ''])
             for module_documenter in self.module_documenters:
@@ -84,3 +85,7 @@ class RootDocumenter:
     @property
     def module_documenters(self):
         return self._module_documenters
+
+    @property
+    def title(self):
+        return self._title

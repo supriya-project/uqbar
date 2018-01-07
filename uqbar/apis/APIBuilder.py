@@ -65,6 +65,7 @@ class APIBuilder(object):
         member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
         module_documenter_class: Type[ModuleDocumenter]=None,
         root_documenter_class: Type[RootDocumenter]=None,
+        title: str='API',
         ):
         assert initial_source_paths
         assert target_directory
@@ -87,6 +88,7 @@ class APIBuilder(object):
             root_documenter_class = RootDocumenter
         assert issubclass(root_documenter_class, RootDocumenter)
         self._root_documenter_class = root_documenter_class
+        self._title = title
 
     ### SPECIAL METHODS ###
 
@@ -207,6 +209,7 @@ class APIBuilder(object):
         # Yield root documenter.
         yield self.root_documenter_class(
             module_documenters=[node.documenter for node in root_node],
+            title=self._title,
             )
         # Yield module documenters, top-down.
         for node in root_node.depth_first():

@@ -75,8 +75,8 @@ class SummarizingRootDocumenter(RootDocumenter):
 
     def __str__(self):
         result = [
-            'API',
-            '===',
+            self.title,
+            '=' * len(self.title),
             '',
             '.. toctree::',
             '   :hidden:',
