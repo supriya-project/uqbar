@@ -3,6 +3,7 @@ import importlib
 import inspect
 import types
 import uqbar.graphs
+import uqbar.strings
 from typing import Any, Mapping, Sequence, Tuple, Union
 
 
