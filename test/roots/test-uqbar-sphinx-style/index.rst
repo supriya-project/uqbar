@@ -1,0 +1,6 @@
+Root
+====
+
+.. toctree::
+
+   api/index
