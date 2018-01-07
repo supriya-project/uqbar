@@ -22,21 +22,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 import sphinx_rtd_theme
-import pathlib
 import uqbar.apis
-
-api_builder = uqbar.apis.APIBuilder(
-    uqbar.__path__,
-    pathlib.Path(__file__).parent / 'api',
-    member_documenter_classes=[
-        uqbar.apis.FunctionDocumenter,
-        uqbar.apis.SummarizingClassDocumenter,
-        ],
-    module_documenter_class=uqbar.apis.SummarizingModuleDocumenter,
-    root_documenter_class=uqbar.apis.SummarizingRootDocumenter,
-    )
-api_builder()
-
 
 # -- General configuration ------------------------------------------------
 
@@ -55,6 +41,7 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx_autodoc_typehints',
+    'uqbar.sphinx.api',
     'uqbar.sphinx.inheritance',
     'uqbar.sphinx.style',
     ]
@@ -204,5 +191,19 @@ intersphinx_mapping = {
 
 add_module_names = False
 
-# Graphviz
+
+# -- Options for Graphviz output ------------------------------------------
+
 graphviz_output_format = 'svg'
+
+
+# -- Options for Uqbar output ---------------------------------------------
+
+uqbar_api_title = 'Uqbar API'
+uqbar_api_source_paths = ['uqbar']
+uqbar_api_root_documenter_class = uqbar.apis.SummarizingRootDocumenter
+uqbar_api_module_documenter_class = uqbar.apis.SummarizingModuleDocumenter
+uqbar_api_member_documenter_classes = [
+    uqbar.apis.FunctionDocumenter,
+    uqbar.apis.SummarizingClassDocumenter,
+    ]
