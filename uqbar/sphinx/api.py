@@ -17,6 +17,7 @@ the initialization arguments to the :py:class:`uqbar.apis.APIBuilder` class.
 - ``uqbar_api_title``
 
 """
+import importlib
 import pathlib
 import sphinx
 import uqbar.apis
@@ -29,12 +30,26 @@ def on_builder_inited(app: sphinx.application.Sphinx):
     Builds out the ReST API source.
     """
     config = app.builder.env.config
+
     target_directory = (
         pathlib.Path(app.builder.env.srcdir) /
         config.uqbar_api_directory_name
         )
+
+    initial_source_paths = []
+    source_paths = config.uqbar_api_source_paths
+    for source_path in source_paths:
+        try:
+            module = importlib.import_module(source_path)
+            if hasattr(module, '__path__'):
+                initial_source_paths.extend(module.__path__)
+            else:
+                initial_source_paths.append(module.__file__)
+        except ImportError:
+            initial_source_paths.append(source_path)
+
     api_builder = uqbar.apis.APIBuilder(
-        initial_source_paths=config.uqbar_api_source_paths,
+        initial_source_paths=initial_source_paths,
         target_directory=target_directory,
         document_private_members=config.uqbar_api_document_private_members,
         document_private_modules=config.uqbar_api_document_private_modules,

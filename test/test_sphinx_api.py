@@ -59,11 +59,29 @@ def test_foo(test_path):
         builddir = pathlib.Path(results['app'].builddir)
         text_path = builddir / 'text' / 'api' / 'index.txt'
         with text_path.open('r') as file_pointer:
-            results['text'] = file_pointer.read()
+            results['text'] = uqbar.strings.normalize(file_pointer.read())
 
     results = {}
     execute()
     assert 'build succeeded' in results['status']
     assert not results['warning'].strip()
     assert results['text'] == uqbar.strings.normalize('''
+        API
+        ***
+
+        * fake_package
+
+          * empty_module
+
+          * empty_package
+
+            * empty
+
+          * module
+
+          * multi
+
+            * one
+
+            * two
         ''')
