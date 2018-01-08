@@ -1,16 +1,22 @@
-from uqbar.containers import UniqueTreeNode
+from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs.Attributes import Attributes
 
 
-class Node(UniqueTreeNode):
+class Node(UniqueTreeContainer):
     """
     A Graphviz node.
     """
 
     ### INITIALIZER ###
 
-    def __init__(self, name=None, attributes=None):
-        UniqueTreeNode.__init__(self, name=name)
+    def __init__(
+        self,
+        children=None,
+        *,
+        attributes=None,
+        name=None
+        ):
+        UniqueTreeContainer.__init__(self, name=name, children=children)
         self._attributes = Attributes('node', **(attributes or {}))
         self._edges = set()
 
@@ -72,6 +78,12 @@ class Node(UniqueTreeNode):
         edge.attach(self, node)
         return edge
 
+    ### PRIVATE PROPERTIES ###
+
+    @property
+    def _node_class(self):
+        return ()
+
     ### PUBLIC PROPERTIES ###
 
     @property
@@ -80,4 +92,4 @@ class Node(UniqueTreeNode):
 
     @property
     def edges(self):
-        return frozenset(self._edges)
+        return set(self._edges)

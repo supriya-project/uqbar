@@ -12,13 +12,14 @@ class Graph(UniqueTreeContainer):
 
     def __init__(
         self,
-        name=None,
         children=None,
-        is_cluster=None,
-        is_digraph=True,
+        *,
         attributes=None,
         edge_attributes=None,
-        node_attributes=None,
+        is_cluster=None,
+        is_digraph=True,
+        name=None,
+        node_attributes=None
         ):
         UniqueTreeContainer.__init__(self, name=name, children=children)
         if is_cluster is not None:
