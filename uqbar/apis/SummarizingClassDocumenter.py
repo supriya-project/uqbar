@@ -161,6 +161,11 @@ class SummarizingClassDocumenter(ClassDocumenter):
         for attr in attrs:
             if attr.defining_class is object:
                 continue
+            elif (
+                getattr(self.client, '__documentation_ignore_inherited__', None) and
+                attr.defining_class is not self.client
+                ):
+                continue
             if attr.kind == 'method':
                 if attr.name not in self.ignored_special_methods:
                     if attr.name.startswith('__'):

@@ -7,15 +7,18 @@ Sphinx configuration.
 This extension provides the following configuration values which correspond to
 the initialization arguments to the :py:class:`uqbar.apis.APIBuilder` class.
 
-- ``uqbar_api_directory_name``
-- ``uqbar_api_document_private_members``
-- ``uqbar_api_document_private_modules``
-- ``uqbar_api_member_documenter_classes``
-- ``uqbar_api_module_documenter_class``
-- ``uqbar_api_root_documenter_class``
-- ``uqbar_api_source_paths``
-- ``uqbar_api_title``
+- ``uqbar_api_directory_name`` (default: ``api``)
+- ``uqbar_api_document_private_members`` (default: ``False``)
+- ``uqbar_api_document_private_modules`` (default: ``False``)
+- ``uqbar_api_member_documenter_classes`` (default: ``None``)
+- ``uqbar_api_module_documenter_class`` (default: ``None``)
+- ``uqbar_api_root_documenter_class`` (default: ``None``)
+- ``uqbar_api_source_paths`` (default: ``[]``)
+- ``uqbar_api_title`` (default: ``API``)
 
+reStructuredText source files will be generated for the modules given by
+``uqbar_api_source_paths`` in the directory ``uqbar_api_directory_name``
+relative to your Sphinx source directory.
 """
 import importlib
 import pathlib

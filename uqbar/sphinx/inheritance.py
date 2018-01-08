@@ -41,7 +41,8 @@ class inheritance_diagram(General, Element):
     """
     A docutils node to use as a placeholder for the inheritance diagram.
     """
-    pass
+
+    __documentation_ignore_inherited__ = True
 
 
 class InheritanceDiagram(Directive):
@@ -53,6 +54,8 @@ class InheritanceDiagram(Directive):
     optional_arguments = 0
     final_argument_whitespace = True
     option_spec = {'lineage': directives.unchanged}
+
+    __documentation_ignore_inherited__ = True
 
     def run(self) -> List[Node]:
         node = inheritance_diagram()
