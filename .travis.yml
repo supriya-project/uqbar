@@ -23,6 +23,7 @@ install:
 script:
   - coverage run -a `which py.test` -vv
   - make -C docs/ html
+  - mypy uqbar
 
 after_success:
   - coveralls
