@@ -10,8 +10,6 @@ Uqbar is a toolkit for building docs, graphs and more.
 Sphinx extensions
 -----------------
 
-Uqbar comes with a set of ready-to-use Sphinx extensions:
-
 .. autosummary::
    :nosignatures:
 
@@ -21,9 +19,6 @@ Uqbar comes with a set of ready-to-use Sphinx extensions:
 
 API auto-generation
 -------------------
-
-Its API auto-generation tools are extensible through subclassing, allowing for
-extension customization:
 
 .. autosummary::
    :nosignatures:
@@ -36,9 +31,6 @@ extension customization:
 
 Graphviz graphs
 ---------------
-
-Uqbar includes high-level tools for generating inheritance diagrams and
-Graphviz graphs:
 
 .. autosummary::
    :nosignatures:
