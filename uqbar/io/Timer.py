@@ -19,15 +19,15 @@ class Timer:
         exit_message: str=None,
         enter_message: str=None,
         verbose: bool=True,
-        ):
+        ) -> None:
         if enter_message is not None:
             enter_message = str(enter_message)
         self._enter_message = enter_message
         if exit_message is not None:
             exit_message = str(exit_message)
         self._exit_message = exit_message
-        self._start_time = None
-        self._stop_time = None
+        self._start_time = None  # type: typing.Optional[float]
+        self._stop_time = None  # type: typing.Optional[float]
         self._verbose = bool(verbose)
 
     ### SPECIAL METHODS ###

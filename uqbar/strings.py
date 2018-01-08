@@ -3,10 +3,11 @@ Tools for string manipulation.
 """
 
 import textwrap
-import unidecode
+import unidecode  # type: ignore
+from typing import Generator
 
 
-def delimit_words(string):
+def delimit_words(string: str) -> Generator[str, None, None]:
     """
     Delimit a string at word boundaries.
     """
@@ -51,7 +52,7 @@ def delimit_words(string):
         yield current_word
 
 
-def normalize(string):
+def normalize(string: str) -> str:
     """
     Normalizes whitespace.
 
@@ -71,7 +72,7 @@ def normalize(string):
     return string
 
 
-def to_dash_case(string):
+def to_dash_case(string: str) -> str:
     """
     Convert a string to dash-delimited words.
 
@@ -90,13 +91,12 @@ def to_dash_case(string):
 
     """
     string = unidecode.unidecode(string)
-    words = delimit_words(string)
-    words = (_.lower() for _ in words)
+    words = (_.lower() for _ in delimit_words(string))
     string = '-'.join(words)
     return string
 
 
-def to_snake_case(string):
+def to_snake_case(string: str) -> str:
     """
     Convert a string to underscore-delimited words.
 
@@ -115,7 +115,6 @@ def to_snake_case(string):
 
     """
     string = unidecode.unidecode(string)
-    words = delimit_words(string)
-    words = (_.lower() for _ in words)
+    words = (_.lower() for _ in delimit_words(string))
     string = '_'.join(words)
     return string

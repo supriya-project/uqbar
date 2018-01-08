@@ -11,8 +11,9 @@ class Profiler:
     def __enter__(self) -> 'Profiler':
         self._profiler = cProfile.Profile()
         self._profiler.enable()
+        return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
         self._profiler.disable()
         stream = io.StringIO()
         profiler_stats = pstats.Stats(self._profiler, stream=stream)

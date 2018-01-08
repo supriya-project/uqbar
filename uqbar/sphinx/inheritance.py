@@ -31,17 +31,18 @@ multiple paths, separated by spaces:
 import os
 import pathlib
 import uqbar.apis
-from docutils import nodes
-from docutils.parsers.rst import Directive, directives
-from sphinx.ext.graphviz import render_dot_html, render_dot_latex
+from docutils.nodes import General, Element, Node, NodeVisitor, SkipNode  # type: ignore
+from docutils.parsers.rst import Directive, directives  # type: ignore
+from sphinx.ext.graphviz import render_dot_html, render_dot_latex  # type: ignore
 from typing import List, Mapping
 
 
-class inheritance_diagram(nodes.General, nodes.Element):
+class inheritance_diagram(General, Element):
     """
     A docutils node to use as a placeholder for the inheritance diagram.
     """
-    pass
+
+    __documentation_ignore_inherited__ = True
 
 
 class InheritanceDiagram(Directive):
@@ -54,7 +55,9 @@ class InheritanceDiagram(Directive):
     final_argument_whitespace = True
     option_spec = {'lineage': directives.unchanged}
 
-    def run(self) -> List[nodes.Node]:
+    __documentation_ignore_inherited__ = True
+
+    def run(self) -> List[Node]:
         node = inheritance_diagram()
         node.document = self.state.document
         package_paths = self.arguments[0].split()
@@ -95,7 +98,7 @@ class InheritanceDiagram(Directive):
 
 
 def build_urls(
-    self: nodes.NodeVisitor,
+    self: NodeVisitor,
     node: inheritance_diagram,
     ) -> Mapping[str, str]:
     """
@@ -125,7 +128,7 @@ def build_urls(
 
 
 def html_visit_inheritance_diagram(
-    self: nodes.NodeVisitor,
+    self: NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
     """
@@ -136,11 +139,11 @@ def html_visit_inheritance_diagram(
     graphviz_graph = inheritance_graph.build_graph(urls)
     dot_code = format(graphviz_graph, 'graphviz')
     render_dot_html(self, node, dot_code, {}, 'inheritance', 'inheritance')
-    raise nodes.SkipNode
+    raise SkipNode
 
 
 def latex_visit_inheritance_diagram(
-    self: nodes.NodeVisitor,
+    self: NodeVisitor,
     node: inheritance_diagram,
     ) -> None:
     """
@@ -151,14 +154,14 @@ def latex_visit_inheritance_diagram(
     graphviz_graph.attributes['size'] = 6.0
     dot_code = format(graphviz_graph, 'graphviz')
     render_dot_latex(self, node, dot_code, {}, 'inheritance')
-    raise nodes.SkipNode
+    raise SkipNode
 
 
-def skip(self: nodes.NodeVisitor, node: inheritance_diagram) -> None:
+def skip(self: NodeVisitor, node: inheritance_diagram) -> None:
     """
     Skip generating output, for non-supported builders.
     """
-    raise nodes.SkipNode
+    raise SkipNode
 
 
 def setup(app) -> None:

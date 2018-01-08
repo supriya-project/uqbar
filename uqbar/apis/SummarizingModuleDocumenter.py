@@ -1,4 +1,5 @@
-import typing
+from typing import List, MutableMapping, Tuple  # noqa
+from uqbar.apis.MemberDocumenter import MemberDocumenter
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 
 
@@ -149,8 +150,9 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         self,
         documenters,
         show_full_paths: bool=False,
-        ) -> typing.Sequence[str]:
-        result = []
+        **kwargs
+        ) -> List[str]:
+        result = []  # type: List[str]
         if not documenters:
             return result
         result.extend(['', '.. toctree::', '   :hidden:', ''])
@@ -184,8 +186,9 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def member_documenters_by_section(self):
-        result = {}
+    def member_documenters_by_section(self) -> List[
+        Tuple[str, List[MemberDocumenter]]]:
+        result = {}  # type: MutableMapping[str, List[MemberDocumenter]]
         for documenter in self.member_documenters:
             result.setdefault(
                 documenter.documentation_section, []).append(documenter)

@@ -66,7 +66,7 @@ class APIBuilder(object):
         module_documenter_class: Type[ModuleDocumenter]=None,
         root_documenter_class: Type[RootDocumenter]=None,
         title: str='API',
-        ):
+        ) -> None:
         assert initial_source_paths
         assert target_directory
         self._initial_source_paths = frozenset(

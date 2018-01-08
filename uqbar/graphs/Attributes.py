@@ -1,5 +1,6 @@
 import collections
 import re
+import typing
 
 
 class Attributes(collections.MutableMapping):
@@ -31,31 +32,33 @@ class Attributes(collections.MutableMapping):
 
     ### CLASS VARIABLES ###
 
+    _validators = None  # type: typing.Mapping[str, object]
+
     class Color(object):
 
         __slots__ = ('color',)
 
-        def __init__(self, color):
+        def __init__(self, color) -> None:
             self.color = str(color)
 
-        def __eq__(self, other):
+        def __eq__(self, other) -> bool:
             return (
                 type(self) == type(other) and
                 self.color == other.color
                 )
 
-        def __repr__(self):
+        def __repr__(self) -> str:
             return '<Color {!r}>'.format(self.color)
 
     class Point(object):
 
         __slots__ = ('x', 'y')
 
-        def __init__(self, x, y):
+        def __init__(self, x, y) -> None:
             self.x = float(x)
             self.y = float(y)
 
-        def __eq__(self, other):
+        def __eq__(self, other) -> bool:
             return (
                 type(self) == type(other) and
                 self.x == other.x and
@@ -98,7 +101,7 @@ class Attributes(collections.MutableMapping):
     _smooth_types = frozenset(['avg_dist', 'graph_dist', 'none', 'power_dist',
         'rng', 'spring', 'triangle'])
 
-    _styles = frozenset()
+    _styles = frozenset()  # type: typing.FrozenSet[str]
 
     _word_pattern = re.compile('^\w+$')
 
@@ -109,8 +112,6 @@ class Attributes(collections.MutableMapping):
         'gradientangle', 'href', 'id', 'label', 'labeljust', 'labelloc',
         'layer', 'lheight', 'lp', 'lwidth', 'margin', 'nojustify', 'pencolor',
         'penwidth', 'peripheries', 'sortv', 'style', 'target', 'tooltip'])
-
-    _cluster_overrides = {}
 
     _cluster_styles = frozenset(['bold', 'dashed', 'dotted', 'filled',
         'rounded', 'solid', 'striped'])
@@ -165,29 +166,29 @@ class Attributes(collections.MutableMapping):
 
     ### INITIALIZER ###
 
-    def __init__(self, mode, **kwargs):
+    def __init__(self, mode: str, **kwargs) -> None:
         assert mode in ('cluster', 'edge', 'graph', 'node')
         self._mode = mode
         self._attributes = self._validate_attributes(mode, **kwargs)
 
     ### SPECIAL METHODS ###
 
-    def __delitem__(self, key):
+    def __delitem__(self, key: str) -> None:
         del(self._attributes[key])
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return (
             type(self) == type(other) and
             self._mode == other._mode and
             self._attributes == other._attributes
             )
 
-    def __format__(self, format_spec=None):
+    def __format__(self, format_spec: str=None) -> str:
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
         return str(self)
 
-    def __format_graphviz__(self):
+    def __format_graphviz__(self) -> str:
         if not self._attributes:
             return ''
         result = []
@@ -204,7 +205,7 @@ class Attributes(collections.MutableMapping):
         result[-1] = result[-1] + '];'
         return '\n'.join(result)
 
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> typing.Any:
         return self._attributes[key]
 
     def __iter__(self):
@@ -221,7 +222,7 @@ class Attributes(collections.MutableMapping):
     ### PRIVATE METHODS ###
 
     @classmethod
-    def _format_value(cls, value):
+    def _format_value(cls, value) -> str:
         if isinstance(value, bool):
             return str(value).lower()
         elif isinstance(value, (int, float)):

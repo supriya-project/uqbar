@@ -35,7 +35,7 @@ class FunctionDocumenter(MemberDocumenter):
 
     def __str__(self) -> str:
         return '.. autofunction:: {}'.format(
-            self.client.__name__,
+            getattr(self.client, '__name__'),
             )
 
     ### PUBLIC METHODS ###
