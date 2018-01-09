@@ -5,6 +5,14 @@ from uqbar.graphs.Attributes import Attributes
 class Node(UniqueTreeContainer):
     """
     A Graphviz node.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> node = uqbar.graphs.Node()
+        >>> print(format(node, 'graphviz'))
+        node_0;
+
     """
 
     ### INITIALIZER ###
@@ -82,7 +90,11 @@ class Node(UniqueTreeContainer):
 
     @property
     def _node_class(self):
-        return ()
+        import uqbar.graphs
+        return (
+            uqbar.graphs.RecordField,
+            uqbar.graphs.RecordGroup,
+            )
 
     ### PUBLIC PROPERTIES ###
 

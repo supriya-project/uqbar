@@ -6,3 +6,5 @@ from .Attributes import Attributes  # noqa
 from .Edge import Edge  # noqa
 from .Graph import Graph  # noqa
 from .Node import Node  # noqa
+from .RecordField import RecordField  # noqa
+from .RecordGroup import RecordGroup  # noqa
