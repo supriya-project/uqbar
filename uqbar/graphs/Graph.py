@@ -1,6 +1,8 @@
 from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs.Attributes import Attributes
-from uqbar.graphs.Node import Node
+from uqbar.graphs.Edge import Edge  # noqa
+from uqbar.graphs.Node import Node  # noqa
+from typing import Dict, List, Mapping, Set, Tuple, Union  # noqa
 
 
 class Graph(UniqueTreeContainer):
@@ -14,13 +16,13 @@ class Graph(UniqueTreeContainer):
         self,
         children=None,
         *,
-        attributes=None,
-        edge_attributes=None,
-        is_cluster=None,
-        is_digraph=True,
-        name=None,
-        node_attributes=None
-        ):
+        attributes: Union[Mapping[str, object], Attributes]=None,
+        edge_attributes: Union[Mapping[str, object], Attributes]=None,
+        is_cluster: bool=None,
+        is_digraph: bool=True,
+        name: str=None,
+        node_attributes: Union[Mapping[str, object], Attributes]=None
+        ) -> None:
         UniqueTreeContainer.__init__(self, name=name, children=children)
         if is_cluster is not None:
             is_cluster = bool(is_cluster)
@@ -35,13 +37,13 @@ class Graph(UniqueTreeContainer):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec=None):
+    def __format__(self, format_spec: str=None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
         return str(self)
 
-    def __format_graphviz__(self):
+    def __format_graphviz__(self) -> str:
         def recurse(graph):
             indent = '    '
             result = []
@@ -90,8 +92,8 @@ class Graph(UniqueTreeContainer):
             result.append('}')
             return result
 
-        all_edges = set()
-        all_nodes = {}
+        all_edges = set()  # type: Set[Edge]
+        all_nodes = {}  # type: Dict[str, Node]
         for node in self.recurse():
             canonical_name = node._get_canonical_name()
             if canonical_name in all_nodes:
@@ -105,11 +107,11 @@ class Graph(UniqueTreeContainer):
                 elif edge.tail.root is not edge.head.root:
                     continue
                 all_edges.add(edge)
-        all_edges = sorted(all_edges, key=lambda edge: (
-            edge.tail.graph_order, edge.head.graph_order,
-            ))
-        edge_parents = {}
-        for edge in all_edges:
+        edge_parents = {}  # type: Dict[Graph, List[Edge]]
+        for edge in sorted(
+            all_edges,
+            key=lambda edge: (edge.tail.graph_order, edge.head.graph_order),
+            ):
             highest_parent = edge._get_highest_parent()
             edge_parents.setdefault(highest_parent, []).append(edge)
 
@@ -117,7 +119,7 @@ class Graph(UniqueTreeContainer):
 
     ### PRIVATE METHODS ###
 
-    def _get_canonical_name(self):
+    def _get_canonical_name(self) -> str:
         name_prefix = 'graph'
         if self.is_cluster:
             name_prefix = 'cluster'
@@ -138,7 +140,7 @@ class Graph(UniqueTreeContainer):
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self):
+    def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
         return (
             uqbar.graphs.Graph,
@@ -148,21 +150,21 @@ class Graph(UniqueTreeContainer):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def attributes(self):
+    def attributes(self) -> Attributes:
         return self._attributes
 
     @property
-    def edge_attributes(self):
+    def edge_attributes(self) -> Attributes:
         return self._edge_attributes
 
     @property
-    def is_cluster(self):
+    def is_cluster(self) -> bool:
         return self._is_cluster
 
     @property
-    def is_digraph(self):
+    def is_digraph(self) -> bool:
         return self._is_digraph
 
     @property
-    def node_attributes(self):
+    def node_attributes(self) -> Attributes:
         return self._node_attributes

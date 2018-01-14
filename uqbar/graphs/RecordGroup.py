@@ -1,9 +1,9 @@
 from uqbar.containers import UniqueTreeContainer
+from typing import Tuple  # noqa
 
 
 class RecordGroup(UniqueTreeContainer):
-    """
-    A Graphviz record field group.
+    """ A Graphviz record field group.
 
     ::
 
@@ -18,40 +18,42 @@ class RecordGroup(UniqueTreeContainer):
         ...     uqbar.graphs.RecordField(),
         ...     ])
         >>> print(format(group, 'graphviz'))
+        { <f_0> | { <f_0> | <f_0> } | <f_0> }
 
     """
 
     ### INITIALIZER ###
 
-    def __init__(self, children=None, *, name=None):
+    def __init__(
+        self,
+        children=None,
+        *,
+        name: str=None
+        ) -> None:
         UniqueTreeContainer.__init__(self, name=name, children=children)
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec=None):
+    def __format__(self, format_spec=None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
         return str(self)
 
-    def __format_graphviz__(self):
-        result = []
-        return '\n'.join(result)
+    def __format_graphviz__(self) -> str:
+        result = ' | '.join(
+            _ for _ in (format(_, 'graphviz') for _ in self) if _
+            )
+        if result:
+            result = '{{ {} }}'.format(result)
+        return result
 
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self):
+    def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
         return (
             uqbar.graphs.RecordField,
             uqbar.graphs.RecordGroup,
             )
-
-    @property
-    def node(self):
-        from uqbar.graphs import Node
-        for parent in self.parentage:
-            if isinstance(parent, Node):
-                return parent
-        return None

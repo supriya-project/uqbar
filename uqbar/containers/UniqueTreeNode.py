@@ -16,7 +16,7 @@ class UniqueTreeNode(object):
 
     ### INITIALIZER ###
 
-    def __init__(self, name=None):
+    def __init__(self, name: str=None) -> None:
         self._name = name
         self._parent = None
 
