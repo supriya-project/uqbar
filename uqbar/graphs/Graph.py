@@ -93,18 +93,9 @@ class Graph(UniqueTreeContainer):
             return result
 
         all_edges = set()  # type: Set[Edge]
-        all_nodes = {}  # type: Dict[str, Node]
-        for node in self.recurse():
-            canonical_name = node._get_canonical_name()
-            if canonical_name in all_nodes:
-                raise ValueError(node.name, canonical_name)
-            all_nodes[canonical_name] = node
-            if not isinstance(node, Node):
-                continue
-            for edge in node.edges:
-                if edge in all_edges:
-                    continue
-                elif edge.tail.root is not edge.head.root:
+        for child in self.depth_first():
+            for edge in getattr(child, 'edges', ()):
+                if edge.tail.root is not edge.head.root:
                     continue
                 all_edges.add(edge)
         edge_parents = {}  # type: Dict[Graph, List[Edge]]

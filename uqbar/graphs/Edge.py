@@ -33,20 +33,35 @@ class Edge(object):
         return str(self)
 
     def __format_graphviz__(self) -> str:
+        from uqbar.graphs.Node import Node
         connection = '->'
         if not self.is_directed:
             connection = '--'
-        tail_name = self.tail._get_canonical_name()
-        if self._tail_port_position is not None:
-            tail_name = '{}:{}'.format(tail_name, self._tail_port_position)
-        head_name = self.head._get_canonical_name()
-        if self._head_port_position is not None:
-            head_name = '{}:{}'.format(head_name, self._head_port_position)
-        edge_definition = '{} {} {}'.format(
-            Attributes._format_value(tail_name),
-            connection,
-            Attributes._format_value(head_name),
-            )
+        if isinstance(self.tail, Node):
+            tail_node = self.tail
+            tail_port_name = self._tail_port_position
+        else:
+            tail_node = self.tail._get_node()
+            tail_port_name = self.tail._get_port_name()
+        tail_name = Attributes._format_value(tail_node._get_canonical_name())
+        if tail_port_name:
+            tail_name = '{}:{}'.format(
+                tail_name,
+                Attributes._format_value(tail_port_name),
+                )
+        if isinstance(self.head, Node):
+            head_node = self.head
+            head_port_name = self._head_port_position
+        else:
+            head_node = self.head._get_node()
+            head_port_name = self.head._get_port_name()
+        head_name = Attributes._format_value(head_node._get_canonical_name())
+        if head_port_name:
+            head_name = '{}:{}'.format(
+                head_name,
+                Attributes._format_value(head_port_name),
+                )
+        edge_definition = '{} {} {}'.format(tail_name, connection, head_name)
         result = [edge_definition]
         if len(self.attributes):
             attributes = format(self.attributes, 'graphviz').split('\n')
@@ -79,11 +94,12 @@ class Edge(object):
 
     def attach(
         self,
-        tail: 'uqbar.graphs.Node',
-        head: 'uqbar.graphs.Node',
+        tail: Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField'],
+        head: Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField'],
         ) -> 'Edge':
         from uqbar.graphs.Node import Node
-        prototype = Node
+        from uqbar.graphs.RecordField import RecordField
+        prototype = (Node, RecordField)
         assert isinstance(tail, prototype)
         assert isinstance(head, prototype)
         self.detach()
