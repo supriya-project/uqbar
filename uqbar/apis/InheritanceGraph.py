@@ -55,8 +55,8 @@ class InheritanceGraph:
                 graph [label="uqbar.containers"];
                 node [color=2];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\\nGraph"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\\nTree\\nNode"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\\nTree\\nContainer"];
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\\nTree\\nNode"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
@@ -103,42 +103,56 @@ class InheritanceGraph:
                 node [color=1];
                 "builtins.object" [label=object];
             }
+            subgraph "cluster_uqbar.apis" {
+                graph [label="uqbar.apis"];
+                node [color=2];
+                "uqbar.apis.ModuleNode.ModuleNode" [label="Module\\nNode"];
+                "uqbar.apis.PackageNode.PackageNode" [label="Package\\nNode"];
+            }
             subgraph "cluster_uqbar.containers" {
                 graph [label="uqbar.containers"];
                 node [color=3];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [color=black,
                     fontcolor=white,
                     label="Dependency\\nGraph"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
-                    fontcolor=white,
-                    label="Unique\\nTree\\nNode"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
                     fontcolor=white,
                     label="Unique\\nTree\\nContainer"];
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
+                    fontcolor=white,
+                    label="Unique\\nTree\\nNode"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
-            }
-            subgraph "cluster_uqbar.apis" {
-                graph [label="uqbar.apis"];
-                node [color=2];
-                "uqbar.apis.PackageNode.PackageNode" [label="Package\\nNode"];
-                "uqbar.apis.ModuleNode.ModuleNode" [label="Module\\nNode"];
             }
             subgraph "cluster_uqbar.graphs" {
                 graph [label="uqbar.graphs"];
                 node [color=4];
                 "uqbar.graphs.Graph.Graph" [label="Graph"];
+                "uqbar.graphs.HRule.HRule" [label=HRule];
+                "uqbar.graphs.LineBreak.LineBreak" [label="Line\\nBreak"];
                 "uqbar.graphs.Node.Node" [label="Node"];
-                "uqbar.graphs.RecordGroup.RecordGroup" [label="Record\\nGroup"];
                 "uqbar.graphs.RecordField.RecordField" [label="Record\\nField"];
+                "uqbar.graphs.RecordGroup.RecordGroup" [label="Record\\nGroup"];
+                "uqbar.graphs.Table.Table" [label=Table];
+                "uqbar.graphs.TableCell.TableCell" [label="Table\\nCell"];
+                "uqbar.graphs.TableRow.TableRow" [label="Table\\nRow"];
+                "uqbar.graphs.Text.Text" [label=Text];
+                "uqbar.graphs.VRule.VRule" [label=VRule];
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.RecordField.RecordField";
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.LineBreak.LineBreak";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.RecordField.RecordField";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Text.Text";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
         }
 
     :param package_paths: a sequence of package path strings, classes or
@@ -217,12 +231,21 @@ class InheritanceGraph:
                 'style': ['filled', 'rounded'],
                 },
             )
+        classes_to_nodes = {}  # type: Dict[type, Node]
+        for class_ in sorted(
+            self._classes,
+            key=lambda x: (x.__module__, x.__name__),
+            ):
+            node = self._get_or_create_node(class_, graph, urls)
+            classes_to_nodes[class_] = node
+
         for parent_class, child_classes in self._parents_to_children.items():
-            parent_node = self._get_or_create_node(
-                parent_class, graph, urls)
-            for child_class in child_classes:
-                child_node = self._get_or_create_node(
-                    child_class, graph, urls)
+            parent_node = classes_to_nodes[parent_class]
+            for child_class in sorted(
+                child_classes,
+                key=lambda x: (x.__module__, x.__name__),
+                ):
+                child_node = classes_to_nodes[child_class]
                 parent_node.attach(child_node)
         for i, cluster in enumerate(sorted(graph[:], key=lambda x: x.name)):
             cluster.node_attributes['color'] = i % 9 + 1
