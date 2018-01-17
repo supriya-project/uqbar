@@ -1,4 +1,4 @@
-from uqbar.containers import UniqueTreeNode
+from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 
 class HRule(UniqueTreeNode):
