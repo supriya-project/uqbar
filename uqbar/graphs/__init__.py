@@ -15,3 +15,4 @@ from .TableCell import TableCell  # noqa
 from .TableRow import TableRow  # noqa
 from .Text import Text  # noqa
 from .VRule import VRule  # noqa
+from .TextMixin import TextMixin  # noqa
