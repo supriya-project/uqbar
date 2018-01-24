@@ -1,4 +1,4 @@
 Sphinx >= 1.6.0
 Unidecode >= 0.4.21
 sphinx-rtd-theme >= 0.2.4
-git+https://github.com/josiah-wolf-oberholtzer/sphinx-autodoc-typehints.git#egg=sphinx-autodoc-typehints
+sphinx-autodoc-typehints >= 1.2.4
