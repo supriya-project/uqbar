@@ -1,6 +1,6 @@
 import collections
 import re
-import typing
+from typing import Any, FrozenSet, Mapping
 
 
 class Attributes(collections.MutableMapping):
@@ -32,7 +32,7 @@ class Attributes(collections.MutableMapping):
 
     ### CLASS VARIABLES ###
 
-    _validators = None  # type: typing.Mapping[str, object]
+    _validators: Mapping[str, object] = None
 
     class Color(object):
 
@@ -101,7 +101,7 @@ class Attributes(collections.MutableMapping):
     _smooth_types = frozenset(['avg_dist', 'graph_dist', 'none', 'power_dist',
         'rng', 'spring', 'triangle'])
 
-    _styles = frozenset()  # type: typing.FrozenSet[str]
+    _styles: FrozenSet[str] = frozenset()
 
     _word_pattern = re.compile('^\w+$')
 
@@ -205,7 +205,7 @@ class Attributes(collections.MutableMapping):
         result[-1] = result[-1] + '];'
         return '\n'.join(result)
 
-    def __getitem__(self, key) -> typing.Any:
+    def __getitem__(self, key) -> Any:
         return self._attributes[key]
 
     def __iter__(self):

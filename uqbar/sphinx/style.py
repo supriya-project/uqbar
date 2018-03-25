@@ -12,9 +12,9 @@ import inspect
 import pathlib
 import sphinx  # type:ignore
 import uqbar.io
-import typing
 from docutils import nodes
 from sphinx import addnodes  # type: ignore
+from typing import Dict
 
 
 def handle_class(signature_node, module, object_name, cache):
@@ -100,7 +100,7 @@ def on_doctree_read(
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
-    cache = {}  # type: typing.Dict[type, typing.Dict[str, object]]
+    cache: Dict[type, Dict[str, object]] = {}
     for desc_node in document.traverse(addnodes.desc):
         if desc_node.get('domain') != 'py':
             continue

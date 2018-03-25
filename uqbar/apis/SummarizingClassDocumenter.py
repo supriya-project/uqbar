@@ -130,7 +130,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         directive: str,
         title: str,
         ) -> List[str]:
-        result = []  # type: List[str]
+        result: List[str] = []
         if not attributes:
             return result
         result.extend([

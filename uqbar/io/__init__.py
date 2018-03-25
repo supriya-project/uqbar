@@ -103,7 +103,7 @@ def find_common_prefix(
 
     :param paths: paths to inspect
     """
-    counter = collections.Counter()  # type: collections.Counter
+    counter: collections.Counter = collections.Counter()
     for path in paths:
         path = pathlib.Path(path)
         counter.update([path])

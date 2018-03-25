@@ -30,7 +30,7 @@ class Node(UniqueTreeContainer):
         ) -> None:
         UniqueTreeContainer.__init__(self, name=name, children=children)
         self._attributes = Attributes('node', **(attributes or {}))
-        self._edges = set()  # type: Set[Edge]
+        self._edges: Set[Edge] = set()
 
     ### SPECIAL METHODS ###
 

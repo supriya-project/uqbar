@@ -152,7 +152,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         show_full_paths: bool=False,
         **kwargs
         ) -> List[str]:
-        result = []  # type: List[str]
+        result: List[str] = []
         if not documenters:
             return result
         result.extend(['', '.. toctree::', '   :hidden:', ''])
@@ -188,7 +188,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     @property
     def member_documenters_by_section(self) -> List[
         Tuple[str, List[MemberDocumenter]]]:
-        result = {}  # type: MutableMapping[str, List[MemberDocumenter]]
+        result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(
                 documenter.documentation_section, []).append(documenter)

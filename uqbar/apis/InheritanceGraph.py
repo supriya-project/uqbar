@@ -231,7 +231,7 @@ class InheritanceGraph:
                 'style': ['filled', 'rounded'],
                 },
             )
-        classes_to_nodes = {}  # type: Dict[type, Node]
+        classes_to_nodes: Dict[type, Node] = {}
         for class_ in sorted(
             self._classes,
             key=lambda x: (x.__module__, x.__name__),
@@ -308,9 +308,9 @@ class InheritanceGraph:
         """
         Collect all bases and organize into parent/child mappings.
         """
-        parents_to_children = {}  # type: MutableMapping[type, Set[type]]
-        children_to_parents = {}  # type: MutableMapping[type, Set[type]]
-        visited_classes = set()  # type: Set[type]
+        parents_to_children: MutableMapping[type, Set[type]] = {}
+        children_to_parents: MutableMapping[type, Set[type]] = {}
+        visited_classes: Set[type] = set()
         class_stack = list(classes)
         while class_stack:
             class_ = class_stack.pop()
@@ -322,14 +322,16 @@ class InheritanceGraph:
                     class_stack.append(base)
                 parents_to_children.setdefault(base, set()).add(class_)
                 children_to_parents.setdefault(class_, set()).add(base)
-        sorted_parents_to_children = collections.OrderedDict()  # type: MutableMapping[type, List[type]]
+        sorted_parents_to_children: MutableMapping[type, List[type]] = \
+            collections.OrderedDict()
         for parent, children in sorted(
             parents_to_children.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
             ):
             sorted_parents_to_children[parent] = sorted(
                 children, key=lambda x: (x.__module__, x.__name__))
-        sorted_children_to_parents = collections.OrderedDict()  # type: MutableMapping[type, List[type]]
+        sorted_children_to_parents: MutableMapping[type, List[type]] = \
+            collections.OrderedDict()
         for child, parents in sorted(
             children_to_parents.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
@@ -348,7 +350,7 @@ class InheritanceGraph:
         """
         import uqbar.apis
         classes = []
-        initial_source_paths = set()  # type: Set[str]
+        initial_source_paths: Set[str] = set()
         # Graph source paths and classes
         for path in package_paths:
             try:

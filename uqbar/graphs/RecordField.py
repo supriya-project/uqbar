@@ -68,7 +68,7 @@ class RecordField(UniqueTreeNode):
         name: str=None
         ) -> None:
         UniqueTreeNode.__init__(self, name=name)
-        self._edges = set()  # type: Set[uqbar.graphs.Edge]
+        self._edges: Set[uqbar.graphs.Edge] = set()
         if label is not None:
             label = str(label)
         self._label = label

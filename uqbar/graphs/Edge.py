@@ -74,7 +74,7 @@ class Edge(object):
     ### PRIVATE METHODS ###
 
     def _get_highest_parent(self) -> 'uqbar.graphs.Graph':
-        highest_parent = None  # type: 'uqbar.graphs.Graph'
+        highest_parent: uqbar.graphs.Graph = None
         tail_parentage = list(self.tail.parentage[1:])
         head_parentage = list(self.head.parentage[1:])
         while (

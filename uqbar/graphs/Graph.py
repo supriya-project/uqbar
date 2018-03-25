@@ -92,13 +92,13 @@ class Graph(UniqueTreeContainer):
             result.append('}')
             return result
 
-        all_edges = set()  # type: Set[Edge]
+        all_edges: Set[Edge] = set()
         for child in self.depth_first():
             for edge in getattr(child, 'edges', ()):
                 if edge.tail.root is not edge.head.root:
                     continue
                 all_edges.add(edge)
-        edge_parents = {}  # type: Dict[Graph, List[Edge]]
+        edge_parents: Dict[Graph, List[Edge]] = {}
         for edge in sorted(
             all_edges,
             key=lambda edge: (edge.tail.graph_order, edge.head.graph_order),
