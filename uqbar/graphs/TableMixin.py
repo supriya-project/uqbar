@@ -3,6 +3,10 @@ from typing import Union
 
 class TableMixin:
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'HTML Mixin Classes'
+
     ### INITIALIZER ###
 
     def __init__(

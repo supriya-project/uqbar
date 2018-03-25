@@ -19,6 +19,10 @@ class Node(UniqueTreeContainer):
 
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'Core Classes'
+
     ### INITIALIZER ###
 
     def __init__(

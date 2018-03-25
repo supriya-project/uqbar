@@ -10,6 +10,10 @@ class Graph(UniqueTreeContainer):
     A Graphviz graph, subgraph or cluster.
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'Core Classes'
+
     ### INITIALIZER ###
 
     def __init__(

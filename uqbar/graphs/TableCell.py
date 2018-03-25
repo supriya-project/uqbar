@@ -8,6 +8,10 @@ class TableCell(UniqueTreeContainer, TableMixin):
     A Graphviz HTML table.
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'HTML Classes'
+
     ### INITIALIZER ###
 
     def __init__(

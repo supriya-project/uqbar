@@ -59,6 +59,10 @@ class RecordField(UniqueTreeNode):
 
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'Record Field Classes'
+
     ### INITIALIZER ###
 
     def __init__(

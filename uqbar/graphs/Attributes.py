@@ -32,6 +32,8 @@ class Attributes(collections.MutableMapping):
 
     ### CLASS VARIABLES ###
 
+    __documentation_section__ = 'Core Classes'
+
     _validators: Mapping[str, object] = None
 
     class Color(object):

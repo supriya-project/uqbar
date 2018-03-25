@@ -8,6 +8,10 @@ class Edge(object):
     A Graphviz edge.
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'Core Classes'
+
     ### INITIALIZER ###
 
     def __init__(

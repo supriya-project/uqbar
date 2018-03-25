@@ -9,6 +9,10 @@ class Table(UniqueTreeContainer, TableMixin, TextMixin):
     A Graphviz HTML table.
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'HTML Classes'
+
     ### INITIALIZER ###
 
     def __init__(
