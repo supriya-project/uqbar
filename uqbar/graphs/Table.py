@@ -1,12 +1,26 @@
 from typing import Tuple, Union
 from uqbar.containers import UniqueTreeContainer
-from uqbar.graphs.TableMixin import TableMixin
-from uqbar.graphs.TextMixin import TextMixin
 
 
-class Table(UniqueTreeContainer, TableMixin, TextMixin):
+class Table(UniqueTreeContainer):
     """
     A Graphviz HTML table.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> table = uqbar.graphs.Table([
+        ...     uqbar.graphs.TableRow([
+        ...         uqbar.graphs.TableCell('Cell One'),
+        ...     ]),
+        ...     uqbar.graphs.HRule(),
+        ...     uqbar.graphs.TableRow([
+        ...         uqbar.graphs.TableCell('Cell Two'),
+        ...     ]),
+        ... ])
+        >>> print(format(table, 'graphviz'))
+        <TABLE><TR><TD>Cell One</TD></TR><HR/><TR><TD>Cell Two</TD></TR></TABLE>
+
     """
 
     ### CLASS VARIABLES ###
@@ -19,72 +33,29 @@ class Table(UniqueTreeContainer, TableMixin, TextMixin):
         self,
         children=None,
         *,
-        align: str=None,
-        bgcolor: str=None,
-        bold: bool=None,
-        border: Union[int, float]=None,
-        cellborder: Union[int, float]=None,
-        cellpadding: Union[int, float]=None,
-        cellspacing: Union[int, float]=None,
-        color: str=None,
-        columns: str=None,
-        fixedsize: bool=None,
-        font_color: str=None,
-        font_face: str=None,
-        font_size: Union[int, float]=None,
-        gradientangle: Union[int, float]=None,
-        height: Union[int, float]=None,
-        href: str=None,
-        id: str=None,
-        italic: bool=None,
-        name: str=None,
-        overlined: bool=None,
-        rows: str=None,
-        sides: str=None,
-        strikethrough: bool=None,
-        style: str=None,
-        target: str=None,
-        title: str=None,
-        tooltip: str=None,
-        underlined: bool=None,
-        valign: str=None,
-        width: Union[int, float]=None,
+        name=None,
         ) -> None:
         UniqueTreeContainer.__init__(
             self,
             children=children,
             name=name,
             )
-        TableMixin.__init__(
-            self,
-            align=align,
-            bgcolor=bgcolor,
-            cellpadding=cellpadding,
-            cellspacing=cellspacing,
-            color=color,
-            fixedsize=fixedsize,
-            gradientangle=gradientangle,
-            height=height,
-            href=href,
-            id=id,
-            sides=sides,
-            target=target,
-            title=title,
-            tooltip=tooltip,
-            valign=valign,
-            width=width,
-            )
-        TextMixin.__init__(
-            self,
-            bold=bold,
-            font_color=font_color,
-            font_face=font_face,
-            font_size=font_size,
-            italic=italic,
-            overlined=overlined,
-            strikethrough=strikethrough,
-            underlined=underlined,
-            )
+
+    ### SPECIAL METHODS ###
+
+    def __format__(self, format_spec: str=None) -> str:
+        # TODO: make the format specification options machine-readable
+        if format_spec == 'graphviz':
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self) -> str:
+        result = []
+        result.append('<TABLE>')
+        for child in self:
+            result.append(format(child, 'graphviz'))
+        result.append('</TABLE>')
+        return ''.join(result)
 
     ### PRIVATE PROPERTIES ###
 
@@ -95,5 +66,3 @@ class Table(UniqueTreeContainer, TableMixin, TextMixin):
             uqbar.graphs.TableRow,
             uqbar.graphs.HRule,
             )
-
-    ### PUBLIC PROPERTIES ###

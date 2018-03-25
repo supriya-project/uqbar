@@ -1,11 +1,17 @@
-from typing import Union
 from uqbar.containers.UniqueTreeNode import UniqueTreeNode
-from uqbar.graphs.TextMixin import TextMixin
 
 
-class Text(UniqueTreeNode, TextMixin):
+class Text(UniqueTreeNode):
     """
-    A Graphviz HTML text element.
+    A Graphviz HTML text node.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> text = uqbar.graphs.Text('text')
+        >>> print(format(text, 'graphviz'))
+        text
+
     """
 
     ### CLASS VARIABLES ###
@@ -14,55 +20,29 @@ class Text(UniqueTreeNode, TextMixin):
 
     ### INITIALIZER ###
 
-    def __init__(
-        self,
-        *,
-        bold: bool=None,
-        font_color: str=None,
-        font_face: str=None,
-        font_size: Union[int, float]=None,
-        italic: bool=None,
-        name: str=None,
-        overlined: bool=None,
-        strikethrough: bool=None,
-        subscript: bool=None,
-        superscript: bool=None,
-        underlined: bool=None,
-        ) -> None:
-        UniqueTreeNode.__init__(
-            self,
-            name=name,
-            )
-        TextMixin.__init__(
-            self,
-            bold=bold,
-            font_color=font_color,
-            font_face=font_face,
-            font_size=font_size,
-            italic=italic,
-            overlined=overlined,
-            strikethrough=strikethrough,
-            underlined=underlined,
-            )
+    def __init__(self, text, *, name=None):
+        UniqueTreeNode.__init__(self, name=name)
+        self.text = text
+
+    ### SPECIAL METHODS ###
+
+    def __format__(self, format_spec: str=None) -> str:
+        # TODO: make the format specification options machine-readable
+        if format_spec == 'graphviz':
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self) -> str:
+        return self.text
 
     ### PUBLIC PROPERTIES ###
 
     @property
-    def subscript(self):
-        return self._subscript
+    def text(self):
+        return self._text
 
-    @subscript.setter
-    def subscript(self, subscript):
-        if subscript is not None:
-            subscript = bool(subscript)
-        self._subscript = subscript
-
-    @property
-    def superscript(self):
-        return self._superscript
-
-    @superscript.setter
-    def superscript(self, superscript):
-        if superscript is not None:
-            superscript = bool(superscript)
-        self._superscript = superscript
+    @text.setter
+    def text(self, text):
+        if text is not None:
+            text = str(text)
+        self._text = text

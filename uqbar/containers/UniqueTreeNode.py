@@ -2,7 +2,7 @@ import collections
 import copy
 
 
-class UniqueTreeNode(object):
+class UniqueTreeNode:
     """
     A node in a "unique" tree.
 

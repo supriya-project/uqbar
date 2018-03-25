@@ -1,11 +1,19 @@
 from typing import Tuple, Union
-from uqbar.graphs.TableMixin import TableMixin
 from uqbar.containers import UniqueTreeContainer
+from uqbar.graphs import Attachable
 
 
-class TableCell(UniqueTreeContainer, TableMixin):
+class TableCell(UniqueTreeContainer, Attachable):
     """
     A Graphviz HTML table.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> table_cell = uqbar.graphs.TableCell()
+        >>> print(format(table_cell, 'graphviz'))
+        <TD></TD>
+
     """
 
     ### CLASS VARIABLES ###
@@ -18,53 +26,33 @@ class TableCell(UniqueTreeContainer, TableMixin):
         self,
         children=None,
         *,
-        align: str=None,
-        balign: str=None,
-        bgcolor: str=None,
-        border: Union[int, float]=None,
-        cellpadding: Union[int, float]=None,
-        cellspacing: Union[int, float]=None,
-        color: str=None,
-        colspan: int=None,
-        fixedsize: bool=None,
-        gradientangle: Union[int, float]=None,
-        height: Union[int, float]=None,
-        href: str=None,
-        id: str=None,
-        name: str=None,
-        rowspan: int=None,
-        sides: str=None,
-        style: str=None,
-        target: str=None,
-        title: str=None,
-        tooltip: str=None,
-        valign: str=None,
-        width: Union[int, float]=None,
+        name=None,
         ) -> None:
+        from uqbar.graphs import Text
+        if isinstance(children, str):
+            children = [Text(children)]
         UniqueTreeContainer.__init__(
             self,
             children=children,
             name=name,
             )
-        TableMixin.__init__(
-            self,
-            align=align,
-            bgcolor=bgcolor,
-            cellpadding=cellpadding,
-            cellspacing=cellspacing,
-            color=color,
-            fixedsize=fixedsize,
-            gradientangle=gradientangle,
-            height=height,
-            href=href,
-            id=id,
-            sides=sides,
-            target=target,
-            title=title,
-            tooltip=tooltip,
-            valign=valign,
-            width=width,
-            )
+        Attachable.__init__(self)
+
+    ### SPECIAL METHODS ###
+
+    def __format__(self, format_spec: str=None) -> str:
+        # TODO: make the format specification options machine-readable
+        if format_spec == 'graphviz':
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self) -> str:
+        result = []
+        result.append('<TD>')
+        for child in self:
+            result.append(format(child, 'graphviz'))
+        result.append('</TD>')
+        return ''.join(result)
 
     ### PRIVATE PROPERTIES ###
 
@@ -76,5 +64,3 @@ class TableCell(UniqueTreeContainer, TableMixin):
             uqbar.graphs.LineBreak,
             uqbar.graphs.Text,
             )
-
-    ### PUBLIC PROPERTIES ###
