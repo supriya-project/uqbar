@@ -48,10 +48,14 @@ class TableCell(UniqueTreeContainer, Attachable):
 
     def __format_graphviz__(self) -> str:
         result = []
-        result.append('<TD>')
+        start, stop = '<TD', '</TD>'
+        if self.edges:
+            start += ' PORT="{}"'.format(self._get_port_name())
+        start += '>'
+        result.append(start)
         for child in self:
             result.append(format(child, 'graphviz'))
-        result.append('</TD>')
+        result.append(stop)
         return ''.join(result)
 
     ### PRIVATE PROPERTIES ###
