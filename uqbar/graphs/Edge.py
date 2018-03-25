@@ -18,10 +18,10 @@ class Edge(object):
         tail_port_position: str=None,
         ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head = None  # type: 'uqbar.graphs.Node.Node'
+        self._head: Union[uqbar.graphs.Node, uqbar.graphs.RecordField] = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail = None  # type: 'uqbar.graphs.Node.Node'
+        self._tail: Union[uqbar.graphs.Node, uqbar.graphs.RecordField] = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -125,7 +125,7 @@ class Edge(object):
         return self._attributes
 
     @property
-    def head(self) -> 'uqbar.graphs.Node':
+    def head(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField']:
         return self._head
 
     @property
@@ -137,7 +137,7 @@ class Edge(object):
         return self._is_directed
 
     @property
-    def tail(self) -> 'uqbar.graphs.Node':
+    def tail(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField']:
         return self._tail
 
     @property
