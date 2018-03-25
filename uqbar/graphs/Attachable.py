@@ -1,8 +1,9 @@
 import uqbar.graphs
+from uqbar.containers import UniqueTreeNode
 from typing import Optional, Set
 
 
-class Attachable:
+class Attachable(UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 

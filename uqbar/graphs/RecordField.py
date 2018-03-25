@@ -1,10 +1,10 @@
 import uqbar.graphs  # noqa
 from uqbar.containers import UniqueTreeNode
-from typing import Optional, Set
+from typing import Optional
 from uqbar.graphs import Attachable
 
 
-class RecordField(UniqueTreeNode, Attachable):
+class RecordField(Attachable, UniqueTreeNode):
     """
     A Graphviz record field.
 

@@ -22,10 +22,10 @@ class Edge(object):
         tail_port_position: str=None,
         ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head: Union[uqbar.graphs.Node, uqbar.graphs.RecordField] = None
+        self._head: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail: Union[uqbar.graphs.Node, uqbar.graphs.RecordField] = None
+        self._tail: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -98,12 +98,12 @@ class Edge(object):
 
     def attach(
         self,
-        tail: Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField'],
-        head: Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField'],
+        tail: Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable'],
+        head: Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable'],
         ) -> 'Edge':
-        from uqbar.graphs.Node import Node
-        from uqbar.graphs.RecordField import RecordField
-        prototype = (Node, RecordField)
+        from uqbar.graphs import Node
+        from uqbar.graphs import Attachable
+        prototype = (Node, Attachable)
         assert isinstance(tail, prototype)
         assert isinstance(head, prototype)
         self.detach()
@@ -129,7 +129,7 @@ class Edge(object):
         return self._attributes
 
     @property
-    def head(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField']:
+    def head(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
         return self._head
 
     @property
@@ -141,7 +141,7 @@ class Edge(object):
         return self._is_directed
 
     @property
-    def tail(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.RecordField']:
+    def tail(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
         return self._tail
 
     @property

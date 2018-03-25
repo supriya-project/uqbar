@@ -126,6 +126,7 @@ class InheritanceGraph:
             subgraph "cluster_uqbar.graphs" {
                 graph [label="uqbar.graphs"];
                 node [color=4];
+                "uqbar.graphs.Attachable.Attachable" [label=Attachable];
                 "uqbar.graphs.Graph.Graph" [label="Graph"];
                 "uqbar.graphs.HRule.HRule" [label=HRule];
                 "uqbar.graphs.LineBreak.LineBreak" [label="Line\\nBreak"];
@@ -137,6 +138,8 @@ class InheritanceGraph:
                 "uqbar.graphs.TableRow.TableRow" [label="Table\\nRow"];
                 "uqbar.graphs.Text.Text" [label=Text];
                 "uqbar.graphs.VRule.VRule" [label=VRule];
+                "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.RecordField.RecordField";
+                "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.TableCell.TableCell";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
@@ -148,6 +151,7 @@ class InheritanceGraph:
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
             "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.LineBreak.LineBreak";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.RecordField.RecordField";
