@@ -1,4 +1,5 @@
 import collections
+import enum
 import re
 from typing import Any, FrozenSet, Mapping
 
@@ -26,15 +27,9 @@ class Attributes(collections.MutableMapping):
             shape=Mrecord,
             style="rounded, filled"];
 
-    The ``mode`` argument must be one of ``graph``, ``cluster``, ``node`` or
-    ``edge``.
     """
 
     ### CLASS VARIABLES ###
-
-    __documentation_section__ = 'Core Classes'
-
-    _validators: Mapping[str, object] = None
 
     class Color(object):
 
@@ -52,6 +47,14 @@ class Attributes(collections.MutableMapping):
         def __repr__(self) -> str:
             return '<Color {!r}>'.format(self.color)
 
+    class Mode(enum.Enum):
+        CLUSTER = 1
+        EDGE = 2
+        GRAPH = 3
+        NODE = 4
+        TABLE = 5
+        TABLE_CELL = 6
+
     class Point(object):
 
         __slots__ = ('x', 'y')
@@ -66,6 +69,8 @@ class Attributes(collections.MutableMapping):
                 self.x == other.x and
                 self.y == other.y
                 )
+
+    __documentation_section__ = 'Core Classes'
 
     _arrow_types = frozenset(['box', 'circle', 'crow', 'diamond', 'dot',
         'ediamond', 'empty', 'halfopen', 'inv', 'invdot', 'invempty',
@@ -166,10 +171,27 @@ class Attributes(collections.MutableMapping):
     _node_styles = frozenset(['solid', 'dashed', 'dotted', 'bold', 'rounded',
         'diagonals', 'filled', 'striped', 'wedged'])
 
+    ### HTML OBJECT SPECIFICS ###
+
+    _table_attributes = frozenset(['align', 'bgcolor', 'border', 'cellborder',
+        'cellpadding', 'cellspacing', 'color', 'columns', 'fixedsize',
+        'gradientangle', 'height', 'href', 'id', 'rows', 'sides', 'style',
+        'target', 'title', 'tooltip', 'valign', 'width'])
+
+    _table_cell_attributes = frozenset(['align', 'balign', 'bgcolor', 'border',
+        'cellpadding', 'cellspacing', 'color', 'colspan', 'fixedsize',
+        'gradientangle', 'height', 'href', 'id', 'rowspan', 'sides', 'style',
+        'target', 'title', 'tooltip', 'valign', 'width'])
+
+    ### VALIDATORS ###
+
+    _validators: Mapping[str, object] = None
+
     ### INITIALIZER ###
 
     def __init__(self, mode: str, **kwargs) -> None:
-        assert mode in ('cluster', 'edge', 'graph', 'node')
+        if not isinstance(mode, self.Mode):
+            mode = self.Mode[str(mode).upper()]
         self._mode = mode
         self._attributes = self._validate_attributes(mode, **kwargs)
 
@@ -264,12 +286,14 @@ class Attributes(collections.MutableMapping):
 
     @classmethod
     def _validate_attributes(cls, mode, **kwargs):
-        valid_attributes, valid_styles = dict(
-            cluster=(cls._cluster_attributes, cls._cluster_styles),
-            edge=(cls._edge_attributes, cls._edge_styles),
-            graph=(cls._graph_attributes, cls._graph_styles),
-            node=(cls._node_attributes, cls._node_styles),
-            )[mode]
+        valid_attributes, valid_styles = {
+            cls.Mode.CLUSTER: (cls._cluster_attributes, cls._cluster_styles),
+            cls.Mode.EDGE: (cls._edge_attributes, cls._edge_styles),
+            cls.Mode.GRAPH: (cls._graph_attributes, cls._graph_styles),
+            cls.Mode.NODE: (cls._node_attributes, cls._node_styles),
+            cls.Mode.TABLE: (cls._table_attributes, None),
+            cls.Mode.TABLE_CELL: (cls._table_cell_attributes, None),
+            }[mode]
         attributes = {}
         for key, value in kwargs.items():
             if key not in valid_attributes:

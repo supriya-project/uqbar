@@ -33,6 +33,7 @@ class Table(UniqueTreeContainer):
         self,
         children=None,
         *,
+        attributes=None,
         name=None,
         ) -> None:
         UniqueTreeContainer.__init__(
@@ -40,6 +41,9 @@ class Table(UniqueTreeContainer):
             children=children,
             name=name,
             )
+        if attributes is not None:
+            attributes = dict(attributes)
+        self._attributes = attributes
 
     ### SPECIAL METHODS ###
 

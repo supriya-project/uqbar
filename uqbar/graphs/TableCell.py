@@ -26,6 +26,7 @@ class TableCell(UniqueTreeContainer, Attachable):
         self,
         children=None,
         *,
+        attributes=None,
         name=None,
         ) -> None:
         from uqbar.graphs import Text
@@ -37,6 +38,9 @@ class TableCell(UniqueTreeContainer, Attachable):
             name=name,
             )
         Attachable.__init__(self)
+        if attributes is not None:
+            attributes = dict(attributes)
+        self._attributes = attributes
 
     ### SPECIAL METHODS ###
 
