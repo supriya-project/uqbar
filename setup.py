@@ -26,15 +26,13 @@ classifiers = [
     'Natural Language :: English',
     'Operating System :: MacOS',
     'Operating System :: POSIX',
-    'Programming Language :: Python :: 3.4',
-    'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
     ]
 
 install_requires = [
     'Sphinx>=1.6.0',
     'Unidecode>=0.4.21',
-    'sphinx-autodoc-typehints>=1.2.4',
+    'sphinx-autodoc-typehints>=1.3.0',
     'sphinx-rtd-theme>=0.2.4',
     ]
 

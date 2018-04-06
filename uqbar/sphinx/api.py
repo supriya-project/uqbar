@@ -41,7 +41,7 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         config.uqbar_api_directory_name
         )
 
-    initial_source_paths = []  # type: List[str]
+    initial_source_paths: List[str] = []
     source_paths = config.uqbar_api_source_paths
     for source_path in source_paths:
         if isinstance(source_path, types.ModuleType):

@@ -123,7 +123,7 @@ class UniqueTreeContainer(UniqueTreeNode):
         for child in self:
             if top_down:
                 yield child
-            if isinstance(child, type(self)):
+            if isinstance(child, UniqueTreeContainer):
                 for grandchild in child.depth_first(top_down=top_down):
                     yield grandchild
             if not top_down:

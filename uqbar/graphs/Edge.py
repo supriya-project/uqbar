@@ -8,6 +8,10 @@ class Edge(object):
     A Graphviz edge.
     """
 
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = 'Core Classes'
+
     ### INITIALIZER ###
 
     def __init__(
@@ -18,10 +22,10 @@ class Edge(object):
         tail_port_position: str=None,
         ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head = None  # type: 'uqbar.graphs.Node.Node'
+        self._head: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail = None  # type: 'uqbar.graphs.Node.Node'
+        self._tail: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -33,20 +37,35 @@ class Edge(object):
         return str(self)
 
     def __format_graphviz__(self) -> str:
+        from uqbar.graphs.Node import Node
         connection = '->'
         if not self.is_directed:
             connection = '--'
-        tail_name = self.tail._get_canonical_name()
-        if self._tail_port_position is not None:
-            tail_name = '{}:{}'.format(tail_name, self._tail_port_position)
-        head_name = self.head._get_canonical_name()
-        if self._head_port_position is not None:
-            head_name = '{}:{}'.format(head_name, self._head_port_position)
-        edge_definition = '{} {} {}'.format(
-            Attributes._format_value(tail_name),
-            connection,
-            Attributes._format_value(head_name),
-            )
+        if isinstance(self.tail, Node):
+            tail_node = self.tail
+            tail_port_name = self._tail_port_position
+        else:
+            tail_node = self.tail._get_node()
+            tail_port_name = self.tail._get_port_name()
+        tail_name = Attributes._format_value(tail_node._get_canonical_name())
+        if tail_port_name:
+            tail_name = '{}:{}'.format(
+                tail_name,
+                Attributes._format_value(tail_port_name),
+                )
+        if isinstance(self.head, Node):
+            head_node = self.head
+            head_port_name = self._head_port_position
+        else:
+            head_node = self.head._get_node()
+            head_port_name = self.head._get_port_name()
+        head_name = Attributes._format_value(head_node._get_canonical_name())
+        if head_port_name:
+            head_name = '{}:{}'.format(
+                head_name,
+                Attributes._format_value(head_port_name),
+                )
+        edge_definition = '{} {} {}'.format(tail_name, connection, head_name)
         result = [edge_definition]
         if len(self.attributes):
             attributes = format(self.attributes, 'graphviz').split('\n')
@@ -59,7 +78,7 @@ class Edge(object):
     ### PRIVATE METHODS ###
 
     def _get_highest_parent(self) -> 'uqbar.graphs.Graph':
-        highest_parent = None  # type: 'uqbar.graphs.Graph'
+        highest_parent: uqbar.graphs.Graph = None
         tail_parentage = list(self.tail.parentage[1:])
         head_parentage = list(self.head.parentage[1:])
         while (
@@ -79,11 +98,12 @@ class Edge(object):
 
     def attach(
         self,
-        tail: 'uqbar.graphs.Node',
-        head: 'uqbar.graphs.Node',
+        tail: Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable'],
+        head: Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable'],
         ) -> 'Edge':
-        from uqbar.graphs.Node import Node
-        prototype = Node
+        from uqbar.graphs import Node
+        from uqbar.graphs import Attachable
+        prototype = (Node, Attachable)
         assert isinstance(tail, prototype)
         assert isinstance(head, prototype)
         self.detach()
@@ -109,7 +129,7 @@ class Edge(object):
         return self._attributes
 
     @property
-    def head(self) -> 'uqbar.graphs.Node':
+    def head(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
         return self._head
 
     @property
@@ -121,7 +141,7 @@ class Edge(object):
         return self._is_directed
 
     @property
-    def tail(self) -> 'uqbar.graphs.Node':
+    def tail(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
         return self._tail
 
     @property

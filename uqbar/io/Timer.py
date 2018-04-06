@@ -26,8 +26,8 @@ class Timer:
         if exit_message is not None:
             exit_message = str(exit_message)
         self._exit_message = exit_message
-        self._start_time = None  # type: typing.Optional[float]
-        self._stop_time = None  # type: typing.Optional[float]
+        self._start_time: float = None
+        self._stop_time: float = None
         self._verbose = bool(verbose)
 
     ### SPECIAL METHODS ###

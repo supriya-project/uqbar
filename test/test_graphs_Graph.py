@@ -205,18 +205,18 @@ class TestCase(unittest.TestCase):
             digraph g {
                 graph [bgcolor=transparent,
                     color=lightslategrey,
-                    dpi=72.0,
+                    dpi=72,
                     fontname=Arial,
                     outputorder=edgesfirst,
                     overlap=prism,
                     rankdir=LR,
-                    ranksep=1.0,
+                    ranksep=1,
                     splines=spline,
                     style="dotted, rounded"];
                 node [fontname=Arial,
-                    fontsize=12.0,
-                    penwidth=2.0,
+                    fontsize=12,
+                    penwidth=2,
                     style="filled, rounded"];
-                edge [penwidth=2.0];
+                edge [penwidth=2];
             }
         ''')

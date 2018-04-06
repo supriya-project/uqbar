@@ -1,6 +1,9 @@
 import collections
+import enum
+import math
 import re
-import typing
+import uqbar.graphs  # noqa
+from typing import Any, FrozenSet, Mapping, Union
 
 
 class Attributes(collections.MutableMapping):
@@ -26,13 +29,9 @@ class Attributes(collections.MutableMapping):
             shape=Mrecord,
             style="rounded, filled"];
 
-    The ``mode`` argument must be one of ``graph``, ``cluster``, ``node`` or
-    ``edge``.
     """
 
     ### CLASS VARIABLES ###
-
-    _validators = None  # type: typing.Mapping[str, object]
 
     class Color(object):
 
@@ -50,6 +49,14 @@ class Attributes(collections.MutableMapping):
         def __repr__(self) -> str:
             return '<Color {!r}>'.format(self.color)
 
+    class Mode(enum.Enum):
+        CLUSTER = 1
+        EDGE = 2
+        GRAPH = 3
+        NODE = 4
+        TABLE = 5
+        TABLE_CELL = 6
+
     class Point(object):
 
         __slots__ = ('x', 'y')
@@ -64,6 +71,8 @@ class Attributes(collections.MutableMapping):
                 self.x == other.x and
                 self.y == other.y
                 )
+
+    __documentation_section__ = 'Core Classes'
 
     _arrow_types = frozenset(['box', 'circle', 'crow', 'diamond', 'dot',
         'ediamond', 'empty', 'halfopen', 'inv', 'invdot', 'invempty',
@@ -101,7 +110,7 @@ class Attributes(collections.MutableMapping):
     _smooth_types = frozenset(['avg_dist', 'graph_dist', 'none', 'power_dist',
         'rng', 'spring', 'triangle'])
 
-    _styles = frozenset()  # type: typing.FrozenSet[str]
+    _styles: FrozenSet[str] = frozenset()
 
     _word_pattern = re.compile('^\w+$')
 
@@ -164,10 +173,31 @@ class Attributes(collections.MutableMapping):
     _node_styles = frozenset(['solid', 'dashed', 'dotted', 'bold', 'rounded',
         'diagonals', 'filled', 'striped', 'wedged'])
 
+    ### HTML OBJECT SPECIFICS ###
+
+    _table_attributes = frozenset(['align', 'bgcolor', 'border', 'cellborder',
+        'cellpadding', 'cellspacing', 'color', 'columns', 'fixedsize',
+        'gradientangle', 'height', 'href', 'id', 'rows', 'sides', 'style',
+        'target', 'title', 'tooltip', 'valign', 'width'])
+
+    _table_cell_attributes = frozenset(['align', 'balign', 'bgcolor', 'border',
+        'cellpadding', 'cellspacing', 'color', 'colspan', 'fixedsize',
+        'gradientangle', 'height', 'href', 'id', 'rowspan', 'sides', 'style',
+        'target', 'title', 'tooltip', 'valign', 'width'])
+
+    ### VALIDATORS ###
+
+    _validators: Mapping[str, object] = None
+
     ### INITIALIZER ###
 
-    def __init__(self, mode: str, **kwargs) -> None:
-        assert mode in ('cluster', 'edge', 'graph', 'node')
+    def __init__(
+        self,
+        mode: Union[str, 'uqbar.graphs.Attributes.Mode'],
+        **kwargs,
+        ) -> None:
+        if not isinstance(mode, self.Mode):
+            mode = self.Mode[str(mode).upper()]
         self._mode = mode
         self._attributes = self._validate_attributes(mode, **kwargs)
 
@@ -186,6 +216,8 @@ class Attributes(collections.MutableMapping):
     def __format__(self, format_spec: str=None) -> str:
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
+        elif format_spec == 'html':
+            return self.__format_html__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
@@ -205,7 +237,18 @@ class Attributes(collections.MutableMapping):
         result[-1] = result[-1] + '];'
         return '\n'.join(result)
 
-    def __getitem__(self, key) -> typing.Any:
+    def __format_html__(self) -> str:
+        if not self._attributes:
+            return ''
+        result = []
+        for key, value in sorted(self._attributes.items()):
+            value = self._format_value(value)
+            if not value.startswith('"'):
+                value = '"{}"'.format(value)
+            result.append('{}={}'.format(key.upper(), value))
+        return ' '.join(result)
+
+    def __getitem__(self, key) -> Any:
         return self._attributes[key]
 
     def __iter__(self):
@@ -225,7 +268,11 @@ class Attributes(collections.MutableMapping):
     def _format_value(cls, value) -> str:
         if isinstance(value, bool):
             return str(value).lower()
-        elif isinstance(value, (int, float)):
+        elif isinstance(value, int):
+            return str(value)
+        elif isinstance(value, float):
+            if not value % 1.0:
+                value = math.floor(value)
             return str(value)
         elif isinstance(value, (list, tuple)):
             value = ', '.join(cls._format_value(x) for x in value)
@@ -262,17 +309,19 @@ class Attributes(collections.MutableMapping):
 
     @classmethod
     def _validate_attributes(cls, mode, **kwargs):
-        valid_attributes, valid_styles = dict(
-            cluster=(cls._cluster_attributes, cls._cluster_styles),
-            edge=(cls._edge_attributes, cls._edge_styles),
-            graph=(cls._graph_attributes, cls._graph_styles),
-            node=(cls._node_attributes, cls._node_styles),
-            )[mode]
+        valid_attributes, valid_styles = {
+            cls.Mode.CLUSTER: (cls._cluster_attributes, cls._cluster_styles),
+            cls.Mode.EDGE: (cls._edge_attributes, cls._edge_styles),
+            cls.Mode.GRAPH: (cls._graph_attributes, cls._graph_styles),
+            cls.Mode.NODE: (cls._node_attributes, cls._node_styles),
+            cls.Mode.TABLE: (cls._table_attributes, None),
+            cls.Mode.TABLE_CELL: (cls._table_cell_attributes, None),
+            }[mode]
         attributes = {}
         for key, value in kwargs.items():
             if key not in valid_attributes:
                 raise ValueError(key)
-            validators = cls._validators[key]
+            validators = cls._get_validators(mode)[key]
             if not isinstance(validators, tuple):
                 validators = (validators,)
             for validator in validators:
@@ -420,176 +469,191 @@ class Attributes(collections.MutableMapping):
     def mode(self):
         return self._mode
 
-
-Attributes._validators = {
-    'Damping': float,
-    'K': float,
-    'URL': str,
-    '_background': str,
-    'area': float,
-    'arrowhead': Attributes._validate_arrow_type,
-    'arrowsize': float,
-    'arrowtail': Attributes._validate_arrow_type,
-    'bb': Attributes._validate_rect,
-    'bgcolor': Attributes._validate_colors,
-    'center': bool,
-    'charset': str,
-    'clusterrank': Attributes._validate_cluster_mode,
-    'color': Attributes._validate_colors,
-    'colorscheme': str,
-    'comment': str,
-    'compound': bool,
-    'concentrate': bool,
-    'constraint': bool,
-    'decorate': bool,
-    'defaultdist': float,
-    'dim': int,
-    'dimen': int,
-    'dir': Attributes._validate_dir_type,
-    'diredgeconstraints': ('hier', bool),
-    'distortion': float,
-    'dpi': float,
-    'edgeURL': str,
-    'edgehref': str,
-    'edgetarget': str,
-    'edgetooltip': str,
-    'epsilon': float,
-    'esep': (float, Attributes._validate_point),
-    'fillcolor': Attributes._validate_colors,
-    'fixedsize': ('shape', bool),
-    'fontcolor': Attributes._validate_color,
-    'fontname': str,
-    'fontnames': str,
-    'fontpath': str,
-    'fontsize': float,
-    'forcelabels': bool,
-    'gradientangle': int,
-    'group': str,
-    'headURL': str,
-    'head_lp': Attributes._validate_point,
-    'headclip': bool,
-    'headhref': str,
-    'headlabel': str,
-    'headport': str,
-    'headtarget': str,
-    'headtooltip': str,
-    'height': float,
-    'href': str,
-    'id': str,
-    'image': str,
-    'imagepath': str,
-    'imagepos': str,
-    'imagescale': ('width', 'height', 'both', bool),
-    'inputscale': float,
-    'label': str,
-    'labelURL': str,
-    'label_scheme': int,
-    'labelangle': float,
-    'labeldistance': float,
-    'labelfloat': bool,
-    'labelfontcolor': Attributes._validate_color,
-    'labelfontname': str,
-    'labelfontsize': float,
-    'labelhref': str,
-    'labeljust': str,
-    'labelloc': str,
-    'labeltarget': str,
-    'labeltooltip': str,
-    'landscape': bool,
-    'layer': str,
-    'layerlistsep': str,
-    'layers': str,
-    'layerselect': str,
-    'layersep': str,
-    'layout': str,
-    'len': float,
-    'levels': int,
-    'levelsgap': float,
-    'lhead': str,
-    'lheight': float,
-    'lp': Attributes._validate_point,
-    'ltail': str,
-    'lwidth': float,
-    'margin': (float, Attributes._validate_point),
-    'maxiter': int,
-    'mclimit': float,
-    'mindist': float,
-    'minlen': int,
-    'mode': str,
-    'model': str,
-    'mosek': bool,
-    'newrank': bool,
-    'nodesep': float,
-    'nojustify': bool,
-    'normalize': (float, bool),
-    'notranslate': bool,
-    'nslimit': float,
-    'nslimit1': float,
-    'ordering': str,
-    'outputorder': Attributes._validate_output_mode,
-    'overlap': ('scale', 'scalexy', 'compress', 'ipsep', 'prism', bool),
-    'overlap_scaling': float,
-    'overlap_shrink': bool,
-    'pack': bool,
-    'packmode': Attributes._validate_pack_mode,
-    'pad': (float, Attributes._validate_point),
-    'page': (float, Attributes._validate_point),
-    'pagedir': Attributes._validate_page_dir,
-    'pencolor': Attributes._validate_color,
-    'penwidth': float,
-    'peripheries': int,
-    'pin': bool,
-    'pos': Attributes._validate_point,
-    'quadtree': (Attributes._validate_quad_type, bool),
-    'quantum': float,
-    'rank': Attributes._validate_rank_type,
-    'rankdir': Attributes._validate_rank_dir,
-    'ranksep': (float, Attributes._validate_floats),
-    'ratio': ('fill', 'compress', 'expand', 'auto', float),
-    'rects': Attributes._validate_rect,
-    'regular': bool,
-    'remincross': bool,
-    'repulsiveforce': float,
-    'resolution': float,
-    'root': str,
-    'rotate': int,
-    'rotation': float,
-    'samehead': str,
-    'sametail': str,
-    'samplepoints': int,
-    'scale': (float, Attributes._validate_point),
-    'searchsize': int,
-    'sep': (float, Attributes._validate_point),
-    'shape': Attributes._validate_shape,
-    'shapefile': str,
-    'showboxes': int,
-    'sides': int,
-    'size': (float, Attributes._validate_point),
-    'skew': float,
-    'smoothing': Attributes._validate_smooth_type,
-    'sortv': int,
-    'splines': ('none', 'line', 'polyline', 'curved', 'ortho', 'spline', bool),
-    'start': str,
-    'style': Attributes._validate_styles,
-    'stylesheet': str,
-    'tailURL': str,
-    'tail_lp': Attributes._validate_point,
-    'tailclip': bool,
-    'tailhref': str,
-    'taillabel': str,
-    'tailport': str,
-    'tailtarget': str,
-    'tailtooltip': str,
-    'target': str,
-    'tooltip': str,
-    'truecolor': bool,
-    'vertices': Attributes._validate_points,
-    'viewport': str,
-    'voro_margin': float,
-    'weight': int,
-    'width': float,
-    'xdotversion': str,
-    'xlabel': str,
-    'xlp': Attributes._validate_point,
-    'z': float,
-    }
+    @classmethod
+    def _get_validators(cls, mode):
+        if not cls._validators:
+            cls._validators = {
+                'Damping': float,
+                'K': float,
+                'URL': str,
+                '_background': str,
+                'align': ('center', 'left', 'right', 'text'),
+                'area': float,
+                'arrowhead': Attributes._validate_arrow_type,
+                'arrowsize': float,
+                'arrowtail': Attributes._validate_arrow_type,
+                'balign': ('center', 'left', 'right', 'text'),
+                'bb': Attributes._validate_rect,
+                'bgcolor': Attributes._validate_colors,
+                'border': float,
+                'cellborder': float,
+                'cellpadding': float,
+                'cellspacing': float,
+                'center': bool,
+                'charset': str,
+                'clusterrank': Attributes._validate_cluster_mode,
+                'color': Attributes._validate_colors,
+                'colorscheme': str,
+                'colspan': int,
+                'columns': int,
+                'comment': str,
+                'compound': bool,
+                'concentrate': bool,
+                'constraint': bool,
+                'decorate': bool,
+                'defaultdist': float,
+                'dim': int,
+                'dimen': int,
+                'dir': Attributes._validate_dir_type,
+                'diredgeconstraints': ('hier', bool),
+                'distortion': float,
+                'dpi': float,
+                'edgeURL': str,
+                'edgehref': str,
+                'edgetarget': str,
+                'edgetooltip': str,
+                'epsilon': float,
+                'esep': (float, Attributes._validate_point),
+                'fillcolor': Attributes._validate_colors,
+                'fixedsize': ('shape', bool),
+                'fontcolor': Attributes._validate_color,
+                'fontname': str,
+                'fontnames': str,
+                'fontpath': str,
+                'fontsize': float,
+                'forcelabels': bool,
+                'gradientangle': int,
+                'group': str,
+                'headURL': str,
+                'head_lp': Attributes._validate_point,
+                'headclip': bool,
+                'headhref': str,
+                'headlabel': str,
+                'headport': str,
+                'headtarget': str,
+                'headtooltip': str,
+                'height': float,
+                'href': str,
+                'id': str,
+                'image': str,
+                'imagepath': str,
+                'imagepos': str,
+                'imagescale': ('width', 'height', 'both', bool),
+                'inputscale': float,
+                'label': str,
+                'labelURL': str,
+                'label_scheme': int,
+                'labelangle': float,
+                'labeldistance': float,
+                'labelfloat': bool,
+                'labelfontcolor': Attributes._validate_color,
+                'labelfontname': str,
+                'labelfontsize': float,
+                'labelhref': str,
+                'labeljust': str,
+                'labelloc': str,
+                'labeltarget': str,
+                'labeltooltip': str,
+                'landscape': bool,
+                'layer': str,
+                'layerlistsep': str,
+                'layers': str,
+                'layerselect': str,
+                'layersep': str,
+                'layout': str,
+                'len': float,
+                'levels': int,
+                'levelsgap': float,
+                'lhead': str,
+                'lheight': float,
+                'lp': Attributes._validate_point,
+                'ltail': str,
+                'lwidth': float,
+                'margin': (float, Attributes._validate_point),
+                'maxiter': int,
+                'mclimit': float,
+                'mindist': float,
+                'minlen': int,
+                'mode': str,
+                'model': str,
+                'mosek': bool,
+                'newrank': bool,
+                'nodesep': float,
+                'nojustify': bool,
+                'normalize': (float, bool),
+                'notranslate': bool,
+                'nslimit': float,
+                'nslimit1': float,
+                'ordering': str,
+                'outputorder': Attributes._validate_output_mode,
+                'overlap': ('scale', 'scalexy', 'compress', 'ipsep', 'prism', bool),
+                'overlap_scaling': float,
+                'overlap_shrink': bool,
+                'pack': bool,
+                'packmode': Attributes._validate_pack_mode,
+                'pad': (float, Attributes._validate_point),
+                'page': (float, Attributes._validate_point),
+                'pagedir': Attributes._validate_page_dir,
+                'pencolor': Attributes._validate_color,
+                'penwidth': float,
+                'peripheries': int,
+                'pin': bool,
+                'pos': Attributes._validate_point,
+                'quadtree': (Attributes._validate_quad_type, bool),
+                'quantum': float,
+                'rank': Attributes._validate_rank_type,
+                'rankdir': Attributes._validate_rank_dir,
+                'ranksep': (float, Attributes._validate_floats),
+                'ratio': ('fill', 'compress', 'expand', 'auto', float),
+                'rects': Attributes._validate_rect,
+                'regular': bool,
+                'remincross': bool,
+                'repulsiveforce': float,
+                'resolution': float,
+                'root': str,
+                'rotate': int,
+                'rotation': float,
+                'rows': int,
+                'rowspan': int,
+                'samehead': str,
+                'sametail': str,
+                'samplepoints': int,
+                'scale': (float, Attributes._validate_point),
+                'searchsize': int,
+                'sep': (float, Attributes._validate_point),
+                'shape': Attributes._validate_shape,
+                'shapefile': str,
+                'showboxes': int,
+                'sides': (int, str),
+                'size': (float, Attributes._validate_point),
+                'skew': float,
+                'smoothing': Attributes._validate_smooth_type,
+                'sortv': int,
+                'splines': ('none', 'line', 'polyline', 'curved', 'ortho', 'spline', bool),
+                'start': str,
+                'style': Attributes._validate_styles,
+                'stylesheet': str,
+                'tailURL': str,
+                'tail_lp': Attributes._validate_point,
+                'tailclip': bool,
+                'tailhref': str,
+                'taillabel': str,
+                'tailport': str,
+                'tailtarget': str,
+                'tailtooltip': str,
+                'target': str,
+                'title': str,
+                'tooltip': str,
+                'truecolor': bool,
+                'valign': ('middle', 'bottom', 'top'),
+                'vertices': Attributes._validate_points,
+                'viewport': str,
+                'voro_margin': float,
+                'weight': int,
+                'width': float,
+                'xdotversion': str,
+                'xlabel': str,
+                'xlp': Attributes._validate_point,
+                'z': float,
+                }
+        return cls._validators

@@ -131,7 +131,7 @@ class ModuleDocumenter:
         documenters,
         **kwargs
         ) -> List[str]:
-        result = []  # type: List[str]
+        result: List[str] = []
         if not documenters:
             return result
         result.extend(['', '.. toctree::'])
@@ -149,7 +149,7 @@ class ModuleDocumenter:
         return result
 
     def _build_preamble(self) -> List[str]:
-        result = [
+        result: List[str] = [
             '.. _{}:'.format(self.reference_name),
             '',
             self.package_name,
@@ -158,7 +158,7 @@ class ModuleDocumenter:
             '.. automodule:: {}'.format(self.package_path),
             '',
             '.. currentmodule:: {}'.format(self.package_path),
-            ]  # type: List[str]
+            ]
         return result
 
     ### PUBLIC PROPERTIES ###
@@ -201,7 +201,7 @@ class ModuleDocumenter:
     @property
     def member_documenters_by_section(self) -> Sequence[
         Tuple[str, Sequence[MemberDocumenter]]]:
-        result = {}  # type: MutableMapping[str, List[MemberDocumenter]]
+        result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(
                 documenter.documentation_section, []).append(documenter)
