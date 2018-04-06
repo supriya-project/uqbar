@@ -3,6 +3,7 @@ from uqbar.graphs.Attributes import Attributes
 from uqbar.graphs.Edge import Edge  # noqa
 from uqbar.graphs.RecordField import RecordField
 from uqbar.graphs.RecordGroup import RecordGroup
+from uqbar.graphs.Table import Table
 from typing import Iterable, Mapping, Set, Tuple, Union  # noqa
 
 
@@ -50,7 +51,10 @@ class Node(UniqueTreeContainer):
         result = [node_definition]
         attributes = self.attributes.copy()
         if len(self):
-            label = ' | '.join(format(_, 'graphviz') for _ in self)
+            if isinstance(self[0], Table):
+                label = '<\n{}>'.format(format(self[0], 'graphviz'))
+            else:
+                label = ' | '.join(format(_, 'graphviz') for _ in self)
             attributes['label'] = label
         if len(attributes):
             attributes = format(attributes, 'graphviz').split('\n')
@@ -105,6 +109,7 @@ class Node(UniqueTreeContainer):
         return (
             uqbar.graphs.RecordField,
             uqbar.graphs.RecordGroup,
+            uqbar.graphs.Table,
             )
 
     ### PUBLIC PROPERTIES ###

@@ -1,5 +1,6 @@
 import collections
 import enum
+import math
 import re
 import uqbar.graphs  # noqa
 from typing import Any, FrozenSet, Mapping, Union
@@ -267,7 +268,11 @@ class Attributes(collections.MutableMapping):
     def _format_value(cls, value) -> str:
         if isinstance(value, bool):
             return str(value).lower()
-        elif isinstance(value, (int, float)):
+        elif isinstance(value, int):
+            return str(value)
+        elif isinstance(value, float):
+            if not value % 1.0:
+                value = math.floor(value)
             return str(value)
         elif isinstance(value, (list, tuple)):
             value = ', '.join(cls._format_value(x) for x in value)

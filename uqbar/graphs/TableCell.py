@@ -24,7 +24,7 @@ class TableCell(UniqueTreeContainer, Attachable):
         ...         },
         ...     )
         >>> print(format(table_cell, 'graphviz'))
-        <TD BGCOLOR="blue" BORDER="5.0"></TD>
+        <TD BGCOLOR="blue" BORDER="5"></TD>
 
     """
 

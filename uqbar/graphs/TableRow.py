@@ -31,9 +31,13 @@ class TableRow(UniqueTreeContainer):
         result = []
         result.append('<TR>')
         for child in self:
-            result.append(format(child, 'graphviz'))
+            for line in format(child, 'graphviz').splitlines():
+                result.append('    {}'.format(line))
         result.append('</TR>')
-        return ''.join(result)
+        join_character = ''
+        if len(result) > 2:
+            join_character = '\n'
+        return join_character.join(result)
 
     ### PRIVATE PROPERTIES ###
 

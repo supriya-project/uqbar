@@ -20,7 +20,15 @@ class Table(UniqueTreeContainer):
         ...     ]),
         ... ])
         >>> print(format(table, 'graphviz'))
-        <TABLE><TR><TD>Cell One</TD></TR><HR/><TR><TD>Cell Two</TD></TR></TABLE>
+        <TABLE>
+            <TR>
+                <TD>Cell One</TD>
+            </TR>
+            <HR/>
+            <TR>
+                <TD>Cell Two</TD>
+            </TR>
+        </TABLE>
 
     ::
 
@@ -31,7 +39,7 @@ class Table(UniqueTreeContainer):
         ...         },
         ...     )
         >>> print(format(table, 'graphviz'))
-        <TABLE BGCOLOR="blue" BORDER="5.0"></TABLE>
+        <TABLE BGCOLOR="blue" BORDER="5"></TABLE>
 
     """
 
@@ -72,9 +80,13 @@ class Table(UniqueTreeContainer):
         start += '>'
         result.append(start)
         for child in self:
-            result.append(format(child, 'graphviz'))
+            for line in format(child, 'graphviz').splitlines():
+                result.append('    {}'.format(line))
         result.append(stop)
-        return ''.join(result)
+        join_character = ''
+        if len(result) > 2:
+            join_character = '\n'
+        return join_character.join(result)
 
     ### PRIVATE PROPERTIES ###
 
