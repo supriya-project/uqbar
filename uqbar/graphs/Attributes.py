@@ -215,6 +215,8 @@ class Attributes(collections.MutableMapping):
     def __format__(self, format_spec: str=None) -> str:
         if format_spec == 'graphviz':
             return self.__format_graphviz__()
+        elif format_spec == 'html':
+            return self.__format_html__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
@@ -233,6 +235,17 @@ class Attributes(collections.MutableMapping):
         result[0] = '[' + result[0]
         result[-1] = result[-1] + '];'
         return '\n'.join(result)
+
+    def __format_html__(self) -> str:
+        if not self._attributes:
+            return ''
+        result = []
+        for key, value in sorted(self._attributes.items()):
+            value = self._format_value(value)
+            if not value.startswith('"'):
+                value = '"{}"'.format(value)
+            result.append('{}={}'.format(key.upper(), value))
+        return ' '.join(result)
 
     def __getitem__(self, key) -> Any:
         return self._attributes[key]

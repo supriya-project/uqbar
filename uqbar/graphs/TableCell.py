@@ -15,6 +15,17 @@ class TableCell(UniqueTreeContainer, Attachable):
         >>> print(format(table_cell, 'graphviz'))
         <TD></TD>
 
+    ::
+
+        >>> table_cell = uqbar.graphs.TableCell(
+        ...     attributes={
+        ...         'border': 5,
+        ...         'bgcolor': 'blue',
+        ...         },
+        ...     )
+        >>> print(format(table_cell, 'graphviz'))
+        <TD BGCOLOR="blue" BORDER="5.0"></TD>
+
     """
 
     ### CLASS VARIABLES ###
@@ -54,6 +65,9 @@ class TableCell(UniqueTreeContainer, Attachable):
         start, stop = '<TD', '</TD>'
         if self.edges:
             start += ' PORT="{}"'.format(self._get_port_name())
+        attributes = format(self._attributes, 'html')
+        if attributes:
+            start += ' {}'.format(attributes)
         start += '>'
         result.append(start)
         for child in self:

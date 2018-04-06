@@ -22,6 +22,17 @@ class Table(UniqueTreeContainer):
         >>> print(format(table, 'graphviz'))
         <TABLE><TR><TD>Cell One</TD></TR><HR/><TR><TD>Cell Two</TD></TR></TABLE>
 
+    ::
+
+        >>> table = uqbar.graphs.Table(
+        ...     attributes={
+        ...         'border': 5,
+        ...         'bgcolor': 'blue',
+        ...         },
+        ...     )
+        >>> print(format(table, 'graphviz'))
+        <TABLE BGCOLOR="blue" BORDER="5.0"></TABLE>
+
     """
 
     ### CLASS VARIABLES ###
@@ -54,10 +65,15 @@ class Table(UniqueTreeContainer):
 
     def __format_graphviz__(self) -> str:
         result = []
-        result.append('<TABLE>')
+        start, stop = '<TABLE', '</TABLE>'
+        attributes = format(self._attributes, 'html')
+        if attributes:
+            start += ' {}'.format(attributes)
+        start += '>'
+        result.append(start)
         for child in self:
             result.append(format(child, 'graphviz'))
-        result.append('</TABLE>')
+        result.append(stop)
         return ''.join(result)
 
     ### PRIVATE PROPERTIES ###
