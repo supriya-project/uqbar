@@ -1,4 +1,5 @@
 from typing import Tuple
+from uqbar.graphs.Attributes import Attributes
 from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs import Attachable
 
@@ -38,9 +39,7 @@ class TableCell(UniqueTreeContainer, Attachable):
             name=name,
             )
         Attachable.__init__(self)
-        if attributes is not None:
-            attributes = dict(attributes)
-        self._attributes = attributes
+        self._attributes = Attributes('table_cell', **(attributes or {}))
 
     ### SPECIAL METHODS ###
 

@@ -1,4 +1,5 @@
-from typing import Tuple, Union
+from typing import Mapping, Tuple, Union
+from uqbar.graphs.Attributes import Attributes
 from uqbar.containers import UniqueTreeContainer
 
 
@@ -33,17 +34,15 @@ class Table(UniqueTreeContainer):
         self,
         children=None,
         *,
-        attributes=None,
-        name=None,
+        attributes: Union[Mapping[str, object], Attributes]=None,
+        name: str=None
         ) -> None:
         UniqueTreeContainer.__init__(
             self,
             children=children,
             name=name,
             )
-        if attributes is not None:
-            attributes = dict(attributes)
-        self._attributes = attributes
+        self._attributes = Attributes('table', **(attributes or {}))
 
     ### SPECIAL METHODS ###
 

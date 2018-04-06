@@ -1,6 +1,7 @@
 import collections
 import enum
 import re
+import uqbar.graphs  # noqa
 from typing import Any, FrozenSet, Mapping, Union
 
 
