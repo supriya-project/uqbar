@@ -12,3 +12,8 @@ clean:
 
 docs:
 	make -C docs/ html 
+
+release:
+	make clean
+	make build
+	twine upload dist/uqbar*.tar.gz
