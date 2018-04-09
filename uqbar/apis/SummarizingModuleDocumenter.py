@@ -67,6 +67,8 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         <BLANKLINE>
         .. autofunction:: find_common_prefix
         <BLANKLINE>
+        .. autofunction:: find_executable
+        <BLANKLINE>
         .. autofunction:: relative_to
         <BLANKLINE>
         .. autofunction:: walk

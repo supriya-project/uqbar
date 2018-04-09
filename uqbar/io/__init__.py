@@ -5,7 +5,7 @@ Tools for IO and file-system manipulation.
 import collections
 import os
 import pathlib
-from typing import Generator, Optional, Sequence, Tuple, Union
+from typing import Generator, List, Optional, Sequence, Tuple, Union
 
 from .DirectoryChange import DirectoryChange  # noqa
 from .Profiler import Profiler  # noqa
@@ -47,7 +47,7 @@ def find_common_prefix(
     return None
 
 
-def find_executable(name, flags=os.X_OK):
+def find_executable(name: str, flags=os.X_OK) -> List[str]:
     r'''Finds executable `name`.
 
     Similar to Unix ``which`` command.

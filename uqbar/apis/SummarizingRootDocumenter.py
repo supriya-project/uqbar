@@ -46,6 +46,7 @@ class SummarizingRootDocumenter(RootDocumenter):
               :nosignatures:
         <BLANKLINE>
               ~uqbar.io.find_common_prefix
+              ~uqbar.io.find_executable
               ~uqbar.io.relative_to
               ~uqbar.io.walk
               ~uqbar.io.write
