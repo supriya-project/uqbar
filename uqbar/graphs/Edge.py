@@ -41,30 +41,37 @@ class Edge(object):
         connection = '->'
         if not self.is_directed:
             connection = '--'
+
+        tail_parts = []
         if isinstance(self.tail, Node):
-            tail_node = self.tail
-            tail_port_name = self._tail_port_position
+            tail_parts.append(self.tail._get_canonical_name())
         else:
-            tail_node = self.tail._get_node()
-            tail_port_name = self.tail._get_port_name()
-        tail_name = Attributes._format_value(tail_node._get_canonical_name())
-        if tail_port_name:
-            tail_name = '{}:{}'.format(
-                tail_name,
-                Attributes._format_value(tail_port_name),
-                )
+            tail_parts.extend([
+                self.tail._get_node()._get_canonical_name(),
+                self.tail._get_port_name(),
+                ])
+        if self.tail_port_position:
+            tail_parts.append(self.tail_port_position)
+        tail_name = ':'.join(
+            Attributes._format_value(part)
+            for part in tail_parts
+            )
+
+        head_parts = []
         if isinstance(self.head, Node):
-            head_node = self.head
-            head_port_name = self._head_port_position
+            head_parts.append(self.head._get_canonical_name())
         else:
-            head_node = self.head._get_node()
-            head_port_name = self.head._get_port_name()
-        head_name = Attributes._format_value(head_node._get_canonical_name())
-        if head_port_name:
-            head_name = '{}:{}'.format(
-                head_name,
-                Attributes._format_value(head_port_name),
-                )
+            head_parts.extend([
+                self.head._get_node()._get_canonical_name(),
+                self.head._get_port_name(),
+                ])
+        if self.head_port_position:
+            head_parts.append(self.head_port_position)
+        head_name = ':'.join(
+            Attributes._format_value(part)
+            for part in head_parts
+            )
+
         edge_definition = '{} {} {}'.format(tail_name, connection, head_name)
         result = [edge_definition]
         if len(self.attributes):
