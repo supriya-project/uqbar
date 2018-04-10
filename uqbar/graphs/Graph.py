@@ -22,21 +22,19 @@ class Graph(UniqueTreeContainer):
         *,
         attributes: Union[Mapping[str, object], Attributes]=None,
         edge_attributes: Union[Mapping[str, object], Attributes]=None,
-        is_cluster: bool=None,
+        is_cluster: bool=False,
         is_digraph: bool=True,
         name: str=None,
         node_attributes: Union[Mapping[str, object], Attributes]=None
         ) -> None:
         UniqueTreeContainer.__init__(self, name=name, children=children)
-        if is_cluster is not None:
-            is_cluster = bool(is_cluster)
-        mode = 'graph'
-        if is_cluster:
-            mode = 'cluster'
-        self._attributes = Attributes(mode, **(attributes or {}))
+        self._attributes = Attributes(
+            'cluster' if is_cluster else 'graph',
+            **(attributes or {}),
+            )
         self._edge_attributes = Attributes('edge', **(edge_attributes or {}))
         self._node_attributes = Attributes('node', **(node_attributes or {}))
-        self._is_cluster = is_cluster
+        self._is_cluster = bool(is_cluster)
         self._is_digraph = bool(is_digraph)
 
     ### SPECIAL METHODS ###
@@ -59,12 +57,13 @@ class Graph(UniqueTreeContainer):
                 else:
                     string = 'graph {} {{'.format(
                         Attributes._format_value(name))
-            elif graph.is_cluster:
-                name = graph.name or graph._get_canonical_name()
-                string = 'subgraph {} {{'.format(
-                    Attributes._format_value('cluster_{}'.format(name)))
             else:
-                name = graph.name or graph._get_canonical_name()
+                if graph.name is not None:
+                    name = graph.name
+                    if graph.is_cluster:
+                        name = 'cluster_{}'.format(name)
+                else:
+                    name = graph._get_canonical_name()
                 string = 'subgraph {} {{'.format(
                     Attributes._format_value(name))
             result.append(string)
@@ -119,7 +118,7 @@ class Graph(UniqueTreeContainer):
         if self.is_cluster:
             name_prefix = 'cluster'
         if self.name is not None:
-            name = '{}_{}'.format(name_prefix, self.name)
+            name = self.name
             root = self.root
             if root:
                 instances = root[self.name]
