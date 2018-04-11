@@ -205,8 +205,8 @@ def test_str_01(test_path):
             .. autosummary::
                :nosignatures:
 
-               fake_package.empty_module
-               fake_package.empty_package
-               fake_package.module
-               fake_package.multi
+               empty_module
+               empty_package
+               module
+               multi
             ''')

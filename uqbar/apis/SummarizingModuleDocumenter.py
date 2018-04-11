@@ -56,7 +56,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         .. autosummary::
            :nosignatures:
         <BLANKLINE>
-           ~uqbar.io.Timer.Timer
+           ~Timer.Timer
         <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
@@ -182,7 +182,9 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
             template = '   ~{}'
             if show_full_paths:
                 template = '   {}'
-            result.append(template.format(documenter.package_path))
+            path = documenter.package_path.rpartition(
+                self.package_path + '.')[-1]
+            result.append(template.format(path))
         return result
 
     ### PUBLIC PROPERTIES ###
