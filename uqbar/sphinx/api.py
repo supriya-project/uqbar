@@ -59,14 +59,33 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         except ImportError:
             initial_source_paths.append(source_path)
 
+    root_documenter_class = config.uqbar_api_root_documenter_class
+    if isinstance(root_documenter_class, str):
+        module_name, _, class_name = root_documenter_class.rpartition('.')
+        module = importlib.import_module(module_name)
+        root_documenter_class = getattr(module, class_name)
+
+    module_documenter_class = config.uqbar_api_module_documenter_class
+    if isinstance(module_documenter_class, str):
+        module_name, _, class_name = module_documenter_class.rpartition('.')
+        module = importlib.import_module(module_name)
+        module_documenter_class = getattr(module, class_name)
+
+    member_documenter_classes = config.uqbar_api_member_documenter_classes or []
+    for i, member_documenter_class in enumerate(member_documenter_classes):
+        if isinstance(member_documenter_class, str):
+            module_name, _, class_name = member_documenter_class.rpartition('.')
+            module = importlib.import_module(module_name)
+            member_documenter_classes[i] = getattr(module, class_name)
+
     api_builder = uqbar.apis.APIBuilder(
         initial_source_paths=initial_source_paths,
         target_directory=target_directory,
         document_private_members=config.uqbar_api_document_private_members,
         document_private_modules=config.uqbar_api_document_private_modules,
-        member_documenter_classes=config.uqbar_api_member_documenter_classes,
-        module_documenter_class=config.uqbar_api_module_documenter_class,
-        root_documenter_class=config.uqbar_api_root_documenter_class,
+        member_documenter_classes=member_documenter_classes,
+        module_documenter_class=module_documenter_class,
+        root_documenter_class=root_documenter_class,
         title=config.uqbar_api_title,
         )
     api_builder()

@@ -21,8 +21,8 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import uqbar
 import sphinx_rtd_theme
-import uqbar.apis
 
 # -- General configuration ------------------------------------------------
 
@@ -204,9 +204,9 @@ graphviz_output_format = 'svg'
 
 uqbar_api_title = 'Uqbar API'
 uqbar_api_source_paths = ['uqbar']
-uqbar_api_root_documenter_class = uqbar.apis.SummarizingRootDocumenter
-uqbar_api_module_documenter_class = uqbar.apis.SummarizingModuleDocumenter
+uqbar_api_root_documenter_class = 'uqbar.apis.SummarizingRootDocumenter'
+uqbar_api_module_documenter_class = 'uqbar.apis.SummarizingModuleDocumenter'
 uqbar_api_member_documenter_classes = [
-    uqbar.apis.FunctionDocumenter,
-    uqbar.apis.SummarizingClassDocumenter,
+    'uqbar.apis.FunctionDocumenter',
+    'uqbar.apis.SummarizingClassDocumenter',
     ]
