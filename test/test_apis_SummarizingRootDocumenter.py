@@ -93,20 +93,30 @@ def test_str_01(test_path):
             .. rubric:: :ref:`fake_package.module <fake-package--module>`
                :class: section-header
 
-            -  Classes
+            .. raw:: html
 
-               .. autosummary::
-                  :nosignatures:
+               <hr/>
 
-                  ~fake_package.module.ChildClass
-                  ~fake_package.module.PublicClass
+            .. rubric:: Classes
+               :class: subsection-header
 
-            -  Functions
+            .. autosummary::
+               :nosignatures:
 
-               .. autosummary::
-                  :nosignatures:
+               ~fake_package.module.ChildClass
+               ~fake_package.module.PublicClass
 
-                  ~fake_package.module.public_function
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: Functions
+               :class: subsection-header
+
+            .. autosummary::
+               :nosignatures:
+
+               ~fake_package.module.public_function
 
             .. raw:: html
 
@@ -115,19 +125,29 @@ def test_str_01(test_path):
             .. rubric:: :ref:`fake_package.multi <fake-package--multi>`
                :class: section-header
 
-            -  Classes
+            .. raw:: html
 
-               .. autosummary::
-                  :nosignatures:
+               <hr/>
 
-                  ~fake_package.multi.PublicClass
+            .. rubric:: Classes
+               :class: subsection-header
 
-            -  Functions
+            .. autosummary::
+               :nosignatures:
 
-               .. autosummary::
-                  :nosignatures:
+               ~fake_package.multi.PublicClass
 
-                  ~fake_package.multi.public_function
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: Functions
+               :class: subsection-header
+
+            .. autosummary::
+               :nosignatures:
+
+               ~fake_package.multi.public_function
 
             .. raw:: html
 
@@ -136,19 +156,29 @@ def test_str_01(test_path):
             .. rubric:: :ref:`fake_package.multi.one <fake-package--multi--one>`
                :class: section-header
 
-            -  Classes
+            .. raw:: html
 
-               .. autosummary::
-                  :nosignatures:
+               <hr/>
 
-                  ~fake_package.multi.one.PublicClass
+            .. rubric:: Classes
+               :class: subsection-header
 
-            -  Functions
+            .. autosummary::
+               :nosignatures:
 
-               .. autosummary::
-                  :nosignatures:
+               ~fake_package.multi.one.PublicClass
 
-                  ~fake_package.multi.one.public_function
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: Functions
+               :class: subsection-header
+
+            .. autosummary::
+               :nosignatures:
+
+               ~fake_package.multi.one.public_function
 
             .. raw:: html
 
@@ -157,19 +187,29 @@ def test_str_01(test_path):
             .. rubric:: :ref:`fake_package.multi.two <fake-package--multi--two>`
                :class: section-header
 
-            -  Classes
+            .. raw:: html
 
-               .. autosummary::
-                  :nosignatures:
+               <hr/>
 
-                  ~fake_package.multi.two.PublicClass
+            .. rubric:: Classes
+               :class: subsection-header
 
-            -  Functions
+            .. autosummary::
+               :nosignatures:
 
-               .. autosummary::
-                  :nosignatures:
+               ~fake_package.multi.two.PublicClass
 
-                  ~fake_package.multi.two.public_function
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: Functions
+               :class: subsection-header
+
+            .. autosummary::
+               :nosignatures:
+
+               ~fake_package.multi.two.public_function
             ''')
     with (base_path / 'index.rst').open() as file_pointer:
         assert normalize(file_pointer.read()) == normalize('''
