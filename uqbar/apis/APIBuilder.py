@@ -60,6 +60,7 @@ class APIBuilder(object):
         self,
         initial_source_paths: Sequence[Union[str, pathlib.Path]],
         target_directory: Union[str, pathlib.Path],
+        document_empty_modules: bool=True,
         document_private_members: bool=False,
         document_private_modules: bool=False,
         member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
@@ -75,6 +76,7 @@ class APIBuilder(object):
         self._target_directory = pathlib.Path(target_directory).absolute()
         self._document_private_members = bool(document_private_members)
         self._document_private_modules = bool(document_private_modules)
+        self._document_empty_modules = bool(document_empty_modules)
         if member_documenter_classes is None:
             member_documenter_classes = [ClassDocumenter, FunctionDocumenter]
         for _ in member_documenter_classes:
@@ -203,6 +205,12 @@ class APIBuilder(object):
                         ],
                     **kwargs
                     )
+            if (
+                not self.document_empty_modules and
+                not node.documenter.module_documenters and
+                not node.documenter.member_documenters
+                ):
+                node.parent.remove(node)
         return root
 
     def collect_module_documenters(self, root_node):
@@ -247,6 +255,10 @@ class APIBuilder(object):
                 self._print('pruned', root_path)
 
     ### PUBLIC PROPERTIES ###
+
+    @property
+    def document_empty_modules(self):
+        return self._document_empty_modules
 
     @property
     def document_private_members(self):

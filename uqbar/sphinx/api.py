@@ -8,6 +8,7 @@ This extension provides the following configuration values which correspond to
 the initialization arguments to the :py:class:`uqbar.apis.APIBuilder` class.
 
 - ``uqbar_api_directory_name`` (default: ``api``)
+- ``uqbar_api_document_empty_modules`` (default: ``False``)
 - ``uqbar_api_document_private_members`` (default: ``False``)
 - ``uqbar_api_document_private_modules`` (default: ``False``)
 - ``uqbar_api_member_documenter_classes`` (default: ``None``)
@@ -77,10 +78,13 @@ def on_builder_inited(app: sphinx.application.Sphinx):
             module_name, _, class_name = member_documenter_class.rpartition('.')
             module = importlib.import_module(module_name)
             member_documenter_classes[i] = getattr(module, class_name)
+    if not member_documenter_classes:
+        member_documenter_classes = None
 
     api_builder = uqbar.apis.APIBuilder(
         initial_source_paths=initial_source_paths,
         target_directory=target_directory,
+        document_empty_modules=config.uqbar_api_document_empty_modules,
         document_private_members=config.uqbar_api_document_private_members,
         document_private_modules=config.uqbar_api_document_private_modules,
         member_documenter_classes=member_documenter_classes,
@@ -97,6 +101,7 @@ def setup(app: sphinx.application.Sphinx):
     """
     app.connect('builder-inited', on_builder_inited)
     app.add_config_value('uqbar_api_directory_name', 'api', 'env')
+    app.add_config_value('uqbar_api_document_empty_modules', False, 'env')
     app.add_config_value('uqbar_api_document_private_members', False, 'env')
     app.add_config_value('uqbar_api_document_private_modules', False, 'env')
     app.add_config_value('uqbar_api_member_documenter_classes', None, 'env')

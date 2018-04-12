@@ -24,12 +24,6 @@ def test_sphinx_api_1(app, status, warning):
 
             * fake_package
 
-              * empty_module
-
-              * empty_package
-
-                * empty
-
               * module
 
               * multi

@@ -108,6 +108,34 @@ def test_collection_03(test_path):
         ]
 
 
+def test_collection_04(test_path):
+    builder = uqbar.apis.APIBuilder(
+        [test_path / 'fake_package'],
+        test_path / 'docs',
+        document_empty_modules=False,
+        )
+    source_paths = uqbar.apis.collect_source_paths(
+        builder._initial_source_paths)
+    node_tree = builder.build_node_tree(source_paths)
+    assert normalize(str(node_tree)) == normalize('''
+        None/
+            fake_package/
+                fake_package.module
+                fake_package.multi/
+                    fake_package.multi.one
+                    fake_package.multi.two
+        ''')
+    documenters = list(builder.collect_module_documenters(node_tree))
+    assert isinstance(documenters[0], uqbar.apis.RootDocumenter)
+    assert [documenter.package_path for documenter in documenters[1:]] == [
+        'fake_package',
+        'fake_package.module',
+        'fake_package.multi',
+        'fake_package.multi.one',
+        'fake_package.multi.two',
+        ]
+
+
 def test_output_01(test_path):
     builder = uqbar.apis.APIBuilder(
         [test_path / 'fake_package'],

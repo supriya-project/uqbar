@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import fake_package
 import pathlib
 import uqbar.apis
@@ -26,5 +24,3 @@ extensions = [
     ]
 
 html_static_path = ['_static']
-
-print('!!!', pathlib.Path(__file__).parent / 'api')
