@@ -63,6 +63,16 @@ class InheritanceGraph:
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
         }
 
+
+    We can calculate the "aspect ratio" of the graph - the number of
+    generations vs the maximum generation size. This can be a useful metric for
+    applying additional post-processing like Graphviz' ``unflatten`` utility:
+
+    ::
+
+        >>> graph.aspect_ratio
+        (2, 2)
+
     Lineage paths constrain the classes in the graph to only those whose
     antecedents or descendants pass through the classes identified by those
     lineage paths. Here we collect all classes defined in :py:mod:`uqbar` and
@@ -159,6 +169,11 @@ class InheritanceGraph:
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
         }
 
+    ::
+
+        >>> graph.aspect_ratio
+        (3, 8)
+
     :param package_paths: a sequence of package path strings, classes or
         modules to seed the inheritance graph with
 
@@ -189,6 +204,7 @@ class InheritanceGraph:
         parent_classes = set(self._parents_to_children)
         child_classes = set(self._children_to_parents)
         self._classes = parent_classes.union(child_classes)
+        self._aspect_ratio = self._calculate_aspect_ratio()
 
     ### SPECIAL METHODS ###
 
@@ -256,6 +272,31 @@ class InheritanceGraph:
         return graph
 
     ### PRIVATE METHODS ###
+
+    def _calculate_aspect_ratio(self):
+        def calculate_depth(class_, depth=0):
+            parents = self._children_to_parents.get(class_, ())
+            while parents:
+                depth += 1
+                new_parents = set()
+                for parent in parents:
+                    new_parents.update(
+                        self._children_to_parents.get(parent, ()))
+                parents = new_parents
+            return depth
+
+        if not self._children_to_parents:
+            return None
+
+        class_to_depth = {}
+        for class_ in self._children_to_parents:
+            class_to_depth[class_] = calculate_depth(class_)
+        depth_to_classes = {}
+        for class_, depth in class_to_depth.items():
+            depth_to_classes.setdefault(depth, set()).add(class_)
+        width = len(depth_to_classes)
+        height = max(len(classes) for classes in depth_to_classes.values())
+        return width, height
 
     def _get_or_create_cluster(self, class_, graph):
         cluster_name = class_.__module__
@@ -433,6 +474,10 @@ class InheritanceGraph:
             self._children_to_parents.pop(child)
 
     ### PUBLIC PROPERTIES ###
+
+    @property
+    def aspect_ratio(self):
+        return self._aspect_ratio
 
     @property
     def classes(self):

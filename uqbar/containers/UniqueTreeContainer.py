@@ -120,7 +120,7 @@ class UniqueTreeContainer(UniqueTreeNode):
             )
 
     def depth_first(self, top_down=True):
-        for child in self:
+        for child in tuple(self):
             if top_down:
                 yield child
             if isinstance(child, UniqueTreeContainer):
