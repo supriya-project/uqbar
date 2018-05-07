@@ -67,15 +67,16 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def __setitem__(self, i, expr):
         if isinstance(i, int):
+            expr = self._prepare_setitem_single(expr)
             assert isinstance(expr, self._node_class)
             old = self[i]
-            assert expr not in self.parentage
             if expr in self.parentage:
                 raise ValueError('Cannot set parent node as child.')
             old._set_parent(None)
             expr._set_parent(self)
             self._children.insert(i, expr)
         else:
+            expr = self._prepare_setitem_multiple(expr)
             if isinstance(expr, UniqueTreeContainer):
                 # Prevent mutating while iterating by copying.
                 expr = expr[:]
@@ -104,6 +105,12 @@ class UniqueTreeContainer(UniqueTreeNode):
             for name, children in self._named_children.items():
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
+
+    def _prepare_setitem_single(self, expr):
+        return expr
+
+    def _prepare_setitem_multiple(self, expr):
+        return expr
 
     ### PRIVATE PROPERTIES ###
 
