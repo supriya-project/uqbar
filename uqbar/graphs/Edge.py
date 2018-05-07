@@ -1,5 +1,5 @@
 import uqbar.graphs  # noqa
-from typing import Mapping, Union
+from typing import Mapping, Optional, Union
 from uqbar.graphs.Attributes import Attributes
 
 
@@ -22,10 +22,12 @@ class Edge(object):
         tail_port_position: str=None,
         ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
-        self._head: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
+        self._head: Optional[
+            Union[uqbar.graphs.Node, uqbar.graphs.Attachable]] = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail: Union[uqbar.graphs.Node, uqbar.graphs.Attachable] = None
+        self._tail: Optional[
+            Union[uqbar.graphs.Node, uqbar.graphs.Attachable]] = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -43,13 +45,16 @@ class Edge(object):
             connection = '--'
 
         tail_parts = []
-        if isinstance(self.tail, Node):
-            tail_parts.append(self.tail._get_canonical_name())
+        if self.tail is not None:
+            if isinstance(self.tail, Node):
+                tail_parts.append(self.tail._get_canonical_name())
+            else:
+                tail_parts.extend([
+                    self.tail._get_node()._get_canonical_name(),
+                    self.tail._get_port_name(),
+                    ])
         else:
-            tail_parts.extend([
-                self.tail._get_node()._get_canonical_name(),
-                self.tail._get_port_name(),
-                ])
+            raise ValueError(self.tail)
         if self.tail_port_position:
             tail_parts.append(self.tail_port_position)
         tail_name = ':'.join(
@@ -58,13 +63,16 @@ class Edge(object):
             )
 
         head_parts = []
-        if isinstance(self.head, Node):
-            head_parts.append(self.head._get_canonical_name())
+        if self.head is not None:
+            if isinstance(self.head, Node):
+                head_parts.append(self.head._get_canonical_name())
+            else:
+                head_parts.extend([
+                    self.head._get_node()._get_canonical_name(),
+                    self.head._get_port_name(),
+                    ])
         else:
-            head_parts.extend([
-                self.head._get_node()._get_canonical_name(),
-                self.head._get_port_name(),
-                ])
+            raise ValueError(self.head)
         if self.head_port_position:
             head_parts.append(self.head_port_position)
         head_name = ':'.join(
@@ -85,7 +93,11 @@ class Edge(object):
     ### PRIVATE METHODS ###
 
     def _get_highest_parent(self) -> 'uqbar.graphs.Graph':
-        highest_parent: uqbar.graphs.Graph = None
+        if self.tail is None:
+            raise ValueError(self.tail)
+        elif self.head is None:
+            raise ValueError(self.head)
+        highest_parent: Optional[uqbar.graphs.Graph] = None
         tail_parentage = list(self.tail.parentage[1:])
         head_parentage = list(self.head.parentage[1:])
         while (
@@ -136,11 +148,11 @@ class Edge(object):
         return self._attributes
 
     @property
-    def head(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
+    def head(self) -> Optional[Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']]:
         return self._head
 
     @property
-    def head_port_position(self) -> str:
+    def head_port_position(self) -> Optional[str]:
         return self._head_port_position
 
     @property
@@ -148,9 +160,9 @@ class Edge(object):
         return self._is_directed
 
     @property
-    def tail(self) -> Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']:
+    def tail(self) -> Optional[Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']]:
         return self._tail
 
     @property
-    def tail_port_position(self) -> str:
+    def tail_port_position(self) -> Optional[str]:
         return self._tail_port_position
