@@ -173,6 +173,10 @@ def test_str_03(test_path):
 
            .. automethod:: ChildClass.class_method
 
+           .. automethod:: ChildClass.inheritable_class_method
+
+           .. automethod:: ChildClass.inheritable_static_method
+
            .. automethod:: ChildClass.static_method
 
            .. raw:: html
@@ -225,6 +229,10 @@ def test_str_03(test_path):
               :class: class-header
 
            .. automethod:: PublicClass.class_method
+
+           .. automethod:: PublicClass.inheritable_class_method
+
+           .. automethod:: PublicClass.inheritable_static_method
 
            .. automethod:: PublicClass.static_method
 
