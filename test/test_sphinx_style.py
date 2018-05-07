@@ -26,7 +26,7 @@ def test_sphinx_style_1(app, status, warning):
 
                -[ Special methods ]-
 
-               (PublicClass).__str__()
+               ("PublicClass").__str__()
 
                   Return str(self).
 
@@ -34,25 +34,25 @@ def test_sphinx_style_1(app, status, warning):
 
                inheritable_method()
 
-               (PublicClass).method()
+               ("PublicClass").method()
 
                new_method()
 
-               (PublicClass).other_method()
+               ("PublicClass").other_method()
 
                -[ Class & static methods ]-
 
-               classmethod (PublicClass).class_method()
+               classmethod ("PublicClass").class_method()
 
-               static (PublicClass).static_method(cls)
+               static ("PublicClass").static_method(cls)
 
                -[ Read/write properties ]-
 
-               (PublicClass).read_write_property
+               ("PublicClass").read_write_property
 
                -[ Read-only properties ]-
 
-               (PublicClass).read_only_property
+               ("PublicClass").read_only_property
 
             class fake_package.module.PublicClass
 

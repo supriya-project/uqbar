@@ -67,29 +67,19 @@ def handle_method(signature_node, module, object_name, cache):
             reftype='class',
             reftarget=reftarget,
             )
-        xref_node.append(nodes.literal(
+        name_node = nodes.literal(
             '',
             '{}'.format(defining_class.__name__),
             classes=['descclassname'],
-            ))
-        html_only_class_name_node = addnodes.only(expr='html')
-        html_only_class_name_node.append(nodes.Text('('))
-        html_only_class_name_node.append(xref_node)
-        html_only_class_name_node.append(nodes.Text(').'))
-        latex_only_class_name_node = addnodes.only(expr='latex')
-        latex_only_class_name_node.append(nodes.Text(
-            '({}).'.format(defining_class.__name__),
-            ))
-        text_only_class_name_node = addnodes.only(expr='text')
-        text_only_class_name_node.append(nodes.Text(
-            '({}).'.format(defining_class.__name__),
-            ))
+            )
+        xref_node.append(name_node)
         desc_annotation = list(signature_node.traverse(
             addnodes.desc_annotation))
         index = len(desc_annotation)
-        signature_node.insert(index, html_only_class_name_node)
-        signature_node.insert(index, latex_only_class_name_node)
-        signature_node.insert(index, text_only_class_name_node)
+        class_annotation = addnodes.desc_addname()
+        class_annotation.extend([nodes.Text('('), xref_node, nodes.Text(').')])
+        class_annotation['xml:space'] = 'preserve'
+        signature_node.insert(index, class_annotation)
     if getattr(attr, '__isabstractmethod__', False):
         emphasis = nodes.emphasis(
             'abstract ',
