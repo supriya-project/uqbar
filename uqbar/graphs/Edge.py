@@ -39,22 +39,25 @@ class Edge(object):
         return str(self)
 
     def __format_graphviz__(self) -> str:
+        from uqbar.graphs.Attachable import Attachable
         from uqbar.graphs.Node import Node
         connection = '->'
         if not self.is_directed:
             connection = '--'
 
         tail_parts = []
-        if self.tail is not None:
-            if isinstance(self.tail, Node):
-                tail_parts.append(self.tail._get_canonical_name())
-            else:
-                tail_parts.extend([
-                    self.tail._get_node()._get_canonical_name(),
-                    self.tail._get_port_name(),
-                    ])
-        else:
-            raise ValueError(self.tail)
+        tail_node = None
+        tail_port_name = None
+        if isinstance(self.tail, Node):
+            tail_node = self.tail
+        elif isinstance(self.tail, Attachable):
+            tail_node = self.tail._get_node()
+            tail_port_name = self.tail._get_port_name()
+        if tail_node is None:
+            raise ValueError
+        tail_parts.append(tail_node._get_canonical_name())
+        if tail_port_name:
+            tail_parts.append(tail_port_name)
         if self.tail_port_position:
             tail_parts.append(self.tail_port_position)
         tail_name = ':'.join(
@@ -63,16 +66,18 @@ class Edge(object):
             )
 
         head_parts = []
-        if self.head is not None:
-            if isinstance(self.head, Node):
-                head_parts.append(self.head._get_canonical_name())
-            else:
-                head_parts.extend([
-                    self.head._get_node()._get_canonical_name(),
-                    self.head._get_port_name(),
-                    ])
-        else:
-            raise ValueError(self.head)
+        head_node = None
+        head_port_name = None
+        if isinstance(self.head, Node):
+            head_node = self.head
+        elif isinstance(self.head, Attachable):
+            head_node = self.head._get_node()
+            head_port_name = self.head._get_port_name()
+        if head_node is None:
+            raise ValueError
+        head_parts.append(head_node._get_canonical_name())
+        if head_port_name:
+            head_parts.append(head_port_name)
         if self.head_port_position:
             head_parts.append(self.head_port_position)
         head_name = ':'.join(
