@@ -87,9 +87,8 @@ class CLI(abc.ABC):
         if path.joinpath(self.config_name).exists():
             if path.joinpath(self.config_name) not in paths:
                 paths.append(path.joinpath(self.config_name))
-        paths = [str(_) for _ in paths]
         config_parser = ConfigParser()
-        config_parser.read(paths)
+        config_parser.read([str(_) for _ in paths])
         return config_parser
 
     @abc.abstractmethod
