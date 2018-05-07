@@ -2,6 +2,7 @@ import abc
 import argparse
 import os
 import pathlib
+import typing
 import uqbar.strings
 from configparser import ConfigParser
 
@@ -20,10 +21,10 @@ class CLI(abc.ABC):
         'END': '\033[0m',
         }
 
-    config_name = '.uqbarrc'
-    long_description = None
-    short_description = None
-    version = 1.0
+    config_name: str = '.uqbarrc'
+    long_description: typing.Optional[str] = None
+    short_description: typing.Optional[str] = None
+    version: float = 1.0
 
     ### INITIALIZER ###
 
@@ -47,7 +48,7 @@ class CLI(abc.ABC):
 
     ### SPECIAL METHODS ###
 
-    def __call__(self, arguments=None):
+    def __call__(self, arguments=None) -> None:
         r'''Calls developer script.
 
         Returns none.
@@ -63,24 +64,17 @@ class CLI(abc.ABC):
             arguments = self.argument_parser.parse_args(arguments)
         self._process_args(arguments)
 
-    def __getstate__(self):
-        r'''Gets object state.
-        '''
-        return {}
-
     ### PRIVATE METHODS ###
 
-    def _is_valid_path(self, path):
-        if os.path.exists(path):
-            if os.path.isdir(path):
-                return True
-        return False
+    def _is_valid_path(self, path) -> bool:
+        path = pathlib.Path(path)
+        return path.exists() and path.is_dir()
 
     @abc.abstractmethod
     def _process_args(self, arguments):
         raise NotImplementedError
 
-    def _read_config_files(self):
+    def _read_config_files(self) -> ConfigParser:
         paths = []
         home_config = pathlib.Path().home() / self.config_name
         if home_config.exists():
@@ -99,7 +93,7 @@ class CLI(abc.ABC):
         return config_parser
 
     @abc.abstractmethod
-    def _setup_argument_parser(self, parser):
+    def _setup_argument_parser(self, parser: argparse.ArgumentParser):
         raise NotImplementedError
 
     def _validate_path(self, path):
