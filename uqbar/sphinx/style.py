@@ -32,13 +32,12 @@ def handle_class(signature_node, module, object_name, cache):
         for attribute in attributes:
             cache[class_][attribute.name] = attribute
     if inspect.isabstract(class_):
-        labelnode = addnodes.only(expr='html')
-        labelnode.append(nodes.emphasis(
+        emphasis = nodes.emphasis(
             'abstract ',
             'abstract ',
             classes=['property'],
-            ))
-        signature_node.insert(0, labelnode)
+            )
+        signature_node.insert(0, emphasis)
 
 
 def handle_method(signature_node, module, object_name, cache):
@@ -55,7 +54,6 @@ def handle_method(signature_node, module, object_name, cache):
         return
     attr = getattr(class_, attr_name)
     inspected_attr = cache[class_][attr_name]
-    label_node = addnodes.only(expr='html')
     defining_class = inspected_attr.defining_class
     if defining_class is not class_:
         reftarget = '{}.{}'.format(
@@ -82,15 +80,23 @@ def handle_method(signature_node, module, object_name, cache):
         latex_only_class_name_node.append(nodes.Text(
             '({}).'.format(defining_class.__name__),
             ))
-        signature_node.insert(0, html_only_class_name_node)
-        signature_node.insert(0, latex_only_class_name_node)
+        text_only_class_name_node = addnodes.only(expr='text')
+        text_only_class_name_node.append(nodes.Text(
+            '({}).'.format(defining_class.__name__),
+            ))
+        desc_annotation = list(signature_node.traverse(
+            addnodes.desc_annotation))
+        index = len(desc_annotation)
+        signature_node.insert(index, html_only_class_name_node)
+        signature_node.insert(index, latex_only_class_name_node)
+        signature_node.insert(index, text_only_class_name_node)
     if getattr(attr, '__isabstractmethod__', False):
-        label_node.append(nodes.emphasis(
+        emphasis = nodes.emphasis(
             'abstract ',
             'abstract ',
             classes=['property'],
-            ))
-        signature_node.insert(0, label_node)
+            )
+        signature_node.insert(0, emphasis)
 
 
 def on_doctree_read(

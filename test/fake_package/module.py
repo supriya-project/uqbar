@@ -16,14 +16,6 @@ class PublicClass:
     def class_method(cls):
         pass
 
-    @classmethod
-    def inheritable_class_method(cls):
-        pass
-
-    @staticmethod
-    def inheritable_static_method():
-        pass
-
     @staticmethod
     def static_method(cls):
         pass
