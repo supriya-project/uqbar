@@ -3,7 +3,7 @@ import enum
 import math
 import re
 import uqbar.graphs  # noqa
-from typing import Any, FrozenSet, Mapping, Union
+from typing import Any, FrozenSet, Mapping, Optional, Union
 
 
 class Attributes(collections.MutableMapping):
@@ -187,7 +187,7 @@ class Attributes(collections.MutableMapping):
 
     ### VALIDATORS ###
 
-    _validators: Mapping[str, object] = None
+    _validators: Optional[Mapping[str, object]] = None
 
     ### INITIALIZER ###
 

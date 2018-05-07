@@ -104,7 +104,7 @@ class Graph(UniqueTreeContainer):
         edge_parents: Dict[Graph, List[Edge]] = {}
         for edge in sorted(
             all_edges,
-            key=lambda edge: (edge.tail.graph_order, edge.head.graph_order),
+            key=lambda edge: (edge.tail_graph_order, edge.head_graph_order),
             ):
             highest_parent = edge._get_highest_parent()
             edge_parents.setdefault(highest_parent, []).append(edge)
