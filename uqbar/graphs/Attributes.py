@@ -314,8 +314,8 @@ class Attributes(collections.MutableMapping):
             cls.Mode.EDGE: (cls._edge_attributes, cls._edge_styles),
             cls.Mode.GRAPH: (cls._graph_attributes, cls._graph_styles),
             cls.Mode.NODE: (cls._node_attributes, cls._node_styles),
-            cls.Mode.TABLE: (cls._table_attributes, None),
-            cls.Mode.TABLE_CELL: (cls._table_cell_attributes, None),
+            cls.Mode.TABLE: (cls._table_attributes, ()),
+            cls.Mode.TABLE_CELL: (cls._table_cell_attributes, ()),
             }[mode]
         attributes = {}
         for key, value in kwargs.items():
