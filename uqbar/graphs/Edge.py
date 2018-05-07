@@ -1,5 +1,5 @@
 import uqbar.graphs  # noqa
-from typing import Mapping, Optional, Union
+from typing import Mapping, Optional, Tuple, Union
 from uqbar.graphs.Attributes import Attributes
 
 
@@ -157,6 +157,12 @@ class Edge(object):
         return self._head
 
     @property
+    def head_graph_order(self) -> Tuple[int, ...]:
+        if self.head is None:
+            return ()
+        return self.head.graph_order
+
+    @property
     def head_port_position(self) -> Optional[str]:
         return self._head_port_position
 
@@ -167,6 +173,12 @@ class Edge(object):
     @property
     def tail(self) -> Optional[Union['uqbar.graphs.Node', 'uqbar.graphs.Attachable']]:
         return self._tail
+
+    @property
+    def tail_graph_order(self) -> Tuple[int, ...]:
+        if self.tail is None:
+            return ()
+        return self.tail.graph_order
 
     @property
     def tail_port_position(self) -> Optional[str]:
