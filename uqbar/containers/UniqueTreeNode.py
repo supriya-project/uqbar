@@ -1,5 +1,6 @@
 import collections
 import copy
+import typing
 
 
 class UniqueTreeNode:
@@ -12,7 +13,7 @@ class UniqueTreeNode:
 
     ### CLASS VARIABLES ###
 
-    _state_flag_names = ()
+    _state_flag_names: typing.Tuple[str, ...] = ()
 
     ### INITIALIZER ###
 
@@ -85,6 +86,7 @@ class UniqueTreeNode:
         self._remove_from_parent()
         self._parent = new_parent
         self._restore_named_children_to_parentage(named_children)
+        self._mark_entire_tree_for_later_update()
 
     ### PUBLIC METHODS ###
 
