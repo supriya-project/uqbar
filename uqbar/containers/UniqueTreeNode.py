@@ -1,5 +1,6 @@
 import collections
 import copy
+import typing
 
 
 class UniqueTreeNode:
@@ -12,7 +13,7 @@ class UniqueTreeNode:
 
     ### CLASS VARIABLES ###
 
-    _state_flag_names = ()
+    _state_flag_names: typing.Tuple[str, ...] = ()
 
     ### INITIALIZER ###
 
