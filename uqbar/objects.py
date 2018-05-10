@@ -4,11 +4,19 @@ import inspect
 
 def _dispatch_formatting(expr):
     if isinstance(expr, (list, tuple)):
-        return get_sequence_repr(expr)
+        return _get_sequence_repr(expr)
     return repr(expr)
 
 
-def get_sequence_repr(expr):
+def _get_object_signature(expr):
+    if hasattr(expr, '__init__'):
+        return inspect.signature(expr.__init__)
+    elif hasattr(expr, '__new__'):
+        return inspect.signature(expr.__new__)
+    raise TypeError(type(expr))
+
+
+def _get_sequence_repr(expr):
     prototype = (bool, int, float, str, type(None))
     if all(isinstance(x, prototype) for x in expr):
         result = repr(expr)
@@ -37,7 +45,37 @@ def get_object_hash(expr):
 
 
 def get_object_repr(expr, multiline=False):
-    signature = get_object_signature(expr)
+    """
+    Build a repr string for ``expr`` from its vars and signature.
+
+    ::
+
+        >>> class MyObject:
+        ...     def __init__(self, arg1, arg2, *var_args, foo=None, bar=None, **kwargs):
+        ...         self.arg1 = arg1
+        ...         self.arg2 = arg2
+        ...         self.var_args = var_args
+        ...         self.foo = foo
+        ...         self.bar = bar
+        ...         self.kwargs = kwargs
+        ...
+        >>> my_object = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
+
+    ::
+
+        >>> import uqbar
+        >>> print(uqbar.objects.get_object_repr(my_object))
+        MyObject(
+            'a',
+            'b',
+            'c',
+            'd',
+            foo='x',
+            quux=['y', 'z'],
+            )
+
+    """
+    signature = _get_object_signature(expr)
     defaults = {}
     for name, parameter in signature.parameters.items():
         if parameter.default is not inspect._empty:
@@ -105,17 +143,46 @@ def get_object_repr(expr, multiline=False):
     return '{}({})'.format(type(expr).__name__, parts)
 
 
-def get_object_signature(expr):
-    if hasattr(expr, '__init__'):
-        return inspect.signature(expr.__init__)
-    elif hasattr(expr, '__new__'):
-        return inspect.signature(expr.__new__)
-    raise TypeError(type(expr))
-
-
 def get_object_vars(expr):
+    """
+    Get ``args``, ``var args`` and ``kwargs`` for an object ``expr``.
+
+    ::
+
+        >>> class MyObject:
+        ...     def __init__(self, arg1, arg2, *var_args, foo=None, bar=None, **kwargs):
+        ...         self.arg1 = arg1
+        ...         self.arg2 = arg2
+        ...         self.var_args = var_args
+        ...         self.foo = foo
+        ...         self.bar = bar
+        ...         self.kwargs = kwargs
+        ...
+        >>> my_object = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
+
+    ::
+
+        >>> import uqbar
+        >>> args, var_args, kwargs = uqbar.objects.get_object_vars(my_object)
+
+    ::
+
+        >>> args
+        OrderedDict([('arg1', 'a'), ('arg2', 'b')])
+
+    ::
+
+        >>> var_args
+        ['c', 'd']
+
+    ::
+
+        >>> kwargs
+        {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
+
+    """
     # print('VARS?', type(expr))
-    signature = get_object_signature(expr)
+    signature = _get_object_signature(expr)
     args = collections.OrderedDict()
     var_args = []
     kwargs = {}
@@ -166,6 +233,49 @@ def get_object_vars(expr):
 def new(expr, *args, **kwargs):
     """
     Template an object.
+
+    ::
+
+        >>> class MyObject:
+        ...     def __init__(self, arg1, arg2, *var_args, foo=None, bar=None, **kwargs):
+        ...         self.arg1 = arg1
+        ...         self.arg2 = arg2
+        ...         self.var_args = var_args
+        ...         self.foo = foo
+        ...         self.bar = bar
+        ...         self.kwargs = kwargs
+        ...
+        >>> my_object = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
+
+    ::
+
+        >>> import uqbar
+        >>> new_object = uqbar.objects.new(my_object, foo=666, bar=1234)
+        >>> print(uqbar.objects.get_object_repr(new_object))
+        MyObject(
+            'a',
+            'b',
+            'c',
+            'd',
+            bar=1234,
+            foo=666,
+            quux=['y', 'z'],
+            )
+
+    Original object is unchanged:
+
+    ::
+
+        >>> print(uqbar.objects.get_object_repr(my_object))
+        MyObject(
+            'a',
+            'b',
+            'c',
+            'd',
+            foo='x',
+            quux=['y', 'z'],
+            )
+
     """
     # TODO: Clarify old vs. new variable naming here.
     new_args, new_var_args, new_kwargs = get_object_vars(expr)
