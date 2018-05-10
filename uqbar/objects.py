@@ -278,15 +278,29 @@ def new(expr, *args, **kwargs):
 
     """
     # TODO: Clarify old vs. new variable naming here.
-    new_args, new_var_args, new_kwargs = get_object_vars(expr)
-    # print('OLD', new_args, new_var_args, new_kwargs)
-    # print('NEW', type(expr), args, kwargs)
+    current_args, current_var_args, current_kwargs = get_object_vars(expr)
+    new_kwargs = current_kwargs.copy()
+
+    recursive_arguments = {}
+    for key in tuple(kwargs):
+        if '__' in key:
+            value = kwargs.pop(key)
+            key, _, subkey = key.partition('__')
+            recursive_arguments.setdefault(key, []).append((subkey, value))
+
+    for key, pairs in recursive_arguments.items():
+        recursed_object = current_args.get(key, current_kwargs.get(key))
+        if recursed_object is None:
+            continue
+        kwargs[key] = new(recursed_object, **dict(pairs))
+
     if args:
-        new_var_args = args
+        current_var_args = args
     for key, value in kwargs.items():
-        if key in new_args:
-            new_args[key] = value
+        if key in current_args:
+            current_args[key] = value
         else:
             new_kwargs[key] = value
-    new_args = list(new_args.values()) + list(new_var_args)
+
+    new_args = list(current_args.values()) + list(current_var_args)
     return type(expr)(*new_args, **new_kwargs)
