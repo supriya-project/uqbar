@@ -132,13 +132,16 @@ class APIBuilder(object):
         import uqbar.apis
         root = PackageNode()
         # Build node tree, top-down
-        for source_path in sorted(source_paths):
+        for source_path in sorted(
+            source_paths,
+            key=lambda x: uqbar.apis.source_path_to_package_path(x),
+        ):
             package_path = uqbar.apis.source_path_to_package_path(source_path)
             parts = package_path.split('.')
             if (
                 not self.document_private_modules and
                 any(part.startswith('_') for part in parts)
-                ):
+            ):
                 continue
             # Find parent node.
             parent_node = root
