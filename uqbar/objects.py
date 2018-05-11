@@ -56,7 +56,7 @@ def get_hash(expr):
     return hash(tuple(hash_values))
 
 
-def get_object_repr(expr, multiline=False):
+def get_repr(expr, multiline=False):
     """
     Build a repr string for ``expr`` from its vars and signature.
 
@@ -76,7 +76,7 @@ def get_object_repr(expr, multiline=False):
     ::
 
         >>> import uqbar
-        >>> print(uqbar.objects.get_object_repr(my_object))
+        >>> print(uqbar.objects.get_repr(my_object))
         MyObject(
             'a',
             'b',
@@ -285,7 +285,7 @@ def new(expr, *args, **kwargs):
 
         >>> import uqbar
         >>> new_object = uqbar.objects.new(my_object, foo=666, bar=1234)
-        >>> print(uqbar.objects.get_object_repr(new_object))
+        >>> print(uqbar.objects.get_repr(new_object))
         MyObject(
             'a',
             'b',
@@ -300,7 +300,7 @@ def new(expr, *args, **kwargs):
 
     ::
 
-        >>> print(uqbar.objects.get_object_repr(my_object))
+        >>> print(uqbar.objects.get_repr(my_object))
         MyObject(
             'a',
             'b',
