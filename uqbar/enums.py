@@ -2,7 +2,33 @@ import enum
 from uqbar.strings import to_snake_case
 
 
-class EnumMixin:
+class IntEnumeration(enum.IntEnum):
+    """
+    Enumeration which behaves like an integer.
+
+    ::
+
+        >>> import uqbar.enums
+        >>> class MyEnum(uqbar.enums.IntEnumeration):
+        ...     FOO = -1
+        ...     BAR = 0
+        ...     BAZ = 1
+        ...     QUUX = 2
+
+    ::
+
+        >>> MyEnum.FOO < MyEnum.BAR
+        True
+
+    Does compare to similarly-valued objects:
+
+    ::
+
+        >>> MyEnum.BAR == False
+        True
+
+    """
+    pass
 
     # ### SPECIAL METHODS ### #
 
@@ -56,17 +82,49 @@ class EnumMixin:
         raise ValueError(message)
 
 
-class IntEnumeration(EnumMixin, enum.IntEnum):
-    """
-    Enumeration which behaves like an integer.
-    """
-    pass
-
-
-class StrictEnumeration(EnumMixin, enum.Enum):
+class StrictEnumeration(enum.Enum):
     """
     Sortable enumeration which does not compare to objects not of its type.
+
+    ::
+
+        >>> import uqbar.enums
+        >>> class MyEnum(uqbar.enums.StrictEnumeration):
+        ...     FOO = -1
+        ...     BAR = 0
+        ...     BAZ = 1
+        ...     QUUX = 2
+
+    ::
+
+        >>> MyEnum.FOO < MyEnum.BAR
+        True
+
+    Does not compare to similarly-valued objects:
+
+    ::
+
+        >>> MyEnum.BAR == False
+        False
+
     """
+
+    # ### SPECIAL METHODS ### #
+
+    def __dir__(self):
+        names = [
+            '__class__',
+            '__doc__',
+            '__format__',
+            '__members__',
+            '__module__',
+            '__repr__',
+            'from_expr',
+            ]
+        names += self._member_names_
+        names += [
+            ]
+        return sorted(names)
 
     def __float__(self):
         return float(self.value)
@@ -93,3 +151,37 @@ class StrictEnumeration(EnumMixin, enum.Enum):
         if self.__class__ is other.__class__:
             return self.value < other.value
         return NotImplemented
+
+    def __repr__(self):
+        return '{}.{}'.format(
+            type(self).__name__,
+            self.name,
+            )
+
+    # ### PUBLIC METHODS ### #
+
+    @classmethod
+    def from_expr(cls, expr):
+        r'''Convenience constructor for enumerations.
+
+        Returns new enumeration item.
+        '''
+        if isinstance(expr, cls):
+            return expr
+        elif isinstance(expr, int):
+            return cls(expr)
+        elif isinstance(expr, str):
+            expr = expr.strip()
+            expr = to_snake_case(expr)
+            expr = expr.upper()
+            try:
+                return cls[expr]
+            except KeyError:
+                return cls[expr.replace('_', '')]
+        elif expr is None:
+            return cls(0)
+        message = 'Cannot instantiate {} from {}.'.format(
+            cls.__name__,
+            expr,
+            )
+        raise ValueError(message)
