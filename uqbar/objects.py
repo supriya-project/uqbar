@@ -38,8 +38,20 @@ def _get_sequence_repr(expr):
 def get_object_hash(expr):
     args, var_args, kwargs = get_object_vars(expr)
     hash_values = [type(expr)]
+    for key, value in args.items():
+        if isinstance(value, list):
+            value = tuple(value)
+        elif isinstance(value, set):
+            value = frozenset(value)
+        args[key] = value
     hash_values.append(tuple(args.items()))
     hash_values.append(tuple(var_args))
+    for key, value in kwargs.items():
+        if isinstance(value, list):
+            value = tuple(value)
+        elif isinstance(value, set):
+            value = frozenset(value)
+        kwargs[key] = value
     hash_values.append(tuple(sorted(kwargs.items())))
     return hash(tuple(hash_values))
 
@@ -183,6 +195,7 @@ def get_object_vars(expr):
     """
     # print('VARS?', type(expr))
     signature = _get_object_signature(expr)
+    # print('SIG?', signature)
     args = collections.OrderedDict()
     var_args = []
     kwargs = {}
@@ -190,16 +203,37 @@ def get_object_vars(expr):
         return args, var_args, kwargs
     for i, (name, parameter) in enumerate(signature.parameters.items()):
         # print('   ', parameter)
+        if i == 0 and name in ('self', 'cls', 'class_', 'klass'):
+            continue
         if parameter.kind is inspect._POSITIONAL_ONLY:
             try:
                 args[name] = getattr(expr, name)
             except AttributeError:
                 args[name] = expr[name]
         elif parameter.kind is inspect._POSITIONAL_OR_KEYWORD:
-            try:
-                args[name] = getattr(expr, name)
-            except AttributeError:
-                args[name] = expr[name]
+
+            found = False
+            for x in (name, '_' + name):
+                try:
+                    args[name] = getattr(expr, x)
+                    found = True
+                    break
+                except AttributeError:
+                    continue
+            if found:
+                continue
+
+            found = False
+            for x in (name, '_' + name):
+                try:
+                    args[name] = expr[x]
+                    found = True
+                    break
+                except KeyError:
+                    continue
+            if not found:
+                raise ValueError('Cannot find value for {!r}'.format(name))
+
         elif parameter.kind is inspect._VAR_POSITIONAL:
             try:
                 var_args.extend(expr[:])
@@ -304,3 +338,12 @@ def new(expr, *args, **kwargs):
 
     new_args = list(current_args.values()) + list(current_var_args)
     return type(expr)(*new_args, **new_kwargs)
+
+
+def compare_objects(object_one, object_two):
+    object_one_values = type(object_one), get_object_vars(object_one)
+    try:
+        object_two_values = type(object_two), get_object_vars(object_two)
+    except AttributeError:
+        object_two_values = type(object_two), object_two
+    return object_one_values == object_two_values
