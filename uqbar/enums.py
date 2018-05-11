@@ -2,6 +2,31 @@ import enum
 from uqbar.strings import to_snake_case
 
 
+def from_expr(cls, expr):
+    if isinstance(expr, cls):
+        return expr
+    elif isinstance(expr, int):
+        return cls(expr)
+    elif isinstance(expr, str):
+        coerced_expr = to_snake_case(expr.strip()).upper()
+        try:
+            return cls[coerced_expr]
+        except KeyError:
+            pass
+        try:
+            return cls[coerced_expr.title()]
+        except KeyError:
+            pass
+        try:
+            return cls[coerced_expr.replace('_', '')]
+        except KeyError:
+            pass
+    elif expr is None:
+        return cls(0)
+    message = 'Cannot instantiate {} from {!r}.'.format(cls.__name__, expr)
+    raise ValueError(message)
+
+
 class IntEnumeration(enum.IntEnum):
     """
     Enumeration which behaves like an integer.
@@ -61,25 +86,7 @@ class IntEnumeration(enum.IntEnum):
 
         Returns new enumeration item.
         '''
-        if isinstance(expr, cls):
-            return expr
-        elif isinstance(expr, int):
-            return cls(expr)
-        elif isinstance(expr, str):
-            expr = expr.strip()
-            expr = to_snake_case(expr)
-            expr = expr.upper()
-            try:
-                return cls[expr]
-            except KeyError:
-                return cls[expr.replace('_', '')]
-        elif expr is None:
-            return cls(0)
-        message = 'Cannot instantiate {} from {}.'.format(
-            cls.__name__,
-            expr,
-            )
-        raise ValueError(message)
+        return from_expr(cls, expr)
 
 
 class StrictEnumeration(enum.Enum):
@@ -166,22 +173,4 @@ class StrictEnumeration(enum.Enum):
 
         Returns new enumeration item.
         '''
-        if isinstance(expr, cls):
-            return expr
-        elif isinstance(expr, int):
-            return cls(expr)
-        elif isinstance(expr, str):
-            expr = expr.strip()
-            expr = to_snake_case(expr)
-            expr = expr.upper()
-            try:
-                return cls[expr]
-            except KeyError:
-                return cls[expr.replace('_', '')]
-        elif expr is None:
-            return cls(0)
-        message = 'Cannot instantiate {} from {}.'.format(
-            cls.__name__,
-            expr,
-            )
-        raise ValueError(message)
+        return from_expr(cls, expr)
