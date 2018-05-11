@@ -9,11 +9,21 @@ def _dispatch_formatting(expr):
 
 
 def _get_object_signature(expr):
-    if expr.__new__ != object.__new__:
+    expr = type(expr)
+    # print('E-I-ID', id(expr.__init__))
+    # print('E-N-ID', id(expr.__new__))
+    # print('o-I-ID', id(object.__init__))
+    # print('o-N-ID', id(object.__new__))
+    # print('IEQ?', expr.__init__ == object.__init__)
+    # print('NEQ?', expr.__new__ == object.__new__)
+    # attrs = {_.name: _ for _ in inspect.classify_class_attrs(expr)}
+    # print('I?', attrs['__init__'])
+    # print('N?', attrs['__new__'])
+    if expr.__new__ is not object.__new__:
         return inspect.signature(expr.__new__)
-    elif expr.__init__ != object.__init__:
+    if expr.__init__ is not object.__init__:
         return inspect.signature(expr.__init__)
-    raise TypeError(type(expr))
+    return None
 
 
 def _get_sequence_repr(expr):
@@ -43,6 +53,8 @@ def get_hash(expr):
             value = tuple(value)
         elif isinstance(value, set):
             value = frozenset(value)
+        elif isinstance(value, dict):
+            value = tuple(sorted(value.items()))
         args[key] = value
     hash_values.append(tuple(args.items()))
     hash_values.append(tuple(var_args))
@@ -51,6 +63,8 @@ def get_hash(expr):
             value = tuple(value)
         elif isinstance(value, set):
             value = frozenset(value)
+        elif isinstance(value, dict):
+            value = tuple(sorted(value.items()))
         kwargs[key] = value
     hash_values.append(tuple(sorted(kwargs.items())))
     return hash(tuple(hash_values))
@@ -88,6 +102,9 @@ def get_repr(expr, multiline=False):
 
     """
     signature = _get_object_signature(expr)
+    if signature is None:
+        return '{}()'.format(type(expr).__name__)
+
     defaults = {}
     for name, parameter in signature.parameters.items():
         if parameter.default is not inspect._empty:
@@ -193,23 +210,29 @@ def get_vars(expr):
         {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
 
     """
-    # print('VARS?', type(expr))
+    print('TYPE?', type(expr))
     signature = _get_object_signature(expr)
-    # print('SIG?', signature)
+    if signature is None:
+        return ({}, [], {})
+    print('SIG?', signature)
     args = collections.OrderedDict()
     var_args = []
     kwargs = {}
     if expr is None:
         return args, var_args, kwargs
     for i, (name, parameter) in enumerate(signature.parameters.items()):
-        # print('   ', parameter)
+        print('   ', parameter)
+
         if i == 0 and name in ('self', 'cls', 'class_', 'klass'):
             continue
+
         if parameter.kind is inspect._POSITIONAL_ONLY:
+
             try:
                 args[name] = getattr(expr, name)
             except AttributeError:
                 args[name] = expr[name]
+
         elif parameter.kind is inspect._POSITIONAL_OR_KEYWORD:
 
             found = False
@@ -231,20 +254,30 @@ def get_vars(expr):
                     break
                 except KeyError:
                     continue
+                except TypeError:
+                    break
             if not found:
                 raise ValueError('Cannot find value for {!r}'.format(name))
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
+
+            value = None
             try:
-                var_args.extend(expr[:])
+                value = expr[:]
             except TypeError:
-                var_args.extend(getattr(expr, name))
+                value = getattr(expr, name)
+            if value:
+                var_args.extend(value)
+
         elif parameter.kind is inspect._KEYWORD_ONLY:
+
             try:
                 kwargs[name] = getattr(expr, name)
             except AttributeError:
                 kwargs[name] = expr[name]
+
         elif parameter.kind is inspect._VAR_KEYWORD:
+
             items = {}
             if hasattr(expr, 'items'):
                 items = expr.items()
@@ -261,6 +294,7 @@ def get_vars(expr):
             for key, value in items:
                 if key not in args:
                     kwargs[key] = value
+
     return args, var_args, kwargs
 
 
@@ -340,7 +374,12 @@ def new(expr, *args, **kwargs):
     return type(expr)(*new_args, **new_kwargs)
 
 
-def compare_objects(object_one, object_two):
+def compare_objects(object_one, object_two, coerce=False):
+    if coerce:
+        try:
+            object_two = type(object_one)(object_two)
+        except (ValueError, TypeError):
+            return False
     object_one_values = type(object_one), get_vars(object_one)
     try:
         object_two_values = type(object_two), get_vars(object_two)
