@@ -35,8 +35,8 @@ def _get_sequence_repr(expr):
     return '\n'.join(result)
 
 
-def get_object_hash(expr):
-    args, var_args, kwargs = get_object_vars(expr)
+def get_hash(expr):
+    args, var_args, kwargs = get_vars(expr)
     hash_values = [type(expr)]
     for key, value in args.items():
         if isinstance(value, list):
@@ -93,7 +93,7 @@ def get_object_repr(expr, multiline=False):
         if parameter.default is not inspect._empty:
             defaults[name] = parameter.default
 
-    new_args, new_var_args, new_kwargs = get_object_vars(expr)
+    new_args, new_var_args, new_kwargs = get_vars(expr)
     args_parts = collections.OrderedDict()
     var_args_parts = []
     kwargs_parts = {}
@@ -155,7 +155,7 @@ def get_object_repr(expr, multiline=False):
     return '{}({})'.format(type(expr).__name__, parts)
 
 
-def get_object_vars(expr):
+def get_vars(expr):
     """
     Get ``args``, ``var args`` and ``kwargs`` for an object ``expr``.
 
@@ -175,7 +175,7 @@ def get_object_vars(expr):
     ::
 
         >>> import uqbar
-        >>> args, var_args, kwargs = uqbar.objects.get_object_vars(my_object)
+        >>> args, var_args, kwargs = uqbar.objects.get_vars(my_object)
 
     ::
 
@@ -312,7 +312,7 @@ def new(expr, *args, **kwargs):
 
     """
     # TODO: Clarify old vs. new variable naming here.
-    current_args, current_var_args, current_kwargs = get_object_vars(expr)
+    current_args, current_var_args, current_kwargs = get_vars(expr)
     new_kwargs = current_kwargs.copy()
 
     recursive_arguments = {}
@@ -341,9 +341,9 @@ def new(expr, *args, **kwargs):
 
 
 def compare_objects(object_one, object_two):
-    object_one_values = type(object_one), get_object_vars(object_one)
+    object_one_values = type(object_one), get_vars(object_one)
     try:
-        object_two_values = type(object_two), get_object_vars(object_two)
+        object_two_values = type(object_two), get_vars(object_two)
     except AttributeError:
         object_two_values = type(object_two), object_two
     return object_one_values == object_two_values
