@@ -210,18 +210,18 @@ def get_vars(expr):
         {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
 
     """
-    print('TYPE?', type(expr))
+    # print('TYPE?', type(expr))
     signature = _get_object_signature(expr)
     if signature is None:
         return ({}, [], {})
-    print('SIG?', signature)
+    # print('SIG?', signature)
     args = collections.OrderedDict()
     var_args = []
     kwargs = {}
     if expr is None:
         return args, var_args, kwargs
     for i, (name, parameter) in enumerate(signature.parameters.items()):
-        print('   ', parameter)
+        # print('   ', parameter)
 
         if i == 0 and name in ('self', 'cls', 'class_', 'klass'):
             continue
