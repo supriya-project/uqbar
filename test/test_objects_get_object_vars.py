@@ -1,4 +1,5 @@
 import collections
+import enum
 import uqbar.objects
 
 
@@ -16,4 +17,17 @@ def test_objects_get_object_vars_01():
         collections.OrderedDict([('arg1', 'a'), ('arg2', 'b')]),
         ['c', 'd'],
         {'foo': 'x', 'bar': None, 'quux': ['y', 'z']},
+    )
+
+
+def test_objects_get_object_vars_02():
+    class Enumeration(enum.IntEnum):
+        FOO = 1
+        BAR = 2
+        BAZ = 3
+    my_object = Enumeration.BAZ
+    assert uqbar.objects.get_object_vars(my_object) == (
+        collections.OrderedDict([('value', 3)]),
+        [],
+        {},
     )

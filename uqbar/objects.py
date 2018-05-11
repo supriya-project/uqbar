@@ -9,10 +9,10 @@ def _dispatch_formatting(expr):
 
 
 def _get_object_signature(expr):
-    if hasattr(expr, '__init__'):
-        return inspect.signature(expr.__init__)
-    elif hasattr(expr, '__new__'):
+    if expr.__new__ != object.__new__:
         return inspect.signature(expr.__new__)
+    elif expr.__init__ != object.__init__:
+        return inspect.signature(expr.__init__)
     raise TypeError(type(expr))
 
 
