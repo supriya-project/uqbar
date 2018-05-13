@@ -99,7 +99,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         result = [
             '.. autoclass:: {}'.format(name),
             ]
-        if issubclass(self.client, enum.Enum):
+        if issubclass(self.client, enum.Enum):  # type: ignore
             result.extend([
                 '   :members:',
                 '   :undoc-members:',
