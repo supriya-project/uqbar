@@ -18,7 +18,7 @@ class MyReprObject(MyNonReprObject):
         return uqbar.objects.get_repr(self)
 
 
-def test_objects_get_vars_01():
+def test_objects_get_repr_01():
     my_object = MyNonReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
     assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize('''
         MyNonReprObject(
@@ -32,7 +32,7 @@ def test_objects_get_vars_01():
         ''')
 
 
-def test_objects_get_vars_02():
+def test_objects_get_repr_02():
     my_object = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
     assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize('''
         MyReprObject(
@@ -46,7 +46,7 @@ def test_objects_get_vars_02():
         ''')
 
 
-def test_objects_get_vars_03():
+def test_objects_get_repr_03():
     my_object = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
     assert repr(my_object) == uqbar.strings.normalize('''
         MyReprObject(
@@ -60,13 +60,13 @@ def test_objects_get_vars_03():
         ''')
 
 
-def test_objects_get_vars_04():
+def test_objects_get_repr_04():
     object_a = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
     object_b = MyReprObject('pqr', object_a, bar=set([1, 2, 3]))
     assert repr(object_b) == uqbar.strings.normalize('''
         MyReprObject(
-            arg1='pqr',
-            arg2=MyReprObject(
+            'pqr',
+            MyReprObject(
                 'a',
                 'b',
                 'c',

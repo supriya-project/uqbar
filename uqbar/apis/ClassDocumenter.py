@@ -39,10 +39,11 @@ class ClassDocumenter(MemberDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
+        name = getattr(self.client, '__name__')
+        if issubclass(self.client, Exception):  # type: ignore
+            return '.. autoexception:: {}'.format(name)
         return '\n'.join([
-            '.. autoclass:: {}'.format(
-                getattr(self.client, '__name__'),
-                ),
+            '.. autoclass:: {}'.format(name),
             '   :members:',
             '   :undoc-members:',
             ])

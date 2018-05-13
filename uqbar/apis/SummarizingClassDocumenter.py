@@ -1,3 +1,4 @@
+import enum
 import inspect
 from typing import List
 from uqbar.apis.ClassDocumenter import ClassDocumenter
@@ -83,6 +84,9 @@ class SummarizingClassDocumenter(ClassDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
+        name = getattr(self.client, '__name__')
+        if issubclass(self.client, Exception):  # type: ignore
+            return '.. autoexception:: {}'.format(name)
         (
             class_methods,
             data,
@@ -93,8 +97,13 @@ class SummarizingClassDocumenter(ClassDocumenter):
             static_methods,
             ) = self._classify_class_attributes()
         result = [
-            '.. autoclass:: {}'.format(getattr(self.client, '__name__')),
+            '.. autoclass:: {}'.format(name),
             ]
+        if issubclass(self.client, enum.Enum):
+            result.extend([
+                '   :members:',
+                '   :undoc-members:',
+            ])
         result.extend(self._build_attribute_section(
             special_methods,
             'automethod',

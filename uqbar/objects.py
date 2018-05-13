@@ -110,58 +110,45 @@ def get_repr(expr, multiline=False):
         if parameter.default is not inspect._empty:
             defaults[name] = parameter.default
 
-    new_args, new_var_args, new_kwargs = get_vars(expr)
+    args, var_args, kwargs = get_vars(expr)
     args_parts = collections.OrderedDict()
     var_args_parts = []
     kwargs_parts = {}
-    has_new_lines = multiline
+    has_lines = multiline
     parts = []
 
     # Format keyword-optional arguments.
-    for key, value in new_args.items():
+    # print(type(expr), args)
+    for i, (key, value) in enumerate(args.items()):
         arg_repr = _dispatch_formatting(value)
         if '\n' in arg_repr:
-            has_new_lines = True
-        # If we don't have *args, we can use key=value formatting.
-        # We can also omit arguments which match the signature's defaults.
-        if not new_var_args:
-            if key in defaults and value == defaults[key]:
-                continue
-            arg_repr = '{}={}'.format(key, arg_repr)
+            has_lines = True
         args_parts[key] = arg_repr
 
     # Format *args
-    for arg in new_var_args:
+    for arg in var_args:
         arg_repr = _dispatch_formatting(arg)
         if '\n' in arg_repr:
-            has_new_lines = True
+            has_lines = True
         var_args_parts.append(arg_repr)
 
     # Format **kwargs
-    for key, value in sorted(new_kwargs.items()):
+    for key, value in sorted(kwargs.items()):
         if key in defaults and value == defaults[key]:
             continue
         value = _dispatch_formatting(value)
         arg_repr = '{}={}'.format(key, value)
-        has_new_lines = True
+        has_lines = True
         kwargs_parts[key] = arg_repr
 
-    # If we have *args, the initial args cannot use key/value formatting.
-    if var_args_parts:
-        for part in args_parts.values():
-            parts.append(part)
-        parts.extend(var_args_parts)
-        for _, part in sorted(kwargs_parts.items()):
-            parts.append(part)
-
-    # Otherwise, we can combine and sort all key/value pairs.
-    else:
-        args_parts.update(kwargs_parts)
-        for _, part in sorted(args_parts.items()):
-            parts.append(part)
+    for _, part in args_parts.items():
+        parts.append(part)
+    parts.extend(var_args_parts)
+    for _, part in sorted(kwargs_parts.items()):
+        parts.append(part)
 
     # If we should format on multiple lines, add the appropriate formatting.
-    if has_new_lines and parts:
+    if has_lines and parts:
         for i, part in enumerate(parts):
             parts[i] = '\n'.join('    ' + line for line in part.split('\n'))
         parts.append('    )')
