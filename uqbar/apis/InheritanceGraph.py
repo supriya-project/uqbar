@@ -5,7 +5,7 @@ import types
 import uqbar.graphs
 import uqbar.strings
 from typing import (  # noqa
-    Any, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
+    Any, Dict, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
     )
 
 
@@ -39,7 +39,6 @@ class InheritanceGraph:
                 fontname=Arial,
                 fontsize=10,
                 height=0,
-                margin=0.05,
                 penwidth=2,
                 shape=box,
                 style="filled, rounded",
@@ -101,7 +100,6 @@ class InheritanceGraph:
                 fontname=Arial,
                 fontsize=10,
                 height=0,
-                margin=0.05,
                 penwidth=2,
                 shape=box,
                 style="filled, rounded",
@@ -188,18 +186,22 @@ class InheritanceGraph:
         self,
         package_paths: Sequence[Union[str, type, types.ModuleType]],
         lineage_paths: Sequence[Union[str, type, types.ModuleType]]=None,
-        ) -> None:
+    ) -> None:
         self._package_paths = self._initialize_package_paths(package_paths)
         self._lineage_paths = self._initialize_package_paths(
             lineage_paths or [])
-        initial_classes = self._collect_classes(self._package_paths)
+        initial_classes = self._collect_classes(
+            self._package_paths,
+        )
         self._lineage_classes = self._collect_classes(
-            self._lineage_paths, recurse_subpackages=False)
+            self._lineage_paths,
+            recurse_subpackages=False,
+        )
         (
             self._parents_to_children,
             self._children_to_parents,
             ) = self._build_mappings(initial_classes)
-        if lineage_paths:
+        if self._lineage_paths:
             self._strip_nonlineage_classes()
         parent_classes = set(self._parents_to_children)
         child_classes = set(self._children_to_parents)
@@ -243,7 +245,6 @@ class InheritanceGraph:
                 'colorscheme': 'pastel19',
                 'fontname': 'Arial',
                 'fontsize': 10,
-                'margin': 0.05,
                 'width': 0,
                 'height': 0,
                 'penwidth': 2,
@@ -251,11 +252,11 @@ class InheritanceGraph:
                 'style': ['filled', 'rounded'],
                 },
             )
-        classes_to_nodes: Dict[type, Node] = {}
+        classes_to_nodes: Dict[type, uqbar.graphs.Node] = {}
         for class_ in sorted(
             self._classes,
             key=lambda x: (x.__module__, x.__name__),
-            ):
+        ):
             node = self._get_or_create_node(class_, graph, urls)
             classes_to_nodes[class_] = node
 
@@ -264,7 +265,7 @@ class InheritanceGraph:
             for child_class in sorted(
                 child_classes,
                 key=lambda x: (x.__module__, x.__name__),
-                ):
+            ):
                 child_node = classes_to_nodes[child_class]
                 parent_node.attach(child_node)
         for i, cluster in enumerate(sorted(graph[:], key=lambda x: x.name)):
@@ -372,7 +373,7 @@ class InheritanceGraph:
         for parent, children in sorted(
             parents_to_children.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
-            ):
+        ):
             sorted_parents_to_children[parent] = sorted(
                 children, key=lambda x: (x.__module__, x.__name__))
         sorted_children_to_parents: MutableMapping[type, List[type]] = \
@@ -380,7 +381,7 @@ class InheritanceGraph:
         for child, parents in sorted(
             children_to_parents.items(),
             key=lambda x: (x[0].__module__, x[0].__name__)
-            ):
+        ):
             sorted_children_to_parents[child] = sorted(
                 parents, key=lambda x: (x.__module__, x.__name__))
         return sorted_parents_to_children, sorted_children_to_parents
@@ -389,7 +390,7 @@ class InheritanceGraph:
         self,
         package_paths: Sequence[str],
         recurse_subpackages: bool=True,
-        ) -> Sequence[type]:
+    ) -> Sequence[type]:
         """
         Collect all classes defined in/under ``package_paths``.
         """
@@ -410,7 +411,9 @@ class InheritanceGraph:
                 classes.append(getattr(module, class_name))
         # Iterate source paths
         for source_path in uqbar.apis.collect_source_paths(
-            initial_source_paths, recurse_subpackages=recurse_subpackages):
+            initial_source_paths,
+            recurse_subpackages=recurse_subpackages,
+        ):
             package_path = uqbar.apis.source_path_to_package_path(
                 source_path)
             module = importlib.import_module(package_path)
@@ -422,14 +425,14 @@ class InheritanceGraph:
                 if (
                     isinstance(object_, type) and
                     object_.__module__ == module.__name__
-                    ):
+                ):
                     classes.append(object_)
         return sorted(classes, key=lambda x: (x.__module__, x.__name__))
 
     def _initialize_package_paths(
         self,
         package_paths: Sequence[Any],
-        ) -> Sequence[str]:
+    ) -> Sequence[str]:
         result = []
         for path in package_paths:
             if isinstance(path, type):
@@ -455,9 +458,22 @@ class InheritanceGraph:
                 _recurse_downward(child)
 
         visited_classes = set()
+        # Check for hierarchies interecting the lineage classes
         for class_ in self._lineage_classes:
             _recurse_upward(class_)
             _recurse_downward(class_)
+        # Check if lineage paths are prefixes for class module paths
+        lineage_paths_parts = [
+            lineage_path.split('.')
+            for lineage_path in self._lineage_paths
+            ]
+        for class_ in self._children_to_parents:
+            module_parts = class_.__module__.split('.')
+            for parts in lineage_paths_parts:
+                if module_parts[:len(parts)] == parts:
+                    _recurse_upward(class_)
+                    _recurse_downward(class_)
+                    break
 
         for parent, children in tuple(self._parents_to_children.items()):
             if parent in visited_classes:
@@ -480,5 +496,13 @@ class InheritanceGraph:
         return self._aspect_ratio
 
     @property
+    def children_to_parents(self):
+        return self._children_to_parents
+
+    @property
     def classes(self):
         return self._classes
+
+    @property
+    def parents_to_children(self):
+        return self._parents_to_children

@@ -1,5 +1,9 @@
+import textwrap
+from uqbar.strings import normalize
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 from uqbar.apis.RootDocumenter import RootDocumenter
+from sphinx.ext.autosummary import extract_summary  # type: ignore
+from sphinx.util.docutils import new_document  # type: ignore
 
 
 class SummarizingRootDocumenter(RootDocumenter):
@@ -40,6 +44,8 @@ class SummarizingRootDocumenter(RootDocumenter):
         .. rubric:: :ref:`uqbar.io <uqbar--io>`
            :class: section-header
         <BLANKLINE>
+        Tools for IO and file-system manipulation.
+        <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
            <hr/>
@@ -62,6 +68,8 @@ class SummarizingRootDocumenter(RootDocumenter):
         <BLANKLINE>
         .. rubric:: :ref:`uqbar.strings <uqbar--strings>`
            :class: section-header
+        <BLANKLINE>
+        Tools for string manipulation.
         <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
@@ -111,6 +119,9 @@ class SummarizingRootDocumenter(RootDocumenter):
                     ),
                 '   :class: section-header',
                 ])
+            summary = self._extract_summary(module_documenter)
+            if summary:
+                result.extend(['', summary])
             for section_name, documenters in documenters_by_section:
                 result.extend([
                     '',
@@ -142,3 +153,12 @@ class SummarizingRootDocumenter(RootDocumenter):
         for module_documenter in documenter.module_documenters:
             result.extend(self._recurse(module_documenter))
         return result
+
+    @classmethod
+    def _extract_summary(cls, documenter):
+        lines = normalize(documenter.client.__doc__ or '').splitlines()
+        if not lines:
+            return
+        document = new_document('')
+        summary = extract_summary(lines, document)
+        return '\n'.join(textwrap.wrap(summary, 79))

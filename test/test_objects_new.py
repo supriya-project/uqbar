@@ -37,8 +37,8 @@ def test_objects_new_01():
         MyObject(
             'a',
             MyObject(
-                arg1='x',
-                arg2='y',
+                'x',
+                'y',
                 bar=[1, 2, 3],
                 ),
             'c',
@@ -58,8 +58,8 @@ def test_objects_new_01():
         MyObject(
             'a',
             MyObject(
-                arg1='x',
-                arg2='y',
+                'x',
+                'y',
                 bar=[1, 2, 3],
                 ),
             'c',
@@ -72,8 +72,8 @@ def test_objects_new_01():
         MyObject(
             'new a',
             MyObject(
-                arg1='x',
-                arg2='y',
+                'x',
+                'y',
                 bar=[4, 5, 6, 7],
                 foo='new FOO',
                 ),

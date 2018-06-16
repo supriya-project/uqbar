@@ -9,11 +9,21 @@ def _dispatch_formatting(expr):
 
 
 def _get_object_signature(expr):
-    if expr.__new__ != object.__new__:
+    expr = type(expr)
+    # print('E-I-ID', id(expr.__init__))
+    # print('E-N-ID', id(expr.__new__))
+    # print('o-I-ID', id(object.__init__))
+    # print('o-N-ID', id(object.__new__))
+    # print('IEQ?', expr.__init__ == object.__init__)
+    # print('NEQ?', expr.__new__ == object.__new__)
+    # attrs = {_.name: _ for _ in inspect.classify_class_attrs(expr)}
+    # print('I?', attrs['__init__'])
+    # print('N?', attrs['__new__'])
+    if expr.__new__ is not object.__new__:
         return inspect.signature(expr.__new__)
-    elif expr.__init__ != object.__init__:
+    if expr.__init__ is not object.__init__:
         return inspect.signature(expr.__init__)
-    raise TypeError(type(expr))
+    return None
 
 
 def _get_sequence_repr(expr):
@@ -43,6 +53,8 @@ def get_hash(expr):
             value = tuple(value)
         elif isinstance(value, set):
             value = frozenset(value)
+        elif isinstance(value, dict):
+            value = tuple(sorted(value.items()))
         args[key] = value
     hash_values.append(tuple(args.items()))
     hash_values.append(tuple(var_args))
@@ -51,6 +63,8 @@ def get_hash(expr):
             value = tuple(value)
         elif isinstance(value, set):
             value = frozenset(value)
+        elif isinstance(value, dict):
+            value = tuple(sorted(value.items()))
         kwargs[key] = value
     hash_values.append(tuple(sorted(kwargs.items())))
     return hash(tuple(hash_values))
@@ -88,63 +102,53 @@ def get_repr(expr, multiline=False):
 
     """
     signature = _get_object_signature(expr)
+    if signature is None:
+        return '{}()'.format(type(expr).__name__)
+
     defaults = {}
     for name, parameter in signature.parameters.items():
         if parameter.default is not inspect._empty:
             defaults[name] = parameter.default
 
-    new_args, new_var_args, new_kwargs = get_vars(expr)
+    args, var_args, kwargs = get_vars(expr)
     args_parts = collections.OrderedDict()
     var_args_parts = []
     kwargs_parts = {}
-    has_new_lines = multiline
+    has_lines = multiline
     parts = []
 
     # Format keyword-optional arguments.
-    for key, value in new_args.items():
+    # print(type(expr), args)
+    for i, (key, value) in enumerate(args.items()):
         arg_repr = _dispatch_formatting(value)
         if '\n' in arg_repr:
-            has_new_lines = True
-        # If we don't have *args, we can use key=value formatting.
-        # We can also omit arguments which match the signature's defaults.
-        if not new_var_args:
-            if key in defaults and value == defaults[key]:
-                continue
-            arg_repr = '{}={}'.format(key, arg_repr)
+            has_lines = True
         args_parts[key] = arg_repr
 
     # Format *args
-    for arg in new_var_args:
+    for arg in var_args:
         arg_repr = _dispatch_formatting(arg)
         if '\n' in arg_repr:
-            has_new_lines = True
+            has_lines = True
         var_args_parts.append(arg_repr)
 
     # Format **kwargs
-    for key, value in sorted(new_kwargs.items()):
+    for key, value in sorted(kwargs.items()):
         if key in defaults and value == defaults[key]:
             continue
         value = _dispatch_formatting(value)
         arg_repr = '{}={}'.format(key, value)
-        has_new_lines = True
+        has_lines = True
         kwargs_parts[key] = arg_repr
 
-    # If we have *args, the initial args cannot use key/value formatting.
-    if var_args_parts:
-        for part in args_parts.values():
-            parts.append(part)
-        parts.extend(var_args_parts)
-        for _, part in sorted(kwargs_parts.items()):
-            parts.append(part)
-
-    # Otherwise, we can combine and sort all key/value pairs.
-    else:
-        args_parts.update(kwargs_parts)
-        for _, part in sorted(args_parts.items()):
-            parts.append(part)
+    for _, part in args_parts.items():
+        parts.append(part)
+    parts.extend(var_args_parts)
+    for _, part in sorted(kwargs_parts.items()):
+        parts.append(part)
 
     # If we should format on multiple lines, add the appropriate formatting.
-    if has_new_lines and parts:
+    if has_lines and parts:
         for i, part in enumerate(parts):
             parts[i] = '\n'.join('    ' + line for line in part.split('\n'))
         parts.append('    )')
@@ -193,8 +197,10 @@ def get_vars(expr):
         {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
 
     """
-    # print('VARS?', type(expr))
+    # print('TYPE?', type(expr))
     signature = _get_object_signature(expr)
+    if signature is None:
+        return ({}, [], {})
     # print('SIG?', signature)
     args = collections.OrderedDict()
     var_args = []
@@ -203,13 +209,17 @@ def get_vars(expr):
         return args, var_args, kwargs
     for i, (name, parameter) in enumerate(signature.parameters.items()):
         # print('   ', parameter)
+
         if i == 0 and name in ('self', 'cls', 'class_', 'klass'):
             continue
+
         if parameter.kind is inspect._POSITIONAL_ONLY:
+
             try:
                 args[name] = getattr(expr, name)
             except AttributeError:
                 args[name] = expr[name]
+
         elif parameter.kind is inspect._POSITIONAL_OR_KEYWORD:
 
             found = False
@@ -231,20 +241,30 @@ def get_vars(expr):
                     break
                 except KeyError:
                     continue
+                except TypeError:
+                    break
             if not found:
                 raise ValueError('Cannot find value for {!r}'.format(name))
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
+
+            value = None
             try:
-                var_args.extend(expr[:])
+                value = expr[:]
             except TypeError:
-                var_args.extend(getattr(expr, name))
+                value = getattr(expr, name)
+            if value:
+                var_args.extend(value)
+
         elif parameter.kind is inspect._KEYWORD_ONLY:
+
             try:
                 kwargs[name] = getattr(expr, name)
             except AttributeError:
                 kwargs[name] = expr[name]
+
         elif parameter.kind is inspect._VAR_KEYWORD:
+
             items = {}
             if hasattr(expr, 'items'):
                 items = expr.items()
@@ -261,6 +281,7 @@ def get_vars(expr):
             for key, value in items:
                 if key not in args:
                     kwargs[key] = value
+
     return args, var_args, kwargs
 
 
@@ -340,7 +361,12 @@ def new(expr, *args, **kwargs):
     return type(expr)(*new_args, **new_kwargs)
 
 
-def compare_objects(object_one, object_two):
+def compare_objects(object_one, object_two, coerce=False):
+    if coerce:
+        try:
+            object_two = type(object_one)(object_two)
+        except (ValueError, TypeError):
+            return False
     object_one_values = type(object_one), get_vars(object_one)
     try:
         object_two_values = type(object_two), get_vars(object_two)

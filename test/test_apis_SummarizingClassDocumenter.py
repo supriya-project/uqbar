@@ -18,6 +18,38 @@ def test_str_01(test_path):
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: PublicClass
 
+           .. autosummary::
+              :nosignatures:
+
+              class_method
+
+           .. autosummary::
+              :nosignatures:
+
+              inheritable_method
+              method
+              other_method
+
+           .. autosummary::
+              :nosignatures:
+
+              read_only_property
+
+           .. autosummary::
+              :nosignatures:
+
+              read_write_property
+
+           .. autosummary::
+              :nosignatures:
+
+              __str__
+
+           .. autosummary::
+              :nosignatures:
+
+              static_method
+
            .. raw:: html
 
               <hr/>
@@ -77,6 +109,12 @@ def test_str_02(test_path):
     assert normalize(str(documenter)) == normalize('''
         .. autoclass:: ChildClass
 
+           .. autosummary::
+              :nosignatures:
+
+              inheritable_method
+              new_method
+
            .. raw:: html
 
               <hr/>
@@ -84,7 +122,9 @@ def test_str_02(test_path):
            .. rubric:: Special methods
               :class: class-header
 
-           .. automethod:: ChildClass.__str__
+           .. container:: inherited
+
+              .. automethod:: ChildClass.__str__
 
            .. raw:: html
 
@@ -95,11 +135,15 @@ def test_str_02(test_path):
 
            .. automethod:: ChildClass.inheritable_method
 
-           .. automethod:: ChildClass.method
+           .. container:: inherited
+
+              .. automethod:: ChildClass.method
 
            .. automethod:: ChildClass.new_method
 
-           .. automethod:: ChildClass.other_method
+           .. container:: inherited
+
+              .. automethod:: ChildClass.other_method
 
            .. raw:: html
 
@@ -108,9 +152,13 @@ def test_str_02(test_path):
            .. rubric:: Class & static methods
               :class: class-header
 
-           .. automethod:: ChildClass.class_method
+           .. container:: inherited
 
-           .. automethod:: ChildClass.static_method
+              .. automethod:: ChildClass.class_method
+
+           .. container:: inherited
+
+              .. automethod:: ChildClass.static_method
 
            .. raw:: html
 
@@ -119,7 +167,9 @@ def test_str_02(test_path):
            .. rubric:: Read/write properties
               :class: class-header
 
-           .. autoattribute:: ChildClass.read_write_property
+           .. container:: inherited
+
+              .. autoattribute:: ChildClass.read_write_property
 
            .. raw:: html
 
@@ -128,7 +178,9 @@ def test_str_02(test_path):
            .. rubric:: Read-only properties
               :class: class-header
 
-           .. autoattribute:: ChildClass.read_only_property
+           .. container:: inherited
+
+              .. autoattribute:: ChildClass.read_only_property
             ''')
 
 

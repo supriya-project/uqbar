@@ -1,7 +1,7 @@
 """
 Tools for auto-generating API documention.
 """
-
+import importlib
 import pathlib
 
 from .APIBuilder import APIBuilder
@@ -32,14 +32,23 @@ def collect_source_paths(source_paths, recurse_subpackages=True):
         if current_path.is_dir():
             if not (current_path / '__init__.py').exists():
                 continue
-            for path in current_path.iterdir():
-                if (
-                    not recurse_subpackages and
-                    path.is_dir() and
-                    (path / '__init__.py').exists()
-                    ):
-                    continue
-                path_stack.append(path)
+            if recurse_subpackages:
+                for path in current_path.iterdir():
+                    if (path.is_dir() and (path / '__init__.py').exists()):
+                        path_stack.append(path)
+                    elif path.suffix in ('.py', '.pyx'):
+                        visited_paths.add(path)
+            else:
+                visited_paths.add(current_path / '__init__.py')
+                for path in current_path.iterdir():
+                    if path.is_dir():
+                        continue
+                    # Permit nominative modules
+                    if path.suffix in ('.py', '.pyx'):
+                        package_path = source_path_to_package_path(path)
+                        module = importlib.import_module(package_path)
+                        if hasattr(module, path.with_suffix('').name):
+                            visited_paths.add(path)
         elif current_path.suffix in ('.py', '.pyx'):
             visited_paths.add(current_path)
     return sorted(visited_paths)
