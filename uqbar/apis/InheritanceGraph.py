@@ -188,14 +188,15 @@ class InheritanceGraph:
         lineage_paths: Sequence[Union[str, type, types.ModuleType]]=None,
     ) -> None:
         self._package_paths = self._initialize_package_paths(package_paths)
-        print('PACKAGE_PATHS', self._package_paths)
         self._lineage_paths = self._initialize_package_paths(
             lineage_paths or [])
-        print('LINEAGE_PATHS', self._lineage_paths)
-        initial_classes = self._collect_classes(self._package_paths)
-        #print('INITIAL_CLASSES', initial_classes)
-        self._lineage_classes = self._collect_classes(self._lineage_paths)
-        print('LINEAGE_CLASSES', self._lineage_classes)
+        initial_classes = self._collect_classes(
+            self._package_paths,
+        )
+        self._lineage_classes = self._collect_classes(
+            self._lineage_paths,
+            recurse_subpackages=False,
+        )
         (
             self._parents_to_children,
             self._children_to_parents,
@@ -394,7 +395,6 @@ class InheritanceGraph:
         Collect all classes defined in/under ``package_paths``.
         """
         import uqbar.apis
-        #print("COLLECTING")
         classes = []
         initial_source_paths: Set[str] = set()
         # Graph source paths and classes
@@ -409,14 +409,11 @@ class InheritanceGraph:
                 path, _, class_name = path.rpartition('.')
                 module = importlib.import_module(path)
                 classes.append(getattr(module, class_name))
-        #print("    CLASSES?", classes)
         # Iterate source paths
-        #print("    INITIAL SOURCES", initial_source_paths)
         for source_path in uqbar.apis.collect_source_paths(
             initial_source_paths,
             recurse_subpackages=recurse_subpackages,
         ):
-            #print("        SOURCE", source_path)
             package_path = uqbar.apis.source_path_to_package_path(
                 source_path)
             module = importlib.import_module(package_path)
@@ -430,7 +427,6 @@ class InheritanceGraph:
                     object_.__module__ == module.__name__
                 ):
                     classes.append(object_)
-        #print("    CLASSES?", classes)
         return sorted(classes, key=lambda x: (x.__module__, x.__name__))
 
     def _initialize_package_paths(
@@ -462,9 +458,22 @@ class InheritanceGraph:
                 _recurse_downward(child)
 
         visited_classes = set()
+        # Check for hierarchies interecting the lineage classes
         for class_ in self._lineage_classes:
             _recurse_upward(class_)
             _recurse_downward(class_)
+        # Check if lineage paths are prefixes for class module paths
+        lineage_paths_parts = [
+            lineage_path.split('.')
+            for lineage_path in self._lineage_paths
+            ]
+        for class_ in self._children_to_parents:
+            module_parts = class_.__module__.split('.')
+            for parts in lineage_paths_parts:
+                if module_parts[:len(parts)] == parts:
+                    _recurse_upward(class_)
+                    _recurse_downward(class_)
+                    break
 
         for parent, children in tuple(self._parents_to_children.items()):
             if parent in visited_classes:
