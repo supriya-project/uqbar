@@ -65,6 +65,15 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         .. rubric:: Functions
            :class: section-header
         <BLANKLINE>
+        .. autosummary::
+           :nosignatures:
+        <BLANKLINE>
+           ~find_common_prefix
+           ~find_executable
+           ~relative_to
+           ~walk
+           ~write
+        <BLANKLINE>
         .. autofunction:: find_common_prefix
         <BLANKLINE>
         .. autofunction:: find_executable
@@ -140,8 +149,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
                     documenter for documenter in documenters
                     if documenter.client.__module__ == self.package_path
                     ]
-                if local_documenters != documenters:
-                    result.extend(self._build_toc(documenters))
+                result.extend(self._build_toc(documenters))
                 for local_documenter in local_documenters:
                     result.extend(['', str(local_documenter)])
         return '\n'.join(result)
@@ -153,11 +161,10 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         documenters,
         show_full_paths: bool=False,
         **kwargs
-        ) -> List[str]:
+    ) -> List[str]:
         result: List[str] = []
         if not documenters:
             return result
-        result.extend(['', '.. toctree::', '   :hidden:', ''])
         toctree_paths = set()
         for documenter in documenters:
             path = documenter.package_path.partition(
@@ -170,8 +177,10 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
                 path = path[1:]
             if path:
                 toctree_paths.add(path)
-        for toctree_path in sorted(toctree_paths):
-            result.append('   {}'.format(toctree_path))
+        if toctree_paths:
+            result.extend(['', '.. toctree::', '   :hidden:', ''])
+            for toctree_path in sorted(toctree_paths):
+                result.append('   {}'.format(toctree_path))
         result.extend([
             '',
             '.. autosummary::',
@@ -190,8 +199,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def member_documenters_by_section(self) -> List[
-        Tuple[str, List[MemberDocumenter]]]:
+    def member_documenters_by_section(self) -> List[Tuple[str, List[MemberDocumenter]]]:
         result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(

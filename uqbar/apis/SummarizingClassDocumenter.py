@@ -28,6 +28,16 @@ class SummarizingClassDocumenter(ClassDocumenter):
         >>> print(documentation)
         .. autoclass:: SummarizingClassDocumenter
         <BLANKLINE>
+           .. autosummary::
+              :nosignatures:
+        <BLANKLINE>
+              ignored_special_methods
+        <BLANKLINE>
+           .. autosummary::
+              :nosignatures:
+        <BLANKLINE>
+              __str__
+        <BLANKLINE>
            .. raw:: html
         <BLANKLINE>
               <hr/>
@@ -44,7 +54,9 @@ class SummarizingClassDocumenter(ClassDocumenter):
            .. rubric:: Class & static methods
               :class: class-header
         <BLANKLINE>
-           .. automethod:: SummarizingClassDocumenter.validate_client
+           .. container:: inherited
+        <BLANKLINE>
+              .. automethod:: SummarizingClassDocumenter.validate_client
         <BLANKLINE>
            .. raw:: html
         <BLANKLINE>
@@ -53,11 +65,17 @@ class SummarizingClassDocumenter(ClassDocumenter):
            .. rubric:: Read-only properties
               :class: class-header
         <BLANKLINE>
-           .. autoattribute:: SummarizingClassDocumenter.client
+           .. container:: inherited
         <BLANKLINE>
-           .. autoattribute:: SummarizingClassDocumenter.documentation_section
+              .. autoattribute:: SummarizingClassDocumenter.client
         <BLANKLINE>
-           .. autoattribute:: SummarizingClassDocumenter.package_path
+           .. container:: inherited
+        <BLANKLINE>
+              .. autoattribute:: SummarizingClassDocumenter.documentation_section
+        <BLANKLINE>
+           .. container:: inherited
+        <BLANKLINE>
+              .. autoattribute:: SummarizingClassDocumenter.package_path
 
     :param package_path: the module path and name of the member to document
     """
@@ -87,6 +105,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         name = getattr(self.client, '__name__')
         if issubclass(self.client, Exception):  # type: ignore
             return '.. autoexception:: {}'.format(name)
+        attributes = self._classify_class_attributes()
         (
             class_methods,
             data,
@@ -95,7 +114,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             readwrite_properties,
             special_methods,
             static_methods,
-            ) = self._classify_class_attributes()
+            ) = attributes
         result = [
             '.. autoclass:: {}'.format(name),
             ]
@@ -104,6 +123,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
                 '   :members:',
                 '   :undoc-members:',
             ])
+        result.extend(self._build_member_autosummary(attributes))
         result.extend(self._build_attribute_section(
             special_methods,
             'automethod',
@@ -138,7 +158,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         attributes,
         directive: str,
         title: str,
-        ) -> List[str]:
+    ) -> List[str]:
         result: List[str] = []
         if not attributes:
             return result
@@ -155,7 +175,33 @@ class SummarizingClassDocumenter(ClassDocumenter):
             result.append('')
             autodoc_directive = '   .. {}:: {}.{}'.format(
                 directive, getattr(self.client, '__name__'), attribute.name)
-            result.append(autodoc_directive)
+            if attribute.defining_class is self.client:
+                result.append(autodoc_directive)
+            else:
+                result.append('   .. container:: inherited')
+                result.append('')
+                result.append('   {}'.format(autodoc_directive))
+        return result
+
+    def _build_member_autosummary(self, attributes) -> List[str]:
+        result: List[str] = []
+        if not attributes:
+            return result
+        for attribute_section in attributes:
+            attribute_section = sorted(
+                attribute for attribute in attribute_section
+                if attribute.defining_class is self.client
+            )
+            if not attribute_section:
+                continue
+            result.extend([
+                '',
+                '   .. autosummary::',
+                '      :nosignatures:',
+                '',
+            ])
+            for attribute in attribute_section:
+                result.append('      {}'.format(attribute.name))
         return result
 
     def _classify_class_attributes(self):
@@ -173,7 +219,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             elif (
                 getattr(self.client, '__documentation_ignore_inherited__', None) and
                 attr.defining_class is not self.client
-                ):
+            ):
                 continue
             if attr.kind == 'method':
                 if attr.name not in self.ignored_special_methods:
