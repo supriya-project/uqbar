@@ -1,3 +1,4 @@
+import abc
 from uqbar.cli.CLI import CLI
 
 
@@ -232,7 +233,7 @@ class CLIAggregator(CLI):
                 alias_map[key[0]][key[1]] = value
         return alias_map
 
-    @property
+    @abc.abstractproperty
     def cli_classes(self):
         r'''Developer scripts classes.
         '''
