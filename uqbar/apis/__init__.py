@@ -4,18 +4,18 @@ Tools for auto-generating API documention.
 import importlib
 import pathlib
 
-from .APIBuilder import APIBuilder
-from .ClassDocumenter import ClassDocumenter
-from .FunctionDocumenter import FunctionDocumenter
-from .InheritanceGraph import InheritanceGraph
-from .MemberDocumenter import MemberDocumenter
-from .ModuleDocumenter import ModuleDocumenter
-from .ModuleNode import ModuleNode
-from .PackageNode import PackageNode
-from .RootDocumenter import RootDocumenter
-from .SummarizingClassDocumenter import SummarizingClassDocumenter
-from .SummarizingModuleDocumenter import SummarizingModuleDocumenter
-from .SummarizingRootDocumenter import SummarizingRootDocumenter
+from .APIBuilder import APIBuilder  # noqa
+from .ClassDocumenter import ClassDocumenter  # noqa
+from .FunctionDocumenter import FunctionDocumenter  # noqa
+from .InheritanceGraph import InheritanceGraph  # noqa
+from .MemberDocumenter import MemberDocumenter  # noqa
+from .ModuleDocumenter import ModuleDocumenter  # noqa
+from .ModuleNode import ModuleNode  # noqa
+from .PackageNode import PackageNode  # noqa
+from .RootDocumenter import RootDocumenter  # noqa
+from .SummarizingClassDocumenter import SummarizingClassDocumenter  # noqa
+from .SummarizingModuleDocumenter import SummarizingModuleDocumenter  # noqa
+from .SummarizingRootDocumenter import SummarizingRootDocumenter  # noqa
 
 
 def collect_source_paths(source_paths, recurse_subpackages=True):
