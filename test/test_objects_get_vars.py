@@ -24,7 +24,7 @@ def test_objects_get_vars_01():
     assert uqbar.objects.get_vars(my_object) == (
         collections.OrderedDict([('arg1', 'a'), ('arg2', 'b')]),
         ['c', 'd'],
-        {'foo': 'x', 'bar': None, 'quux': ['y', 'z']},
+        {'foo': 'x', 'quux': ['y', 'z']},
     )
 
 

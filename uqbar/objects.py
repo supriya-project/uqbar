@@ -45,6 +45,20 @@ def _get_sequence_repr(expr):
     return '\n'.join(result)
 
 
+def compare_objects(object_one, object_two, coerce=False):
+    if coerce:
+        try:
+            object_two = type(object_one)(object_two)
+        except (ValueError, TypeError):
+            return False
+    object_one_values = type(object_one), get_vars(object_one)
+    try:
+        object_two_values = type(object_two), get_vars(object_two)
+    except AttributeError:
+        object_two_values = type(object_two), object_two
+    return object_one_values == object_two_values
+
+
 def get_hash(expr):
     args, var_args, kwargs = get_vars(expr)
     hash_values = [type(expr)]
@@ -194,7 +208,7 @@ def get_vars(expr):
     ::
 
         >>> kwargs
-        {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
+        {'foo': 'x', 'quux': ['y', 'z']}
 
     """
     # print('TYPE?', type(expr))
@@ -214,40 +228,36 @@ def get_vars(expr):
             continue
 
         if parameter.kind is inspect._POSITIONAL_ONLY:
-
             try:
                 args[name] = getattr(expr, name)
             except AttributeError:
                 args[name] = expr[name]
 
-        elif parameter.kind is inspect._POSITIONAL_OR_KEYWORD:
-
+        elif (
+            parameter.kind is inspect._POSITIONAL_OR_KEYWORD or
+            parameter.kind is inspect._KEYWORD_ONLY
+        ):
             found = False
             for x in (name, '_' + name):
                 try:
-                    args[name] = getattr(expr, x)
+                    value = getattr(expr, x)
                     found = True
                     break
                 except AttributeError:
-                    continue
-            if found:
-                continue
-
-            found = False
-            for x in (name, '_' + name):
-                try:
-                    args[name] = expr[x]
-                    found = True
-                    break
-                except KeyError:
-                    continue
-                except TypeError:
-                    break
+                    try:
+                        value = expr[x]
+                        found = True
+                        break
+                    except (KeyError, TypeError):
+                        pass
             if not found:
                 raise ValueError('Cannot find value for {!r}'.format(name))
+            if parameter.default is inspect._empty:
+                args[name] = value
+            elif parameter.default != value:
+                kwargs[name] = value
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
-
             value = None
             try:
                 value = expr[:]
@@ -256,15 +266,7 @@ def get_vars(expr):
             if value:
                 var_args.extend(value)
 
-        elif parameter.kind is inspect._KEYWORD_ONLY:
-
-            try:
-                kwargs[name] = getattr(expr, name)
-            except AttributeError:
-                kwargs[name] = expr[name]
-
         elif parameter.kind is inspect._VAR_KEYWORD:
-
             items = {}
             if hasattr(expr, 'items'):
                 items = expr.items()
@@ -359,17 +361,3 @@ def new(expr, *args, **kwargs):
 
     new_args = list(current_args.values()) + list(current_var_args)
     return type(expr)(*new_args, **new_kwargs)
-
-
-def compare_objects(object_one, object_two, coerce=False):
-    if coerce:
-        try:
-            object_two = type(object_one)(object_two)
-        except (ValueError, TypeError):
-            return False
-    object_one_values = type(object_one), get_vars(object_one)
-    try:
-        object_two_values = type(object_two), get_vars(object_two)
-    except AttributeError:
-        object_two_values = type(object_two), object_two
-    return object_one_values == object_two_values
