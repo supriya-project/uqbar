@@ -4,6 +4,7 @@ from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 from uqbar.apis.RootDocumenter import RootDocumenter
 from sphinx.ext.autosummary import extract_summary  # type: ignore
 from sphinx.util.docutils import new_document  # type: ignore
+from unittest import mock
 
 
 class SummarizingRootDocumenter(RootDocumenter):
@@ -159,6 +160,13 @@ class SummarizingRootDocumenter(RootDocumenter):
         lines = normalize(documenter.client.__doc__ or '').splitlines()
         if not lines:
             return
-        document = new_document('')
+        settings = mock.Mock(
+            auto_id_prefix='',
+            id_prefix='',
+            language_code='',
+            pep_reference=False,
+            rfc_reference=False,
+        )
+        document = new_document('', settings)
         summary = extract_summary(lines, document)
         return '\n'.join(textwrap.wrap(summary, 79))
