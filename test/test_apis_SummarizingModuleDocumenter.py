@@ -170,6 +170,13 @@ def test_str_03(test_path):
 
         .. autoclass:: ChildClass
 
+           .. raw:: html
+
+              <hr/>
+
+           .. rubric:: Attributes Summary
+              :class: class-header
+
            .. autosummary::
               :nosignatures:
 
@@ -245,36 +252,23 @@ def test_str_03(test_path):
 
         .. autoclass:: PublicClass
 
-           .. autosummary::
-              :nosignatures:
+           .. raw:: html
 
-              class_method
+              <hr/>
 
-           .. autosummary::
-              :nosignatures:
-
-              inheritable_method
-              method
-              other_method
-
-           .. autosummary::
-              :nosignatures:
-
-              read_only_property
-
-           .. autosummary::
-              :nosignatures:
-
-              read_write_property
+           .. rubric:: Attributes Summary
+              :class: class-header
 
            .. autosummary::
               :nosignatures:
 
               __str__
-
-           .. autosummary::
-              :nosignatures:
-
+              class_method
+              inheritable_method
+              method
+              other_method
+              read_only_property
+              read_write_property
               static_method
 
            .. raw:: html

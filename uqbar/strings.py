@@ -11,9 +11,10 @@ def delimit_words(string: str) -> Generator[str, None, None]:
     """
     Delimit a string at word boundaries.
     """
+    # TODO: Reimplement this
     wordlike_characters = ('<', '>', '!')
     current_word = ''
-    for character in string:
+    for i, character in enumerate(string):
         if (
             not character.isalpha() and
             not character.isdigit() and

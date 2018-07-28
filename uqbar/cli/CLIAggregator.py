@@ -9,13 +9,18 @@ class CLIAggregator(CLI):
     ::
 
         >>> import uqbar.cli
-        >>> script = uqbar.cli.CLIAggregator()
+        >>> class ExampleAggregator(uqbar.cli.CLIAggregator):
+        ...     @property
+        ...     def cli_classes(self):
+        ...         return []
+        ...
+        >>> script = ExampleAggregator()
         >>> try:
         ...     script('--help')
         ... except SystemExit:
         ...     pass
         ...
-        usage: cliaggregator [-h] [--version] {help,list} ...
+        usage: example-aggregator [-h] [--version] {help,list} ...
         <BLANKLINE>
         optional arguments:
           -h, --help   show this help message and exit

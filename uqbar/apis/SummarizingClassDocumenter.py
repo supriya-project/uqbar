@@ -28,15 +28,18 @@ class SummarizingClassDocumenter(ClassDocumenter):
         >>> print(documentation)
         .. autoclass:: SummarizingClassDocumenter
         <BLANKLINE>
-           .. autosummary::
-              :nosignatures:
+           .. raw:: html
         <BLANKLINE>
-              ignored_special_methods
+              <hr/>
+        <BLANKLINE>
+           .. rubric:: Attributes Summary
+              :class: class-header
         <BLANKLINE>
            .. autosummary::
               :nosignatures:
         <BLANKLINE>
               __str__
+              ignored_special_methods
         <BLANKLINE>
            .. raw:: html
         <BLANKLINE>
@@ -185,23 +188,30 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     def _build_member_autosummary(self, attributes) -> List[str]:
         result: List[str] = []
-        if not attributes:
-            return result
+        all_attributes = []
         for attribute_section in attributes:
-            attribute_section = sorted(
+            all_attributes.extend(
                 attribute for attribute in attribute_section
                 if attribute.defining_class is self.client
             )
-            if not attribute_section:
-                continue
-            result.extend([
-                '',
-                '   .. autosummary::',
-                '      :nosignatures:',
-                '',
-            ])
-            for attribute in attribute_section:
-                result.append('      {}'.format(attribute.name))
+        all_attributes.sort(key=lambda x: x.name)
+        if not all_attributes:
+            return result
+        result.extend([
+            '',
+            '   .. raw:: html',
+            '',
+            '      <hr/>',
+            '',
+            '   .. rubric:: {}'.format('Attributes Summary'),
+            '      :class: class-header',
+            '',
+            '   .. autosummary::',
+            '      :nosignatures:',
+            '',
+        ])
+        for attribute in all_attributes:
+            result.append('      {}'.format(attribute.name))
         return result
 
     def _classify_class_attributes(self):
