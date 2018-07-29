@@ -188,7 +188,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     def _build_member_autosummary(self, attributes) -> List[str]:
         result: List[str] = []
-        all_attributes = []
+        all_attributes: List[inspect.Attribute] = []
         for attribute_section in attributes:
             all_attributes.extend(
                 attribute for attribute in attribute_section
