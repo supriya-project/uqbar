@@ -33,7 +33,7 @@ install_requires = [
     'Sphinx>=1.7.0',
     'Unidecode>=0.4.21',
     'sphinx-autodoc-typehints>=1.3.0',
-    'sphinx-rtd-theme>=4.0',
+    'sphinx-rtd-theme>=0.4.0',
     ]
 
 keywords = [
