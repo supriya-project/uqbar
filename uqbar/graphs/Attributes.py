@@ -120,7 +120,8 @@ class Attributes(collections.MutableMapping):
         'colorscheme', 'fillcolor', 'fontcolor', 'fontname', 'fontsize',
         'gradientangle', 'href', 'id', 'label', 'labeljust', 'labelloc',
         'layer', 'lheight', 'lp', 'lwidth', 'margin', 'nojustify', 'pencolor',
-        'penwidth', 'peripheries', 'sortv', 'style', 'target', 'tooltip'])
+        'penwidth', 'peripheries', 'rank', 'sortv', 'style', 'target',
+        'tooltip'])
 
     _cluster_styles = frozenset(['bold', 'dashed', 'dotted', 'filled',
         'rounded', 'solid', 'striped'])

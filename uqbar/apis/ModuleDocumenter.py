@@ -80,7 +80,7 @@ class ModuleDocumenter:
         document_private_members: bool=False,
         member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
         module_documenters: Sequence['ModuleDocumenter']=None,
-        ) -> None:
+    ) -> None:
         self._package_path = package_path
         client = importlib.import_module(package_path)
         assert isinstance(client, types.ModuleType)
@@ -132,7 +132,7 @@ class ModuleDocumenter:
         self,
         documenters,
         **kwargs
-        ) -> List[str]:
+    ) -> List[str]:
         result: List[str] = []
         if not documenters:
             return result
@@ -143,12 +143,24 @@ class ModuleDocumenter:
             if isinstance(_, type(self))
             ]
         for module_documenter in module_documenters:
-            path = module_documenter.package_path
-            path = path[len(self.package_path) + 1:]
-            if module_documenter.is_package:
-                path = '{}/index'.format(path)
-            result.append('   {}'.format(path))
+            path = self._build_toc_path(module_documenter)
+            if path:
+                result.append('   {}'.format(path))
         return result
+
+    def _build_toc_path(self, documenter):
+        path = documenter.package_path.partition(
+            self.package_path + '.')[-1]
+        base, _, name = path.rpartition('.')
+        if name.lower() == 'index':
+            path = base + '._' + name
+        if not isinstance(documenter, ModuleDocumenter):
+            path = path.rpartition('.')[0]
+        elif documenter.is_package:
+            path += '/index'
+        if path.lower() == 'index':
+            path = '_' + path
+        return path
 
     def _build_preamble(self) -> List[str]:
         result: List[str] = [
@@ -182,6 +194,9 @@ class ModuleDocumenter:
         path = pathlib.Path('.').joinpath(*self.package_path.split('.'))
         if self.is_package:
             path = path.joinpath('index')
+        elif path.name.lower() == 'index':
+            name = path.name
+            path = path.parent.joinpath('_' + name)
         return path.with_suffix('.rst')
 
     @property
@@ -192,8 +207,7 @@ class ModuleDocumenter:
         return parts[-1] == parts[-2]
 
     @property
-    def member_documenter_classes(self) -> Sequence[
-        Type[MemberDocumenter]]:
+    def member_documenter_classes(self) -> Sequence[Type[MemberDocumenter]]:
         return self._member_documenter_classes
 
     @property
@@ -201,8 +215,9 @@ class ModuleDocumenter:
         return self._member_documenters
 
     @property
-    def member_documenters_by_section(self) -> Sequence[
-        Tuple[str, Sequence[MemberDocumenter]]]:
+    def member_documenters_by_section(
+        self,
+    ) -> Sequence[Tuple[str, Sequence[MemberDocumenter]]]:
         result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(

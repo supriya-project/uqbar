@@ -20,7 +20,7 @@ class Edge(object):
         is_directed: bool=True,
         head_port_position: str=None,
         tail_port_position: str=None,
-        ) -> None:
+    ) -> None:
         self._attributes = Attributes('edge', **(attributes or {}))
         self._head: Optional[
             Union[uqbar.graphs.Node, uqbar.graphs.Attachable]] = None

@@ -167,14 +167,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
             return result
         toctree_paths = set()
         for documenter in documenters:
-            path = documenter.package_path.partition(
-                self.package_path)[-1]
-            if not isinstance(documenter, ModuleDocumenter):
-                path = path.rpartition('.')[0]
-            elif documenter.is_package:
-                path += '/index'
-            if path.startswith('.'):
-                path = path[1:]
+            path = self._build_toc_path(documenter)
             if path:
                 toctree_paths.add(path)
         if toctree_paths:
