@@ -138,4 +138,4 @@ def setup(app: sphinx.application.Sphinx):
     """
     app.connect('doctree-read', on_doctree_read)
     app.connect('builder-inited', on_builder_inited)
-    app.add_stylesheet('uqbar.css')
+    app.add_css_file('uqbar.css')

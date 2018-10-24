@@ -112,7 +112,7 @@ class Attributes(collections.MutableMapping):
 
     _styles: FrozenSet[str] = frozenset()
 
-    _word_pattern = re.compile('^\w+$')
+    _word_pattern = re.compile(r'^\w+$')
 
     ### GRAPH OBJECT SPECIFICS ###
 
