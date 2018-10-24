@@ -31,7 +31,6 @@ multiple paths, separated by spaces:
 import math
 import os
 import pathlib
-import pickle
 import subprocess
 import uqbar.apis
 from docutils.nodes import General, Element, Node, NodeVisitor, SkipNode  # type: ignore
@@ -77,7 +76,7 @@ class InheritanceDiagram(Directive):
                 line=self.lineno,
                 )
             return [warning]
-        if not graph.classes:
+        if not graph.all_class_paths:
             return []
         # Create xref nodes for each target of the graph's image map and add
         # them to the doc tree so that Sphinx can resolve the references to
@@ -85,14 +84,11 @@ class InheritanceDiagram(Directive):
         # doctree after we're done with them.
         env = self.state.document.settings.env
         class_role = env.get_domain('py').role('class')
-        for class_ in graph.classes:
-            try:
-                pickle.dumps(class_)
-            except Exception:
-                continue
-            url_name = class_.__name__
-            if class_.__module__ not in ('__builtins__', 'builtins'):
-                url_name = class_.__module__ + '.' + url_name
+        for class_path in graph.all_class_paths:
+            module_name, _, class_name = class_path.rpartition('.')
+            url_name = class_name
+            if module_name not in ('__builtins__', 'builtins'):
+                url_name = class_path
             refnodes, _ = class_role(
                 'class', ':class:`{}`'.format(url_name),
                 url_name, 0, self.state,
@@ -107,7 +103,7 @@ class InheritanceDiagram(Directive):
 def build_urls(
     self: NodeVisitor,
     node: inheritance_diagram,
-    ) -> Mapping[str, str]:
+) -> Mapping[str, str]:
     """
     Builds a mapping of class paths to URLs.
     """
@@ -122,10 +118,10 @@ def build_urls(
                 _, _, package_path = uri.partition('#')
             else:
                 uri = (
-                    pathlib.Path('..') /
-                    pathlib.Path(current_filename).parent /
-                    pathlib.Path(uri)
-                    )
+                    pathlib.Path('..')
+                    / pathlib.Path(current_filename).parent
+                    / pathlib.Path(uri)
+                )
                 uri = str(uri).replace(os.path.sep, '/')
             urls[package_path] = uri
         # Same document

@@ -42,6 +42,7 @@ class APIBuilder(object):
         wrote: uqbar/apis/SummarizingClassDocumenter.rst
         wrote: uqbar/apis/SummarizingModuleDocumenter.rst
         wrote: uqbar/apis/SummarizingRootDocumenter.rst
+        wrote: uqbar/apis/dummy.rst
 
     :param initial_source_paths: a list of paths to scan for Python sources
     :param target_directory: where to write reStructuredText output
