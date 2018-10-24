@@ -13,15 +13,16 @@ addons:
 
 before_install:
   - pip install -U pip
-  - pip install coveralls coverage mypy
+  - pip install black coveralls mypy
 
 install:
   - pip install -e .[development]
 
 script:
-  - coverage run -a `which py.test` -vv
-  - make -C docs/ html
-  - mypy uqbar
+  - make black-check
+  - make test
+  - make mypy
+  - make docs
 
 after_success:
   - coveralls
