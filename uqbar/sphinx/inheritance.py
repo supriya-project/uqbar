@@ -31,6 +31,7 @@ multiple paths, separated by spaces:
 import math
 import os
 import pathlib
+import pickle
 import subprocess
 import uqbar.apis
 from docutils.nodes import General, Element, Node, NodeVisitor, SkipNode  # type: ignore
@@ -85,6 +86,10 @@ class InheritanceDiagram(Directive):
         env = self.state.document.settings.env
         class_role = env.get_domain('py').role('class')
         for class_ in graph.classes:
+            try:
+                pickle.dumps(class_)
+            except Exception:
+                continue
             url_name = class_.__name__
             if class_.__module__ not in ('__builtins__', 'builtins'):
                 url_name = class_.__module__ + '.' + url_name
