@@ -231,6 +231,11 @@ class SummarizingClassDocumenter(ClassDocumenter):
                 attr.defining_class is not self.client
             ):
                 continue
+            # Handle un-gettable attrs like Flask-SQLAlchemy's Model's `query`
+            try:
+                getattr(self.client, attr.name)
+            except Exception:
+                continue
             if attr.kind == 'method':
                 if attr.name not in self.ignored_special_methods:
                     if attr.name.startswith('__'):
@@ -254,8 +259,11 @@ class SummarizingClassDocumenter(ClassDocumenter):
                     readonly_properties.append(attr)
                 else:
                     readwrite_properties.append(attr)
-            elif attr.kind == 'data' and not attr.name.startswith('_') \
-                and attr.name not in getattr(self.client, '__slots__', ()):
+            elif (
+                attr.kind == 'data' and
+                not attr.name.startswith('_') and
+                attr.name not in getattr(self.client, '__slots__', ())
+            ):
                 data.append(attr)
         class_methods = tuple(sorted(class_methods))
         data = tuple(sorted(data))
