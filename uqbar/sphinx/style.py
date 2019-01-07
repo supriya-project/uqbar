@@ -53,8 +53,12 @@ def handle_method(signature_node, module, object_name, cache):
     if class_ is None:
         return
     attr = getattr(class_, attr_name)
-    inspected_attr = cache[class_][attr_name]
-    defining_class = inspected_attr.defining_class
+    try:
+        inspected_attr = cache[class_][attr_name]
+        defining_class = inspected_attr.defining_class
+    except KeyError:
+        # TODO: This is a hack to handle bad interaction between enum and inspect
+        defining_class = class_
     if defining_class is not class_:
         reftarget = '{}.{}'.format(
             defining_class.__module__,
