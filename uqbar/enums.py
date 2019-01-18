@@ -5,6 +5,8 @@ from uqbar.strings import to_snake_case
 def from_expr(cls, expr):
     if isinstance(expr, cls):
         return expr
+    elif isinstance(expr, float):
+        return cls(int(expr))
     elif isinstance(expr, int):
         return cls(expr)
     elif isinstance(expr, str):
