@@ -1,7 +1,8 @@
 from typing import Mapping, Tuple, Union
-from uqbar.graphs.Attributes import Attributes
+
 from uqbar.containers import UniqueTreeContainer
 from uqbar.graphs import Attachable
+from uqbar.graphs.Attributes import Attributes
 
 
 class TableCell(UniqueTreeContainer, Attachable):
@@ -30,7 +31,7 @@ class TableCell(UniqueTreeContainer, Attachable):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'HTML Classes'
+    __documentation_section__ = "HTML Classes"
 
     ### INITIALIZER ###
 
@@ -38,50 +39,44 @@ class TableCell(UniqueTreeContainer, Attachable):
         self,
         children=None,
         *,
-        attributes: Union[Mapping[str, object], Attributes]=None,
-        name: str=None
-        ) -> None:
+        attributes: Union[Mapping[str, object], Attributes] = None,
+        name: str = None,
+    ) -> None:
         from uqbar.graphs import Text
+
         if isinstance(children, str):
             children = [Text(children)]
-        UniqueTreeContainer.__init__(
-            self,
-            children=children,
-            name=name,
-            )
+        UniqueTreeContainer.__init__(self, children=children, name=name)
         Attachable.__init__(self)
-        self._attributes = Attributes('table_cell', **(attributes or {}))
+        self._attributes = Attributes("table_cell", **(attributes or {}))
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str=None) -> str:
+    def __format__(self, format_spec: str = None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
         result = []
-        start, stop = '<TD', '</TD>'
+        start, stop = "<TD", "</TD>"
         if self.edges:
             start += ' PORT="{}"'.format(self._get_port_name())
-        attributes = format(self._attributes, 'html')
+        attributes = format(self._attributes, "html")
         if attributes:
-            start += ' {}'.format(attributes)
-        start += '>'
+            start += " {}".format(attributes)
+        start += ">"
         result.append(start)
         for child in self:
-            result.append(format(child, 'graphviz'))
+            result.append(format(child, "graphviz"))
         result.append(stop)
-        return ''.join(result)
+        return "".join(result)
 
     ### PRIVATE PROPERTIES ###
 
     @property
     def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
-        return (
-            uqbar.graphs.Table,
-            uqbar.graphs.LineBreak,
-            uqbar.graphs.Text,
-            )
+
+        return (uqbar.graphs.Table, uqbar.graphs.LineBreak, uqbar.graphs.Text)

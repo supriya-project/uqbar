@@ -16,14 +16,13 @@ class MyObject:
 
 
 def test_objects_new_01():
-    object_a = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
+    object_a = MyObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
     object_b = uqbar.objects.new(
-        object_a,
-        arg2=MyObject('x', 'y', bar=[1, 2, 3]),
-        foo='FOO',
+        object_a, arg2=MyObject("x", "y", bar=[1, 2, 3]), foo="FOO"
     )
     # object A is unchanged
-    assert repr(object_a) == uqbar.strings.normalize('''
+    assert repr(object_a) == uqbar.strings.normalize(
+        """
         MyObject(
             'a',
             'b',
@@ -32,8 +31,10 @@ def test_objects_new_01():
             foo='x',
             quux=['y', 'z'],
             )
-        ''')
-    assert repr(object_b) == uqbar.strings.normalize('''
+        """
+    )
+    assert repr(object_b) == uqbar.strings.normalize(
+        """
         MyObject(
             'a',
             MyObject(
@@ -46,15 +47,14 @@ def test_objects_new_01():
             foo='FOO',
             quux=['y', 'z'],
             )
-        ''')
+        """
+    )
     object_c = uqbar.objects.new(
-        object_b,
-        arg1='new a',
-        arg2__foo='new FOO',
-        arg2__bar=[4, 5, 6, 7],
-        )
+        object_b, arg1="new a", arg2__foo="new FOO", arg2__bar=[4, 5, 6, 7]
+    )
     # object B is unchanged
-    assert repr(object_b) == uqbar.strings.normalize('''
+    assert repr(object_b) == uqbar.strings.normalize(
+        """
         MyObject(
             'a',
             MyObject(
@@ -67,8 +67,10 @@ def test_objects_new_01():
             foo='FOO',
             quux=['y', 'z'],
             )
-        ''')
-    assert repr(object_c) == uqbar.strings.normalize('''
+        """
+    )
+    assert repr(object_c) == uqbar.strings.normalize(
+        """
         MyObject(
             'new a',
             MyObject(
@@ -82,4 +84,5 @@ def test_objects_new_01():
             foo='FOO',
             quux=['y', 'z'],
             )
-        ''')
+        """
+    )

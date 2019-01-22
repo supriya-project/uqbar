@@ -1,4 +1,5 @@
 from typing import List, MutableMapping, Tuple  # noqa
+
 from uqbar.apis.MemberDocumenter import MemberDocumenter
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
 
@@ -98,69 +99,73 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Documenters'
+    __documentation_section__ = "Documenters"
 
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
         result = self._build_preamble()
-        package_path = self.package_path.partition('.')[0]
+        package_path = self.package_path.partition(".")[0]
         lineage_path = self.package_path
-        result.extend([
-            '',
-            '.. container:: svg-container',
-            '',
-            '   .. inheritance-diagram:: {}'.format(package_path),
-            '      :lineage: {}'.format(lineage_path),
-            ])
+        result.extend(
+            [
+                "",
+                ".. container:: svg-container",
+                "",
+                "   .. inheritance-diagram:: {}".format(package_path),
+                "      :lineage: {}".format(lineage_path),
+            ]
+        )
         if self.is_nominative:
-            result.extend(['', str(self.member_documenters[0])])
+            result.extend(["", str(self.member_documenters[0])])
         else:
             if self.is_package:
                 subpackage_documenters = [
-                    _ for _ in self.module_documenters or []
+                    _
+                    for _ in self.module_documenters or []
                     if _.is_package or not _.is_nominative
-                    ]
+                ]
                 if subpackage_documenters:
-                    result.extend([
-                        '',
-                        '.. raw:: html',
-                        '',
-                        '   <hr/>',
-                        '',
-                        '.. rubric:: Subpackages',
-                        '   :class: section-header',
-                        ])
-                    result.extend(self._build_toc(
-                        subpackage_documenters,
-                        show_full_paths=True,
-                        ))
+                    result.extend(
+                        [
+                            "",
+                            ".. raw:: html",
+                            "",
+                            "   <hr/>",
+                            "",
+                            ".. rubric:: Subpackages",
+                            "   :class: section-header",
+                        ]
+                    )
+                    result.extend(
+                        self._build_toc(subpackage_documenters, show_full_paths=True)
+                    )
             for section, documenters in self.member_documenters_by_section:
-                result.extend([
-                    '',
-                    '.. raw:: html',
-                    '',
-                    '   <hr/>',
-                    '',
-                    '.. rubric:: {}'.format(section),
-                    '   :class: section-header',
-                    ])
-                local_documenters = [
-                    documenter for documenter in documenters
-                    if documenter.client.__module__ == self.package_path
+                result.extend(
+                    [
+                        "",
+                        ".. raw:: html",
+                        "",
+                        "   <hr/>",
+                        "",
+                        ".. rubric:: {}".format(section),
+                        "   :class: section-header",
                     ]
+                )
+                local_documenters = [
+                    documenter
+                    for documenter in documenters
+                    if documenter.client.__module__ == self.package_path
+                ]
                 result.extend(self._build_toc(documenters))
                 for local_documenter in local_documenters:
-                    result.extend(['', str(local_documenter)])
-        return '\n'.join(result)
+                    result.extend(["", str(local_documenter)])
+        return "\n".join(result)
 
     ### PRIVATE METHODS ###
 
     def _build_toc(
-        self,
-        documenters,
-        show_full_paths: bool=False,
-        **kwargs
+        self, documenters, show_full_paths: bool = False, **kwargs
     ) -> List[str]:
         result: List[str] = []
         if not documenters:
@@ -171,21 +176,15 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
             if path:
                 toctree_paths.add(path)
         if toctree_paths:
-            result.extend(['', '.. toctree::', '   :hidden:', ''])
+            result.extend(["", ".. toctree::", "   :hidden:", ""])
             for toctree_path in sorted(toctree_paths):
-                result.append('   {}'.format(toctree_path))
-        result.extend([
-            '',
-            '.. autosummary::',
-            '   :nosignatures:',
-            '',
-            ])
+                result.append("   {}".format(toctree_path))
+        result.extend(["", ".. autosummary::", "   :nosignatures:", ""])
         for documenter in documenters:
-            template = '   ~{}'
+            template = "   ~{}"
             if show_full_paths:
-                template = '   {}'
-            path = documenter.package_path.rpartition(
-                self.package_path + '.')[-1]
+                template = "   {}"
+            path = documenter.package_path.rpartition(self.package_path + ".")[-1]
             result.append(template.format(path))
         return result
 
@@ -195,12 +194,10 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     def member_documenters_by_section(self) -> List[Tuple[str, List[MemberDocumenter]]]:
         result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
-            result.setdefault(
-                documenter.documentation_section, []).append(documenter)
+            result.setdefault(documenter.documentation_section, []).append(documenter)
         for module_documenter in self.module_documenters or []:
             if not module_documenter.is_nominative:
                 continue
             documenter = module_documenter.member_documenters[0]
-            result.setdefault(
-                documenter.documentation_section, []).append(documenter)
+            result.setdefault(documenter.documentation_section, []).append(documenter)
         return sorted(result.items())

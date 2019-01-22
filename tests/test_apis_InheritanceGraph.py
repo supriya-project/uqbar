@@ -1,25 +1,32 @@
 import collections
 import pickle
+
 import pytest
+
 import uqbar.apis
 import uqbar.apis.dummy
 import uqbar.strings
 
 
 def test_01():
-    inheritance_graph = uqbar.apis.InheritanceGraph(
-        package_paths=['uqbar.containers'],
-        )
-    assert inheritance_graph.parents_to_children == collections.OrderedDict([
-        ('builtins.object', [
-            'uqbar.containers.DependencyGraph.DependencyGraph',
-            'uqbar.containers.UniqueTreeNode.UniqueTreeNode',
-        ]),
-        ('uqbar.containers.UniqueTreeNode.UniqueTreeNode', [
-            'uqbar.containers.UniqueTreeContainer.UniqueTreeContainer',
-        ]),
-    ])
-    assert str(inheritance_graph) == uqbar.strings.normalize(r'''
+    inheritance_graph = uqbar.apis.InheritanceGraph(package_paths=["uqbar.containers"])
+    assert inheritance_graph.parents_to_children == collections.OrderedDict(
+        [
+            (
+                "builtins.object",
+                [
+                    "uqbar.containers.DependencyGraph.DependencyGraph",
+                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                ],
+            ),
+            (
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                ["uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"],
+            ),
+        ]
+    )
+    assert str(inheritance_graph) == uqbar.strings.normalize(
+        r"""
         digraph InheritanceGraph {
             graph [bgcolor=transparent,
                 color=lightsteelblue2,
@@ -58,45 +65,60 @@ def test_01():
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
         }
-    ''')
+    """
+    )
     pickle.dumps(inheritance_graph)
 
 
 def test_02():
     inheritance_graph = uqbar.apis.InheritanceGraph(
-        package_paths=['uqbar'],
-        lineage_paths=['uqbar.containers'],
-        )
-    assert inheritance_graph.parents_to_children == collections.OrderedDict([
-        ('builtins.object', [
-            'uqbar.containers.DependencyGraph.DependencyGraph',
-            'uqbar.containers.UniqueTreeNode.UniqueTreeNode',
-        ]),
-        ('uqbar.containers.UniqueTreeContainer.UniqueTreeContainer', [
-            'uqbar.apis.PackageNode.PackageNode',
-            'uqbar.graphs.Graph.Graph',
-            'uqbar.graphs.Node.Node',
-            'uqbar.graphs.RecordGroup.RecordGroup',
-            'uqbar.graphs.Table.Table',
-            'uqbar.graphs.TableCell.TableCell',
-            'uqbar.graphs.TableRow.TableRow',
-        ]),
-        ('uqbar.containers.UniqueTreeNode.UniqueTreeNode', [
-            'uqbar.apis.ModuleNode.ModuleNode',
-            'uqbar.containers.UniqueTreeContainer.UniqueTreeContainer',
-            'uqbar.graphs.Attachable.Attachable',
-            'uqbar.graphs.HRule.HRule',
-            'uqbar.graphs.LineBreak.LineBreak',
-            'uqbar.graphs.RecordField.RecordField',
-            'uqbar.graphs.Text.Text',
-            'uqbar.graphs.VRule.VRule',
-        ]),
-        ('uqbar.graphs.Attachable.Attachable', [
-            'uqbar.graphs.RecordField.RecordField',
-            'uqbar.graphs.TableCell.TableCell',
-        ]),
-    ])
-    assert str(inheritance_graph) == uqbar.strings.normalize(r'''
+        package_paths=["uqbar"], lineage_paths=["uqbar.containers"]
+    )
+    assert inheritance_graph.parents_to_children == collections.OrderedDict(
+        [
+            (
+                "builtins.object",
+                [
+                    "uqbar.containers.DependencyGraph.DependencyGraph",
+                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                ],
+            ),
+            (
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                [
+                    "uqbar.apis.PackageNode.PackageNode",
+                    "uqbar.graphs.Graph.Graph",
+                    "uqbar.graphs.Node.Node",
+                    "uqbar.graphs.RecordGroup.RecordGroup",
+                    "uqbar.graphs.Table.Table",
+                    "uqbar.graphs.TableCell.TableCell",
+                    "uqbar.graphs.TableRow.TableRow",
+                ],
+            ),
+            (
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                [
+                    "uqbar.apis.ModuleNode.ModuleNode",
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                    "uqbar.graphs.Attachable.Attachable",
+                    "uqbar.graphs.HRule.HRule",
+                    "uqbar.graphs.LineBreak.LineBreak",
+                    "uqbar.graphs.RecordField.RecordField",
+                    "uqbar.graphs.Text.Text",
+                    "uqbar.graphs.VRule.VRule",
+                ],
+            ),
+            (
+                "uqbar.graphs.Attachable.Attachable",
+                [
+                    "uqbar.graphs.RecordField.RecordField",
+                    "uqbar.graphs.TableCell.TableCell",
+                ],
+            ),
+        ]
+    )
+    assert str(inheritance_graph) == uqbar.strings.normalize(
+        r"""
         digraph InheritanceGraph {
             graph [bgcolor=transparent,
                 color=lightsteelblue2,
@@ -179,82 +201,128 @@ def test_02():
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Text.Text";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
         }
-    ''')
+    """
+    )
     pickle.dumps(inheritance_graph)
 
 
 def test_03():
     inheritance_graph = uqbar.apis.InheritanceGraph(
-        package_paths=['uqbar'],
-        lineage_paths=['uqbar'],
-        )
-    assert inheritance_graph.parents_to_children == collections.OrderedDict([
-        ('abc.ABC', ['uqbar.cli.CLI.CLI']),
-        ('builtins.int', ['enum.IntEnum']),
-        ('builtins.object', ['abc.ABC',
-                            'builtins.int',
-                            'code.InteractiveInterpreter',
-                            'collections.abc.Container',
-                            'collections.abc.Iterable',
-                            'collections.abc.Sized',
-                            'docutils.nodes.Body',
-                            'docutils.nodes.Node',
-                            'docutils.parsers.rst.Directive',
-                            'enum.Enum',
-                            'uqbar.apis.APIBuilder.APIBuilder',
-                            'uqbar.apis.InheritanceGraph.InheritanceGraph',
-                            'uqbar.apis.MemberDocumenter.MemberDocumenter',
-                            'uqbar.apis.ModuleDocumenter.ModuleDocumenter',
-                            'uqbar.apis.RootDocumenter.RootDocumenter',
-                            'uqbar.apis.dummy.MyParentClass',
-                            'uqbar.containers.DependencyGraph.DependencyGraph',
-                            'uqbar.containers.UniqueTreeNode.UniqueTreeNode',
-                            'uqbar.graphs.Edge.Edge',
-                            'uqbar.io.DirectoryChange.DirectoryChange',
-                            'uqbar.io.Profiler.Profiler',
-                            'uqbar.io.RedirectedStreams.RedirectedStreams',
-                            'uqbar.io.Timer.Timer']),
-        ('code.InteractiveConsole', ['uqbar.book.Console.Console']),
-        ('code.InteractiveInterpreter', ['code.InteractiveConsole']),
-        ('collections.abc.Collection', ['collections.abc.Mapping']),
-        ('collections.abc.Container', ['collections.abc.Collection']),
-        ('collections.abc.Iterable', ['collections.abc.Collection']),
-        ('collections.abc.Mapping', ['collections.abc.MutableMapping']),
-        ('collections.abc.MutableMapping', ['uqbar.graphs.Attributes.Attributes']),
-        ('collections.abc.Sized', ['collections.abc.Collection']),
-        ('docutils.nodes.Body', ['docutils.nodes.General']),
-        ('docutils.nodes.Element', ['uqbar.sphinx.inheritance.inheritance_diagram']),
-        ('docutils.nodes.General', ['uqbar.sphinx.inheritance.inheritance_diagram']),
-        ('docutils.nodes.Node', ['docutils.nodes.Element']),
-        ('docutils.parsers.rst.Directive', ['uqbar.sphinx.inheritance.InheritanceDiagram']),
-        ('enum.Enum', ['enum.IntEnum', 'uqbar.enums.StrictEnumeration']),
-        ('enum.IntEnum', ['uqbar.enums.IntEnumeration']),
-        ('uqbar.apis.ClassDocumenter.ClassDocumenter', ['uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter']),
-        ('uqbar.apis.MemberDocumenter.MemberDocumenter', ['uqbar.apis.ClassDocumenter.ClassDocumenter',
-                                                        'uqbar.apis.FunctionDocumenter.FunctionDocumenter']),
-        ('uqbar.apis.ModuleDocumenter.ModuleDocumenter', ['uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter']),
-        ('uqbar.apis.RootDocumenter.RootDocumenter', ['uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter']),
-        ('uqbar.apis.dummy.MyParentClass', ['uqbar.apis.dummy.MyChildClass']),
-        ('uqbar.cli.CLI.CLI', ['uqbar.cli.CLIAggregator.CLIAggregator']),
-        ('uqbar.containers.UniqueTreeContainer.UniqueTreeContainer', ['uqbar.apis.PackageNode.PackageNode',
-                                                                    'uqbar.graphs.Graph.Graph',
-                                                                    'uqbar.graphs.Node.Node',
-                                                                    'uqbar.graphs.RecordGroup.RecordGroup',
-                                                                    'uqbar.graphs.Table.Table',
-                                                                    'uqbar.graphs.TableCell.TableCell',
-                                                                    'uqbar.graphs.TableRow.TableRow']),
-        ('uqbar.containers.UniqueTreeNode.UniqueTreeNode', ['uqbar.apis.ModuleNode.ModuleNode',
-                                                        'uqbar.containers.UniqueTreeContainer.UniqueTreeContainer',
-                                                        'uqbar.graphs.Attachable.Attachable',
-                                                        'uqbar.graphs.HRule.HRule',
-                                                        'uqbar.graphs.LineBreak.LineBreak',
-                                                        'uqbar.graphs.RecordField.RecordField',
-                                                        'uqbar.graphs.Text.Text',
-                                                        'uqbar.graphs.VRule.VRule']),
-        ('uqbar.graphs.Attachable.Attachable', ['uqbar.graphs.RecordField.RecordField',
-                                            'uqbar.graphs.TableCell.TableCell']),
-    ])
-    assert str(inheritance_graph) == uqbar.strings.normalize(r'''
+        package_paths=["uqbar"], lineage_paths=["uqbar"]
+    )
+    assert inheritance_graph.parents_to_children == collections.OrderedDict(
+        [
+            ("abc.ABC", ["uqbar.cli.CLI.CLI"]),
+            ("builtins.int", ["enum.IntEnum"]),
+            (
+                "builtins.object",
+                [
+                    "abc.ABC",
+                    "builtins.int",
+                    "code.InteractiveInterpreter",
+                    "collections.abc.Container",
+                    "collections.abc.Iterable",
+                    "collections.abc.Sized",
+                    "docutils.nodes.Body",
+                    "docutils.nodes.Node",
+                    "docutils.parsers.rst.Directive",
+                    "enum.Enum",
+                    "uqbar.apis.APIBuilder.APIBuilder",
+                    "uqbar.apis.InheritanceGraph.InheritanceGraph",
+                    "uqbar.apis.MemberDocumenter.MemberDocumenter",
+                    "uqbar.apis.ModuleDocumenter.ModuleDocumenter",
+                    "uqbar.apis.RootDocumenter.RootDocumenter",
+                    "uqbar.apis.dummy.MyParentClass",
+                    "uqbar.containers.DependencyGraph.DependencyGraph",
+                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                    "uqbar.graphs.Edge.Edge",
+                    "uqbar.io.DirectoryChange.DirectoryChange",
+                    "uqbar.io.Profiler.Profiler",
+                    "uqbar.io.RedirectedStreams.RedirectedStreams",
+                    "uqbar.io.Timer.Timer",
+                ],
+            ),
+            ("code.InteractiveConsole", ["uqbar.book.Console.Console"]),
+            ("code.InteractiveInterpreter", ["code.InteractiveConsole"]),
+            ("collections.abc.Collection", ["collections.abc.Mapping"]),
+            ("collections.abc.Container", ["collections.abc.Collection"]),
+            ("collections.abc.Iterable", ["collections.abc.Collection"]),
+            ("collections.abc.Mapping", ["collections.abc.MutableMapping"]),
+            ("collections.abc.MutableMapping", ["uqbar.graphs.Attributes.Attributes"]),
+            ("collections.abc.Sized", ["collections.abc.Collection"]),
+            ("docutils.nodes.Body", ["docutils.nodes.General"]),
+            (
+                "docutils.nodes.Element",
+                ["uqbar.sphinx.inheritance.inheritance_diagram"],
+            ),
+            (
+                "docutils.nodes.General",
+                ["uqbar.sphinx.inheritance.inheritance_diagram"],
+            ),
+            ("docutils.nodes.Node", ["docutils.nodes.Element"]),
+            (
+                "docutils.parsers.rst.Directive",
+                ["uqbar.sphinx.inheritance.InheritanceDiagram"],
+            ),
+            ("enum.Enum", ["enum.IntEnum", "uqbar.enums.StrictEnumeration"]),
+            ("enum.IntEnum", ["uqbar.enums.IntEnumeration"]),
+            (
+                "uqbar.apis.ClassDocumenter.ClassDocumenter",
+                ["uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"],
+            ),
+            (
+                "uqbar.apis.MemberDocumenter.MemberDocumenter",
+                [
+                    "uqbar.apis.ClassDocumenter.ClassDocumenter",
+                    "uqbar.apis.FunctionDocumenter.FunctionDocumenter",
+                ],
+            ),
+            (
+                "uqbar.apis.ModuleDocumenter.ModuleDocumenter",
+                ["uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"],
+            ),
+            (
+                "uqbar.apis.RootDocumenter.RootDocumenter",
+                ["uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"],
+            ),
+            ("uqbar.apis.dummy.MyParentClass", ["uqbar.apis.dummy.MyChildClass"]),
+            ("uqbar.cli.CLI.CLI", ["uqbar.cli.CLIAggregator.CLIAggregator"]),
+            (
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                [
+                    "uqbar.apis.PackageNode.PackageNode",
+                    "uqbar.graphs.Graph.Graph",
+                    "uqbar.graphs.Node.Node",
+                    "uqbar.graphs.RecordGroup.RecordGroup",
+                    "uqbar.graphs.Table.Table",
+                    "uqbar.graphs.TableCell.TableCell",
+                    "uqbar.graphs.TableRow.TableRow",
+                ],
+            ),
+            (
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
+                [
+                    "uqbar.apis.ModuleNode.ModuleNode",
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                    "uqbar.graphs.Attachable.Attachable",
+                    "uqbar.graphs.HRule.HRule",
+                    "uqbar.graphs.LineBreak.LineBreak",
+                    "uqbar.graphs.RecordField.RecordField",
+                    "uqbar.graphs.Text.Text",
+                    "uqbar.graphs.VRule.VRule",
+                ],
+            ),
+            (
+                "uqbar.graphs.Attachable.Attachable",
+                [
+                    "uqbar.graphs.RecordField.RecordField",
+                    "uqbar.graphs.TableCell.TableCell",
+                ],
+            ),
+        ]
+    )
+    assert str(inheritance_graph) == uqbar.strings.normalize(
+        r"""
     digraph InheritanceGraph {
         graph [bgcolor=transparent,
             color=lightsteelblue2,
@@ -485,20 +553,23 @@ def test_03():
         "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Text.Text";
         "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
     }
-    ''')
+    """
+    )
     pickle.dumps(inheritance_graph)
 
 
 def test_04():
     inheritance_graph = uqbar.apis.InheritanceGraph(
-        package_paths=['uqbar'],
-        lineage_paths=['uqbar.apis.dummy'],
-        )
-    assert inheritance_graph.parents_to_children == collections.OrderedDict([
-        ('builtins.object', ['uqbar.apis.dummy.MyParentClass']),
-        ('uqbar.apis.dummy.MyParentClass', ['uqbar.apis.dummy.MyChildClass']),
-    ])
-    assert str(inheritance_graph) == uqbar.strings.normalize(r'''
+        package_paths=["uqbar"], lineage_paths=["uqbar.apis.dummy"]
+    )
+    assert inheritance_graph.parents_to_children == collections.OrderedDict(
+        [
+            ("builtins.object", ["uqbar.apis.dummy.MyParentClass"]),
+            ("uqbar.apis.dummy.MyParentClass", ["uqbar.apis.dummy.MyChildClass"]),
+        ]
+    )
+    assert str(inheritance_graph) == uqbar.strings.normalize(
+        r"""
         digraph InheritanceGraph {
             graph [bgcolor=transparent,
                 color=lightsteelblue2,
@@ -539,7 +610,8 @@ def test_04():
             }
             "builtins.object" -> "uqbar.apis.dummy.MyParentClass";
         }
-    ''')
+    """
+    )
     pickle.dumps(inheritance_graph)
     pickle.dumps(uqbar.apis.dummy.MyChildClass)
     with pytest.raises(AttributeError):

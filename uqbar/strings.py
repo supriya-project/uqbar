@@ -3,8 +3,9 @@ Tools for string manipulation.
 """
 
 import textwrap
-import unidecode  # type: ignore
 from typing import Generator
+
+import unidecode  # type: ignore
 
 
 def delimit_words(string: str) -> Generator[str, None, None]:
@@ -12,17 +13,17 @@ def delimit_words(string: str) -> Generator[str, None, None]:
     Delimit a string at word boundaries.
     """
     # TODO: Reimplement this
-    wordlike_characters = ('<', '>', '!')
-    current_word = ''
+    wordlike_characters = ("<", ">", "!")
+    current_word = ""
     for i, character in enumerate(string):
         if (
-            not character.isalpha() and
-            not character.isdigit() and
-            character not in wordlike_characters
-            ):
+            not character.isalpha()
+            and not character.isdigit()
+            and character not in wordlike_characters
+        ):
             if current_word:
                 yield current_word
-                current_word = ''
+                current_word = ""
         elif not current_word:
             current_word += character
         elif character.isupper():
@@ -60,15 +61,15 @@ def normalize(string: str) -> str:
     Strips leading and trailing blank lines, dedents, and removes trailing
     whitespace from the result.
     """
-    string = string.replace('\t', '    ')
-    lines = string.split('\n')
+    string = string.replace("\t", "    ")
+    lines = string.split("\n")
     while lines and (not lines[0] or lines[0].isspace()):
         lines.pop(0)
     while lines and (not lines[-1] or lines[-1].isspace()):
         lines.pop()
     for i, line in enumerate(lines):
         lines[i] = line.rstrip()
-    string = '\n'.join(lines)
+    string = "\n".join(lines)
     string = textwrap.dedent(string)
     return string
 
@@ -93,7 +94,7 @@ def to_dash_case(string: str) -> str:
     """
     string = unidecode.unidecode(string)
     words = (_.lower() for _ in delimit_words(string))
-    string = '-'.join(words)
+    string = "-".join(words)
     return string
 
 
@@ -117,5 +118,5 @@ def to_snake_case(string: str) -> str:
     """
     string = unidecode.unidecode(string)
     words = (_.lower() for _ in delimit_words(string))
-    string = '_'.join(words)
+    string = "_".join(words)
     return string

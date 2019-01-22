@@ -1,14 +1,15 @@
 import pathlib
 import shutil
-import uqbar.io
 from typing import Sequence, Type, Union
+
+import uqbar.io
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
 from uqbar.apis.MemberDocumenter import MemberDocumenter
 from uqbar.apis.ModuleDocumenter import ModuleDocumenter
-from uqbar.apis.RootDocumenter import RootDocumenter
 from uqbar.apis.ModuleNode import ModuleNode
 from uqbar.apis.PackageNode import PackageNode
+from uqbar.apis.RootDocumenter import RootDocumenter
 
 
 class APIBuilder(object):
@@ -61,19 +62,19 @@ class APIBuilder(object):
         self,
         initial_source_paths: Sequence[Union[str, pathlib.Path]],
         target_directory: Union[str, pathlib.Path],
-        document_empty_modules: bool=True,
-        document_private_members: bool=False,
-        document_private_modules: bool=False,
-        member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
-        module_documenter_class: Type[ModuleDocumenter]=None,
-        root_documenter_class: Type[RootDocumenter]=None,
-        title: str='API',
-        ) -> None:
+        document_empty_modules: bool = True,
+        document_private_members: bool = False,
+        document_private_modules: bool = False,
+        member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
+        module_documenter_class: Type[ModuleDocumenter] = None,
+        root_documenter_class: Type[RootDocumenter] = None,
+        title: str = "API",
+    ) -> None:
         assert initial_source_paths
         assert target_directory
         self._initial_source_paths = frozenset(
             pathlib.Path(_).resolve().absolute() for _ in initial_source_paths
-            )
+        )
         self._target_directory = pathlib.Path(target_directory).absolute()
         self._document_private_members = bool(document_private_members)
         self._document_private_modules = bool(document_private_modules)
@@ -100,6 +101,7 @@ class APIBuilder(object):
         Generate documentation.
         """
         import uqbar.apis
+
         # Make sure target directory exists.
         if not self._target_directory.exists():
             self._target_directory.mkdir(parents=True)
@@ -122,7 +124,7 @@ class APIBuilder(object):
         cwd = pathlib.Path.cwd()
         if str(path).startswith(str(cwd)):
             path = path.relative_to(cwd)
-        print('{} {}'.format((message + ':').ljust(11), path))
+        print("{} {}".format((message + ":").ljust(11), path))
 
     ### PUBLIC METHODS ###
 
@@ -131,23 +133,22 @@ class APIBuilder(object):
         Build a node tree.
         """
         import uqbar.apis
+
         root = PackageNode()
         # Build node tree, top-down
         for source_path in sorted(
-            source_paths,
-            key=lambda x: uqbar.apis.source_path_to_package_path(x),
+            source_paths, key=lambda x: uqbar.apis.source_path_to_package_path(x)
         ):
             package_path = uqbar.apis.source_path_to_package_path(source_path)
-            parts = package_path.split('.')
-            if (
-                not self.document_private_modules and
-                any(part.startswith('_') for part in parts)
+            parts = package_path.split(".")
+            if not self.document_private_modules and any(
+                part.startswith("_") for part in parts
             ):
                 continue
             # Find parent node.
             parent_node = root
             if len(parts) > 1:
-                parent_package_path = '.'.join(parts[:-1])
+                parent_package_path = ".".join(parts[:-1])
                 try:
                     parent_node = root[parent_package_path]
                 except KeyError:
@@ -158,19 +159,18 @@ class APIBuilder(object):
                         grandparent_node = root
                         if len(parts) > 2:
                             grandparent_node = root[
-                                parent_package_path.rpartition('.')[0]
-                                ]
+                                parent_package_path.rpartition(".")[0]
+                            ]
                         parent_node = PackageNode(name=parent_package_path)
                         grandparent_node.append(parent_node)
                         grandparent_node[:] = sorted(
-                            grandparent_node,
-                            key=lambda x: x.package_path,
-                            )
+                            grandparent_node, key=lambda x: x.package_path
+                        )
                 except KeyError:
                     parent_node = root
             # Create or update child node.
             node_class = ModuleNode
-            if source_path.name == '__init__.py':
+            if source_path.name == "__init__.py":
                 node_class = PackageNode
             try:
                 # If the child exists, it was previously backfilled.
@@ -178,42 +178,36 @@ class APIBuilder(object):
                 child_node.source_path = source_path
             except KeyError:
                 # Otherwise it needs to be created and appended to the parent.
-                child_node = node_class(
-                    name=package_path,
-                    source_path=source_path,
-                    )
+                child_node = node_class(name=package_path, source_path=source_path)
                 parent_node.append(child_node)
-                parent_node[:] = sorted(
-                    parent_node,
-                    key=lambda x: x.package_path,
-                    )
+                parent_node[:] = sorted(parent_node, key=lambda x: x.package_path)
         # Build documenters, bottom-up.
         # This allows parent documenters to easily aggregate their children.
         for node in root.depth_first(top_down=False):
             kwargs = dict(
                 document_private_members=self.document_private_members,
                 member_documenter_classes=self.member_documenter_classes,
-                )
+            )
             if isinstance(node, ModuleNode):
                 node.documenter = self.module_documenter_class(
-                    node.package_path,
-                    **kwargs
-                    )
+                    node.package_path, **kwargs
+                )
             else:
                 # Collect references to child modules and packages.
                 node.documenter = self.module_documenter_class(
                     node.package_path,
                     module_documenters=[
-                        child.documenter for child in node
+                        child.documenter
+                        for child in node
                         if child.documenter is not None
-                        ],
-                    **kwargs
-                    )
+                    ],
+                    **kwargs,
+                )
             if (
-                not self.document_empty_modules and
-                not node.documenter.module_documenters and
-                not node.documenter.member_documenters
-                ):
+                not self.document_empty_modules
+                and not node.documenter.module_documenters
+                and not node.documenter.member_documenters
+            ):
                 node.parent.remove(node)
         return root
 
@@ -222,7 +216,7 @@ class APIBuilder(object):
         yield self.root_documenter_class(
             module_documenters=[node.documenter for node in root_node],
             title=self._title,
-            )
+        )
         # Yield module documenters, top-down.
         for node in root_node.depth_first():
             if node is not root_node:
@@ -232,9 +226,7 @@ class APIBuilder(object):
         visited_paths = set()
         for documenter in documenters:
             new_documentation = str(documenter)
-            path = self._target_directory.joinpath(
-                documenter.documentation_path
-                )
+            path = self._target_directory.joinpath(documenter.documentation_path)
             cwd = pathlib.Path.cwd()
             if str(path).startswith(str(cwd)):
                 path = path.relative_to(pathlib.Path.cwd())
@@ -246,17 +238,17 @@ class APIBuilder(object):
         generator = uqbar.io.walk(self._target_directory, top_down=False)
         for root_path, directory_paths, file_paths in generator:
             for file_path in file_paths[:]:
-                if file_path.suffix != '.rst':
+                if file_path.suffix != ".rst":
                     continue
                 if file_path not in visited_paths:
                     file_paths.remove(file_path)
                     file_path.unlink()
-                    self._print('pruned', file_path)
+                    self._print("pruned", file_path)
             if not file_paths and not directory_paths:
                 if root_path == self._target_directory:
                     continue
                 shutil.rmtree(str(root_path))
-                self._print('pruned', root_path)
+                self._print("pruned", root_path)
 
     ### PUBLIC PROPERTIES ###
 

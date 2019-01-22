@@ -33,16 +33,16 @@ def _get_sequence_repr(expr):
         if len(result) < 50:
             return result
     if isinstance(expr, list):
-        braces = '[', ']'
+        braces = "[", "]"
     else:
-        braces = '(', ')'
+        braces = "(", ")"
     result = [braces[0]]
     for x in expr:
         for line in repr(x).splitlines():
-            result.append('    ' + line)
-        result[-1] += ','
-    result.append('    ' + braces[-1])
-    return '\n'.join(result)
+            result.append("    " + line)
+        result[-1] += ","
+    result.append("    " + braces[-1])
+    return "\n".join(result)
 
 
 def compare_objects(object_one, object_two, coerce=False):
@@ -117,7 +117,7 @@ def get_repr(expr, multiline=False):
     """
     signature = _get_object_signature(expr)
     if signature is None:
-        return '{}()'.format(type(expr).__name__)
+        return "{}()".format(type(expr).__name__)
 
     defaults = {}
     for name, parameter in signature.parameters.items():
@@ -135,14 +135,14 @@ def get_repr(expr, multiline=False):
     # print(type(expr), args)
     for i, (key, value) in enumerate(args.items()):
         arg_repr = _dispatch_formatting(value)
-        if '\n' in arg_repr:
+        if "\n" in arg_repr:
             has_lines = True
         args_parts[key] = arg_repr
 
     # Format *args
     for arg in var_args:
         arg_repr = _dispatch_formatting(arg)
-        if '\n' in arg_repr:
+        if "\n" in arg_repr:
             has_lines = True
         var_args_parts.append(arg_repr)
 
@@ -151,7 +151,7 @@ def get_repr(expr, multiline=False):
         if key in defaults and value == defaults[key]:
             continue
         value = _dispatch_formatting(value)
-        arg_repr = '{}={}'.format(key, value)
+        arg_repr = "{}={}".format(key, value)
         has_lines = True
         kwargs_parts[key] = arg_repr
 
@@ -164,13 +164,13 @@ def get_repr(expr, multiline=False):
     # If we should format on multiple lines, add the appropriate formatting.
     if has_lines and parts:
         for i, part in enumerate(parts):
-            parts[i] = '\n'.join('    ' + line for line in part.split('\n'))
-        parts.append('    )')
-        parts = ',\n'.join(parts)
-        return '{}(\n{}'.format(type(expr).__name__, parts)
+            parts[i] = "\n".join("    " + line for line in part.split("\n"))
+        parts.append("    )")
+        parts = ",\n".join(parts)
+        return "{}(\n{}".format(type(expr).__name__, parts)
 
-    parts = ', '.join(parts)
-    return '{}({})'.format(type(expr).__name__, parts)
+    parts = ", ".join(parts)
+    return "{}({})".format(type(expr).__name__, parts)
 
 
 def get_vars(expr):
@@ -224,7 +224,7 @@ def get_vars(expr):
     for i, (name, parameter) in enumerate(signature.parameters.items()):
         # print('   ', parameter)
 
-        if i == 0 and name in ('self', 'cls', 'class_', 'klass'):
+        if i == 0 and name in ("self", "cls", "class_", "klass"):
             continue
 
         if parameter.kind is inspect._POSITIONAL_ONLY:
@@ -234,11 +234,11 @@ def get_vars(expr):
                 args[name] = expr[name]
 
         elif (
-            parameter.kind is inspect._POSITIONAL_OR_KEYWORD or
-            parameter.kind is inspect._KEYWORD_ONLY
+            parameter.kind is inspect._POSITIONAL_OR_KEYWORD
+            or parameter.kind is inspect._KEYWORD_ONLY
         ):
             found = False
-            for x in (name, '_' + name):
+            for x in (name, "_" + name):
                 try:
                     value = getattr(expr, x)
                     found = True
@@ -251,7 +251,7 @@ def get_vars(expr):
                     except (KeyError, TypeError):
                         pass
             if not found:
-                raise ValueError('Cannot find value for {!r}'.format(name))
+                raise ValueError("Cannot find value for {!r}".format(name))
             if parameter.default is inspect._empty:
                 args[name] = value
             elif parameter.default != value:
@@ -268,15 +268,15 @@ def get_vars(expr):
 
         elif parameter.kind is inspect._VAR_KEYWORD:
             items = {}
-            if hasattr(expr, 'items'):
+            if hasattr(expr, "items"):
                 items = expr.items()
             elif hasattr(expr, name):
                 mapping = getattr(expr, name)
                 if not isinstance(mapping, dict):
                     mapping = dict(mapping)
                 items = mapping.items()
-            elif hasattr(expr, '_' + name):
-                mapping = getattr(expr, '_' + name)
+            elif hasattr(expr, "_" + name):
+                mapping = getattr(expr, "_" + name)
                 if not isinstance(mapping, dict):
                     mapping = dict(mapping)
                 items = mapping.items()
@@ -340,9 +340,9 @@ def new(expr, *args, **kwargs):
 
     recursive_arguments = {}
     for key in tuple(kwargs):
-        if '__' in key:
+        if "__" in key:
             value = kwargs.pop(key)
-            key, _, subkey = key.partition('__')
+            key, _, subkey = key.partition("__")
             recursive_arguments.setdefault(key, []).append((subkey, value))
 
     for key, pairs in recursive_arguments.items():

@@ -17,7 +17,7 @@ class UniqueTreeNode:
 
     ### INITIALIZER ###
 
-    def __init__(self, name: str=None) -> None:
+    def __init__(self, name: str = None) -> None:
         self._name = name
         self._parent = None
 
@@ -35,7 +35,7 @@ class UniqueTreeNode:
     def _iterate_nodes(cls, nodes):
         for x in nodes:
             yield x
-            if hasattr(x, '_children'):
+            if hasattr(x, "_children"):
                 for y in cls._iterate_nodes(x):
                     yield y
 
@@ -68,7 +68,7 @@ class UniqueTreeNode:
                     for node in name_dictionary[name]:
                         named_children[name].remove(node)
                     if not named_children[name]:
-                        del(named_children[name])
+                        del (named_children[name])
 
     def _restore_named_children_to_parentage(self, name_dictionary):
         if self._parent is not None and name_dictionary:
@@ -100,13 +100,13 @@ class UniqueTreeNode:
         if not isinstance(expr, collections.Sequence):
             expr = [expr]
         index = self.parent.index(self)
-        self.parent[index:index + 1] = expr
+        self.parent[index : index + 1] = expr
 
     def succeed_by(self, expr):
         if not isinstance(expr, collections.Sequence):
             expr = [expr]
         index = self.parent.index(self)
-        self.parent[index + 1:index + 1] = expr
+        self.parent[index + 1 : index + 1] = expr
 
     ### PUBLIC PROPERTIES ###
 
@@ -119,7 +119,7 @@ class UniqueTreeNode:
         parentage = tuple(reversed(self.parentage))
         graph_order = []
         for i in range(len(parentage) - 1):
-            parent, child = parentage[i:i + 2]
+            parent, child = parentage[i : i + 2]
             graph_order.append(parent.index(child))
         return tuple(graph_order)
 

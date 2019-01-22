@@ -1,6 +1,8 @@
 import pathlib
-import pytest
 import sys
+
+import pytest
+
 import uqbar.apis
 from uqbar.strings import normalize
 
@@ -14,8 +16,10 @@ def test_path():
 
 def test_str_01(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module.PublicClass')
-    assert normalize(str(documenter)) == normalize('''
+        "fake_package.module.PublicClass"
+    )
+    assert normalize(str(documenter)) == normalize(
+        """
         .. autoclass:: PublicClass
 
            .. raw:: html
@@ -87,13 +91,14 @@ def test_str_01(test_path):
               :class: class-header
 
            .. autoattribute:: PublicClass.read_only_property
-        ''')
+        """
+    )
 
 
 def test_str_02(test_path):
-    documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module.ChildClass')
-    assert normalize(str(documenter)) == normalize('''
+    documenter = uqbar.apis.SummarizingClassDocumenter("fake_package.module.ChildClass")
+    assert normalize(str(documenter)) == normalize(
+        """
         .. autoclass:: ChildClass
 
            .. raw:: html
@@ -175,12 +180,16 @@ def test_str_02(test_path):
            .. container:: inherited
 
               .. autoattribute:: ChildClass.read_only_property
-            ''')
+            """
+    )
 
 
 def test_str_03(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter(
-        'fake_package.module._PrivateClass')
-    assert normalize(str(documenter)) == normalize('''
+        "fake_package.module._PrivateClass"
+    )
+    assert normalize(str(documenter)) == normalize(
+        """
         .. autoclass:: _PrivateClass
-        ''')
+        """
+    )

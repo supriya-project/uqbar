@@ -1,4 +1,5 @@
 import copy
+
 from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 
@@ -36,7 +37,7 @@ class UniqueTreeContainer(UniqueTreeNode):
             children = tuple(self._named_children[i])
             for child in children:
                 parent = child.parent
-                del(parent[parent.index(child)])
+                del (parent[parent.index(child)])
             return
         if isinstance(i, int):
             if i < 0:
@@ -49,10 +50,7 @@ class UniqueTreeContainer(UniqueTreeNode):
         if isinstance(expr, (int, slice)):
             return self._children[expr]
         elif isinstance(expr, str):
-            result = sorted(
-                self._named_children[expr],
-                key=lambda x: x.graph_order,
-                )
+            result = sorted(self._named_children[expr], key=lambda x: x.graph_order)
             if len(result) == 1:
                 return result[0]
             return result
@@ -71,7 +69,7 @@ class UniqueTreeContainer(UniqueTreeNode):
             assert isinstance(expr, self._node_class)
             old = self[i]
             if expr in self.parentage:
-                raise ValueError('Cannot set parent node as child.')
+                raise ValueError("Cannot set parent node as child.")
             old._set_parent(None)
             expr._set_parent(self)
             self._children.insert(i, expr)
@@ -81,15 +79,19 @@ class UniqueTreeContainer(UniqueTreeNode):
                 # Prevent mutating while iterating by copying.
                 expr = expr[:]
             assert all(isinstance(x, self._node_class) for x in expr)
-            if i.start == i.stop and i.start is not None \
-                and i.stop is not None and i.start <= -len(self):
+            if (
+                i.start == i.stop
+                and i.start is not None
+                and i.stop is not None
+                and i.start <= -len(self)
+            ):
                 start, stop = 0, 0
             else:
                 start, stop, stride = i.indices(len(self))
             old = self[start:stop]
             parentage = self.parentage
             if any(node in parentage for node in expr):
-                raise ValueError('Cannot set parent node as child.')
+                raise ValueError("Cannot set parent node as child.")
             for node in old:
                 node._set_parent(None)
             for node in expr:
@@ -101,7 +103,7 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def _cache_named_children(self):
         name_dictionary = super(UniqueTreeContainer, self)._cache_named_children()
-        if hasattr(self, '_named_children'):
+        if hasattr(self, "_named_children"):
             for name, children in self._named_children.items():
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
@@ -121,10 +123,7 @@ class UniqueTreeContainer(UniqueTreeNode):
     ### PUBLIC METHODS ###
 
     def append(self, expr):
-        self.__setitem__(
-            slice(len(self), len(self)),
-            [expr]
-            )
+        self.__setitem__(slice(len(self), len(self)), [expr])
 
     def depth_first(self, top_down=True):
         for child in tuple(self):
@@ -136,29 +135,23 @@ class UniqueTreeContainer(UniqueTreeNode):
                 yield child
 
     def extend(self, expr):
-        self.__setitem__(
-            slice(len(self), len(self)),
-            expr
-            )
+        self.__setitem__(slice(len(self), len(self)), expr)
 
     def index(self, expr):
         for i, child in enumerate(self._children):
             if child is expr:
                 return i
         else:
-            message = '{!r} not in {!r}.'
+            message = "{!r} not in {!r}."
             message = message.format(expr, self)
             raise ValueError(message)
 
     def insert(self, i, expr):
-        self.__setitem__(
-            slice(i, i),
-            [expr]
-            )
+        self.__setitem__(slice(i, i), [expr])
 
     def pop(self, i=-1):
         node = self[i]
-        del(self[i])
+        del (self[i])
         return node
 
     def recurse(self):
@@ -170,7 +163,7 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def remove(self, node):
         i = self.index(node)
-        del(self[i])
+        del (self[i])
 
     ### PUBLIC PROPERTIES ###
 

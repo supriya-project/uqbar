@@ -16,7 +16,7 @@ class Text(UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'HTML Classes'
+    __documentation_section__ = "HTML Classes"
 
     ### INITIALIZER ###
 
@@ -26,9 +26,9 @@ class Text(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str=None) -> str:
+    def __format__(self, format_spec: str = None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 

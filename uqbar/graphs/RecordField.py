@@ -1,6 +1,7 @@
+from typing import Optional
+
 import uqbar.graphs  # noqa
 from uqbar.containers import UniqueTreeNode
-from typing import Optional
 from uqbar.graphs import Attachable
 
 
@@ -62,16 +63,11 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Record Field Classes'
+    __documentation_section__ = "Record Field Classes"
 
     ### INITIALIZER ###
 
-    def __init__(
-        self,
-        label: str=None,
-        *,
-        name: str=None
-        ) -> None:
+    def __init__(self, label: str = None, *, name: str = None) -> None:
         UniqueTreeNode.__init__(self, name=name)
         Attachable.__init__(self)
         if label is not None:
@@ -80,16 +76,16 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str=None) -> str:
+    def __format__(self, format_spec: str = None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
-        result = '<{}>'.format(self._get_port_name())
+        result = "<{}>".format(self._get_port_name())
         if self.label:
-            result = '{} {}'.format(result, self.label)
+            result = "{} {}".format(result, self.label)
         return result
 
     ### PUBLIC PROPERTIES ###

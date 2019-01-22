@@ -9,16 +9,11 @@ class ModuleNode(uqbar.containers.UniqueTreeNode):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Internals'
+    __documentation_section__ = "Internals"
 
     ### INITIALIZER ###
 
-    def __init__(
-        self,
-        name=None,
-        documenter=None,
-        source_path=None,
-    ):
+    def __init__(self, name=None, documenter=None, source_path=None):
         super().__init__(name=name)
         self._documenter = documenter
         self._source_path = source_path
@@ -26,7 +21,7 @@ class ModuleNode(uqbar.containers.UniqueTreeNode):
     ### SPECIAL METHODS ###
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return "{}".format(self.name)
 
     ### PUBLIC PROPERTIES ###
 

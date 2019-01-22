@@ -15,11 +15,8 @@ class Timer:
     """
 
     def __init__(
-        self,
-        exit_message: str=None,
-        enter_message: str=None,
-        verbose: bool=True,
-        ) -> None:
+        self, exit_message: str = None, enter_message: str = None, verbose: bool = True
+    ) -> None:
         if enter_message is not None:
             enter_message = str(enter_message)
         self._enter_message = enter_message
@@ -32,7 +29,7 @@ class Timer:
 
     ### SPECIAL METHODS ###
 
-    def __enter__(self) -> 'Timer':
+    def __enter__(self) -> "Timer":
         if self.enter_message and self.verbose:
             print(self.enter_message)
         self._stop_time = None

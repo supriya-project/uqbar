@@ -1,5 +1,4 @@
 class PublicClass:
-
     def __str__(self):
         return repr(self)
 
@@ -34,7 +33,6 @@ class PublicClass:
 
 
 class ChildClass(PublicClass):
-
     def inheritable_method(self):
         pass
 

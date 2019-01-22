@@ -1,10 +1,7 @@
-master_doc = 'index'
+master_doc = "index"
 
-extensions = [
-    'sphinx.ext.autodoc',
-    'uqbar.sphinx.api',
-    ]
+extensions = ["sphinx.ext.autodoc", "uqbar.sphinx.api"]
 
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
-uqbar_api_source_paths = ['fake_package']
+uqbar_api_source_paths = ["fake_package"]
