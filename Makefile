@@ -1,10 +1,12 @@
 .PHONY: docs build test
 
-black:
-	black --py36 --diff uqbar/ test/
+paths = uqbar/ tests/
 
 black-check:
-	black --py36 --diff --check uqbar/ test/
+	black --py36 --diff --check ${paths}
+
+black-reformat:
+	black --py36 ${paths}
 
 build:
 	python setup.py sdist
@@ -21,8 +23,21 @@ clean:
 docs:
 	make -C docs/ html 
 
+flake8:
+	flake8 --max-line-length=90 uqbar/ tests/
+
+isort:
+	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${paths}
+
 mypy:
-	mypy uqbar/
+	mypy ${paths}
+
+pytest:
+	pytest --cov=uqbar/ --cov=tests/ --cov-report=html --cov-report=term
+
+reformat:
+	make isort
+	make black-reformat
 
 release:
 	make clean
@@ -30,4 +45,8 @@ release:
 	twine upload dist/*.tar.gz
 
 test:
-	pytest
+	make black-check
+	make flake8
+	make mypy
+	make pytest
+	make docs
