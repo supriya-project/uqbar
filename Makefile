@@ -1,6 +1,6 @@
 .PHONY: docs build test
 
-paths = uqbar/ tests/
+paths = uqbar/ tests/ *.py
 
 black-check:
 	black --py36 --diff --check ${paths}
