@@ -35,6 +35,7 @@ install_requires = [
     "black",
     "flake8",
     "isort",
+    "pytest-cov",
     "sphinx-autodoc-typehints>=1.3.0",
     "sphinx-rtd-theme>=0.4.0",
 ]
