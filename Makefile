@@ -31,7 +31,7 @@ isort:
 	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${paths}
 
 mypy:
-	mypy ${paths}
+	mypy --ignore-missing-imports ${paths}
 
 pytest:
 	pytest --cov=uqbar/ --cov=tests/ --cov-report=html --cov-report=term

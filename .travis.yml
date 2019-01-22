@@ -20,8 +20,9 @@ install:
 
 script:
   - make black-check
-  - make test
+  - make flake8
   - make mypy
+  - make pytest
   - make docs
 
 after_success:
