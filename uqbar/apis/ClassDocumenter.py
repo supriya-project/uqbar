@@ -1,6 +1,7 @@
 import enum
 import inspect
 from typing import cast
+
 from uqbar.apis.MemberDocumenter import MemberDocumenter
 
 
@@ -34,42 +35,37 @@ class ClassDocumenter(MemberDocumenter):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Documenters'
+    __documentation_section__ = "Documenters"
 
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
-        name = getattr(self.client, '__name__')
+        name = getattr(self.client, "__name__")
         if issubclass(self.client, Exception):  # type: ignore
-            return '.. autoexception:: {}'.format(name)
-        return '\n'.join([
-            '.. autoclass:: {}'.format(name),
-            '   :members:',
-            '   :undoc-members:',
-            ])
+            return ".. autoexception:: {}".format(name)
+        return "\n".join(
+            [".. autoclass:: {}".format(name), "   :members:", "   :undoc-members:"]
+        )
 
     ### PUBLIC METHODS ###
 
     @classmethod
     def validate_client(cls, client: object, module_path: str) -> bool:
-        return (
-            isinstance(client, type) and
-            getattr(client, '__module__') == module_path
-            )
+        return isinstance(client, type) and getattr(client, "__module__") == module_path
 
     ### PUBLIC PROPERTIES ###
 
     @property
     def documentation_section(self) -> str:
         client = cast(type, self.client)
-        if hasattr(client, '__documentation_section__'):
-            section = getattr(client, '__documentation_section__')
+        if hasattr(client, "__documentation_section__"):
+            section = getattr(client, "__documentation_section__")
             if section is not None:
                 return section
         if inspect.isabstract(client):
-            return 'Abstract Classes'
+            return "Abstract Classes"
         elif issubclass(client, enum.Enum):
-            return 'Enumerations'
+            return "Enumerations"
         elif issubclass(client, Exception):
-            return 'Exceptions'
-        return 'Classes'
+            return "Exceptions"
+        return "Classes"

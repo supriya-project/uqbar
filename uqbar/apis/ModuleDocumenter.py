@@ -1,8 +1,9 @@
 import importlib
 import pathlib
 import types
-import uqbar  # noqa
 from typing import List, MutableMapping, Sequence, Tuple, Type  # noqa
+
+import uqbar  # noqa
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 from uqbar.apis.FunctionDocumenter import FunctionDocumenter
 from uqbar.apis.MemberDocumenter import MemberDocumenter
@@ -70,17 +71,17 @@ class ModuleDocumenter:
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Documenters'
+    __documentation_section__ = "Documenters"
 
     ### INITIALIZER ###
 
     def __init__(
         self,
         package_path: str,
-        document_private_members: bool=False,
-        member_documenter_classes: Sequence[Type[MemberDocumenter]]=None,
-        module_documenters: Sequence['ModuleDocumenter']=None,
-        ) -> None:
+        document_private_members: bool = False,
+        member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
+        module_documenters: Sequence["ModuleDocumenter"] = None,
+    ) -> None:
         self._package_path = package_path
         client = importlib.import_module(package_path)
         assert isinstance(client, types.ModuleType)
@@ -93,10 +94,7 @@ class ModuleDocumenter:
         self._member_documenter_classes = tuple(member_documenter_classes)
         if module_documenters is not None:
             for submodule_documenter in module_documenters:
-                assert isinstance(
-                    submodule_documenter,
-                    ModuleDocumenter,
-                    )
+                assert isinstance(submodule_documenter, ModuleDocumenter)
             module_documenters = tuple(module_documenters)
         self._module_documenters = module_documenters or ()
         self._member_documenters = self._populate()
@@ -107,20 +105,20 @@ class ModuleDocumenter:
         result = self._build_preamble()
         result.extend(self._build_toc(self.module_documenters or []))
         for documenter in self._member_documenters:
-            result.extend(['', str(documenter)])
-        return '\n'.join(result)
+            result.extend(["", str(documenter)])
+        return "\n".join(result)
 
     ### PRIVATE METHODS ###
 
     def _populate(self) -> Sequence[MemberDocumenter]:
         documenters = []
         for name in sorted(dir(self.client)):
-            if name.startswith('_') and not self.document_private_members:
+            if name.startswith("_") and not self.document_private_members:
                 continue
             client = getattr(self.client, name)
             for class_ in self.member_documenter_classes:
                 if class_.validate_client(client, self.package_path):
-                    path = '{}.{}'.format(client.__module__, client.__name__)
+                    path = "{}.{}".format(client.__module__, client.__name__)
                     documenter = class_(path)
                     documenters.append(documenter)
                     break
@@ -128,39 +126,43 @@ class ModuleDocumenter:
 
     ### PRIVATE METHODS ###
 
-    def _build_toc(
-        self,
-        documenters,
-        **kwargs
-        ) -> List[str]:
+    def _build_toc(self, documenters, **kwargs) -> List[str]:
         result: List[str] = []
         if not documenters:
             return result
-        result.extend(['', '.. toctree::'])
-        result.append('')
-        module_documenters = [
-            _ for _ in documenters
-            if isinstance(_, type(self))
-            ]
+        result.extend(["", ".. toctree::"])
+        result.append("")
+        module_documenters = [_ for _ in documenters if isinstance(_, type(self))]
         for module_documenter in module_documenters:
-            path = module_documenter.package_path
-            path = path[len(self.package_path) + 1:]
-            if module_documenter.is_package:
-                path = '{}/index'.format(path)
-            result.append('   {}'.format(path))
+            path = self._build_toc_path(module_documenter)
+            if path:
+                result.append("   {}".format(path))
         return result
+
+    def _build_toc_path(self, documenter):
+        path = documenter.package_path.partition(self.package_path + ".")[-1]
+        base, _, name = path.rpartition(".")
+        if name.lower() == "index":
+            path = base + "._" + name
+        if not isinstance(documenter, ModuleDocumenter):
+            path = path.rpartition(".")[0]
+        elif documenter.is_package:
+            path += "/index"
+        if path.lower() == "index":
+            path = "_" + path
+        return path
 
     def _build_preamble(self) -> List[str]:
         result: List[str] = [
-            '.. _{}:'.format(self.reference_name),
-            '',
+            ".. _{}:".format(self.reference_name),
+            "",
             self.package_name,
-            '=' * len(self.package_name),
-            '',
-            '.. automodule:: {}'.format(self.package_path),
-            '',
-            '.. currentmodule:: {}'.format(self.package_path),
-            ]
+            "=" * len(self.package_name),
+            "",
+            ".. automodule:: {}".format(self.package_path),
+            "",
+            ".. currentmodule:: {}".format(self.package_path),
+        ]
         return result
 
     ### PUBLIC PROPERTIES ###
@@ -171,7 +173,7 @@ class ModuleDocumenter:
 
     @property
     def is_package(self) -> bool:
-        return hasattr(self.client, '__path__')
+        return hasattr(self.client, "__path__")
 
     @property
     def document_private_members(self) -> bool:
@@ -179,21 +181,23 @@ class ModuleDocumenter:
 
     @property
     def documentation_path(self) -> pathlib.Path:
-        path = pathlib.Path('.').joinpath(*self.package_path.split('.'))
+        path = pathlib.Path(".").joinpath(*self.package_path.split("."))
         if self.is_package:
-            path = path.joinpath('index')
-        return path.with_suffix('.rst')
+            path = path.joinpath("index")
+        elif path.name.lower() == "index":
+            name = path.name
+            path = path.parent.joinpath("_" + name)
+        return path.with_suffix(".rst")
 
     @property
     def is_nominative(self) -> bool:
         if self.is_package or len(self.member_documenters) != 1:
             return False
-        parts = self.member_documenters[0].package_path.split('.')
+        parts = self.member_documenters[0].package_path.split(".")
         return parts[-1] == parts[-2]
 
     @property
-    def member_documenter_classes(self) -> Sequence[
-        Type[MemberDocumenter]]:
+    def member_documenter_classes(self) -> Sequence[Type[MemberDocumenter]]:
         return self._member_documenter_classes
 
     @property
@@ -201,22 +205,22 @@ class ModuleDocumenter:
         return self._member_documenters
 
     @property
-    def member_documenters_by_section(self) -> Sequence[
-        Tuple[str, Sequence[MemberDocumenter]]]:
+    def member_documenters_by_section(
+        self,
+    ) -> Sequence[Tuple[str, Sequence[MemberDocumenter]]]:
         result: MutableMapping[str, List[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
-            result.setdefault(
-                documenter.documentation_section, []).append(documenter)
+            result.setdefault(documenter.documentation_section, []).append(documenter)
         return sorted(result.items())
 
     @property
-    def module_documenters(self) -> Sequence['ModuleDocumenter']:
+    def module_documenters(self) -> Sequence["ModuleDocumenter"]:
         return self._module_documenters
 
     @property
     def package_name(self) -> str:
-        if '.' in self.package_path:
-            return self._package_path.rpartition('.')[-1]
+        if "." in self.package_path:
+            return self._package_path.rpartition(".")[-1]
         return self._package_path
 
     @property
@@ -225,6 +229,4 @@ class ModuleDocumenter:
 
     @property
     def reference_name(self) -> str:
-        return self.package_path \
-            .replace('_', '-') \
-            .replace('.', '--')
+        return self.package_path.replace("_", "-").replace(".", "--")

@@ -12,9 +12,9 @@ class MyObject:
 
 
 def test_objects_get_hash_01():
-    object_a = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    object_b = MyObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    object_c = MyObject('x', 'y', bar=set([1, 2, 3]))
+    object_a = MyObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    object_b = MyObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    object_c = MyObject("x", "y", bar=set([1, 2, 3]))
     assert get_hash(object_a) == get_hash(object_b)
     assert get_hash(object_a) != get_hash(object_c)
     assert get_hash(object_b) != get_hash(object_c)

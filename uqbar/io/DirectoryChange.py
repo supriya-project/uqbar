@@ -23,7 +23,7 @@ class DirectoryChange:
 
     def __enter__(self):
         if self.verbose:
-            print('Changing directory to {} ...'.format(self.directory))
+            print("Changing directory to {} ...".format(self.directory))
         self._directory_stack.append(pathlib.Path.cwd())
         os.chdir(str(self._directory))
         return self
@@ -31,7 +31,7 @@ class DirectoryChange:
     def __exit__(self, exc_type, exc_value, traceback):
         original_directory = self._directory_stack.pop()
         if self.verbose:
-            print('Returning to {} ...'.format(original_directory))
+            print("Returning to {} ...".format(original_directory))
         os.chdir(str(original_directory))
 
     ### PUBLIC PROPERTIES ###

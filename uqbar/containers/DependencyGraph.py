@@ -39,10 +39,7 @@ class DependencyGraph:
 
     ### CLASS VARIABLES ###
 
-    __slots__ = (
-        '_parents_to_children',
-        '_children_to_parents',
-        )
+    __slots__ = ("_parents_to_children", "_children_to_parents")
 
     ### INITIALIZER ###
 
@@ -62,7 +59,7 @@ class DependencyGraph:
 
     def __getitem__(self, expr):
         if expr not in self:
-            raise ValueError('{!r} not in {}'.format(expr, type(self)))
+            raise ValueError("{!r} not in {}".format(expr, type(self)))
         parents = frozenset(self._children_to_parents[expr])
         children = frozenset(self._parents_to_children[expr])
         return parents, children
@@ -91,7 +88,7 @@ class DependencyGraph:
 
     def children(self, expr):
         if expr not in self:
-            raise ValueError('{!r} not in {}'.format(expr, type(self)))
+            raise ValueError("{!r} not in {}".format(expr, type(self)))
         return frozenset(self._parents_to_children[expr])
 
     def copy(self):
@@ -115,7 +112,7 @@ class DependencyGraph:
 
     def parents(self, expr):
         if expr not in self:
-            raise ValueError('{!r} not in {}'.format(expr, type(self)))
+            raise ValueError("{!r} not in {}".format(expr, type(self)))
         return frozenset(self._children_to_parents[expr])
 
     def pop(self):
@@ -126,13 +123,13 @@ class DependencyGraph:
             popped = parent
             break
         if popped is None:
-            raise ValueError('Graph contains cycles.')
+            raise ValueError("Graph contains cycles.")
         self.remove(popped)
         return popped
 
     def remove(self, expr):
         if expr not in self:
-            raise ValueError('{!r} not in {}'.format(expr, type(self)))
+            raise ValueError("{!r} not in {}".format(expr, type(self)))
         for child in self._parents_to_children.pop(expr):
             self._children_to_parents[child].remove(expr)
         for parent in self._children_to_parents.pop(expr):

@@ -1,10 +1,13 @@
 import enum
+
 from uqbar.strings import to_snake_case
 
 
 def from_expr(cls, expr):
     if isinstance(expr, cls):
         return expr
+    elif isinstance(expr, float):
+        return cls(int(expr))
     elif isinstance(expr, int):
         return cls(expr)
     elif isinstance(expr, str):
@@ -18,12 +21,12 @@ def from_expr(cls, expr):
         except KeyError:
             pass
         try:
-            return cls[coerced_expr.replace('_', '')]
+            return cls[coerced_expr.replace("_", "")]
         except KeyError:
             pass
     elif expr is None:
         return cls(0)
-    message = 'Cannot instantiate {} from {!r}.'.format(cls.__name__, expr)
+    message = "Cannot instantiate {} from {!r}.".format(cls.__name__, expr)
     raise ValueError(message)
 
 
@@ -53,39 +56,36 @@ class IntEnumeration(enum.IntEnum):
         True
 
     """
+
     pass
 
     # ### SPECIAL METHODS ### #
 
     def __dir__(self):
         names = [
-            '__class__',
-            '__doc__',
-            '__format__',
-            '__members__',
-            '__module__',
-            '__repr__',
-            'from_expr',
-            ]
+            "__class__",
+            "__doc__",
+            "__format__",
+            "__members__",
+            "__module__",
+            "__repr__",
+            "from_expr",
+        ]
         names += self._member_names_
-        names += [
-            ]
+        names += []
         return sorted(names)
 
     def __repr__(self):
-        return '{}.{}'.format(
-            type(self).__name__,
-            self.name,
-            )
+        return "{}.{}".format(type(self).__name__, self.name)
 
     # ### PUBLIC METHODS ### #
 
     @classmethod
     def from_expr(cls, expr):
-        r'''Convenience constructor for enumerations.
+        r"""Convenience constructor for enumerations.
 
         Returns new enumeration item.
-        '''
+        """
         return from_expr(cls, expr)
 
 
@@ -120,17 +120,16 @@ class StrictEnumeration(enum.Enum):
 
     def __dir__(self):
         names = [
-            '__class__',
-            '__doc__',
-            '__format__',
-            '__members__',
-            '__module__',
-            '__repr__',
-            'from_expr',
-            ]
+            "__class__",
+            "__doc__",
+            "__format__",
+            "__members__",
+            "__module__",
+            "__repr__",
+            "from_expr",
+        ]
         names += self._member_names_
-        names += [
-            ]
+        names += []
         return sorted(names)
 
     def __float__(self):
@@ -160,17 +159,14 @@ class StrictEnumeration(enum.Enum):
         return NotImplemented
 
     def __repr__(self):
-        return '{}.{}'.format(
-            type(self).__name__,
-            self.name,
-            )
+        return "{}.{}".format(type(self).__name__, self.name)
 
     # ### PUBLIC METHODS ### #
 
     @classmethod
     def from_expr(cls, expr):
-        r'''Convenience constructor for enumerations.
+        r"""Convenience constructor for enumerations.
 
         Returns new enumeration item.
-        '''
+        """
         return from_expr(cls, expr)

@@ -1,6 +1,7 @@
 import enum
 import inspect
 from typing import List
+
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 
 
@@ -85,29 +86,29 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Documenters'
+    __documentation_section__ = "Documenters"
 
     ignored_special_methods = (
-        '__dict__',
-        '__getattribute__',
-        '__getnewargs__',
-        '__getstate__',
-        '__init__',
-        '__reduce__',
-        '__reduce_ex__',
-        '__setstate__',
-        '__sizeof__',
-        '__subclasshook__',
-        'fromkeys',
-        'pipe_cloexec',
-        )
+        "__dict__",
+        "__getattribute__",
+        "__getnewargs__",
+        "__getstate__",
+        "__init__",
+        "__reduce__",
+        "__reduce_ex__",
+        "__setstate__",
+        "__sizeof__",
+        "__subclasshook__",
+        "fromkeys",
+        "pipe_cloexec",
+    )
 
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
-        name = getattr(self.client, '__name__')
+        name = getattr(self.client, "__name__")
         if issubclass(self.client, Exception):  # type: ignore
-            return '.. autoexception:: {}'.format(name)
+            return ".. autoexception:: {}".format(name)
         attributes = self._classify_class_attributes()
         (
             class_methods,
@@ -117,73 +118,66 @@ class SummarizingClassDocumenter(ClassDocumenter):
             readwrite_properties,
             special_methods,
             static_methods,
-            ) = attributes
-        result = [
-            '.. autoclass:: {}'.format(name),
-            ]
+        ) = attributes
+        result = [".. autoclass:: {}".format(name)]
         if issubclass(self.client, enum.Enum):  # type: ignore
-            result.extend([
-                '   :members:',
-                '   :undoc-members:',
-            ])
+            result.extend(["   :members:", "   :undoc-members:"])
         result.extend(self._build_member_autosummary(attributes))
-        result.extend(self._build_attribute_section(
-            special_methods,
-            'automethod',
-            'Special methods',
-            ))
-        result.extend(self._build_attribute_section(
-            methods,
-            'automethod',
-            'Methods',
-            ))
-        result.extend(self._build_attribute_section(
-            sorted(class_methods + static_methods, key=lambda x: x.name),
-            'automethod',
-            'Class & static methods',
-            ))
-        result.extend(self._build_attribute_section(
-            readwrite_properties,
-            'autoattribute',
-            'Read/write properties',
-            ))
-        result.extend(self._build_attribute_section(
-            readonly_properties,
-            'autoattribute',
-            'Read-only properties',
-            ))
-        return '\n'.join(result)
+        result.extend(
+            self._build_attribute_section(
+                special_methods, "automethod", "Special methods"
+            )
+        )
+        result.extend(self._build_attribute_section(methods, "automethod", "Methods"))
+        result.extend(
+            self._build_attribute_section(
+                sorted(class_methods + static_methods, key=lambda x: x.name),
+                "automethod",
+                "Class & static methods",
+            )
+        )
+        result.extend(
+            self._build_attribute_section(
+                readwrite_properties, "autoattribute", "Read/write properties"
+            )
+        )
+        result.extend(
+            self._build_attribute_section(
+                readonly_properties, "autoattribute", "Read-only properties"
+            )
+        )
+        return "\n".join(result)
 
     ### PRIVATE METHODS ###
 
     def _build_attribute_section(
-        self,
-        attributes,
-        directive: str,
-        title: str,
+        self, attributes, directive: str, title: str
     ) -> List[str]:
         result: List[str] = []
         if not attributes:
             return result
-        result.extend([
-            '',
-            '   .. raw:: html',
-            '',
-            '      <hr/>',
-            '',
-            '   .. rubric:: {}'.format(title),
-            '      :class: class-header',
-            ])
+        result.extend(
+            [
+                "",
+                "   .. raw:: html",
+                "",
+                "      <hr/>",
+                "",
+                "   .. rubric:: {}".format(title),
+                "      :class: class-header",
+            ]
+        )
         for attribute in attributes:
-            result.append('')
-            autodoc_directive = '   .. {}:: {}.{}'.format(
-                directive, getattr(self.client, '__name__'), attribute.name)
+            result.append("")
+            autodoc_directive = "   .. {}:: {}.{}".format(
+                directive, getattr(self.client, "__name__"), attribute.name
+            )
             if attribute.defining_class is self.client:
                 result.append(autodoc_directive)
             else:
-                result.append('   .. container:: inherited')
-                result.append('')
-                result.append('   {}'.format(autodoc_directive))
+                result.append("   .. container:: inherited")
+                result.append("")
+                result.append("   {}".format(autodoc_directive))
         return result
 
     def _build_member_autosummary(self, attributes) -> List[str]:
@@ -191,27 +185,30 @@ class SummarizingClassDocumenter(ClassDocumenter):
         all_attributes: List[inspect.Attribute] = []
         for attribute_section in attributes:
             all_attributes.extend(
-                attribute for attribute in attribute_section
+                attribute
+                for attribute in attribute_section
                 if attribute.defining_class is self.client
             )
         all_attributes.sort(key=lambda x: x.name)
         if not all_attributes:
             return result
-        result.extend([
-            '',
-            '   .. raw:: html',
-            '',
-            '      <hr/>',
-            '',
-            '   .. rubric:: {}'.format('Attributes Summary'),
-            '      :class: class-header',
-            '',
-            '   .. autosummary::',
-            '      :nosignatures:',
-            '',
-        ])
+        result.extend(
+            [
+                "",
+                "   .. raw:: html",
+                "",
+                "      <hr/>",
+                "",
+                "   .. rubric:: {}".format("Attributes Summary"),
+                "      :class: class-header",
+                "",
+                "   .. autosummary::",
+                "      :nosignatures:",
+                "",
+            ]
+        )
         for attribute in all_attributes:
-            result.append('      {}'.format(attribute.name))
+            result.append("      {}".format(attribute.name))
         return result
 
     def _classify_class_attributes(self):
@@ -227,35 +224,43 @@ class SummarizingClassDocumenter(ClassDocumenter):
             if attr.defining_class is object:
                 continue
             elif (
-                getattr(self.client, '__documentation_ignore_inherited__', None) and
-                attr.defining_class is not self.client
+                getattr(self.client, "__documentation_ignore_inherited__", None)
+                and attr.defining_class is not self.client
             ):
                 continue
-            if attr.kind == 'method':
+            # Handle un-gettable attrs like Flask-SQLAlchemy's Model's `query`
+            try:
+                getattr(self.client, attr.name)
+            except Exception:
+                continue
+            if attr.kind == "method":
                 if attr.name not in self.ignored_special_methods:
-                    if attr.name.startswith('__'):
+                    if attr.name.startswith("__"):
                         special_methods.append(attr)
-                    elif not attr.name.startswith('_'):
+                    elif not attr.name.startswith("_"):
                         methods.append(attr)
-            elif attr.kind == 'class method':
+            elif attr.kind == "class method":
                 if attr.name not in self.ignored_special_methods:
-                    if attr.name.startswith('__'):
+                    if attr.name.startswith("__"):
                         special_methods.append(attr)
-                    elif not attr.name.startswith('_'):
+                    elif not attr.name.startswith("_"):
                         class_methods.append(attr)
-            elif attr.kind == 'static method':
+            elif attr.kind == "static method":
                 if attr.name not in self.ignored_special_methods:
-                    if attr.name.startswith('__'):
+                    if attr.name.startswith("__"):
                         special_methods.append(attr)
-                    elif not attr.name.startswith('_'):
+                    elif not attr.name.startswith("_"):
                         static_methods.append(attr)
-            elif attr.kind == 'property' and not attr.name.startswith('_'):
+            elif attr.kind == "property" and not attr.name.startswith("_"):
                 if attr.object.fset is None:
                     readonly_properties.append(attr)
                 else:
                     readwrite_properties.append(attr)
-            elif attr.kind == 'data' and not attr.name.startswith('_') \
-                and attr.name not in getattr(self.client, '__slots__', ()):
+            elif (
+                attr.kind == "data"
+                and not attr.name.startswith("_")
+                and attr.name not in getattr(self.client, "__slots__", ())
+            ):
                 data.append(attr)
         class_methods = tuple(sorted(class_methods))
         data = tuple(sorted(data))
@@ -272,5 +277,5 @@ class SummarizingClassDocumenter(ClassDocumenter):
             readwrite_properties,
             special_methods,
             static_methods,
-            )
+        )
         return result

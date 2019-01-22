@@ -32,11 +32,15 @@ import math
 import os
 import pathlib
 import subprocess
-import uqbar.apis
-from docutils.nodes import General, Element, Node, NodeVisitor, SkipNode  # type: ignore
-from docutils.parsers.rst import Directive, directives  # type: ignore
-from sphinx.ext.graphviz import render_dot_html, render_dot_latex  # type: ignore
 from typing import List, Mapping
+
+from docutils.nodes import Element  # type: ignore
+from docutils.nodes import General, Node, NodeVisitor, SkipNode
+from docutils.parsers.rst import Directive, directives  # type: ignore
+from sphinx.ext.graphviz import render_dot_html  # type: ignore
+from sphinx.ext.graphviz import render_dot_latex
+
+import uqbar.apis
 
 
 class inheritance_diagram(General, Element):
@@ -51,11 +55,12 @@ class InheritanceDiagram(Directive):
     """
     Runs when the inheritance_diagram directive is first encountered.
     """
+
     has_content = False
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {'lineage': directives.unchanged}
+    option_spec = {"lineage": directives.unchanged}
 
     __documentation_ignore_inherited__ = True
 
@@ -63,46 +68,39 @@ class InheritanceDiagram(Directive):
         node = inheritance_diagram()
         node.document = self.state.document
         package_paths = self.arguments[0].split()
-        lineage_paths = self.options.get('lineage', '').split() or None
+        lineage_paths = self.options.get("lineage", "").split() or None
         # Create the graph
         try:
             graph = uqbar.apis.InheritanceGraph(
-                package_paths=package_paths,
-                lineage_paths=lineage_paths,
-                )
+                package_paths=package_paths, lineage_paths=lineage_paths
+            )
         except Exception as error:
-            warning = node.document.reporter.warning(
-                error.args[0],
-                line=self.lineno,
-                )
+            warning = node.document.reporter.warning(error.args[0], line=self.lineno)
             return [warning]
-        if not graph.classes:
+        if not graph.all_class_paths:
             return []
         # Create xref nodes for each target of the graph's image map and add
         # them to the doc tree so that Sphinx can resolve the references to
         # real URLs later.  These nodes will eventually be removed from the
         # doctree after we're done with them.
         env = self.state.document.settings.env
-        class_role = env.get_domain('py').role('class')
-        for class_ in graph.classes:
-            url_name = class_.__name__
-            if class_.__module__ not in ('__builtins__', 'builtins'):
-                url_name = class_.__module__ + '.' + url_name
+        class_role = env.get_domain("py").role("class")
+        for class_path in graph.all_class_paths:
+            module_name, _, class_name = class_path.rpartition(".")
+            url_name = class_name
+            if module_name not in ("__builtins__", "builtins"):
+                url_name = class_path
             refnodes, _ = class_role(
-                'class', ':class:`{}`'.format(url_name),
-                url_name, 0, self.state,
-                )
+                "class", ":class:`{}`".format(url_name), url_name, 0, self.state
+            )
             node.extend(refnodes)
         # Store the graph object so we can use it to generate the dot file
         # later on
-        node['graph'] = graph
+        node["graph"] = graph
         return [node]
 
 
-def build_urls(
-    self: NodeVisitor,
-    node: inheritance_diagram,
-    ) -> Mapping[str, str]:
+def build_urls(self: NodeVisitor, node: inheritance_diagram) -> Mapping[str, str]:
     """
     Builds a mapping of class paths to URLs.
     """
@@ -110,70 +108,65 @@ def build_urls(
     urls = {}
     for child in node:
         # Another document
-        if child.get('refuri') is not None:
-            uri = child.get('refuri')
-            package_path = child['reftitle']
-            if uri.startswith('http'):
-                _, _, package_path = uri.partition('#')
+        if child.get("refuri") is not None:
+            uri = child.get("refuri")
+            package_path = child["reftitle"]
+            if uri.startswith("http"):
+                _, _, package_path = uri.partition("#")
             else:
                 uri = (
-                    pathlib.Path('..') /
-                    pathlib.Path(current_filename).parent /
-                    pathlib.Path(uri)
-                    )
-                uri = str(uri).replace(os.path.sep, '/')
+                    pathlib.Path("..")
+                    / pathlib.Path(current_filename).parent
+                    / pathlib.Path(uri)
+                )
+                uri = str(uri).replace(os.path.sep, "/")
             urls[package_path] = uri
         # Same document
-        elif child.get('refid') is not None:
-            urls[child['reftitle']] = '../' + current_filename + '#' + child.get('refid')
+        elif child.get("refid") is not None:
+            urls[child["reftitle"]] = (
+                "../" + current_filename + "#" + child.get("refid")
+            )
     return urls
 
 
 def html_visit_inheritance_diagram(
-    self: NodeVisitor,
-    node: inheritance_diagram,
-    ) -> None:
+    self: NodeVisitor, node: inheritance_diagram
+) -> None:
     """
     Builds HTML output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
     """
-    inheritance_graph = node['graph']
+    inheritance_graph = node["graph"]
     urls = build_urls(self, node)
     graphviz_graph = inheritance_graph.build_graph(urls)
-    dot_code = format(graphviz_graph, 'graphviz')
+    dot_code = format(graphviz_graph, "graphviz")
     # TODO: We can perform unflattening here
     aspect_ratio = inheritance_graph.aspect_ratio
     if aspect_ratio:
         aspect_ratio = math.ceil(math.sqrt(aspect_ratio[1] / aspect_ratio[0]))
     if aspect_ratio > 1:
         process = subprocess.Popen(
-            [
-                'unflatten',
-                '-l', str(aspect_ratio),
-                '-c', str(aspect_ratio),
-                '-f',
-                ],
+            ["unflatten", "-l", str(aspect_ratio), "-c", str(aspect_ratio), "-f"],
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            )
+        )
         stdout, stderr = process.communicate(dot_code.encode())
         dot_code = stdout.decode()
-    render_dot_html(self, node, dot_code, {}, 'inheritance', 'inheritance')
+    render_dot_html(self, node, dot_code, {}, "inheritance", "inheritance")
     raise SkipNode
 
 
 def latex_visit_inheritance_diagram(
-    self: NodeVisitor,
-    node: inheritance_diagram,
-    ) -> None:
+    self: NodeVisitor, node: inheritance_diagram
+) -> None:
     """
     Builds LaTeX output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
     """
-    inheritance_graph = node['graph']
+    inheritance_graph = node["graph"]
     graphviz_graph = inheritance_graph.build_graph()
-    graphviz_graph.attributes['size'] = 6.0
-    dot_code = format(graphviz_graph, 'graphviz')
-    render_dot_latex(self, node, dot_code, {}, 'inheritance')
+    graphviz_graph.attributes["size"] = 6.0
+    dot_code = format(graphviz_graph, "graphviz")
+    render_dot_latex(self, node, dot_code, {}, "inheritance")
     raise SkipNode
 
 
@@ -188,7 +181,7 @@ def setup(app) -> None:
     """
     Sets up Sphinx extension.
     """
-    app.setup_extension('sphinx.ext.graphviz')
+    app.setup_extension("sphinx.ext.graphviz")
     app.add_node(
         inheritance_diagram,
         html=(html_visit_inheritance_diagram, None),
@@ -196,5 +189,5 @@ def setup(app) -> None:
         man=(skip, None),
         texinfo=(skip, None),
         text=(skip, None),
-        )
-    app.add_directive('inheritance-diagram', InheritanceDiagram)
+    )
+    app.add_directive("inheritance-diagram", InheritanceDiagram)

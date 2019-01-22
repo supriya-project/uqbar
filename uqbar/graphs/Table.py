@@ -1,6 +1,7 @@
 from typing import Mapping, Tuple, Union
-from uqbar.graphs.Attributes import Attributes
+
 from uqbar.containers import UniqueTreeContainer
+from uqbar.graphs.Attributes import Attributes
 
 
 class Table(UniqueTreeContainer):
@@ -45,7 +46,7 @@ class Table(UniqueTreeContainer):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'HTML Classes'
+    __documentation_section__ = "HTML Classes"
 
     ### INITIALIZER ###
 
@@ -53,39 +54,35 @@ class Table(UniqueTreeContainer):
         self,
         children=None,
         *,
-        attributes: Union[Mapping[str, object], Attributes]=None,
-        name: str=None
-        ) -> None:
-        UniqueTreeContainer.__init__(
-            self,
-            children=children,
-            name=name,
-            )
-        self._attributes = Attributes('table', **(attributes or {}))
+        attributes: Union[Mapping[str, object], Attributes] = None,
+        name: str = None,
+    ) -> None:
+        UniqueTreeContainer.__init__(self, children=children, name=name)
+        self._attributes = Attributes("table", **(attributes or {}))
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str=None) -> str:
+    def __format__(self, format_spec: str = None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
         result = []
-        start, stop = '<TABLE', '</TABLE>'
-        attributes = format(self._attributes, 'html')
+        start, stop = "<TABLE", "</TABLE>"
+        attributes = format(self._attributes, "html")
         if attributes:
-            start += ' {}'.format(attributes)
-        start += '>'
+            start += " {}".format(attributes)
+        start += ">"
         result.append(start)
         for child in self:
-            for line in format(child, 'graphviz').splitlines():
-                result.append('    {}'.format(line))
+            for line in format(child, "graphviz").splitlines():
+                result.append("    {}".format(line))
         result.append(stop)
-        join_character = ''
+        join_character = ""
         if len(result) > 2:
-            join_character = '\n'
+            join_character = "\n"
         return join_character.join(result)
 
     ### PRIVATE PROPERTIES ###
@@ -93,7 +90,5 @@ class Table(UniqueTreeContainer):
     @property
     def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
-        return (
-            uqbar.graphs.TableRow,
-            uqbar.graphs.HRule,
-            )
+
+        return (uqbar.graphs.TableRow, uqbar.graphs.HRule)

@@ -1,4 +1,5 @@
 from typing import Tuple
+
 from uqbar.containers import UniqueTreeContainer
 
 
@@ -17,26 +18,26 @@ class TableRow(UniqueTreeContainer):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'HTML Classes'
+    __documentation_section__ = "HTML Classes"
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str=None) -> str:
+    def __format__(self, format_spec: str = None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
         result = []
-        result.append('<TR>')
+        result.append("<TR>")
         for child in self:
-            for line in format(child, 'graphviz').splitlines():
-                result.append('    {}'.format(line))
-        result.append('</TR>')
-        join_character = ''
+            for line in format(child, "graphviz").splitlines():
+                result.append("    {}".format(line))
+        result.append("</TR>")
+        join_character = ""
         if len(result) > 2:
-            join_character = '\n'
+            join_character = "\n"
         return join_character.join(result)
 
     ### PRIVATE PROPERTIES ###
@@ -44,7 +45,5 @@ class TableRow(UniqueTreeContainer):
     @property
     def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
-        return (
-            uqbar.graphs.TableCell,
-            uqbar.graphs.VRule,
-            )
+
+        return (uqbar.graphs.TableCell, uqbar.graphs.VRule)

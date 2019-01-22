@@ -1,5 +1,6 @@
-from uqbar.containers import UniqueTreeContainer
 from typing import Tuple  # noqa
+
+from uqbar.containers import UniqueTreeContainer
 
 
 class RecordGroup(UniqueTreeContainer):
@@ -24,32 +25,25 @@ class RecordGroup(UniqueTreeContainer):
 
     ### CLASS VARIABLES ###
 
-    __documentation_section__ = 'Record Field Classes'
+    __documentation_section__ = "Record Field Classes"
 
     ### INITIALIZER ###
 
-    def __init__(
-        self,
-        children=None,
-        *,
-        name: str=None
-        ) -> None:
+    def __init__(self, children=None, *, name: str = None) -> None:
         UniqueTreeContainer.__init__(self, name=name, children=children)
 
     ### SPECIAL METHODS ###
 
     def __format__(self, format_spec=None) -> str:
         # TODO: make the format specification options machine-readable
-        if format_spec == 'graphviz':
+        if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
-        result = ' | '.join(
-            _ for _ in (format(_, 'graphviz') for _ in self) if _
-            )
+        result = " | ".join(_ for _ in (format(_, "graphviz") for _ in self) if _)
         if result:
-            result = '{{ {} }}'.format(result)
+            result = "{{ {} }}".format(result)
         return result
 
     ### PRIVATE PROPERTIES ###
@@ -57,7 +51,5 @@ class RecordGroup(UniqueTreeContainer):
     @property
     def _node_class(self) -> Tuple[type, ...]:
         import uqbar.graphs
-        return (
-            uqbar.graphs.RecordField,
-            uqbar.graphs.RecordGroup,
-            )
+
+        return (uqbar.graphs.RecordField, uqbar.graphs.RecordGroup)

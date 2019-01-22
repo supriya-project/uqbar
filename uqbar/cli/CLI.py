@@ -3,25 +3,26 @@ import argparse
 import os
 import pathlib
 import typing
-import uqbar.strings
 from configparser import ConfigParser
+
+import uqbar.strings
 
 
 class CLI(abc.ABC):
-    '''
+    """
     Abstract base for CLI scripts.
-    '''
+    """
 
     ### CLASS VARIABLES ###
 
     _colors = {
-        'BLUE': '\033[94m',
-        'RED': '\033[91m',
-        'GREEN': '\033[92m',
-        'END': '\033[0m',
-        }
+        "BLUE": "\033[94m",
+        "RED": "\033[91m",
+        "GREEN": "\033[92m",
+        "END": "\033[0m",
+    }
 
-    config_name: str = '.uqbarrc'
+    config_name: str = ".uqbarrc"
     long_description: typing.Optional[str] = None
     short_description: typing.Optional[str] = None
     version: float = 1.0
@@ -29,8 +30,8 @@ class CLI(abc.ABC):
     ### INITIALIZER ###
 
     def __init__(self):
-        short_description = getattr(self, 'short_description', None)
-        long_description = getattr(self, 'long_description', None)
+        short_description = getattr(self, "short_description", None)
+        long_description = getattr(self, "long_description", None)
         if long_description:
             long_description = uqbar.strings.normalize(long_description)
         parser = self._argument_parser = argparse.ArgumentParser(
@@ -38,10 +39,10 @@ class CLI(abc.ABC):
             epilog=long_description,
             formatter_class=argparse.RawDescriptionHelpFormatter,
             prog=self.program_name,
-            )
-        version = '%(prog)s {}'
-        version = version.format(getattr(self, 'version', 1.0))
-        parser.add_argument('--version', action='version', version=version)
+        )
+        version = "%(prog)s {}"
+        version = version.format(getattr(self, "version", 1.0))
+        parser.add_argument("--version", action="version", version=version)
         self._argument_parser = parser
         self._setup_argument_parser(parser)
         self._config_parser = None
@@ -49,10 +50,10 @@ class CLI(abc.ABC):
     ### SPECIAL METHODS ###
 
     def __call__(self, arguments=None) -> None:
-        r'''Calls developer script.
+        r"""Calls developer script.
 
         Returns none.
-        '''
+        """
         self._config_parser = self._read_config_files()
         if arguments is None:
             arguments = self.argument_parser.parse_args()
@@ -96,7 +97,7 @@ class CLI(abc.ABC):
         raise NotImplementedError
 
     def _validate_path(self, path):
-        message = '{!r} is not a valid directory.'
+        message = "{!r} is not a valid directory."
         message = message.format(path)
         error = argparse.ArgumentTypeError(message)
         path = os.path.abspath(path)
@@ -108,34 +109,33 @@ class CLI(abc.ABC):
 
     @property
     def argument_parser(self):
-        r'''The script's instance of argparse.ArgumentParser.
-        '''
+        r"""The script's instance of argparse.ArgumentParser.
+        """
         return self._argument_parser
 
     @property
     def formatted_help(self):
-        r'''Formatted help of developer script.
-        '''
+        r"""Formatted help of developer script.
+        """
         return self._argument_parser.format_help()
 
     @property
     def formatted_usage(self):
-        r'''Formatted usage of developer script.
-        '''
+        r"""Formatted usage of developer script.
+        """
         return self._argument_parser.format_usage()
 
     @property
     def formatted_version(self):
-        r'''Formatted version of developer script.
-        '''
+        r"""Formatted version of developer script.
+        """
         return self._argument_parser.format_version()
 
     @property
     def program_name(self):
-        r'''The name of the script, callable from the command line.
-        '''
-        name = '-'.join(
-            word.lower() for word in
-            uqbar.strings.delimit_words(type(self).__name__)
-            )
+        r"""The name of the script, callable from the command line.
+        """
+        name = "-".join(
+            word.lower() for word in uqbar.strings.delimit_words(type(self).__name__)
+        )
         return name

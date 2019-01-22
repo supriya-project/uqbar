@@ -1,6 +1,8 @@
 import pathlib
-import pytest
 import sys
+
+import pytest
+
 import uqbar.apis
 from uqbar.strings import normalize
 
@@ -13,9 +15,9 @@ def test_path():
 
 
 def test_str_01(test_path):
-    documenter = uqbar.apis.SummarizingModuleDocumenter(
-        'fake_package.module')
-    assert normalize(str(documenter)) == normalize('''
+    documenter = uqbar.apis.SummarizingModuleDocumenter("fake_package.module")
+    assert normalize(str(documenter)) == normalize(
+        """
         .. _fake-package--module:
 
         module
@@ -64,15 +66,16 @@ def test_str_01(test_path):
            ~public_function
 
         .. autofunction:: public_function
-        ''')
+        """
+    )
 
 
 def test_str_02(test_path):
     documenter = uqbar.apis.SummarizingModuleDocumenter(
-        'fake_package.module',
-        document_private_members=True,
-        )
-    assert normalize(str(documenter)) == normalize('''
+        "fake_package.module", document_private_members=True
+    )
+    assert normalize(str(documenter)) == normalize(
+        """
         .. _fake-package--module:
 
         module
@@ -129,18 +132,20 @@ def test_str_02(test_path):
         .. autofunction:: _private_function
 
         .. autofunction:: public_function
-        ''')
+        """
+    )
 
 
 def test_str_03(test_path):
     documenter = uqbar.apis.SummarizingModuleDocumenter(
-        'fake_package.module',
+        "fake_package.module",
         member_documenter_classes=[
             uqbar.apis.FunctionDocumenter,
             uqbar.apis.SummarizingClassDocumenter,
-            ],
-        )
-    assert normalize(str(documenter)) == normalize('''
+        ],
+    )
+    assert normalize(str(documenter)) == normalize(
+        """
         .. _fake-package--module:
 
         module
@@ -335,4 +340,5 @@ def test_str_03(test_path):
            ~public_function
 
         .. autofunction:: public_function
-        ''')
+        """
+    )

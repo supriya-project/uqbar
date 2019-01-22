@@ -1,9 +1,9 @@
 import unittest
+
 import uqbar.containers
 
 
 class TestCase(unittest.TestCase):
-
     def test___init___01(self):
         """
         Initialize without name.
@@ -18,8 +18,8 @@ class TestCase(unittest.TestCase):
         """
         Initialize with name.
         """
-        node = uqbar.containers.UniqueTreeContainer(name='foo')
-        assert node.name == 'foo'
+        node = uqbar.containers.UniqueTreeContainer(name="foo")
+        assert node.name == "foo"
         assert node.parent is None
         assert node.depth == 0
         assert len(node) == 0
@@ -143,18 +143,18 @@ class TestCase(unittest.TestCase):
 
         Nodes are returned regardless how deep they are.
         """
-        node_a = uqbar.containers.UniqueTreeContainer(name='foo')
-        node_b = uqbar.containers.UniqueTreeContainer(name='bar')
-        node_c = uqbar.containers.UniqueTreeNode(name='baz')
-        node_d = uqbar.containers.UniqueTreeNode(name='quux')
-        node_e = uqbar.containers.UniqueTreeNode(name='quux')
+        node_a = uqbar.containers.UniqueTreeContainer(name="foo")
+        node_b = uqbar.containers.UniqueTreeContainer(name="bar")
+        node_c = uqbar.containers.UniqueTreeNode(name="baz")
+        node_d = uqbar.containers.UniqueTreeNode(name="quux")
+        node_e = uqbar.containers.UniqueTreeNode(name="quux")
         node_a.extend([node_b, node_e])
         node_b.extend([node_c, node_d])
         with self.assertRaises(KeyError):
-            node_a['foo']
-        assert node_a['bar'] is node_b
-        assert node_a['baz'] is node_c
-        assert node_a['quux'] == [node_d, node_e]
+            node_a["foo"]
+        assert node_a["bar"] is node_b
+        assert node_a["baz"] is node_c
+        assert node_a["quux"] == [node_d, node_e]
 
     def test___iter__(self):
         """
@@ -218,27 +218,27 @@ class TestCase(unittest.TestCase):
         Nodes can be deleted.
         """
         node_a = uqbar.containers.UniqueTreeContainer()
-        node_b = uqbar.containers.UniqueTreeNode(name='foo')
-        node_c = uqbar.containers.UniqueTreeNode(name='bar')
-        node_d = uqbar.containers.UniqueTreeNode(name='baz')
+        node_b = uqbar.containers.UniqueTreeNode(name="foo")
+        node_c = uqbar.containers.UniqueTreeNode(name="bar")
+        node_d = uqbar.containers.UniqueTreeNode(name="baz")
         node_a.extend([node_b, node_c, node_d])
-        del(node_a[1])
+        del (node_a[1])
         assert node_a[:] == [node_b, node_d]
-        del(node_a['baz'])
+        del (node_a["baz"])
         assert node_a[:] == [node_b]
 
     def test___delitem___02(self):
         """
         Discontiguous named deletion works.
         """
-        node_a = uqbar.containers.UniqueTreeContainer(name='foo')
-        node_b = uqbar.containers.UniqueTreeContainer(name='bar')
-        node_c = uqbar.containers.UniqueTreeNode(name='baz')
-        node_d = uqbar.containers.UniqueTreeNode(name='quux')
-        node_e = uqbar.containers.UniqueTreeNode(name='quux')
+        node_a = uqbar.containers.UniqueTreeContainer(name="foo")
+        node_b = uqbar.containers.UniqueTreeContainer(name="bar")
+        node_c = uqbar.containers.UniqueTreeNode(name="baz")
+        node_d = uqbar.containers.UniqueTreeNode(name="quux")
+        node_e = uqbar.containers.UniqueTreeNode(name="quux")
         node_a.extend([node_b, node_e])
         node_b.extend([node_c, node_d])
-        del(node_a['quux'])
+        del (node_a["quux"])
         assert node_d.parent is None
         assert node_e.parent is None
 

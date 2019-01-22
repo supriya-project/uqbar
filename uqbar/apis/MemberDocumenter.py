@@ -32,11 +32,11 @@ class MemberDocumenter(metaclass=abc.ABCMeta):
     ### INITIALIZER ###
 
     def __init__(self, package_path: str) -> None:
-        module_path, _, client_name = package_path.rpartition('.')
+        module_path, _, client_name = package_path.rpartition(".")
         module = importlib.import_module(module_path)
         client = getattr(module, client_name)
         if not self.validate_client(client, module_path):
-            message = 'Unexpected object: {}'.format(type(client))
+            message = "Unexpected object: {}".format(type(client))
             raise ValueError(message)
         self._client = client
         self._package_path = package_path

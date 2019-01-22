@@ -1,7 +1,9 @@
 import pathlib
-import pytest
 import shutil
 import sys
+
+import pytest
+
 import uqbar.apis
 from uqbar.strings import normalize
 
@@ -9,7 +11,7 @@ from uqbar.strings import normalize
 @pytest.fixture
 def test_path():
     test_path = pathlib.Path(__file__).parent
-    docs_path = test_path / 'docs'
+    docs_path = test_path / "docs"
     if str(test_path) not in sys.path:
         sys.path.insert(0, str(test_path))
     if docs_path.exists():
@@ -21,35 +23,36 @@ def test_path():
 
 def test_str_01(test_path):
     builder = uqbar.apis.APIBuilder(
-        [test_path / 'fake_package'],
-        test_path / 'docs',
+        [test_path / "fake_package"],
+        test_path / "docs",
         member_documenter_classes=[
             uqbar.apis.FunctionDocumenter,
             uqbar.apis.SummarizingClassDocumenter,
-            ],
+        ],
         module_documenter_class=uqbar.apis.SummarizingModuleDocumenter,
         root_documenter_class=uqbar.apis.SummarizingRootDocumenter,
-        )
+    )
     builder()
-    paths = sorted((test_path / 'docs').rglob('*'))
+    paths = sorted((test_path / "docs").rglob("*"))
     paths = [str(path.relative_to(test_path)) for path in paths]
     assert paths == [
-        'docs/fake_package',
-        'docs/fake_package/empty_module.rst',
-        'docs/fake_package/empty_package',
-        'docs/fake_package/empty_package/empty.rst',
-        'docs/fake_package/empty_package/index.rst',
-        'docs/fake_package/index.rst',
-        'docs/fake_package/module.rst',
-        'docs/fake_package/multi',
-        'docs/fake_package/multi/index.rst',
-        'docs/fake_package/multi/one.rst',
-        'docs/fake_package/multi/two.rst',
-        'docs/index.rst',
-        ]
-    base_path = test_path / 'docs' / 'fake_package'
-    with (base_path / '..' / 'index.rst').open() as file_pointer:
-        assert normalize(file_pointer.read()) == normalize('''
+        "docs/fake_package",
+        "docs/fake_package/empty_module.rst",
+        "docs/fake_package/empty_package",
+        "docs/fake_package/empty_package/empty.rst",
+        "docs/fake_package/empty_package/index.rst",
+        "docs/fake_package/index.rst",
+        "docs/fake_package/module.rst",
+        "docs/fake_package/multi",
+        "docs/fake_package/multi/index.rst",
+        "docs/fake_package/multi/one.rst",
+        "docs/fake_package/multi/two.rst",
+        "docs/index.rst",
+    ]
+    base_path = test_path / "docs" / "fake_package"
+    with (base_path / ".." / "index.rst").open() as file_pointer:
+        assert normalize(file_pointer.read()) == normalize(
+            """
             API
             ===
 
@@ -210,9 +213,11 @@ def test_str_01(test_path):
                :nosignatures:
 
                ~fake_package.multi.two.public_function
-            ''')
-    with (base_path / 'index.rst').open() as file_pointer:
-        assert normalize(file_pointer.read()) == normalize('''
+            """
+        )
+    with (base_path / "index.rst").open() as file_pointer:
+        assert normalize(file_pointer.read()) == normalize(
+            """
             .. _fake-package:
 
             fake_package
@@ -249,4 +254,5 @@ def test_str_01(test_path):
                empty_package
                module
                multi
-            ''')
+            """
+        )

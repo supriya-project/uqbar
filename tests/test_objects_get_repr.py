@@ -13,14 +13,14 @@ class MyNonReprObject:
 
 
 class MyReprObject(MyNonReprObject):
-
     def __repr__(self):
         return uqbar.objects.get_repr(self)
 
 
 def test_objects_get_repr_01():
-    my_object = MyNonReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize('''
+    my_object = MyNonReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize(
+        """
         MyNonReprObject(
             'a',
             'b',
@@ -29,12 +29,14 @@ def test_objects_get_repr_01():
             foo='x',
             quux=['y', 'z'],
             )
-        ''')
+        """
+    )
 
 
 def test_objects_get_repr_02():
-    my_object = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize('''
+    my_object = MyReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize(
+        """
         MyReprObject(
             'a',
             'b',
@@ -43,12 +45,14 @@ def test_objects_get_repr_02():
             foo='x',
             quux=['y', 'z'],
             )
-        ''')
+        """
+    )
 
 
 def test_objects_get_repr_03():
-    my_object = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    assert repr(my_object) == uqbar.strings.normalize('''
+    my_object = MyReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    assert repr(my_object) == uqbar.strings.normalize(
+        """
         MyReprObject(
             'a',
             'b',
@@ -57,13 +61,15 @@ def test_objects_get_repr_03():
             foo='x',
             quux=['y', 'z'],
             )
-        ''')
+        """
+    )
 
 
 def test_objects_get_repr_04():
-    object_a = MyReprObject('a', 'b', 'c', 'd', foo='x', quux=['y', 'z'])
-    object_b = MyReprObject('pqr', object_a, bar=set([1, 2, 3]))
-    assert repr(object_b) == uqbar.strings.normalize('''
+    object_a = MyReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    object_b = MyReprObject("pqr", object_a, bar=set([1, 2, 3]))
+    assert repr(object_b) == uqbar.strings.normalize(
+        """
         MyReprObject(
             'pqr',
             MyReprObject(
@@ -76,4 +82,5 @@ def test_objects_get_repr_04():
                 ),
             bar={1, 2, 3},
             )
-    ''')
+    """
+    )

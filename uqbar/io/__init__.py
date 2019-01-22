@@ -15,7 +15,7 @@ from .Timer import Timer  # noqa
 
 def find_common_prefix(
     paths: Sequence[Union[str, pathlib.Path]]
-    ) -> Optional[pathlib.Path]:
+) -> Optional[pathlib.Path]:
     """
     Find the common prefix of two or more paths.
 
@@ -38,32 +38,28 @@ def find_common_prefix(
         path = pathlib.Path(path)
         counter.update([path])
         counter.update(path.parents)
-    valid_paths = sorted([
-        path for path, count in counter.items()
-        if count >= len(paths)
-        ], key=lambda x: len(x.parts))
+    valid_paths = sorted(
+        [path for path, count in counter.items() if count >= len(paths)],
+        key=lambda x: len(x.parts),
+    )
     if valid_paths:
         return valid_paths[-1]
     return None
 
 
 def find_executable(name: str, flags=os.X_OK) -> List[str]:
-    r'''Finds executable `name`.
+    r"""Finds executable `name`.
 
     Similar to Unix ``which`` command.
 
     Returns list of zero or more full paths to `name`.
-    '''
+    """
     result = []
-    extensions = [
-        x
-        for x in os.environ.get('PATHEXT', '').split(os.pathsep)
-        if x
-        ]
-    path = os.environ.get('PATH', None)
+    extensions = [x for x in os.environ.get("PATHEXT", "").split(os.pathsep) if x]
+    path = os.environ.get("PATH", None)
     if path is None:
         return []
-    for path in os.environ.get('PATH', '').split(os.pathsep):
+    for path in os.environ.get("PATH", "").split(os.pathsep):
         path = os.path.join(path, name)
         if os.access(path, flags):
             result.append(path)
@@ -75,9 +71,8 @@ def find_executable(name: str, flags=os.X_OK) -> List[str]:
 
 
 def relative_to(
-    source_path: Union[str, pathlib.Path],
-    target_path: Union[str, pathlib.Path],
-    ) -> pathlib.Path:
+    source_path: Union[str, pathlib.Path], target_path: Union[str, pathlib.Path]
+) -> pathlib.Path:
     """
     Generates relative path from ``source_path`` to ``target_path``.
 
@@ -110,19 +105,18 @@ def relative_to(
     target_path = pathlib.Path(target_path).absolute()
     common_prefix = find_common_prefix([source_path, target_path])
     if not common_prefix:
-        raise ValueError('No common prefix')
+        raise ValueError("No common prefix")
     source_path = source_path.relative_to(common_prefix)
     target_path = target_path.relative_to(common_prefix)
-    result = pathlib.Path(*['..'] * len(source_path.parts))
+    result = pathlib.Path(*[".."] * len(source_path.parts))
     return result / target_path
 
 
 def walk(
-    root_path: Union[str, pathlib.Path],
-    top_down: bool=True,
-    ) -> Generator[
-        Tuple[pathlib.Path, Sequence[pathlib.Path], Sequence[pathlib.Path]],
-        None, None]:
+    root_path: Union[str, pathlib.Path], top_down: bool = True
+) -> Generator[
+    Tuple[pathlib.Path, Sequence[pathlib.Path], Sequence[pathlib.Path]], None, None
+]:
     """
     Walks a directory tree.
 
@@ -147,11 +141,7 @@ def walk(
         yield root_path, directory_paths, file_paths
 
 
-def write(
-    contents: str,
-    path: Union[str, pathlib.Path],
-    verbose: bool=False,
-    ) -> bool:
+def write(contents: str, path: Union[str, pathlib.Path], verbose: bool = False) -> bool:
     """
     Writes ``contents`` to ``path``.
 
@@ -166,23 +156,23 @@ def write(
     """
     path = pathlib.Path(path)
     if path.exists():
-        with path.open('r') as file_pointer:
+        with path.open("r") as file_pointer:
             old_contents = file_pointer.read()
         if old_contents == contents:
             if verbose:
-                print('preserved: {}'.format(path))
+                print("preserved: {}".format(path))
             return False
         else:
-            with path.open('w') as file_pointer:
+            with path.open("w") as file_pointer:
                 file_pointer.write(contents)
             if verbose:
-                print('rewrote: {}'.format(path))
+                print("rewrote: {}".format(path))
             return True
     elif not path.exists():
         if not path.parent.exists():
             path.parent.mkdir(parents=True)
-        with path.open('w') as file_pointer:
+        with path.open("w") as file_pointer:
             file_pointer.write(contents)
         if verbose:
-            print('wrote: {}'.format(path))
+            print("wrote: {}".format(path))
     return True
