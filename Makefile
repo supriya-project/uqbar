@@ -1,6 +1,7 @@
 .PHONY: docs build test
 
 paths = uqbar/ tests/ *.py
+errors = E123,E203,E265,E266,E501,W503
 
 black-check:
 	black --py36 --diff --check ${paths}
@@ -24,7 +25,7 @@ docs:
 	make -C docs/ html 
 
 flake8:
-	flake8 --max-line-length=90 uqbar/ tests/
+	flake8 --max-line-length=90 --ignore=${errors} uqbar/ tests/
 
 isort:
 	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${paths}
