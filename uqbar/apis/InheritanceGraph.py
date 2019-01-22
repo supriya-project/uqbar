@@ -187,10 +187,10 @@ class InheritanceGraph:
         package_paths: Sequence[Union[str, type, types.ModuleType]],
         lineage_paths: Sequence[Union[str, type, types.ModuleType]] = None,
     ) -> None:
-        self._parents_to_children_paths = dict()
-        self._children_to_parents_paths = dict()
-        self._all_class_paths = []
-        self._lineage_class_paths = []
+        self._parents_to_children_paths: Dict[str, List[str]] = dict()
+        self._children_to_parents_paths: Dict[str, List[str]] = dict()
+        self._all_class_paths: List[str] = []
+        self._lineage_class_paths: List[str] = []
         self._package_paths = self._initialize_package_paths(package_paths)
         self._lineage_paths = self._initialize_package_paths(lineage_paths or [])
         initial_classes = self._collect_classes(self._package_paths)
@@ -210,7 +210,11 @@ class InheritanceGraph:
     ### SPECIAL METHODS ###
 
     def __len__(self) -> int:
-        return len(set(self._parents_to_children).union(set(self._children_to_parents)))
+        return len(
+            set(self._parents_to_children_paths).union(
+                set(self._children_to_parents_paths)
+            )
+        )
 
     def __str__(self) -> str:
         graph = self.build_graph()

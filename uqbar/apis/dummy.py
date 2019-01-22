@@ -8,5 +8,5 @@ def _make_class():
 MyParentClass = _make_class()
 
 
-class MyChildClass(MyParentClass):
+class MyChildClass(MyParentClass):  # type: ignore
     pass
