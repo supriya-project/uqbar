@@ -1,0 +1,17 @@
+.. _uqbar--apis--SummarizingRootDocumenter:
+
+SummarizingRootDocumenter
+=========================
+
+.. automodule:: uqbar.apis.SummarizingRootDocumenter
+
+.. currentmodule:: uqbar.apis.SummarizingRootDocumenter
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.SummarizingRootDocumenter
+
+.. autoclass:: SummarizingRootDocumenter
+   :members:
+   :undoc-members:

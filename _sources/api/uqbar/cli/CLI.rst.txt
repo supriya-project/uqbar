@@ -1,0 +1,17 @@
+.. _uqbar--cli--CLI:
+
+CLI
+===
+
+.. automodule:: uqbar.cli.CLI
+
+.. currentmodule:: uqbar.cli.CLI
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.cli.CLI
+
+.. autoclass:: CLI
+   :members:
+   :undoc-members:

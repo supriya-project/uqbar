@@ -1,0 +1,17 @@
+.. _uqbar--apis--APIBuilder:
+
+APIBuilder
+==========
+
+.. automodule:: uqbar.apis.APIBuilder
+
+.. currentmodule:: uqbar.apis.APIBuilder
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.APIBuilder
+
+.. autoclass:: APIBuilder
+   :members:
+   :undoc-members:

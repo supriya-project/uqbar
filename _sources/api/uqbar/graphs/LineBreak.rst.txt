@@ -1,0 +1,17 @@
+.. _uqbar--graphs--LineBreak:
+
+LineBreak
+=========
+
+.. automodule:: uqbar.graphs.LineBreak
+
+.. currentmodule:: uqbar.graphs.LineBreak
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.LineBreak
+
+.. autoclass:: LineBreak
+   :members:
+   :undoc-members:

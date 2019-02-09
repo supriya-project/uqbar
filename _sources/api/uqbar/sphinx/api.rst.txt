@@ -1,0 +1,30 @@
+.. _uqbar--sphinx--api:
+
+api
+===
+
+.. automodule:: uqbar.sphinx.api
+
+.. currentmodule:: uqbar.sphinx.api
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.sphinx.api
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~on_builder_inited
+   ~setup
+
+.. autofunction:: on_builder_inited
+
+.. autofunction:: setup

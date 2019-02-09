@@ -1,0 +1,17 @@
+.. _uqbar--apis--InheritanceGraph:
+
+InheritanceGraph
+================
+
+.. automodule:: uqbar.apis.InheritanceGraph
+
+.. currentmodule:: uqbar.apis.InheritanceGraph
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.InheritanceGraph
+
+.. autoclass:: InheritanceGraph
+   :members:
+   :undoc-members:

@@ -1,0 +1,17 @@
+.. _uqbar--graphs--Text:
+
+Text
+====
+
+.. automodule:: uqbar.graphs.Text
+
+.. currentmodule:: uqbar.graphs.Text
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.Text
+
+.. autoclass:: Text
+   :members:
+   :undoc-members:

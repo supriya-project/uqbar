@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Uqbar API &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="uqbar" href="uqbar/index.html" />
+    <link rel="prev" title="Uqbar" href="../index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Uqbar API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uqbar/index.html">uqbar</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Uqbar API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="uqbar/index.html" class="btn btn-neutral float-right" title="uqbar" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Uqbar" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uqbar-api">
+<h1>Uqbar API<a class="headerlink" href="#uqbar-api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/index.html#uqbar"><span class="std std-ref">uqbar</span></a></p>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/apis/index.html#uqbar-apis"><span class="std std-ref">uqbar.apis</span></a></p>
+<p>Tools for auto-generating API documention.</p>
+<hr/><p class="subsection-header rubric">Abstract Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a></td>
+<td>Abstract base class for module member documenters.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder" title="uqbar.apis.APIBuilder.APIBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">APIBuilder</span></code></a></td>
+<td>A builder of reStructuredText API documentation for Python packages.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph" title="uqbar.apis.InheritanceGraph.InheritanceGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceGraph</span></code></a></td>
+<td>A builder of Graphviz inheritance graphs.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Documenters</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter" title="uqbar.apis.ClassDocumenter.ClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClassDocumenter</span></code></a></td>
+<td>A basic class documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter" title="uqbar.apis.FunctionDocumenter.FunctionDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionDocumenter</span></code></a></td>
+<td>A basic function documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a></td>
+<td>A basic module documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter" title="uqbar.apis.RootDocumenter.RootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a></td>
+<td>A basic root documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter" title="uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code></a></td>
+<td>A summarizing class documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code></a></td>
+<td>A summarizing module documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a></td>
+<td>A summarizing root documenter.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/index.html#uqbar.apis.collect_source_paths" title="uqbar.apis.collect_source_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_source_paths</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/index.html#uqbar.apis.source_path_to_package_path" title="uqbar.apis.source_path_to_package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path_to_package_path</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Internals</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode" title="uqbar.apis.ModuleNode.ModuleNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleNode</span></code></a></td>
+<td>A <a class="reference internal" href="uqbar/containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a> subclass used during API construction to proxy modules.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode" title="uqbar.apis.PackageNode.PackageNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageNode</span></code></a></td>
+<td>A <a class="reference internal" href="uqbar/containers/UniqueTreeContainer.html#module-uqbar.containers.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a> subclass used during API construction to proxy packages.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/apis/dummy.html#uqbar-apis-dummy"><span class="std std-ref">uqbar.apis.dummy</span></a></p>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/apis/dummy.html#uqbar.apis.dummy.MyChildClass" title="uqbar.apis.dummy.MyChildClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MyChildClass</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/apis/dummy.html#uqbar.apis.dummy.MyParentClass" title="uqbar.apis.dummy.MyParentClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MyParentClass</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/book/index.html#uqbar-book"><span class="std std-ref">uqbar.book</span></a></p>
+<hr/><p class="subsection-header rubric">Internals</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/book/Console.html#uqbar.book.Console.Console" title="uqbar.book.Console.Console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Console</span></code></a></td>
+<td>Interactive console providing a sandboxed namespace for executing code examples.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/cli/index.html#uqbar-cli"><span class="std std-ref">uqbar.cli</span></a></p>
+<hr/><p class="subsection-header rubric">Abstract Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/cli/CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CLI</span></code></a></td>
+<td>Abstract base for CLI scripts.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/cli/CLIAggregator.html#uqbar.cli.CLIAggregator.CLIAggregator" title="uqbar.cli.CLIAggregator.CLIAggregator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CLIAggregator</span></code></a></td>
+<td>Aggregates CLI scripts.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/containers/index.html#uqbar-containers"><span class="std std-ref">uqbar.containers</span></a></p>
+<p>Specialized container classes.</p>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/containers/DependencyGraph.html#uqbar.containers.DependencyGraph.DependencyGraph" title="uqbar.containers.DependencyGraph.DependencyGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DependencyGraph</span></code></a></td>
+<td>A dependency graph of hashables.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a></td>
+<td>A container node in a “unique” tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a></td>
+<td>A node in a “unique” tree.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/enums.html#uqbar-enums"><span class="std std-ref">uqbar.enums</span></a></p>
+<hr/><p class="subsection-header rubric">Enumerations</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/enums.html#uqbar.enums.IntEnumeration" title="uqbar.enums.IntEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntEnumeration</span></code></a></td>
+<td>Enumeration which behaves like an integer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/enums.html#uqbar.enums.StrictEnumeration" title="uqbar.enums.StrictEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StrictEnumeration</span></code></a></td>
+<td>Sortable enumeration which does not compare to objects not of its type.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/enums.html#uqbar.enums.from_expr" title="uqbar.enums.from_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_expr</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/graphs/index.html#uqbar-graphs"><span class="std std-ref">uqbar.graphs</span></a></p>
+<p>Tools for building Graphviz graphs.</p>
+<hr/><p class="subsection-header rubric">Core Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
+<td>An attributes listing for a Graphviz graph, cluster, node or edge.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
+<td>A Graphviz edge.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/Graph.html#uqbar.graphs.Graph.Graph" title="uqbar.graphs.Graph.Graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph</span></code></a></td>
+<td>A Graphviz graph, subgraph or cluster.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a></td>
+<td>A Graphviz node.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">HTML Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule" title="uqbar.graphs.HRule.HRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HRule</span></code></a></td>
+<td>A Graphviz HTML horizontal rule.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak" title="uqbar.graphs.LineBreak.LineBreak"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineBreak</span></code></a></td>
+<td>A Graphviz HTML line break.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/Table.html#uqbar.graphs.Table.Table" title="uqbar.graphs.Table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></td>
+<td>A Graphviz HTML table.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/TableCell.html#uqbar.graphs.TableCell.TableCell" title="uqbar.graphs.TableCell.TableCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableCell</span></code></a></td>
+<td>A Graphviz HTML table.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/TableRow.html#uqbar.graphs.TableRow.TableRow" title="uqbar.graphs.TableRow.TableRow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableRow</span></code></a></td>
+<td>A Graphviz HTML table row.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/Text.html#uqbar.graphs.Text.Text" title="uqbar.graphs.Text.Text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Text</span></code></a></td>
+<td>A Graphviz HTML text node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/VRule.html#uqbar.graphs.VRule.VRule" title="uqbar.graphs.VRule.VRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VRule</span></code></a></td>
+<td>A Graphviz HTML vertical rule.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Mixins</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attachable</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Record Field Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField" title="uqbar.graphs.RecordField.RecordField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordField</span></code></a></td>
+<td>A Graphviz record field.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup" title="uqbar.graphs.RecordGroup.RecordGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordGroup</span></code></a></td>
+<td>A Graphviz record field group.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/io/index.html#uqbar-io"><span class="std std-ref">uqbar.io</span></a></p>
+<p>Tools for IO and file-system manipulation.</p>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/io/DirectoryChange.html#uqbar.io.DirectoryChange.DirectoryChange" title="uqbar.io.DirectoryChange.DirectoryChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DirectoryChange</span></code></a></td>
+<td>A context manager for temporarily changing the current working directory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/io/Profiler.html#uqbar.io.Profiler.Profiler" title="uqbar.io.Profiler.Profiler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Profiler</span></code></a></td>
+<td>A context manager for profiling blocks of code.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams" title="uqbar.io.RedirectedStreams.RedirectedStreams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RedirectedStreams</span></code></a></td>
+<td>A context manager for capturing <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> output.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/io/Timer.html#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timer</span></code></a></td>
+<td>A context manager for timing blocks of code.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/io/index.html#uqbar.io.find_common_prefix" title="uqbar.io.find_common_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_common_prefix</span></code></a></td>
+<td>Find the common prefix of two or more paths.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/io/index.html#uqbar.io.find_executable" title="uqbar.io.find_executable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_executable</span></code></a></td>
+<td>Finds executable <cite>name</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/io/index.html#uqbar.io.relative_to" title="uqbar.io.relative_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relative_to</span></code></a></td>
+<td>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/io/index.html#uqbar.io.walk" title="uqbar.io.walk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">walk</span></code></a></td>
+<td>Walks a directory tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/io/index.html#uqbar.io.write" title="uqbar.io.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></td>
+<td>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/objects.html#uqbar-objects"><span class="std std-ref">uqbar.objects</span></a></p>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/objects.html#uqbar.objects.compare_objects" title="uqbar.objects.compare_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_objects</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/objects.html#uqbar.objects.get_hash" title="uqbar.objects.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/objects.html#uqbar.objects.get_repr" title="uqbar.objects.get_repr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_repr</span></code></a></td>
+<td>Build a repr string for <code class="docutils literal notranslate"><span class="pre">expr</span></code> from its vars and signature.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/objects.html#uqbar.objects.get_vars" title="uqbar.objects.get_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_vars</span></code></a></td>
+<td>Get <code class="docutils literal notranslate"><span class="pre">args</span></code>, <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> for an object <code class="docutils literal notranslate"><span class="pre">expr</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/objects.html#uqbar.objects.new" title="uqbar.objects.new"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new</span></code></a></td>
+<td>Template an object.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/sphinx/index.html#uqbar-sphinx"><span class="std std-ref">uqbar.sphinx</span></a></p>
+<p>Sphinx extensions.</p>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/sphinx/api.html#uqbar-sphinx-api"><span class="std std-ref">uqbar.sphinx.api</span></a></p>
+<p>Uqbar Sphinx API generation extension.</p>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/api.html#uqbar.sphinx.api.on_builder_inited" title="uqbar.sphinx.api.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/api.html#uqbar.sphinx.api.setup" title="uqbar.sphinx.api.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
+<td>Sets up Sphinx extension.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar-sphinx-inheritance"><span class="std std-ref">uqbar.sphinx.inheritance</span></a></p>
+<p>Uqbar Sphinx inheritance graph extension.</p>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.InheritanceDiagram" title="uqbar.sphinx.inheritance.InheritanceDiagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceDiagram</span></code></a></td>
+<td>Runs when the inheritance_diagram directive is first encountered.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a></td>
+<td>A docutils node to use as a placeholder for the inheritance diagram.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.build_urls" title="uqbar.sphinx.inheritance.build_urls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_urls</span></code></a></td>
+<td>Builds a mapping of class paths to URLs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.html_visit_inheritance_diagram" title="uqbar.sphinx.inheritance.html_visit_inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">html_visit_inheritance_diagram</span></code></a></td>
+<td>Builds HTML output from an <a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.latex_visit_inheritance_diagram" title="uqbar.sphinx.inheritance.latex_visit_inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latex_visit_inheritance_diagram</span></code></a></td>
+<td>Builds LaTeX output from an <a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.setup" title="uqbar.sphinx.inheritance.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
+<td>Sets up Sphinx extension.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.skip" title="uqbar.sphinx.inheritance.skip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skip</span></code></a></td>
+<td>Skip generating output, for non-supported builders.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/sphinx/style.html#uqbar-sphinx-style"><span class="std std-ref">uqbar.sphinx.style</span></a></p>
+<p>Uqbar Sphinx styling extension.</p>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/style.html#uqbar.sphinx.style.handle_class" title="uqbar.sphinx.style.handle_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_class</span></code></a></td>
+<td>Styles <code class="docutils literal notranslate"><span class="pre">autoclass</span></code> entries.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/style.html#uqbar.sphinx.style.handle_method" title="uqbar.sphinx.style.handle_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_method</span></code></a></td>
+<td>Styles <code class="docutils literal notranslate"><span class="pre">automethod</span></code> entries.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/style.html#uqbar.sphinx.style.on_builder_inited" title="uqbar.sphinx.style.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/sphinx/style.html#uqbar.sphinx.style.on_doctree_read" title="uqbar.sphinx.style.on_doctree_read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_doctree_read</span></code></a></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/sphinx/style.html#uqbar.sphinx.style.setup" title="uqbar.sphinx.style.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
+<td>Sets up Sphinx extension.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/strings.html#uqbar-strings"><span class="std std-ref">uqbar.strings</span></a></p>
+<p>Tools for string manipulation.</p>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/strings.html#uqbar.strings.delimit_words" title="uqbar.strings.delimit_words"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delimit_words</span></code></a></td>
+<td>Delimit a string at word boundaries.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/strings.html#uqbar.strings.normalize" title="uqbar.strings.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></td>
+<td>Normalizes whitespace.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="uqbar/strings.html#uqbar.strings.to_dash_case" title="uqbar.strings.to_dash_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dash_case</span></code></a></td>
+<td>Convert a string to dash-delimited words.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="uqbar/strings.html#uqbar.strings.to_snake_case" title="uqbar.strings.to_snake_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_snake_case</span></code></a></td>
+<td>Convert a string to underscore-delimited words.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uqbar/index.html" class="btn btn-neutral float-right" title="uqbar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Uqbar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

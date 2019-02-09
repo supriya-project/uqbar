@@ -1,0 +1,17 @@
+.. _uqbar--io--Timer:
+
+Timer
+=====
+
+.. automodule:: uqbar.io.Timer
+
+.. currentmodule:: uqbar.io.Timer
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.io.Timer
+
+.. autoclass:: Timer
+   :members:
+   :undoc-members:

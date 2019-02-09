@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>InheritanceGraph &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ClassDocumenter" href="ClassDocumenter.html" />
+    <link rel="prev" title="APIBuilder" href="APIBuilder.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">apis</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dummy.html">dummy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MemberDocumenter.html">MemberDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="APIBuilder.html">APIBuilder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">InheritanceGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClassDocumenter.html">ClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FunctionDocumenter.html">FunctionDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleDocumenter.html">ModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RootDocumenter.html">RootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingClassDocumenter.html">SummarizingClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingModuleDocumenter.html">SummarizingModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingRootDocumenter.html">SummarizingRootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleNode.html">ModuleNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PackageNode.html">PackageNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">apis</a> &raquo;</li>
+        
+      <li>InheritanceGraph</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/apis/InheritanceGraph.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="ClassDocumenter.html" class="btn btn-neutral float-right" title="ClassDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="APIBuilder.html" class="btn btn-neutral" title="APIBuilder" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.apis.InheritanceGraph">
+<span id="inheritancegraph"></span><span id="uqbar-apis-inheritancegraph"></span><h1>InheritanceGraph<a class="headerlink" href="#module-uqbar.apis.InheritanceGraph" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-613a4d6f2e441d27c29365b27592108e50f191fe.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_uqbar.apis&quot; {
+        graph [label=&quot;uqbar.apis&quot;];
+        node [color=2];
+        &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot; [URL=&quot;../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;Inheritance\nGraph&quot;,
+            target=_top];
+    }
+    &quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;;
+}</p></object></div>
+</div>
+<dl class="class">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph">
+<em class="property">class </em><code class="descname">InheritanceGraph</code><span class="sig-paren">(</span><em>package_paths</em>, <em>lineage_paths=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>A builder of Graphviz inheritance graphs.</p>
+<p>Here we build the inheritance graph of all classes found in
+<a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar.containers&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<span class="go">digraph InheritanceGraph {</span>
+<span class="go">    graph [bgcolor=transparent,</span>
+<span class="go">        color=lightsteelblue2,</span>
+<span class="go">        fontname=Arial,</span>
+<span class="go">        fontsize=10,</span>
+<span class="go">        outputorder=edgesfirst,</span>
+<span class="go">        overlap=prism,</span>
+<span class="go">        penwidth=2,</span>
+<span class="go">        rankdir=LR,</span>
+<span class="go">        splines=spline,</span>
+<span class="go">        style=&quot;dashed, rounded&quot;,</span>
+<span class="go">        truecolor=true];</span>
+<span class="go">    node [colorscheme=pastel19,</span>
+<span class="go">        fontname=Arial,</span>
+<span class="go">        fontsize=10,</span>
+<span class="go">        height=0,</span>
+<span class="go">        penwidth=2,</span>
+<span class="go">        shape=box,</span>
+<span class="go">        style=&quot;filled, rounded&quot;,</span>
+<span class="go">        width=0];</span>
+<span class="go">    edge [color=lightslategrey,</span>
+<span class="go">        penwidth=1];</span>
+<span class="go">    subgraph cluster_builtins {</span>
+<span class="go">        graph [label=builtins];</span>
+<span class="go">        node [color=1];</span>
+<span class="go">        &quot;builtins.object&quot; [label=object];</span>
+<span class="go">    }</span>
+<span class="go">    subgraph &quot;cluster_uqbar.containers&quot; {</span>
+<span class="go">        graph [label=&quot;uqbar.containers&quot;];</span>
+<span class="go">        node [color=2];</span>
+<span class="go">        &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot; [label=&quot;Dependency\nGraph&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; [label=&quot;Unique\nTree\nContainer&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; [label=&quot;Unique\nTree\nNode&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;</span>
+<span class="go">    }</span>
+<span class="go">    &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;;</span>
+<span class="go">    &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>We can calculate the “aspect ratio” of the graph - the number of
+generations vs the maximum generation size. This can be a useful metric for
+applying additional post-processing like Graphviz’ <code class="docutils literal notranslate"><span class="pre">unflatten</span></code> utility:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">aspect_ratio</span>
+<span class="go">(2, 2)</span>
+</pre></div>
+</div>
+<p>Lineage paths constrain the classes in the graph to only those whose
+antecedents or descendants pass through the classes identified by those
+lineage paths. Here we collect all classes defined in <a class="reference internal" href="../index.html#module-uqbar" title="uqbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar</span></code></a> and
+then constrain to those passing through <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">lineage_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar.containers&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<span class="go">digraph InheritanceGraph {</span>
+<span class="go">    graph [bgcolor=transparent,</span>
+<span class="go">        color=lightsteelblue2,</span>
+<span class="go">        fontname=Arial,</span>
+<span class="go">        fontsize=10,</span>
+<span class="go">        outputorder=edgesfirst,</span>
+<span class="go">        overlap=prism,</span>
+<span class="go">        penwidth=2,</span>
+<span class="go">        rankdir=LR,</span>
+<span class="go">        splines=spline,</span>
+<span class="go">        style=&quot;dashed, rounded&quot;,</span>
+<span class="go">        truecolor=true];</span>
+<span class="go">    node [colorscheme=pastel19,</span>
+<span class="go">        fontname=Arial,</span>
+<span class="go">        fontsize=10,</span>
+<span class="go">        height=0,</span>
+<span class="go">        penwidth=2,</span>
+<span class="go">        shape=box,</span>
+<span class="go">        style=&quot;filled, rounded&quot;,</span>
+<span class="go">        width=0];</span>
+<span class="go">    edge [color=lightslategrey,</span>
+<span class="go">        penwidth=1];</span>
+<span class="go">    subgraph cluster_builtins {</span>
+<span class="go">        graph [label=builtins];</span>
+<span class="go">        node [color=1];</span>
+<span class="go">        &quot;builtins.object&quot; [label=object];</span>
+<span class="go">    }</span>
+<span class="go">    subgraph &quot;cluster_uqbar.apis&quot; {</span>
+<span class="go">        graph [label=&quot;uqbar.apis&quot;];</span>
+<span class="go">        node [color=2];</span>
+<span class="go">        &quot;uqbar.apis.ModuleNode.ModuleNode&quot; [label=&quot;Module\nNode&quot;];</span>
+<span class="go">        &quot;uqbar.apis.PackageNode.PackageNode&quot; [label=&quot;Package\nNode&quot;];</span>
+<span class="go">    }</span>
+<span class="go">    subgraph &quot;cluster_uqbar.containers&quot; {</span>
+<span class="go">        graph [label=&quot;uqbar.containers&quot;];</span>
+<span class="go">        node [color=3];</span>
+<span class="go">        &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot; [color=black,</span>
+<span class="go">            fontcolor=white,</span>
+<span class="go">            label=&quot;Dependency\nGraph&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; [color=black,</span>
+<span class="go">            fontcolor=white,</span>
+<span class="go">            label=&quot;Unique\nTree\nContainer&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; [color=black,</span>
+<span class="go">            fontcolor=white,</span>
+<span class="go">            label=&quot;Unique\nTree\nNode&quot;];</span>
+<span class="go">        &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;</span>
+<span class="go">    }</span>
+<span class="go">    subgraph &quot;cluster_uqbar.graphs&quot; {</span>
+<span class="go">        graph [label=&quot;uqbar.graphs&quot;];</span>
+<span class="go">        node [color=4];</span>
+<span class="go">        &quot;uqbar.graphs.Attachable.Attachable&quot; [label=Attachable];</span>
+<span class="go">        &quot;uqbar.graphs.Graph.Graph&quot; [label=&quot;Graph&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.HRule.HRule&quot; [label=HRule];</span>
+<span class="go">        &quot;uqbar.graphs.LineBreak.LineBreak&quot; [label=&quot;Line\nBreak&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.Node.Node&quot; [label=&quot;Node&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.RecordField.RecordField&quot; [label=&quot;Record\nField&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.RecordGroup.RecordGroup&quot; [label=&quot;Record\nGroup&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.Table.Table&quot; [label=Table];</span>
+<span class="go">        &quot;uqbar.graphs.TableCell.TableCell&quot; [label=&quot;Table\nCell&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.TableRow.TableRow&quot; [label=&quot;Table\nRow&quot;];</span>
+<span class="go">        &quot;uqbar.graphs.Text.Text&quot; [label=Text];</span>
+<span class="go">        &quot;uqbar.graphs.VRule.VRule&quot; [label=VRule];</span>
+<span class="go">        &quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;</span>
+<span class="go">        &quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;</span>
+<span class="go">    }</span>
+<span class="go">    &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;;</span>
+<span class="go">    &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;;</span>
+<span class="go">    &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">aspect_ratio</span>
+<span class="go">(3, 8)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>package_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">module</span></code>]]) – a sequence of package path strings, classes or
+modules to seed the inheritance graph with</li>
+<li><strong>lineage_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">module</span></code>]]]) – a sequence of package path strings, classes or
+modules to constrain the inheritance graph with</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths">
+<code class="descname">all_class_paths</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio">
+<code class="descname">aspect_ratio</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
+<code class="descname">build_graph</code><span class="sig-paren">(</span><em>urls=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents">
+<code class="descname">children_to_parents</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children">
+<code class="descname">parents_to_children</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ClassDocumenter.html" class="btn btn-neutral float-right" title="ClassDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="APIBuilder.html" class="btn btn-neutral" title="APIBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

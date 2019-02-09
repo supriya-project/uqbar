@@ -1,0 +1,17 @@
+.. _uqbar--apis--ModuleDocumenter:
+
+ModuleDocumenter
+================
+
+.. automodule:: uqbar.apis.ModuleDocumenter
+
+.. currentmodule:: uqbar.apis.ModuleDocumenter
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.ModuleDocumenter
+
+.. autoclass:: ModuleDocumenter
+   :members:
+   :undoc-members:

@@ -1,0 +1,17 @@
+.. _uqbar--graphs--Attributes:
+
+Attributes
+==========
+
+.. automodule:: uqbar.graphs.Attributes
+
+.. currentmodule:: uqbar.graphs.Attributes
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.Attributes
+
+.. autoclass:: Attributes
+   :members:
+   :undoc-members:

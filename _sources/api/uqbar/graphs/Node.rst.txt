@@ -1,0 +1,17 @@
+.. _uqbar--graphs--Node:
+
+Node
+====
+
+.. automodule:: uqbar.graphs.Node
+
+.. currentmodule:: uqbar.graphs.Node
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.Node
+
+.. autoclass:: Node
+   :members:
+   :undoc-members:

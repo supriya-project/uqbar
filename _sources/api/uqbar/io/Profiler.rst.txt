@@ -1,0 +1,17 @@
+.. _uqbar--io--Profiler:
+
+Profiler
+========
+
+.. automodule:: uqbar.io.Profiler
+
+.. currentmodule:: uqbar.io.Profiler
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.io.Profiler
+
+.. autoclass:: Profiler
+   :members:
+   :undoc-members:

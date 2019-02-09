@@ -1,0 +1,131 @@
+.. _uqbar--apis:
+
+apis
+====
+
+.. automodule:: uqbar.apis
+
+.. currentmodule:: uqbar.apis
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Subpackages
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   dummy
+
+.. autosummary::
+   :nosignatures:
+
+   dummy
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Abstract Classes
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   MemberDocumenter
+
+.. autosummary::
+   :nosignatures:
+
+   ~MemberDocumenter.MemberDocumenter
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   APIBuilder
+   InheritanceGraph
+
+.. autosummary::
+   :nosignatures:
+
+   ~APIBuilder.APIBuilder
+   ~InheritanceGraph.InheritanceGraph
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Documenters
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   ClassDocumenter
+   FunctionDocumenter
+   ModuleDocumenter
+   RootDocumenter
+   SummarizingClassDocumenter
+   SummarizingModuleDocumenter
+   SummarizingRootDocumenter
+
+.. autosummary::
+   :nosignatures:
+
+   ~ClassDocumenter.ClassDocumenter
+   ~FunctionDocumenter.FunctionDocumenter
+   ~ModuleDocumenter.ModuleDocumenter
+   ~RootDocumenter.RootDocumenter
+   ~SummarizingClassDocumenter.SummarizingClassDocumenter
+   ~SummarizingModuleDocumenter.SummarizingModuleDocumenter
+   ~SummarizingRootDocumenter.SummarizingRootDocumenter
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~collect_source_paths
+   ~source_path_to_package_path
+
+.. autofunction:: collect_source_paths
+
+.. autofunction:: source_path_to_package_path
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Internals
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   ModuleNode
+   PackageNode
+
+.. autosummary::
+   :nosignatures:
+
+   ~ModuleNode.ModuleNode
+   ~PackageNode.PackageNode

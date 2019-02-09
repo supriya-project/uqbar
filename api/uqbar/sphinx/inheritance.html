@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>inheritance &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="style" href="style.html" />
+    <link rel="prev" title="api" href="api.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">sphinx</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="api.html">api</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="style.html">style</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">sphinx</a> &raquo;</li>
+        
+      <li>inheritance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/sphinx/inheritance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="style.html" class="btn btn-neutral float-right" title="style" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="api" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.sphinx.inheritance">
+<span id="inheritance"></span><span id="uqbar-sphinx-inheritance"></span><h1>inheritance<a class="headerlink" href="#module-uqbar.sphinx.inheritance" title="Permalink to this headline">¶</a></h1>
+<p>Uqbar Sphinx inheritance graph extension.</p>
+<p>Install by adding <code class="docutils literal notranslate"><span class="pre">'uqbar.sphinx.inheritance'</span></code> to the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> list in
+your Sphinx configuration.</p>
+<p>Invoke by adding the following directive to your ReST source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">inheritance</span><span class="o">-</span><span class="n">graph</span><span class="p">::</span> <span class="n">some</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+<p>This will generate Graphviz output mediated by a
+<a class="reference internal" href="../apis/InheritanceGraph.html#module-uqbar.apis.InheritanceGraph" title="uqbar.apis.InheritanceGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">uqbar.apis.InheritanceGraph</span></code></a> instance. You can specify lineage paths
+by adding a <code class="docutils literal notranslate"><span class="pre">:lineage:</span></code> option to the directive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">inheritance</span><span class="o">-</span><span class="n">graph</span><span class="p">::</span> <span class="n">some</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">path</span>
+   <span class="p">:</span><span class="n">lineage</span><span class="p">:</span> <span class="n">some</span><span class="o">.</span><span class="n">lineage</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+<p>Both the main argument to the directive and the lineage option can take
+multiple paths, separated by spaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">inheritance</span><span class="o">-</span><span class="n">graph</span><span class="p">::</span> <span class="n">path</span><span class="o">.</span><span class="n">one</span> <span class="n">path</span><span class="o">.</span><span class="n">two</span>
+   <span class="p">:</span><span class="n">lineage</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">three</span> <span class="n">path</span><span class="o">.</span><span class="n">four</span> <span class="n">path</span><span class="o">.</span><span class="n">five</span>
+</pre></div>
+</div>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-bf1d6efb9007b31e38a1f37bb3bbf95de8e236dc.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_docutils.nodes&quot; {
+        graph [label=&quot;docutils.nodes&quot;];
+        node [color=2];
+        &quot;docutils.nodes.Body&quot; [label=Body];
+        &quot;docutils.nodes.Element&quot; [label=Element];
+        &quot;docutils.nodes.General&quot; [label=General];
+        &quot;docutils.nodes.Node&quot; [label=&quot;Node&quot;];
+        &quot;docutils.nodes.Body&quot; -&gt; &quot;docutils.nodes.General&quot;;
+        &quot;docutils.nodes.Node&quot; -&gt; &quot;docutils.nodes.Element&quot;;
+    }
+    subgraph &quot;cluster_docutils.parsers.rst&quot; {
+        graph [label=&quot;docutils.parsers.rst&quot;];
+        node [color=3];
+        &quot;docutils.parsers.rst.Directive&quot; [URL=&quot;http://www.sphinx-doc.org/en/stable/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
+            label=Directive,
+            target=_top];
+    }
+    subgraph &quot;cluster_uqbar.sphinx.inheritance&quot; {
+        graph [label=&quot;uqbar.sphinx.inheritance&quot;];
+        node [color=4];
+        &quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot; [URL=&quot;../api/uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.InheritanceDiagram&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;Inheritance\nDiagram&quot;,
+            target=_top];
+        &quot;uqbar.sphinx.inheritance.inheritance_diagram&quot; [URL=&quot;../api/uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.inheritance_diagram&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;inheritance\ndiagram&quot;,
+            target=_top];
+    }
+    &quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Body&quot;;
+    &quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Node&quot;;
+    &quot;builtins.object&quot; -&gt; &quot;docutils.parsers.rst.Directive&quot;;
+    &quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;;
+    &quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;;
+    &quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;;
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.InheritanceDiagram" title="uqbar.sphinx.inheritance.InheritanceDiagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceDiagram</span></code></a></td>
+<td>Runs when the inheritance_diagram directive is first encountered.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a></td>
+<td>A docutils node to use as a placeholder for the inheritance diagram.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram">
+<em class="property">class </em><code class="descname">InheritanceDiagram</code><span class="sig-paren">(</span><em>name</em>, <em>arguments</em>, <em>options</em>, <em>content</em>, <em>lineno</em>, <em>content_offset</em>, <em>block_text</em>, <em>state</em>, <em>state_machine</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#InheritanceDiagram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs when the inheritance_diagram directive is first encountered.</p>
+<dl class="attribute">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.final_argument_whitespace">
+<code class="descname">final_argument_whitespace</code><em class="property"> = True</em><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.final_argument_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.has_content">
+<code class="descname">has_content</code><em class="property"> = False</em><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.has_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.option_spec">
+<code class="descname">option_spec</code><em class="property"> = {'lineage': &lt;function unchanged&gt;}</em><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.option_spec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.optional_arguments">
+<code class="descname">optional_arguments</code><em class="property"> = 0</em><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.optional_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.required_arguments">
+<code class="descname">required_arguments</code><em class="property"> = 1</em><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.required_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.sphinx.inheritance.InheritanceDiagram.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#InheritanceDiagram.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.InheritanceDiagram.run" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uqbar.sphinx.inheritance.inheritance_diagram">
+<em class="property">class </em><code class="descname">inheritance_diagram</code><span class="sig-paren">(</span><em>rawsource=''</em>, <em>*children</em>, <em>**attributes</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#inheritance_diagram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>A docutils node to use as a placeholder for the inheritance diagram.</p>
+</dd></dl>
+
+<hr/><p class="section-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.build_urls" title="uqbar.sphinx.inheritance.build_urls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_urls</span></code></a></td>
+<td>Builds a mapping of class paths to URLs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.html_visit_inheritance_diagram" title="uqbar.sphinx.inheritance.html_visit_inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">html_visit_inheritance_diagram</span></code></a></td>
+<td>Builds HTML output from an <a class="reference internal" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.latex_visit_inheritance_diagram" title="uqbar.sphinx.inheritance.latex_visit_inheritance_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latex_visit_inheritance_diagram</span></code></a></td>
+<td>Builds LaTeX output from an <a class="reference internal" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.setup" title="uqbar.sphinx.inheritance.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
+<td>Sets up Sphinx extension.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.inheritance.skip" title="uqbar.sphinx.inheritance.skip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skip</span></code></a></td>
+<td>Skip generating output, for non-supported builders.</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="uqbar.sphinx.inheritance.build_urls">
+<code class="descname">build_urls</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#build_urls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.build_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a mapping of class paths to URLs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.sphinx.inheritance.html_visit_inheritance_diagram">
+<code class="descname">html_visit_inheritance_diagram</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#html_visit_inheritance_diagram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.html_visit_inheritance_diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds HTML output from an <a class="reference internal" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.sphinx.inheritance.latex_visit_inheritance_diagram">
+<code class="descname">latex_visit_inheritance_diagram</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#latex_visit_inheritance_diagram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.latex_visit_inheritance_diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds LaTeX output from an <a class="reference internal" href="#uqbar.sphinx.inheritance.inheritance_diagram" title="uqbar.sphinx.inheritance.inheritance_diagram"><code class="xref py py-class docutils literal notranslate"><span class="pre">inheritance_diagram</span></code></a> node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.sphinx.inheritance.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up Sphinx extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Dict" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.sphinx.inheritance.skip">
+<code class="descname">skip</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/inheritance.html#skip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.inheritance.skip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skip generating output, for non-supported builders.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="style.html" class="btn btn-neutral float-right" title="style" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

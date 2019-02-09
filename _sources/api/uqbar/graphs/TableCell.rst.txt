@@ -1,0 +1,17 @@
+.. _uqbar--graphs--TableCell:
+
+TableCell
+=========
+
+.. automodule:: uqbar.graphs.TableCell
+
+.. currentmodule:: uqbar.graphs.TableCell
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.TableCell
+
+.. autoclass:: TableCell
+   :members:
+   :undoc-members:

@@ -1,0 +1,17 @@
+.. _uqbar--io--RedirectedStreams:
+
+RedirectedStreams
+=================
+
+.. automodule:: uqbar.io.RedirectedStreams
+
+.. currentmodule:: uqbar.io.RedirectedStreams
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.io.RedirectedStreams
+
+.. autoclass:: RedirectedStreams
+   :members:
+   :undoc-members:

@@ -1,0 +1,17 @@
+.. _uqbar--graphs--Edge:
+
+Edge
+====
+
+.. automodule:: uqbar.graphs.Edge
+
+.. currentmodule:: uqbar.graphs.Edge
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.Edge
+
+.. autoclass:: Edge
+   :members:
+   :undoc-members:

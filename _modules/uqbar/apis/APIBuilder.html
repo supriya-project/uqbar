@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>uqbar.apis.APIBuilder &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Uqbar API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../apis.html">uqbar.apis</a> &raquo;</li>
+        
+      <li>uqbar.apis.APIBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for uqbar.apis.APIBuilder</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">uqbar.io</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.ClassDocumenter</span> <span class="k">import</span> <span class="n">ClassDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.FunctionDocumenter</span> <span class="k">import</span> <span class="n">FunctionDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.MemberDocumenter</span> <span class="k">import</span> <span class="n">MemberDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.ModuleDocumenter</span> <span class="k">import</span> <span class="n">ModuleDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.ModuleNode</span> <span class="k">import</span> <span class="n">ModuleNode</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.PackageNode</span> <span class="k">import</span> <span class="n">PackageNode</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.RootDocumenter</span> <span class="k">import</span> <span class="n">RootDocumenter</span>
+
+
+<div class="viewcode-block" id="APIBuilder"><a class="viewcode-back" href="../../../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder">[docs]</a><span class="k">class</span> <span class="nc">APIBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A builder of reStructuredText API documentation for Python packages.</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        &gt;&gt;&gt; import uqbar</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; with tempfile.TemporaryDirectory() as target_directory:</span>
+<span class="sd">        ...     with uqbar.io.DirectoryChange(target_directory):</span>
+<span class="sd">        ...         builder = uqbar.apis.APIBuilder(</span>
+<span class="sd">        ...             initial_source_paths=uqbar.apis.__path__,</span>
+<span class="sd">        ...             target_directory=target_directory,</span>
+<span class="sd">        ...             )</span>
+<span class="sd">        ...         visited_paths = builder()</span>
+<span class="sd">        ...</span>
+<span class="sd">        wrote: index.rst</span>
+<span class="sd">        wrote: uqbar/index.rst</span>
+<span class="sd">        wrote: uqbar/apis/index.rst</span>
+<span class="sd">        wrote: uqbar/apis/APIBuilder.rst</span>
+<span class="sd">        wrote: uqbar/apis/ClassDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/FunctionDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/InheritanceGraph.rst</span>
+<span class="sd">        wrote: uqbar/apis/MemberDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/ModuleDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/ModuleNode.rst</span>
+<span class="sd">        wrote: uqbar/apis/PackageNode.rst</span>
+<span class="sd">        wrote: uqbar/apis/RootDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/SummarizingClassDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/SummarizingModuleDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/SummarizingRootDocumenter.rst</span>
+<span class="sd">        wrote: uqbar/apis/dummy.rst</span>
+
+<span class="sd">    :param initial_source_paths: a list of paths to scan for Python sources</span>
+<span class="sd">    :param target_directory: where to write reStructuredText output</span>
+<span class="sd">    :param document_private_members: whether to documenter private module members</span>
+<span class="sd">    :param document_private_modules: whether to document private modules</span>
+<span class="sd">    :param member_documenter_classes: a list of</span>
+<span class="sd">        :py:class:`~uqbar.apis.MemberDocumenter` subclasses, defining what classes</span>
+<span class="sd">        to use to identify and document module members</span>
+<span class="sd">    :param module_documenter_class: a :py:class:`~uqbar.apis.ModuleDocumenter` subclass</span>
+<span class="sd">    :param root_documenter_class: a :py:class:`~uqbar.apis.RootDocumenter` subclass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">### INITIALIZER ###</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">initial_source_paths</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">]],</span>
+        <span class="n">target_directory</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">],</span>
+        <span class="n">document_empty_modules</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">document_private_members</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">document_private_modules</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">member_documenter_classes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">MemberDocumenter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">module_documenter_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">ModuleDocumenter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">root_documenter_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">RootDocumenter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;API&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">initial_source_paths</span>
+        <span class="k">assert</span> <span class="n">target_directory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initial_source_paths</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">initial_source_paths</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">target_directory</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_document_private_members</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">document_private_members</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_document_private_modules</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">document_private_modules</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_document_empty_modules</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">document_empty_modules</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">member_documenter_classes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">member_documenter_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ClassDocumenter</span><span class="p">,</span> <span class="n">FunctionDocumenter</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">member_documenter_classes</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">MemberDocumenter</span><span class="p">),</span> <span class="n">_</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_member_documenter_classes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">member_documenter_classes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module_documenter_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">module_documenter_class</span> <span class="o">=</span> <span class="n">ModuleDocumenter</span>
+        <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">module_documenter_class</span><span class="p">,</span> <span class="n">ModuleDocumenter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_module_documenter_class</span> <span class="o">=</span> <span class="n">module_documenter_class</span>
+        <span class="k">if</span> <span class="n">root_documenter_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">root_documenter_class</span> <span class="o">=</span> <span class="n">RootDocumenter</span>
+        <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">root_documenter_class</span><span class="p">,</span> <span class="n">RootDocumenter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root_documenter_class</span> <span class="o">=</span> <span class="n">root_documenter_class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="n">title</span>
+
+    <span class="c1">### SPECIAL METHODS ###</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">uqbar.apis</span>
+
+        <span class="c1"># Make sure target directory exists.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="c1"># What files to document?</span>
+        <span class="n">source_paths</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">collect_source_paths</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_source_paths</span><span class="p">)</span>
+        <span class="c1"># Build the node tree</span>
+        <span class="n">node_tree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_node_tree</span><span class="p">(</span><span class="n">source_paths</span><span class="p">)</span>
+        <span class="c1"># Get the documenters, in depth-first order.</span>
+        <span class="n">documenters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collect_module_documenters</span><span class="p">(</span><span class="n">node_tree</span><span class="p">)</span>
+        <span class="c1"># Execute each documenter, writing to the target directory.</span>
+        <span class="n">visited_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">documenters</span><span class="p">)</span>
+        <span class="c1"># Iterate the target directory, removing un-touched files.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">visited_paths</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">visited_paths</span>
+
+    <span class="c1">### PRIVATE METHODS ###</span>
+
+    <span class="k">def</span> <span class="nf">_print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="n">cwd</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cwd</span><span class="p">)):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">message</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">path</span><span class="p">))</span>
+
+    <span class="c1">### PUBLIC METHODS ###</span>
+
+<div class="viewcode-block" id="APIBuilder.build_node_tree"><a class="viewcode-back" href="../../../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder.build_node_tree">[docs]</a>    <span class="k">def</span> <span class="nf">build_node_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_paths</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build a node tree.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">uqbar.apis</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">PackageNode</span><span class="p">()</span>
+        <span class="c1"># Build node tree, top-down</span>
+        <span class="k">for</span> <span class="n">source_path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">source_paths</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">source_path_to_package_path</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">package_path</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">source_path_to_package_path</span><span class="p">(</span><span class="n">source_path</span><span class="p">)</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">package_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">document_private_modules</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+                <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span>
+            <span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># Find parent node.</span>
+            <span class="n">parent_node</span> <span class="o">=</span> <span class="n">root</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">parent_package_path</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">parent_node</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="n">parent_package_path</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">parent_node</span> <span class="o">=</span> <span class="n">root</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">parent_node</span> <span class="ow">is</span> <span class="n">root</span><span class="p">:</span>
+                        <span class="c1"># Backfill missing parent node.</span>
+                        <span class="n">grandparent_node</span> <span class="o">=</span> <span class="n">root</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                            <span class="n">grandparent_node</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span>
+                                <span class="n">parent_package_path</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="p">]</span>
+                        <span class="n">parent_node</span> <span class="o">=</span> <span class="n">PackageNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">parent_package_path</span><span class="p">)</span>
+                        <span class="n">grandparent_node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_node</span><span class="p">)</span>
+                        <span class="n">grandparent_node</span><span class="p">[:]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                            <span class="n">grandparent_node</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">package_path</span>
+                        <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">parent_node</span> <span class="o">=</span> <span class="n">root</span>
+            <span class="c1"># Create or update child node.</span>
+            <span class="n">node_class</span> <span class="o">=</span> <span class="n">ModuleNode</span>
+            <span class="k">if</span> <span class="n">source_path</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">:</span>
+                <span class="n">node_class</span> <span class="o">=</span> <span class="n">PackageNode</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># If the child exists, it was previously backfilled.</span>
+                <span class="n">child_node</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="n">package_path</span><span class="p">]</span>
+                <span class="n">child_node</span><span class="o">.</span><span class="n">source_path</span> <span class="o">=</span> <span class="n">source_path</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="c1"># Otherwise it needs to be created and appended to the parent.</span>
+                <span class="n">child_node</span> <span class="o">=</span> <span class="n">node_class</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">package_path</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+                <span class="n">parent_node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child_node</span><span class="p">)</span>
+                <span class="n">parent_node</span><span class="p">[:]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parent_node</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">package_path</span><span class="p">)</span>
+        <span class="c1"># Build documenters, bottom-up.</span>
+        <span class="c1"># This allows parent documenters to easily aggregate their children.</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">depth_first</span><span class="p">(</span><span class="n">top_down</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">document_private_members</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">document_private_members</span><span class="p">,</span>
+                <span class="n">member_documenter_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">member_documenter_classes</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ModuleNode</span><span class="p">):</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">documenter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_documenter_class</span><span class="p">(</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">package_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Collect references to child modules and packages.</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">documenter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_documenter_class</span><span class="p">(</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">package_path</span><span class="p">,</span>
+                    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">child</span><span class="o">.</span><span class="n">documenter</span>
+                        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span>
+                        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">documenter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="p">],</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">document_empty_modules</span>
+                <span class="ow">and</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">documenter</span><span class="o">.</span><span class="n">module_documenters</span>
+                <span class="ow">and</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">documenter</span><span class="o">.</span><span class="n">member_documenters</span>
+            <span class="p">):</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">root</span></div>
+
+<div class="viewcode-block" id="APIBuilder.collect_module_documenters"><a class="viewcode-back" href="../../../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters">[docs]</a>    <span class="k">def</span> <span class="nf">collect_module_documenters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_node</span><span class="p">):</span>
+        <span class="c1"># Yield root documenter.</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_documenter_class</span><span class="p">(</span>
+            <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">documenter</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root_node</span><span class="p">],</span>
+            <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_title</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Yield module documenters, top-down.</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root_node</span><span class="o">.</span><span class="n">depth_first</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">root_node</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">documenter</span></div>
+
+<div class="viewcode-block" id="APIBuilder.write"><a class="viewcode-back" href="../../../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">documenters</span><span class="p">):</span>
+        <span class="n">visited_paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">documenter</span> <span class="ow">in</span> <span class="n">documenters</span><span class="p">:</span>
+            <span class="n">new_documentation</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">documenter</span><span class="o">.</span><span class="n">documentation_path</span><span class="p">)</span>
+            <span class="n">cwd</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cwd</span><span class="p">)):</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">())</span>
+            <span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_documentation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">visited_paths</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">visited_paths</span></div>
+
+<div class="viewcode-block" id="APIBuilder.prune"><a class="viewcode-back" href="../../../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder.prune">[docs]</a>    <span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visited_paths</span><span class="p">):</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="p">,</span> <span class="n">top_down</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">directory_paths</span><span class="p">,</span> <span class="n">file_paths</span> <span class="ow">in</span> <span class="n">generator</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">file_paths</span><span class="p">[:]:</span>
+                <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">!=</span> <span class="s2">&quot;.rst&quot;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">file_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited_paths</span><span class="p">:</span>
+                    <span class="n">file_paths</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                    <span class="n">file_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="s2">&quot;pruned&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file_paths</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">directory_paths</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">root_path</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">root_path</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="s2">&quot;pruned&quot;</span><span class="p">,</span> <span class="n">root_path</span><span class="p">)</span></div>
+
+    <span class="c1">### PUBLIC PROPERTIES ###</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">document_empty_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document_empty_modules</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">document_private_members</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document_private_members</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">document_private_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_document_private_modules</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">initial_source_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initial_source_paths</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">member_documenter_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_member_documenter_classes</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">module_documenter_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_module_documenter_class</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">target_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_directory</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">root_documenter_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_documenter_class</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

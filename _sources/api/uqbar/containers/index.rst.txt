@@ -1,0 +1,34 @@
+.. _uqbar--containers:
+
+containers
+==========
+
+.. automodule:: uqbar.containers
+
+.. currentmodule:: uqbar.containers
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.containers
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   DependencyGraph
+   UniqueTreeContainer
+   UniqueTreeNode
+
+.. autosummary::
+   :nosignatures:
+
+   ~DependencyGraph.DependencyGraph
+   ~UniqueTreeContainer.UniqueTreeContainer
+   ~UniqueTreeNode.UniqueTreeNode

@@ -1,0 +1,17 @@
+.. _uqbar--book--Console:
+
+Console
+=======
+
+.. automodule:: uqbar.book.Console
+
+.. currentmodule:: uqbar.book.Console
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.book.Console
+
+.. autoclass:: Console
+   :members:
+   :undoc-members:

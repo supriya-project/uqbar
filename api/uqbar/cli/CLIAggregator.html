@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CLIAggregator &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="containers" href="../containers/index.html" />
+    <link rel="prev" title="CLI" href="CLI.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">cli</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="CLI.html">CLI</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">CLIAggregator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">cli</a> &raquo;</li>
+        
+      <li>CLIAggregator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/cli/CLIAggregator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../containers/index.html" class="btn btn-neutral float-right" title="containers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CLI.html" class="btn btn-neutral" title="CLI" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.cli.CLIAggregator">
+<span id="cliaggregator"></span><span id="uqbar-cli-cliaggregator"></span><h1>CLIAggregator<a class="headerlink" href="#module-uqbar.cli.CLIAggregator" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-1b05de1e2e5d1aaedda4fd07cfaf05059a0fc860.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_abc {
+        graph [label=abc];
+        node [color=1];
+        &quot;abc.ABC&quot; [URL=&quot;https://docs.python.org/3.6/library/abc.html#abc.ABC&quot;,
+            label=ABC,
+            target=_top];
+    }
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=2];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_uqbar.cli&quot; {
+        graph [label=&quot;uqbar.cli&quot;];
+        node [color=3];
+        &quot;uqbar.cli.CLI.CLI&quot; [URL=&quot;../api/uqbar/cli/CLI.html#uqbar.cli.CLI.CLI&quot;,
+            label=CLI,
+            shape=oval,
+            style=bold,
+            target=_top];
+        &quot;uqbar.cli.CLIAggregator.CLIAggregator&quot; [URL=&quot;../api/uqbar/cli/CLIAggregator.html#uqbar.cli.CLIAggregator.CLIAggregator&quot;,
+            color=black,
+            fontcolor=white,
+            label=CLIAggregator,
+            shape=oval,
+            style=&quot;bold, filled&quot;,
+            target=_top];
+        &quot;uqbar.cli.CLI.CLI&quot; -&gt; &quot;uqbar.cli.CLIAggregator.CLIAggregator&quot;;
+    }
+    &quot;abc.ABC&quot; -&gt; &quot;uqbar.cli.CLI.CLI&quot;;
+    &quot;builtins.object&quot; -&gt; &quot;abc.ABC&quot;;
+}</p></object></div>
+</div>
+<dl class="class">
+<dt id="uqbar.cli.CLIAggregator.CLIAggregator">
+<em class="property">abstract </em><em class="property">class </em><code class="descname">CLIAggregator</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLIAggregator.html#CLIAggregator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggregates CLI scripts.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.cli</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ExampleAggregator</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">CLIAggregator</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nd">@property</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">cli_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">[]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">script</span> <span class="o">=</span> <span class="n">ExampleAggregator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">script</span><span class="p">(</span><span class="s1">&#39;--help&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">SystemExit</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">...</span>
+<span class="go">usage: example-aggregator [-h] [--version] {help,list} ...</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help   show this help message and exit</span>
+<span class="go">  --version    show program&#39;s version number and exit</span>
+
+<span class="go">subcommands:</span>
+<span class="go">  {help,list}</span>
+<span class="go">    help       print subcommand help</span>
+<span class="go">    list       list subcommands</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases">
+<code class="descname">cli_aliases</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Developer script aliases.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_classes">
+<em class="property">abstract </em><code class="descname">cli_classes</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Developer scripts classes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names">
+<code class="descname">cli_program_names</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Developer script program names.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../containers/index.html" class="btn btn-neutral float-right" title="containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CLI.html" class="btn btn-neutral" title="CLI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

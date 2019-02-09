@@ -1,0 +1,17 @@
+.. _uqbar--graphs--RecordField:
+
+RecordField
+===========
+
+.. automodule:: uqbar.graphs.RecordField
+
+.. currentmodule:: uqbar.graphs.RecordField
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.RecordField
+
+.. autoclass:: RecordField
+   :members:
+   :undoc-members:

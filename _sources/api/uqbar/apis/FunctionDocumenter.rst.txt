@@ -1,0 +1,17 @@
+.. _uqbar--apis--FunctionDocumenter:
+
+FunctionDocumenter
+==================
+
+.. automodule:: uqbar.apis.FunctionDocumenter
+
+.. currentmodule:: uqbar.apis.FunctionDocumenter
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.FunctionDocumenter
+
+.. autoclass:: FunctionDocumenter
+   :members:
+   :undoc-members:

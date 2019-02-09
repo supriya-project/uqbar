@@ -1,0 +1,17 @@
+.. _uqbar--containers--DependencyGraph:
+
+DependencyGraph
+===============
+
+.. automodule:: uqbar.containers.DependencyGraph
+
+.. currentmodule:: uqbar.containers.DependencyGraph
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.containers.DependencyGraph
+
+.. autoclass:: DependencyGraph
+   :members:
+   :undoc-members:

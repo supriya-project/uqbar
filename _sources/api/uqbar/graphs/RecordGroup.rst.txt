@@ -1,0 +1,17 @@
+.. _uqbar--graphs--RecordGroup:
+
+RecordGroup
+===========
+
+.. automodule:: uqbar.graphs.RecordGroup
+
+.. currentmodule:: uqbar.graphs.RecordGroup
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.RecordGroup
+
+.. autoclass:: RecordGroup
+   :members:
+   :undoc-members:

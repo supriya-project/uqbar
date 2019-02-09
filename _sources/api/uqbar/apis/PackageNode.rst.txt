@@ -1,0 +1,17 @@
+.. _uqbar--apis--PackageNode:
+
+PackageNode
+===========
+
+.. automodule:: uqbar.apis.PackageNode
+
+.. currentmodule:: uqbar.apis.PackageNode
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.PackageNode
+
+.. autoclass:: PackageNode
+   :members:
+   :undoc-members:

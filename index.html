@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Uqbar &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uqbar API" href="api/index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Uqbar API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Uqbar</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="api/index.html" class="btn btn-neutral float-right" title="Uqbar API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uqbar">
+<h1>Uqbar<a class="headerlink" href="#uqbar" title="Permalink to this headline">¶</a></h1>
+<p>Uqbar is a toolkit for building docs, graphs and more.</p>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="_images/inheritance-e8a891a8c8998c3e13dfb8117f96bb327a084677.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_abc {
+		graph [label=abc];
+		node [color=1];
+		&quot;abc.ABC&quot;		 [URL=&quot;https://docs.python.org/3.6/library/abc.html#abc.ABC&quot;,
+			color=1,
+			label=ABC,
+			target=_top];
+	}
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=2];
+		&quot;builtins.int&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#int&quot;,
+			color=2,
+			label=int,
+			target=_top];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=2,
+			label=object,
+			target=_top];
+		&quot;builtins.object&quot; -&gt; &quot;builtins.int&quot;		 [minlen=2];
+	}
+	subgraph cluster_code {
+		graph [label=code];
+		node [color=3];
+		&quot;code.InteractiveConsole&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
+			color=3,
+			label=&quot;Interactive\nConsole&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
+			color=3,
+			label=&quot;Interactive\nInterpreter&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_collections.abc&quot; {
+		graph [label=&quot;collections.abc&quot;];
+		node [color=4];
+		&quot;collections.abc.Collection&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
+			color=4,
+			label=Collection,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Mapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
+			color=4,
+			label=Mapping,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;		 [minlen=1];
+		&quot;collections.abc.Container&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
+			color=4,
+			label=Container,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Container&quot; -&gt; &quot;collections.abc.Collection&quot;;
+		&quot;collections.abc.Iterable&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
+			color=4,
+			label=Iterable,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Iterable&quot; -&gt; &quot;collections.abc.Collection&quot;;
+		&quot;collections.abc.MutableMapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
+			color=4,
+			label=&quot;Mutable\nMapping&quot;,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;		 [minlen=1];
+		&quot;collections.abc.Sized&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
+			color=4,
+			label=Sized,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Sized&quot; -&gt; &quot;collections.abc.Collection&quot;;
+	}
+	subgraph &quot;cluster_docutils.nodes&quot; {
+		graph [label=&quot;docutils.nodes&quot;];
+		node [color=5];
+		&quot;docutils.nodes.Body&quot;		 [color=5,
+			label=Body];
+		&quot;docutils.nodes.General&quot;		 [color=5,
+			label=General];
+		&quot;docutils.nodes.Body&quot; -&gt; &quot;docutils.nodes.General&quot;		 [minlen=1];
+		&quot;docutils.nodes.Element&quot;		 [color=5,
+			label=Element];
+		&quot;docutils.nodes.Node&quot;		 [color=5,
+			label=&quot;Node&quot;];
+		&quot;docutils.nodes.Node&quot; -&gt; &quot;docutils.nodes.Element&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_docutils.parsers.rst&quot; {
+		graph [label=&quot;docutils.parsers.rst&quot;];
+		node [color=6];
+		&quot;docutils.parsers.rst.Directive&quot;		 [URL=&quot;http://www.sphinx-doc.org/en/stable/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
+			color=6,
+			label=Directive,
+			target=_top];
+	}
+	subgraph cluster_enum {
+		graph [label=enum];
+		node [color=7];
+		&quot;enum.Enum&quot;		 [URL=&quot;https://docs.python.org/3.6/library/enum.html#enum.Enum&quot;,
+			color=7,
+			label=Enum,
+			target=_top];
+		&quot;enum.IntEnum&quot;		 [URL=&quot;https://docs.python.org/3.6/library/enum.html#enum.IntEnum&quot;,
+			color=7,
+			label=&quot;Int\nEnum&quot;,
+			target=_top];
+		&quot;enum.Enum&quot; -&gt; &quot;enum.IntEnum&quot;;
+	}
+	subgraph &quot;cluster_uqbar.apis&quot; {
+		graph [label=&quot;uqbar.apis&quot;];
+		node [color=8];
+		&quot;uqbar.apis.APIBuilder.APIBuilder&quot;		 [URL=&quot;../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder&quot;,
+			color=8,
+			label=APIBuilder,
+			target=_top];
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter&quot;,
+			color=8,
+			label=&quot;Class\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;,
+			color=8,
+			label=&quot;Summarizing\nClass\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;,
+			color=8,
+			label=&quot;Function\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;		 [URL=&quot;../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph&quot;,
+			color=8,
+			label=&quot;Inheritance\nGraph&quot;,
+			target=_top];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter&quot;,
+			color=8,
+			label=&quot;Member\nDocumenter&quot;,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [minlen=2];
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;,
+			color=8,
+			label=&quot;Module\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;,
+			color=8,
+			label=&quot;Summarizing\nModule\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
+			color=8,
+			label=&quot;Module\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
+			color=8,
+			label=&quot;Package\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter&quot;,
+			color=8,
+			label=&quot;Root\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;,
+			color=8,
+			label=&quot;Summarizing\nRoot\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.apis.dummy&quot; {
+		graph [label=&quot;uqbar.apis.dummy&quot;];
+		node [color=9];
+		&quot;uqbar.apis.dummy.MyChildClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyChildClass&quot;,
+			color=9,
+			label=&quot;My\nChild\nClass&quot;,
+			target=_top];
+		&quot;uqbar.apis.dummy.MyParentClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyParentClass&quot;,
+			color=9,
+			label=&quot;My\nParent\nClass&quot;,
+			target=_top];
+		&quot;uqbar.apis.dummy.MyParentClass&quot; -&gt; &quot;uqbar.apis.dummy.MyChildClass&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.book&quot; {
+		graph [label=&quot;uqbar.book&quot;];
+		node [color=1];
+		&quot;uqbar.book.Console.Console&quot;		 [URL=&quot;../api/uqbar/book/Console.html#uqbar.book.Console.Console&quot;,
+			color=1,
+			label=Console,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.cli&quot; {
+		graph [label=&quot;uqbar.cli&quot;];
+		node [color=2];
+		&quot;uqbar.cli.CLI.CLI&quot;		 [URL=&quot;../api/uqbar/cli/CLI.html#uqbar.cli.CLI.CLI&quot;,
+			color=2,
+			label=CLI,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;uqbar.cli.CLIAggregator.CLIAggregator&quot;		 [URL=&quot;../api/uqbar/cli/CLIAggregator.html#uqbar.cli.CLIAggregator.CLIAggregator&quot;,
+			color=2,
+			label=CLIAggregator,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;uqbar.cli.CLI.CLI&quot; -&gt; &quot;uqbar.cli.CLIAggregator.CLIAggregator&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.containers&quot; {
+		graph [label=&quot;uqbar.containers&quot;];
+		node [color=3];
+		&quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;		 [URL=&quot;../api/uqbar/containers/DependencyGraph.html#uqbar.containers.DependencyGraph.DependencyGraph&quot;,
+			color=3,
+			label=&quot;Dependency\nGraph&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
+			color=3,
+			label=&quot;Unique\nTree\nContainer&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
+			color=3,
+			label=&quot;Unique\nTree\nNode&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
+	}
+	subgraph &quot;cluster_uqbar.enums&quot; {
+		graph [label=&quot;uqbar.enums&quot;];
+		node [color=4];
+		&quot;uqbar.enums.IntEnumeration&quot;		 [URL=&quot;../api/uqbar/enums.html#uqbar.enums.IntEnumeration&quot;,
+			color=4,
+			label=&quot;Int\nEnumeration&quot;,
+			target=_top];
+		&quot;uqbar.enums.StrictEnumeration&quot;		 [URL=&quot;../api/uqbar/enums.html#uqbar.enums.StrictEnumeration&quot;,
+			color=4,
+			label=&quot;Strict\nEnumeration&quot;,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.graphs&quot; {
+		graph [label=&quot;uqbar.graphs&quot;];
+		node [color=5];
+		&quot;uqbar.graphs.Attachable.Attachable&quot;		 [URL=&quot;../api/uqbar/graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
+			color=5,
+			label=Attachable,
+			target=_top];
+		&quot;uqbar.graphs.RecordField.RecordField&quot;		 [URL=&quot;../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
+			color=5,
+			label=&quot;Record\nField&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
+		&quot;uqbar.graphs.TableCell.TableCell&quot;		 [URL=&quot;../api/uqbar/graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
+			color=5,
+			label=&quot;Table\nCell&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
+		&quot;uqbar.graphs.Attributes.Attributes&quot;		 [URL=&quot;../api/uqbar/graphs/Attributes.html#uqbar.graphs.Attributes.Attributes&quot;,
+			color=5,
+			label=Attributes,
+			target=_top];
+		&quot;uqbar.graphs.Edge.Edge&quot;		 [URL=&quot;../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge&quot;,
+			color=5,
+			label=&quot;Edge&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Graph.Graph&quot;		 [URL=&quot;../api/uqbar/graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
+			color=5,
+			label=&quot;Graph&quot;,
+			target=_top];
+		&quot;uqbar.graphs.HRule.HRule&quot;		 [URL=&quot;../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
+			color=5,
+			label=HRule,
+			target=_top];
+		&quot;uqbar.graphs.LineBreak.LineBreak&quot;		 [URL=&quot;../api/uqbar/graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
+			color=5,
+			label=&quot;Line\nBreak&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Node.Node&quot;		 [URL=&quot;../api/uqbar/graphs/Node.html#uqbar.graphs.Node.Node&quot;,
+			color=5,
+			label=&quot;Node&quot;,
+			target=_top];
+		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;		 [URL=&quot;../api/uqbar/graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
+			color=5,
+			label=&quot;Record\nGroup&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Table.Table&quot;		 [URL=&quot;../api/uqbar/graphs/Table.html#uqbar.graphs.Table.Table&quot;,
+			color=5,
+			label=Table,
+			target=_top];
+		&quot;uqbar.graphs.TableRow.TableRow&quot;		 [URL=&quot;../api/uqbar/graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
+			color=5,
+			label=&quot;Table\nRow&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Text.Text&quot;		 [URL=&quot;../api/uqbar/graphs/Text.html#uqbar.graphs.Text.Text&quot;,
+			color=5,
+			label=Text,
+			target=_top];
+		&quot;uqbar.graphs.VRule.VRule&quot;		 [URL=&quot;../api/uqbar/graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
+			color=5,
+			label=VRule,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.io&quot; {
+		graph [label=&quot;uqbar.io&quot;];
+		node [color=6];
+		&quot;uqbar.io.DirectoryChange.DirectoryChange&quot;		 [URL=&quot;../api/uqbar/io/DirectoryChange.html#uqbar.io.DirectoryChange.DirectoryChange&quot;,
+			color=6,
+			label=&quot;Directory\nChange&quot;,
+			target=_top];
+		&quot;uqbar.io.Profiler.Profiler&quot;		 [URL=&quot;../api/uqbar/io/Profiler.html#uqbar.io.Profiler.Profiler&quot;,
+			color=6,
+			label=Profiler,
+			target=_top];
+		&quot;uqbar.io.RedirectedStreams.RedirectedStreams&quot;		 [URL=&quot;../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams&quot;,
+			color=6,
+			label=&quot;Redirected\nStreams&quot;,
+			target=_top];
+		&quot;uqbar.io.Timer.Timer&quot;		 [URL=&quot;../api/uqbar/io/Timer.html#uqbar.io.Timer.Timer&quot;,
+			color=6,
+			label=Timer,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.sphinx.inheritance&quot; {
+		graph [label=&quot;uqbar.sphinx.inheritance&quot;];
+		node [color=7];
+		&quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;		 [URL=&quot;../api/uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.InheritanceDiagram&quot;,
+			color=7,
+			label=&quot;Inheritance\nDiagram&quot;,
+			target=_top];
+		&quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;		 [URL=&quot;../api/uqbar/sphinx/inheritance.html#uqbar.sphinx.inheritance.inheritance_diagram&quot;,
+			color=7,
+			label=&quot;inheritance\ndiagram&quot;,
+			target=_top];
+	}
+	&quot;abc.ABC&quot; -&gt; &quot;uqbar.cli.CLI.CLI&quot;	 [minlen=1];
+	&quot;builtins.int&quot; -&gt; &quot;enum.IntEnum&quot;;
+	&quot;builtins.object&quot; -&gt; &quot;abc.ABC&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Container&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Iterable&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Sized&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Body&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Node&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;docutils.parsers.rst.Directive&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;enum.Enum&quot;;
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.APIBuilder.APIBuilder&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;;
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.dummy.MyParentClass&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Edge.Edge&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.DirectoryChange.DirectoryChange&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.Profiler.Profiler&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.RedirectedStreams.RedirectedStreams&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.Timer.Timer&quot;	 [minlen=2];
+	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.Console.Console&quot;	 [minlen=1];
+	&quot;collections.abc.MutableMapping&quot; -&gt; &quot;uqbar.graphs.Attributes.Attributes&quot;	 [minlen=1];
+	&quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;;
+	&quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;;
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;	 [minlen=1];
+	&quot;enum.Enum&quot; -&gt; &quot;uqbar.enums.StrictEnumeration&quot;	 [minlen=1];
+	&quot;enum.IntEnum&quot; -&gt; &quot;uqbar.enums.IntEnumeration&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=3];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=3];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=3];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=2];
+}</p></object></div>
+</div>
+<div class="section" id="sphinx-extensions">
+<h2>Sphinx extensions<a class="headerlink" href="#sphinx-extensions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/sphinx/api.html#module-uqbar.sphinx.api" title="uqbar.sphinx.api"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.sphinx.api</span></code></a></td>
+<td>Uqbar Sphinx API generation extension.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/sphinx/inheritance.html#module-uqbar.sphinx.inheritance" title="uqbar.sphinx.inheritance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.sphinx.inheritance</span></code></a></td>
+<td>Uqbar Sphinx inheritance graph extension.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/sphinx/style.html#module-uqbar.sphinx.style" title="uqbar.sphinx.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.sphinx.style</span></code></a></td>
+<td>Uqbar Sphinx styling extension.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api-auto-generation">
+<h2>API auto-generation<a class="headerlink" href="#api-auto-generation" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/apis/APIBuilder.html#module-uqbar.apis.APIBuilder" title="uqbar.apis.APIBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.APIBuilder</span></code></a></td>
+<td>A builder of reStructuredText API documentation for Python packages.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/apis/ClassDocumenter.html#module-uqbar.apis.ClassDocumenter" title="uqbar.apis.ClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.ClassDocumenter</span></code></a></td>
+<td>A basic class documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/apis/FunctionDocumenter.html#module-uqbar.apis.FunctionDocumenter" title="uqbar.apis.FunctionDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.FunctionDocumenter</span></code></a></td>
+<td>A basic function documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/apis/ModuleDocumenter.html#module-uqbar.apis.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.ModuleDocumenter</span></code></a></td>
+<td>A basic module documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/apis/RootDocumenter.html#module-uqbar.apis.RootDocumenter" title="uqbar.apis.RootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.RootDocumenter</span></code></a></td>
+<td>A basic root documenter.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="graphviz-graphs">
+<h2>Graphviz graphs<a class="headerlink" href="#graphviz-graphs" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/apis/InheritanceGraph.html#module-uqbar.apis.InheritanceGraph" title="uqbar.apis.InheritanceGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.apis.InheritanceGraph</span></code></a></td>
+<td>A builder of Graphviz inheritance graphs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/graphs/Graph.html#module-uqbar.graphs.Graph" title="uqbar.graphs.Graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.graphs.Graph</span></code></a></td>
+<td>A Graphviz graph, subgraph or cluster.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/graphs/Node.html#module-uqbar.graphs.Node" title="uqbar.graphs.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.graphs.Node</span></code></a></td>
+<td>A Graphviz node.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/graphs/Edge.html#module-uqbar.graphs.Edge" title="uqbar.graphs.Edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.graphs.Edge</span></code></a></td>
+<td>A Graphviz edge.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="generic-data-structures">
+<h2>Generic data-structures<a class="headerlink" href="#generic-data-structures" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/containers/DependencyGraph.html#module-uqbar.containers.DependencyGraph" title="uqbar.containers.DependencyGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.containers.DependencyGraph</span></code></a></td>
+<td>A dependency graph of hashables.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.containers.UniqueTreeNode</span></code></a></td>
+<td>A node in a “unique” tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/containers/UniqueTreeContainer.html#module-uqbar.containers.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.containers.UniqueTreeContainer</span></code></a></td>
+<td>A container node in a “unique” tree.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="context-managers">
+<h2>Context managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/io/DirectoryChange.html#module-uqbar.io.DirectoryChange" title="uqbar.io.DirectoryChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.io.DirectoryChange</span></code></a></td>
+<td>A context manager for temporarily changing the current working directory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/io/Profiler.html#module-uqbar.io.Profiler" title="uqbar.io.Profiler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.io.Profiler</span></code></a></td>
+<td>A context manager for profiling blocks of code.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/uqbar/io/RedirectedStreams.html#module-uqbar.io.RedirectedStreams" title="uqbar.io.RedirectedStreams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.io.RedirectedStreams</span></code></a></td>
+<td>A context manager for capturing <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> output.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/uqbar/io/Timer.html#module-uqbar.io.Timer" title="uqbar.io.Timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar.io.Timer</span></code></a></td>
+<td>A context manager for timing blocks of code.</td>
+</tr>
+</tbody>
+</table>
+<p>Consult Uqbar’s API:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">Uqbar API</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/index.html" class="btn btn-neutral float-right" title="Uqbar API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

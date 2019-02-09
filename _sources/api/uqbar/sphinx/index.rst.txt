@@ -1,0 +1,34 @@
+.. _uqbar--sphinx:
+
+sphinx
+======
+
+.. automodule:: uqbar.sphinx
+
+.. currentmodule:: uqbar.sphinx
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.sphinx
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Subpackages
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   api
+   inheritance
+   style
+
+.. autosummary::
+   :nosignatures:
+
+   api
+   inheritance
+   style

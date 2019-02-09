@@ -1,0 +1,454 @@
+Uqbar API
+=========
+
+.. toctree::
+   :hidden:
+
+   uqbar/index
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar <uqbar>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis <uqbar--apis>`
+   :class: section-header
+
+Tools for auto-generating API documention.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Abstract Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.MemberDocumenter.MemberDocumenter
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.APIBuilder.APIBuilder
+   ~uqbar.apis.InheritanceGraph.InheritanceGraph
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Documenters
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.ClassDocumenter.ClassDocumenter
+   ~uqbar.apis.FunctionDocumenter.FunctionDocumenter
+   ~uqbar.apis.ModuleDocumenter.ModuleDocumenter
+   ~uqbar.apis.RootDocumenter.RootDocumenter
+   ~uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter
+   ~uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter
+   ~uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.collect_source_paths
+   ~uqbar.apis.source_path_to_package_path
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Internals
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.ModuleNode.ModuleNode
+   ~uqbar.apis.PackageNode.PackageNode
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis.dummy <uqbar--apis--dummy>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.dummy.MyChildClass
+   ~uqbar.apis.dummy.MyParentClass
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.book <uqbar--book>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Internals
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.Console.Console
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.cli <uqbar--cli>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Abstract Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.cli.CLI.CLI
+   ~uqbar.cli.CLIAggregator.CLIAggregator
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.containers <uqbar--containers>`
+   :class: section-header
+
+Specialized container classes.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.containers.DependencyGraph.DependencyGraph
+   ~uqbar.containers.UniqueTreeContainer.UniqueTreeContainer
+   ~uqbar.containers.UniqueTreeNode.UniqueTreeNode
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.enums <uqbar--enums>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Enumerations
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.enums.IntEnumeration
+   ~uqbar.enums.StrictEnumeration
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.enums.from_expr
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.graphs <uqbar--graphs>`
+   :class: section-header
+
+Tools for building Graphviz graphs.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Core Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.Attributes.Attributes
+   ~uqbar.graphs.Edge.Edge
+   ~uqbar.graphs.Graph.Graph
+   ~uqbar.graphs.Node.Node
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: HTML Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.HRule.HRule
+   ~uqbar.graphs.LineBreak.LineBreak
+   ~uqbar.graphs.Table.Table
+   ~uqbar.graphs.TableCell.TableCell
+   ~uqbar.graphs.TableRow.TableRow
+   ~uqbar.graphs.Text.Text
+   ~uqbar.graphs.VRule.VRule
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Mixins
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.Attachable.Attachable
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Record Field Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.RecordField.RecordField
+   ~uqbar.graphs.RecordGroup.RecordGroup
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.io <uqbar--io>`
+   :class: section-header
+
+Tools for IO and file-system manipulation.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.io.DirectoryChange.DirectoryChange
+   ~uqbar.io.Profiler.Profiler
+   ~uqbar.io.RedirectedStreams.RedirectedStreams
+   ~uqbar.io.Timer.Timer
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.io.find_common_prefix
+   ~uqbar.io.find_executable
+   ~uqbar.io.relative_to
+   ~uqbar.io.walk
+   ~uqbar.io.write
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.objects <uqbar--objects>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.objects.compare_objects
+   ~uqbar.objects.get_hash
+   ~uqbar.objects.get_repr
+   ~uqbar.objects.get_vars
+   ~uqbar.objects.new
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.sphinx <uqbar--sphinx>`
+   :class: section-header
+
+Sphinx extensions.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.sphinx.api <uqbar--sphinx--api>`
+   :class: section-header
+
+Uqbar Sphinx API generation extension.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.sphinx.api.on_builder_inited
+   ~uqbar.sphinx.api.setup
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.sphinx.inheritance <uqbar--sphinx--inheritance>`
+   :class: section-header
+
+Uqbar Sphinx inheritance graph extension.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.sphinx.inheritance.InheritanceDiagram
+   ~uqbar.sphinx.inheritance.inheritance_diagram
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.sphinx.inheritance.build_urls
+   ~uqbar.sphinx.inheritance.html_visit_inheritance_diagram
+   ~uqbar.sphinx.inheritance.latex_visit_inheritance_diagram
+   ~uqbar.sphinx.inheritance.setup
+   ~uqbar.sphinx.inheritance.skip
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.sphinx.style <uqbar--sphinx--style>`
+   :class: section-header
+
+Uqbar Sphinx styling extension.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.sphinx.style.handle_class
+   ~uqbar.sphinx.style.handle_method
+   ~uqbar.sphinx.style.on_builder_inited
+   ~uqbar.sphinx.style.on_doctree_read
+   ~uqbar.sphinx.style.setup
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.strings <uqbar--strings>`
+   :class: section-header
+
+Tools for string manipulation.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.strings.delimit_words
+   ~uqbar.strings.normalize
+   ~uqbar.strings.to_dash_case
+   ~uqbar.strings.to_snake_case

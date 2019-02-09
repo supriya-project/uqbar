@@ -1,0 +1,17 @@
+.. _uqbar--io--DirectoryChange:
+
+DirectoryChange
+===============
+
+.. automodule:: uqbar.io.DirectoryChange
+
+.. currentmodule:: uqbar.io.DirectoryChange
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.io.DirectoryChange
+
+.. autoclass:: DirectoryChange
+   :members:
+   :undoc-members:

@@ -1,0 +1,17 @@
+.. _uqbar--apis--MemberDocumenter:
+
+MemberDocumenter
+================
+
+.. automodule:: uqbar.apis.MemberDocumenter
+
+.. currentmodule:: uqbar.apis.MemberDocumenter
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.apis.MemberDocumenter
+
+.. autoclass:: MemberDocumenter
+   :members:
+   :undoc-members:

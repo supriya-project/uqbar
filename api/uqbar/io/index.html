@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>io &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="DirectoryChange" href="DirectoryChange.html" />
+    <link rel="prev" title="RecordGroup" href="../graphs/RecordGroup.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">io</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="DirectoryChange.html">DirectoryChange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profiler.html">Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RedirectedStreams.html">RedirectedStreams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+      <li>io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/io/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral" title="RecordGroup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.io">
+<span id="io"></span><span id="uqbar-io"></span><h1>io<a class="headerlink" href="#module-uqbar.io" title="Permalink to this headline">¶</a></h1>
+<p>Tools for IO and file-system manipulation.</p>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-27b846356f76dbdb642204d9e7fc43b474dd9476.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.io&quot; {
+		graph [label=&quot;uqbar.io&quot;];
+		node [color=2];
+		&quot;uqbar.io.DirectoryChange.DirectoryChange&quot;		 [URL=&quot;../api/uqbar/io/DirectoryChange.html#uqbar.io.DirectoryChange.DirectoryChange&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Directory\nChange&quot;,
+			target=_top];
+		&quot;uqbar.io.Profiler.Profiler&quot;		 [URL=&quot;../api/uqbar/io/Profiler.html#uqbar.io.Profiler.Profiler&quot;,
+			color=black,
+			fontcolor=white,
+			label=Profiler,
+			target=_top];
+		&quot;uqbar.io.RedirectedStreams.RedirectedStreams&quot;		 [URL=&quot;../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Redirected\nStreams&quot;,
+			target=_top];
+		&quot;uqbar.io.Timer.Timer&quot;		 [URL=&quot;../api/uqbar/io/Timer.html#uqbar.io.Timer.Timer&quot;,
+			color=black,
+			fontcolor=white,
+			label=Timer,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.DirectoryChange.DirectoryChange&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.Profiler.Profiler&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.RedirectedStreams.RedirectedStreams&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.io.Timer.Timer&quot;	 [minlen=2];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="DirectoryChange.html#uqbar.io.DirectoryChange.DirectoryChange" title="uqbar.io.DirectoryChange.DirectoryChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DirectoryChange</span></code></a></td>
+<td>A context manager for temporarily changing the current working directory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Profiler.html#uqbar.io.Profiler.Profiler" title="uqbar.io.Profiler.Profiler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Profiler</span></code></a></td>
+<td>A context manager for profiling blocks of code.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams" title="uqbar.io.RedirectedStreams.RedirectedStreams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RedirectedStreams</span></code></a></td>
+<td>A context manager for capturing <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> output.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Timer.html#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timer</span></code></a></td>
+<td>A context manager for timing blocks of code.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.io.find_common_prefix" title="uqbar.io.find_common_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_common_prefix</span></code></a></td>
+<td>Find the common prefix of two or more paths.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.io.find_executable" title="uqbar.io.find_executable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_executable</span></code></a></td>
+<td>Finds executable <cite>name</cite>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.io.relative_to" title="uqbar.io.relative_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relative_to</span></code></a></td>
+<td>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.io.walk" title="uqbar.io.walk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">walk</span></code></a></td>
+<td>Walks a directory tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.io.write" title="uqbar.io.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></td>
+<td>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="uqbar.io.find_common_prefix">
+<code class="descname">find_common_prefix</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_common_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the common prefix of two or more paths.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/bar/baz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">two</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/biz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">three</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/wuux&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">find_common_prefix</span><span class="p">([</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">]))</span>
+<span class="go">&#39;foo&#39;</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]]) – paths to inspect</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.io.find_executable">
+<code class="descname">find_executable</code><span class="sig-paren">(</span><em>name</em>, <em>flags=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_executable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.find_executable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds executable <cite>name</cite>.</p>
+<p>Similar to Unix <code class="docutils literal notranslate"><span class="pre">which</span></code> command.</p>
+<p>Returns list of zero or more full paths to <cite>name</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.io.relative_to">
+<code class="descname">relative_to</code><span class="sig-paren">(</span><em>source_path</em>, <em>target_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#relative_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.relative_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</p>
+<p>Handles the case of paths without a common prefix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/bar/baz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/biz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; does not start with &#39;foo/bar/baz&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+<span class="go">&#39;../../quux/biz&#39;</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – the source path</li>
+<li><strong>target_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – the target path</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.io.walk">
+<code class="descname">walk</code><span class="sig-paren">(</span><em>root_path</em>, <em>top_down=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#walk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walks a directory tree.</p>
+<p>Like <a class="reference external" href="https://docs.python.org/3.6/library/os.html#os.walk" title="(in Python v3.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.walk()</span></code></a> but yielding instances of <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a>
+instead of strings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>root_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – foo</li>
+<li><strong>top_down</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – bar</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Generator" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]], <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="uqbar.io.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>contents</em>, <em>path</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<p>Checks if <code class="docutils literal notranslate"><span class="pre">path</span></code> already exists and only write out new contents if the
+old contents do not match.</p>
+<p>Creates any intermediate missing directories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>contents</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the file contents to write</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – the path to write to</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – whether to print output</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral" title="RecordGroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

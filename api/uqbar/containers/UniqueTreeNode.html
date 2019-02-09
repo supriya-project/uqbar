@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UniqueTreeNode &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="enums" href="../enums.html" />
+    <link rel="prev" title="UniqueTreeContainer" href="UniqueTreeContainer.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">containers</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="DependencyGraph.html">DependencyGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UniqueTreeContainer.html">UniqueTreeContainer</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">UniqueTreeNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">containers</a> &raquo;</li>
+        
+      <li>UniqueTreeNode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/containers/UniqueTreeNode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../enums.html" class="btn btn-neutral float-right" title="enums" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UniqueTreeContainer.html" class="btn btn-neutral" title="UniqueTreeContainer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.containers.UniqueTreeNode">
+<span id="uniquetreenode"></span><span id="uqbar-containers-uniquetreenode"></span><h1>UniqueTreeNode<a class="headerlink" href="#module-uqbar.containers.UniqueTreeNode" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-ee6d251a6bb62dfe4751c9585d918fb4a81ca056.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.apis&quot; {
+		graph [label=&quot;uqbar.apis&quot;];
+		node [color=2];
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
+			color=2,
+			label=&quot;Module\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
+			color=2,
+			label=&quot;Package\nNode&quot;,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.containers&quot; {
+		graph [label=&quot;uqbar.containers&quot;];
+		node [color=3];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
+			color=3,
+			label=&quot;Unique\nTree\nContainer&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Unique\nTree\nNode&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
+	}
+	subgraph &quot;cluster_uqbar.graphs&quot; {
+		graph [label=&quot;uqbar.graphs&quot;];
+		node [color=4];
+		&quot;uqbar.graphs.Attachable.Attachable&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
+			color=4,
+			label=Attachable,
+			target=_top];
+		&quot;uqbar.graphs.RecordField.RecordField&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
+			color=4,
+			label=&quot;Record\nField&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
+		&quot;uqbar.graphs.TableCell.TableCell&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
+			color=4,
+			label=&quot;Table\nCell&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
+		&quot;uqbar.graphs.Graph.Graph&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
+			color=4,
+			label=&quot;Graph&quot;,
+			target=_top];
+		&quot;uqbar.graphs.HRule.HRule&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
+			color=4,
+			label=HRule,
+			target=_top];
+		&quot;uqbar.graphs.LineBreak.LineBreak&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
+			color=4,
+			label=&quot;Line\nBreak&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Node.Node&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Node.html#uqbar.graphs.Node.Node&quot;,
+			color=4,
+			label=&quot;Node&quot;,
+			target=_top];
+		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
+			color=4,
+			label=&quot;Record\nGroup&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Table.Table&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Table.html#uqbar.graphs.Table.Table&quot;,
+			color=4,
+			label=Table,
+			target=_top];
+		&quot;uqbar.graphs.TableRow.TableRow&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
+			color=4,
+			label=&quot;Table\nRow&quot;,
+			target=_top];
+		&quot;uqbar.graphs.Text.Text&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Text.html#uqbar.graphs.Text.Text&quot;,
+			color=4,
+			label=Text,
+			target=_top];
+		&quot;uqbar.graphs.VRule.VRule&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
+			color=4,
+			label=VRule,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=1];
+}</p></object></div>
+</div>
+<dl class="class">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode">
+<em class="property">class </em><code class="descname">UniqueTreeNode</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>A node in a “unique” tree.</p>
+<p>Unique tree nodes may have at most one parent and may appear only once in
+the tree.</p>
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth">
+<code class="descname">depth</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order">
+<code class="descname">graph_order</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.name">
+<code class="descname">name</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent">
+<code class="descname">parent</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage">
+<code class="descname">parentage</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.precede_by">
+<code class="descname">precede_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode.precede_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.precede_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.replace_with">
+<code class="descname">replace_with</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode.replace_with"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.replace_with" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.root">
+<code class="descname">root</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.succeed_by">
+<code class="descname">succeed_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode.succeed_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.succeed_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../enums.html" class="btn btn-neutral float-right" title="enums" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UniqueTreeContainer.html" class="btn btn-neutral" title="UniqueTreeContainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

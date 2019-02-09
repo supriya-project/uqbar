@@ -1,0 +1,48 @@
+.. _uqbar:
+
+uqbar
+=====
+
+.. automodule:: uqbar
+
+.. currentmodule:: uqbar
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Subpackages
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   apis/index
+   book/index
+   cli/index
+   containers/index
+   enums
+   graphs/index
+   io/index
+   objects
+   sphinx/index
+   strings
+
+.. autosummary::
+   :nosignatures:
+
+   apis
+   book
+   cli
+   containers
+   enums
+   graphs
+   io
+   objects
+   sphinx
+   strings

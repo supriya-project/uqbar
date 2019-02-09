@@ -1,0 +1,17 @@
+.. _uqbar--cli--CLIAggregator:
+
+CLIAggregator
+=============
+
+.. automodule:: uqbar.cli.CLIAggregator
+
+.. currentmodule:: uqbar.cli.CLIAggregator
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.cli.CLIAggregator
+
+.. autoclass:: CLIAggregator
+   :members:
+   :undoc-members:

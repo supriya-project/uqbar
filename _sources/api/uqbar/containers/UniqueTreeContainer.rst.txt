@@ -1,0 +1,17 @@
+.. _uqbar--containers--UniqueTreeContainer:
+
+UniqueTreeContainer
+===================
+
+.. automodule:: uqbar.containers.UniqueTreeContainer
+
+.. currentmodule:: uqbar.containers.UniqueTreeContainer
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.containers.UniqueTreeContainer
+
+.. autoclass:: UniqueTreeContainer
+   :members:
+   :undoc-members:

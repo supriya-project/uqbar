@@ -1,0 +1,17 @@
+.. _uqbar--graphs--HRule:
+
+HRule
+=====
+
+.. automodule:: uqbar.graphs.HRule
+
+.. currentmodule:: uqbar.graphs.HRule
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.HRule
+
+.. autoclass:: HRule
+   :members:
+   :undoc-members:

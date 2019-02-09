@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MemberDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="APIBuilder" href="APIBuilder.html" />
+    <link rel="prev" title="dummy" href="dummy.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">apis</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dummy.html">dummy</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">MemberDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="APIBuilder.html">APIBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="InheritanceGraph.html">InheritanceGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClassDocumenter.html">ClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FunctionDocumenter.html">FunctionDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleDocumenter.html">ModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RootDocumenter.html">RootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingClassDocumenter.html">SummarizingClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingModuleDocumenter.html">SummarizingModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingRootDocumenter.html">SummarizingRootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleNode.html">ModuleNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PackageNode.html">PackageNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">apis</a> &raquo;</li>
+        
+      <li>MemberDocumenter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/apis/MemberDocumenter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="APIBuilder.html" class="btn btn-neutral float-right" title="APIBuilder" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dummy.html" class="btn btn-neutral" title="dummy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.apis.MemberDocumenter">
+<span id="memberdocumenter"></span><span id="uqbar-apis-memberdocumenter"></span><h1>MemberDocumenter<a class="headerlink" href="#module-uqbar.apis.MemberDocumenter" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-bfc94a436a9a4f5bf9ced279e19df982b0d71fcf.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_uqbar.apis&quot; {
+        graph [label=&quot;uqbar.apis&quot;];
+        node [color=2];
+        &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; [URL=&quot;../api/uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter&quot;,
+            label=&quot;Class\nDocumenter&quot;,
+            target=_top];
+        &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot; [URL=&quot;../api/uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;,
+            label=&quot;Function\nDocumenter&quot;,
+            target=_top];
+        &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; [URL=&quot;../api/uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;Member\nDocumenter&quot;,
+            shape=oval,
+            style=&quot;bold, filled&quot;,
+            target=_top];
+        &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot; [URL=&quot;../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;,
+            label=&quot;Summarizing\nClass\nDocumenter&quot;,
+            target=_top];
+        &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;;
+        &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;;
+        &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;;
+    }
+    &quot;builtins.object&quot; -&gt; &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;;
+}</p></object></div>
+</div>
+<dl class="class">
+<dt id="uqbar.apis.MemberDocumenter.MemberDocumenter">
+<em class="property">abstract </em><em class="property">class </em><code class="descname">MemberDocumenter</code><span class="sig-paren">(</span><em>package_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for module member documenters.</p>
+<p>Member documenters generate reStructuredText output for classes, functions
+and other objects defined in modules. They also implement the logic for
+identifying which of those objects should be selected for documenting via
+their
+<a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_client()</span></code></a>
+method. Module documenters loop over their client module’s dict and try
+each of their member documenter class’ validation method against each dict
+member in turn in order to identify documentable content and associate it
+with a member documenter class.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Subclass <a class="reference internal" href="#module-uqbar.apis.MemberDocumenter" title="uqbar.apis.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a> to implement your own
+custom module member documentation output. You’ll need to override
+<a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_client()</span></code></a>
+with custom identification logic, and provide your desired
+reStructuredText output via an overridden
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code>
+implementation.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>package_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the module path and name of the member to document</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.client">
+<code class="descname">client</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.client" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section">
+<em class="property">abstract </em><code class="descname">documentation_section</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.package_path">
+<code class="descname">package_path</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.package_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client">
+<em class="property">abstract </em><em class="property">classmethod </em><code class="descname">validate_client</code><span class="sig-paren">(</span><em>client</em>, <em>module_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter.validate_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the member documenter can document the provided client.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>client</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – the potential client to validate</li>
+<li><strong>module_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the package path of the module where the client was encountered</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="APIBuilder.html" class="btn btn-neutral float-right" title="APIBuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dummy.html" class="btn btn-neutral" title="dummy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

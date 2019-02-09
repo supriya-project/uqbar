@@ -1,0 +1,30 @@
+.. _uqbar--book:
+
+book
+====
+
+.. automodule:: uqbar.book
+
+.. currentmodule:: uqbar.book
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.book
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Internals
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   Console
+
+.. autosummary::
+   :nosignatures:
+
+   ~Console.Console

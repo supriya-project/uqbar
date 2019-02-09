@@ -1,0 +1,17 @@
+.. _uqbar--graphs--Attachable:
+
+Attachable
+==========
+
+.. automodule:: uqbar.graphs.Attachable
+
+.. currentmodule:: uqbar.graphs.Attachable
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.Attachable
+
+.. autoclass:: Attachable
+   :members:
+   :undoc-members:

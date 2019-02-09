@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>apis &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="dummy" href="dummy.html" />
+    <link rel="prev" title="uqbar" href="../index.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">apis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dummy.html">dummy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MemberDocumenter.html">MemberDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="APIBuilder.html">APIBuilder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="InheritanceGraph.html">InheritanceGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClassDocumenter.html">ClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FunctionDocumenter.html">FunctionDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleDocumenter.html">ModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RootDocumenter.html">RootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingClassDocumenter.html">SummarizingClassDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingModuleDocumenter.html">SummarizingModuleDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SummarizingRootDocumenter.html">SummarizingRootDocumenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ModuleNode.html">ModuleNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PackageNode.html">PackageNode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+      <li>apis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/apis/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="dummy.html" class="btn btn-neutral float-right" title="dummy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="uqbar" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.apis">
+<span id="apis"></span><span id="uqbar-apis"></span><h1>apis<a class="headerlink" href="#module-uqbar.apis" title="Permalink to this headline">¶</a></h1>
+<p>Tools for auto-generating API documention.</p>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-c2a872eb39c43da34f98b22ded325d44131c3e68.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.apis&quot; {
+		graph [label=&quot;uqbar.apis&quot;];
+		node [color=2];
+		&quot;uqbar.apis.APIBuilder.APIBuilder&quot;		 [URL=&quot;../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder&quot;,
+			color=black,
+			fontcolor=white,
+			label=APIBuilder,
+			target=_top];
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Class\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Summarizing\nClass\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Function\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;		 [URL=&quot;../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Inheritance\nGraph&quot;,
+			target=_top];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Member\nDocumenter&quot;,
+			shape=oval,
+			style=&quot;bold, filled&quot;,
+			target=_top];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [minlen=2];
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Module\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Summarizing\nModule\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Module\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Package\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Root\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Summarizing\nRoot\nDocumenter&quot;,
+			target=_top];
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.apis.dummy&quot; {
+		graph [label=&quot;uqbar.apis.dummy&quot;];
+		node [color=3];
+		&quot;uqbar.apis.dummy.MyChildClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyChildClass&quot;,
+			color=3,
+			label=&quot;My\nChild\nClass&quot;,
+			target=_top];
+		&quot;uqbar.apis.dummy.MyParentClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyParentClass&quot;,
+			color=3,
+			label=&quot;My\nParent\nClass&quot;,
+			target=_top];
+		&quot;uqbar.apis.dummy.MyParentClass&quot; -&gt; &quot;uqbar.apis.dummy.MyChildClass&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.containers&quot; {
+		graph [label=&quot;uqbar.containers&quot;];
+		node [color=4];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
+			color=4,
+			label=&quot;Unique\nTree\nContainer&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
+			color=4,
+			label=&quot;Unique\nTree\nNode&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [minlen=2];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.APIBuilder.APIBuilder&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;;
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.dummy.MyParentClass&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
+	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Subpackages</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="dummy.html#module-uqbar.apis.dummy" title="uqbar.apis.dummy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dummy</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric">Abstract Classes</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a></td>
+<td>Abstract base class for module member documenters.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric">Classes</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder" title="uqbar.apis.APIBuilder.APIBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">APIBuilder</span></code></a></td>
+<td>A builder of reStructuredText API documentation for Python packages.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph" title="uqbar.apis.InheritanceGraph.InheritanceGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceGraph</span></code></a></td>
+<td>A builder of Graphviz inheritance graphs.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric">Documenters</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter" title="uqbar.apis.ClassDocumenter.ClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClassDocumenter</span></code></a></td>
+<td>A basic class documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter" title="uqbar.apis.FunctionDocumenter.FunctionDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionDocumenter</span></code></a></td>
+<td>A basic function documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a></td>
+<td>A basic module documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter" title="uqbar.apis.RootDocumenter.RootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a></td>
+<td>A basic root documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter" title="uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code></a></td>
+<td>A summarizing class documenter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code></a></td>
+<td>A summarizing module documenter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a></td>
+<td>A summarizing root documenter.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="section-header rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.collect_source_paths" title="uqbar.apis.collect_source_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_source_paths</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.source_path_to_package_path" title="uqbar.apis.source_path_to_package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path_to_package_path</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="uqbar.apis.collect_source_paths">
+<code class="descname">collect_source_paths</code><span class="sig-paren">(</span><em>source_paths</em>, <em>recurse_subpackages=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#collect_source_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.collect_source_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="uqbar.apis.source_path_to_package_path">
+<code class="descname">source_path_to_package_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#source_path_to_package_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.source_path_to_package_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="section-header rubric">Internals</p>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode" title="uqbar.apis.ModuleNode.ModuleNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleNode</span></code></a></td>
+<td>A <a class="reference internal" href="../containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a> subclass used during API construction to proxy modules.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PackageNode.html#uqbar.apis.PackageNode.PackageNode" title="uqbar.apis.PackageNode.PackageNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageNode</span></code></a></td>
+<td>A <a class="reference internal" href="../containers/UniqueTreeContainer.html#module-uqbar.containers.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a> subclass used during API construction to proxy packages.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dummy.html" class="btn btn-neutral float-right" title="dummy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="uqbar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

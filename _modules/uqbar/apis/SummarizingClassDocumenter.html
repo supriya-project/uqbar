@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>uqbar.apis.SummarizingClassDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.17
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Uqbar API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../apis.html">uqbar.apis</a> &raquo;</li>
+        
+      <li>uqbar.apis.SummarizingClassDocumenter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for uqbar.apis.SummarizingClassDocumenter</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">uqbar.apis.ClassDocumenter</span> <span class="k">import</span> <span class="n">ClassDocumenter</span>
+
+
+<div class="viewcode-block" id="SummarizingClassDocumenter"><a class="viewcode-back" href="../../../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter">[docs]</a><span class="k">class</span> <span class="nc">SummarizingClassDocumenter</span><span class="p">(</span><span class="n">ClassDocumenter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A summarizing class documenter.</span>
+
+<span class="sd">    Organizes class members by category, separated by category title and</span>
+<span class="sd">    horizontal rule.</span>
+
+<span class="sd">    Categories include:</span>
+
+<span class="sd">    -  Special methods</span>
+<span class="sd">    -  Methods</span>
+<span class="sd">    -  Class and static methods</span>
+<span class="sd">    -  Read/write properties</span>
+<span class="sd">    -  Read-only properties</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        &gt;&gt;&gt; import uqbar.apis</span>
+<span class="sd">        &gt;&gt;&gt; path = &#39;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&#39;</span>
+<span class="sd">        &gt;&gt;&gt; documenter = uqbar.apis.SummarizingClassDocumenter(path)</span>
+<span class="sd">        &gt;&gt;&gt; documentation = str(documenter)</span>
+<span class="sd">        &gt;&gt;&gt; print(documentation)</span>
+<span class="sd">        .. autoclass:: SummarizingClassDocumenter</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. raw:: html</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              &lt;hr/&gt;</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. rubric:: Attributes Summary</span>
+<span class="sd">              :class: class-header</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. autosummary::</span>
+<span class="sd">              :nosignatures:</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              __str__</span>
+<span class="sd">              ignored_special_methods</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. raw:: html</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              &lt;hr/&gt;</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. rubric:: Special methods</span>
+<span class="sd">              :class: class-header</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. automethod:: SummarizingClassDocumenter.__str__</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. raw:: html</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              &lt;hr/&gt;</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. rubric:: Class &amp; static methods</span>
+<span class="sd">              :class: class-header</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. container:: inherited</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              .. automethod:: SummarizingClassDocumenter.validate_client</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. raw:: html</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              &lt;hr/&gt;</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. rubric:: Read-only properties</span>
+<span class="sd">              :class: class-header</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. container:: inherited</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              .. autoattribute:: SummarizingClassDocumenter.client</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. container:: inherited</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              .. autoattribute:: SummarizingClassDocumenter.documentation_section</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">           .. container:: inherited</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">              .. autoattribute:: SummarizingClassDocumenter.package_path</span>
+
+<span class="sd">    :param package_path: the module path and name of the member to document</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">### CLASS VARIABLES ###</span>
+
+    <span class="n">__documentation_section__</span> <span class="o">=</span> <span class="s2">&quot;Documenters&quot;</span>
+
+    <span class="n">ignored_special_methods</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;__dict__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__getattribute__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__getnewargs__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__getstate__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__init__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__reduce__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__reduce_ex__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__setstate__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__sizeof__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;__subclasshook__&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fromkeys&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pipe_cloexec&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1">### SPECIAL METHODS ###</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s2">&quot;__name__&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="s2">&quot;.. autoexception:: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classify_class_attributes</span><span class="p">()</span>
+        <span class="p">(</span>
+            <span class="n">class_methods</span><span class="p">,</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="n">methods</span><span class="p">,</span>
+            <span class="n">readonly_properties</span><span class="p">,</span>
+            <span class="n">readwrite_properties</span><span class="p">,</span>
+            <span class="n">special_methods</span><span class="p">,</span>
+            <span class="n">static_methods</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="n">attributes</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.. autoclass:: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;   :members:&quot;</span><span class="p">,</span> <span class="s2">&quot;   :undoc-members:&quot;</span><span class="p">])</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_member_autosummary</span><span class="p">(</span><span class="n">attributes</span><span class="p">))</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build_attribute_section</span><span class="p">(</span>
+                <span class="n">special_methods</span><span class="p">,</span> <span class="s2">&quot;automethod&quot;</span><span class="p">,</span> <span class="s2">&quot;Special methods&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_attribute_section</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="s2">&quot;automethod&quot;</span><span class="p">,</span> <span class="s2">&quot;Methods&quot;</span><span class="p">))</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build_attribute_section</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">class_methods</span> <span class="o">+</span> <span class="n">static_methods</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+                <span class="s2">&quot;automethod&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Class &amp; static methods&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build_attribute_section</span><span class="p">(</span>
+                <span class="n">readwrite_properties</span><span class="p">,</span> <span class="s2">&quot;autoattribute&quot;</span><span class="p">,</span> <span class="s2">&quot;Read/write properties&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build_attribute_section</span><span class="p">(</span>
+                <span class="n">readonly_properties</span><span class="p">,</span> <span class="s2">&quot;autoattribute&quot;</span><span class="p">,</span> <span class="s2">&quot;Read-only properties&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="c1">### PRIVATE METHODS ###</span>
+
+    <span class="k">def</span> <span class="nf">_build_attribute_section</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">attributes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;   .. raw:: html&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;      &lt;hr/&gt;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;   .. rubric:: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">),</span>
+                <span class="s2">&quot;      :class: class-header&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">autodoc_directive</span> <span class="o">=</span> <span class="s2">&quot;   .. </span><span class="si">{}</span><span class="s2">:: </span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">directive</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s2">&quot;__name__&quot;</span><span class="p">),</span> <span class="n">attribute</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">attribute</span><span class="o">.</span><span class="n">defining_class</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">autodoc_directive</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   .. container:: inherited&quot;</span><span class="p">)</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">autodoc_directive</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_build_member_autosummary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_attributes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">inspect</span><span class="o">.</span><span class="n">Attribute</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">attribute_section</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+            <span class="n">all_attributes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                <span class="n">attribute</span>
+                <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attribute_section</span>
+                <span class="k">if</span> <span class="n">attribute</span><span class="o">.</span><span class="n">defining_class</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+            <span class="p">)</span>
+        <span class="n">all_attributes</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">all_attributes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;   .. raw:: html&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;      &lt;hr/&gt;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;   .. rubric:: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Attributes Summary&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;      :class: class-header&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;   .. autosummary::&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;      :nosignatures:&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">all_attributes</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;      </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attribute</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_classify_class_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">class_methods</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">readonly_properties</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">readwrite_properties</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">special_methods</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">static_methods</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">classify_class_attrs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">defining_class</span> <span class="ow">is</span> <span class="nb">object</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s2">&quot;__documentation_ignore_inherited__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">attr</span><span class="o">.</span><span class="n">defining_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+            <span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># Handle un-gettable attrs like Flask-SQLAlchemy&#39;s Model&#39;s `query`</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;method&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_special_methods</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">):</span>
+                        <span class="n">special_methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                        <span class="n">methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">attr</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;class method&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_special_methods</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">):</span>
+                        <span class="n">special_methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                        <span class="n">class_methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">attr</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;static method&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_special_methods</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">):</span>
+                        <span class="n">special_methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                        <span class="n">static_methods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">attr</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;property&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">fset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">readonly_properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">readwrite_properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;data&quot;</span>
+                <span class="ow">and</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">attr</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s2">&quot;__slots__&quot;</span><span class="p">,</span> <span class="p">())</span>
+            <span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="n">class_methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">class_methods</span><span class="p">))</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">methods</span><span class="p">))</span>
+        <span class="n">readonly_properties</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">readonly_properties</span><span class="p">))</span>
+        <span class="n">readwrite_properties</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">readwrite_properties</span><span class="p">))</span>
+        <span class="n">special_methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">special_methods</span><span class="p">))</span>
+        <span class="n">static_methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">static_methods</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">class_methods</span><span class="p">,</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="n">methods</span><span class="p">,</span>
+            <span class="n">readonly_properties</span><span class="p">,</span>
+            <span class="n">readwrite_properties</span><span class="p">,</span>
+            <span class="n">special_methods</span><span class="p">,</span>
+            <span class="n">static_methods</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

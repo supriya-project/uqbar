@@ -1,0 +1,60 @@
+.. _uqbar--sphinx--inheritance:
+
+inheritance
+===========
+
+.. automodule:: uqbar.sphinx.inheritance
+
+.. currentmodule:: uqbar.sphinx.inheritance
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.sphinx.inheritance
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~InheritanceDiagram
+   ~inheritance_diagram
+
+.. autoclass:: InheritanceDiagram
+   :members:
+   :undoc-members:
+
+.. autoclass:: inheritance_diagram
+   :members:
+   :undoc-members:
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~build_urls
+   ~html_visit_inheritance_diagram
+   ~latex_visit_inheritance_diagram
+   ~setup
+   ~skip
+
+.. autofunction:: build_urls
+
+.. autofunction:: html_visit_inheritance_diagram
+
+.. autofunction:: latex_visit_inheritance_diagram
+
+.. autofunction:: setup
+
+.. autofunction:: skip

@@ -1,0 +1,39 @@
+.. _uqbar--sphinx--style:
+
+style
+=====
+
+.. automodule:: uqbar.sphinx.style
+
+.. currentmodule:: uqbar.sphinx.style
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.sphinx.style
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~handle_class
+   ~handle_method
+   ~on_builder_inited
+   ~on_doctree_read
+   ~setup
+
+.. autofunction:: handle_class
+
+.. autofunction:: handle_method
+
+.. autofunction:: on_builder_inited
+
+.. autofunction:: on_doctree_read
+
+.. autofunction:: setup

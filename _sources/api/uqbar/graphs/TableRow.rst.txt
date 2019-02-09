@@ -1,0 +1,17 @@
+.. _uqbar--graphs--TableRow:
+
+TableRow
+========
+
+.. automodule:: uqbar.graphs.TableRow
+
+.. currentmodule:: uqbar.graphs.TableRow
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.graphs.TableRow
+
+.. autoclass:: TableRow
+   :members:
+   :undoc-members:

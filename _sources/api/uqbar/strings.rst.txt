@@ -1,0 +1,36 @@
+.. _uqbar--strings:
+
+strings
+=======
+
+.. automodule:: uqbar.strings
+
+.. currentmodule:: uqbar.strings
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.strings
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~delimit_words
+   ~normalize
+   ~to_dash_case
+   ~to_snake_case
+
+.. autofunction:: delimit_words
+
+.. autofunction:: normalize
+
+.. autofunction:: to_dash_case
+
+.. autofunction:: to_snake_case
