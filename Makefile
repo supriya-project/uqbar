@@ -1,7 +1,8 @@
-.PHONY: docs build test
+.PHONY: docs build
 
-paths = uqbar/ tests/ *.py
 errors = E123,E203,E265,E266,E501,W503
+origin := $(shell git config --get remote.origin.url)
+paths = uqbar/ tests/ *.py
 
 black-check:
 	black --py36 --diff --check ${paths}
@@ -25,7 +26,20 @@ docs:
 	make -C docs/ html 
 
 flake8:
-	flake8 --max-line-length=90 --ignore=${errors} uqbar/ tests/
+	flake8 --max-line-length=90 --isolated --ignore=${errors} ${paths}
+
+gh-pages:
+	rm -Rf gh-pages/
+	git clone $(origin) gh-pages/
+	cd gh-pages/ && \
+		git checkout gh-pages || git checkout --orphan gh-pages
+	rsync -rtv --del --exclude=.git docs/build/html/ gh-pages/
+	cd gh-pages && \
+		touch .nojekyll && \
+		git add --all . && \
+		git commit --allow-empty -m "Update docs" && \
+		git push -u origin gh-pages
+	rm -Rf gh-pages/
 
 isort:
 	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${paths}

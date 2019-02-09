@@ -32,8 +32,9 @@ import math
 import os
 import pathlib
 import subprocess
-from typing import List, Mapping
+from typing import Any, Dict, List, Mapping
 
+import sphinx  # type: ignore
 from docutils.nodes import Element  # type: ignore
 from docutils.nodes import General, Node, NodeVisitor, SkipNode
 from docutils.parsers.rst import Directive, directives  # type: ignore
@@ -177,7 +178,7 @@ def skip(self: NodeVisitor, node: inheritance_diagram) -> None:
     raise SkipNode
 
 
-def setup(app) -> None:
+def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """
@@ -191,3 +192,4 @@ def setup(app) -> None:
         text=(skip, None),
     )
     app.add_directive("inheritance-diagram", InheritanceDiagram)
+    return {"version": uqbar.__version__}

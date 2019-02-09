@@ -24,9 +24,9 @@ relative to your Sphinx source directory.
 import importlib
 import pathlib
 import types
-from typing import List  # noqa
+from typing import Any, Dict, List  # noqa
 
-import sphinx.application  # type: ignore
+import sphinx  # type: ignore
 
 import uqbar.apis
 
@@ -73,14 +73,15 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         module = importlib.import_module(module_name)
         module_documenter_class = getattr(module, class_name)
 
-    member_documenter_classes = config.uqbar_api_member_documenter_classes or []
+    # Don't modify the list in Sphinx's config. Sphinx won't pickle class
+    # references, and strips them from the saved config. That leads to Sphinx
+    # believing that the config has changed on every run.
+    member_documenter_classes = list(config.uqbar_api_member_documenter_classes or [])
     for i, member_documenter_class in enumerate(member_documenter_classes):
         if isinstance(member_documenter_class, str):
             module_name, _, class_name = member_documenter_class.rpartition(".")
             module = importlib.import_module(module_name)
             member_documenter_classes[i] = getattr(module, class_name)
-    if not member_documenter_classes:
-        member_documenter_classes = None
 
     api_builder = uqbar.apis.APIBuilder(
         initial_source_paths=initial_source_paths,
@@ -88,7 +89,7 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         document_empty_modules=config.uqbar_api_document_empty_modules,
         document_private_members=config.uqbar_api_document_private_members,
         document_private_modules=config.uqbar_api_document_private_modules,
-        member_documenter_classes=member_documenter_classes,
+        member_documenter_classes=member_documenter_classes or None,
         module_documenter_class=module_documenter_class,
         root_documenter_class=root_documenter_class,
         title=config.uqbar_api_title,
@@ -96,11 +97,10 @@ def on_builder_inited(app: sphinx.application.Sphinx):
     api_builder()
 
 
-def setup(app: sphinx.application.Sphinx):
+def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """
-    app.connect("builder-inited", on_builder_inited)
     app.add_config_value("uqbar_api_directory_name", "api", "env")
     app.add_config_value("uqbar_api_document_empty_modules", False, "env")
     app.add_config_value("uqbar_api_document_private_members", False, "env")
@@ -108,5 +108,7 @@ def setup(app: sphinx.application.Sphinx):
     app.add_config_value("uqbar_api_member_documenter_classes", None, "env")
     app.add_config_value("uqbar_api_module_documenter_class", None, "env")
     app.add_config_value("uqbar_api_root_documenter_class", None, "env")
-    app.add_config_value("uqbar_api_source_paths", [], "env")
+    app.add_config_value("uqbar_api_source_paths", None, "env")
     app.add_config_value("uqbar_api_title", "API", "env")
+    app.connect("builder-inited", on_builder_inited)
+    return {"version": uqbar.__version__}
