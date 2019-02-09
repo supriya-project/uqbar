@@ -46,10 +46,12 @@ def handle_method(signature_node, module, object_name, cache):
 
     Adds link to originating class for inherited methods.
     """
-    cls_name, attr_name = object_name.split(".")
-    class_ = getattr(module, cls_name, None)
-    if class_ is None:
-        return
+    *class_names, attr_name = object_name.split(".")  # Handle nested classes
+    class_ = module
+    for class_name in class_names:
+        class_ = getattr(class_, class_name, None)
+        if class_ is None:
+            return
     attr = getattr(class_, attr_name)
     try:
         inspected_attr = cache[class_][attr_name]
@@ -118,3 +120,4 @@ def setup(app: sphinx.application.Sphinx):
     app.connect("doctree-read", on_doctree_read)
     app.connect("builder-inited", on_builder_inited)
     app.add_css_file("uqbar.css")
+    return {"version": uqbar.__version__}

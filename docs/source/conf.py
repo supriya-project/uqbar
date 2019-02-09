@@ -42,8 +42,8 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_autodoc_typehints",
     "uqbar.sphinx.api",
-    #'uqbar.sphinx.inheritance',
-    #'uqbar.sphinx.style',
+    'uqbar.sphinx.inheritance',
+    'uqbar.sphinx.style',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

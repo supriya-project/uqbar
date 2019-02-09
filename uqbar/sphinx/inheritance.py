@@ -191,3 +191,4 @@ def setup(app) -> None:
         text=(skip, None),
     )
     app.add_directive("inheritance-diagram", InheritanceDiagram)
+    return {"version": uqbar.__version__}

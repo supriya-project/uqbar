@@ -111,3 +111,4 @@ def setup(app: sphinx.application.Sphinx):
     app.add_config_value("uqbar_api_source_paths", None, "env")
     app.add_config_value("uqbar_api_title", "API", "env")
     app.connect("builder-inited", on_builder_inited)
+    return {"version": uqbar.__version__}
