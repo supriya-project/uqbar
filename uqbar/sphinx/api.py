@@ -24,9 +24,9 @@ relative to your Sphinx source directory.
 import importlib
 import pathlib
 import types
-from typing import List  # noqa
+from typing import Any, Dict, List  # noqa
 
-import sphinx.application  # type: ignore
+import sphinx  # type: ignore
 
 import uqbar.apis
 
@@ -97,7 +97,7 @@ def on_builder_inited(app: sphinx.application.Sphinx):
     api_builder()
 
 
-def setup(app: sphinx.application.Sphinx):
+def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

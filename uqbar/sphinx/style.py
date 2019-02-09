@@ -10,7 +10,7 @@ Sphinx configuration.
 import importlib
 import inspect
 import pathlib
-from typing import Dict
+from typing import Any, Dict
 
 import sphinx  # type:ignore
 from docutils import nodes
@@ -113,7 +113,7 @@ def on_builder_inited(app: sphinx.application.Sphinx):
     uqbar.io.write(local_css_contents, theme_css_path)
 
 
-def setup(app: sphinx.application.Sphinx):
+def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

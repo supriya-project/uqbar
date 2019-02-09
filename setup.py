@@ -32,13 +32,20 @@ classifiers = [
 install_requires = [
     "Sphinx>=1.7.0",
     "Unidecode>=0.4.21",
-    "black",
-    "flake8",
-    "isort",
-    "pytest-cov",
     "sphinx-autodoc-typehints>=1.3.0",
     "sphinx-rtd-theme>=0.4.0",
 ]
+
+extras_require = {
+    "test": [
+        "black",
+        "flake8",
+        "isort",
+        "mypy >= 0.660",
+        "pytest >= 4.1.0",
+        "pytest-cov >= 2.6.0",
+    ]
+}
 
 keywords = ["sphinx", "graphviz", "latex", "documentation"]
 
@@ -53,6 +60,7 @@ if __name__ == "__main__":
         author_email="josiah.oberholtzer@gmail.com",
         classifiers=classifiers,
         description=description,
+        extras_require=extras_require,
         include_package_data=True,
         install_requires=install_requires,
         keywords=keywords,
