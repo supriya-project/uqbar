@@ -82,8 +82,6 @@ def on_builder_inited(app: sphinx.application.Sphinx):
             module_name, _, class_name = member_documenter_class.rpartition(".")
             module = importlib.import_module(module_name)
             member_documenter_classes[i] = getattr(module, class_name)
-    if not member_documenter_classes:
-        member_documenter_classes = None
 
     api_builder = uqbar.apis.APIBuilder(
         initial_source_paths=initial_source_paths,
@@ -91,7 +89,7 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         document_empty_modules=config.uqbar_api_document_empty_modules,
         document_private_members=config.uqbar_api_document_private_members,
         document_private_modules=config.uqbar_api_document_private_modules,
-        member_documenter_classes=member_documenter_classes,
+        member_documenter_classes=member_documenter_classes or None,
         module_documenter_class=module_documenter_class,
         root_documenter_class=root_documenter_class,
         title=config.uqbar_api_title,
