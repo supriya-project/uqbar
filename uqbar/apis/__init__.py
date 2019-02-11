@@ -23,7 +23,7 @@ def collect_source_paths(source_paths, recurse_subpackages=True):
     path_stack = []
     for source_path in source_paths:
         source_path = pathlib.Path(source_path).resolve().absolute()
-        assert source_path.exists()
+        assert source_path.exists(), source_path
         path_stack.append(source_path)
     while path_stack:
         current_path = path_stack.pop()

@@ -536,7 +536,7 @@ class Attributes(collections.MutableMapping):
     ### SPECIAL METHODS ###
 
     def __delitem__(self, key: str) -> None:
-        del (self._attributes[key])
+        del self._attributes[key]
 
     def __eq__(self, other) -> bool:
         return (

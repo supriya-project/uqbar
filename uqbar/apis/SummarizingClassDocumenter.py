@@ -122,7 +122,8 @@ class SummarizingClassDocumenter(ClassDocumenter):
         result = [".. autoclass:: {}".format(name)]
         if issubclass(self.client, enum.Enum):  # type: ignore
             result.extend(["   :members:", "   :undoc-members:"])
-        result.extend(self._build_member_autosummary(attributes))
+        else:
+            result.extend(self._build_member_autosummary(attributes))
         result.extend(
             self._build_attribute_section(
                 special_methods, "automethod", "Special methods"

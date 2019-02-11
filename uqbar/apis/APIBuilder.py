@@ -28,22 +28,22 @@ class APIBuilder(object):
         ...             )
         ...         visited_paths = builder()
         ...
-        wrote: index.rst
-        wrote: uqbar/index.rst
-        wrote: uqbar/apis/index.rst
-        wrote: uqbar/apis/APIBuilder.rst
-        wrote: uqbar/apis/ClassDocumenter.rst
-        wrote: uqbar/apis/FunctionDocumenter.rst
-        wrote: uqbar/apis/InheritanceGraph.rst
-        wrote: uqbar/apis/MemberDocumenter.rst
-        wrote: uqbar/apis/ModuleDocumenter.rst
-        wrote: uqbar/apis/ModuleNode.rst
-        wrote: uqbar/apis/PackageNode.rst
-        wrote: uqbar/apis/RootDocumenter.rst
-        wrote: uqbar/apis/SummarizingClassDocumenter.rst
-        wrote: uqbar/apis/SummarizingModuleDocumenter.rst
-        wrote: uqbar/apis/SummarizingRootDocumenter.rst
-        wrote: uqbar/apis/dummy.rst
+        wrote index.rst
+        wrote uqbar/index.rst
+        wrote uqbar/apis/index.rst
+        wrote uqbar/apis/APIBuilder.rst
+        wrote uqbar/apis/ClassDocumenter.rst
+        wrote uqbar/apis/FunctionDocumenter.rst
+        wrote uqbar/apis/InheritanceGraph.rst
+        wrote uqbar/apis/MemberDocumenter.rst
+        wrote uqbar/apis/ModuleDocumenter.rst
+        wrote uqbar/apis/ModuleNode.rst
+        wrote uqbar/apis/PackageNode.rst
+        wrote uqbar/apis/RootDocumenter.rst
+        wrote uqbar/apis/SummarizingClassDocumenter.rst
+        wrote uqbar/apis/SummarizingModuleDocumenter.rst
+        wrote uqbar/apis/SummarizingRootDocumenter.rst
+        wrote uqbar/apis/dummy.rst
 
     :param initial_source_paths: a list of paths to scan for Python sources
     :param target_directory: where to write reStructuredText output
@@ -69,6 +69,7 @@ class APIBuilder(object):
         module_documenter_class: Type[ModuleDocumenter] = None,
         root_documenter_class: Type[RootDocumenter] = None,
         title: str = "API",
+        logger_func=None,
     ) -> None:
         assert initial_source_paths
         assert target_directory
@@ -93,6 +94,7 @@ class APIBuilder(object):
         assert issubclass(root_documenter_class, RootDocumenter)
         self._root_documenter_class = root_documenter_class
         self._title = title
+        self._logger_func = logger_func
 
     ### SPECIAL METHODS ###
 
@@ -124,7 +126,8 @@ class APIBuilder(object):
         cwd = pathlib.Path.cwd()
         if str(path).startswith(str(cwd)):
             path = path.relative_to(cwd)
-        print("{} {}".format((message + ":").ljust(11), path))
+        message = "{} {}".format(message, path)
+        (self._logger_func or print)(message)
 
     ### PUBLIC METHODS ###
 
@@ -230,7 +233,9 @@ class APIBuilder(object):
             cwd = pathlib.Path.cwd()
             if str(path).startswith(str(cwd)):
                 path = path.relative_to(pathlib.Path.cwd())
-            uqbar.io.write(new_documentation, path, verbose=True)
+            uqbar.io.write(
+                new_documentation, path, verbose=True, logger_func=self._logger_func
+            )
             visited_paths.add(path.absolute())
         return visited_paths
 

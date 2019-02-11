@@ -1,32 +1,35 @@
 .PHONY: docs build
 
+project = uqbar
 errors = E123,E203,E265,E266,E501,W503
 origin := $(shell git config --get remote.origin.url)
-paths = uqbar/ tests/ *.py
+formatPaths = ${project}/ tests/ *.py
+testPaths = ${project}/ tests/
 
 black-check:
-	black --py36 --diff --check ${paths}
+	black --py36 --diff --check ${formatPaths}
 
 black-reformat:
-	black --py36 ${paths}
+	black --py36 ${formatPaths}
 
 build:
 	python setup.py sdist
 
 clean:
-	find . -name '*.pyc' | xargs rm -Rif
-	find . -name '*egg-info' | xargs rm -Rif
-	find . -name '.*_cache' | xargs rm -Rif
-	find . -name .coverage | xargs rm -Rif
-	find . -name __pycache__ | xargs rm -Rif
+	find . -name '*.pyc' | xargs rm
+	rm -Rif .*cache/
+	rm -Rif .tox/
+	rm -Rif __pycache__
 	rm -Rif build/
 	rm -Rif dist/
+	rm -Rif prof/
+	rm -Rif *.egg-info/
 
 docs:
 	make -C docs/ html 
 
 flake8:
-	flake8 --max-line-length=90 --isolated --ignore=${errors} ${paths}
+	flake8 --max-line-length=90 --isolated --ignore=${errors} ${formatPaths}
 
 gh-pages:
 	rm -Rf gh-pages/
@@ -42,13 +45,13 @@ gh-pages:
 	rm -Rf gh-pages/
 
 isort:
-	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${paths}
+	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${formatPaths}
 
 mypy:
-	mypy --ignore-missing-imports ${paths}
+	mypy --ignore-missing-imports ${project}/
 
 pytest:
-	pytest --cov=uqbar/ --cov=tests/ --cov-report=html --cov-report=term
+	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term
 
 reformat:
 	make isort

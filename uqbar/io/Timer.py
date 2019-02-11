@@ -12,6 +12,19 @@ class Timer:
     :param exit_message: message to print on entering the context
     :param enter_message: message to print on exiting the context
     :param verbose: whether to print output
+
+    ::
+
+        >>> import math
+        >>> from uqbar.io import Timer
+        >>> timer = Timer("Elapsed time:", "Looping!")
+        >>> with timer:
+        ...     for i in range(10000):
+        ...         z = i ** math.pi
+        ...
+        Looping!
+        Elapsed time: 0.00...
+
     """
 
     def __init__(

@@ -222,9 +222,9 @@ class TestCase(unittest.TestCase):
         node_c = uqbar.containers.UniqueTreeNode(name="bar")
         node_d = uqbar.containers.UniqueTreeNode(name="baz")
         node_a.extend([node_b, node_c, node_d])
-        del (node_a[1])
+        del node_a[1]
         assert node_a[:] == [node_b, node_d]
-        del (node_a["baz"])
+        del node_a["baz"]
         assert node_a[:] == [node_b]
 
     def test___delitem___02(self):
@@ -238,7 +238,7 @@ class TestCase(unittest.TestCase):
         node_e = uqbar.containers.UniqueTreeNode(name="quux")
         node_a.extend([node_b, node_e])
         node_b.extend([node_c, node_d])
-        del (node_a["quux"])
+        del node_a["quux"]
         assert node_d.parent is None
         assert node_e.parent is None
 

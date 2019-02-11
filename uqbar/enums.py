@@ -82,7 +82,31 @@ class IntEnumeration(enum.IntEnum):
 
     @classmethod
     def from_expr(cls, expr):
-        r"""Convenience constructor for enumerations.
+        """
+        Convenience constructor for enumerations.
+
+        ::
+
+            >>> import uqbar.enums
+            >>> class MyEnum(uqbar.enums.IntEnumeration):
+            ...     A_B = -1
+            ...     B_C_D = 0
+            ...     E = 1
+
+        ::
+
+            >>> MyEnum.from_expr("a b")
+            MyEnum.A_B
+
+        ::
+
+            >>> MyEnum.from_expr(None)
+            MyEnum.B_C_D
+
+        ::
+
+            >>> MyEnum.from_expr(1)
+            MyEnum.E
 
         Returns new enumeration item.
         """
@@ -165,7 +189,31 @@ class StrictEnumeration(enum.Enum):
 
     @classmethod
     def from_expr(cls, expr):
-        r"""Convenience constructor for enumerations.
+        """
+        Convenience constructor for enumerations.
+
+        ::
+
+            >>> import uqbar.enums
+            >>> class MyEnum(uqbar.enums.StrictEnumeration):
+            ...     A_B = -1
+            ...     B_C_D = 0
+            ...     E = 1
+
+        ::
+
+            >>> MyEnum.from_expr("a b")
+            MyEnum.A_B
+
+        ::
+
+            >>> MyEnum.from_expr(None)
+            MyEnum.B_C_D
+
+        ::
+
+            >>> MyEnum.from_expr(1)
+            MyEnum.E
 
         Returns new enumeration item.
         """

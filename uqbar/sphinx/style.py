@@ -12,9 +12,9 @@ import inspect
 import pathlib
 from typing import Any, Dict
 
-import sphinx  # type:ignore
 from docutils import nodes
 from sphinx import addnodes  # type: ignore
+from sphinx.locale import _
 
 import uqbar.io
 
@@ -74,12 +74,22 @@ def handle_method(signature_node, module, object_name, cache):
         class_annotation.extend([nodes.Text("("), xref_node, nodes.Text(").")])
         class_annotation["xml:space"] = "preserve"
         signature_node.insert(index, class_annotation)
+    else:
+        is_overridden = False
+        for class_ in defining_class.__mro__[1:]:
+            if hasattr(class_, attr_name):
+                is_overridden = True
+        if is_overridden:
+            emphasis = nodes.emphasis(
+                "overridden ", "overridden ", classes=["property"]
+            )
+            signature_node.insert(0, emphasis)
     if getattr(attr, "__isabstractmethod__", False):
-        emphasis = nodes.emphasis("abstract ", "abstract ", classes=["property"])
+        emphasis = nodes.emphasis("abstract", "abstract", classes=["property"])
         signature_node.insert(0, emphasis)
 
 
-def on_doctree_read(app: sphinx.application.Sphinx, document):
+def on_doctree_read(app, document):
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
@@ -98,7 +108,7 @@ def on_doctree_read(app: sphinx.application.Sphinx, document):
             handle_method(signature_node, module, object_name, cache)
 
 
-def on_builder_inited(app: sphinx.application.Sphinx):
+def on_builder_inited(app):
     """
     Hooks into Sphinx's ``builder-inited`` event.
 
@@ -113,11 +123,60 @@ def on_builder_inited(app: sphinx.application.Sphinx):
     uqbar.io.write(local_css_contents, theme_css_path)
 
 
-def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
+# Make definition list terms linkable
+
+
+def visit_classifier(self, node):
+    self.body.append(self.starttag(node, "span", "", CLASS="classifier"))
+
+
+def depart_classifier(self, node):
+    self.body.append("</span>")
+    next_node = node.next_node(descend=False, siblings=True)
+    if not isinstance(next_node, nodes.classifier):
+        self.body.append("</dt>")
+
+
+def visit_definition(self, node):
+    self.body.append(self.starttag(node, "dd", ""))
+
+
+def depart_definition(self, node):
+    self.body.append("</dd>\n")
+
+
+def visit_term(self, node):
+    self.body.append(self.starttag(node, "dt", ""))
+
+
+def depart_term(self, node):
+    next_node = node.next_node(descend=False, siblings=True)
+    if isinstance(next_node, nodes.classifier):
+        pass
+    else:
+        self.add_permalink_ref(node, _("Permalink to this term"))
+        self.body.append("</dt>")
+
+
+# Setup
+
+
+def setup(app) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """
     app.connect("doctree-read", on_doctree_read)
     app.connect("builder-inited", on_builder_inited)
     app.add_css_file("uqbar.css")
-    return {"version": uqbar.__version__}
+    app.add_node(
+        nodes.classifier, override=True, html=(visit_classifier, depart_classifier)
+    )
+    app.add_node(
+        nodes.definition, override=True, html=(visit_definition, depart_definition)
+    )
+    app.add_node(nodes.term, override=True, html=(visit_term, depart_term))
+    return {
+        "version": uqbar.__version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

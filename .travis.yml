@@ -1,31 +1,32 @@
 language: python
-
+dist: xenial
 sudo: false
 
 python:
-  - 3.6
-    # - "3.7-dev"  # waiting on sphinx-autodoc-typehints GenericMeta fix
+- "3.6"
+- "3.7"
+- "3.8-dev"
 
 addons:
   apt:
     packages:
-      - graphviz
+    - graphviz
 
 before_install:
-  - pip install -U pip
+- pip install -U pip
 
 install:
-  - pip install -e .[test]
+- pip install -e .[test]
 
 script:
-  - make black-check
-  - make flake8
-  - make mypy
-  - make pytest
-  - make docs
+- make black-check
+- make flake8
+- make mypy
+- make pytest
+- make docs
 
 after_success:
-  - coveralls
+- coveralls
 
 notifications:
   email:

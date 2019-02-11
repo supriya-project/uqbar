@@ -11,7 +11,7 @@ def test_sphinx_api_1(app, status, warning):
     index_source = pathlib.Path(app.srcdir) / "api" / "index.rst"
     assert index_source.exists()
     assert "build succeeded" in status.getvalue()
-    assert "7 added, 0 changed, 0 removed" in status.getvalue()
+    assert "8 added, 0 changed, 0 removed" in status.getvalue()
     assert "0 added, 0 changed, 0 removed" not in status.getvalue()
     assert not warning.getvalue().strip()
     path = pathlib.Path(app.srcdir) / "_build" / "text" / "api" / "index.txt"
@@ -22,6 +22,8 @@ def test_sphinx_api_1(app, status, warning):
             ***
 
             * fake_package
+
+              * enums
 
               * module
 
@@ -43,7 +45,7 @@ def test_sphinx_api_2(app, status, warning):
     index_source = pathlib.Path(app.srcdir) / "api" / "index.rst"
     assert index_source.exists()
     assert "build succeeded" in status.getvalue()
-    assert "7 added, 0 changed, 0 removed" in status.getvalue()
+    assert "8 added, 0 changed, 0 removed" in status.getvalue()
     assert "0 added, 0 changed, 0 removed" not in status.getvalue()
     assert not warning.getvalue().strip()
     path = pathlib.Path(app.srcdir) / "_build" / "text" / "api" / "index.txt"
@@ -54,6 +56,14 @@ def test_sphinx_api_2(app, status, warning):
             ***
 
             -[ fake_package ]-
+
+            -[ fake_package.enums ]-
+
+            -[ Enumerations ]-
+
+            +------------+--------------------------------------------------------------------------------------------+
+            | "FakeEnum" | An enumeration.                                                                            |
+            +------------+--------------------------------------------------------------------------------------------+
 
             -[ fake_package.module ]-
 
