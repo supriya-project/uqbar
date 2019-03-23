@@ -6,7 +6,6 @@ from sphinx.util.console import bold
 
 import uqbar.book.sphinx
 from uqbar.book.console import ConsoleError
-from uqbar.book.extensions import GrapherExtension
 
 logger = logging.getLogger(__name__)
 
@@ -20,24 +19,27 @@ def on_builder_inited(app):
 
 
 def on_config_inited(app, config):
-    for extension_path in config["uqbar_book_extensions"] or (
-        "uqbar.book.extensions.GrapherExtension",
-    ):
-        extension_module_path, _, extension_class_name = extension_path.rpartition(".")
-        extension_module = importlib.import_module(extension_module_path)
-        extension_class = getattr(extension_module, extension_class_name)
-        extension_class.setup_sphinx(app)
+    extension_paths = config["uqbar_book_extensions"] or [
+        "uqbar.book.extensions.GrapherExtension"
+    ]
+    app.uqbar_book_extensions = []
+    for extension_path in extension_paths:
+        module_name, _, class_name = extension_path.rpartition(".")
+        module = importlib.import_module(module_name)
+        class_ = getattr(module, class_name)
+        extension = class_()
+        extension.setup_sphinx(app)
+        app.uqbar_book_extensions.append(extension)
 
 
 def on_doctree_read(app, document):
-    extensions = [GrapherExtension()]
     literal_blocks = uqbar.book.sphinx.collect_literal_blocks(document)
     cache_mapping = uqbar.book.sphinx.group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
     for cache_path, literal_block_groups in cache_mapping.items():
         kwargs = dict(
-            extensions=extensions,
+            extensions=app.uqbar_book_extensions,
             setup_lines=app.config["uqbar_book_console_setup"],
             teardown_lines=app.config["uqbar_book_console_teardown"],
             use_black=bool(app.config["uqbar_book_use_black"]),
@@ -76,7 +78,9 @@ def on_build_finished(app, exception):
 def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_console_setup", [], "env")
     app.add_config_value("uqbar_book_console_teardown", [], "env")
-    app.add_config_value("uqbar_book_extensions", [], "env")
+    app.add_config_value(
+        "uqbar_book_extensions", ["uqbar.book.extensions.GrapherExtension"], "env"
+    )
     app.add_config_value("uqbar_book_strict", False, "env")
     app.add_config_value("uqbar_book_use_black", False, "env")
     app.add_config_value("uqbar_book_use_cache", True, "env")
