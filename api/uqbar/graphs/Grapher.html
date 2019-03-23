@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Grapher &mdash; uqbar 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Attributes" href="Attributes.html" />
+    <link rel="prev" title="graphs" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> uqbar
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../book/index.html">book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">graphs</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Grapher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Edge.html">Edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Graph.html">Graph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Node.html">Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="HRule.html">HRule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LineBreak.html">LineBreak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Table.html">Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TableCell.html">TableCell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TableRow.html">TableRow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="VRule.html">VRule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Attachable.html">Attachable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecordField.html">RecordField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecordGroup.html">RecordGroup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">uqbar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
+        
+          <li><a href="../index.html">uqbar</a> &raquo;</li>
+        
+          <li><a href="index.html">graphs</a> &raquo;</li>
+        
+      <li>Grapher</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/uqbar/graphs/Grapher.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="Attributes.html" class="btn btn-neutral float-right" title="Attributes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="graphs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-uqbar.graphs.Grapher">
+<span id="grapher"></span><span id="uqbar-graphs-grapher"></span><h1>Grapher<a class="headerlink" href="#module-uqbar.graphs.Grapher" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-9c08de2bcfff81e9a0079ef3192b1cbda40a5ebc.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_uqbar.graphs&quot; {
+        graph [label=&quot;uqbar.graphs&quot;];
+        node [color=2];
+        &quot;uqbar.graphs.Grapher.Grapher&quot; [URL=&quot;../api/uqbar/graphs/Grapher.html#uqbar.graphs.Grapher.Grapher&quot;,
+            color=black,
+            fontcolor=white,
+            label=Grapher,
+            target=_top];
+    }
+    &quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Grapher.Grapher&quot;;
+}</p></object></div>
+</div>
+<dl class="class">
+<dt id="uqbar.graphs.Grapher.Grapher">
+<em class="property">class </em><code class="descname">Grapher</code><span class="sig-paren">(</span><em>graphable</em>, <em>format_='pdf'</em>, <em>layout='dot'</em>, <em>verbose=False</em>, <em>output_directory=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher" title="Permalink to this definition">¶</a></dt>
+<dd><hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.__call__" title="uqbar.graphs.Grapher.Grapher.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></td>
+<td>Call self as a function.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_format" title="uqbar.graphs.Grapher.Grapher.get_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_graphviz_string" title="uqbar.graphs.Grapher.Grapher.get_graphviz_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_graphviz_string</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_layout" title="uqbar.graphs.Grapher.Grapher.get_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layout</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_output_directory" title="uqbar.graphs.Grapher.Grapher.get_output_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_output_directory</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_render_command" title="uqbar.graphs.Grapher.Grapher.get_render_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_render_command</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_render_prefix" title="uqbar.graphs.Grapher.Grapher.get_render_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_render_prefix</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.open_output_path" title="uqbar.graphs.Grapher.Grapher.open_output_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_output_path</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.persist_graphviz_string" title="uqbar.graphs.Grapher.Grapher.persist_graphviz_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">persist_graphviz_string</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.run_command" title="uqbar.graphs.Grapher.Grapher.run_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_command</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.__call__">
+<em class="property">overridden </em><code class="descname">__call__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_format">
+<code class="descname">get_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_graphviz_string">
+<code class="descname">get_graphviz_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_graphviz_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_graphviz_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_layout">
+<code class="descname">get_layout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_output_directory">
+<code class="descname">get_output_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_output_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_output_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_render_command">
+<code class="descname">get_render_command</code><span class="sig-paren">(</span><em>format_</em>, <em>input_path</em>, <em>layout</em>, <em>output_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.get_render_prefix">
+<code class="descname">get_render_prefix</code><span class="sig-paren">(</span><em>graphviz_string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.open_output_path">
+<code class="descname">open_output_path</code><span class="sig-paren">(</span><em>output_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.open_output_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.open_output_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.persist_graphviz_string">
+<code class="descname">persist_graphviz_string</code><span class="sig-paren">(</span><em>graphviz_string</em>, <em>input_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.persist_graphviz_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.persist_graphviz_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Grapher.Grapher.run_command">
+<code class="descname">run_command</code><span class="sig-paren">(</span><em>command</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.run_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.run_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Attributes.html" class="btn btn-neutral float-right" title="Attributes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

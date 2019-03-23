@@ -13,5 +13,62 @@ UniqueTreeNode
       :lineage: uqbar.containers.UniqueTreeNode
 
 .. autoclass:: UniqueTreeNode
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      depth
+      graph_order
+      name
+      parent
+      parentage
+      precede_by
+      replace_with
+      root
+      succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: UniqueTreeNode.precede_by
+
+   .. automethod:: UniqueTreeNode.replace_with
+
+   .. automethod:: UniqueTreeNode.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. autoattribute:: UniqueTreeNode.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: UniqueTreeNode.depth
+
+   .. autoattribute:: UniqueTreeNode.graph_order
+
+   .. autoattribute:: UniqueTreeNode.parent
+
+   .. autoattribute:: UniqueTreeNode.parentage
+
+   .. autoattribute:: UniqueTreeNode.root

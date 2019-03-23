@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>InheritanceGraph &mdash; uqbar 0.2.17 documentation</title>
+  <title>InheritanceGraph &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="ClassDocumenter" href="ClassDocumenter.html" />
     <link rel="prev" title="APIBuilder" href="APIBuilder.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="ClassDocumenter.html" class="btn btn-neutral float-right" title="ClassDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="APIBuilder.html" class="btn btn-neutral" title="APIBuilder" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="APIBuilder.html" class="btn btn-neutral float-left" title="APIBuilder" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -247,9 +250,7 @@
 <p>Here we build the inheritance graph of all classes found in
 <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar.containers&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span><span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 <span class="go">digraph InheritanceGraph {</span>
 <span class="go">    graph [bgcolor=transparent,</span>
@@ -303,9 +304,8 @@ antecedents or descendants pass through the classes identified by those
 lineage paths. Here we collect all classes defined in <a class="reference internal" href="../index.html#module-uqbar" title="uqbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar</span></code></a> and
 then constrain to those passing through <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="n">lineage_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;uqbar.containers&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar&quot;</span><span class="p">],</span> <span class="n">lineage_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 <span class="go">digraph InheritanceGraph {</span>
 <span class="go">    graph [bgcolor=transparent,</span>
@@ -409,6 +409,79 @@ modules to constrain the inheritance graph with</li>
 </tr>
 </tbody>
 </table>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
+<td>Return str(self).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_class_paths</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aspect_ratio</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_graph</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents" title="uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">children_to_parents</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children" title="uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parents_to_children</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">
+<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="method">
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
+<code class="descname">build_graph</code><span class="sig-paren">(</span><em>urls=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths">
 <code class="descname">all_class_paths</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="Permalink to this definition">¶</a></dt>
@@ -417,11 +490,6 @@ modules to constrain the inheritance graph with</li>
 <dl class="attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio">
 <code class="descname">aspect_ratio</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
-<code class="descname">build_graph</code><span class="sig-paren">(</span><em>urls=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -449,7 +517,7 @@ modules to constrain the inheritance graph with</li>
         <a href="ClassDocumenter.html" class="btn btn-neutral float-right" title="ClassDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="APIBuilder.html" class="btn btn-neutral" title="APIBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="APIBuilder.html" class="btn btn-neutral float-left" title="APIBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -475,26 +543,16 @@ modules to constrain the inheritance graph with</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

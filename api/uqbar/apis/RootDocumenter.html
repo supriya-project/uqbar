@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RootDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  <title>RootDocumenter &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="SummarizingClassDocumenter" href="SummarizingClassDocumenter.html" />
     <link rel="prev" title="ModuleDocumenter" href="ModuleDocumenter.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="SummarizingClassDocumenter.html" class="btn btn-neutral float-right" title="SummarizingClassDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ModuleDocumenter.html" class="btn btn-neutral" title="ModuleDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ModuleDocumenter.html" class="btn btn-neutral float-left" title="ModuleDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -255,10 +258,10 @@ by an <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIB
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">RootDocumenter</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span>
-<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s1">&#39;uqbar.io&#39;</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s1">&#39;uqbar.strings&#39;</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.io&quot;</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.strings&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">))</span>
 <span class="go">API</span>
 <span class="go">===</span>
@@ -267,6 +270,7 @@ by an <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIB
 
 <span class="go">   uqbar/io/index</span>
 <span class="go">   uqbar/strings</span>
+
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -275,7 +279,7 @@ by an <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIB
 implement your own custom module documentation output.
 You’ll need to provide your desired reStructuredText output
 via an overridden
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code>
+<a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="uqbar.apis.RootDocumenter.RootDocumenter.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a>
 implementation.</p>
 <p class="last">See <a class="reference internal" href="SummarizingRootDocumenter.html#module-uqbar.apis.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a> for an example.</p>
 </div>
@@ -290,6 +294,35 @@ documenter directly</td>
 </tr>
 </tbody>
 </table>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="uqbar.apis.RootDocumenter.RootDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
+<td>Return str(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="uqbar.apis.RootDocumenter.RootDocumenter.documentation_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_path</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.module_documenters" title="uqbar.apis.RootDocumenter.RootDocumenter.module_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">module_documenters</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.title" title="uqbar.apis.RootDocumenter.RootDocumenter.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.RootDocumenter.RootDocumenter.__str__">
+<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/RootDocumenter.html#RootDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter.documentation_path">
 <code class="descname">documentation_path</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="Permalink to this definition">¶</a></dt>
@@ -320,7 +353,7 @@ documenter directly</td>
         <a href="SummarizingClassDocumenter.html" class="btn btn-neutral float-right" title="SummarizingClassDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ModuleDocumenter.html" class="btn btn-neutral" title="ModuleDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ModuleDocumenter.html" class="btn btn-neutral float-left" title="ModuleDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -346,26 +379,16 @@ documenter directly</td>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

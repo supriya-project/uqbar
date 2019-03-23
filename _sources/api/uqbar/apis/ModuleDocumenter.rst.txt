@@ -13,5 +13,67 @@ ModuleDocumenter
       :lineage: uqbar.apis.ModuleDocumenter
 
 .. autoclass:: ModuleDocumenter
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __str__
+      client
+      document_private_members
+      documentation_path
+      is_nominative
+      is_package
+      member_documenter_classes
+      member_documenters
+      member_documenters_by_section
+      module_documenters
+      package_name
+      package_path
+      reference_name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: ModuleDocumenter.__str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: ModuleDocumenter.client
+
+   .. autoattribute:: ModuleDocumenter.document_private_members
+
+   .. autoattribute:: ModuleDocumenter.documentation_path
+
+   .. autoattribute:: ModuleDocumenter.is_nominative
+
+   .. autoattribute:: ModuleDocumenter.is_package
+
+   .. autoattribute:: ModuleDocumenter.member_documenter_classes
+
+   .. autoattribute:: ModuleDocumenter.member_documenters
+
+   .. autoattribute:: ModuleDocumenter.member_documenters_by_section
+
+   .. autoattribute:: ModuleDocumenter.module_documenters
+
+   .. autoattribute:: ModuleDocumenter.package_name
+
+   .. autoattribute:: ModuleDocumenter.package_path
+
+   .. autoattribute:: ModuleDocumenter.reference_name

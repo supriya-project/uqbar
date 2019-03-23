@@ -1,0 +1,30 @@
+.. _uqbar--ext:
+
+ext
+===
+
+.. automodule:: uqbar.ext
+
+.. currentmodule:: uqbar.ext
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.ext
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Subpackages
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   ipython
+
+.. autosummary::
+   :nosignatures:
+
+   ipython

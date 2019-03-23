@@ -1,6 +1,9 @@
 Uqbar
 =====
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/ambv/black
+
 Uqbar is a toolkit for building docs, graphs and more.
 
 .. container:: svg-container

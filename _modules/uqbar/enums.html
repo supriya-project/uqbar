@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.enums &mdash; uqbar 0.2.17 documentation</title>
+  <title>uqbar.enums &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -231,7 +233,31 @@
 
 <div class="viewcode-block" id="IntEnumeration.from_expr"><a class="viewcode-back" href="../../api/uqbar/enums.html#uqbar.enums.IntEnumeration.from_expr">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_expr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convenience constructor for enumerations.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convenience constructor for enumerations.</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; import uqbar.enums</span>
+<span class="sd">            &gt;&gt;&gt; class MyEnum(uqbar.enums.IntEnumeration):</span>
+<span class="sd">            ...     A_B = -1</span>
+<span class="sd">            ...     B_C_D = 0</span>
+<span class="sd">            ...     E = 1</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(&quot;a b&quot;)</span>
+<span class="sd">            MyEnum.A_B</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(None)</span>
+<span class="sd">            MyEnum.B_C_D</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(1)</span>
+<span class="sd">            MyEnum.E</span>
 
 <span class="sd">        Returns new enumeration item.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -314,7 +340,31 @@
 
 <div class="viewcode-block" id="StrictEnumeration.from_expr"><a class="viewcode-back" href="../../api/uqbar/enums.html#uqbar.enums.StrictEnumeration.from_expr">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_expr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convenience constructor for enumerations.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convenience constructor for enumerations.</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; import uqbar.enums</span>
+<span class="sd">            &gt;&gt;&gt; class MyEnum(uqbar.enums.StrictEnumeration):</span>
+<span class="sd">            ...     A_B = -1</span>
+<span class="sd">            ...     B_C_D = 0</span>
+<span class="sd">            ...     E = 1</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(&quot;a b&quot;)</span>
+<span class="sd">            MyEnum.A_B</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(None)</span>
+<span class="sd">            MyEnum.B_C_D</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; MyEnum.from_expr(1)</span>
+<span class="sd">            MyEnum.E</span>
 
 <span class="sd">        Returns new enumeration item.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -348,26 +398,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ModuleDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  <title>ModuleDocumenter &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="RootDocumenter" href="RootDocumenter.html" />
     <link rel="prev" title="FunctionDocumenter" href="FunctionDocumenter.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="RootDocumenter.html" class="btn btn-neutral float-right" title="RootDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="FunctionDocumenter.html" class="btn btn-neutral" title="FunctionDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="FunctionDocumenter.html" class="btn btn-neutral float-left" title="FunctionDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -250,11 +253,9 @@
 <dd><p>A basic module documenter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;uqbar.io&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span>
-<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s1">&#39;uqbar.io.Timer&#39;</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="s2">&quot;uqbar.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span><span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.io.Timer&quot;</span><span class="p">)],</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">))</span>
 <span class="go">.. _uqbar--io:</span>
 
@@ -286,7 +287,7 @@
 custom module documentation output.
 You’ll need to provide your desired reStructuredText output
 via an overridden
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code>
+<a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a>
 implementation.</p>
 <p class="last">See <a class="reference internal" href="SummarizingModuleDocumenter.html#module-uqbar.apis.SummarizingModuleDocumenter" title="uqbar.apis.SummarizingModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code></a> for an example.</p>
 </div>
@@ -310,6 +311,166 @@ documenter directly</li>
 </tr>
 </tbody>
 </table>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
+<td>Return str(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.client" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.client"><code class="xref py py-obj docutils literal notranslate"><span class="pre">client</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.document_private_members" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.document_private_members"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_private_members</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.documentation_path" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.documentation_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_path</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.is_nominative" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.is_nominative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_nominative</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.is_package" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.is_package"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_package</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenter_classes" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenter_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">member_documenter_classes</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenters" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">member_documenters</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenters_by_section" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.member_documenters_by_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">member_documenters_by_section</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]]]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.module_documenters" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.module_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">module_documenters</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.package_name" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.package_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_name</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.package_path" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_path</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.reference_name" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter.reference_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reference_name</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__">
+<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ModuleDocumenter.html#ModuleDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleDocumenter.ModuleDocumenter.client">
 <code class="descname">client</code><a class="headerlink" href="#uqbar.apis.ModuleDocumenter.ModuleDocumenter.client" title="Permalink to this definition">¶</a></dt>
@@ -481,7 +642,7 @@ documenter directly</li>
         <a href="RootDocumenter.html" class="btn btn-neutral float-right" title="RootDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="FunctionDocumenter.html" class="btn btn-neutral" title="FunctionDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="FunctionDocumenter.html" class="btn btn-neutral float-left" title="FunctionDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -507,26 +668,16 @@ documenter directly</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

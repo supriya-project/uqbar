@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.containers.UniqueTreeContainer &mdash; uqbar 0.2.17 documentation</title>
+  <title>uqbar.containers.UniqueTreeContainer &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -152,7 +154,7 @@
 <span class="kn">from</span> <span class="nn">uqbar.containers.UniqueTreeNode</span> <span class="k">import</span> <span class="n">UniqueTreeNode</span>
 
 
-<div class="viewcode-block" id="UniqueTreeContainer"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer">[docs]</a><span class="k">class</span> <span class="nc">UniqueTreeContainer</span><span class="p">(</span><span class="n">UniqueTreeNode</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer">[docs]</a><span class="k">class</span> <span class="nc">UniqueTreeContainer</span><span class="p">(</span><span class="n">UniqueTreeNode</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A container node in a &quot;unique&quot; tree.</span>
 
@@ -173,29 +175,29 @@
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__contains__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__contains__">[docs]</a>    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">expr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_named_children</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">expr</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__delitem__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__delitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">children</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_named_children</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
                 <span class="n">parent</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">parent</span>
-                <span class="k">del</span> <span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">)])</span>
+                <span class="k">del</span> <span class="n">parent</span><span class="p">[</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">)]</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span>
             <span class="n">i</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__getitem__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__getitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -203,16 +205,16 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">result</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__iter__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__iter__">[docs]</a>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">child</span>
+            <span class="k">yield</span> <span class="n">child</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">)</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__len__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__len__">[docs]</a>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.__setitem__"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.__setitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">expr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_setitem_single</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node_class</span><span class="p">)</span>
@@ -246,7 +248,7 @@
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
                 <span class="n">node</span><span class="o">.</span><span class="n">_set_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span><span class="p">),</span> <span class="n">expr</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span></div>
 
     <span class="c1">### PRIVATE METHODS ###</span>
 
@@ -271,10 +273,52 @@
 
     <span class="c1">### PUBLIC METHODS ###</span>
 
-<div class="viewcode-block" id="UniqueTreeContainer.append"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.append"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="p">[</span><span class="n">expr</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.depth_first"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth_first">[docs]</a>    <span class="k">def</span> <span class="nf">depth_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top_down</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.depth_first"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.depth_first">[docs]</a>    <span class="k">def</span> <span class="nf">depth_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top_down</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterate depth-first.</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; from uqbar.containers import UniqueTreeContainer, UniqueTreeNode</span>
+<span class="sd">            &gt;&gt;&gt; root_container = UniqueTreeContainer(name=&quot;root&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; outer_container = UniqueTreeContainer(name=&quot;outer&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; inner_container = UniqueTreeContainer(name=&quot;inner&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; node_a = UniqueTreeNode(name=&quot;a&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; node_b = UniqueTreeNode(name=&quot;b&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; node_c = UniqueTreeNode(name=&quot;c&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; node_d = UniqueTreeNode(name=&quot;d&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; root_container.extend([node_a, outer_container])</span>
+<span class="sd">            &gt;&gt;&gt; outer_container.extend([inner_container, node_d])</span>
+<span class="sd">            &gt;&gt;&gt; inner_container.extend([node_b, node_c])</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; for node in root_container.depth_first():</span>
+<span class="sd">            ...     print(node.name)</span>
+<span class="sd">            ...</span>
+<span class="sd">            a</span>
+<span class="sd">            outer</span>
+<span class="sd">            inner</span>
+<span class="sd">            b</span>
+<span class="sd">            c</span>
+<span class="sd">            d</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; for node in root_container.depth_first(top_down=False):</span>
+<span class="sd">            ...     print(node.name)</span>
+<span class="sd">            ...</span>
+<span class="sd">            a</span>
+<span class="sd">            b</span>
+<span class="sd">            c</span>
+<span class="sd">            inner</span>
+<span class="sd">            d</span>
+<span class="sd">            outer</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">top_down</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">child</span>
@@ -283,10 +327,10 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">top_down</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">child</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.extend"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.extend">[docs]</a>    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.extend"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.extend">[docs]</a>    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="n">expr</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.index"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.index"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">child</span> <span class="ow">is</span> <span class="n">expr</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">i</span>
@@ -295,24 +339,24 @@
             <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.insert"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.insert"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="p">[</span><span class="n">expr</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.pop"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.pop"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">del</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">node</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.recurse"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.recurse">[docs]</a>    <span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.recurse"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.recurse">[docs]</a>    <span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">child</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
                 <span class="k">for</span> <span class="n">grandchild</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">recurse</span><span class="p">():</span>
                     <span class="k">yield</span> <span class="n">grandchild</span></div>
 
-<div class="viewcode-block" id="UniqueTreeContainer.remove"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="UniqueTreeContainer.remove"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeContainer.html#uqbar.apis.PackageNode.UniqueTreeContainer.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
         <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-        <span class="k">del</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">])</span></div>
+        <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
 
     <span class="c1">### PUBLIC PROPERTIES ###</span>
 
@@ -348,26 +392,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

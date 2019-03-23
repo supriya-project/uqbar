@@ -13,5 +13,55 @@ SummarizingClassDocumenter
       :lineage: uqbar.apis.SummarizingClassDocumenter
 
 .. autoclass:: SummarizingClassDocumenter
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __str__
+      ignored_special_methods
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: SummarizingClassDocumenter.__str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Class & static methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: SummarizingClassDocumenter.validate_client
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingClassDocumenter.client
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingClassDocumenter.documentation_section
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingClassDocumenter.package_path

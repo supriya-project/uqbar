@@ -13,5 +13,77 @@ Attachable
       :lineage: uqbar.graphs.Attachable
 
 .. autoclass:: Attachable
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      attach
+      edges
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: Attachable.attach
+
+   .. container:: inherited
+
+      .. automethod:: Attachable.precede_by
+
+   .. container:: inherited
+
+      .. automethod:: Attachable.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: Attachable.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.depth
+
+   .. autoattribute:: Attachable.edges
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: Attachable.root

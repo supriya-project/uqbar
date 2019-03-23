@@ -22,10 +22,13 @@ strings
 .. autosummary::
    :nosignatures:
 
+   ~ansi_escape
    ~delimit_words
    ~normalize
    ~to_dash_case
    ~to_snake_case
+
+.. autofunction:: ansi_escape
 
 .. autofunction:: delimit_words
 

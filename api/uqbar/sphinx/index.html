@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sphinx &mdash; uqbar 0.2.17 documentation</title>
+  <title>sphinx &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="api" href="api.html" />
     <link rel="prev" title="objects" href="../objects.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -92,11 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sphinx</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api.html">api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="book.html">book</a></li>
 <li class="toctree-l4"><a class="reference internal" href="inheritance.html">inheritance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="style.html">style</a></li>
 </ul>
@@ -174,7 +178,7 @@
         <a href="api.html" class="btn btn-neutral float-right" title="api" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../objects.html" class="btn btn-neutral" title="objects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../objects.html" class="btn btn-neutral float-left" title="objects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -264,10 +268,13 @@
 <tr class="row-odd"><td><a class="reference internal" href="api.html#module-uqbar.sphinx.api" title="uqbar.sphinx.api"><code class="xref py py-obj docutils literal notranslate"><span class="pre">api</span></code></a></td>
 <td>Uqbar Sphinx API generation extension.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="inheritance.html#module-uqbar.sphinx.inheritance" title="uqbar.sphinx.inheritance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inheritance</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="book.html#module-uqbar.sphinx.book" title="uqbar.sphinx.book"><code class="xref py py-obj docutils literal notranslate"><span class="pre">book</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="inheritance.html#module-uqbar.sphinx.inheritance" title="uqbar.sphinx.inheritance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inheritance</span></code></a></td>
 <td>Uqbar Sphinx inheritance graph extension.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="style.html#module-uqbar.sphinx.style" title="uqbar.sphinx.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="style.html#module-uqbar.sphinx.style" title="uqbar.sphinx.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code></a></td>
 <td>Uqbar Sphinx styling extension.</td>
 </tr>
 </tbody>
@@ -285,7 +292,7 @@
         <a href="api.html" class="btn btn-neutral float-right" title="api" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../objects.html" class="btn btn-neutral" title="objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../objects.html" class="btn btn-neutral float-left" title="objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -311,26 +318,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -13,5 +13,144 @@ RecordGroup
       :lineage: uqbar.graphs.RecordGroup
 
 .. autoclass:: RecordGroup
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __format__
+      __format_graphviz__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__contains__
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__delitem__
+
+   .. automethod:: RecordGroup.__format__
+
+   .. automethod:: RecordGroup.__format_graphviz__
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__getitem__
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__iter__
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__len__
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.__setitem__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.append
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.depth_first
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.extend
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.index
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.insert
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.pop
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.precede_by
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.recurse
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.remove
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: RecordGroup.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.children
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.depth
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: RecordGroup.root

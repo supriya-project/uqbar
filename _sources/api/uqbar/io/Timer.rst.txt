@@ -13,5 +13,52 @@ Timer
       :lineage: uqbar.io.Timer
 
 .. autoclass:: Timer
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __enter__
+      __exit__
+      elapsed_time
+      enter_message
+      exit_message
+      start_time
+      stop_time
+      verbose
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: Timer.__enter__
+
+   .. automethod:: Timer.__exit__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: Timer.elapsed_time
+
+   .. autoattribute:: Timer.enter_message
+
+   .. autoattribute:: Timer.exit_message
+
+   .. autoattribute:: Timer.start_time
+
+   .. autoattribute:: Timer.stop_time
+
+   .. autoattribute:: Timer.verbose

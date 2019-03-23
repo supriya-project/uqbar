@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>api &mdash; uqbar 0.2.17 documentation</title>
+  <title>api &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,36 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="inheritance" href="inheritance.html" />
+    <link rel="next" title="book" href="book.html" />
     <link rel="prev" title="sphinx" href="index.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -92,11 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">sphinx</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="book.html">book</a></li>
 <li class="toctree-l4"><a class="reference internal" href="inheritance.html">inheritance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="style.html">style</a></li>
 </ul>
@@ -173,10 +177,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="inheritance.html" class="btn btn-neutral float-right" title="inheritance" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="book.html" class="btn btn-neutral float-right" title="book" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="sphinx" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="sphinx" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -215,14 +219,22 @@ relative to your Sphinx source directory.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.api.on_builder_inited" title="uqbar.sphinx.api.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.api.logger_func" title="uqbar.sphinx.api.logger_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger_func</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.api.on_builder_inited" title="uqbar.sphinx.api.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
 <td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.api.setup" title="uqbar.sphinx.api.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.api.setup" title="uqbar.sphinx.api.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
 <td>Sets up Sphinx extension.</td>
 </tr>
 </tbody>
 </table>
+<dl class="function">
+<dt id="uqbar.sphinx.api.logger_func">
+<code class="descname">logger_func</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/api.html#logger_func"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.api.logger_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="function">
 <dt id="uqbar.sphinx.api.on_builder_inited">
 <code class="descname">on_builder_inited</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/api.html#on_builder_inited"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.api.on_builder_inited" title="Permalink to this definition">¶</a></dt>
@@ -254,10 +266,10 @@ relative to your Sphinx source directory.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="inheritance.html" class="btn btn-neutral float-right" title="inheritance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="book.html" class="btn btn-neutral float-right" title="book" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -283,26 +295,16 @@ relative to your Sphinx source directory.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

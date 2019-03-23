@@ -13,5 +13,123 @@ UniqueTreeContainer
       :lineage: uqbar.containers.UniqueTreeContainer
 
 .. autoclass:: UniqueTreeContainer
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __contains__
+      __delitem__
+      __getitem__
+      __iter__
+      __len__
+      __setitem__
+      append
+      children
+      depth_first
+      extend
+      index
+      insert
+      pop
+      recurse
+      remove
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: UniqueTreeContainer.__contains__
+
+   .. automethod:: UniqueTreeContainer.__delitem__
+
+   .. automethod:: UniqueTreeContainer.__getitem__
+
+   .. automethod:: UniqueTreeContainer.__iter__
+
+   .. automethod:: UniqueTreeContainer.__len__
+
+   .. automethod:: UniqueTreeContainer.__setitem__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: UniqueTreeContainer.append
+
+   .. automethod:: UniqueTreeContainer.depth_first
+
+   .. automethod:: UniqueTreeContainer.extend
+
+   .. automethod:: UniqueTreeContainer.index
+
+   .. automethod:: UniqueTreeContainer.insert
+
+   .. automethod:: UniqueTreeContainer.pop
+
+   .. container:: inherited
+
+      .. automethod:: UniqueTreeContainer.precede_by
+
+   .. automethod:: UniqueTreeContainer.recurse
+
+   .. automethod:: UniqueTreeContainer.remove
+
+   .. container:: inherited
+
+      .. automethod:: UniqueTreeContainer.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: UniqueTreeContainer.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: UniqueTreeContainer.children
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.depth
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: UniqueTreeContainer.root

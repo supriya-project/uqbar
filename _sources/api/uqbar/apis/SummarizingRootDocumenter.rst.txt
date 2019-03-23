@@ -13,5 +13,43 @@ SummarizingRootDocumenter
       :lineage: uqbar.apis.SummarizingRootDocumenter
 
 .. autoclass:: SummarizingRootDocumenter
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: SummarizingRootDocumenter.__str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingRootDocumenter.documentation_path
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingRootDocumenter.module_documenters
+
+   .. container:: inherited
+
+      .. autoattribute:: SummarizingRootDocumenter.title

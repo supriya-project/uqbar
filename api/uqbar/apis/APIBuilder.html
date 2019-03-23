@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>APIBuilder &mdash; uqbar 0.2.17 documentation</title>
+  <title>APIBuilder &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="InheritanceGraph" href="InheritanceGraph.html" />
     <link rel="prev" title="MemberDocumenter" href="MemberDocumenter.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="InheritanceGraph.html" class="btn btn-neutral float-right" title="InheritanceGraph" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MemberDocumenter.html" class="btn btn-neutral" title="MemberDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="MemberDocumenter.html" class="btn btn-neutral float-left" title="MemberDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -242,7 +245,7 @@
 </div>
 <dl class="class">
 <dt id="uqbar.apis.APIBuilder.APIBuilder">
-<em class="property">class </em><code class="descname">APIBuilder</code><span class="sig-paren">(</span><em>initial_source_paths</em>, <em>target_directory</em>, <em>document_empty_modules=True</em>, <em>document_private_members=False</em>, <em>document_private_modules=False</em>, <em>member_documenter_classes=None</em>, <em>module_documenter_class=None</em>, <em>root_documenter_class=None</em>, <em>title='API'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">APIBuilder</code><span class="sig-paren">(</span><em>initial_source_paths</em>, <em>target_directory</em>, <em>document_empty_modules=True</em>, <em>document_private_members=False</em>, <em>document_private_modules=False</em>, <em>member_documenter_classes=None</em>, <em>module_documenter_class=None</em>, <em>root_documenter_class=None</em>, <em>title='API'</em>, <em>logger_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder" title="Permalink to this definition">¶</a></dt>
 <dd><p>A builder of reStructuredText API documentation for Python packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
@@ -251,25 +254,25 @@
 <span class="gp">... </span>        <span class="n">builder</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">APIBuilder</span><span class="p">(</span>
 <span class="gp">... </span>            <span class="n">initial_source_paths</span><span class="o">=</span><span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">__path__</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="n">target_directory</span><span class="o">=</span><span class="n">target_directory</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="p">)</span>
+<span class="gp">... </span>        <span class="p">)</span>
 <span class="gp">... </span>        <span class="n">visited_paths</span> <span class="o">=</span> <span class="n">builder</span><span class="p">()</span>
-<span class="gp">...</span>
-<span class="go">wrote: index.rst</span>
-<span class="go">wrote: uqbar/index.rst</span>
-<span class="go">wrote: uqbar/apis/index.rst</span>
-<span class="go">wrote: uqbar/apis/APIBuilder.rst</span>
-<span class="go">wrote: uqbar/apis/ClassDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/FunctionDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/InheritanceGraph.rst</span>
-<span class="go">wrote: uqbar/apis/MemberDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/ModuleDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/ModuleNode.rst</span>
-<span class="go">wrote: uqbar/apis/PackageNode.rst</span>
-<span class="go">wrote: uqbar/apis/RootDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/SummarizingClassDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/SummarizingModuleDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/SummarizingRootDocumenter.rst</span>
-<span class="go">wrote: uqbar/apis/dummy.rst</span>
+<span class="gp">... </span>
+<span class="go">wrote index.rst</span>
+<span class="go">wrote uqbar/index.rst</span>
+<span class="go">wrote uqbar/apis/index.rst</span>
+<span class="go">wrote uqbar/apis/APIBuilder.rst</span>
+<span class="go">wrote uqbar/apis/ClassDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/FunctionDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/InheritanceGraph.rst</span>
+<span class="go">wrote uqbar/apis/MemberDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/ModuleDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/ModuleNode.rst</span>
+<span class="go">wrote uqbar/apis/PackageNode.rst</span>
+<span class="go">wrote uqbar/apis/RootDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/SummarizingClassDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/SummarizingModuleDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/SummarizingRootDocumenter.rst</span>
+<span class="go">wrote uqbar/apis/dummy.rst</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -291,6 +294,62 @@ to use to identify and document module members</li>
 </tr>
 </tbody>
 </table>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.__call__" title="uqbar.apis.APIBuilder.APIBuilder.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></td>
+<td>Generate documentation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.build_node_tree" title="uqbar.apis.APIBuilder.APIBuilder.build_node_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_node_tree</span></code></a></td>
+<td>Build a node tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters" title="uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_module_documenters</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.document_empty_modules" title="uqbar.apis.APIBuilder.APIBuilder.document_empty_modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_empty_modules</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.document_private_members" title="uqbar.apis.APIBuilder.APIBuilder.document_private_members"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_private_members</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.document_private_modules" title="uqbar.apis.APIBuilder.APIBuilder.document_private_modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_private_modules</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.initial_source_paths" title="uqbar.apis.APIBuilder.APIBuilder.initial_source_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_source_paths</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.member_documenter_classes" title="uqbar.apis.APIBuilder.APIBuilder.member_documenter_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">member_documenter_classes</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.module_documenter_class" title="uqbar.apis.APIBuilder.APIBuilder.module_documenter_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">module_documenter_class</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.prune" title="uqbar.apis.APIBuilder.APIBuilder.prune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prune</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.root_documenter_class" title="uqbar.apis.APIBuilder.APIBuilder.root_documenter_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">root_documenter_class</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.target_directory" title="uqbar.apis.APIBuilder.APIBuilder.target_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_directory</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.APIBuilder.APIBuilder.write" title="uqbar.apis.APIBuilder.APIBuilder.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.APIBuilder.APIBuilder.__call__">
+<em class="property">overridden </em><code class="descname">__call__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate documentation.</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
 <dl class="method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.build_node_tree">
 <code class="descname">build_node_tree</code><span class="sig-paren">(</span><em>source_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.build_node_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.build_node_tree" title="Permalink to this definition">¶</a></dt>
@@ -302,6 +361,17 @@ to use to identify and document module members</li>
 <code class="descname">collect_module_documenters</code><span class="sig-paren">(</span><em>root_node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.collect_module_documenters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uqbar.apis.APIBuilder.APIBuilder.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><em>visited_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.prune"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.prune" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.apis.APIBuilder.APIBuilder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>documenters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.document_empty_modules">
 <code class="descname">document_empty_modules</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.document_empty_modules" title="Permalink to this definition">¶</a></dt>
@@ -332,11 +402,6 @@ to use to identify and document module members</li>
 <code class="descname">module_documenter_class</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.module_documenter_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="uqbar.apis.APIBuilder.APIBuilder.prune">
-<code class="descname">prune</code><span class="sig-paren">(</span><em>visited_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.prune"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.prune" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.root_documenter_class">
 <code class="descname">root_documenter_class</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.root_documenter_class" title="Permalink to this definition">¶</a></dt>
@@ -345,11 +410,6 @@ to use to identify and document module members</li>
 <dl class="attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.target_directory">
 <code class="descname">target_directory</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.target_directory" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uqbar.apis.APIBuilder.APIBuilder.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>documenters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.write" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -367,7 +427,7 @@ to use to identify and document module members</li>
         <a href="InheritanceGraph.html" class="btn btn-neutral float-right" title="InheritanceGraph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MemberDocumenter.html" class="btn btn-neutral" title="MemberDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="MemberDocumenter.html" class="btn btn-neutral float-left" title="MemberDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -393,26 +453,16 @@ to use to identify and document module members</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -13,5 +13,74 @@ APIBuilder
       :lineage: uqbar.apis.APIBuilder
 
 .. autoclass:: APIBuilder
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __call__
+      build_node_tree
+      collect_module_documenters
+      document_empty_modules
+      document_private_members
+      document_private_modules
+      initial_source_paths
+      member_documenter_classes
+      module_documenter_class
+      prune
+      root_documenter_class
+      target_directory
+      write
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: APIBuilder.__call__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: APIBuilder.build_node_tree
+
+   .. automethod:: APIBuilder.collect_module_documenters
+
+   .. automethod:: APIBuilder.prune
+
+   .. automethod:: APIBuilder.write
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: APIBuilder.document_empty_modules
+
+   .. autoattribute:: APIBuilder.document_private_members
+
+   .. autoattribute:: APIBuilder.document_private_modules
+
+   .. autoattribute:: APIBuilder.initial_source_paths
+
+   .. autoattribute:: APIBuilder.member_documenter_classes
+
+   .. autoattribute:: APIBuilder.module_documenter_class
+
+   .. autoattribute:: APIBuilder.root_documenter_class
+
+   .. autoattribute:: APIBuilder.target_directory

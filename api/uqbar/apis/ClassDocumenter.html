@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ClassDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  <title>ClassDocumenter &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="FunctionDocumenter" href="FunctionDocumenter.html" />
     <link rel="prev" title="InheritanceGraph" href="InheritanceGraph.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="FunctionDocumenter.html" class="btn btn-neutral float-right" title="FunctionDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="InheritanceGraph.html" class="btn btn-neutral" title="InheritanceGraph" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="InheritanceGraph.html" class="btn btn-neutral float-left" title="InheritanceGraph" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -255,7 +258,7 @@
 <em class="property">class </em><code class="descname">ClassDocumenter</code><span class="sig-paren">(</span><em>package_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ClassDocumenter.html#ClassDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter" title="Permalink to this definition">¶</a></dt>
 <dd><p>A basic class documenter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;uqbar.apis.ClassDocumenter.ClassDocumenter&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ClassDocumenter</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documentation</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">documentation</span><span class="p">)</span>
@@ -269,7 +272,7 @@
 <p>Subclass <a class="reference internal" href="#module-uqbar.apis.ClassDocumenter" title="uqbar.apis.ClassDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassDocumenter</span></code></a> to implement your own
 custom class documentation output. You’ll need to provide your desired
 reStructuredText output via an overridden
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code>
+<a class="reference internal" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.__str__" title="uqbar.apis.ClassDocumenter.ClassDocumenter.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a>
 implementation.</p>
 <p class="last">See <a class="reference internal" href="SummarizingClassDocumenter.html#module-uqbar.apis.SummarizingClassDocumenter" title="uqbar.apis.SummarizingClassDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code></a> for an example.</p>
 </div>
@@ -281,10 +284,38 @@ implementation.</p>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
-<dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section">
-<code class="descname">documentation_section</code><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.__str__" title="uqbar.apis.ClassDocumenter.ClassDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
+<td>Return str(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section" title="uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_section</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.validate_client" title="uqbar.apis.ClassDocumenter.ClassDocumenter.validate_client"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_client</span></code></a></td>
+<td>Check if the member documenter can document the provided client.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.__str__">
+<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ClassDocumenter.html#ClassDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -294,9 +325,10 @@ implementation.</p>
 </table>
 </dd></dl>
 
+<hr/><p class="class-header rubric">Class &amp; static methods</p>
 <dl class="classmethod">
 <dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.validate_client">
-<em class="property">classmethod </em><code class="descname">validate_client</code><span class="sig-paren">(</span><em>client</em>, <em>module_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ClassDocumenter.html#ClassDocumenter.validate_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><em class="property">classmethod </em><code class="descname">validate_client</code><span class="sig-paren">(</span><em>client</em>, <em>module_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ClassDocumenter.html#ClassDocumenter.validate_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the member documenter can document the provided client.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -315,6 +347,50 @@ implementation.</p>
 </table>
 </dd></dl>
 
+<hr/><p class="class-header rubric">Read-only properties</p>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.client">
+<code class="descclassname">(<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>).</code><code class="descname">client</code><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.client" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<dl class="attribute">
+<dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section">
+<em class="property">overridden </em><code class="descname">documentation_section</code><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.documentation_section" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.ClassDocumenter.ClassDocumenter.package_path">
+<code class="descclassname">(<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>).</code><code class="descname">package_path</code><a class="headerlink" href="#uqbar.apis.ClassDocumenter.ClassDocumenter.package_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 </div>
@@ -330,7 +406,7 @@ implementation.</p>
         <a href="FunctionDocumenter.html" class="btn btn-neutral float-right" title="FunctionDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="InheritanceGraph.html" class="btn btn-neutral" title="InheritanceGraph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="InheritanceGraph.html" class="btn btn-neutral float-left" title="InheritanceGraph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -356,26 +432,16 @@ implementation.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -16,15 +16,19 @@ book
 
    <hr/>
 
-.. rubric:: Internals
+.. rubric:: Subpackages
    :class: section-header
 
 .. toctree::
    :hidden:
 
-   Console
+   console
+   extensions
+   sphinx
 
 .. autosummary::
    :nosignatures:
 
-   ~Console.Console
+   console
+   extensions
+   sphinx

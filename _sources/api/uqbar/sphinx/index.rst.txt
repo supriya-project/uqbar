@@ -23,6 +23,7 @@ sphinx
    :hidden:
 
    api
+   book
    inheritance
    style
 
@@ -30,5 +31,6 @@ sphinx
    :nosignatures:
 
    api
+   book
    inheritance
    style

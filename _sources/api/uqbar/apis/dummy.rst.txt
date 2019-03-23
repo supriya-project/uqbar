@@ -26,9 +26,5 @@ dummy
    ~MyParentClass
 
 .. autoclass:: MyChildClass
-   :members:
-   :undoc-members:
 
 .. autoclass:: MyParentClass
-   :members:
-   :undoc-members:

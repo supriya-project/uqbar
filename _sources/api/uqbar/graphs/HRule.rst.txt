@@ -13,5 +13,84 @@ HRule
       :lineage: uqbar.graphs.HRule
 
 .. autoclass:: HRule
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __format__
+      __format_graphviz__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: HRule.__format__
+
+   .. automethod:: HRule.__format_graphviz__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: HRule.precede_by
+
+   .. container:: inherited
+
+      .. automethod:: HRule.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: HRule.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.depth
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: HRule.root

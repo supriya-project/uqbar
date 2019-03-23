@@ -22,8 +22,11 @@ api
 .. autosummary::
    :nosignatures:
 
+   ~logger_func
    ~on_builder_inited
    ~setup
+
+.. autofunction:: logger_func
 
 .. autofunction:: on_builder_inited
 

@@ -1,0 +1,57 @@
+.. _uqbar--book--sphinx:
+
+sphinx
+======
+
+.. automodule:: uqbar.book.sphinx
+
+.. currentmodule:: uqbar.book.sphinx
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.book.sphinx
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~attr_path_to_defining_path
+   ~collect_literal_blocks
+   ~create_cache_db
+   ~group_literal_blocks_by_cache_path
+   ~interpret_code_blocks
+   ~interpret_code_blocks_with_cache
+   ~literal_block_to_cache_path
+   ~parse_rst
+   ~query_cache_db
+   ~rebuild_document
+   ~update_cache_db
+
+.. autofunction:: attr_path_to_defining_path
+
+.. autofunction:: collect_literal_blocks
+
+.. autofunction:: create_cache_db
+
+.. autofunction:: group_literal_blocks_by_cache_path
+
+.. autofunction:: interpret_code_blocks
+
+.. autofunction:: interpret_code_blocks_with_cache
+
+.. autofunction:: literal_block_to_cache_path
+
+.. autofunction:: parse_rst
+
+.. autofunction:: query_cache_db
+
+.. autofunction:: rebuild_document
+
+.. autofunction:: update_cache_db

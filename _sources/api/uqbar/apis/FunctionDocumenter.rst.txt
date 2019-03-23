@@ -13,5 +13,52 @@ FunctionDocumenter
       :lineage: uqbar.apis.FunctionDocumenter
 
 .. autoclass:: FunctionDocumenter
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __str__
+      documentation_section
+      validate_client
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: FunctionDocumenter.__str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Class & static methods
+      :class: class-header
+
+   .. automethod:: FunctionDocumenter.validate_client
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: FunctionDocumenter.client
+
+   .. autoattribute:: FunctionDocumenter.documentation_section
+
+   .. container:: inherited
+
+      .. autoattribute:: FunctionDocumenter.package_path

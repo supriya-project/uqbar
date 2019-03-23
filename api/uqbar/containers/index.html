@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>containers &mdash; uqbar 0.2.17 documentation</title>
+  <title>containers &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="DependencyGraph" href="DependencyGraph.html" />
     <link rel="prev" title="CLIAggregator" href="../cli/CLIAggregator.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -97,6 +99,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -174,7 +177,7 @@
         <a href="DependencyGraph.html" class="btn btn-neutral float-right" title="DependencyGraph" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../cli/CLIAggregator.html" class="btn btn-neutral" title="CLIAggregator" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../cli/CLIAggregator.html" class="btn btn-neutral float-left" title="CLIAggregator" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -187,7 +190,7 @@
 <span id="containers"></span><span id="uqbar-containers"></span><h1>containers<a class="headerlink" href="#module-uqbar.containers" title="Permalink to this headline">¶</a></h1>
 <p>Specialized container classes.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-8fb75c47617d533cb2c94844b465b0f72ea23f7e.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-c370dca3d562c1a6169cff27b03a1c70cd3f90d7.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -213,6 +216,46 @@
 	edge [color=lightslategrey,
 		penwidth=1
 	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.apis&quot; {
+		graph [label=&quot;uqbar.apis&quot;];
+		node [color=2];
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
+			color=2,
+			label=&quot;Module\nNode&quot;,
+			target=_top];
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
+			color=2,
+			label=&quot;Package\nNode&quot;,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.containers&quot; {
+		graph [label=&quot;uqbar.containers&quot;];
+		node [color=3];
+		&quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;		 [URL=&quot;../api/uqbar/containers/DependencyGraph.html#uqbar.containers.DependencyGraph.DependencyGraph&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Dependency\nGraph&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Unique\nTree\nContainer&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Unique\nTree\nNode&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
+	}
 	subgraph &quot;cluster_uqbar.graphs&quot; {
 		graph [label=&quot;uqbar.graphs&quot;];
 		node [color=4];
@@ -267,46 +310,6 @@
 			label=VRule,
 			target=_top];
 	}
-	subgraph cluster_builtins {
-		graph [label=builtins];
-		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
-			label=object,
-			target=_top];
-	}
-	subgraph &quot;cluster_uqbar.apis&quot; {
-		graph [label=&quot;uqbar.apis&quot;];
-		node [color=2];
-		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
-			color=2,
-			label=&quot;Module\nNode&quot;,
-			target=_top];
-		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
-			color=2,
-			label=&quot;Package\nNode&quot;,
-			target=_top];
-	}
-	subgraph &quot;cluster_uqbar.containers&quot; {
-		graph [label=&quot;uqbar.containers&quot;];
-		node [color=3];
-		&quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;		 [URL=&quot;../api/uqbar/containers/DependencyGraph.html#uqbar.containers.DependencyGraph.DependencyGraph&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Dependency\nGraph&quot;,
-			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Unique\nTree\nContainer&quot;,
-			target=_top];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Unique\nTree\nNode&quot;,
-			target=_top];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
-	}
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;	 [minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
 	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
@@ -358,7 +361,7 @@
         <a href="DependencyGraph.html" class="btn btn-neutral float-right" title="DependencyGraph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../cli/CLIAggregator.html" class="btn btn-neutral" title="CLIAggregator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../cli/CLIAggregator.html" class="btn btn-neutral float-left" title="CLIAggregator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -384,26 +387,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -13,5 +13,40 @@ DirectoryChange
       :lineage: uqbar.io.DirectoryChange
 
 .. autoclass:: DirectoryChange
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __enter__
+      __exit__
+      directory
+      verbose
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: DirectoryChange.__enter__
+
+   .. automethod:: DirectoryChange.__exit__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: DirectoryChange.directory
+
+   .. autoattribute:: DirectoryChange.verbose

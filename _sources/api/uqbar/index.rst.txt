@@ -27,6 +27,7 @@ uqbar
    cli/index
    containers/index
    enums
+   ext/index
    graphs/index
    io/index
    objects
@@ -41,6 +42,7 @@ uqbar
    cli
    containers
    enums
+   ext
    graphs
    io
    objects

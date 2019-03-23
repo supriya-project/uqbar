@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strings &mdash; uqbar 0.2.17 documentation</title>
+  <title>strings &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="style" href="sphinx/style.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -91,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects.html">objects</a></li>
@@ -166,7 +169,7 @@
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
       
-        <a href="sphinx/style.html" class="btn btn-neutral" title="style" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sphinx/style.html" class="btn btn-neutral float-left" title="style" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -187,24 +190,45 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.strings.delimit_words" title="uqbar.strings.delimit_words"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delimit_words</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.strings.ansi_escape" title="uqbar.strings.ansi_escape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ansi_escape</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.strings.delimit_words" title="uqbar.strings.delimit_words"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delimit_words</span></code></a></td>
 <td>Delimit a string at word boundaries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.strings.normalize" title="uqbar.strings.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.strings.normalize" title="uqbar.strings.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a></td>
 <td>Normalizes whitespace.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.strings.to_dash_case" title="uqbar.strings.to_dash_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dash_case</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.strings.to_dash_case" title="uqbar.strings.to_dash_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dash_case</span></code></a></td>
 <td>Convert a string to dash-delimited words.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.strings.to_snake_case" title="uqbar.strings.to_snake_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_snake_case</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.strings.to_snake_case" title="uqbar.strings.to_snake_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_snake_case</span></code></a></td>
 <td>Convert a string to underscore-delimited words.</td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
+<dt id="uqbar.strings.ansi_escape">
+<code class="descname">ansi_escape</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#ansi_escape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.strings.ansi_escape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="uqbar.strings.delimit_words">
 <code class="descname">delimit_words</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#delimit_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.strings.delimit_words" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delimit a string at word boundaries.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">delimit_words</span><span class="p">(</span><span class="s2">&quot;i want to believe&quot;</span><span class="p">))</span>
+<span class="go">[&#39;i&#39;, &#39;want&#39;, &#39;to&#39;, &#39;believe&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">delimit_words</span><span class="p">(</span><span class="s2">&quot;S3Bucket&quot;</span><span class="p">))</span>
+<span class="go">[&#39;S3&#39;, &#39;Bucket&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">delimit_words</span><span class="p">(</span><span class="s2">&quot;Route53&quot;</span><span class="p">))</span>
+<span class="go">[&#39;Route&#39;, &#39;53&#39;]</span>
+</pre></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -236,12 +260,12 @@ whitespace from the result.</p>
 <code class="descname">to_dash_case</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_dash_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.strings.to_dash_case" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a string to dash-delimited words.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;Tô Đặc Biệt Xe Lửa&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;Tô Đặc Biệt Xe Lửa&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">to_dash_case</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
 <span class="go">to-dac-biet-xe-lua</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;alpha.beta.gamma&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;alpha.beta.gamma&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">to_dash_case</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
 <span class="go">alpha-beta-gamma</span>
 </pre></div>
@@ -261,12 +285,12 @@ whitespace from the result.</p>
 <code class="descname">to_snake_case</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_snake_case"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.strings.to_snake_case" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a string to underscore-delimited words.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;Tô Đặc Biệt Xe Lửa&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;Tô Đặc Biệt Xe Lửa&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">to_snake_case</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
 <span class="go">to_dac_biet_xe_lua</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;alpha.beta.gamma&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;alpha.beta.gamma&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">to_snake_case</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
 <span class="go">alpha_beta_gamma</span>
 </pre></div>
@@ -292,7 +316,7 @@ whitespace from the result.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="sphinx/style.html" class="btn btn-neutral" title="style" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sphinx/style.html" class="btn btn-neutral float-left" title="style" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -318,26 +342,16 @@ whitespace from the result.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

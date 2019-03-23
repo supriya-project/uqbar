@@ -13,5 +13,111 @@ Attributes
       :lineage: uqbar.graphs.Attributes
 
 .. autoclass:: Attributes
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      Color
+      Mode
+      Point
+      __delitem__
+      __eq__
+      __format__
+      __format_graphviz__
+      __format_html__
+      __getitem__
+      __iter__
+      __len__
+      __setitem__
+      copy
+      mode
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.__contains__
+
+   .. automethod:: Attributes.__delitem__
+
+   .. automethod:: Attributes.__eq__
+
+   .. automethod:: Attributes.__format__
+
+   .. automethod:: Attributes.__format_graphviz__
+
+   .. automethod:: Attributes.__format_html__
+
+   .. automethod:: Attributes.__getitem__
+
+   .. automethod:: Attributes.__iter__
+
+   .. automethod:: Attributes.__len__
+
+   .. automethod:: Attributes.__setitem__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.clear
+
+   .. automethod:: Attributes.copy
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.get
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.items
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.keys
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.pop
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.popitem
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.setdefault
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.update
+
+   .. container:: inherited
+
+      .. automethod:: Attributes.values
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: Attributes.mode

@@ -122,13 +122,84 @@ Tools for auto-generating API documention.
 
    <hr/>
 
-.. rubric:: Internals
+.. rubric:: :ref:`uqbar.book.console <uqbar--book--console>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
    :class: subsection-header
 
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.book.Console.Console
+   ~uqbar.book.console.Console
+   ~uqbar.book.console.ConsoleInput
+   ~uqbar.book.console.ConsoleOutput
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Exceptions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.console.ConsoleError
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.book.extensions <uqbar--book--extensions>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.extensions.Extension
+   ~uqbar.book.extensions.GraphableProxy
+   ~uqbar.book.extensions.GrapherExtension
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.book.sphinx <uqbar--book--sphinx>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.sphinx.attr_path_to_defining_path
+   ~uqbar.book.sphinx.collect_literal_blocks
+   ~uqbar.book.sphinx.create_cache_db
+   ~uqbar.book.sphinx.group_literal_blocks_by_cache_path
+   ~uqbar.book.sphinx.interpret_code_blocks
+   ~uqbar.book.sphinx.interpret_code_blocks_with_cache
+   ~uqbar.book.sphinx.literal_block_to_cache_path
+   ~uqbar.book.sphinx.parse_rst
+   ~uqbar.book.sphinx.query_cache_db
+   ~uqbar.book.sphinx.rebuild_document
+   ~uqbar.book.sphinx.update_cache_db
 
 .. raw:: html
 
@@ -209,10 +280,49 @@ Specialized container classes.
 
    <hr/>
 
+.. rubric:: :ref:`uqbar.ext <uqbar--ext>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.ext.ipython <uqbar--ext--ipython>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.ext.ipython.load_ipython_extension
+   ~uqbar.ext.ipython.patch_grapher
+
+.. raw:: html
+
+   <hr/>
+
 .. rubric:: :ref:`uqbar.graphs <uqbar--graphs>`
    :class: section-header
 
 Tools for building Graphviz graphs.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.Grapher.Grapher
 
 .. raw:: html
 
@@ -363,8 +473,32 @@ Uqbar Sphinx API generation extension.
 .. autosummary::
    :nosignatures:
 
+   ~uqbar.sphinx.api.logger_func
    ~uqbar.sphinx.api.on_builder_inited
    ~uqbar.sphinx.api.setup
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.sphinx.book <uqbar--sphinx--book>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.sphinx.book.on_build_finished
+   ~uqbar.sphinx.book.on_builder_inited
+   ~uqbar.sphinx.book.on_config_inited
+   ~uqbar.sphinx.book.on_doctree_read
+   ~uqbar.sphinx.book.setup
 
 .. raw:: html
 
@@ -423,11 +557,17 @@ Uqbar Sphinx styling extension.
 .. autosummary::
    :nosignatures:
 
+   ~uqbar.sphinx.style.depart_classifier
+   ~uqbar.sphinx.style.depart_definition
+   ~uqbar.sphinx.style.depart_term
    ~uqbar.sphinx.style.handle_class
    ~uqbar.sphinx.style.handle_method
    ~uqbar.sphinx.style.on_builder_inited
    ~uqbar.sphinx.style.on_doctree_read
    ~uqbar.sphinx.style.setup
+   ~uqbar.sphinx.style.visit_classifier
+   ~uqbar.sphinx.style.visit_definition
+   ~uqbar.sphinx.style.visit_term
 
 .. raw:: html
 
@@ -448,6 +588,7 @@ Tools for string manipulation.
 .. autosummary::
    :nosignatures:
 
+   ~uqbar.strings.ansi_escape
    ~uqbar.strings.delimit_words
    ~uqbar.strings.normalize
    ~uqbar.strings.to_dash_case

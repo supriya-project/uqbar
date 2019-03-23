@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; uqbar 0.2.17 documentation</title>
+  <title>Overview: module code &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -146,6 +148,9 @@
             
   <h1>All modules for which code is available</h1>
 <ul><li><a href="abc.html">abc</a></li>
+<li><a href="code.html">code</a></li>
+<li><a href="collections/abc.html">collections.abc</a></li>
+<li><a href="dataclasses.html">dataclasses</a></li>
 <li><a href="uqbar/apis.html">uqbar.apis</a></li>
 <ul><li><a href="uqbar/apis/APIBuilder.html">uqbar.apis.APIBuilder</a></li>
 <li><a href="uqbar/apis/ClassDocumenter.html">uqbar.apis.ClassDocumenter</a></li>
@@ -160,17 +165,21 @@
 <li><a href="uqbar/apis/SummarizingModuleDocumenter.html">uqbar.apis.SummarizingModuleDocumenter</a></li>
 <li><a href="uqbar/apis/SummarizingRootDocumenter.html">uqbar.apis.SummarizingRootDocumenter</a></li>
 <li><a href="uqbar/apis/dummy.html">uqbar.apis.dummy</a></li>
-</ul><li><a href="uqbar/book/Console.html">uqbar.book.Console</a></li>
+</ul><li><a href="uqbar/book/console.html">uqbar.book.console</a></li>
+<li><a href="uqbar/book/extensions.html">uqbar.book.extensions</a></li>
+<li><a href="uqbar/book/sphinx.html">uqbar.book.sphinx</a></li>
 <li><a href="uqbar/cli/CLI.html">uqbar.cli.CLI</a></li>
 <li><a href="uqbar/cli/CLIAggregator.html">uqbar.cli.CLIAggregator</a></li>
 <li><a href="uqbar/containers/DependencyGraph.html">uqbar.containers.DependencyGraph</a></li>
 <li><a href="uqbar/containers/UniqueTreeContainer.html">uqbar.containers.UniqueTreeContainer</a></li>
 <li><a href="uqbar/containers/UniqueTreeNode.html">uqbar.containers.UniqueTreeNode</a></li>
 <li><a href="uqbar/enums.html">uqbar.enums</a></li>
+<li><a href="uqbar/ext/ipython.html">uqbar.ext.ipython</a></li>
 <li><a href="uqbar/graphs/Attachable.html">uqbar.graphs.Attachable</a></li>
 <li><a href="uqbar/graphs/Attributes.html">uqbar.graphs.Attributes</a></li>
 <li><a href="uqbar/graphs/Edge.html">uqbar.graphs.Edge</a></li>
 <li><a href="uqbar/graphs/Graph.html">uqbar.graphs.Graph</a></li>
+<li><a href="uqbar/graphs/Grapher.html">uqbar.graphs.Grapher</a></li>
 <li><a href="uqbar/graphs/HRule.html">uqbar.graphs.HRule</a></li>
 <li><a href="uqbar/graphs/LineBreak.html">uqbar.graphs.LineBreak</a></li>
 <li><a href="uqbar/graphs/Node.html">uqbar.graphs.Node</a></li>
@@ -188,6 +197,7 @@
 <li><a href="uqbar/io/Timer.html">uqbar.io.Timer</a></li>
 </ul><li><a href="uqbar/objects.html">uqbar.objects</a></li>
 <li><a href="uqbar/sphinx/api.html">uqbar.sphinx.api</a></li>
+<li><a href="uqbar/sphinx/book.html">uqbar.sphinx.book</a></li>
 <li><a href="uqbar/sphinx/inheritance.html">uqbar.sphinx.inheritance</a></li>
 <li><a href="uqbar/sphinx/style.html">uqbar.sphinx.style</a></li>
 <li><a href="uqbar/strings.html">uqbar.strings</a></li>
@@ -220,26 +230,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

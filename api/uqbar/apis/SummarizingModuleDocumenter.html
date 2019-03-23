@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SummarizingModuleDocumenter &mdash; uqbar 0.2.17 documentation</title>
+  <title>SummarizingModuleDocumenter &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="SummarizingRootDocumenter" href="SummarizingRootDocumenter.html" />
     <link rel="prev" title="SummarizingClassDocumenter" href="SummarizingClassDocumenter.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -107,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -186,7 +189,7 @@
         <a href="SummarizingRootDocumenter.html" class="btn btn-neutral float-right" title="SummarizingRootDocumenter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="SummarizingClassDocumenter.html" class="btn btn-neutral" title="SummarizingClassDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="SummarizingClassDocumenter.html" class="btn btn-neutral float-left" title="SummarizingClassDocumenter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -258,11 +261,9 @@ organized in each documentation section via an <em>autosummary</em> table, rathe
 than including their documentation directly.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">SummarizingModuleDocumenter</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;uqbar.io&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span>
-<span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s1">&#39;uqbar.io.Timer&#39;</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="s2">&quot;uqbar.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span><span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.io.Timer&quot;</span><span class="p">)],</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">))</span>
 <span class="go">.. _uqbar--io:</span>
 
@@ -342,9 +343,153 @@ documenter directly</li>
 </tr>
 </tbody>
 </table>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
+<td>Return str(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters_by_section" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters_by_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">member_documenters_by_section</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]]]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__">
+<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/SummarizingModuleDocumenter.html#SummarizingModuleDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.client">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">client</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.client" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.document_private_members">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">document_private_members</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.document_private_members" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.documentation_path">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">documentation_path</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.documentation_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.is_nominative">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">is_nominative</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.is_nominative" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.is_package">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">is_package</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.is_package" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenter_classes">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">member_documenter_classes</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenter_classes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">member_documenters</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <dl class="attribute">
 <dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters_by_section">
-<code class="descname">member_documenters_by_section</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters_by_section" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="descname">member_documenters_by_section</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.member_documenters_by_section" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -355,6 +500,66 @@ documenter directly</li>
 </table>
 </dd></dl>
 
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.module_documenters">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">module_documenters</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.module_documenters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.package_name">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">package_name</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.package_name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.package_path">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">package_path</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.package_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="attribute">
+<dt id="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.reference_name">
+<code class="descclassname">(<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="descclassname docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>).</code><code class="descname">reference_name</code><a class="headerlink" href="#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.reference_name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 </div>
@@ -370,7 +575,7 @@ documenter directly</li>
         <a href="SummarizingRootDocumenter.html" class="btn btn-neutral float-right" title="SummarizingRootDocumenter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="SummarizingClassDocumenter.html" class="btn btn-neutral" title="SummarizingClassDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="SummarizingClassDocumenter.html" class="btn btn-neutral float-left" title="SummarizingClassDocumenter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -396,26 +601,16 @@ documenter directly</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

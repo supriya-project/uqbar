@@ -13,5 +13,144 @@ TableRow
       :lineage: uqbar.graphs.TableRow
 
 .. autoclass:: TableRow
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __format__
+      __format_graphviz__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__contains__
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__delitem__
+
+   .. automethod:: TableRow.__format__
+
+   .. automethod:: TableRow.__format_graphviz__
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__getitem__
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__iter__
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__len__
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.__setitem__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.append
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.depth_first
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.extend
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.index
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.insert
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.pop
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.precede_by
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.recurse
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.remove
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: TableRow.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.children
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.depth
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: TableRow.root

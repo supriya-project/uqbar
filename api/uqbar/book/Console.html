@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Console &mdash; uqbar 0.2.17 documentation</title>
+  <title>console &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,36 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="cli" href="../cli/index.html" />
+    <link rel="next" title="extensions" href="extensions.html" />
     <link rel="prev" title="book" href="index.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -89,12 +91,15 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">book</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Console</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html">extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.html">sphinx</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -155,13 +160,13 @@
         
           <li><a href="index.html">book</a> &raquo;</li>
         
-      <li>Console</li>
+      <li>console</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/api/uqbar/book/Console.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/api/uqbar/book/console.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,10 +176,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../cli/index.html" class="btn btn-neutral float-right" title="cli" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="extensions.html" class="btn btn-neutral float-right" title="extensions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="book" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="book" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -183,95 +188,557 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-uqbar.book.Console">
-<span id="console"></span><span id="uqbar-book-console"></span><h1>Console<a class="headerlink" href="#module-uqbar.book.Console" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-uqbar.book.console">
+<span id="console"></span><span id="uqbar-book-console"></span><h1>console<a class="headerlink" href="#module-uqbar.book.console" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-c322eca51e2e99d68932a0e5d9805ab15d11bd6b.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-ddfb29ac1c41edba15e347239f296dd2020af76a.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
-    graph [bgcolor=transparent,
-        color=lightsteelblue2,
-        fontname=Arial,
-        fontsize=10,
-        outputorder=edgesfirst,
-        overlap=prism,
-        penwidth=2,
-        rankdir=LR,
-        splines=spline,
-        style=&quot;dashed, rounded&quot;,
-        truecolor=true];
-    node [colorscheme=pastel19,
-        fontname=Arial,
-        fontsize=10,
-        height=0,
-        penwidth=2,
-        shape=box,
-        style=&quot;filled, rounded&quot;,
-        width=0];
-    edge [color=lightslategrey,
-        penwidth=1];
-    subgraph cluster_builtins {
-        graph [label=builtins];
-        node [color=1];
-        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-            label=object,
-            target=_top];
-    }
-    subgraph cluster_code {
-        graph [label=code];
-        node [color=2];
-        &quot;code.InteractiveConsole&quot; [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
-            label=&quot;Interactive\nConsole&quot;,
-            target=_top];
-        &quot;code.InteractiveInterpreter&quot; [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
-            label=&quot;Interactive\nInterpreter&quot;,
-            target=_top];
-        &quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;;
-    }
-    subgraph &quot;cluster_uqbar.book&quot; {
-        graph [label=&quot;uqbar.book&quot;];
-        node [color=3];
-        &quot;uqbar.book.Console.Console&quot; [URL=&quot;../api/uqbar/book/Console.html#uqbar.book.Console.Console&quot;,
-            color=black,
-            fontcolor=white,
-            label=Console,
-            target=_top];
-    }
-    &quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;;
-    &quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.Console.Console&quot;;
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.BaseException&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
+			color=1,
+			label=&quot;Base\nException&quot;,
+			target=_top];
+		&quot;builtins.Exception&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
+			color=1,
+			label=Exception,
+			target=_top];
+		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;		 [minlen=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;		 [minlen=1];
+	}
+	subgraph cluster_code {
+		graph [label=code];
+		node [color=2];
+		&quot;code.InteractiveConsole&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
+			color=2,
+			label=&quot;Interactive\nConsole&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
+			color=2,
+			label=&quot;Interactive\nInterpreter&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.book.console&quot; {
+		graph [label=&quot;uqbar.book.console&quot;];
+		node [color=3];
+		&quot;uqbar.book.console.Console&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
+			color=black,
+			fontcolor=white,
+			label=Console,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleError&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Console\nError&quot;,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleInput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Console\nInput&quot;,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleOutput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Console\nOutput&quot;,
+			target=_top];
+	}
+	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	 [minlen=2];
+	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	 [minlen=1];
 }</p></object></div>
 </div>
+<hr/><p class="section-header rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.Console" title="uqbar.book.console.Console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Console</span></code></a></td>
+<td>Interactive console providing a sandboxed namespace for executing code examples.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput" title="uqbar.book.console.ConsoleInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleInput</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput" title="uqbar.book.console.ConsoleOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleOutput</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="class">
-<dt id="uqbar.book.Console.Console">
-<em class="property">class </em><code class="descname">Console</code><span class="sig-paren">(</span><em>client=None</em>, <em>namespace=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/Console.html#Console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.Console.Console" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.book.console.Console">
+<em class="property">class </em><code class="descname">Console</code><span class="sig-paren">(</span><em>namespace=None</em>, <em>extensions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interactive console providing a sandboxed namespace for executing code
 examples.</p>
-<dl class="attribute">
-<dt id="uqbar.book.Console.Console.errored">
-<code class="descname">errored</code><a class="headerlink" href="#uqbar.book.Console.Console.errored" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is true if the last line executed by the console errored.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.book.console</span> <span class="k">import</span> <span class="n">Console</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;x = 3&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;for i in range(3):&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;    print(i + x)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;quit()&quot;</span><span class="p">,</span>  <span class="c1"># SystemExit is captured</span>
+<span class="gp">... </span>        <span class="s2">&quot;print(2 + 2)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">ConsoleInput(string=&#39;&gt;&gt;&gt; x = 3\n&gt;&gt;&gt; for i in range(3):\n...     print(i + x)\n... \n&#39;)</span>
+<span class="go">ConsoleOutput(string=&#39;3\n4\n5\n&#39;)</span>
+<span class="go">ConsoleInput(string=&#39;&gt;&gt;&gt; quit()\n&gt;&gt;&gt; print(2 + 2)\n&#39;)</span>
+<span class="go">ConsoleOutput(string=&#39;4\n&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">errored</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<p>The console maintains state across multiple <code class="docutils literal notranslate"><span class="pre">interpret()</span></code> calls:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">([</span><span class="s2">&quot;x + 2&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">ConsoleInput(string=&#39;&gt;&gt;&gt; x + 2\n&#39;)</span>
+<span class="go">ConsoleOutput(string=&#39;5\n&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">errored</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<p>Errors are reported but do not propagate outside of the <code class="docutils literal notranslate"><span class="pre">interpret()</span></code> call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">([</span><span class="s2">&quot;1 / 0&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">ConsoleInput(string=&#39;&gt;&gt;&gt; 1 / 0\n&#39;)</span>
+<span class="go">ConsoleOutput(string=&#39;Traceback (most recent call last):\n  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;\nZeroDivisionError: division by zero\n&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">errored</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<p>Error reporting resets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">([</span><span class="s2">&quot;x += 5&quot;</span><span class="p">,</span> <span class="s2">&quot;print(x)&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">ConsoleInput(string=&#39;&gt;&gt;&gt; x += 5\n&gt;&gt;&gt; print(x)\n&#39;)</span>
+<span class="go">ConsoleOutput(string=&#39;8\n&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">errored</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.Console.__enter__" title="uqbar.book.console.Console.__enter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__enter__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.Console.__exit__" title="uqbar.book.console.Console.__exit__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__exit__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.Console.flush" title="uqbar.book.console.Console.flush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flush</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.Console.interpret" title="uqbar.book.console.Console.interpret"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.Console.push_proxy" title="uqbar.book.console.Console.push_proxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">push_proxy</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.Console.showsyntaxerror" title="uqbar.book.console.Console.showsyntaxerror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showsyntaxerror</span></code></a></td>
+<td>Display the syntax error that just occurred.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.Console.showtraceback" title="uqbar.book.console.Console.showtraceback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">showtraceback</span></code></a></td>
+<td>Display the exception that just occurred.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.Console.write" title="uqbar.book.console.Console.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></td>
+<td>Write a string.</td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.book.console.Console.__enter__">
+<code class="descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.Console.__exit__">
+<code class="descname">__exit__</code><span class="sig-paren">(</span><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="method">
+<dt id="uqbar.book.console.Console.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.flush" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.interact">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="descname">interact</code><span class="sig-paren">(</span><em>banner=None</em>, <em>exitmsg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.interact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closely emulate the interactive Python console.</p>
+<p>The optional banner argument specifies the banner to print
+before the first interaction; by default it prints a banner
+similar to the one printed by the real Python interpreter,
+followed by the current class name in parentheses (so as not
+to confuse this with the real interpreter – since it’s so
+close!).</p>
+<p>The optional exitmsg argument specifies the exit message
+printed when exiting. Pass the empty string to suppress
+printing an exit message. If exitmsg is not given or None,
+a default message is printed.</p>
+</dd></dl>
+
+</div>
+<dl class="method">
+<dt id="uqbar.book.console.Console.interpret">
+<code class="descname">interpret</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.interpret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.interpret" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.push">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="descname">push</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push a line to the interpreter.</p>
+<p>The line should not have a trailing newline; it may have
+internal newlines.  The line is appended to a buffer and the
+interpreter’s runsource() method is called with the
+concatenated contents of the buffer as source.  If this
+indicates that the command was executed or invalid, the buffer
+is reset; otherwise, the command is incomplete, and the buffer
+is left as it was after the line was appended.  The return
+value is 1 if more input is required, 0 if the line was dealt
+with in some way (this is the same as runsource()).</p>
+</dd></dl>
+
+</div>
+<dl class="method">
+<dt id="uqbar.book.console.Console.push_proxy">
+<code class="descname">push_proxy</code><span class="sig-paren">(</span><em>proxy</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.push_proxy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.push_proxy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.raw_input">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="descname">raw_input</code><span class="sig-paren">(</span><em>prompt=''</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.raw_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a prompt and read a line.</p>
+<p>The returned line does not include the trailing newline.
+When the user enters the EOF key sequence, EOFError is raised.</p>
+<p>The base implementation uses the built-in function
+input(); a subclass may replace this with a different
+implementation.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.resetbuffer">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="descname">resetbuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.resetbuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the input buffer.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.runcode">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="descname">runcode</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a code object.</p>
+<p>When an exception occurs, self.showtraceback() is called to
+display a traceback.  All exceptions are caught except
+SystemExit, which is reraised.</p>
+<p>A note about KeyboardInterrupt: this exception may occur
+elsewhere in this code, and may not always be caught.  The
+caller should be prepared to deal with it.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.book.console.Console.runsource">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="descname">runsource</code><span class="sig-paren">(</span><em>source</em>, <em>filename='&lt;input&gt;'</em>, <em>symbol='single'</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runsource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile and run some source in the interpreter.</p>
+<p>Arguments are as for compile_command().</p>
+<p>One several things can happen:</p>
+<p>1) The input is incorrect; compile_command() raised an
+exception (SyntaxError or OverflowError).  A syntax traceback
+will be printed by calling the showsyntaxerror() method.</p>
+<p>2) The input is incomplete, and more input is required;
+compile_command() returned None.  Nothing happens.</p>
+<p>3) The input is complete; compile_command() returned a code
+object.  The code is executed by calling self.runcode() (which
+also handles run-time exceptions, except for SystemExit).</p>
+<p>The return value is True in case 2, False in the other cases (unless
+an exception is raised).  The return value can be used to
+decide whether to use sys.ps1 or sys.ps2 to prompt the next
+line.</p>
+</dd></dl>
+
+</div>
+<dl class="method">
+<dt id="uqbar.book.console.Console.showsyntaxerror">
+<em class="property">overridden </em><code class="descname">showsyntaxerror</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.showsyntaxerror"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.showsyntaxerror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the syntax error that just occurred.</p>
+<p>This doesn’t display a stack trace because there isn’t one.</p>
+<p>If a filename is given, it is stuffed in the exception instead
+of what was there before (because Python’s parser always uses
+“&lt;string&gt;” when reading from a string).</p>
+<p>The output is written by self.write(), below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="uqbar.book.Console.Console.showsyntaxerror">
-<code class="descname">showsyntaxerror</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/Console.html#Console.showsyntaxerror"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.Console.Console.showsyntaxerror" title="Permalink to this definition">¶</a></dt>
-<dd><p>Proxies Python’s InteractiveConsole.showsyntaxerror().</p>
+<dt id="uqbar.book.console.Console.showtraceback">
+<em class="property">overridden </em><code class="descname">showtraceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.showtraceback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.showtraceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the exception that just occurred.</p>
+<p>We remove the first stack item because it is our own code.</p>
+<p>The output is written by self.write(), below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="uqbar.book.Console.Console.showtraceback">
-<code class="descname">showtraceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/Console.html#Console.showtraceback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.Console.Console.showtraceback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Proxies Python’s InteractiveConsole.showtraceback().</p>
+<dt id="uqbar.book.console.Console.write">
+<em class="property">overridden </em><code class="descname">write</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a string.</p>
+<p>The base implementation writes to sys.stderr; a subclass may
+replace this with a different implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uqbar.book.console.ConsoleInput">
+<em class="property">class </em><code class="descname">ConsoleInput</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleInput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleInput" title="Permalink to this definition">¶</a></dt>
+<dd><hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput.__delattr__" title="uqbar.book.console.ConsoleInput.__delattr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__delattr__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput.__eq__" title="uqbar.book.console.ConsoleInput.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput.__hash__" title="uqbar.book.console.ConsoleInput.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput.__repr__" title="uqbar.book.console.ConsoleInput.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleInput.__setattr__" title="uqbar.book.console.ConsoleInput.__setattr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setattr__</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleInput.__delattr__">
+<em class="property">overridden </em><code class="descname">__delattr__</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__delattr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
-<dt id="uqbar.book.Console.Console.unregister_error">
-<code class="descname">unregister_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/Console.html#Console.unregister_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.Console.Console.unregister_error" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unregisters the last error registered in the current document
-handler.</p>
-<p>This occurs when the interpreting code block permits errors to appear.</p>
-</dd></dl>
+<dt id="uqbar.book.console.ConsoleInput.__eq__">
+<em class="property">overridden </em><code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleInput.__hash__">
+<em class="property">overridden </em><code class="descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleInput.__repr__">
+<em class="property">overridden </em><code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleInput.__setattr__">
+<em class="property">overridden </em><code class="descname">__setattr__</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__setattr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
+
+<dl class="class">
+<dt id="uqbar.book.console.ConsoleOutput">
+<em class="property">class </em><code class="descname">ConsoleOutput</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleOutput" title="Permalink to this definition">¶</a></dt>
+<dd><hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput.__delattr__" title="uqbar.book.console.ConsoleOutput.__delattr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__delattr__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput.__eq__" title="uqbar.book.console.ConsoleOutput.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput.__hash__" title="uqbar.book.console.ConsoleOutput.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput.__repr__" title="uqbar.book.console.ConsoleOutput.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleOutput.__setattr__" title="uqbar.book.console.ConsoleOutput.__setattr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setattr__</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleOutput.__delattr__">
+<em class="property">overridden </em><code class="descname">__delattr__</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__delattr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleOutput.__eq__">
+<em class="property">overridden </em><code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleOutput.__hash__">
+<em class="property">overridden </em><code class="descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleOutput.__repr__">
+<em class="property">overridden </em><code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.book.console.ConsoleOutput.__setattr__">
+<em class="property">overridden </em><code class="descname">__setattr__</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__setattr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<hr/><p class="section-header rubric">Exceptions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.book.console.ConsoleError" title="uqbar.book.console.ConsoleError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleError</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="exception">
+<dt id="uqbar.book.console.ConsoleError">
+<em class="property">exception </em><code class="descname">ConsoleError</code><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -283,10 +750,10 @@ handler.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cli/index.html" class="btn btn-neutral float-right" title="cli" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="extensions.html" class="btn btn-neutral float-right" title="extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="book" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="book" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -312,26 +779,16 @@ handler.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

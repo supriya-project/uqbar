@@ -13,5 +13,40 @@ RootDocumenter
       :lineage: uqbar.apis.RootDocumenter
 
 .. autoclass:: RootDocumenter
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __str__
+      documentation_path
+      module_documenters
+      title
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: RootDocumenter.__str__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: RootDocumenter.documentation_path
+
+   .. autoattribute:: RootDocumenter.module_documenters
+
+   .. autoattribute:: RootDocumenter.title

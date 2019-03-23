@@ -16,6 +16,23 @@ graphs
 
    <hr/>
 
+.. rubric:: Classes
+   :class: section-header
+
+.. toctree::
+   :hidden:
+
+   Grapher
+
+.. autosummary::
+   :nosignatures:
+
+   ~Grapher.Grapher
+
+.. raw:: html
+
+   <hr/>
+
 .. rubric:: Core Classes
    :class: section-header
 

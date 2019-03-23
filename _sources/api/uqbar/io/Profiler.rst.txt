@@ -13,5 +13,27 @@ Profiler
       :lineage: uqbar.io.Profiler
 
 .. autoclass:: Profiler
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __enter__
+      __exit__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. automethod:: Profiler.__enter__
+
+   .. automethod:: Profiler.__exit__

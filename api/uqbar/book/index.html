@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>book &mdash; uqbar 0.2.17 documentation</title>
+  <title>book &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,36 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Console" href="Console.html" />
+    <link rel="next" title="console" href="console.html" />
     <link rel="prev" title="PackageNode" href="../apis/PackageNode.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -89,12 +91,15 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">book</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Console.html">Console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="console.html">console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html">extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx.html">sphinx</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -169,10 +174,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="Console.html" class="btn btn-neutral float-right" title="Console" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="console.html" class="btn btn-neutral float-right" title="console" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../apis/PackageNode.html" class="btn btn-neutral" title="PackageNode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../apis/PackageNode.html" class="btn btn-neutral float-left" title="PackageNode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -184,61 +189,110 @@
   <div class="section" id="module-uqbar.book">
 <span id="book"></span><span id="uqbar-book"></span><h1>book<a class="headerlink" href="#module-uqbar.book" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-c322eca51e2e99d68932a0e5d9805ab15d11bd6b.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-6a83d5a20a8954ff879a5d02cc35ad8825516e9e.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
-    graph [bgcolor=transparent,
-        color=lightsteelblue2,
-        fontname=Arial,
-        fontsize=10,
-        outputorder=edgesfirst,
-        overlap=prism,
-        penwidth=2,
-        rankdir=LR,
-        splines=spline,
-        style=&quot;dashed, rounded&quot;,
-        truecolor=true];
-    node [colorscheme=pastel19,
-        fontname=Arial,
-        fontsize=10,
-        height=0,
-        penwidth=2,
-        shape=box,
-        style=&quot;filled, rounded&quot;,
-        width=0];
-    edge [color=lightslategrey,
-        penwidth=1];
-    subgraph cluster_builtins {
-        graph [label=builtins];
-        node [color=1];
-        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-            label=object,
-            target=_top];
-    }
-    subgraph cluster_code {
-        graph [label=code];
-        node [color=2];
-        &quot;code.InteractiveConsole&quot; [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
-            label=&quot;Interactive\nConsole&quot;,
-            target=_top];
-        &quot;code.InteractiveInterpreter&quot; [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
-            label=&quot;Interactive\nInterpreter&quot;,
-            target=_top];
-        &quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;;
-    }
-    subgraph &quot;cluster_uqbar.book&quot; {
-        graph [label=&quot;uqbar.book&quot;];
-        node [color=3];
-        &quot;uqbar.book.Console.Console&quot; [URL=&quot;../api/uqbar/book/Console.html#uqbar.book.Console.Console&quot;,
-            color=black,
-            fontcolor=white,
-            label=Console,
-            target=_top];
-    }
-    &quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;;
-    &quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.Console.Console&quot;;
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.BaseException&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
+			color=1,
+			label=&quot;Base\nException&quot;,
+			target=_top];
+		&quot;builtins.Exception&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
+			color=1,
+			label=Exception,
+			target=_top];
+		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;		 [minlen=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;		 [minlen=1];
+	}
+	subgraph cluster_code {
+		graph [label=code];
+		node [color=2];
+		&quot;code.InteractiveConsole&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
+			color=2,
+			label=&quot;Interactive\nConsole&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
+			color=2,
+			label=&quot;Interactive\nInterpreter&quot;,
+			target=_top];
+		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.book.console&quot; {
+		graph [label=&quot;uqbar.book.console&quot;];
+		node [color=3];
+		&quot;uqbar.book.console.Console&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
+			color=3,
+			label=Console,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleError&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
+			color=3,
+			label=&quot;Console\nError&quot;,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleInput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
+			color=3,
+			label=&quot;Console\nInput&quot;,
+			target=_top];
+		&quot;uqbar.book.console.ConsoleOutput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
+			color=3,
+			label=&quot;Console\nOutput&quot;,
+			target=_top];
+	}
+	subgraph &quot;cluster_uqbar.book.extensions&quot; {
+		graph [label=&quot;uqbar.book.extensions&quot;];
+		node [color=4];
+		&quot;uqbar.book.extensions.Extension&quot;		 [URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.Extension&quot;,
+			color=4,
+			label=Extension,
+			target=_top];
+		&quot;uqbar.book.extensions.GrapherExtension&quot;		 [URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.GrapherExtension&quot;,
+			color=4,
+			label=&quot;Grapher\nExtension&quot;,
+			target=_top];
+		&quot;uqbar.book.extensions.Extension&quot; -&gt; &quot;uqbar.book.extensions.GrapherExtension&quot;		 [minlen=1];
+		&quot;uqbar.book.extensions.GraphableProxy&quot;		 [URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.GraphableProxy&quot;,
+			color=4,
+			label=&quot;Graphable\nProxy&quot;,
+			target=_top];
+	}
+	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.extensions.Extension&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.extensions.GraphableProxy&quot;	 [minlen=2];
+	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	 [minlen=1];
 }</p></object></div>
 </div>
-<hr/><p class="section-header rubric">Internals</p>
+<hr/><p class="section-header rubric">Subpackages</p>
 <div class="toctree-wrapper compound">
 </div>
 <table border="1" class="longtable docutils">
@@ -247,8 +301,14 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="Console.html#uqbar.book.Console.Console" title="uqbar.book.Console.Console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Console</span></code></a></td>
-<td>Interactive console providing a sandboxed namespace for executing code examples.</td>
+<tr class="row-odd"><td><a class="reference internal" href="console.html#module-uqbar.book.console" title="uqbar.book.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="extensions.html#module-uqbar.book.extensions" title="uqbar.book.extensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extensions</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sphinx.html#module-uqbar.book.sphinx" title="uqbar.book.sphinx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sphinx</span></code></a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -262,10 +322,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Console.html" class="btn btn-neutral float-right" title="Console" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="console.html" class="btn btn-neutral float-right" title="console" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../apis/PackageNode.html" class="btn btn-neutral" title="PackageNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../apis/PackageNode.html" class="btn btn-neutral float-left" title="PackageNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -291,26 +351,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

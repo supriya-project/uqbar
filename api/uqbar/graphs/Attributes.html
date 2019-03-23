@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Attributes &mdash; uqbar 0.2.17 documentation</title>
+  <title>Attributes &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -31,22 +38,17 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Edge" href="Edge.html" />
-    <link rel="prev" title="graphs" href="index.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+    <link rel="prev" title="Grapher" href="Grapher.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -92,7 +94,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">graphs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Grapher.html">Grapher</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Edge.html">Edge</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Graph.html">Graph</a></li>
@@ -187,7 +191,7 @@
         <a href="Edge.html" class="btn btn-neutral float-right" title="Edge" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="graphs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Grapher.html" class="btn btn-neutral float-left" title="Grapher" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -289,87 +293,282 @@
 <dd><p>An attributes listing for a Graphviz graph, cluster, node or edge.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.graphs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">attributes</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">Attributes</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;node&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">fillcolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;Mrecord&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rounded&#39;</span><span class="p">,</span> <span class="s1">&#39;filled&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">fillcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;Mrecord&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rounded&quot;</span><span class="p">,</span> <span class="s2">&quot;filled&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">attributes</span><span class="p">,</span> <span class="s1">&#39;graphviz&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">attributes</span><span class="p">,</span> <span class="s2">&quot;graphviz&quot;</span><span class="p">))</span>
 <span class="go">[color=black,</span>
 <span class="go">    fillcolor=white,</span>
 <span class="go">    shape=Mrecord,</span>
 <span class="go">    style=&quot;rounded, filled&quot;];</span>
 </pre></div>
 </div>
-<dl class="class">
-<dt id="uqbar.graphs.Attributes.Attributes.Color">
-<em class="property">class </em><code class="descname">Color</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.Color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Color" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Color.color">
-<code class="descname">color</code><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Color.color" title="Permalink to this definition">¶</a></dt>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Color</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mode</span></code></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Point</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__delitem__" title="uqbar.graphs.Attributes.Attributes.__delitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__delitem__</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__eq__" title="uqbar.graphs.Attributes.Attributes.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></td>
+<td>Return self==value.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__format__" title="uqbar.graphs.Attributes.Attributes.__format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format__</span></code></a></td>
+<td>default object formatter</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__format_graphviz__" title="uqbar.graphs.Attributes.Attributes.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__format_html__" title="uqbar.graphs.Attributes.Attributes.__format_html__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_html__</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__getitem__" title="uqbar.graphs.Attributes.Attributes.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a></td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__iter__" title="uqbar.graphs.Attributes.Attributes.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__len__" title="uqbar.graphs.Attributes.Attributes.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.__setitem__" title="uqbar.graphs.Attributes.Attributes.__setitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setitem__</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.copy" title="uqbar.graphs.Attributes.Attributes.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Attributes.Attributes.mode" title="uqbar.graphs.Attributes.Attributes.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__contains__">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">Mapping</span></code></a>).</code><code class="descname">__contains__</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</div>
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__delitem__">
+<em class="property">overridden </em><code class="descname">__delitem__</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__delitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__delitem__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="class">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode">
-<em class="property">class </em><code class="descname">Mode</code><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.Mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>An enumeration.</p>
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.CLUSTER">
-<code class="descname">CLUSTER</code><em class="property"> = 1</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.CLUSTER" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.EDGE">
-<code class="descname">EDGE</code><em class="property"> = 2</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.EDGE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.GRAPH">
-<code class="descname">GRAPH</code><em class="property"> = 3</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.GRAPH" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.NODE">
-<code class="descname">NODE</code><em class="property"> = 4</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.NODE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.TABLE">
-<code class="descname">TABLE</code><em class="property"> = 5</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.TABLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Mode.TABLE_CELL">
-<code class="descname">TABLE_CELL</code><em class="property"> = 6</em><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Mode.TABLE_CELL" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__eq__">
+<em class="property">overridden </em><code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self==value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="class">
-<dt id="uqbar.graphs.Attributes.Attributes.Point">
-<em class="property">class </em><code class="descname">Point</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Point" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Point.x">
-<code class="descname">x</code><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Point.x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.graphs.Attributes.Attributes.Point.y">
-<code class="descname">y</code><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.Point.y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__format__">
+<em class="property">overridden </em><code class="descname">__format__</code><span class="sig-paren">(</span><em>format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__format__" title="Permalink to this definition">¶</a></dt>
+<dd><p>default object formatter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__format_graphviz__">
+<code class="descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__format_html__">
+<code class="descname">__format_html__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__format_html__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__format_html__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__getitem__">
+<em class="property">overridden </em><code class="descname">__getitem__</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__iter__">
+<em class="property">overridden </em><code class="descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__iter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__len__">
+<em class="property">overridden </em><code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__len__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.__setitem__">
+<em class="property">overridden </em><code class="descname">__setitem__</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.__setitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.clear">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>).</code><code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None.  Remove all items from D.<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <dl class="method">
 <dt id="uqbar.graphs.Attributes.Attributes.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Attributes.html#Attributes.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.copy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.get">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">Mapping</span></code></a>).</code><code class="descname">get</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; D[k] if k in D, else d.  d defaults to None.<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.items">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">Mapping</span></code></a>).</code><code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on D's items<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.keys">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">Mapping</span></code></a>).</code><code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on D's keys<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.pop">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>).</code><code class="descname">pop</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; v, remove specified key and return the corresponding value.<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>If key is not found, d is returned if given, otherwise KeyError is raised.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.popitem">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>).</code><code class="descname">popitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; (k, v), remove and return some (key, value) pair<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.popitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>as a 2-tuple; but raise KeyError if D is empty.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.setdefault">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>).</code><code class="descname">setdefault</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; D.get(k,d), also set D[k]=d if k not in D<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.update">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>).</code><code class="descname">update</code><span class="sig-paren">(</span><span class="optional">[</span><em>E</em>, <span class="optional">]</span><em>**F</em><span class="sig-paren">)</span> &#x2192; None.  Update D from mapping/iterable E and F.<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
+If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
+In either case, this is followed by: for k, v in F.items(): D[k] = v</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="method">
+<dt id="uqbar.graphs.Attributes.Attributes.values">
+<code class="descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">Mapping</span></code></a>).</code><code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an object providing a view on D's values<a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.graphs.Attributes.Attributes.mode">
 <code class="descname">mode</code><a class="headerlink" href="#uqbar.graphs.Attributes.Attributes.mode" title="Permalink to this definition">¶</a></dt>
@@ -390,7 +589,7 @@
         <a href="Edge.html" class="btn btn-neutral float-right" title="Edge" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Grapher.html" class="btn btn-neutral float-left" title="Grapher" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -416,26 +615,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

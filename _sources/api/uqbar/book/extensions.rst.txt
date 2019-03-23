@@ -1,0 +1,143 @@
+.. _uqbar--book--extensions:
+
+extensions
+==========
+
+.. automodule:: uqbar.book.extensions
+
+.. currentmodule:: uqbar.book.extensions
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.book.extensions
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~Extension
+   ~GraphableProxy
+   ~GrapherExtension
+
+.. autoclass:: Extension
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      setup
+      teardown
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: Extension.setup
+
+   .. automethod:: Extension.teardown
+
+.. autoclass:: GraphableProxy
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      clean_svg
+      depart_graphviz_block_text
+      graphviz_block
+      render_image
+      setup_sphinx
+      template
+      to_docutils
+      visit_graphviz_block_html
+      visit_graphviz_block_latex
+      visit_graphviz_block_text
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: GraphableProxy.to_docutils
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Class & static methods
+      :class: class-header
+
+   .. automethod:: GraphableProxy.clean_svg
+
+   .. automethod:: GraphableProxy.depart_graphviz_block_text
+
+   .. automethod:: GraphableProxy.render_image
+
+   .. automethod:: GraphableProxy.setup_sphinx
+
+   .. automethod:: GraphableProxy.visit_graphviz_block_html
+
+   .. automethod:: GraphableProxy.visit_graphviz_block_latex
+
+   .. automethod:: GraphableProxy.visit_graphviz_block_text
+
+.. autoclass:: GrapherExtension
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      setup
+      setup_sphinx
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: GrapherExtension.setup
+
+   .. container:: inherited
+
+      .. automethod:: GrapherExtension.teardown
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Class & static methods
+      :class: class-header
+
+   .. automethod:: GrapherExtension.setup_sphinx

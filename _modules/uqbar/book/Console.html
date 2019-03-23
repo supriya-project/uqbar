@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.book.Console &mdash; uqbar 0.2.17 documentation</title>
+  <title>uqbar.book.console &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -131,7 +133,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>uqbar.book.Console</li>
+      <li>uqbar.book.console</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -146,62 +148,201 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for uqbar.book.Console</h1><div class="highlight"><pre>
+  <h1>Source code for uqbar.book.console</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">code</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">_pytest.monkeypatch</span> <span class="k">import</span> <span class="n">MonkeyPatch</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span> <span class="nn">uqbar.io</span> <span class="k">import</span> <span class="n">RedirectedStreams</span>
 
 
-<div class="viewcode-block" id="Console"><a class="viewcode-back" href="../../../api/uqbar/book/Console.html#uqbar.book.Console.Console">[docs]</a><span class="k">class</span> <span class="nc">Console</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ConsoleInput"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConsoleInput</span><span class="p">:</span>
+    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+<div class="viewcode-block" id="ConsoleOutput"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConsoleOutput</span><span class="p">:</span>
+    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+<div class="viewcode-block" id="ConsoleError"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.ConsoleError">[docs]</a><span class="k">class</span> <span class="nc">ConsoleError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<span class="c1"># TODO: Implement non-captured setup/teardown lines</span>
+
+
+<div class="viewcode-block" id="Console"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console">[docs]</a><span class="k">class</span> <span class="nc">Console</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Interactive console providing a sandboxed namespace for executing code</span>
 <span class="sd">    examples.</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; from uqbar.book.console import Console</span>
+<span class="sd">            &gt;&gt;&gt; console = Console()</span>
+<span class="sd">            &gt;&gt;&gt; results, errored = console.interpret([</span>
+<span class="sd">            ...     &quot;x = 3&quot;,</span>
+<span class="sd">            ...     &quot;for i in range(3):&quot;,</span>
+<span class="sd">            ...     &quot;    print(i + x)&quot;,</span>
+<span class="sd">            ...     &quot;&quot;,</span>
+<span class="sd">            ...     &quot;quit()&quot;,  # SystemExit is captured</span>
+<span class="sd">            ...     &quot;print(2 + 2)&quot;,</span>
+<span class="sd">            ... ])</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; for result in results:</span>
+<span class="sd">            ...     print(result)</span>
+<span class="sd">            ...</span>
+<span class="sd">            ConsoleInput(string=&#39;&gt;&gt;&gt; x = 3\n&gt;&gt;&gt; for i in range(3):\n...     print(i + x)\n... \n&#39;)</span>
+<span class="sd">            ConsoleOutput(string=&#39;3\n4\n5\n&#39;)</span>
+<span class="sd">            ConsoleInput(string=&#39;&gt;&gt;&gt; quit()\n&gt;&gt;&gt; print(2 + 2)\n&#39;)</span>
+<span class="sd">            ConsoleOutput(string=&#39;4\n&#39;)</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(errored)</span>
+<span class="sd">            False</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        The console maintains state across multiple ``interpret()`` calls:</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; results, errored = console.interpret([&quot;x + 2&quot;])</span>
+<span class="sd">            &gt;&gt;&gt; for result in results:</span>
+<span class="sd">            ...     print(result)</span>
+<span class="sd">            ...</span>
+<span class="sd">            ConsoleInput(string=&#39;&gt;&gt;&gt; x + 2\n&#39;)</span>
+<span class="sd">            ConsoleOutput(string=&#39;5\n&#39;)</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(errored)</span>
+<span class="sd">            False</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        Errors are reported but do not propagate outside of the ``interpret()`` call:</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; results, errored = console.interpret([&quot;1 / 0&quot;])</span>
+<span class="sd">            &gt;&gt;&gt; for result in results:</span>
+<span class="sd">            ...     print(result)</span>
+<span class="sd">            ...</span>
+<span class="sd">            ConsoleInput(string=&#39;&gt;&gt;&gt; 1 / 0\n&#39;)</span>
+<span class="sd">            ConsoleOutput(string=&#39;Traceback (most recent call last):\n  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;\nZeroDivisionError: division by zero\n&#39;)</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(errored)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        Error reporting resets:</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; results, errored = console.interpret([&quot;x += 5&quot;, &quot;print(x)&quot;])</span>
+<span class="sd">            &gt;&gt;&gt; for result in results:</span>
+<span class="sd">            ...     print(result)</span>
+<span class="sd">            ...</span>
+<span class="sd">            ConsoleInput(string=&#39;&gt;&gt;&gt; x += 5\n&gt;&gt;&gt; print(x)\n&#39;)</span>
+<span class="sd">            ConsoleOutput(string=&#39;8\n&#39;)</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(errored)</span>
+<span class="sd">            False</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">### CLASS VARIABLES ###</span>
 
-    <span class="n">__documentation_section__</span> <span class="o">=</span> <span class="s2">&quot;Internals&quot;</span>
-
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">namespace</span> <span class="o">=</span> <span class="n">namespace</span> <span class="ow">or</span> <span class="p">{}</span>
-        <span class="n">namespace</span><span class="p">[</span><span class="s2">&quot;__builtins__&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">__builtins__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">namespace</span><span class="p">[</span><span class="s2">&quot;__name__&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;__main__&quot;</span>
-        <span class="n">namespace</span><span class="p">[</span><span class="s2">&quot;__package__&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">namespace</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span>
+            <span class="nb">locals</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="p">(</span><span class="n">namespace</span> <span class="ow">or</span> <span class="p">{}),</span> <span class="s2">&quot;__name__&quot;</span><span class="p">:</span> <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="s2">&quot;__package__&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span> <span class="o">=</span> <span class="n">extensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errored</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monkeypatch</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">### SPECIAL METHODS ###</span>
+
+<div class="viewcode-block" id="Console.__enter__"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monkeypatch</span> <span class="o">=</span> <span class="n">MonkeyPatch</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">extension</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extensions</span> <span class="ow">or</span> <span class="p">[]:</span>
+            <span class="n">extension</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">monkeypatch</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Console.__exit__"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monkeypatch</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span></div>
 
     <span class="c1">### PUBLIC METHODS ###</span>
 
-<div class="viewcode-block" id="Console.showsyntaxerror"><a class="viewcode-back" href="../../../api/uqbar/book/Console.html#uqbar.book.Console.Console.showsyntaxerror">[docs]</a>    <span class="k">def</span> <span class="nf">showsyntaxerror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Proxies Python&#39;s InteractiveConsole.showsyntaxerror().</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="o">.</span><span class="n">showsyntaxerror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">register_error</span><span class="p">()</span></div>
+<div class="viewcode-block" id="Console.flush"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="Console.showtraceback"><a class="viewcode-back" href="../../../api/uqbar/book/Console.html#uqbar.book.Console.Console.showtraceback">[docs]</a>    <span class="k">def</span> <span class="nf">showtraceback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Proxies Python&#39;s InteractiveConsole.showtraceback().</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">code</span><span class="o">.</span><span class="n">InteractiveConsole</span><span class="o">.</span><span class="n">showtraceback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">register_error</span><span class="p">()</span></div>
+<div class="viewcode-block" id="Console.interpret"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.interpret">[docs]</a>    <span class="k">def</span> <span class="nf">interpret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resetbuffer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errored</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">with</span> <span class="n">RedirectedStreams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&gt;&gt;&gt; &quot;</span>
+            <span class="k">for</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConsoleInput</span><span class="p">(</span><span class="n">prompt</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">is_incomplete_statement</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">SystemExit</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">resetbuffer</span><span class="p">()</span>
+                <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;... &quot;</span> <span class="k">if</span> <span class="n">is_incomplete_statement</span> <span class="k">else</span> <span class="s2">&quot;&gt;&gt;&gt; &quot;</span>
+            <span class="k">if</span> <span class="n">is_incomplete_statement</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConsoleInput</span><span class="p">(</span><span class="n">prompt</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">is_incomplete_statement</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">SystemExit</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">resetbuffer</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">is_incomplete_statement</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">errored</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">class_</span><span class="p">,</span> <span class="n">grouper</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">class_</span> <span class="ow">is</span> <span class="n">ConsoleInput</span><span class="p">:</span>
+                <span class="c1"># Strip extra blank lines induced by black.</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">grouper</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="p">)</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">class_</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="n">string</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">class_</span> <span class="ow">is</span> <span class="n">ConsoleOutput</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">class_</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">grouper</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">grouper</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">errored</span></div>
 
-<div class="viewcode-block" id="Console.unregister_error"><a class="viewcode-back" href="../../../api/uqbar/book/Console.html#uqbar.book.Console.Console.unregister_error">[docs]</a>    <span class="k">def</span> <span class="nf">unregister_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unregisters the last error registered in the current document</span>
-<span class="sd">        handler.</span>
+<div class="viewcode-block" id="Console.push_proxy"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.push_proxy">[docs]</a>    <span class="k">def</span> <span class="nf">push_proxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span></div>
 
-<span class="sd">        This occurs when the interpreting code block permits errors to appear.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">unregister_error</span><span class="p">()</span></div>
+<div class="viewcode-block" id="Console.showsyntaxerror"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.showsyntaxerror">[docs]</a>    <span class="k">def</span> <span class="nf">showsyntaxerror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">showsyntaxerror</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errored</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-    <span class="c1">### PUBLIC PROPERTIES ###</span>
+<div class="viewcode-block" id="Console.showtraceback"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.showtraceback">[docs]</a>    <span class="k">def</span> <span class="nf">showtraceback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">showtraceback</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errored</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">errored</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Is true if the last line executed by the console errored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">errored</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+<div class="viewcode-block" id="Console.write"><a class="viewcode-back" href="../../../api/uqbar/book/console.html#uqbar.book.console.Console.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConsoleOutput</span><span class="p">(</span><span class="n">string</span><span class="p">))</span></div></div>
 </pre></div>
 
            </div>
@@ -231,26 +372,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

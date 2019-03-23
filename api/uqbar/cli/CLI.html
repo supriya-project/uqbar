@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CLI &mdash; uqbar 0.2.17 documentation</title>
+  <title>CLI &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="CLIAggregator" href="CLIAggregator.html" />
     <link rel="prev" title="cli" href="index.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -96,6 +98,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
@@ -175,7 +178,7 @@
         <a href="CLIAggregator.html" class="btn btn-neutral float-right" title="CLIAggregator" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="cli" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="cli" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -249,16 +252,67 @@
 <dt id="uqbar.cli.CLI.CLI">
 <em class="property">abstract </em><em class="property">class </em><code class="descname">CLI</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base for CLI scripts.</p>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.__call__" title="uqbar.cli.CLI.CLI.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></td>
+<td>Calls developer script.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.argument_parser" title="uqbar.cli.CLI.CLI.argument_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argument_parser</span></code></a></td>
+<td>The script’s instance of argparse.ArgumentParser.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_help" title="uqbar.cli.CLI.CLI.formatted_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_help</span></code></a></td>
+<td>Formatted help of developer script.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_usage" title="uqbar.cli.CLI.CLI.formatted_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_usage</span></code></a></td>
+<td>Formatted usage of developer script.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_version" title="uqbar.cli.CLI.CLI.formatted_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_version</span></code></a></td>
+<td>Formatted version of developer script.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">long_description</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.program_name" title="uqbar.cli.CLI.CLI.program_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">program_name</span></code></a></td>
+<td>The name of the script, callable from the command line.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">short_description</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="method">
+<dt id="uqbar.cli.CLI.CLI.__call__">
+<em class="property">overridden </em><code class="descname">__call__</code><span class="sig-paren">(</span><em>arguments=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls developer script.</p>
+<p>Returns none.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.argument_parser">
 <code class="descname">argument_parser</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.argument_parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>The script’s instance of argparse.ArgumentParser.</p>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.cli.CLI.CLI.config_name">
-<code class="descname">config_name</code><em class="property"> = '.uqbarrc'</em><a class="headerlink" href="#uqbar.cli.CLI.CLI.config_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.formatted_help">
@@ -279,25 +333,10 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="uqbar.cli.CLI.CLI.long_description">
-<code class="descname">long_description</code><em class="property"> = None</em><a class="headerlink" href="#uqbar.cli.CLI.CLI.long_description" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.program_name">
 <code class="descname">program_name</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.program_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the script, callable from the command line.</p>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.cli.CLI.CLI.short_description">
-<code class="descname">short_description</code><em class="property"> = None</em><a class="headerlink" href="#uqbar.cli.CLI.CLI.short_description" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uqbar.cli.CLI.CLI.version">
-<code class="descname">version</code><em class="property"> = 1.0</em><a class="headerlink" href="#uqbar.cli.CLI.CLI.version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -314,7 +353,7 @@
         <a href="CLIAggregator.html" class="btn btn-neutral float-right" title="CLIAggregator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="cli" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="cli" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -340,26 +379,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,16 +8,6 @@
  viewBox="0.00 0.00 617.61 466.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 462)">
 <title>InheritanceGraph</title>
-<g id="clust3" class="cluster">
-<title>cluster_uqbar.apis.dummy</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93.5,-373C93.5,-373 196,-373 196,-373 202,-373 208,-379 208,-385 208,-385 208,-438 208,-438 208,-444 202,-450 196,-450 196,-450 93.5,-450 93.5,-450 87.5,-450 81.5,-444 81.5,-438 81.5,-438 81.5,-385 81.5,-385 81.5,-379 87.5,-373 93.5,-373"/>
-<text text-anchor="middle" x="144.75" y="-438" font-family="Arial" font-size="10.00" fill="#000000">uqbar.apis.dummy</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_uqbar.containers</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93,-288C93,-288 281,-288 281,-288 287,-288 293,-294 293,-300 293,-300 293,-353 293,-353 293,-359 287,-365 281,-365 281,-365 93,-365 93,-365 87,-365 81,-359 81,-353 81,-353 81,-300 81,-300 81,-294 87,-288 93,-288"/>
-<text text-anchor="middle" x="187" y="-353" font-family="Arial" font-size="10.00" fill="#000000">uqbar.containers</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_builtins</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-169C20,-169 49,-169 49,-169 55,-169 61,-175 61,-181 61,-181 61,-212 61,-212 61,-218 55,-224 49,-224 49,-224 20,-224 20,-224 14,-224 8,-218 8,-212 8,-212 8,-181 8,-181 8,-175 14,-169 20,-169"/>
@@ -27,6 +17,16 @@
 <title>cluster_uqbar.apis</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M325,-8C325,-8 589.6102,-8 589.6102,-8 595.6102,-8 601.6102,-14 601.6102,-20 601.6102,-20 601.6102,-351 601.6102,-351 601.6102,-357 595.6102,-363 589.6102,-363 589.6102,-363 325,-363 325,-363 319,-363 313,-357 313,-351 313,-351 313,-20 313,-20 313,-14 319,-8 325,-8"/>
 <text text-anchor="middle" x="457.3051" y="-351" font-family="Arial" font-size="10.00" fill="#000000">uqbar.apis</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_uqbar.apis.dummy</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93.5,-373C93.5,-373 196,-373 196,-373 202,-373 208,-379 208,-385 208,-385 208,-438 208,-438 208,-444 202,-450 196,-450 196,-450 93.5,-450 93.5,-450 87.5,-450 81.5,-444 81.5,-438 81.5,-438 81.5,-385 81.5,-385 81.5,-379 87.5,-373 93.5,-373"/>
+<text text-anchor="middle" x="144.75" y="-438" font-family="Arial" font-size="10.00" fill="#000000">uqbar.apis.dummy</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_uqbar.containers</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93,-288C93,-288 281,-288 281,-288 287,-288 293,-294 293,-300 293,-300 293,-353 293,-353 293,-359 287,-365 281,-365 281,-365 93,-365 93,-365 87,-365 81,-359 81,-353 81,-353 81,-300 81,-300 81,-294 87,-288 93,-288"/>
+<text text-anchor="middle" x="187" y="-353" font-family="Arial" font-size="10.00" fill="#000000">uqbar.containers</text>
 </g>
 <!-- builtins.object&#45;&gt;uqbar.apis.APIBuilder.APIBuilder -->
 <g id="edge8" class="edge">

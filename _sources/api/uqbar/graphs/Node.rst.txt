@@ -13,5 +13,153 @@ Node
       :lineage: uqbar.graphs.Node
 
 .. autoclass:: Node
-   :members:
-   :undoc-members:
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      __format__
+      __format_graphviz__
+      attach
+      attributes
+      edges
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Special methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: Node.__contains__
+
+   .. container:: inherited
+
+      .. automethod:: Node.__delitem__
+
+   .. automethod:: Node.__format__
+
+   .. automethod:: Node.__format_graphviz__
+
+   .. container:: inherited
+
+      .. automethod:: Node.__getitem__
+
+   .. container:: inherited
+
+      .. automethod:: Node.__iter__
+
+   .. container:: inherited
+
+      .. automethod:: Node.__len__
+
+   .. container:: inherited
+
+      .. automethod:: Node.__setitem__
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: Node.append
+
+   .. automethod:: Node.attach
+
+   .. container:: inherited
+
+      .. automethod:: Node.depth_first
+
+   .. container:: inherited
+
+      .. automethod:: Node.extend
+
+   .. container:: inherited
+
+      .. automethod:: Node.index
+
+   .. container:: inherited
+
+      .. automethod:: Node.insert
+
+   .. container:: inherited
+
+      .. automethod:: Node.pop
+
+   .. container:: inherited
+
+      .. automethod:: Node.precede_by
+
+   .. container:: inherited
+
+      .. automethod:: Node.recurse
+
+   .. container:: inherited
+
+      .. automethod:: Node.remove
+
+   .. container:: inherited
+
+      .. automethod:: Node.replace_with
+
+   .. container:: inherited
+
+      .. automethod:: Node.succeed_by
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read/write properties
+      :class: class-header
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.name
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Read-only properties
+      :class: class-header
+
+   .. autoattribute:: Node.attributes
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.children
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.depth
+
+   .. autoattribute:: Node.edges
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.graph_order
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.parent
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.parentage
+
+   .. container:: inherited
+
+      .. autoattribute:: Node.root

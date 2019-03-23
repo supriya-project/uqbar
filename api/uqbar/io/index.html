@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>io &mdash; uqbar 0.2.17 documentation</title>
+  <title>io &mdash; uqbar 0.3.0 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="DirectoryChange" href="DirectoryChange.html" />
     <link rel="prev" title="RecordGroup" href="../graphs/RecordGroup.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +62,7 @@
             
             
               <div class="version">
-                0.2.17
+                0.3.0
               </div>
             
           
@@ -92,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">io</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="DirectoryChange.html">DirectoryChange</a></li>
@@ -175,7 +178,7 @@
         <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../graphs/RecordGroup.html" class="btn btn-neutral" title="RecordGroup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -303,9 +306,10 @@
 <dt id="uqbar.io.find_common_prefix">
 <code class="descname">find_common_prefix</code><span class="sig-paren">(</span><em>paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_common_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the common prefix of two or more paths.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/bar/baz&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">two</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/biz&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">three</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/wuux&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">two</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/biz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">three</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/wuux&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
@@ -346,13 +350,16 @@
 <code class="descname">relative_to</code><span class="sig-paren">(</span><em>source_path</em>, <em>target_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#relative_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.relative_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</p>
 <p>Handles the case of paths without a common prefix.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/bar/baz&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo/quux/biz&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/biz&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
-<span class="c">...</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/pathlib.py&quot;</span>, line <span class="m">872</span>, in <span class="n">relative_to</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">formatted</span><span class="p">)))</span>
 <span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; does not start with &#39;foo/bar/baz&#39;</span>
 </pre></div>
 </div>
@@ -403,7 +410,7 @@ instead of strings.</p>
 
 <dl class="function">
 <dt id="uqbar.io.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>contents</em>, <em>path</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>contents</em>, <em>path</em>, <em>verbose=False</em>, <em>logger_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
 <p>Checks if <code class="docutils literal notranslate"><span class="pre">path</span></code> already exists and only write out new contents if the
 old contents do not match.</p>
@@ -439,7 +446,7 @@ old contents do not match.</p>
         <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../graphs/RecordGroup.html" class="btn btn-neutral" title="RecordGroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -465,26 +472,16 @@ old contents do not match.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
