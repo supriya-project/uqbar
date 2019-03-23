@@ -84,6 +84,7 @@ class SummarizingRootDocumenter(RootDocumenter):
         .. autosummary::
            :nosignatures:
         <BLANKLINE>
+           ~uqbar.strings.ansi_escape
            ~uqbar.strings.delimit_words
            ~uqbar.strings.normalize
            ~uqbar.strings.to_dash_case

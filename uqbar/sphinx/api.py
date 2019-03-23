@@ -26,12 +26,27 @@ import pathlib
 import types
 from typing import Any, Dict, List  # noqa
 
-import sphinx  # type: ignore
+from sphinx.util import logging
+from sphinx.util.console import bold, darkgreen, darkred, purple
 
 import uqbar.apis
 
+logger = logging.getLogger(__name__)
 
-def on_builder_inited(app: sphinx.application.Sphinx):
+
+def logger_func(string):
+    if string.startswith("preserved"):
+        return
+    elif string.startswith("rewrote"):
+        string = purple(string)
+    elif string.startswith("pruned"):
+        string = darkred(string)
+    elif string.startswith("wrote"):
+        string = darkgreen(string)
+    logger.info("{} {}".format(bold("[uqbar-api]"), string))
+
+
+def on_builder_inited(app):
     """
     Hooks into Sphinx's ``builder-inited`` event.
 
@@ -93,11 +108,12 @@ def on_builder_inited(app: sphinx.application.Sphinx):
         module_documenter_class=module_documenter_class,
         root_documenter_class=root_documenter_class,
         title=config.uqbar_api_title,
+        logger_func=logger_func,
     )
     api_builder()
 
 
-def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
+def setup(app) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
     """
@@ -109,6 +125,10 @@ def setup(app: sphinx.application.Sphinx) -> Dict[str, Any]:
     app.add_config_value("uqbar_api_module_documenter_class", None, "env")
     app.add_config_value("uqbar_api_root_documenter_class", None, "env")
     app.add_config_value("uqbar_api_source_paths", None, "env")
-    app.add_config_value("uqbar_api_title", "API", "env")
+    app.add_config_value("uqbar_api_title", "API", "html")
     app.connect("builder-inited", on_builder_inited)
-    return {"version": uqbar.__version__}
+    return {
+        "version": uqbar.__version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

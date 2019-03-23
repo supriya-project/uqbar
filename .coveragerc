@@ -2,7 +2,9 @@
 branch = True
 cover_pylib = False
 source =
-    uqbar
+    uqbar/
+omit =
+    tests/fake_package/*
 
 [report]
 exclude_lines = 

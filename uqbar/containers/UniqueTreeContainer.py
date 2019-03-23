@@ -37,7 +37,7 @@ class UniqueTreeContainer(UniqueTreeNode):
             children = tuple(self._named_children[i])
             for child in children:
                 parent = child.parent
-                del (parent[parent.index(child)])
+                del parent[parent.index(child)]
             return
         if isinstance(i, int):
             if i < 0:
@@ -126,6 +126,48 @@ class UniqueTreeContainer(UniqueTreeNode):
         self.__setitem__(slice(len(self), len(self)), [expr])
 
     def depth_first(self, top_down=True):
+        """
+        Iterate depth-first.
+
+        ::
+
+            >>> from uqbar.containers import UniqueTreeContainer, UniqueTreeNode
+            >>> root_container = UniqueTreeContainer(name="root")
+            >>> outer_container = UniqueTreeContainer(name="outer")
+            >>> inner_container = UniqueTreeContainer(name="inner")
+            >>> node_a = UniqueTreeNode(name="a")
+            >>> node_b = UniqueTreeNode(name="b")
+            >>> node_c = UniqueTreeNode(name="c")
+            >>> node_d = UniqueTreeNode(name="d")
+            >>> root_container.extend([node_a, outer_container])
+            >>> outer_container.extend([inner_container, node_d])
+            >>> inner_container.extend([node_b, node_c])
+
+        ::
+
+            >>> for node in root_container.depth_first():
+            ...     print(node.name)
+            ...
+            a
+            outer
+            inner
+            b
+            c
+            d
+
+        ::
+
+            >>> for node in root_container.depth_first(top_down=False):
+            ...     print(node.name)
+            ...
+            a
+            b
+            c
+            inner
+            d
+            outer
+
+        """
         for child in tuple(self):
             if top_down:
                 yield child
@@ -151,7 +193,7 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def pop(self, i=-1):
         node = self[i]
-        del (self[i])
+        del self[i]
         return node
 
     def recurse(self):
@@ -163,7 +205,7 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def remove(self, node):
         i = self.index(node)
-        del (self[i])
+        del self[i]
 
     ### PUBLIC PROPERTIES ###
 

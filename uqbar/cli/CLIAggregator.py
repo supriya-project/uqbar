@@ -1,4 +1,5 @@
 import abc
+import sys
 
 from uqbar.cli.CLI import CLI
 
@@ -52,6 +53,7 @@ class CLIAggregator(CLI):
                 raise ValueError(message)
             arguments = self.argument_parser.parse_known_args(arguments)
         self._process_args(arguments)
+        sys.exit(0)
 
     ### PRIVATE METHODS ###
 

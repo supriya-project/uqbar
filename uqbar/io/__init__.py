@@ -21,6 +21,7 @@ def find_common_prefix(
 
     ::
 
+        >>> import pathlib
         >>> one = pathlib.Path('foo/bar/baz')
         >>> two = pathlib.Path('foo/quux/biz')
         >>> three = pathlib.Path('foo/quux/wuux')
@@ -80,6 +81,7 @@ def relative_to(
 
     ::
 
+        >>> import pathlib
         >>> source = pathlib.Path('foo/bar/baz')
         >>> target = pathlib.Path('foo/quux/biz')
 
@@ -87,7 +89,7 @@ def relative_to(
 
         >>> target.relative_to(source)
         Traceback (most recent call last):
-        ...
+          ...
         ValueError: 'foo/quux/biz' does not start with 'foo/bar/baz'
 
     ::
@@ -141,7 +143,12 @@ def walk(
         yield root_path, directory_paths, file_paths
 
 
-def write(contents: str, path: Union[str, pathlib.Path], verbose: bool = False) -> bool:
+def write(
+    contents: str,
+    path: Union[str, pathlib.Path],
+    verbose: bool = False,
+    logger_func=None,
+) -> bool:
     """
     Writes ``contents`` to ``path``.
 
@@ -154,19 +161,20 @@ def write(contents: str, path: Union[str, pathlib.Path], verbose: bool = False) 
     :param path: the path to write to
     :param verbose: whether to print output
     """
+    print_func = logger_func or print
     path = pathlib.Path(path)
     if path.exists():
         with path.open("r") as file_pointer:
             old_contents = file_pointer.read()
         if old_contents == contents:
             if verbose:
-                print("preserved: {}".format(path))
+                print_func("preserved {}".format(path))
             return False
         else:
             with path.open("w") as file_pointer:
                 file_pointer.write(contents)
             if verbose:
-                print("rewrote: {}".format(path))
+                print_func("rewrote {}".format(path))
             return True
     elif not path.exists():
         if not path.parent.exists():
@@ -174,5 +182,5 @@ def write(contents: str, path: Union[str, pathlib.Path], verbose: bool = False) 
         with path.open("w") as file_pointer:
             file_pointer.write(contents)
         if verbose:
-            print("wrote: {}".format(path))
+            print_func("wrote {}".format(path))
     return True

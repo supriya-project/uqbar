@@ -2,6 +2,7 @@ import abc
 import argparse
 import os
 import pathlib
+import sys
 import typing
 from configparser import ConfigParser
 
@@ -64,6 +65,7 @@ class CLI(abc.ABC):
                 raise ValueError
             arguments = self.argument_parser.parse_args(arguments)
         self._process_args(arguments)
+        sys.exit(0)
 
     ### PRIVATE METHODS ###
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import pathlib
+import sys
+from distutils.version import LooseVersion
 
 import setuptools
 
@@ -35,6 +37,9 @@ install_requires = [
     "sphinx-autodoc-typehints>=1.3.0",
     "sphinx-rtd-theme>=0.4.0",
 ]
+
+if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
+    install_requires.append("dataclasses")
 
 extras_require = {
     "test": [

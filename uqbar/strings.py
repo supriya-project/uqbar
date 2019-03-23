@@ -2,15 +2,39 @@
 Tools for string manipulation.
 """
 
+import re
 import textwrap
 from typing import Generator
 
 import unidecode  # type: ignore
 
+_ansi_escape_pattern = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+
+
+def ansi_escape(string):
+    return _ansi_escape_pattern.sub("", string)
+
 
 def delimit_words(string: str) -> Generator[str, None, None]:
     """
     Delimit a string at word boundaries.
+
+    ::
+
+        >>> import uqbar.strings
+        >>> list(uqbar.strings.delimit_words("i want to believe"))
+        ['i', 'want', 'to', 'believe']
+
+    ::
+
+        >>> list(uqbar.strings.delimit_words("S3Bucket"))
+        ['S3', 'Bucket']
+
+    ::
+
+        >>> list(uqbar.strings.delimit_words("Route53"))
+        ['Route', '53']
+
     """
     # TODO: Reimplement this
     wordlike_characters = ("<", ">", "!")
@@ -39,7 +63,7 @@ def delimit_words(string: str) -> Generator[str, None, None]:
                 yield current_word
                 current_word = character
         elif character.isdigit():
-            if current_word[-1].isdigit():
+            if current_word[-1].isdigit() or current_word[-1].isupper():
                 current_word += character
             else:
                 yield current_word

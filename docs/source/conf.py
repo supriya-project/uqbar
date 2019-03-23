@@ -42,6 +42,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_autodoc_typehints",
     "uqbar.sphinx.api",
+    "uqbar.sphinx.book",
     'uqbar.sphinx.inheritance',
     'uqbar.sphinx.style',
 ]
@@ -210,5 +211,7 @@ uqbar_api_root_documenter_class = "uqbar.apis.SummarizingRootDocumenter"
 uqbar_api_module_documenter_class = "uqbar.apis.SummarizingModuleDocumenter"
 uqbar_api_member_documenter_classes = [
     "uqbar.apis.FunctionDocumenter",
-    "uqbar.apis.ClassDocumenter",
+    "uqbar.apis.SummarizingClassDocumenter",
 ]
+uqbar_book_strict = True
+uqbar_book_use_black = True

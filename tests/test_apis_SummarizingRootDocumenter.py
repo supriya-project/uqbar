@@ -41,6 +41,7 @@ def test_str_01(test_path):
         "docs/fake_package/empty_package",
         "docs/fake_package/empty_package/empty.rst",
         "docs/fake_package/empty_package/index.rst",
+        "docs/fake_package/enums.rst",
         "docs/fake_package/index.rst",
         "docs/fake_package/module.rst",
         "docs/fake_package/multi",
@@ -88,6 +89,25 @@ def test_str_01(test_path):
 
             .. rubric:: :ref:`fake_package.empty_package.empty <fake-package--empty-package--empty>`
                :class: section-header
+
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: :ref:`fake_package.enums <fake-package--enums>`
+               :class: section-header
+
+            .. raw:: html
+
+               <hr/>
+
+            .. rubric:: Enumerations
+               :class: subsection-header
+
+            .. autosummary::
+               :nosignatures:
+
+               ~fake_package.enums.FakeEnum
 
             .. raw:: html
 
@@ -244,6 +264,7 @@ def test_str_01(test_path):
 
                empty_module
                empty_package/index
+               enums
                module
                multi/index
 
@@ -252,6 +273,7 @@ def test_str_01(test_path):
 
                empty_module
                empty_package
+               enums
                module
                multi
             """

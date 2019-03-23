@@ -55,7 +55,7 @@ def test_sphinx_style_1(app, status, warning):
 
                -[ Methods ]-
 
-               inheritable_method()
+               *overridden *inheritable_method()
 
                ("PublicClass").method()
 
@@ -110,7 +110,7 @@ def test_sphinx_style_1(app, status, warning):
 
                -[ Special methods ]-
 
-               __str__()
+               *overridden *__str__()
 
                   Return str(self).
 

@@ -32,6 +32,7 @@ def test_collection_01(test_path):
                 fake_package.empty_module
                 fake_package.empty_package/
                     fake_package.empty_package.empty
+                fake_package.enums
                 fake_package.module
                 fake_package.multi/
                     fake_package.multi.one
@@ -45,6 +46,7 @@ def test_collection_01(test_path):
         "fake_package.empty_module",
         "fake_package.empty_package",
         "fake_package.empty_package.empty",
+        "fake_package.enums",
         "fake_package.module",
         "fake_package.multi",
         "fake_package.multi.one",
@@ -67,6 +69,7 @@ def test_collection_02(test_path):
                 fake_package.empty_module
                 fake_package.empty_package/
                     fake_package.empty_package.empty
+                fake_package.enums
                 fake_package.module
                 fake_package.multi/
                     fake_package.multi.one
@@ -82,6 +85,7 @@ def test_collection_02(test_path):
         "fake_package.empty_module",
         "fake_package.empty_package",
         "fake_package.empty_package.empty",
+        "fake_package.enums",
         "fake_package.module",
         "fake_package.multi",
         "fake_package.multi.one",
@@ -115,6 +119,7 @@ def test_collection_04(test_path):
         """
         None/
             fake_package/
+                fake_package.enums
                 fake_package.module
                 fake_package.multi/
                     fake_package.multi.one
@@ -125,6 +130,7 @@ def test_collection_04(test_path):
     assert isinstance(documenters[0], uqbar.apis.RootDocumenter)
     assert [documenter.package_path for documenter in documenters[1:]] == [
         "fake_package",
+        "fake_package.enums",
         "fake_package.module",
         "fake_package.multi",
         "fake_package.multi.one",
@@ -143,6 +149,7 @@ def test_output_01(test_path):
         "docs/fake_package/empty_package",
         "docs/fake_package/empty_package/empty.rst",
         "docs/fake_package/empty_package/index.rst",
+        "docs/fake_package/enums.rst",
         "docs/fake_package/index.rst",
         "docs/fake_package/module.rst",
         "docs/fake_package/multi",
@@ -179,6 +186,7 @@ def test_output_01(test_path):
 
                empty_module
                empty_package/index
+               enums
                module
                multi/index
             """
@@ -224,6 +232,7 @@ def test_output_02(test_path):
         "docs/fake_package/empty_package",
         "docs/fake_package/empty_package/empty.rst",
         "docs/fake_package/empty_package/index.rst",
+        "docs/fake_package/enums.rst",
         "docs/fake_package/index.rst",
         "docs/fake_package/module.rst",
         "docs/fake_package/multi",
@@ -261,6 +270,7 @@ def test_output_02(test_path):
                _private/index
                empty_module
                empty_package/index
+               enums
                module
                multi/index
             """
@@ -309,6 +319,7 @@ def test_output_03(test_path):
         "docs/fake_package/empty_package",
         "docs/fake_package/empty_package/empty.rst",
         "docs/fake_package/empty_package/index.rst",
+        "docs/fake_package/enums.rst",
         "docs/fake_package/index.rst",
         "docs/fake_package/module.rst",
         "docs/fake_package/multi",
@@ -346,6 +357,7 @@ def test_output_03(test_path):
                _private/index
                empty_module
                empty_package/index
+               enums
                module
                multi/index
             """
