@@ -17,6 +17,7 @@ Sphinx extensions
    :nosignatures:
 
    uqbar.sphinx.api
+   uqbar.sphinx.book
    uqbar.sphinx.inheritance
    uqbar.sphinx.style
 
