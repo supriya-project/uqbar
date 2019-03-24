@@ -1,5 +1,47 @@
+"""
+Uqbar Sphinx executable examples extension.
+
+Runs every Python-formatted literal block through a console, and captures
+output. Can be extended to capture non-terminal output like Graphviz graphs,
+other images, audio, etc. via an extension system.
+
+The extension groups all top-level literal blocks in a document into a suite to
+be executed consecutively in a console. All literal blocks in each class,
+method and function docstring are grouped and executed separately in isolated
+namespaces. When ``uqbar_book_use_cache`` is ``True``, the docstring grouping
+allows inherited docstring suites to be executed only once per Sphinx build.
+
+Install by adding ``'uqbar.sphinx.book'`` to the ``extensions`` list in your
+Sphinx configuration.
+
+This extension provides the following configuration values:
+
+``uqbar_book_console_setup``:
+    list of strings to run in the console before executing a suite of literal
+    blocks, e.g. ``["import uqbar"]``
+
+``uqbar_book_console_teardown``:
+    list of strings to run in the console after executing a suite of literal
+    blocks, even if execution halts due to error, e.g.
+    ``["important_thing.shutdown()", "other_thing.cleanup()"]``
+
+``uqbar_book_extensions``:
+    list of class paths to extensions, e.g.
+    ``["uqbar.book.extensions.GrapherExtension"]``
+
+``uqbar_book_strict``:
+    whether to fail the Sphinx build on encountering an unexpected error
+
+``uqbar_book_use_black``:
+    whether to use ``black`` to format console input
+
+``uqbar_book_use_cache``:
+    whether to use a caching system to avoid re-executing identical literal
+    block suites
+
+"""
 import importlib
-from typing import Any, Dict, List  # noqa
+from typing import Any, Dict
 
 from sphinx.util import logging
 from sphinx.util.console import bold
@@ -11,6 +53,9 @@ logger = logging.getLogger(__name__)
 
 
 def on_builder_inited(app):
+    """
+    Hooks into Sphinx's ``builder-inited`` event.
+    """
     app.cache_db_path = ":memory:"
     if app.config["uqbar_book_use_cache"]:
         logger.info(bold("[uqbar-book]"), nonl=True)
@@ -19,6 +64,9 @@ def on_builder_inited(app):
 
 
 def on_config_inited(app, config):
+    """
+    Hooks into Sphinx's ``config-inited`` event.
+    """
     extension_paths = config["uqbar_book_extensions"] or [
         "uqbar.book.extensions.GrapherExtension"
     ]
@@ -33,6 +81,9 @@ def on_config_inited(app, config):
 
 
 def on_doctree_read(app, document):
+    """
+    Hooks into Sphinx's ``doctree-read`` event.
+    """
     literal_blocks = uqbar.book.sphinx.collect_literal_blocks(document)
     cache_mapping = uqbar.book.sphinx.group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
@@ -64,6 +115,9 @@ def on_doctree_read(app, document):
 
 
 def on_build_finished(app, exception):
+    """
+    Hooks into Sphinx's ``build-finished`` event.
+    """
     if not app.config["uqbar_book_use_cache"]:
         return
     logger.info("")
@@ -76,6 +130,9 @@ def on_build_finished(app, exception):
 
 
 def setup(app) -> Dict[str, Any]:
+    """
+    Sets up Sphinx extension.
+    """
     app.add_config_value("uqbar_book_console_setup", [], "env")
     app.add_config_value("uqbar_book_console_teardown", [], "env")
     app.add_config_value(
