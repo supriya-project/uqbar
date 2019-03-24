@@ -5,7 +5,10 @@ import itertools
 import pickle
 import sqlite3
 
-import black
+try:
+    import black
+except ImportError:
+    black = None
 from docutils import nodes
 from docutils.frontend import OptionParser
 from docutils.parsers.rst import Parser, directives
@@ -119,7 +122,7 @@ def interpret_code_blocks(
                     lines.append("")
                 elif line.startswith("Traceback (most recent call last):"):
                     has_exception = True
-            if use_black:
+            if use_black and black:
                 mode = black.FileMode(
                     line_length=80, target_versions=[black.TargetVersion.PY36]
                 )
