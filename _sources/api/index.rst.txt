@@ -484,6 +484,8 @@ Uqbar Sphinx API generation extension.
 .. rubric:: :ref:`uqbar.sphinx.book <uqbar--sphinx--book>`
    :class: section-header
 
+Uqbar Sphinx executable examples extension.
+
 .. raw:: html
 
    <hr/>

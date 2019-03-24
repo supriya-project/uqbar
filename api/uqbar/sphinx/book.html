@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>book &mdash; uqbar 0.3.0 documentation</title>
+  <title>book &mdash; uqbar 0.3.1 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -191,6 +191,31 @@
             
   <div class="section" id="module-uqbar.sphinx.book">
 <span id="book"></span><span id="uqbar-sphinx-book"></span><h1>book<a class="headerlink" href="#module-uqbar.sphinx.book" title="Permalink to this headline">¶</a></h1>
+<p>Uqbar Sphinx executable examples extension.</p>
+<p>Runs every Python-formatted literal block through a console, and captures
+output. Can be extended to capture non-terminal output like Graphviz graphs,
+other images, audio, etc. via an extension system.</p>
+<p>The extension groups all top-level literal blocks in a document into a suite to
+be executed consecutively in a console. All literal blocks in each class,
+method and function docstring are grouped and executed separately in isolated
+namespaces. When <code class="docutils literal notranslate"><span class="pre">uqbar_book_use_cache</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the docstring grouping
+allows inherited docstring suites to be executed only once per Sphinx build.</p>
+<p>Install by adding <code class="docutils literal notranslate"><span class="pre">'uqbar.sphinx.book'</span></code> to the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> list in your
+Sphinx configuration.</p>
+<p>This extension provides the following configuration values:</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_console_setup</span></code>:</dt><dd>list of strings to run in the console before executing a suite of literal
+blocks, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;import</span> <span class="pre">uqbar&quot;]</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_console_teardown</span></code>:</dt><dd>list of strings to run in the console after executing a suite of literal
+blocks, even if execution halts due to error, e.g.
+<code class="docutils literal notranslate"><span class="pre">[&quot;important_thing.shutdown()&quot;,</span> <span class="pre">&quot;other_thing.cleanup()&quot;]</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_extensions</span></code>:</dt><dd>list of class paths to extensions, e.g.
+<code class="docutils literal notranslate"><span class="pre">[&quot;uqbar.book.extensions.GrapherExtension&quot;]</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_strict</span></code>:</dt><dd>whether to fail the Sphinx build on encountering an unexpected error</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_use_black</span></code>:</dt><dd>whether to use <code class="docutils literal notranslate"><span class="pre">black</span></code> to format console input</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uqbar_book_use_cache</span></code>:</dt><dd>whether to use a caching system to avoid re-executing identical literal
+block suites</dd>
+</dl>
 <div class="svg-container docutils container">
 </div>
 <hr/><p class="section-header rubric">Functions</p>
@@ -201,54 +226,51 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.book.on_build_finished" title="uqbar.sphinx.book.on_build_finished"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_build_finished</span></code></a></td>
-<td></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">build-finished</span></code> event.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.book.on_builder_inited" title="uqbar.sphinx.book.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
-<td></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.book.on_config_inited" title="uqbar.sphinx.book.on_config_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_config_inited</span></code></a></td>
-<td></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">config-inited</span></code> event.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.book.on_doctree_read" title="uqbar.sphinx.book.on_doctree_read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_doctree_read</span></code></a></td>
-<td></td>
+<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.book.setup" title="uqbar.sphinx.book.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Dict" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
-</td>
+<td>Sets up Sphinx extension.</td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="uqbar.sphinx.book.on_build_finished">
 <code class="descname">on_build_finished</code><span class="sig-paren">(</span><em>app</em>, <em>exception</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/book.html#on_build_finished"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.book.on_build_finished" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">build-finished</span></code> event.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.book.on_builder_inited">
 <code class="descname">on_builder_inited</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/book.html#on_builder_inited"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.book.on_builder_inited" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.book.on_config_inited">
 <code class="descname">on_config_inited</code><span class="sig-paren">(</span><em>app</em>, <em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/book.html#on_config_inited"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.book.on_config_inited" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">config-inited</span></code> event.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.book.on_doctree_read">
 <code class="descname">on_doctree_read</code><span class="sig-paren">(</span><em>app</em>, <em>document</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/book.html#on_doctree_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.book.on_doctree_read" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.book.setup">
 <code class="descname">setup</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/book.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.book.setup" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Sets up Sphinx extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">

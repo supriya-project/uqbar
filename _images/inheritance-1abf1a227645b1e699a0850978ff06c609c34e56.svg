@@ -8,15 +8,15 @@
  viewBox="0.00 0.00 266.00 101.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 97)">
 <title>InheritanceGraph</title>
-<g id="clust2" class="cluster">
-<title>cluster_uqbar.apis</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93,-8C93,-8 238,-8 238,-8 244,-8 250,-14 250,-20 250,-20 250,-73 250,-73 250,-79 244,-85 238,-85 238,-85 93,-85 93,-85 87,-85 81,-79 81,-73 81,-73 81,-20 81,-20 81,-14 87,-8 93,-8"/>
-<text text-anchor="middle" x="165.5" y="-73" font-family="Arial" font-size="10.00" fill="#000000">uqbar.apis</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_builtins</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-19C20,-19 49,-19 49,-19 55,-19 61,-25 61,-31 61,-31 61,-62 61,-62 61,-68 55,-74 49,-74 49,-74 20,-74 20,-74 14,-74 8,-68 8,-62 8,-62 8,-31 8,-31 8,-25 14,-19 20,-19"/>
 <text text-anchor="middle" x="34.5" y="-62" font-family="Arial" font-size="10.00" fill="#000000">builtins</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_uqbar.apis</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93,-8C93,-8 238,-8 238,-8 244,-8 250,-14 250,-20 250,-20 250,-73 250,-73 250,-79 244,-85 238,-85 238,-85 93,-85 93,-85 87,-85 81,-79 81,-73 81,-73 81,-20 81,-20 81,-14 87,-8 93,-8"/>
+<text text-anchor="middle" x="165.5" y="-73" font-family="Arial" font-size="10.00" fill="#000000">uqbar.apis</text>
 </g>
 <!-- builtins.object&#45;&gt;uqbar.apis.ModuleDocumenter.ModuleDocumenter -->
 <g id="edge2" class="edge">

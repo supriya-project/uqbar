@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.sphinx.book &mdash; uqbar 0.3.0 documentation</title>
+  <title>uqbar.sphinx.book &mdash; uqbar 0.3.1 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -149,20 +149,64 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.sphinx.book</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">importlib</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>  <span class="c1"># noqa</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Uqbar Sphinx executable examples extension.</span>
+
+<span class="sd">Runs every Python-formatted literal block through a console, and captures</span>
+<span class="sd">output. Can be extended to capture non-terminal output like Graphviz graphs,</span>
+<span class="sd">other images, audio, etc. via an extension system.</span>
+
+<span class="sd">The extension groups all top-level literal blocks in a document into a suite to</span>
+<span class="sd">be executed consecutively in a console. All literal blocks in each class,</span>
+<span class="sd">method and function docstring are grouped and executed separately in isolated</span>
+<span class="sd">namespaces. When ``uqbar_book_use_cache`` is ``True``, the docstring grouping</span>
+<span class="sd">allows inherited docstring suites to be executed only once per Sphinx build.</span>
+
+<span class="sd">Install by adding ``&#39;uqbar.sphinx.book&#39;`` to the ``extensions`` list in your</span>
+<span class="sd">Sphinx configuration.</span>
+
+<span class="sd">This extension provides the following configuration values:</span>
+
+<span class="sd">``uqbar_book_console_setup``:</span>
+<span class="sd">    list of strings to run in the console before executing a suite of literal</span>
+<span class="sd">    blocks, e.g. ``[&quot;import uqbar&quot;]``</span>
+
+<span class="sd">``uqbar_book_console_teardown``:</span>
+<span class="sd">    list of strings to run in the console after executing a suite of literal</span>
+<span class="sd">    blocks, even if execution halts due to error, e.g.</span>
+<span class="sd">    ``[&quot;important_thing.shutdown()&quot;, &quot;other_thing.cleanup()&quot;]``</span>
+
+<span class="sd">``uqbar_book_extensions``:</span>
+<span class="sd">    list of class paths to extensions, e.g.</span>
+<span class="sd">    ``[&quot;uqbar.book.extensions.GrapherExtension&quot;]``</span>
+
+<span class="sd">``uqbar_book_strict``:</span>
+<span class="sd">    whether to fail the Sphinx build on encountering an unexpected error</span>
+
+<span class="sd">``uqbar_book_use_black``:</span>
+<span class="sd">    whether to use ``black`` to format console input</span>
+
+<span class="sd">``uqbar_book_use_cache``:</span>
+<span class="sd">    whether to use a caching system to avoid re-executing identical literal</span>
+<span class="sd">    block suites</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="k">import</span> <span class="n">logging</span>
 <span class="kn">from</span> <span class="nn">sphinx.util.console</span> <span class="k">import</span> <span class="n">bold</span>
 
 <span class="kn">import</span> <span class="nn">uqbar.book.sphinx</span>
 <span class="kn">from</span> <span class="nn">uqbar.book.console</span> <span class="k">import</span> <span class="n">ConsoleError</span>
-<span class="kn">from</span> <span class="nn">uqbar.book.extensions</span> <span class="k">import</span> <span class="n">GrapherExtension</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="on_builder_inited"><a class="viewcode-back" href="../../../api/uqbar/sphinx/book.html#uqbar.sphinx.book.on_builder_inited">[docs]</a><span class="k">def</span> <span class="nf">on_builder_inited</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hooks into Sphinx&#39;s ``builder-inited`` event.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">app</span><span class="o">.</span><span class="n">cache_db_path</span> <span class="o">=</span> <span class="s2">&quot;:memory:&quot;</span>
     <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_use_cache&quot;</span><span class="p">]:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">bold</span><span class="p">(</span><span class="s2">&quot;[uqbar-book]&quot;</span><span class="p">),</span> <span class="n">nonl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -171,24 +215,33 @@
 
 
 <div class="viewcode-block" id="on_config_inited"><a class="viewcode-back" href="../../../api/uqbar/sphinx/book.html#uqbar.sphinx.book.on_config_inited">[docs]</a><span class="k">def</span> <span class="nf">on_config_inited</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">extension_path</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_extensions&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="p">(</span>
-        <span class="s2">&quot;uqbar.book.extensions.GrapherExtension&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="n">extension_module_path</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">extension_class_name</span> <span class="o">=</span> <span class="n">extension_path</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-        <span class="n">extension_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">extension_module_path</span><span class="p">)</span>
-        <span class="n">extension_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">extension_module</span><span class="p">,</span> <span class="n">extension_class_name</span><span class="p">)</span>
-        <span class="n">extension_class</span><span class="o">.</span><span class="n">setup_sphinx</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hooks into Sphinx&#39;s ``config-inited`` event.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">extension_paths</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_extensions&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span>
+        <span class="s2">&quot;uqbar.book.extensions.GrapherExtension&quot;</span>
+    <span class="p">]</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">uqbar_book_extensions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">extension_path</span> <span class="ow">in</span> <span class="n">extension_paths</span><span class="p">:</span>
+        <span class="n">module_name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">class_name</span> <span class="o">=</span> <span class="n">extension_path</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+        <span class="n">class_</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>
+        <span class="n">extension</span> <span class="o">=</span> <span class="n">class_</span><span class="p">()</span>
+        <span class="n">extension</span><span class="o">.</span><span class="n">setup_sphinx</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">uqbar_book_extensions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="on_doctree_read"><a class="viewcode-back" href="../../../api/uqbar/sphinx/book.html#uqbar.sphinx.book.on_doctree_read">[docs]</a><span class="k">def</span> <span class="nf">on_doctree_read</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
-    <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">GrapherExtension</span><span class="p">()]</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hooks into Sphinx&#39;s ``doctree-read`` event.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">literal_blocks</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">book</span><span class="o">.</span><span class="n">sphinx</span><span class="o">.</span><span class="n">collect_literal_blocks</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
     <span class="n">cache_mapping</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">book</span><span class="o">.</span><span class="n">sphinx</span><span class="o">.</span><span class="n">group_literal_blocks_by_cache_path</span><span class="p">(</span><span class="n">literal_blocks</span><span class="p">)</span>
     <span class="n">node_mapping</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">use_cache</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_use_cache&quot;</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">cache_path</span><span class="p">,</span> <span class="n">literal_block_groups</span> <span class="ow">in</span> <span class="n">cache_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-            <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
+            <span class="n">extensions</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">uqbar_book_extensions</span><span class="p">,</span>
             <span class="n">setup_lines</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_console_setup&quot;</span><span class="p">],</span>
             <span class="n">teardown_lines</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_console_teardown&quot;</span><span class="p">],</span>
             <span class="n">use_black</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_use_black&quot;</span><span class="p">]),</span>
@@ -213,6 +266,9 @@
 
 
 <div class="viewcode-block" id="on_build_finished"><a class="viewcode-back" href="../../../api/uqbar/sphinx/book.html#uqbar.sphinx.book.on_build_finished">[docs]</a><span class="k">def</span> <span class="nf">on_build_finished</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hooks into Sphinx&#39;s ``build-finished`` event.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uqbar_book_use_cache&quot;</span><span class="p">]:</span>
         <span class="k">return</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -225,9 +281,14 @@
 
 
 <div class="viewcode-block" id="setup"><a class="viewcode-back" href="../../../api/uqbar/sphinx/book.html#uqbar.sphinx.book.setup">[docs]</a><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sets up Sphinx extension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_console_setup&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_console_teardown&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_extensions&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span>
+        <span class="s2">&quot;uqbar_book_extensions&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;uqbar.book.extensions.GrapherExtension&quot;</span><span class="p">],</span> <span class="s2">&quot;env&quot;</span>
+    <span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_strict&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_use_black&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s2">&quot;uqbar_book_use_cache&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;env&quot;</span><span class="p">)</span>

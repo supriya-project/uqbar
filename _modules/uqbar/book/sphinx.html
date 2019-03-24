@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.book.sphinx &mdash; uqbar 0.3.0 documentation</title>
+  <title>uqbar.book.sphinx &mdash; uqbar 0.3.1 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -156,7 +156,10 @@
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
 
-<span class="kn">import</span> <span class="nn">black</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">black</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">black</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="kn">from</span> <span class="nn">docutils</span> <span class="k">import</span> <span class="n">nodes</span>
 <span class="kn">from</span> <span class="nn">docutils.frontend</span> <span class="k">import</span> <span class="n">OptionParser</span>
 <span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="k">import</span> <span class="n">Parser</span><span class="p">,</span> <span class="n">directives</span>
@@ -270,7 +273,7 @@
                     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
                     <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="n">use_black</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">use_black</span> <span class="ow">and</span> <span class="n">black</span><span class="p">:</span>
                 <span class="n">mode</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">FileMode</span><span class="p">(</span>
                     <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
                 <span class="p">)</span>

@@ -8,11 +8,6 @@
  viewBox="0.00 0.00 334.00 137.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 133)">
 <title>InheritanceGraph</title>
-<g id="clust3" class="cluster">
-<title>cluster_uqbar.graphs</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M185,-8C185,-8 306,-8 306,-8 312,-8 318,-14 318,-20 318,-20 318,-109 318,-109 318,-115 312,-121 306,-121 306,-121 185,-121 185,-121 179,-121 173,-115 173,-109 173,-109 173,-20 173,-20 173,-14 179,-8 185,-8"/>
-<text text-anchor="middle" x="245.5" y="-109" font-family="Arial" font-size="10.00" fill="#000000">uqbar.graphs</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_builtins</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-35C20,-35 49,-35 49,-35 55,-35 61,-41 61,-47 61,-47 61,-78 61,-78 61,-84 55,-90 49,-90 49,-90 20,-90 20,-90 14,-90 8,-84 8,-78 8,-78 8,-47 8,-47 8,-41 14,-35 20,-35"/>
@@ -22,6 +17,11 @@
 <title>cluster_uqbar.containers</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M93,-24C93,-24 141,-24 141,-24 147,-24 153,-30 153,-36 153,-36 153,-89 153,-89 153,-95 147,-101 141,-101 141,-101 93,-101 93,-101 87,-101 81,-95 81,-89 81,-89 81,-36 81,-36 81,-30 87,-24 93,-24"/>
 <text text-anchor="middle" x="117" y="-89" font-family="Arial" font-size="10.00" fill="#000000">uqbar.containers</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_uqbar.graphs</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M185,-8C185,-8 306,-8 306,-8 312,-8 318,-14 318,-20 318,-20 318,-109 318,-109 318,-115 312,-121 306,-121 306,-121 185,-121 185,-121 179,-121 173,-115 173,-109 173,-109 173,-20 173,-20 173,-14 179,-8 185,-8"/>
+<text text-anchor="middle" x="245.5" y="-109" font-family="Arial" font-size="10.00" fill="#000000">uqbar.graphs</text>
 </g>
 <!-- builtins.object&#45;&gt;uqbar.containers.UniqueTreeNode.UniqueTreeNode -->
 <g id="edge3" class="edge">
