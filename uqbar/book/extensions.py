@@ -12,34 +12,25 @@ from uqbar.strings import normalize
 
 
 class Extension:
+    @classmethod
     @abc.abstractmethod
-    def setup(self, console: "uqbar.book.console.Console", monkeypatch):
+    def setup_console(cls, console: "uqbar.book.console.Console", monkeypatch):
         raise NotImplementedError
 
-    def teardown(self):
+    @classmethod
+    @abc.abstractmethod
+    def setup_sphinx(cls, app):
+        raise NotImplementedError
+
+    @classmethod
+    def teardown_console(cls, app):
         pass
 
 
-class GrapherExtension(Extension):
-    def setup(self, console, monkeypatch):
-        monkeypatch.setattr(
-            Grapher,
-            "__call__",
-            lambda self: console.push_proxy(
-                GraphableProxy(self.graphable, self.layout)
-            ),
-        )
-
-    @classmethod
-    def setup_sphinx(cls, app):
-        GraphableProxy.setup_sphinx(app)
-
-
-class GraphableProxy:
-
+class GraphExtension(Extension):
     template = normalize(
         """
-        <a href="{dot_file_path}" title="{title}" class="{cls}">
+        <a href="{dot_file_path}" title="{title}" class="{css_class}">
             <img src="{image_file_path}" alt="{alt}"/>
         </a>
         """
@@ -47,6 +38,25 @@ class GraphableProxy:
 
     class graphviz_block(General, FixedTextElement):
         pass
+
+    @classmethod
+    def setup_console(cls, console, monkeypatch):
+        monkeypatch.setattr(
+            Grapher,
+            "__call__",
+            lambda self: console.push_proxy(
+                GraphExtension(self.graphable, self.layout)
+            ),
+        )
+
+    @classmethod
+    def setup_sphinx(cls, app):
+        app.add_node(
+            cls.graphviz_block,
+            html=[cls.visit_graphviz_block_html, None],
+            latex=[cls.visit_graphviz_block_latex, None],
+            text=[cls.visit_graphviz_block_text, cls.depart_graphviz_block_text],
+        )
 
     def __init__(self, graphable, layout):
         try:
@@ -71,12 +81,11 @@ class GraphableProxy:
 
     @classmethod
     def render_image(cls, node, output_path, suffix):
-        image_path = output_path / "_images"
         sha256 = hashlib.sha256()
         sha256.update(node[0].encode())
         sha256.update(node["layout"].encode())
         hexdigest = sha256.hexdigest()
-        base_path = image_path / "graphviz-{}".format(hexdigest)
+        base_path = output_path / "graphviz-{}".format(hexdigest)
         base_path.parent.mkdir(exist_ok=True, parents=True)
         image_file_path = base_path.with_suffix(suffix)
         dot_file_path = base_path.with_suffix(".dot")
@@ -85,42 +94,26 @@ class GraphableProxy:
         if not dot_file_path.exists():
             dot_file_path.write_text(node[0])
         if not image_file_path.exists():
-            command = "{layout} -T {format} -o {output_path} {input_path}".format(
+            command = "{layout} -T {format} -o {image_path} {dot_path}".format(
                 layout=node["layout"],
                 format=suffix.strip("."),
-                output_path=image_file_path,
-                input_path=dot_file_path,
+                image_path=image_file_path,
+                dot_path=dot_file_path,
             )
             subprocess.call(command, shell=True)
             if suffix == ".svg":
                 cls.clean_svg(image_file_path)
         return image_file_path
 
-    @classmethod
-    def setup_sphinx(cls, app):
-        app.add_node(
-            cls.graphviz_block,
-            html=[cls.visit_graphviz_block_html, None],
-            latex=[cls.visit_graphviz_block_latex, None],
-            text=[cls.visit_graphviz_block_text, cls.depart_graphviz_block_text],
-        )
-
     @staticmethod
     def visit_graphviz_block_html(self, node):
-        absolute_image_file_path = GraphableProxy.render_image(
-            node, pathlib.Path(self.builder.outdir), ".svg"
+        absolute_image_file_path = GraphExtension.render_image(
+            node, pathlib.Path(self.builder.outdir) / "_images", ".svg"
         )
         relative_image_file_path = (
             pathlib.Path(self.builder.imgpath) / absolute_image_file_path.name
         )
-        template = normalize(
-            """
-            <a href="{dot_file_path}" title="{title}" class="{css_class}">
-                <img src="{image_file_path}" alt="{alt}"/>
-            </a>
-            """
-        )
-        result = template.format(
+        result = GraphExtension.template.format(
             dot_file_path=relative_image_file_path.with_suffix(".dot"),
             image_file_path=relative_image_file_path,
             title="",

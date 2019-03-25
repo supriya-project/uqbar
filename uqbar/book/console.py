@@ -135,11 +135,13 @@ class Console(code.InteractiveConsole):
     def __enter__(self):
         self.monkeypatch = MonkeyPatch()
         for extension in self.extensions or []:
-            extension.setup(self, self.monkeypatch)
+            extension.setup_console(self, self.monkeypatch)
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.monkeypatch.undo()
+        for extension in self.extensions or []:
+            extension.teardown_console(self)
 
     ### PUBLIC METHODS ###
 

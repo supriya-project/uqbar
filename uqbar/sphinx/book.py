@@ -27,7 +27,7 @@ This extension provides the following configuration values:
 
 ``uqbar_book_extensions``:
     list of class paths to extensions, e.g.
-    ``["uqbar.book.extensions.GrapherExtension"]``
+    ``["uqbar.book.extensions.GraphExtension"]``
 
 ``uqbar_book_strict``:
     whether to fail the Sphinx build on encountering an unexpected error
@@ -68,16 +68,15 @@ def on_config_inited(app, config):
     Hooks into Sphinx's ``config-inited`` event.
     """
     extension_paths = config["uqbar_book_extensions"] or [
-        "uqbar.book.extensions.GrapherExtension"
+        "uqbar.book.extensions.GraphExtension"
     ]
     app.uqbar_book_extensions = []
     for extension_path in extension_paths:
         module_name, _, class_name = extension_path.rpartition(".")
         module = importlib.import_module(module_name)
-        class_ = getattr(module, class_name)
-        extension = class_()
-        extension.setup_sphinx(app)
-        app.uqbar_book_extensions.append(extension)
+        extension_class = getattr(module, class_name)
+        extension_class.setup_sphinx(app)
+        app.uqbar_book_extensions.append(extension_class)
 
 
 def on_doctree_read(app, document):
@@ -136,7 +135,7 @@ def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_console_setup", [], "env")
     app.add_config_value("uqbar_book_console_teardown", [], "env")
     app.add_config_value(
-        "uqbar_book_extensions", ["uqbar.book.extensions.GrapherExtension"], "env"
+        "uqbar_book_extensions", ["uqbar.book.extensions.GraphExtension"], "env"
     )
     app.add_config_value("uqbar_book_strict", False, "env")
     app.add_config_value("uqbar_book_use_black", False, "env")
