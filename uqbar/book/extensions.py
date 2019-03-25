@@ -15,16 +15,42 @@ class Extension:
     @classmethod
     @abc.abstractmethod
     def setup_console(cls, console: "uqbar.book.console.Console", monkeypatch):
+        """
+        Perform console setup tasks before executing a suite of code blocks,
+        e.g. monkeypatching IO operations to allow media capture.
+        """
         raise NotImplementedError
 
     @classmethod
     @abc.abstractmethod
     def setup_sphinx(cls, app):
+        """
+        Setup Sphinx, e.g. register custom nodes and visitors.
+        """
         raise NotImplementedError
 
     @classmethod
     def teardown_console(cls, app):
+        """
+        Perform console teardown tasks.
+        """
         pass
+
+    @staticmethod
+    def visit_block_html(self, node):
+        raise SkipNode
+
+    @staticmethod
+    def visit_block_latex(self, node):
+        raise SkipNode
+
+    @staticmethod
+    def depart_block_text(self, node):
+        self.end_state(wrap=False)
+
+    @staticmethod
+    def visit_block_text(self, node):
+        self.new_state()
 
 
 class GraphExtension(Extension):
@@ -44,18 +70,16 @@ class GraphExtension(Extension):
         monkeypatch.setattr(
             Grapher,
             "__call__",
-            lambda self: console.push_proxy(
-                GraphExtension(self.graphable, self.layout)
-            ),
+            lambda self: console.push_proxy(cls(self.graphable, self.layout)),
         )
 
     @classmethod
     def setup_sphinx(cls, app):
         app.add_node(
             cls.graphviz_block,
-            html=[cls.visit_graphviz_block_html, None],
-            latex=[cls.visit_graphviz_block_latex, None],
-            text=[cls.visit_graphviz_block_text, cls.depart_graphviz_block_text],
+            html=[cls.visit_block_html, None],
+            latex=[cls.visit_block_latex, None],
+            text=[cls.visit_block_text, cls.depart_block_text],
         )
 
     def __init__(self, graphable, layout):
@@ -106,7 +130,7 @@ class GraphExtension(Extension):
         return image_file_path
 
     @staticmethod
-    def visit_graphviz_block_html(self, node):
+    def visit_block_html(self, node):
         absolute_image_file_path = GraphExtension.render_image(
             node, pathlib.Path(self.builder.outdir) / "_images", ".svg"
         )
@@ -122,15 +146,3 @@ class GraphExtension(Extension):
         )
         self.body.append(result)
         raise SkipNode
-
-    @staticmethod
-    def visit_graphviz_block_latex(self, node):
-        raise SkipNode
-
-    @staticmethod
-    def depart_graphviz_block_text(self, node):
-        self.end_state(wrap=False)
-
-    @staticmethod
-    def visit_graphviz_block_text(self, node):
-        self.new_state()
