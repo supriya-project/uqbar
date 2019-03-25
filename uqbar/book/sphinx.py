@@ -5,16 +5,17 @@ import itertools
 import pickle
 import sqlite3
 
-try:
-    import black
-except ImportError:
-    black = None
 from docutils import nodes
 from docutils.frontend import OptionParser
 from docutils.parsers.rst import Parser, directives
 from docutils.utils import new_document
 
 from uqbar.book.console import Console, ConsoleError, ConsoleInput, ConsoleOutput
+
+try:
+    import black
+except ImportError:
+    black = None
 
 
 def attr_path_to_defining_path(path):

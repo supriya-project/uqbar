@@ -1,9 +1,9 @@
 import code
 import itertools
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
 
 from _pytest.monkeypatch import MonkeyPatch
-from dataclasses import dataclass
 
 from uqbar.io import RedirectedStreams
 
@@ -20,9 +20,6 @@ class ConsoleOutput:
 
 class ConsoleError(Exception):
     pass
-
-
-# TODO: Implement non-captured setup/teardown lines
 
 
 class Console(code.InteractiveConsole):
@@ -115,8 +112,6 @@ class Console(code.InteractiveConsole):
             False
 
     """
-
-    ### CLASS VARIABLES ###
 
     ### INITIALIZER ###
 
