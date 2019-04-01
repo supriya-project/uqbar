@@ -16,6 +16,8 @@ before_install:
 - pip install -U pip
 
 install:
+- pip install -e .
+- python -c "import uqbar"
 - pip install -e .[test]
 
 script:

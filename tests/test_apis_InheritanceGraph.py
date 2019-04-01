@@ -235,6 +235,7 @@ def test_03():
             "uqbar.apis.dummy.MyParentClass",
             "uqbar.book.console.ConsoleInput",
             "uqbar.book.console.ConsoleOutput",
+            "uqbar.book.console.MonkeyPatch",
             "uqbar.book.extensions.Extension",
             "uqbar.containers.DependencyGraph.DependencyGraph",
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
@@ -435,6 +436,7 @@ def test_03():
                 "uqbar.book.console.ConsoleError" [label="Console\nError"];
                 "uqbar.book.console.ConsoleInput" [label="Console\nInput"];
                 "uqbar.book.console.ConsoleOutput" [label="Console\nOutput"];
+                "uqbar.book.console.MonkeyPatch" [label="Monkey\nPatch"];
             }
             subgraph "cluster_uqbar.book.extensions" {
                 graph [label="uqbar.book.extensions"];
@@ -523,6 +525,7 @@ def test_03():
             "builtins.object" -> "uqbar.apis.dummy.MyParentClass";
             "builtins.object" -> "uqbar.book.console.ConsoleInput";
             "builtins.object" -> "uqbar.book.console.ConsoleOutput";
+            "builtins.object" -> "uqbar.book.console.MonkeyPatch";
             "builtins.object" -> "uqbar.book.extensions.Extension";
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
