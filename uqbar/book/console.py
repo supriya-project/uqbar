@@ -1,9 +1,8 @@
 import code
+import inspect
 import itertools
-from typing import Any, Dict, List, Optional, Tuple
-
-from _pytest.monkeypatch import MonkeyPatch
 from dataclasses import dataclass
+from typing import Any, Dict, List, Optional, Tuple
 
 from uqbar.io import RedirectedStreams
 
@@ -22,7 +21,27 @@ class ConsoleError(Exception):
     pass
 
 
-# TODO: Implement non-captured setup/teardown lines
+unset = object()
+
+
+class MonkeyPatch(object):
+    def __init__(self):
+        self._attributes = []
+
+    def setattr(self, target, name, value=unset):
+        oldval = getattr(target, name, unset)
+        if inspect.isclass(target):
+            oldval = target.__dict__.get(name, unset)
+        self._attributes.append((target, name, oldval))
+        setattr(target, name, value)
+
+    def undo(self):
+        for obj, name, value in reversed(self._attributes):
+            if value is not unset:
+                setattr(obj, name, value)
+            else:
+                delattr(obj, name)
+        self._attributes[:] = []
 
 
 class Console(code.InteractiveConsole):
@@ -116,8 +135,6 @@ class Console(code.InteractiveConsole):
 
     """
 
-    ### CLASS VARIABLES ###
-
     ### INITIALIZER ###
 
     def __init__(self, namespace: Optional[Dict] = None, extensions: List[Any] = None):
@@ -135,11 +152,13 @@ class Console(code.InteractiveConsole):
     def __enter__(self):
         self.monkeypatch = MonkeyPatch()
         for extension in self.extensions or []:
-            extension.setup(self, self.monkeypatch)
+            extension.setup_console(self, self.monkeypatch)
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.monkeypatch.undo()
+        for extension in self.extensions or []:
+            extension.teardown_console(self)
 
     ### PUBLIC METHODS ###
 

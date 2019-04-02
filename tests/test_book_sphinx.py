@@ -5,7 +5,7 @@ import pytest
 
 import uqbar.book.sphinx
 from uqbar.book.console import ConsoleError, ConsoleInput, ConsoleOutput
-from uqbar.book.extensions import GrapherExtension
+from uqbar.book.extensions import GraphExtension
 from uqbar.strings import normalize
 
 source_a = """
@@ -253,7 +253,7 @@ def test_rebuild_document_01():
 def test_rebuild_document_02():
     document = uqbar.book.sphinx.parse_rst(source_b)
     blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    extensions = [GrapherExtension()]
+    extensions = [GraphExtension]
     node_mapping = uqbar.book.sphinx.interpret_code_blocks(
         blocks, extensions=extensions
     )
@@ -290,7 +290,7 @@ def test_rebuild_document_02():
 def test_rebuild_document_03():
     document = uqbar.book.sphinx.parse_rst(source_c)
     blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    extensions = [GrapherExtension()]
+    extensions = [GraphExtension]
     node_mapping = uqbar.book.sphinx.interpret_code_blocks(
         blocks, extensions=extensions
     )

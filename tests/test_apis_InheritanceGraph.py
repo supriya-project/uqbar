@@ -235,8 +235,8 @@ def test_03():
             "uqbar.apis.dummy.MyParentClass",
             "uqbar.book.console.ConsoleInput",
             "uqbar.book.console.ConsoleOutput",
+            "uqbar.book.console.MonkeyPatch",
             "uqbar.book.extensions.Extension",
-            "uqbar.book.extensions.GraphableProxy",
             "uqbar.containers.DependencyGraph.DependencyGraph",
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
             "uqbar.graphs.Edge.Edge",
@@ -277,7 +277,7 @@ def test_03():
             "uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"
         ],
         "uqbar.apis.dummy.MyParentClass": ["uqbar.apis.dummy.MyChildClass"],
-        "uqbar.book.extensions.Extension": ["uqbar.book.extensions.GrapherExtension"],
+        "uqbar.book.extensions.Extension": ["uqbar.book.extensions.GraphExtension"],
         "uqbar.cli.CLI.CLI": ["uqbar.cli.CLIAggregator.CLIAggregator"],
         "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer": [
             "uqbar.apis.PackageNode.PackageNode",
@@ -436,14 +436,14 @@ def test_03():
                 "uqbar.book.console.ConsoleError" [label="Console\nError"];
                 "uqbar.book.console.ConsoleInput" [label="Console\nInput"];
                 "uqbar.book.console.ConsoleOutput" [label="Console\nOutput"];
+                "uqbar.book.console.MonkeyPatch" [label="Monkey\nPatch"];
             }
             subgraph "cluster_uqbar.book.extensions" {
                 graph [label="uqbar.book.extensions"];
                 node [color=2];
                 "uqbar.book.extensions.Extension" [label=Extension];
-                "uqbar.book.extensions.GraphableProxy" [label="Graphable\nProxy"];
-                "uqbar.book.extensions.GrapherExtension" [label="Grapher\nExtension"];
-                "uqbar.book.extensions.Extension" -> "uqbar.book.extensions.GrapherExtension";
+                "uqbar.book.extensions.GraphExtension" [label="Graph\nExtension"];
+                "uqbar.book.extensions.Extension" -> "uqbar.book.extensions.GraphExtension";
             }
             subgraph "cluster_uqbar.cli" {
                 graph [label="uqbar.cli"];
@@ -525,8 +525,8 @@ def test_03():
             "builtins.object" -> "uqbar.apis.dummy.MyParentClass";
             "builtins.object" -> "uqbar.book.console.ConsoleInput";
             "builtins.object" -> "uqbar.book.console.ConsoleOutput";
+            "builtins.object" -> "uqbar.book.console.MonkeyPatch";
             "builtins.object" -> "uqbar.book.extensions.Extension";
-            "builtins.object" -> "uqbar.book.extensions.GraphableProxy";
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
             "builtins.object" -> "uqbar.graphs.Edge.Edge";
