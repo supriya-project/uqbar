@@ -138,6 +138,7 @@ Tools for auto-generating API documention.
    ~uqbar.book.console.Console
    ~uqbar.book.console.ConsoleInput
    ~uqbar.book.console.ConsoleOutput
+   ~uqbar.book.console.MonkeyPatch
 
 .. raw:: html
 
@@ -169,8 +170,7 @@ Tools for auto-generating API documention.
    :nosignatures:
 
    ~uqbar.book.extensions.Extension
-   ~uqbar.book.extensions.GraphableProxy
-   ~uqbar.book.extensions.GrapherExtension
+   ~uqbar.book.extensions.GraphExtension
 
 .. raw:: html
 

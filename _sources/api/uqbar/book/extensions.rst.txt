@@ -23,8 +23,7 @@ extensions
    :nosignatures:
 
    ~Extension
-   ~GraphableProxy
-   ~GrapherExtension
+   ~GraphExtension
 
 .. autoclass:: Extension
 
@@ -38,21 +37,36 @@ extensions
    .. autosummary::
       :nosignatures:
 
-      setup
-      teardown
+      depart_block_text
+      setup_console
+      setup_sphinx
+      teardown_console
+      visit_block_html
+      visit_block_latex
+      visit_block_text
 
    .. raw:: html
 
       <hr/>
 
-   .. rubric:: Methods
+   .. rubric:: Class & static methods
       :class: class-header
 
-   .. automethod:: Extension.setup
+   .. automethod:: Extension.depart_block_text
 
-   .. automethod:: Extension.teardown
+   .. automethod:: Extension.setup_console
 
-.. autoclass:: GraphableProxy
+   .. automethod:: Extension.setup_sphinx
+
+   .. automethod:: Extension.teardown_console
+
+   .. automethod:: Extension.visit_block_html
+
+   .. automethod:: Extension.visit_block_latex
+
+   .. automethod:: Extension.visit_block_text
+
+.. autoclass:: GraphExtension
 
    .. raw:: html
 
@@ -65,15 +79,13 @@ extensions
       :nosignatures:
 
       clean_svg
-      depart_graphviz_block_text
       graphviz_block
       render_image
+      setup_console
       setup_sphinx
       template
       to_docutils
-      visit_graphviz_block_html
-      visit_graphviz_block_latex
-      visit_graphviz_block_text
+      visit_block_html
 
    .. raw:: html
 
@@ -82,7 +94,7 @@ extensions
    .. rubric:: Methods
       :class: class-header
 
-   .. automethod:: GraphableProxy.to_docutils
+   .. automethod:: GraphExtension.to_docutils
 
    .. raw:: html
 
@@ -91,53 +103,28 @@ extensions
    .. rubric:: Class & static methods
       :class: class-header
 
-   .. automethod:: GraphableProxy.clean_svg
-
-   .. automethod:: GraphableProxy.depart_graphviz_block_text
-
-   .. automethod:: GraphableProxy.render_image
-
-   .. automethod:: GraphableProxy.setup_sphinx
-
-   .. automethod:: GraphableProxy.visit_graphviz_block_html
-
-   .. automethod:: GraphableProxy.visit_graphviz_block_latex
-
-   .. automethod:: GraphableProxy.visit_graphviz_block_text
-
-.. autoclass:: GrapherExtension
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      setup
-      setup_sphinx
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: GrapherExtension.setup
+   .. automethod:: GraphExtension.clean_svg
 
    .. container:: inherited
 
-      .. automethod:: GrapherExtension.teardown
+      .. automethod:: GraphExtension.depart_block_text
 
-   .. raw:: html
+   .. automethod:: GraphExtension.render_image
 
-      <hr/>
+   .. automethod:: GraphExtension.setup_console
 
-   .. rubric:: Class & static methods
-      :class: class-header
+   .. automethod:: GraphExtension.setup_sphinx
 
-   .. automethod:: GrapherExtension.setup_sphinx
+   .. container:: inherited
+
+      .. automethod:: GraphExtension.teardown_console
+
+   .. automethod:: GraphExtension.visit_block_html
+
+   .. container:: inherited
+
+      .. automethod:: GraphExtension.visit_block_latex
+
+   .. container:: inherited
+
+      .. automethod:: GraphExtension.visit_block_text

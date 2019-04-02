@@ -25,6 +25,7 @@ console
    ~Console
    ~ConsoleInput
    ~ConsoleOutput
+   ~MonkeyPatch
 
 .. autoclass:: Console
 
@@ -170,6 +171,32 @@ console
    .. automethod:: ConsoleOutput.__repr__
 
    .. automethod:: ConsoleOutput.__setattr__
+
+.. autoclass:: MonkeyPatch
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      setattr
+      undo
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: MonkeyPatch.setattr
+
+   .. automethod:: MonkeyPatch.undo
 
 .. raw:: html
 
