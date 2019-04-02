@@ -58,9 +58,13 @@ reformat:
 	make black-reformat
 
 release:
+	$(eval VERSION := $(shell python -c "import uqbar; print(uqbar.__version__)"))
 	make clean
 	make build
 	twine upload dist/*.tar.gz
+	hub release create v$(VERSION) -m v$(VERSION) 
+	make docs
+	make gh-pages
 
 test:
 	make black-check
