@@ -66,7 +66,8 @@ class UniqueTreeContainer(UniqueTreeNode):
     def __setitem__(self, i, expr):
         if isinstance(i, int):
             expr = self._prepare_setitem_single(expr)
-            assert isinstance(expr, self._node_class)
+            if not isinstance(expr, self._node_class):
+                raise ValueError(f"Expected {self._node_class}, got {type(expr)}")
             if expr in self.parentage:
                 raise ValueError("Cannot set parent node as child.")
             old = self[i]
@@ -76,7 +77,9 @@ class UniqueTreeContainer(UniqueTreeNode):
             self._children.insert(i, expr)
         else:
             expr = tuple(self._prepare_setitem_multiple(expr))
-            assert all(isinstance(x, self._node_class) for x in expr)
+            for item in expr:
+                if not isinstance(item, self._node_class):
+                    raise ValueError(f"Expected {self._node_class}, got {type(item)}")
             parentage = self.parentage
             if any(node in parentage for node in expr):
                 raise ValueError("Cannot set parent node as child.")
