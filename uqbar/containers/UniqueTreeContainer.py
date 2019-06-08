@@ -67,18 +67,19 @@ class UniqueTreeContainer(UniqueTreeNode):
         if isinstance(i, int):
             expr = self._prepare_setitem_single(expr)
             assert isinstance(expr, self._node_class)
-            old = self[i]
             if expr in self.parentage:
                 raise ValueError("Cannot set parent node as child.")
+            old = self[i]
+            self._validate_setitem_single(expr, old, i)
             old._set_parent(None)
             expr._set_parent(self)
             self._children.insert(i, expr)
         else:
-            expr = self._prepare_setitem_multiple(expr)
-            if isinstance(expr, UniqueTreeContainer):
-                # Prevent mutating while iterating by copying.
-                expr = expr[:]
+            expr = tuple(self._prepare_setitem_multiple(expr))
             assert all(isinstance(x, self._node_class) for x in expr)
+            parentage = self.parentage
+            if any(node in parentage for node in expr):
+                raise ValueError("Cannot set parent node as child.")
             if (
                 i.start == i.stop
                 and i.start is not None
@@ -89,9 +90,7 @@ class UniqueTreeContainer(UniqueTreeNode):
             else:
                 start, stop, stride = i.indices(len(self))
             old = self[start:stop]
-            parentage = self.parentage
-            if any(node in parentage for node in expr):
-                raise ValueError("Cannot set parent node as child.")
+            self._validate_setitem_multiple(expr, old, start, stop)
             for node in old:
                 node._set_parent(None)
             for node in expr:
@@ -108,11 +107,17 @@ class UniqueTreeContainer(UniqueTreeNode):
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
 
+    def _prepare_setitem_multiple(self, expr):
+        return expr
+
     def _prepare_setitem_single(self, expr):
         return expr
 
-    def _prepare_setitem_multiple(self, expr):
-        return expr
+    def _validate_setitem_multiple(self, new_items, old_items, start_index, stop_index):
+        pass
+
+    def _validate_setitem_single(self, new_item, old_item, index):
+        pass
 
     ### PRIVATE PROPERTIES ###
 
