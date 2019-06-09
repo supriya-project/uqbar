@@ -63,42 +63,17 @@ class UniqueTreeContainer(UniqueTreeNode):
     def __len__(self):
         return len(self._children)
 
-    def __setitem__(self, i, expr):
+    def __setitem__(self, i, new_items):
         if isinstance(i, int):
-            expr = self._prepare_setitem_single(expr)
-            if not isinstance(expr, self._node_class):
-                raise ValueError(f"Expected {self._node_class}, got {type(expr)}")
-            if expr in self.parentage:
-                raise ValueError("Cannot set parent node as child.")
-            old = self[i]
-            self._validate_setitem_single(expr, old, i)
-            old._set_parent(None)
-            expr._set_parent(self)
-            self._children.insert(i, expr)
+            new_items = [self._prepare_setitem_single(new_items)]
+            start_index, stop_index, _ = slice(i, i + 1).indices(len(self))
         else:
-            expr = tuple(self._prepare_setitem_multiple(expr))
-            for item in expr:
-                if not isinstance(item, self._node_class):
-                    raise ValueError(f"Expected {self._node_class}, got {type(item)}")
-            parentage = self.parentage
-            if any(node in parentage for node in expr):
-                raise ValueError("Cannot set parent node as child.")
-            if (
-                i.start == i.stop
-                and i.start is not None
-                and i.stop is not None
-                and i.start <= -len(self)
-            ):
-                start, stop = 0, 0
-            else:
-                start, stop, stride = i.indices(len(self))
-            old = self[start:stop]
-            self._validate_setitem_multiple(expr, old, start, stop)
-            for node in old:
-                node._set_parent(None)
-            for node in expr:
-                node._set_parent(self)
-            self._children.__setitem__(slice(start, start), expr)
+            new_items = list(self._prepare_setitem_multiple(new_items))
+            start_index, stop_index, _ = i.indices(len(self))
+        old_items = self[start_index:stop_index]
+        self._validate_setitem_expr(new_items, old_items, start_index, stop_index)
+        self._set_items(new_items, old_items, start_index, stop_index)
+        self._cleanup_setitem_expr(new_items, old_items)
         self._mark_entire_tree_for_later_update()
 
     ### PRIVATE METHODS ###
@@ -110,17 +85,29 @@ class UniqueTreeContainer(UniqueTreeNode):
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
 
+    def _cleanup_setitem_expr(self, new_items, old_items):
+        pass
+
     def _prepare_setitem_multiple(self, expr):
         return expr
 
     def _prepare_setitem_single(self, expr):
         return expr
 
-    def _validate_setitem_multiple(self, new_items, old_items, start_index, stop_index):
-        pass
+    def _set_items(self, new_items, old_items, start_index, stop_index):
+        for old_item in old_items:
+            old_item._set_parent(None)
+        for new_item in new_items:
+            new_item._set_parent(self)
+        self._children.__setitem__(slice(start_index, start_index), new_items)
 
-    def _validate_setitem_single(self, new_item, old_item, index):
-        pass
+    def _validate_setitem_expr(self, new_items, old_items, start_index, stop_index):
+        parentage = self.parentage
+        for new_item in new_items:
+            if not isinstance(new_item, self._node_class):
+                raise ValueError(f"Expected {self._node_class}, got {type(new_item)}")
+            elif new_item in parentage:
+                raise ValueError("Cannot set parent node as child.")
 
     ### PRIVATE PROPERTIES ###
 

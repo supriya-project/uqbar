@@ -86,7 +86,8 @@ class UniqueTreeNode:
         self._remove_from_parent()
         self._parent = new_parent
         self._restore_named_children_to_parentage(named_children)
-        self._mark_entire_tree_for_later_update()
+        if new_parent is None:
+            self._mark_entire_tree_for_later_update()
 
     ### PUBLIC METHODS ###
 
@@ -150,7 +151,11 @@ class UniqueTreeNode:
         graph_order = []
         for i in range(len(parentage) - 1):
             parent, child = parentage[i : i + 2]
-            graph_order.append(parent.index(child))
+            try:
+                index = parent.index(child)
+            except AttributeError:
+                index = 0
+            graph_order.append(index)
         return tuple(graph_order)
 
     @property
