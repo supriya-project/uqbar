@@ -35,6 +35,11 @@ def delimit_words(string: str) -> Generator[str, None, None]:
         >>> list(uqbar.strings.delimit_words("Route53"))
         ['Route', '53']
 
+    ::
+
+        >>> list(uqbar.strings.delimit_words("ABC"))
+        ['ABC']
+
     """
     # TODO: Reimplement this
     wordlike_characters = ("<", ">", "!")
