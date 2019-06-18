@@ -65,15 +65,14 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def __setitem__(self, i, new_items):
         if isinstance(i, int):
-            new_items = [self._prepare_setitem_single(new_items)]
+            new_items = self._prepare_setitem_single(new_items)
             start_index, stop_index, _ = slice(i, i + 1).indices(len(self))
         else:
-            new_items = list(self._prepare_setitem_multiple(new_items))
+            new_items = self._prepare_setitem_multiple(new_items)
             start_index, stop_index, _ = i.indices(len(self))
         old_items = self[start_index:stop_index]
         self._validate_setitem_expr(new_items, old_items, start_index, stop_index)
         self._set_items(new_items, old_items, start_index, stop_index)
-        self._cleanup_setitem_expr(new_items, old_items)
         self._mark_entire_tree_for_later_update()
 
     ### PRIVATE METHODS ###
@@ -85,14 +84,11 @@ class UniqueTreeContainer(UniqueTreeNode):
                 name_dictionary[name] = copy.copy(children)
         return name_dictionary
 
-    def _cleanup_setitem_expr(self, new_items, old_items):
-        pass
-
     def _prepare_setitem_multiple(self, expr):
-        return expr
+        return list(expr)
 
     def _prepare_setitem_single(self, expr):
-        return expr
+        return [expr]
 
     def _set_items(self, new_items, old_items, start_index, stop_index):
         for old_item in old_items:

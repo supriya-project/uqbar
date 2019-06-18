@@ -189,7 +189,7 @@ class UniqueTreeNode:
         node = self
         while node is not None:
             parentage.append(node)
-            node = node.parent
+            node = getattr(node, "parent", None)
         return tuple(parentage)
 
     @property
