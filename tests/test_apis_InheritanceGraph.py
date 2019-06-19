@@ -21,7 +21,10 @@ def test_01():
             ),
             (
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-                ["uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"],
+                [
+                    "uqbar.containers.UniqueTreeList.UniqueTreeList",
+                    "uqbar.containers.UniqueTreeSet.UniqueTreeSet",
+                ],
             ),
         ]
     )
@@ -58,9 +61,11 @@ def test_01():
                 graph [label="uqbar.containers"];
                 node [color=2];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
@@ -84,7 +89,7 @@ def test_02():
                 ],
             ),
             (
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                "uqbar.containers.UniqueTreeList.UniqueTreeList",
                 [
                     "uqbar.apis.PackageNode.PackageNode",
                     "uqbar.graphs.Graph.Graph",
@@ -99,7 +104,8 @@ def test_02():
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
                 [
                     "uqbar.apis.ModuleNode.ModuleNode",
-                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+                    "uqbar.containers.UniqueTreeList.UniqueTreeList",
+                    "uqbar.containers.UniqueTreeSet.UniqueTreeSet",
                     "uqbar.graphs.Attachable.Attachable",
                     "uqbar.graphs.HRule.HRule",
                     "uqbar.graphs.LineBreak.LineBreak",
@@ -158,13 +164,17 @@ def test_02():
                 "uqbar.containers.DependencyGraph.DependencyGraph" [color=black,
                     fontcolor=white,
                     label="Dependency\nGraph"];
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [color=black,
                     fontcolor=white,
-                    label="Unique\nTree\nContainer"];
+                    label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
                     fontcolor=white,
                     label="Unique\nTree\nNode"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
             }
             subgraph "cluster_uqbar.graphs" {
                 graph [label="uqbar.graphs"];
@@ -186,13 +196,13 @@ def test_02():
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
@@ -279,7 +289,7 @@ def test_03():
         "uqbar.apis.dummy.MyParentClass": ["uqbar.apis.dummy.MyChildClass"],
         "uqbar.book.extensions.Extension": ["uqbar.book.extensions.GraphExtension"],
         "uqbar.cli.CLI.CLI": ["uqbar.cli.CLIAggregator.CLIAggregator"],
-        "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer": [
+        "uqbar.containers.UniqueTreeList.UniqueTreeList": [
             "uqbar.apis.PackageNode.PackageNode",
             "uqbar.graphs.Graph.Graph",
             "uqbar.graphs.Node.Node",
@@ -290,7 +300,8 @@ def test_03():
         ],
         "uqbar.containers.UniqueTreeNode.UniqueTreeNode": [
             "uqbar.apis.ModuleNode.ModuleNode",
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
+            "uqbar.containers.UniqueTreeList.UniqueTreeList",
+            "uqbar.containers.UniqueTreeSet.UniqueTreeSet",
             "uqbar.graphs.Attachable.Attachable",
             "uqbar.graphs.HRule.HRule",
             "uqbar.graphs.LineBreak.LineBreak",
@@ -460,9 +471,11 @@ def test_03():
                 graph [label="uqbar.containers"];
                 node [color=4];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
             }
             subgraph "cluster_uqbar.enums" {
                 graph [label="uqbar.enums"];
@@ -542,13 +555,13 @@ def test_03():
             "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
             "enum.Enum" -> "uqbar.enums.StrictEnumeration";
             "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
