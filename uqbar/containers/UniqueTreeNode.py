@@ -122,10 +122,10 @@ class UniqueTreeNode:
 
         ::
 
-            >>> from uqbar.containers import UniqueTreeContainer, UniqueTreeNode
-            >>> root_container = UniqueTreeContainer(name="root")
-            >>> outer_container = UniqueTreeContainer(name="outer")
-            >>> inner_container = UniqueTreeContainer(name="inner")
+            >>> from uqbar.containers import UniqueTreeList, UniqueTreeNode
+            >>> root_container = UniqueTreeList(name="root")
+            >>> outer_container = UniqueTreeList(name="outer")
+            >>> inner_container = UniqueTreeList(name="inner")
             >>> node_a = UniqueTreeNode(name="a")
             >>> node_b = UniqueTreeNode(name="b")
             >>> node_c = UniqueTreeNode(name="c")

@@ -3,11 +3,11 @@ import copy
 from uqbar.containers.UniqueTreeNode import UniqueTreeNode
 
 
-class UniqueTreeContainer(UniqueTreeNode):
+class UniqueTreeList(UniqueTreeNode):
     """
-    A container node in a "unique" tree.
+    A list-like node in a "unique" tree.
 
-    Container nodes may contain zero or more other nodes.
+    List nodes may contain zero or more other nodes.
 
     Unique tree nodes may have at most one parent and may appear only once in
     the tree.
@@ -78,7 +78,7 @@ class UniqueTreeContainer(UniqueTreeNode):
     ### PRIVATE METHODS ###
 
     def _cache_named_children(self):
-        name_dictionary = super(UniqueTreeContainer, self)._cache_named_children()
+        name_dictionary = super()._cache_named_children()
         if hasattr(self, "_named_children"):
             for name, children in self._named_children.items():
                 name_dictionary[name] = copy.copy(children)
@@ -122,10 +122,10 @@ class UniqueTreeContainer(UniqueTreeNode):
 
         ::
 
-            >>> from uqbar.containers import UniqueTreeContainer, UniqueTreeNode
-            >>> root_container = UniqueTreeContainer(name="root")
-            >>> outer_container = UniqueTreeContainer(name="outer")
-            >>> inner_container = UniqueTreeContainer(name="inner")
+            >>> from uqbar.containers import UniqueTreeList, UniqueTreeNode
+            >>> root_container = UniqueTreeList(name="root")
+            >>> outer_container = UniqueTreeList(name="outer")
+            >>> inner_container = UniqueTreeList(name="inner")
             >>> node_a = UniqueTreeNode(name="a")
             >>> node_b = UniqueTreeNode(name="b")
             >>> node_c = UniqueTreeNode(name="c")
@@ -162,7 +162,7 @@ class UniqueTreeContainer(UniqueTreeNode):
         for child in tuple(self):
             if top_down:
                 yield child
-            if isinstance(child, UniqueTreeContainer):
+            if isinstance(child, UniqueTreeList):
                 yield from child.depth_first(top_down=top_down)
             if not top_down:
                 yield child

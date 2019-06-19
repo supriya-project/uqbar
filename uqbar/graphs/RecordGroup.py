@@ -1,9 +1,9 @@
 from typing import Tuple  # noqa
 
-from uqbar.containers import UniqueTreeContainer
+from uqbar.containers import UniqueTreeList
 
 
-class RecordGroup(UniqueTreeContainer):
+class RecordGroup(UniqueTreeList):
     """ A Graphviz record field group.
 
     ::
@@ -30,7 +30,7 @@ class RecordGroup(UniqueTreeContainer):
     ### INITIALIZER ###
 
     def __init__(self, children=None, *, name: str = None) -> None:
-        UniqueTreeContainer.__init__(self, name=name, children=children)
+        UniqueTreeList.__init__(self, name=name, children=children)
 
     ### SPECIAL METHODS ###
 

@@ -1,12 +1,12 @@
 from typing import Dict, List, Mapping, Set, Tuple, Union  # noqa
 
-from uqbar.containers import UniqueTreeContainer
+from uqbar.containers import UniqueTreeList
 from uqbar.graphs.Attributes import Attributes
 from uqbar.graphs.Edge import Edge  # noqa
 from uqbar.graphs.Node import Node  # noqa
 
 
-class Graph(UniqueTreeContainer):
+class Graph(UniqueTreeList):
     """
     A Graphviz graph, subgraph or cluster.
     """
@@ -28,7 +28,7 @@ class Graph(UniqueTreeContainer):
         name: str = None,
         node_attributes: Union[Mapping[str, object], Attributes] = None,
     ) -> None:
-        UniqueTreeContainer.__init__(self, name=name, children=children)
+        UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes(
             "cluster" if is_cluster else "graph", **(attributes or {})
         )

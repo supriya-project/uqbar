@@ -1,10 +1,10 @@
 from typing import Mapping, Tuple, Union
 
-from uqbar.containers import UniqueTreeContainer
+from uqbar.containers import UniqueTreeList
 from uqbar.graphs.Attributes import Attributes
 
 
-class Table(UniqueTreeContainer):
+class Table(UniqueTreeList):
     """
     A Graphviz HTML table.
 
@@ -57,7 +57,7 @@ class Table(UniqueTreeContainer):
         attributes: Union[Mapping[str, object], Attributes] = None,
         name: str = None,
     ) -> None:
-        UniqueTreeContainer.__init__(self, children=children, name=name)
+        UniqueTreeList.__init__(self, children=children, name=name)
         self._attributes = Attributes("table", **(attributes or {}))
 
     ### SPECIAL METHODS ###

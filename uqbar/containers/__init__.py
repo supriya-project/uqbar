@@ -3,5 +3,6 @@ Specialized container classes.
 """
 
 from .DependencyGraph import DependencyGraph  # noqa
-from .UniqueTreeContainer import UniqueTreeContainer  # noqa
+from .UniqueTreeList import UniqueTreeList  # noqa
 from .UniqueTreeNode import UniqueTreeNode  # noqa
+from .UniqueTreeSet import UniqueTreeSet  # noqa

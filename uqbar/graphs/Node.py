@@ -1,6 +1,6 @@
 from typing import Iterable, Mapping, Set, Tuple, Union  # noqa
 
-from uqbar.containers import UniqueTreeContainer
+from uqbar.containers import UniqueTreeList
 from uqbar.graphs.Attributes import Attributes
 from uqbar.graphs.Edge import Edge  # noqa
 from uqbar.graphs.RecordField import RecordField
@@ -8,7 +8,7 @@ from uqbar.graphs.RecordGroup import RecordGroup
 from uqbar.graphs.Table import Table
 
 
-class Node(UniqueTreeContainer):
+class Node(UniqueTreeList):
     """
     A Graphviz node.
 
@@ -34,7 +34,7 @@ class Node(UniqueTreeContainer):
         attributes: Union[Mapping[str, object], Attributes] = None,
         name: str = None,
     ) -> None:
-        UniqueTreeContainer.__init__(self, name=name, children=children)
+        UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes("node", **(attributes or {}))
         self._edges: Set[Edge] = set()
 
