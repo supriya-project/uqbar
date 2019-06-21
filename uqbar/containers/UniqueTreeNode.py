@@ -1,4 +1,3 @@
-import collections
 import copy
 import typing
 
@@ -88,26 +87,6 @@ class UniqueTreeNode:
         self._restore_named_children_to_parentage(named_children)
         if new_parent is None:
             self._mark_entire_tree_for_later_update()
-
-    ### PUBLIC METHODS ###
-
-    def precede_by(self, expr):
-        if not isinstance(expr, collections.Sequence):
-            expr = [expr]
-        index = self.parent.index(self)
-        self.parent[index:index] = expr
-
-    def replace_with(self, expr):
-        if not isinstance(expr, collections.Sequence):
-            expr = [expr]
-        index = self.parent.index(self)
-        self.parent[index : index + 1] = expr
-
-    def succeed_by(self, expr):
-        if not isinstance(expr, collections.Sequence):
-            expr = [expr]
-        index = self.parent.index(self)
-        self.parent[index + 1 : index + 1] = expr
 
     ### PUBLIC PROPERTIES ###
 

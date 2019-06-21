@@ -1,64 +1,64 @@
-from uqbar.containers.UniqueTreeNode import UniqueTreeNode
+import threading
+
+from .UniqueTreeContainer import UniqueTreeContainer
 
 
-class UniqueTreeSet(UniqueTreeNode):
+class UniqueTreeSet(UniqueTreeContainer):
+    """
+    A set-like node in a "unique" tree.
+    """
+
+    ### INITIALIZER ###
 
     def __init__(self, children=None, name=None):
-        UniqueTreeNode.__init__(self, name=name)
+        super().__init__(name=name)
         self._children = set()
-        self._named_children = {}
+        self._lock = threading.RLock()
         if children is not None:
-            self._children.update(children)
+            self.update(children)
 
-    ### SPECIAL METHODS ###
+    ### PRIVATE METHODS ###
 
-    def __contains__(self, expr):
-        if isinstance(expr, str):
-            return expr in self._named_children
-        for x in self._children:
-            if x is expr:
-                return True
-        return False
+    def _mutate(self, new_nodes, old_nodes):
+        with self._lock:
+            self._validate(new_nodes, old_nodes)
+            self._update_parentage(new_nodes, old_nodes)
+            self._mark_entire_tree_for_later_update()
 
-    def __iter__(self):
-        for child in self._children:
-            yield child
+    def _update_parentage(self, new_nodes, old_nodes):
+        for old_node in old_nodes:
+            old_node._set_parent(None)
+        for new_node in new_nodes:
+            new_node._set_parent(self)
+        self._children.update(new_nodes)
 
-    def __len__(self):
-        return len(self._children)
-
-    ### PRIVATE PROPERTIES ###
-
-    @property
-    def _node_class(self):
-        return UniqueTreeNode
+    def _validate(self, new_nodes):
+        parentage = self.parentage
+        for new_node in new_nodes:
+            if not isinstance(new_node, self._node_class):
+                raise ValueError(f"Expected {self._node_class}, got {type(new_node)}")
+            elif new_node in parentage:
+                raise ValueError("Cannot set parent node as child.")
 
     ### PUBLIC METHODS ###
 
     def add(self, node):
-        pass
+        self._mutate(new_nodes=(node,), old_nodes=())
 
     def clear(self):
-        pass
+        self._mutate(new_nodes=(), old_nodes=self._children)
 
     def pop(self):
-        pass
-
-    def recurse(self):
-        for child in self:
-            yield child
-            if isinstance(child, type(self)):
-                for grandchild in child.recurse():
-                    yield grandchild
+        with self._lock:
+            node = self._children.pop()
+            self._mutate(new_nodes=(), old_nodes=(node,))
+        return node
 
     def remove(self, node):
-        pass
+        with self._lock:
+            self._children.remove(node)
+            self._mutate(new_nodes=(), old_nodes=(node,))
 
     def update(self, expr):
-        pass
-
-    ### PUBLIC PROPERTIES ###
-
-    @property
-    def children(self):
-        return tuple(self._children)
+        with self._lock:
+            self._mutate(new_nodes=expr, old_nodes=())
