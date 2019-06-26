@@ -1,6 +1,8 @@
 import copy
 import typing
 
+from uqbar.iterables import nwise
+
 
 class UniqueTreeNode:
     """
@@ -126,10 +128,8 @@ class UniqueTreeNode:
             d (1, 1)
 
         """
-        parentage = tuple(reversed(self.parentage))
         graph_order = []
-        for i in range(len(parentage) - 1):
-            parent, child = parentage[i : i + 2]
+        for parent, child in nwise(reversed(self.parentage)):
             try:
                 index = parent.index(child)
             except AttributeError:
