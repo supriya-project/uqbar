@@ -27,9 +27,7 @@ class UniqueTreeNode:
     def _cache_named_children(self):
         name_dictionary = {}
         if self.name is not None:
-            if self.name not in name_dictionary:
-                name_dictionary[self.name] = set()
-            name_dictionary[self.name].add(self)
+            name_dictionary.setdefault(self.name, set()).add(self)
         return name_dictionary
 
     @classmethod
@@ -56,37 +54,39 @@ class UniqueTreeNode:
                 setattr(node, name, False)
 
     def _remove_from_parent(self):
-        if self._parent is not None:
-            if self in self._parent:
-                self._parent._children.remove(self)
+        if self._parent is not None and self in self._parent:
+            self._parent._children.remove(self)
         self._parent = None
 
-    def _remove_named_children_from_parentage(self, name_dictionary):
-        if self._parent is not None and name_dictionary:
-            for parent in self.parentage[1:]:
-                named_children = parent._named_children
-                for name in name_dictionary:
-                    for node in name_dictionary[name]:
-                        named_children[name].remove(node)
-                    if not named_children[name]:
-                        del named_children[name]
+    def _remove_named_children_from_parentage(self, old_parent, name_dictionary):
+        if old_parent is None or not name_dictionary:
+            return
+        for parent in old_parent.parentage:
+            named_children = parent._named_children
+            for name in name_dictionary:
+                for node in name_dictionary[name]:
+                    named_children[name].remove(node)
+                if not named_children[name]:
+                    del named_children[name]
 
-    def _restore_named_children_to_parentage(self, name_dictionary):
-        if self._parent is not None and name_dictionary:
-            for parent in self.parentage[1:]:
-                named_children = parent._named_children
-                for name in name_dictionary:
-                    if name in named_children:
-                        named_children[name].update(name_dictionary[name])
-                    else:
-                        named_children[name] = copy.copy(name_dictionary[name])
+    def _restore_named_children_to_parentage(self, new_parent, name_dictionary):
+        if new_parent is None or not name_dictionary:
+            return
+        for parent in new_parent.parentage:
+            named_children = parent._named_children
+            for name in name_dictionary:
+                if name in named_children:
+                    named_children[name].update(name_dictionary[name])
+                else:
+                    named_children[name] = copy.copy(name_dictionary[name])
 
     def _set_parent(self, new_parent):
+        old_parent = self._parent
         named_children = self._cache_named_children()
-        self._remove_named_children_from_parentage(named_children)
         self._remove_from_parent()
+        self._remove_named_children_from_parentage(old_parent, named_children)
         self._parent = new_parent
-        self._restore_named_children_to_parentage(named_children)
+        self._restore_named_children_to_parentage(new_parent, named_children)
         if new_parent is None:
             self._mark_entire_tree_for_later_update()
 

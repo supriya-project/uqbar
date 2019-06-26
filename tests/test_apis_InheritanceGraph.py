@@ -48,9 +48,11 @@ def test_01():
                 "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
                 "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [label="Unique\nTree\nTuple"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
@@ -121,9 +123,13 @@ def test_02():
                 "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
                     fontcolor=white,
                     label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nTuple"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             subgraph "cluster_uqbar.graphs" {
@@ -332,9 +338,11 @@ def test_03():
                 "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
                 "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [label="Unique\nTree\nTuple"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             subgraph "cluster_uqbar.enums" {
