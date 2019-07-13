@@ -1,8 +1,9 @@
 from typing import Mapping, Tuple, Union
 
 from uqbar.containers import UniqueTreeList
-from uqbar.graphs import Attachable
-from uqbar.graphs.Attributes import Attributes
+
+from .Attachable import Attachable
+from .Attributes import Attributes
 
 
 class TableCell(UniqueTreeList, Attachable):
@@ -42,7 +43,7 @@ class TableCell(UniqueTreeList, Attachable):
         attributes: Union[Mapping[str, object], Attributes] = None,
         name: str = None,
     ) -> None:
-        from uqbar.graphs import Text
+        from .Text import Text
 
         if isinstance(children, str):
             children = [Text(children)]

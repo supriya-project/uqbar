@@ -1,9 +1,10 @@
 from typing import Dict, List, Mapping, Set, Tuple, Union  # noqa
 
 from uqbar.containers import UniqueTreeList
-from uqbar.graphs.Attributes import Attributes
-from uqbar.graphs.Edge import Edge  # noqa
-from uqbar.graphs.Node import Node  # noqa
+
+from .Attributes import Attributes
+from .Edge import Edge  # noqa
+from .Node import Node  # noqa
 
 
 class Graph(UniqueTreeList):

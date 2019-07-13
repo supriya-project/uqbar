@@ -2,7 +2,8 @@ from typing import Optional
 
 import uqbar.graphs  # noqa
 from uqbar.containers import UniqueTreeNode
-from uqbar.graphs import Attachable
+
+from .Attachable import Attachable
 
 
 class RecordField(Attachable, UniqueTreeNode):

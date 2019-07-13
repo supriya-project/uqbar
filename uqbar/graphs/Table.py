@@ -1,7 +1,8 @@
 from typing import Mapping, Tuple, Union
 
 from uqbar.containers import UniqueTreeList
-from uqbar.graphs.Attributes import Attributes
+
+from .Attributes import Attributes
 
 
 class Table(UniqueTreeList):

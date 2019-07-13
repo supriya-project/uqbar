@@ -1,11 +1,12 @@
 from typing import Iterable, Mapping, Set, Tuple, Union  # noqa
 
 from uqbar.containers import UniqueTreeList
-from uqbar.graphs.Attributes import Attributes
-from uqbar.graphs.Edge import Edge  # noqa
-from uqbar.graphs.RecordField import RecordField
-from uqbar.graphs.RecordGroup import RecordGroup
-from uqbar.graphs.Table import Table
+
+from .Attributes import Attributes
+from .Edge import Edge  # noqa
+from .RecordField import RecordField
+from .RecordGroup import RecordGroup
+from .Table import Table
 
 
 class Node(UniqueTreeList):

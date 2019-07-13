@@ -26,7 +26,7 @@ class Attachable(UniqueTreeNode):
         return "{}:{}".format(node_name, port_name)
 
     def _get_node(self) -> Optional["uqbar.graphs.Node"]:
-        from uqbar.graphs.Node import Node
+        from .Node import Node
 
         parent = self.parent
         while parent is not None:
