@@ -10,21 +10,6 @@ import uqbar.strings
 
 def test_01():
     inheritance_graph = uqbar.apis.InheritanceGraph(package_paths=["uqbar.containers"])
-    assert inheritance_graph.parents_to_children == collections.OrderedDict(
-        [
-            (
-                "builtins.object",
-                [
-                    "uqbar.containers.DependencyGraph.DependencyGraph",
-                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-                ],
-            ),
-            (
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-                ["uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"],
-            ),
-        ]
-    )
     assert str(inheritance_graph) == uqbar.strings.normalize(
         r"""
         digraph InheritanceGraph {
@@ -59,7 +44,15 @@ def test_01():
                 node [color=2];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
+                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [label="Unique\nTree\nDict"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [label="Unique\nTree\nTuple"];
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
@@ -73,49 +66,6 @@ def test_01():
 def test_02():
     inheritance_graph = uqbar.apis.InheritanceGraph(
         package_paths=["uqbar"], lineage_paths=["uqbar.containers"]
-    )
-    assert inheritance_graph.parents_to_children == collections.OrderedDict(
-        [
-            (
-                "builtins.object",
-                [
-                    "uqbar.containers.DependencyGraph.DependencyGraph",
-                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-                ],
-            ),
-            (
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
-                [
-                    "uqbar.apis.PackageNode.PackageNode",
-                    "uqbar.graphs.Graph.Graph",
-                    "uqbar.graphs.Node.Node",
-                    "uqbar.graphs.RecordGroup.RecordGroup",
-                    "uqbar.graphs.Table.Table",
-                    "uqbar.graphs.TableCell.TableCell",
-                    "uqbar.graphs.TableRow.TableRow",
-                ],
-            ),
-            (
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-                [
-                    "uqbar.apis.ModuleNode.ModuleNode",
-                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
-                    "uqbar.graphs.Attachable.Attachable",
-                    "uqbar.graphs.HRule.HRule",
-                    "uqbar.graphs.LineBreak.LineBreak",
-                    "uqbar.graphs.RecordField.RecordField",
-                    "uqbar.graphs.Text.Text",
-                    "uqbar.graphs.VRule.VRule",
-                ],
-            ),
-            (
-                "uqbar.graphs.Attachable.Attachable",
-                [
-                    "uqbar.graphs.RecordField.RecordField",
-                    "uqbar.graphs.TableCell.TableCell",
-                ],
-            ),
-        ]
     )
     assert str(inheritance_graph) == uqbar.strings.normalize(
         r"""
@@ -161,9 +111,25 @@ def test_02():
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
                     fontcolor=white,
                     label="Unique\nTree\nContainer"];
+                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nDict"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
                     fontcolor=white,
                     label="Unique\nTree\nNode"];
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [color=black,
+                    fontcolor=white,
+                    label="Unique\nTree\nTuple"];
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             subgraph "cluster_uqbar.graphs" {
@@ -186,13 +152,13 @@ def test_02():
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
@@ -210,99 +176,6 @@ def test_03():
     inheritance_graph = uqbar.apis.InheritanceGraph(
         package_paths=["uqbar"], lineage_paths=["uqbar"]
     )
-    assert inheritance_graph.parents_to_children == {
-        "abc.ABC": ["uqbar.cli.CLI.CLI"],
-        "builtins.BaseException": ["builtins.Exception"],
-        "builtins.Exception": ["uqbar.book.console.ConsoleError"],
-        "builtins.int": ["enum.IntEnum"],
-        "builtins.object": [
-            "abc.ABC",
-            "builtins.BaseException",
-            "builtins.int",
-            "code.InteractiveInterpreter",
-            "collections.abc.Container",
-            "collections.abc.Iterable",
-            "collections.abc.Sized",
-            "docutils.nodes.Body",
-            "docutils.nodes.Node",
-            "docutils.parsers.rst.Directive",
-            "enum.Enum",
-            "uqbar.apis.APIBuilder.APIBuilder",
-            "uqbar.apis.InheritanceGraph.InheritanceGraph",
-            "uqbar.apis.MemberDocumenter.MemberDocumenter",
-            "uqbar.apis.ModuleDocumenter.ModuleDocumenter",
-            "uqbar.apis.RootDocumenter.RootDocumenter",
-            "uqbar.apis.dummy.MyParentClass",
-            "uqbar.book.console.ConsoleInput",
-            "uqbar.book.console.ConsoleOutput",
-            "uqbar.book.console.MonkeyPatch",
-            "uqbar.book.extensions.Extension",
-            "uqbar.containers.DependencyGraph.DependencyGraph",
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode",
-            "uqbar.graphs.Edge.Edge",
-            "uqbar.graphs.Grapher.Grapher",
-            "uqbar.io.DirectoryChange.DirectoryChange",
-            "uqbar.io.Profiler.Profiler",
-            "uqbar.io.RedirectedStreams.RedirectedStreams",
-            "uqbar.io.Timer.Timer",
-        ],
-        "code.InteractiveConsole": ["uqbar.book.console.Console"],
-        "code.InteractiveInterpreter": ["code.InteractiveConsole"],
-        "collections.abc.Collection": ["collections.abc.Mapping"],
-        "collections.abc.Container": ["collections.abc.Collection"],
-        "collections.abc.Iterable": ["collections.abc.Collection"],
-        "collections.abc.Mapping": ["collections.abc.MutableMapping"],
-        "collections.abc.MutableMapping": ["uqbar.graphs.Attributes.Attributes"],
-        "collections.abc.Sized": ["collections.abc.Collection"],
-        "docutils.nodes.Body": ["docutils.nodes.General"],
-        "docutils.nodes.Element": ["uqbar.sphinx.inheritance.inheritance_diagram"],
-        "docutils.nodes.General": ["uqbar.sphinx.inheritance.inheritance_diagram"],
-        "docutils.nodes.Node": ["docutils.nodes.Element"],
-        "docutils.parsers.rst.Directive": [
-            "uqbar.sphinx.inheritance.InheritanceDiagram"
-        ],
-        "enum.Enum": ["enum.IntEnum", "uqbar.enums.StrictEnumeration"],
-        "enum.IntEnum": ["uqbar.enums.IntEnumeration"],
-        "uqbar.apis.ClassDocumenter.ClassDocumenter": [
-            "uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"
-        ],
-        "uqbar.apis.MemberDocumenter.MemberDocumenter": [
-            "uqbar.apis.ClassDocumenter.ClassDocumenter",
-            "uqbar.apis.FunctionDocumenter.FunctionDocumenter",
-        ],
-        "uqbar.apis.ModuleDocumenter.ModuleDocumenter": [
-            "uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"
-        ],
-        "uqbar.apis.RootDocumenter.RootDocumenter": [
-            "uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"
-        ],
-        "uqbar.apis.dummy.MyParentClass": ["uqbar.apis.dummy.MyChildClass"],
-        "uqbar.book.extensions.Extension": ["uqbar.book.extensions.GraphExtension"],
-        "uqbar.cli.CLI.CLI": ["uqbar.cli.CLIAggregator.CLIAggregator"],
-        "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer": [
-            "uqbar.apis.PackageNode.PackageNode",
-            "uqbar.graphs.Graph.Graph",
-            "uqbar.graphs.Node.Node",
-            "uqbar.graphs.RecordGroup.RecordGroup",
-            "uqbar.graphs.Table.Table",
-            "uqbar.graphs.TableCell.TableCell",
-            "uqbar.graphs.TableRow.TableRow",
-        ],
-        "uqbar.containers.UniqueTreeNode.UniqueTreeNode": [
-            "uqbar.apis.ModuleNode.ModuleNode",
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer",
-            "uqbar.graphs.Attachable.Attachable",
-            "uqbar.graphs.HRule.HRule",
-            "uqbar.graphs.LineBreak.LineBreak",
-            "uqbar.graphs.RecordField.RecordField",
-            "uqbar.graphs.Text.Text",
-            "uqbar.graphs.VRule.VRule",
-        ],
-        "uqbar.graphs.Attachable.Attachable": [
-            "uqbar.graphs.RecordField.RecordField",
-            "uqbar.graphs.TableCell.TableCell",
-        ],
-    }
     assert str(inheritance_graph) == uqbar.strings.normalize(
         r"""
         digraph InheritanceGraph {
@@ -461,7 +334,15 @@ def test_03():
                 node [color=4];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
+                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [label="Unique\nTree\nDict"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\nTree\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\nTree\nNode"];
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\nTree\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [label="Unique\nTree\nTuple"];
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             subgraph "cluster_uqbar.enums" {
@@ -542,13 +423,13 @@ def test_03():
             "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
             "enum.Enum" -> "uqbar.enums.StrictEnumeration";
             "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";

@@ -55,7 +55,15 @@ class InheritanceGraph:
                 node [color=2];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\\nGraph"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\\nTree\\nContainer"];
+                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [label="Unique\\nTree\\nDict"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [label="Unique\\nTree\\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [label="Unique\\nTree\\nNode"];
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [label="Unique\\nTree\\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [label="Unique\\nTree\\nTuple"];
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
@@ -70,7 +78,7 @@ class InheritanceGraph:
     ::
 
         >>> graph.aspect_ratio
-        (2, 2)
+        (3, 4)
 
     Lineage paths constrain the classes in the graph to only those whose
     antecedents or descendants pass through the classes identified by those
@@ -126,9 +134,25 @@ class InheritanceGraph:
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
                     fontcolor=white,
                     label="Unique\\nTree\\nContainer"];
+                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [color=black,
+                    fontcolor=white,
+                    label="Unique\\nTree\\nDict"];
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" [color=black,
+                    fontcolor=white,
+                    label="Unique\\nTree\\nList"];
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
                     fontcolor=white,
                     label="Unique\\nTree\\nNode"];
+                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
+                    fontcolor=white,
+                    label="Unique\\nTree\\nSet"];
+                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [color=black,
+                    fontcolor=white,
+                    label="Unique\\nTree\\nTuple"];
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
                 "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
             }
             subgraph "cluster_uqbar.graphs" {
@@ -151,13 +175,13 @@ class InheritanceGraph:
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.graphs.TableRow.TableRow";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
@@ -170,7 +194,7 @@ class InheritanceGraph:
     ::
 
         >>> graph.aspect_ratio
-        (3, 8)
+        (4, 7)
 
     :param package_paths: a sequence of package path strings, classes or
         modules to seed the inheritance graph with

@@ -1,9 +1,9 @@
 from typing import Tuple
 
-from uqbar.containers import UniqueTreeContainer
+from uqbar.containers import UniqueTreeList
 
 
-class TableRow(UniqueTreeContainer):
+class TableRow(UniqueTreeList):
     """
     A Graphviz HTML table row.
 

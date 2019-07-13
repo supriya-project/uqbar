@@ -8,7 +8,7 @@ class TestCase(unittest.TestCase):
         """
         Initialize without name.
         """
-        node = uqbar.containers.UniqueTreeContainer()
+        node = uqbar.containers.UniqueTreeList()
         assert node.name is None
         assert node.parent is None
         assert node.depth == 0
@@ -18,7 +18,7 @@ class TestCase(unittest.TestCase):
         """
         Initialize with name.
         """
-        node = uqbar.containers.UniqueTreeContainer(name="foo")
+        node = uqbar.containers.UniqueTreeList(name="foo")
         assert node.name == "foo"
         assert node.parent is None
         assert node.depth == 0
@@ -28,8 +28,8 @@ class TestCase(unittest.TestCase):
         """
         Unique parentage.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
-        node_b = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
+        node_b = uqbar.containers.UniqueTreeList()
         node_c = uqbar.containers.UniqueTreeNode()
         node_a.append(node_c)
         assert node_c.parent is node_a
@@ -46,7 +46,7 @@ class TestCase(unittest.TestCase):
         """
         Re-insertion.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_a.append(node_b)
@@ -67,7 +67,7 @@ class TestCase(unittest.TestCase):
         """
         Extend from a list.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_a.extend([node_b, node_c])
@@ -80,10 +80,10 @@ class TestCase(unittest.TestCase):
 
     def test_extend_02(self):
         """
-        Extend from another UniqueTreeContainer.
+        Extend from another UniqueTreeList.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
-        node_b = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
+        node_b = uqbar.containers.UniqueTreeList()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
         node_a.extend([node_c, node_d])
@@ -109,9 +109,9 @@ class TestCase(unittest.TestCase):
         """
         Cannot insert a parent as a child.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
-        node_b = uqbar.containers.UniqueTreeContainer()
-        node_c = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
+        node_b = uqbar.containers.UniqueTreeList()
+        node_c = uqbar.containers.UniqueTreeList()
         node_a.append(node_b)
         node_b.append(node_c)
         with self.assertRaises(ValueError):
@@ -119,9 +119,9 @@ class TestCase(unittest.TestCase):
 
     def test___getitem___numbered(self):
         """
-        UniqueTreeContainer can be subscripted with integers.
+        UniqueTreeList can be subscripted with integers.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -139,12 +139,12 @@ class TestCase(unittest.TestCase):
 
     def test___getitem___named(self):
         """
-        UniqueTreeContainer can be strings.
+        UniqueTreeList can be strings.
 
         Nodes are returned regardless how deep they are.
         """
-        node_a = uqbar.containers.UniqueTreeContainer(name="foo")
-        node_b = uqbar.containers.UniqueTreeContainer(name="bar")
+        node_a = uqbar.containers.UniqueTreeList(name="foo")
+        node_b = uqbar.containers.UniqueTreeList(name="bar")
         node_c = uqbar.containers.UniqueTreeNode(name="baz")
         node_d = uqbar.containers.UniqueTreeNode(name="quux")
         node_e = uqbar.containers.UniqueTreeNode(name="quux")
@@ -158,9 +158,9 @@ class TestCase(unittest.TestCase):
 
     def test___iter__(self):
         """
-        UniqueTreeContainer can be iterated.
+        UniqueTreeList can be iterated.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -176,7 +176,7 @@ class TestCase(unittest.TestCase):
         """
         Length-checking works.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -198,7 +198,7 @@ class TestCase(unittest.TestCase):
         """
         Nodes can be set.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -217,7 +217,7 @@ class TestCase(unittest.TestCase):
         """
         Nodes can be deleted.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode(name="foo")
         node_c = uqbar.containers.UniqueTreeNode(name="bar")
         node_d = uqbar.containers.UniqueTreeNode(name="baz")
@@ -231,8 +231,8 @@ class TestCase(unittest.TestCase):
         """
         Discontiguous named deletion works.
         """
-        node_a = uqbar.containers.UniqueTreeContainer(name="foo")
-        node_b = uqbar.containers.UniqueTreeContainer(name="bar")
+        node_a = uqbar.containers.UniqueTreeList(name="foo")
+        node_b = uqbar.containers.UniqueTreeList(name="bar")
         node_c = uqbar.containers.UniqueTreeNode(name="baz")
         node_d = uqbar.containers.UniqueTreeNode(name="quux")
         node_e = uqbar.containers.UniqueTreeNode(name="quux")
@@ -246,7 +246,7 @@ class TestCase(unittest.TestCase):
         """
         Nodes can be popped.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -266,7 +266,7 @@ class TestCase(unittest.TestCase):
         """
         Nodes can be inserted.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()
@@ -279,7 +279,7 @@ class TestCase(unittest.TestCase):
         """
         Nodes can be removed.
         """
-        node_a = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
         node_b = uqbar.containers.UniqueTreeNode()
         node_c = uqbar.containers.UniqueTreeNode()
         node_d = uqbar.containers.UniqueTreeNode()

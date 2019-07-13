@@ -67,6 +67,7 @@ class APIBuilder(object):
         document_private_modules: bool = False,
         member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
         module_documenter_class: Type[ModuleDocumenter] = None,
+        omit_root: bool = False,
         root_documenter_class: Type[RootDocumenter] = None,
         title: str = "API",
         logger_func=None,
@@ -89,6 +90,7 @@ class APIBuilder(object):
             module_documenter_class = ModuleDocumenter
         assert issubclass(module_documenter_class, ModuleDocumenter)
         self._module_documenter_class = module_documenter_class
+        self._omit_root = bool(omit_root)
         if root_documenter_class is None:
             root_documenter_class = RootDocumenter
         assert issubclass(root_documenter_class, RootDocumenter)
@@ -215,11 +217,12 @@ class APIBuilder(object):
         return root
 
     def collect_module_documenters(self, root_node):
-        # Yield root documenter.
-        yield self.root_documenter_class(
-            module_documenters=[node.documenter for node in root_node],
-            title=self._title,
-        )
+        if not self.omit_root:
+            # Yield root documenter.
+            yield self.root_documenter_class(
+                module_documenters=[node.documenter for node in root_node],
+                title=self._title,
+            )
         # Yield module documenters, top-down.
         for node in root_node.depth_first():
             if node is not root_node:
@@ -280,6 +283,10 @@ class APIBuilder(object):
     @property
     def module_documenter_class(self):
         return self._module_documenter_class
+
+    @property
+    def omit_root(self):
+        return self._omit_root
 
     @property
     def target_directory(self):

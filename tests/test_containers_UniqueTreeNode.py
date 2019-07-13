@@ -28,10 +28,10 @@ class TestCase(unittest.TestCase):
         assert node.name == "bar"
 
     def test_name_02(self):
-        node_a = uqbar.containers.UniqueTreeContainer()
-        node_b = uqbar.containers.UniqueTreeContainer()
+        node_a = uqbar.containers.UniqueTreeList()
+        node_b = uqbar.containers.UniqueTreeList()
         node_c = uqbar.containers.UniqueTreeNode(name="foo")
-        node_d = uqbar.containers.UniqueTreeContainer()
+        node_d = uqbar.containers.UniqueTreeList()
         node_a.append(node_b)
         node_b.append(node_c)
         assert node_a["foo"] is node_c

@@ -1,11 +1,12 @@
 from typing import Mapping, Tuple, Union
 
-from uqbar.containers import UniqueTreeContainer
-from uqbar.graphs import Attachable
-from uqbar.graphs.Attributes import Attributes
+from uqbar.containers import UniqueTreeList
+
+from .Attachable import Attachable
+from .Attributes import Attributes
 
 
-class TableCell(UniqueTreeContainer, Attachable):
+class TableCell(UniqueTreeList, Attachable):
     """
     A Graphviz HTML table.
 
@@ -42,11 +43,11 @@ class TableCell(UniqueTreeContainer, Attachable):
         attributes: Union[Mapping[str, object], Attributes] = None,
         name: str = None,
     ) -> None:
-        from uqbar.graphs import Text
+        from .Text import Text
 
         if isinstance(children, str):
             children = [Text(children)]
-        UniqueTreeContainer.__init__(self, children=children, name=name)
+        UniqueTreeList.__init__(self, children=children, name=name)
         Attachable.__init__(self)
         self._attributes = Attributes("table_cell", **(attributes or {}))
 
