@@ -10,10 +10,8 @@ class UniqueTreeTuple(UniqueTreeContainer):
 
     def __init__(self, children=None, name=None):
         super().__init__(name=name)
-        self._children = ()
-        self._validate(children)
-        self._set_items(children)
-        self._mark_entire_tree_for_later_update()
+        self._children = []
+        self._mutate(children or ())
 
     ### SPECIAL METHODS ###
 
@@ -29,10 +27,15 @@ class UniqueTreeTuple(UniqueTreeContainer):
 
     ### PRIVATE METHODS ###
 
+    def _mutate(self, new_items):
+        self._validate(new_items)
+        self._set_items(new_items)
+        self._mark_entire_tree_for_later_update()
+
     def _set_items(self, new_items):
         for new_item in new_items:
             new_item._set_parent(self)
-        self._children = tuple(new_items)
+        self._children = list(new_items)
 
     def _validate(self, new_nodes):
         parentage = self.parentage
