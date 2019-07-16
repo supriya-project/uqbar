@@ -84,7 +84,7 @@ def get_hash(expr):
     return hash(tuple(hash_values))
 
 
-def get_repr(expr, multiline=False):
+def get_repr(expr, multiline=None):
     """
     Build a repr string for ``expr`` from its vars and signature.
 
@@ -128,7 +128,7 @@ def get_repr(expr, multiline=False):
     args_parts = collections.OrderedDict()
     var_args_parts = []
     kwargs_parts = {}
-    has_lines = multiline
+    has_lines = bool(multiline)
     parts = []
 
     # Format keyword-optional arguments.
@@ -162,7 +162,7 @@ def get_repr(expr, multiline=False):
         parts.append(part)
 
     # If we should format on multiple lines, add the appropriate formatting.
-    if has_lines and parts:
+    if has_lines and parts and multiline is not False:
         for i, part in enumerate(parts):
             parts[i] = "\n".join("    " + line for line in part.split("\n"))
         parts.append("    )")
