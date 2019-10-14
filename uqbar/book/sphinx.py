@@ -10,7 +10,12 @@ from docutils.frontend import OptionParser
 from docutils.parsers.rst import Parser, directives
 from docutils.utils import new_document
 
-from uqbar.book.console import Console, ConsoleError, ConsoleInput, ConsoleOutput
+from uqbar.book.console import (
+    Console,
+    ConsoleError,
+    ConsoleInput,
+    ConsoleOutput,
+)
 
 try:
     import black

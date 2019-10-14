@@ -3,7 +3,16 @@ import importlib
 import inspect
 import types
 from typing import Any  # noqa
-from typing import Dict, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
+from typing import (
+    Dict,
+    List,
+    Mapping,
+    MutableMapping,
+    Sequence,
+    Set,
+    Tuple,
+    Union,
+)
 
 import uqbar.graphs
 import uqbar.strings

@@ -144,8 +144,7 @@ class CLIAggregator(CLI):
                     key, help="{{{}}} subcommand(s)".format(", ".join(subkeys))
                 )
                 group_subparsers = group_subparser.add_subparsers(
-                    dest="subsubparser_name".format(key),
-                    title="{} subcommands".format(key),
+                    dest="subsubparser_name", title="{} subcommands".format(key),
                 )
                 for subkey in subkeys:
                     cli_class = alias_map[key][subkey]

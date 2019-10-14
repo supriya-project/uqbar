@@ -45,17 +45,19 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     ### PUBLIC METHODS ###
 
-    def depth_first(self, top_down=True):
+    def depth_first(self, top_down=True, prototype=None):
         for child in tuple(self):
             if top_down:
-                yield child
+                if not prototype or isinstance(child, prototype):
+                    yield child
             if isinstance(child, UniqueTreeContainer):
-                yield from child.depth_first(top_down=top_down)
+                yield from child.depth_first(top_down=top_down, prototype=prototype)
             if not top_down:
-                yield child
+                if not prototype or isinstance(child, prototype):
+                    yield child
 
-    def recurse(self):
-        return self.depth_first()
+    def recurse(self, prototype=None):
+        return self.depth_first(prototype=prototype)
 
     ### PUBLIC PROPERTIES ###
 
