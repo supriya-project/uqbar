@@ -449,7 +449,7 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
         [uqbar-book] initializing cache db
         building [mo]: targets for 0 po files that are out of date
         building [text]: targets for 1 source files that are out of date
-        updating environment: 1 added, 0 changed, 0 removed
+        updating environment: [new config] 1 added, 0 changed, 0 removed
         reading sources... [100%] index
         """.format(
             sphinx_version=sphinx.__version__
@@ -480,7 +480,7 @@ def test_sphinx_book_text_broken_non_strict(app, status, warning, rm_dirs):
         [uqbar-book] initializing cache db
         building [mo]: targets for 0 po files that are out of date
         building [text]: targets for 1 source files that are out of date
-        updating environment: 1 added, 0 changed, 0 removed
+        updating environment: [new config] 1 added, 0 changed, 0 removed
         reading sources... [100%] index
         looking for now-outdated files... none found
         pickling environment... done
