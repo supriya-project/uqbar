@@ -17,13 +17,14 @@ build:
 
 clean:
 	find . -name '*.pyc' | xargs rm
+	rm -Rif *.egg-info/
 	rm -Rif .*cache/
 	rm -Rif .tox/
 	rm -Rif __pycache__
 	rm -Rif build/
 	rm -Rif dist/
+	rm -Rif htmlcod/
 	rm -Rif prof/
-	rm -Rif *.egg-info/
 
 docs:
 	make -C docs/ html 
