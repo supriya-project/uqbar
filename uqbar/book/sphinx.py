@@ -5,10 +5,11 @@ import itertools
 import pickle
 import sqlite3
 
-from docutils import nodes
 from docutils.frontend import OptionParser
-from docutils.parsers.rst import Parser, directives
+from docutils.nodes import Element, General, literal_block, doctest_block
+from docutils.parsers.rst import Directive, Parser, directives
 from docutils.utils import new_document
+from sphinx.util.nodes import set_source_info
 
 from uqbar.book.console import (
     Console,
@@ -21,6 +22,56 @@ try:
     import black
 except ImportError:
     black = None
+
+
+class UqbarBookDirective(Directive):
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {
+        "allow-exceptions": directives.flag,
+        "hide": directives.flag,
+    }
+
+    def run(self):
+        self.assert_has_content()
+        code = "\n".join(self.content)
+        literal = literal_block(code, code)
+        literal.line = self.content_offset  # set the content line number
+        block = uqbar_book_block(code, literal)
+        for key in (
+            "allow-exceptions",
+            "hide",
+        ):
+            if key in self.options:
+                block[key] = True
+        for key, spec in self.option_spec.items():
+            option = self.options.get(key, None)
+            if option is None:
+                continue
+            if spec == directives.flag:
+                option = True
+            block[key] = option
+        set_source_info(self, block)
+        return [block]
+
+
+class UqbarBookSkipLiteralsDirective(Directive):
+    has_content = False
+    required_arguments = 0
+    optional_arguments = 0
+
+    def run(self):
+        return [uqbar_book_skip_literals()]
+
+
+class uqbar_book_block(General, Element):
+    pass
+
+
+class uqbar_book_skip_literals(General, Element):
+    pass
 
 
 def attr_path_to_defining_path(path):
@@ -44,12 +95,16 @@ def attr_path_to_defining_path(path):
     return path
 
 
-def collect_literal_blocks(document):
+def collect_literal_blocks(document, skip_literals=False):
+    prototype = (literal_block, doctest_block, uqbar_book_block)
+    if skip_literals:
+        prototype = uqbar_book_block
     blocks = []
-    for block in document.traverse(
-        lambda node: isinstance(node, (nodes.literal_block, nodes.doctest_block))
-    ):
-        if not block[0].strip().startswith(">>>"):
+    for block in document.traverse(lambda node: isinstance(node, prototype)):
+        contents = block[0]
+        if isinstance(contents, literal_block):
+            contents = contents[0]
+        if not contents.strip().startswith(">>>"):
             continue
         blocks.append(block)
     return blocks
@@ -121,7 +176,10 @@ def interpret_code_blocks(
         for block in blocks:
             lines = []
             has_exception = False
-            for line in block[0].splitlines():
+            contents = block[0]
+            if isinstance(contents, literal_block):
+                contents = contents[0]
+            for line in contents.splitlines():
                 if line.startswith((">>> ", "... ")):
                     lines.append(line[4:])
                 elif line.rstrip() == "...":
@@ -152,6 +210,11 @@ def interpret_code_blocks(
                     block.get("allow-exceptions") or allow_exceptions or has_exception
                 ):
                     raise ConsoleError(error_summary)
+            if block.get("hide"):
+                console_output = [
+                    _ for _ in console_output
+                    if not isinstance(_, (ConsoleInput, ConsoleOutput))
+                ]
             results[block] = console_output
     except ConsoleError:
         raise ConsoleError(item.string, block)
@@ -232,11 +295,11 @@ def rebuild_document(document, node_mapping):
                 text = next(grouper).string
                 for item in grouper:
                     if isinstance(item, ConsoleInput):
-                        new_nodes.append(nodes.literal_block(text, text))
+                        new_nodes.append(literal_block(text, text))
                         text = item.string
                     else:
                         text += item.string
-                new_nodes.append(nodes.literal_block(text, text))
+                new_nodes.append(literal_block(text, text))
             else:
                 for replacement in grouper:
                     new_nodes.extend(replacement.to_docutils())

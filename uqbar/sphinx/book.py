@@ -46,8 +46,18 @@ from typing import Any, Dict
 from sphinx.util import logging
 from sphinx.util.console import bold
 
-import uqbar.book.sphinx
+import uqbar
 from uqbar.book.console import ConsoleError
+from uqbar.book.sphinx import (
+    UqbarBookDirective,
+    UqbarBookSkipLiteralsDirective,
+    create_cache_db,
+    collect_literal_blocks,
+    group_literal_blocks_by_cache_path,
+    interpret_code_blocks_with_cache,
+    interpret_code_blocks,
+    rebuild_document,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +70,7 @@ def on_builder_inited(app):
     if app.config["uqbar_book_use_cache"]:
         logger.info(bold("[uqbar-book]"), nonl=True)
         logger.info(" initializing cache db")
-        app.connection = uqbar.book.sphinx.create_cache_db(app.cache_db_path)
+        app.connection = create_cache_db(app.cache_db_path)
 
 
 def on_config_inited(app, config):
@@ -77,14 +87,15 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
+    UqbarBookDirective.option_spec.update(config["uqbar_book_block_options"])
 
 
 def on_doctree_read(app, document):
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
-    literal_blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    cache_mapping = uqbar.book.sphinx.group_literal_blocks_by_cache_path(literal_blocks)
+    literal_blocks = collect_literal_blocks(document)
+    cache_mapping = group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
     for cache_path, literal_block_groups in cache_mapping.items():
@@ -97,11 +108,11 @@ def on_doctree_read(app, document):
         for literal_blocks in literal_block_groups:
             try:
                 if use_cache:
-                    local_node_mapping = uqbar.book.sphinx.interpret_code_blocks_with_cache(
+                    local_node_mapping = interpret_code_blocks_with_cache(
                         literal_blocks, cache_path, app.connection, **kwargs
                     )
                 else:
-                    local_node_mapping = uqbar.book.sphinx.interpret_code_blocks(
+                    local_node_mapping = interpret_code_blocks(
                         literal_blocks, **kwargs
                     )
                 node_mapping.update(local_node_mapping)
@@ -110,7 +121,7 @@ def on_doctree_read(app, document):
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
                     raise
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    rebuild_document(document, node_mapping)
 
 
 def on_build_finished(app, exception):
@@ -140,10 +151,13 @@ def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_strict", False, "env")
     app.add_config_value("uqbar_book_use_black", False, "env")
     app.add_config_value("uqbar_book_use_cache", True, "env")
+    app.add_config_value("uqbar_book_block_options", {}, "env")
     app.connect("builder-inited", on_builder_inited)
     app.connect("config-inited", on_config_inited)
     app.connect("doctree-read", on_doctree_read)
     app.connect("build-finished", on_build_finished)
+    app.add_directive("book", UqbarBookDirective)
+    app.add_directive("book-skip-literals", UqbarBookSkipLiteralsDirective)
     return {
         "version": uqbar.__version__,
         "parallel_read_safe": False,

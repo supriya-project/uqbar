@@ -169,6 +169,7 @@ class Console(code.InteractiveConsole):
         self.resetbuffer()
         self.errored = False
         self.results[:] = []
+        is_incomplete_statement = False
         with RedirectedStreams(self, self), self:
             prompt = ">>> "
             for line_number, line in enumerate(lines, 1):
