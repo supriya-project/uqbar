@@ -98,13 +98,13 @@ def on_doctree_read(app, document):
     cache_mapping = group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
+    kwargs = dict(
+        extensions=app.uqbar_book_extensions,
+        setup_lines=app.config["uqbar_book_console_setup"],
+        teardown_lines=app.config["uqbar_book_console_teardown"],
+        use_black=bool(app.config["uqbar_book_use_black"]),
+    )
     for cache_path, literal_block_groups in cache_mapping.items():
-        kwargs = dict(
-            extensions=app.uqbar_book_extensions,
-            setup_lines=app.config["uqbar_book_console_setup"],
-            teardown_lines=app.config["uqbar_book_console_teardown"],
-            use_black=bool(app.config["uqbar_book_use_black"]),
-        )
         for literal_blocks in literal_block_groups:
             try:
                 if use_cache:

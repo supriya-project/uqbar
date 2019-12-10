@@ -97,8 +97,6 @@ def attr_path_to_defining_path(path):
 
 def collect_literal_blocks(document, skip_literals=False):
     prototype = (literal_block, doctest_block, uqbar_book_block)
-    if skip_literals:
-        prototype = uqbar_book_block
     blocks = []
     for block in document.traverse(lambda node: isinstance(node, prototype)):
         contents = block[0]
