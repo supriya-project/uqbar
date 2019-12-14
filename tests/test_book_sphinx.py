@@ -7,7 +7,10 @@ from docutils.parsers.rst import directives
 import uqbar.book.sphinx
 from uqbar.book.console import ConsoleError, ConsoleInput, ConsoleOutput
 from uqbar.book.extensions import GraphExtension
-from uqbar.book.sphinx import UqbarBookDirective, UqbarBookSkipLiteralsDirective
+from uqbar.book.sphinx import (
+    UqbarBookDirective,
+    UqbarBookSkipLiteralsDirective,
+)
 from uqbar.strings import normalize
 
 

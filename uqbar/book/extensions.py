@@ -1,25 +1,32 @@
 import abc
 import copy
 import hashlib
+import json
 import pathlib
 import subprocess
 
 from docutils.nodes import FixedTextElement, General, SkipNode
 
-import uqbar.book.console
 from uqbar.graphs import Grapher
 from uqbar.strings import normalize
+
+from .console import Console
+from .sphinx import UqbarBookDirective
 
 
 class Extension:
     @classmethod
     @abc.abstractmethod
-    def setup_console(cls, console: "uqbar.book.console.Console", monkeypatch):
+    def setup_console(cls, console: Console, monkeypatch):
         """
         Perform console setup tasks before executing a suite of code blocks,
         e.g. monkeypatching IO operations to allow media capture.
         """
         raise NotImplementedError
+
+    @classmethod
+    def setup_proxy_key(cls, key):
+        UqbarBookDirective.option_spec[key] = lambda x: json.loads(x or "{}")
 
     @classmethod
     @abc.abstractmethod
@@ -70,7 +77,13 @@ class GraphExtension(Extension):
         monkeypatch.setattr(
             Grapher,
             "__call__",
-            lambda self: console.push_proxy(cls(self.graphable, self.layout)),
+            lambda self: console.push_proxy(
+                cls(
+                    self.graphable,
+                    self.layout,
+                    **console.proxy_options.get("graphviz", {}),
+                ),
+            ),
         )
 
     @classmethod
@@ -81,6 +94,7 @@ class GraphExtension(Extension):
             latex=[cls.visit_block_latex, None],
             text=[cls.visit_block_text, cls.depart_block_text],
         )
+        cls.setup_proxy_key("graphviz")
 
     def __init__(self, graphable, layout):
         try:

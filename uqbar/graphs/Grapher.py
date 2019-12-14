@@ -5,7 +5,8 @@ import re
 import subprocess
 import sys
 import tempfile
-from typing import Tuple, Sequence
+from typing import Generator, Sequence, Tuple
+
 from uqbar.io import Timer
 
 
@@ -19,11 +20,7 @@ class Grapher:
     ### INITIALIZER ###
 
     def __init__(
-        self,
-        graphable,
-        format_="pdf",
-        layout="dot",
-        output_directory=None,
+        self, graphable, format_="pdf", layout="dot", output_directory=None,
     ):
         if layout not in self._valid_layouts:
             raise ValueError("Invalid layout: {layout!r}")
@@ -52,7 +49,9 @@ class Grapher:
         render_time = render_timer.elapsed_time
         self.persist_log(log, input_path.with_suffix(".log"))
         output_directory_path = self.get_output_directory()
-        output_paths = self.migrate_assets(render_prefix, render_directory_path, output_directory_path)
+        output_paths = self.migrate_assets(
+            render_prefix, render_directory_path, output_directory_path
+        )
         openable_paths = []
         for output_path in self.get_openable_paths(format_, output_paths):
             openable_paths.append(output_path)
@@ -67,7 +66,9 @@ class Grapher:
     def get_layout(self) -> str:
         return self.layout
 
-    def get_openable_paths(self, format_, output_paths) -> Sequence[pathlib.Path]:
+    def get_openable_paths(
+        self, format_, output_paths
+    ) -> Generator[pathlib.Path, None, None]:
         for path in output_paths:
             if path.suffix == f".{format_}":
                 yield path

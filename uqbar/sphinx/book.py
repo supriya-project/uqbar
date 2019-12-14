@@ -51,11 +51,11 @@ from uqbar.book.console import ConsoleError
 from uqbar.book.sphinx import (
     UqbarBookDirective,
     UqbarBookSkipLiteralsDirective,
-    create_cache_db,
     collect_literal_blocks,
+    create_cache_db,
     group_literal_blocks_by_cache_path,
-    interpret_code_blocks_with_cache,
     interpret_code_blocks,
+    interpret_code_blocks_with_cache,
     rebuild_document,
 )
 
@@ -87,6 +87,8 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
+    # Not quite
+    # Option spec should be updated in `extension_class.setup_sphinx`
     UqbarBookDirective.option_spec.update(config["uqbar_book_block_options"])
 
 
@@ -112,9 +114,7 @@ def on_doctree_read(app, document):
                         literal_blocks, cache_path, app.connection, **kwargs
                     )
                 else:
-                    local_node_mapping = interpret_code_blocks(
-                        literal_blocks, **kwargs
-                    )
+                    local_node_mapping = interpret_code_blocks(literal_blocks, **kwargs)
                 node_mapping.update(local_node_mapping)
             except ConsoleError as exception:
                 message = exception.args[0].splitlines()[-1]
@@ -152,12 +152,12 @@ def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_use_black", False, "env")
     app.add_config_value("uqbar_book_use_cache", True, "env")
     app.add_config_value("uqbar_book_block_options", {}, "env")
+    app.add_directive("book", UqbarBookDirective)
+    app.add_directive("book-skip-literals", UqbarBookSkipLiteralsDirective)
     app.connect("builder-inited", on_builder_inited)
     app.connect("config-inited", on_config_inited)
     app.connect("doctree-read", on_doctree_read)
     app.connect("build-finished", on_build_finished)
-    app.add_directive("book", UqbarBookDirective)
-    app.add_directive("book-skip-literals", UqbarBookSkipLiteralsDirective)
     return {
         "version": uqbar.__version__,
         "parallel_read_safe": False,

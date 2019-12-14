@@ -146,6 +146,7 @@ class Console(code.InteractiveConsole):
         self.errored = False
         self.results: List[Any] = []
         self.monkeypatch = None
+        self.proxy_options: Dict[str, Dict[str, Any]] = {}
 
     ### SPECIAL METHODS ###
 
@@ -201,6 +202,9 @@ class Console(code.InteractiveConsole):
 
     def push_proxy(self, proxy):
         self.results.append(proxy)
+
+    def push_proxy_options(self, options=None):
+        self.proxy_options = options or {}
 
     def showsyntaxerror(self, filename: str = None) -> None:
         super().showsyntaxerror(filename=filename)

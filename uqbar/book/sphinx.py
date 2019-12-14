@@ -6,7 +6,7 @@ import pickle
 import sqlite3
 
 from docutils.frontend import OptionParser
-from docutils.nodes import Element, General, literal_block, doctest_block
+from docutils.nodes import Element, General, doctest_block, literal_block
 from docutils.parsers.rst import Directive, Parser, directives
 from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
@@ -172,6 +172,7 @@ def interpret_code_blocks(
             if errored:
                 raise ConsoleError(console_output)
         for block in blocks:
+            console.push_proxy_options(dict(block.attlist()))
             lines = []
             has_exception = False
             contents = block[0]
@@ -210,7 +211,8 @@ def interpret_code_blocks(
                     raise ConsoleError(error_summary)
             if block.get("hide"):
                 console_output = [
-                    _ for _ in console_output
+                    _
+                    for _ in console_output
                     if not isinstance(_, (ConsoleInput, ConsoleOutput))
                 ]
             results[block] = console_output
