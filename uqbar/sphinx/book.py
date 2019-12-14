@@ -43,20 +43,24 @@ This extension provides the following configuration values:
 import importlib
 from typing import Any, Dict
 
+from docutils.nodes import SkipNode
 from sphinx.util import logging
 from sphinx.util.console import bold
 
 import uqbar
 from uqbar.book.console import ConsoleError
 from uqbar.book.sphinx import (
+    UqbarBookDefaultsDirective,
     UqbarBookDirective,
-    UqbarBookSkipLiteralsDirective,
+    UqbarBookImportDirective,
     collect_literal_blocks,
     create_cache_db,
     group_literal_blocks_by_cache_path,
     interpret_code_blocks,
     interpret_code_blocks_with_cache,
     rebuild_document,
+    uqbar_book_defaults_block,
+    uqbar_book_import_block,
 )
 
 logger = logging.getLogger(__name__)
@@ -120,6 +124,7 @@ def on_doctree_read(app, document):
                 message = exception.args[0].splitlines()[-1]
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
+                    print("RAISING (B) ???")
                     raise
     rebuild_document(document, node_mapping)
 
@@ -139,6 +144,10 @@ def on_build_finished(app, exception):
         logger.info(" Cache hits for {}: {}".format(path, hits))
 
 
+def skip_node(self, node):
+    raise SkipNode
+
+
 def setup(app) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
@@ -153,7 +162,16 @@ def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_use_cache", True, "env")
     app.add_config_value("uqbar_book_block_options", {}, "env")
     app.add_directive("book", UqbarBookDirective)
-    app.add_directive("book-skip-literals", UqbarBookSkipLiteralsDirective)
+    app.add_directive("book-defaults", UqbarBookDefaultsDirective)
+    app.add_directive("book-import", UqbarBookImportDirective)
+
+    for node_class in [uqbar_book_defaults_block, uqbar_book_import_block]:
+        app.add_node(
+            node_class,
+            html=[skip_node, None],
+            latex=[skip_node, None],
+            text=[skip_node, None],
+        )
     app.connect("builder-inited", on_builder_inited)
     app.connect("config-inited", on_config_inited)
     app.connect("doctree-read", on_doctree_read)

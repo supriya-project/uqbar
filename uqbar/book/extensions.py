@@ -1,7 +1,6 @@
 import abc
 import copy
 import hashlib
-import json
 import pathlib
 import subprocess
 
@@ -11,10 +10,15 @@ from uqbar.graphs import Grapher
 from uqbar.strings import normalize
 
 from .console import Console
-from .sphinx import UqbarBookDirective
+from .sphinx import UqbarBookDefaultsDirective, UqbarBookDirective
 
 
 class Extension:
+    @classmethod
+    def add_option(cls, key, value):
+        UqbarBookDirective.option_spec[key] = value
+        UqbarBookDefaultsDirective.option_spec[key] = value
+
     @classmethod
     @abc.abstractmethod
     def setup_console(cls, console: Console, monkeypatch):
@@ -23,10 +27,6 @@ class Extension:
         e.g. monkeypatching IO operations to allow media capture.
         """
         raise NotImplementedError
-
-    @classmethod
-    def setup_proxy_key(cls, key):
-        UqbarBookDirective.option_spec[key] = lambda x: json.loads(x or "{}")
 
     @classmethod
     @abc.abstractmethod
@@ -81,7 +81,11 @@ class GraphExtension(Extension):
                 cls(
                     self.graphable,
                     self.layout,
-                    **console.proxy_options.get("graphviz", {}),
+                    **{
+                        key.replace("graphviz/", "").replace("-", "_"): value
+                        for key, value in console.proxy_options.items()
+                        if key.startswith("graphviz/")
+                    },
                 ),
             ),
         )
@@ -94,7 +98,6 @@ class GraphExtension(Extension):
             latex=[cls.visit_block_latex, None],
             text=[cls.visit_block_text, cls.depart_block_text],
         )
-        cls.setup_proxy_key("graphviz")
 
     def __init__(self, graphable, layout):
         try:

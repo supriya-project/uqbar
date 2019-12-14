@@ -7,20 +7,15 @@ from docutils.parsers.rst import directives
 import uqbar.book.sphinx
 from uqbar.book.console import ConsoleError, ConsoleInput, ConsoleOutput
 from uqbar.book.extensions import GraphExtension
-from uqbar.book.sphinx import (
-    UqbarBookDirective,
-    UqbarBookSkipLiteralsDirective,
-)
+from uqbar.book.sphinx import UqbarBookDirective
 from uqbar.strings import normalize
 
 
 @pytest.fixture(scope="module", autouse=True)
 def register_directives():
     directives.register_directive("book", UqbarBookDirective)
-    directives.register_directive("book-skip-literals", UqbarBookSkipLiteralsDirective)
     yield
     directives._directives.pop("book")
-    directives._directives.pop("book-skip-literals")
 
 
 source_a = """

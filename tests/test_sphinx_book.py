@@ -80,6 +80,8 @@ index_content = normalize(
        }
 
     * API
+
+    * Directives
     """
 )
 
@@ -318,6 +320,38 @@ api_content = normalize(
     """
 )
 
+directives_content = normalize(
+    """
+    Directives
+    **********
+
+       >>> value = 1
+
+       >>> value += 1
+       >>> value
+       2
+
+       class ChildClass(PublicClass):
+           def inheritable_method(self):
+               pass
+
+           def new_method(self):
+               pass
+
+       >>> value += 1
+       >>> value
+       4
+
+       >>> ChildClass.__name__
+       'ChildClass'
+
+       >>> 1 / 0
+       Traceback (most recent call last):
+         File "<stdin>", line 1, in <module>
+       ZeroDivisionError: division by zero
+    """
+)
+
 
 @pytest.fixture(autouse=True)
 def test_path():
@@ -413,12 +447,14 @@ def test_sphinx_book_text_cached(app, status, warning, rm_dirs):
         ("fake.Parent.one", 1),
     ]
     assert not warning.getvalue().strip()
-    path = pathlib.Path(app.srcdir) / "_build" / "text" / "index.txt"
-    with path.open() as file_pointer:
-        assert normalize(file_pointer.read()) == index_content
-    path = pathlib.Path(app.srcdir) / "_build" / "text" / "api.txt"
-    with path.open() as file_pointer:
-        assert normalize(file_pointer.read()) == api_content
+    for filename, expected_content in [
+        ("api.txt", api_content),
+        ("directives.txt", directives_content),
+        ("index.txt", index_content),
+    ]:
+        path = pathlib.Path(app.srcdir) / "_build" / "text" / filename
+        actual_content = normalize(path.read_text())
+        assert actual_content == expected_content
 
 
 @pytest.mark.sphinx(
@@ -428,12 +464,14 @@ def test_sphinx_book_text_uncached(app, status, warning, rm_dirs):
     app.build()
     assert not warning.getvalue().strip()
     assert not app.config["uqbar_book_use_cache"]
-    path = pathlib.Path(app.srcdir) / "_build" / "text" / "index.txt"
-    with path.open() as file_pointer:
-        assert normalize(file_pointer.read()) == index_content
-    path = pathlib.Path(app.srcdir) / "_build" / "text" / "api.txt"
-    with path.open() as file_pointer:
-        assert normalize(file_pointer.read()) == api_content
+    for filename, expected_content in [
+        ("api.txt", api_content),
+        ("directives.txt", directives_content),
+        ("index.txt", index_content),
+    ]:
+        path = pathlib.Path(app.srcdir) / "_build" / "text" / filename
+        actual_content = normalize(path.read_text())
+        assert actual_content == expected_content
 
 
 @pytest.mark.sphinx("text", testroot="uqbar-sphinx-book-broken")
