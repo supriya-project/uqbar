@@ -126,7 +126,7 @@ class Grapher:
     def persist_string(self, string, input_path):
         input_path.write_text(string)
 
-    def run_command(self, command) -> Tuple[str, int]:
+    def run_command(self, command: str) -> Tuple[str, int]:
         completed_process = subprocess.run(
             command,
             shell=True,
