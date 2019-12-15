@@ -45,7 +45,7 @@ from typing import Any, Dict
 
 from docutils.nodes import SkipNode
 from sphinx.util import logging
-from sphinx.util.console import bold
+from sphinx.util.console import bold  # type: ignore
 
 import uqbar
 from uqbar.book.console import ConsoleError
