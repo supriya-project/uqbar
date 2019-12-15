@@ -226,9 +226,6 @@ def interpret_code_blocks(
                 if not (
                     block.get("allow-exceptions") or allow_exceptions or has_exception
                 ):
-                    print("RAISING (A) ???")
-                    print(block)
-                    print(block.attlist())
                     raise ConsoleError(error_summary, block)
             if block.get("hide"):
                 console_output = [

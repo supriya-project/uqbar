@@ -7,7 +7,6 @@ import subprocess
 from docutils.nodes import FixedTextElement, General, SkipNode
 
 from uqbar.graphs import Grapher
-from uqbar.strings import normalize
 
 from .console import Console
 from .sphinx import UqbarBookDefaultsDirective, UqbarBookDirective
@@ -61,12 +60,12 @@ class Extension:
 
 
 class GraphExtension(Extension):
-    template = normalize(
-        """
-        <a href="{dot_file_path}" title="{title}" class="{css_class}">
-            <img src="{image_file_path}" alt="{alt}"/>
-        </a>
-        """
+    template = (
+        '<div class="uqbar-book">'
+        '<a href="{dot_file_path}" title="{title}">'
+        '<img src="{image_file_path}" alt="{alt}"/>'
+        "</a>"
+        "</div>"
     )
 
     class graphviz_block(General, FixedTextElement):
@@ -159,7 +158,6 @@ class GraphExtension(Extension):
             image_file_path=relative_image_file_path,
             title="",
             alt="",
-            css_class="",
         )
         self.body.append(result)
         raise SkipNode
