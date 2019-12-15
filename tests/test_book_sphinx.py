@@ -2,11 +2,21 @@ import sys
 from distutils.version import LooseVersion
 
 import pytest
+from docutils.parsers.rst import directives
 
 import uqbar.book.sphinx
 from uqbar.book.console import ConsoleError, ConsoleInput, ConsoleOutput
 from uqbar.book.extensions import GraphExtension
+from uqbar.book.sphinx import UqbarBookDirective
 from uqbar.strings import normalize
+
+
+@pytest.fixture(scope="module", autouse=True)
+def register_directives():
+    directives.register_directive("book", UqbarBookDirective)
+    yield
+    directives._directives.pop("book")
+
 
 source_a = """
 ::
@@ -61,6 +71,20 @@ source_c = """
     ...     print(i)
     ...     n1 = n2
     ...
+
+"""
+
+source_d = """
+..  book::
+    :hide:
+
+    >>> import uqbar.graphs
+    >>> g = uqbar.graphs.Graph()
+    >>> n1 = uqbar.graphs.Node()
+    >>> n2 = uqbar.graphs.Node()
+    >>> g.extend([n1, n2])
+    >>> e = n1.attach(n2)
+    >>> uqbar.graphs.Grapher(g)()
 
 """
 
@@ -341,5 +365,26 @@ def test_rebuild_document_03():
                 }
             <literal_block xml:space="preserve">
                 2
+        """
+    )
+
+
+def test_rebuild_document_04():
+    document = uqbar.book.sphinx.parse_rst(source_d)
+    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    extensions = [GraphExtension]
+    node_mapping = uqbar.book.sphinx.interpret_code_blocks(
+        blocks, extensions=extensions
+    )
+    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    assert normalize(document.pformat()) == normalize(
+        """
+        <document source="test">
+            <graphviz_block layout="dot" xml:space="preserve">
+                digraph G {
+                    node_0;
+                    node_1;
+                    node_0 -> node_1;
+                }
         """
     )

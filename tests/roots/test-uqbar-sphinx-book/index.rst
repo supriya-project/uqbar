@@ -35,3 +35,4 @@ Fake Docs
 .. toctree::
 
    api
+   directives

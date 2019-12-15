@@ -6,15 +6,21 @@ import subprocess
 
 from docutils.nodes import FixedTextElement, General, SkipNode
 
-import uqbar.book.console
 from uqbar.graphs import Grapher
-from uqbar.strings import normalize
+
+from .console import Console
+from .sphinx import UqbarBookDefaultsDirective, UqbarBookDirective
 
 
 class Extension:
     @classmethod
+    def add_option(cls, key, value):
+        UqbarBookDirective.option_spec[key] = value
+        UqbarBookDefaultsDirective.option_spec[key] = value
+
+    @classmethod
     @abc.abstractmethod
-    def setup_console(cls, console: "uqbar.book.console.Console", monkeypatch):
+    def setup_console(cls, console: Console, monkeypatch):
         """
         Perform console setup tasks before executing a suite of code blocks,
         e.g. monkeypatching IO operations to allow media capture.
@@ -54,12 +60,12 @@ class Extension:
 
 
 class GraphExtension(Extension):
-    template = normalize(
-        """
-        <a href="{dot_file_path}" title="{title}" class="{css_class}">
-            <img src="{image_file_path}" alt="{alt}"/>
-        </a>
-        """
+    template = (
+        '<div class="uqbar-book">'
+        '<a href="{dot_file_path}" title="{title}">'
+        '<img src="{image_file_path}" alt="{alt}"/>'
+        "</a>"
+        "</div>"
     )
 
     class graphviz_block(General, FixedTextElement):
@@ -70,7 +76,17 @@ class GraphExtension(Extension):
         monkeypatch.setattr(
             Grapher,
             "__call__",
-            lambda self: console.push_proxy(cls(self.graphable, self.layout)),
+            lambda self: console.push_proxy(
+                cls(
+                    self.graphable,
+                    self.layout,
+                    **{
+                        key.replace("graphviz/", "").replace("-", "_"): value
+                        for key, value in console.proxy_options.items()
+                        if key.startswith("graphviz/")
+                    },
+                ),
+            ),
         )
 
     @classmethod
@@ -142,7 +158,6 @@ class GraphExtension(Extension):
             image_file_path=relative_image_file_path,
             title="",
             alt="",
-            css_class="",
         )
         self.body.append(result)
         raise SkipNode

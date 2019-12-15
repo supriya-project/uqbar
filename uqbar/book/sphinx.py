@@ -4,11 +4,13 @@ import inspect
 import itertools
 import pickle
 import sqlite3
+from typing import Any, Dict
 
-from docutils import nodes
 from docutils.frontend import OptionParser
-from docutils.parsers.rst import Parser, directives
+from docutils.nodes import Element, General, doctest_block, literal_block
+from docutils.parsers.rst import Directive, Parser, directives
 from docutils.utils import new_document
+from sphinx.util.nodes import set_source_info
 
 from uqbar.book.console import (
     Console,
@@ -21,6 +23,77 @@ try:
     import black
 except ImportError:
     black = None
+
+
+class UqbarBookDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec: Dict[str, Any] = {
+        "allow-exceptions": directives.flag,
+        "hide": directives.flag,
+    }
+
+    def run(self):
+        self.assert_has_content()
+        code = "\n".join(self.content)
+        block = literal_block(code, code)
+        block.line = self.content_offset  # set the content line number
+        set_source_info(self, block)
+        for key, spec in self.option_spec.items():
+            if key not in self.options:
+                continue
+            option = self.options[key]
+            if spec == directives.flag:
+                option = True
+            block[key] = option
+        return [block]
+
+
+class UqbarBookDefaultsDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
+    has_content = False
+    required_arguments = 0
+    optional_arguments = 0
+    option_spec: Dict[str, Any] = {}
+
+    def run(self):
+        block = uqbar_book_defaults_block()
+        for key, value in self.options.items():
+            block[key] = value
+        return [block]
+
+
+class UqbarBookImportDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
+    has_content = False
+    required_arguments = 1
+    optional_arguments = 0
+    option_spec = {
+        "hide": directives.flag,
+    }
+
+    def run(self):
+        block = uqbar_book_import_block()
+        block["path"] = self.arguments[0]
+        block.line = self.content_offset  # set the content line number
+        set_source_info(self, block)
+        if "hide" in self.options:
+            block["hide"] = True
+        return [block]
+
+
+class uqbar_book_defaults_block(General, Element):
+    __documentation_ignore_inherited__ = True
+
+
+class uqbar_book_import_block(General, Element):
+    __documentation_ignore_inherited__ = True
 
 
 def attr_path_to_defining_path(path):
@@ -45,12 +118,20 @@ def attr_path_to_defining_path(path):
 
 
 def collect_literal_blocks(document):
+    prototype = (
+        literal_block,
+        doctest_block,
+        uqbar_book_defaults_block,
+        uqbar_book_import_block,
+    )
     blocks = []
-    for block in document.traverse(
-        lambda node: isinstance(node, (nodes.literal_block, nodes.doctest_block))
-    ):
-        if not block[0].strip().startswith(">>>"):
-            continue
+    for block in document.traverse(lambda node: isinstance(node, prototype)):
+        if not isinstance(block, (uqbar_book_defaults_block, uqbar_book_import_block)):
+            contents = block[0]
+            if isinstance(contents, literal_block):
+                contents = contents[0]
+            if not contents.strip().startswith(">>>"):
+                continue
         blocks.append(block)
     return blocks
 
@@ -118,22 +199,22 @@ def interpret_code_blocks(
             console_output, errored = console.interpret(setup_lines)
             if errored:
                 raise ConsoleError(console_output)
+        default_proxy_options = {}
         for block in blocks:
-            lines = []
-            has_exception = False
-            for line in block[0].splitlines():
-                if line.startswith((">>> ", "... ")):
-                    lines.append(line[4:])
-                elif line.rstrip() == "...":
-                    lines.append("")
-                elif line.startswith("Traceback (most recent call last):"):
-                    has_exception = True
-            if use_black and black:
-                mode = black.FileMode(
-                    line_length=80, target_versions=[black.TargetVersion.PY36]
+            if isinstance(block, uqbar_book_defaults_block):
+                default_proxy_options = dict(block.attlist())
+                continue
+            else:
+                proxy_options = {**default_proxy_options, **dict(block.attlist())}
+                console.push_proxy_options(proxy_options)
+            if isinstance(block, uqbar_book_import_block):
+                console_output, errored, has_exception = interpret_import_block(
+                    console, block
                 )
-                lines = black.format_str("\n".join(lines), mode=mode).splitlines()
-            console_output, errored = console.interpret(lines)
+            elif isinstance(block, (literal_block, doctest_block)):
+                console_output, errored, has_exception = interpret_literal_block(
+                    console, block, use_black=use_black,
+                )
             if errored:
                 error_summary = None
                 for i, item in enumerate(console_output):
@@ -151,10 +232,14 @@ def interpret_code_blocks(
                 if not (
                     block.get("allow-exceptions") or allow_exceptions or has_exception
                 ):
-                    raise ConsoleError(error_summary)
+                    raise ConsoleError(error_summary, block)
+            if block.get("hide"):
+                console_output = [
+                    _
+                    for _ in console_output
+                    if not isinstance(_, (ConsoleInput, ConsoleOutput))
+                ]
             results[block] = console_output
-    except ConsoleError:
-        raise ConsoleError(item.string, block)
     finally:
         if teardown_lines:
             console_output, errored = console.interpret(teardown_lines)
@@ -191,6 +276,40 @@ def interpret_code_blocks_with_cache(
             cache_data = list(local_node_mapping.values())
             update_cache_db(connection, cache_path, cache_data)
     return local_node_mapping
+
+
+def interpret_import_block(console, block):
+    code_address = block["path"]
+    module_name, sep, attr_name = code_address.rpartition(":")
+    module = importlib.import_module(module_name)
+    attr = getattr(module, attr_name)
+    source = inspect.getsource(attr)
+    lines = [f"from {module_name} import {attr_name}"]
+    _, errored = console.interpret(lines)
+    output = [ConsoleOutput(string=source)]
+    return output, errored, False
+
+
+def interpret_literal_block(console, block, use_black=False):
+    has_exception = False
+    lines = []
+    contents = block[0]
+    if isinstance(contents, literal_block):
+        contents = contents[0]
+    for line in contents.splitlines():
+        if line.startswith((">>> ", "... ")):
+            lines.append(line[4:])
+        elif line.rstrip() == "...":
+            lines.append("")
+        elif line.startswith("Traceback (most recent call last):"):
+            has_exception = True
+    if use_black and black:
+        mode = black.FileMode(
+            line_length=80, target_versions=[black.TargetVersion.PY36]
+        )
+        lines = black.format_str("\n".join(lines), mode=mode).splitlines()
+    console_output, errored = console.interpret(lines)
+    return console_output, errored, has_exception
 
 
 def literal_block_to_cache_path(block):
@@ -232,11 +351,11 @@ def rebuild_document(document, node_mapping):
                 text = next(grouper).string
                 for item in grouper:
                     if isinstance(item, ConsoleInput):
-                        new_nodes.append(nodes.literal_block(text, text))
+                        new_nodes.append(literal_block(text, text))
                         text = item.string
                     else:
                         text += item.string
-                new_nodes.append(nodes.literal_block(text, text))
+                new_nodes.append(literal_block(text, text))
             else:
                 for replacement in grouper:
                     new_nodes.extend(replacement.to_docutils())

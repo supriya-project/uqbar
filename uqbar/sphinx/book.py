@@ -43,11 +43,25 @@ This extension provides the following configuration values:
 import importlib
 from typing import Any, Dict
 
+from docutils.nodes import SkipNode
 from sphinx.util import logging
-from sphinx.util.console import bold
+from sphinx.util.console import bold  # type: ignore
 
-import uqbar.book.sphinx
+import uqbar
 from uqbar.book.console import ConsoleError
+from uqbar.book.sphinx import (
+    UqbarBookDefaultsDirective,
+    UqbarBookDirective,
+    UqbarBookImportDirective,
+    collect_literal_blocks,
+    create_cache_db,
+    group_literal_blocks_by_cache_path,
+    interpret_code_blocks,
+    interpret_code_blocks_with_cache,
+    rebuild_document,
+    uqbar_book_defaults_block,
+    uqbar_book_import_block,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +74,7 @@ def on_builder_inited(app):
     if app.config["uqbar_book_use_cache"]:
         logger.info(bold("[uqbar-book]"), nonl=True)
         logger.info(" initializing cache db")
-        app.connection = uqbar.book.sphinx.create_cache_db(app.cache_db_path)
+        app.connection = create_cache_db(app.cache_db_path)
 
 
 def on_config_inited(app, config):
@@ -77,40 +91,42 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
+    # Not quite
+    # Option spec should be updated in `extension_class.setup_sphinx`
+    UqbarBookDirective.option_spec.update(config["uqbar_book_block_options"])
 
 
 def on_doctree_read(app, document):
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
-    literal_blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    cache_mapping = uqbar.book.sphinx.group_literal_blocks_by_cache_path(literal_blocks)
+    literal_blocks = collect_literal_blocks(document)
+    cache_mapping = group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
+    kwargs = dict(
+        extensions=app.uqbar_book_extensions,
+        setup_lines=app.config["uqbar_book_console_setup"],
+        teardown_lines=app.config["uqbar_book_console_teardown"],
+        use_black=bool(app.config["uqbar_book_use_black"]),
+    )
     for cache_path, literal_block_groups in cache_mapping.items():
-        kwargs = dict(
-            extensions=app.uqbar_book_extensions,
-            setup_lines=app.config["uqbar_book_console_setup"],
-            teardown_lines=app.config["uqbar_book_console_teardown"],
-            use_black=bool(app.config["uqbar_book_use_black"]),
-        )
         for literal_blocks in literal_block_groups:
             try:
                 if use_cache:
-                    local_node_mapping = uqbar.book.sphinx.interpret_code_blocks_with_cache(
+                    local_node_mapping = interpret_code_blocks_with_cache(
                         literal_blocks, cache_path, app.connection, **kwargs
                     )
                 else:
-                    local_node_mapping = uqbar.book.sphinx.interpret_code_blocks(
-                        literal_blocks, **kwargs
-                    )
+                    local_node_mapping = interpret_code_blocks(literal_blocks, **kwargs)
                 node_mapping.update(local_node_mapping)
             except ConsoleError as exception:
                 message = exception.args[0].splitlines()[-1]
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
+                    print("RAISING (B) ???")
                     raise
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    rebuild_document(document, node_mapping)
 
 
 def on_build_finished(app, exception):
@@ -128,6 +144,10 @@ def on_build_finished(app, exception):
         logger.info(" Cache hits for {}: {}".format(path, hits))
 
 
+def skip_node(self, node):
+    raise SkipNode
+
+
 def setup(app) -> Dict[str, Any]:
     """
     Sets up Sphinx extension.
@@ -140,6 +160,18 @@ def setup(app) -> Dict[str, Any]:
     app.add_config_value("uqbar_book_strict", False, "env")
     app.add_config_value("uqbar_book_use_black", False, "env")
     app.add_config_value("uqbar_book_use_cache", True, "env")
+    app.add_config_value("uqbar_book_block_options", {}, "env")
+    app.add_directive("book", UqbarBookDirective)
+    app.add_directive("book-defaults", UqbarBookDefaultsDirective)
+    app.add_directive("book-import", UqbarBookImportDirective)
+
+    for node_class in [uqbar_book_defaults_block, uqbar_book_import_block]:
+        app.add_node(
+            node_class,
+            html=[skip_node, None],
+            latex=[skip_node, None],
+            text=[skip_node, None],
+        )
     app.connect("builder-inited", on_builder_inited)
     app.connect("config-inited", on_config_inited)
     app.connect("doctree-read", on_doctree_read)
