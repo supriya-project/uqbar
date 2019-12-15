@@ -318,9 +318,18 @@ def test_03():
                 "uqbar.book.extensions.GraphExtension" [label="Graph\nExtension"];
                 "uqbar.book.extensions.Extension" -> "uqbar.book.extensions.GraphExtension";
             }
+            subgraph "cluster_uqbar.book.sphinx" {
+                graph [label="uqbar.book.sphinx"];
+                node [color=3];
+                "uqbar.book.sphinx.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
+                "uqbar.book.sphinx.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
+                "uqbar.book.sphinx.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
+                "uqbar.book.sphinx.uqbar_book_defaults_block" [label="uqbar\nbook\ndefaults\nblock"];
+                "uqbar.book.sphinx.uqbar_book_import_block" [label="uqbar\nbook\nimport\nblock"];
+            }
             subgraph "cluster_uqbar.cli" {
                 graph [label="uqbar.cli"];
-                node [color=3];
+                node [color=4];
                 "uqbar.cli.CLI.CLI" [label=CLI,
                     shape=oval,
                     style=bold];
@@ -331,7 +340,7 @@ def test_03():
             }
             subgraph "cluster_uqbar.containers" {
                 graph [label="uqbar.containers"];
-                node [color=4];
+                node [color=5];
                 "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
                 "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
                 "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [label="Unique\nTree\nDict"];
@@ -347,13 +356,13 @@ def test_03():
             }
             subgraph "cluster_uqbar.enums" {
                 graph [label="uqbar.enums"];
-                node [color=5];
+                node [color=6];
                 "uqbar.enums.IntEnumeration" [label="Int\nEnumeration"];
                 "uqbar.enums.StrictEnumeration" [label="Strict\nEnumeration"];
             }
             subgraph "cluster_uqbar.graphs" {
                 graph [label="uqbar.graphs"];
-                node [color=6];
+                node [color=7];
                 "uqbar.graphs.Attachable.Attachable" [label=Attachable];
                 "uqbar.graphs.Attributes.Attributes" [label=Attributes];
                 "uqbar.graphs.Edge.Edge" [label="Edge"];
@@ -374,7 +383,7 @@ def test_03():
             }
             subgraph "cluster_uqbar.io" {
                 graph [label="uqbar.io"];
-                node [color=7];
+                node [color=8];
                 "uqbar.io.DirectoryChange.DirectoryChange" [label="Directory\nChange"];
                 "uqbar.io.Profiler.Profiler" [label=Profiler];
                 "uqbar.io.RedirectedStreams.RedirectedStreams" [label="Redirected\nStreams"];
@@ -382,7 +391,7 @@ def test_03():
             }
             subgraph "cluster_uqbar.sphinx.inheritance" {
                 graph [label="uqbar.sphinx.inheritance"];
-                node [color=8];
+                node [color=9];
                 "uqbar.sphinx.inheritance.InheritanceDiagram" [label="Inheritance\nDiagram"];
                 "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
             }
@@ -418,8 +427,15 @@ def test_03():
             "builtins.object" -> "uqbar.io.Timer.Timer";
             "code.InteractiveConsole" -> "uqbar.book.console.Console";
             "collections.abc.MutableMapping" -> "uqbar.graphs.Attributes.Attributes";
+            "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_defaults_block";
+            "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_import_block";
             "docutils.nodes.Element" -> "uqbar.sphinx.inheritance.inheritance_diagram";
+            "docutils.nodes.General" -> "uqbar.book.sphinx.uqbar_book_defaults_block";
+            "docutils.nodes.General" -> "uqbar.book.sphinx.uqbar_book_import_block";
             "docutils.nodes.General" -> "uqbar.sphinx.inheritance.inheritance_diagram";
+            "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookDefaultsDirective";
+            "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookDirective";
+            "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookImportDirective";
             "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
             "enum.Enum" -> "uqbar.enums.StrictEnumeration";
             "enum.IntEnum" -> "uqbar.enums.IntEnumeration";

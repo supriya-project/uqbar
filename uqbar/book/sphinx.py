@@ -26,6 +26,8 @@ except ImportError:
 
 
 class UqbarBookDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
     has_content = True
     required_arguments = 0
     optional_arguments = 0
@@ -52,6 +54,8 @@ class UqbarBookDirective(Directive):
 
 
 class UqbarBookDefaultsDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
     has_content = False
     required_arguments = 0
     optional_arguments = 0
@@ -65,6 +69,8 @@ class UqbarBookDefaultsDirective(Directive):
 
 
 class UqbarBookImportDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
     has_content = False
     required_arguments = 1
     optional_arguments = 0
@@ -83,11 +89,11 @@ class UqbarBookImportDirective(Directive):
 
 
 class uqbar_book_defaults_block(General, Element):
-    pass
+    __documentation_ignore_inherited__ = True
 
 
 class uqbar_book_import_block(General, Element):
-    pass
+    __documentation_ignore_inherited__ = True
 
 
 def attr_path_to_defining_path(path):
