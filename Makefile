@@ -62,6 +62,8 @@ release:
 	make clean
 	make build
 	twine upload dist/*.tar.gz
+	make docs
+	make gh-pages
 
 test:
 	make black-check
