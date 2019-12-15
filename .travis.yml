@@ -21,6 +21,7 @@ install:
 - pip install -e .[test]
 
 script:
+- ls -l
 - make black-check
 - make flake8
 - make mypy
