@@ -99,23 +99,11 @@ TableCell
 
    .. container:: inherited
 
-      .. automethod:: TableCell.precede_by
-
-   .. container:: inherited
-
       .. automethod:: TableCell.recurse
 
    .. container:: inherited
 
       .. automethod:: TableCell.remove
-
-   .. container:: inherited
-
-      .. automethod:: TableCell.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: TableCell.succeed_by
 
    .. raw:: html
 

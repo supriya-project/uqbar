@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.strings &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.strings &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -155,7 +155,7 @@
 
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span>
 
 <span class="kn">import</span> <span class="nn">unidecode</span>  <span class="c1"># type: ignore</span>
 
@@ -185,6 +185,11 @@
 
 <span class="sd">        &gt;&gt;&gt; list(uqbar.strings.delimit_words(&quot;Route53&quot;))</span>
 <span class="sd">        [&#39;Route&#39;, &#39;53&#39;]</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        &gt;&gt;&gt; list(uqbar.strings.delimit_words(&quot;ABC&quot;))</span>
+<span class="sd">        [&#39;ABC&#39;]</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Reimplement this</span>

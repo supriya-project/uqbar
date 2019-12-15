@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.apis.PackageNode &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.apis.PackageNode &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -154,9 +154,9 @@
 <span></span><span class="kn">import</span> <span class="nn">uqbar.containers</span>
 
 
-<div class="viewcode-block" id="PackageNode"><a class="viewcode-back" href="../../../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode">[docs]</a><span class="k">class</span> <span class="nc">PackageNode</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">UniqueTreeContainer</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageNode"><a class="viewcode-back" href="../../../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode">[docs]</a><span class="k">class</span> <span class="nc">PackageNode</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">UniqueTreeList</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A :py:class:`~uqbar.containers.UniqueTreeContainer` subclass used during</span>
+<span class="sd">    A :py:class:`~uqbar.containers.UniqueTreeList` subclass used during</span>
 <span class="sd">    API construction to proxy packages.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -166,14 +166,14 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">documenter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">documenter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="n">children</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source_path</span> <span class="o">=</span> <span class="n">source_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_documenter</span> <span class="o">=</span> <span class="n">documenter</span>
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="PackageNode.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode.__str__">[docs]</a>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PackageNode.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>

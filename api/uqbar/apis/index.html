@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>apis &mdash; uqbar 0.3.2 documentation</title>
+  <title>apis &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -112,6 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -200,7 +201,7 @@
 <span id="apis"></span><span id="uqbar-apis"></span><h1>apis<a class="headerlink" href="#module-uqbar.apis" title="Permalink to this headline">¶</a></h1>
 <p>Tools for auto-generating API documention.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-c2a872eb39c43da34f98b22ded325d44131c3e68.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-48bf94ae7c40a42676a178872865cf51e812f587.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -325,6 +326,11 @@
 			color=4,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
+			color=4,
+			label=&quot;Unique\nTree\nList&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [minlen=1];
 		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			color=4,
 			label=&quot;Unique\nTree\nNode&quot;,
@@ -338,126 +344,126 @@
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	 [minlen=2];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.dummy.MyParentClass&quot;	 [minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="dummy.html#module-uqbar.apis.dummy" title="uqbar.apis.dummy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dummy</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="dummy.html#module-uqbar.apis.dummy" title="uqbar.apis.dummy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dummy</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Abstract Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a></td>
-<td>Abstract base class for module member documenters.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a></p></td>
+<td><p>Abstract base class for module member documenters.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder" title="uqbar.apis.APIBuilder.APIBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">APIBuilder</span></code></a></td>
-<td>A builder of reStructuredText API documentation for Python packages.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder" title="uqbar.apis.APIBuilder.APIBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">APIBuilder</span></code></a></p></td>
+<td><p>A builder of reStructuredText API documentation for Python packages.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph" title="uqbar.apis.InheritanceGraph.InheritanceGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceGraph</span></code></a></td>
-<td>A builder of Graphviz inheritance graphs.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph" title="uqbar.apis.InheritanceGraph.InheritanceGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InheritanceGraph</span></code></a></p></td>
+<td><p>A builder of Graphviz inheritance graphs.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Documenters</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter" title="uqbar.apis.ClassDocumenter.ClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClassDocumenter</span></code></a></td>
-<td>A basic class documenter.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter" title="uqbar.apis.ClassDocumenter.ClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClassDocumenter</span></code></a></p></td>
+<td><p>A basic class documenter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter" title="uqbar.apis.FunctionDocumenter.FunctionDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionDocumenter</span></code></a></td>
-<td>A basic function documenter.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter" title="uqbar.apis.FunctionDocumenter.FunctionDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionDocumenter</span></code></a></p></td>
+<td><p>A basic function documenter.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a></td>
-<td>A basic module documenter.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a></p></td>
+<td><p>A basic module documenter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter" title="uqbar.apis.RootDocumenter.RootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a></td>
-<td>A basic root documenter.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter" title="uqbar.apis.RootDocumenter.RootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a></p></td>
+<td><p>A basic root documenter.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter" title="uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code></a></td>
-<td>A summarizing class documenter.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter" title="uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code></a></p></td>
+<td><p>A summarizing class documenter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code></a></td>
-<td>A summarizing module documenter.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter" title="uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code></a></p></td>
+<td><p>A summarizing module documenter.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a></td>
-<td>A summarizing root documenter.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a></p></td>
+<td><p>A summarizing root documenter.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Functions</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.collect_source_paths" title="uqbar.apis.collect_source_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_source_paths</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.collect_source_paths" title="uqbar.apis.collect_source_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_source_paths</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.source_path_to_package_path" title="uqbar.apis.source_path_to_package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path_to_package_path</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.source_path_to_package_path" title="uqbar.apis.source_path_to_package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path_to_package_path</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="uqbar.apis.collect_source_paths">
-<code class="descname">collect_source_paths</code><span class="sig-paren">(</span><em>source_paths</em>, <em>recurse_subpackages=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#collect_source_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.collect_source_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">collect_source_paths</code><span class="sig-paren">(</span><em class="sig-param">source_paths</em>, <em class="sig-param">recurse_subpackages=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#collect_source_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.collect_source_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.apis.source_path_to_package_path">
-<code class="descname">source_path_to_package_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#source_path_to_package_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.source_path_to_package_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">source_path_to_package_path</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#source_path_to_package_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.source_path_to_package_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="section-header rubric">Internals</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode" title="uqbar.apis.ModuleNode.ModuleNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleNode</span></code></a></td>
-<td>A <a class="reference internal" href="../containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a> subclass used during API construction to proxy modules.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode" title="uqbar.apis.ModuleNode.ModuleNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleNode</span></code></a></p></td>
+<td><p>A <a class="reference internal" href="../containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a> subclass used during API construction to proxy modules.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="PackageNode.html#uqbar.apis.PackageNode.PackageNode" title="uqbar.apis.PackageNode.PackageNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageNode</span></code></a></td>
-<td>A <a class="reference internal" href="../containers/UniqueTreeContainer.html#module-uqbar.containers.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a> subclass used during API construction to proxy packages.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="PackageNode.html#uqbar.apis.PackageNode.PackageNode" title="uqbar.apis.PackageNode.PackageNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageNode</span></code></a></p></td>
+<td><p>A <a class="reference internal" href="../containers/UniqueTreeList.html#module-uqbar.containers.UniqueTreeList" title="uqbar.containers.UniqueTreeList"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a> subclass used during API construction to proxy packages.</p></td>
 </tr>
 </tbody>
 </table>

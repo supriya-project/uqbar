@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.apis &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.apis &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -155,18 +155,18 @@
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
 
-<span class="kn">from</span> <span class="nn">.APIBuilder</span> <span class="k">import</span> <span class="n">APIBuilder</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.ClassDocumenter</span> <span class="k">import</span> <span class="n">ClassDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.FunctionDocumenter</span> <span class="k">import</span> <span class="n">FunctionDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.InheritanceGraph</span> <span class="k">import</span> <span class="n">InheritanceGraph</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.MemberDocumenter</span> <span class="k">import</span> <span class="n">MemberDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.ModuleDocumenter</span> <span class="k">import</span> <span class="n">ModuleDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.ModuleNode</span> <span class="k">import</span> <span class="n">ModuleNode</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.PackageNode</span> <span class="k">import</span> <span class="n">PackageNode</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.RootDocumenter</span> <span class="k">import</span> <span class="n">RootDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.SummarizingClassDocumenter</span> <span class="k">import</span> <span class="n">SummarizingClassDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.SummarizingModuleDocumenter</span> <span class="k">import</span> <span class="n">SummarizingModuleDocumenter</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">.SummarizingRootDocumenter</span> <span class="k">import</span> <span class="n">SummarizingRootDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.APIBuilder</span> <span class="kn">import</span> <span class="n">APIBuilder</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.ClassDocumenter</span> <span class="kn">import</span> <span class="n">ClassDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.FunctionDocumenter</span> <span class="kn">import</span> <span class="n">FunctionDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.InheritanceGraph</span> <span class="kn">import</span> <span class="n">InheritanceGraph</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.MemberDocumenter</span> <span class="kn">import</span> <span class="n">MemberDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.ModuleDocumenter</span> <span class="kn">import</span> <span class="n">ModuleDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.ModuleNode</span> <span class="kn">import</span> <span class="n">ModuleNode</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.PackageNode</span> <span class="kn">import</span> <span class="n">PackageNode</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.RootDocumenter</span> <span class="kn">import</span> <span class="n">RootDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.SummarizingClassDocumenter</span> <span class="kn">import</span> <span class="n">SummarizingClassDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.SummarizingModuleDocumenter</span> <span class="kn">import</span> <span class="n">SummarizingModuleDocumenter</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">.SummarizingRootDocumenter</span> <span class="kn">import</span> <span class="n">SummarizingRootDocumenter</span>  <span class="c1"># noqa</span>
 
 
 <div class="viewcode-block" id="collect_source_paths"><a class="viewcode-back" href="../../api/uqbar/apis/index.html#uqbar.apis.collect_source_paths">[docs]</a><span class="k">def</span> <span class="nf">collect_source_paths</span><span class="p">(</span><span class="n">source_paths</span><span class="p">,</span> <span class="n">recurse_subpackages</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>

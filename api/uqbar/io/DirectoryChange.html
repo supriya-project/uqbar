@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DirectoryChange &mdash; uqbar 0.3.2 documentation</title>
+  <title>DirectoryChange &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -103,6 +103,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Timer.html">Timer</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -236,50 +237,50 @@
 </div>
 <dl class="class">
 <dt id="uqbar.io.DirectoryChange.DirectoryChange">
-<em class="property">class </em><code class="descname">DirectoryChange</code><span class="sig-paren">(</span><em>directory</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">DirectoryChange</code><span class="sig-paren">(</span><em class="sig-param">directory</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange" title="Permalink to this definition">¶</a></dt>
 <dd><p>A context manager for temporarily changing the current working directory.</p>
 <p>This context manager is re-entrant.</p>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.__enter__" title="uqbar.io.DirectoryChange.DirectoryChange.__enter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__enter__</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.__enter__" title="uqbar.io.DirectoryChange.DirectoryChange.__enter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__enter__</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.__exit__" title="uqbar.io.DirectoryChange.DirectoryChange.__exit__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__exit__</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.__exit__" title="uqbar.io.DirectoryChange.DirectoryChange.__exit__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__exit__</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.directory" title="uqbar.io.DirectoryChange.DirectoryChange.directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directory</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.directory" title="uqbar.io.DirectoryChange.DirectoryChange.directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directory</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.verbose" title="uqbar.io.DirectoryChange.DirectoryChange.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.DirectoryChange.DirectoryChange.verbose" title="uqbar.io.DirectoryChange.DirectoryChange.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.io.DirectoryChange.DirectoryChange.__enter__">
-<code class="descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.__enter__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.__enter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="uqbar.io.DirectoryChange.DirectoryChange.__exit__">
-<code class="descname">__exit__</code><span class="sig-paren">(</span><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.__exit__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param">exc_type</em>, <em class="sig-param">exc_value</em>, <em class="sig-param">traceback</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/DirectoryChange.html#DirectoryChange.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.__exit__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.io.DirectoryChange.DirectoryChange.directory">
-<code class="descname">directory</code><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.directory" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">directory</code><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.directory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.io.DirectoryChange.DirectoryChange.verbose">
-<code class="descname">verbose</code><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.verbose" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">verbose</code><a class="headerlink" href="#uqbar.io.DirectoryChange.DirectoryChange.verbose" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

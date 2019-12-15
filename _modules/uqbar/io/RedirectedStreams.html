@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.io.RedirectedStreams &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.io.RedirectedStreams &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -185,20 +185,20 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stdout</span> <span class="o">=</span> <span class="n">stdout</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span> <span class="o">=</span> <span class="n">stderr</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="RedirectedStreams.__enter__"><a class="viewcode-back" href="../../../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RedirectedStreams.__enter__"><a class="viewcode-back" href="../../../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams.__enter__">[docs]</a>    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_old_stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_old_stderr</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_old_stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_old_stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stdout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="RedirectedStreams.__exit__"><a class="viewcode-back" href="../../../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+<div class="viewcode-block" id="RedirectedStreams.__exit__"><a class="viewcode-back" href="../../../api/uqbar/io/RedirectedStreams.html#uqbar.io.RedirectedStreams.RedirectedStreams.__exit__">[docs]</a>    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>

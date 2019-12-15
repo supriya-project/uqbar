@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.sphinx.inheritance &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.sphinx.inheritance &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -183,13 +183,13 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span>
 
-<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="k">import</span> <span class="n">Element</span>  <span class="c1"># type: ignore</span>
-<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="k">import</span> <span class="n">General</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">NodeVisitor</span><span class="p">,</span> <span class="n">SkipNode</span>
-<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="k">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">directives</span>  <span class="c1"># type: ignore</span>
-<span class="kn">from</span> <span class="nn">sphinx.ext.graphviz</span> <span class="k">import</span> <span class="n">render_dot_html</span>  <span class="c1"># type: ignore</span>
-<span class="kn">from</span> <span class="nn">sphinx.ext.graphviz</span> <span class="k">import</span> <span class="n">render_dot_latex</span>
+<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="kn">import</span> <span class="n">Element</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="kn">import</span> <span class="n">General</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">NodeVisitor</span><span class="p">,</span> <span class="n">SkipNode</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">directives</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">sphinx.ext.graphviz</span> <span class="kn">import</span> <span class="n">render_dot_html</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">sphinx.ext.graphviz</span> <span class="kn">import</span> <span class="n">render_dot_latex</span>
 
 <span class="kn">import</span> <span class="nn">uqbar.apis</span>
 

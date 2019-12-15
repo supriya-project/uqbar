@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.graphs.Edge &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.graphs.Edge &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -149,10 +149,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.graphs.Edge</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">uqbar.graphs</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">uqbar.graphs.Attributes</span> <span class="k">import</span> <span class="n">Attributes</span>
+<span class="kn">from</span> <span class="nn">uqbar.graphs.Attributes</span> <span class="kn">import</span> <span class="n">Attributes</span>
 
 
 <div class="viewcode-block" id="Edge"><a class="viewcode-back" href="../../../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge">[docs]</a><span class="k">class</span> <span class="nc">Edge</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -166,31 +166,34 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="n">Attributes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">is_directed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">head_port_position</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">tail_port_position</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">.Node</span> <span class="kn">import</span> <span class="n">Node</span>
+        <span class="kn">from</span> <span class="nn">.Attachable</span> <span class="kn">import</span> <span class="n">Attachable</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span> <span class="o">=</span> <span class="n">Attributes</span><span class="p">(</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">attributes</span> <span class="ow">or</span> <span class="p">{}))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">Attachable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_head</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Node</span><span class="p">,</span> <span class="n">Attachable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_head_port_position</span> <span class="o">=</span> <span class="n">head_port_position</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_directed</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">is_directed</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_tail</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">Attachable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tail</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Node</span><span class="p">,</span> <span class="n">Attachable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tail_port_position</span> <span class="o">=</span> <span class="n">tail_port_position</span>
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="Edge.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge.__format__">[docs]</a>    <span class="k">def</span> <span class="nf">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Edge.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge.__format__">[docs]</a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># TODO: make the format specification options machine-readable</span>
         <span class="k">if</span> <span class="n">format_spec</span> <span class="o">==</span> <span class="s2">&quot;graphviz&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__format_graphviz__</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Edge.__format_graphviz__"><a class="viewcode-back" href="../../../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge.__format_graphviz__">[docs]</a>    <span class="k">def</span> <span class="nf">__format_graphviz__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">uqbar.graphs.Attachable</span> <span class="k">import</span> <span class="n">Attachable</span>
-        <span class="kn">from</span> <span class="nn">uqbar.graphs.Node</span> <span class="k">import</span> <span class="n">Node</span>
+        <span class="kn">from</span> <span class="nn">.Node</span> <span class="kn">import</span> <span class="n">Node</span>
+        <span class="kn">from</span> <span class="nn">.Attachable</span> <span class="kn">import</span> <span class="n">Attachable</span>
 
         <span class="n">connection</span> <span class="o">=</span> <span class="s2">&quot;-&gt;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_directed</span><span class="p">:</span>
@@ -270,8 +273,8 @@
         <span class="n">tail</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;uqbar.graphs.Node&quot;</span><span class="p">,</span> <span class="s2">&quot;uqbar.graphs.Attachable&quot;</span><span class="p">],</span>
         <span class="n">head</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;uqbar.graphs.Node&quot;</span><span class="p">,</span> <span class="s2">&quot;uqbar.graphs.Attachable&quot;</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Edge&quot;</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">uqbar.graphs</span> <span class="k">import</span> <span class="n">Node</span>
-        <span class="kn">from</span> <span class="nn">uqbar.graphs</span> <span class="k">import</span> <span class="n">Attachable</span>
+        <span class="kn">from</span> <span class="nn">.Node</span> <span class="kn">import</span> <span class="n">Node</span>
+        <span class="kn">from</span> <span class="nn">.Attachable</span> <span class="kn">import</span> <span class="n">Attachable</span>
 
         <span class="n">prototype</span> <span class="o">=</span> <span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">Attachable</span><span class="p">)</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tail</span><span class="p">,</span> <span class="n">prototype</span><span class="p">)</span>

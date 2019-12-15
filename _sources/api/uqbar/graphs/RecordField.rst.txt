@@ -50,18 +50,6 @@ RecordField
 
       .. automethod:: RecordField.attach
 
-   .. container:: inherited
-
-      .. automethod:: RecordField.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: RecordField.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: RecordField.succeed_by
-
    .. raw:: html
 
       <hr/>

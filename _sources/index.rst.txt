@@ -52,7 +52,8 @@ Generic data-structures
 
    uqbar.containers.DependencyGraph
    uqbar.containers.UniqueTreeNode
-   uqbar.containers.UniqueTreeContainer
+   uqbar.containers.UniqueTreeList
+   uqbar.containers.UniqueTreeSet
 
 Context managers
 ----------------

@@ -29,23 +29,7 @@ UniqueTreeNode
       name
       parent
       parentage
-      precede_by
-      replace_with
       root
-      succeed_by
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: UniqueTreeNode.precede_by
-
-   .. automethod:: UniqueTreeNode.replace_with
-
-   .. automethod:: UniqueTreeNode.succeed_by
 
    .. raw:: html
 

@@ -95,23 +95,11 @@ RecordGroup
 
    .. container:: inherited
 
-      .. automethod:: RecordGroup.precede_by
-
-   .. container:: inherited
-
       .. automethod:: RecordGroup.recurse
 
    .. container:: inherited
 
       .. automethod:: RecordGroup.remove
-
-   .. container:: inherited
-
-      .. automethod:: RecordGroup.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: RecordGroup.succeed_by
 
    .. raw:: html
 

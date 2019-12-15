@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Graph &mdash; uqbar 0.3.2 documentation</title>
+  <title>Graph &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -114,6 +114,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -203,7 +204,7 @@
   <div class="section" id="module-uqbar.graphs.Graph">
 <span id="graph"></span><span id="uqbar-graphs-graph"></span><h1>Graph<a class="headerlink" href="#module-uqbar.graphs.Graph" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-f8f501c37184a6dc4d1795f53c9a0020435b3369.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-c081257bfe4dba93fe3c426529ba78ec3f0b9c59.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
     graph [bgcolor=transparent,
         color=lightsteelblue2,
@@ -239,9 +240,13 @@
         &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
             label=&quot;Unique\nTree\nContainer&quot;,
             target=_top];
+        &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
+            label=&quot;Unique\nTree\nList&quot;,
+            target=_top];
         &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
             label=&quot;Unique\nTree\nNode&quot;,
             target=_top];
+        &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;
         &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
     }
     subgraph &quot;cluster_uqbar.graphs&quot; {
@@ -254,88 +259,70 @@
             target=_top];
     }
     &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
-    &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;;
+    &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;;
 }</p></object></div>
 </div>
 <dl class="class">
 <dt id="uqbar.graphs.Graph.Graph">
-<em class="property">class </em><code class="descname">Graph</code><span class="sig-paren">(</span><em>children=None</em>, <em>*</em>, <em>attributes=None</em>, <em>edge_attributes=None</em>, <em>is_cluster=False</em>, <em>is_digraph=True</em>, <em>name=None</em>, <em>node_attributes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Graph</code><span class="sig-paren">(</span><em class="sig-param">children=None</em>, <em class="sig-param">*</em>, <em class="sig-param">attributes=None</em>, <em class="sig-param">edge_attributes=None</em>, <em class="sig-param">is_cluster=False</em>, <em class="sig-param">is_digraph=True</em>, <em class="sig-param">name=None</em>, <em class="sig-param">node_attributes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Graphviz graph, subgraph or cluster.</p>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.__format__" title="uqbar.graphs.Graph.Graph.__format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format__</span></code></a></td>
-<td>default object formatter</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.__format__" title="uqbar.graphs.Graph.Graph.__format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format__</span></code></a></p></td>
+<td><p>Default object formatter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.__format_graphviz__" title="uqbar.graphs.Graph.Graph.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.__format_graphviz__" title="uqbar.graphs.Graph.Graph.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.attributes" title="uqbar.graphs.Graph.Graph.attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributes</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.attributes" title="uqbar.graphs.Graph.Graph.attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributes</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.edge_attributes" title="uqbar.graphs.Graph.Graph.edge_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attributes</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.is_cluster" title="uqbar.graphs.Graph.Graph.is_cluster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_cluster</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.edge_attributes" title="uqbar.graphs.Graph.Graph.edge_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attributes</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.is_digraph" title="uqbar.graphs.Graph.Graph.is_digraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_digraph</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.is_cluster" title="uqbar.graphs.Graph.Graph.is_cluster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_cluster</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.is_digraph" title="uqbar.graphs.Graph.Graph.is_digraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_digraph</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Graph.Graph.node_attributes" title="uqbar.graphs.Graph.Graph.node_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attributes</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Graph.Graph.node_attributes" title="uqbar.graphs.Graph.Graph.node_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attributes</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
@@ -343,69 +330,63 @@
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__contains__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__contains__</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__contains__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__delitem__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__delitem__</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__delitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__delitem__</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__delitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__format__">
-<em class="property">overridden </em><code class="descname">__format__</code><span class="sig-paren">(</span><em>format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__format__" title="Permalink to this definition">¶</a></dt>
-<dd><p>default object formatter</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param">format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__format__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default object formatter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__format_graphviz__">
-<code class="descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Graph.html#Graph.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__getitem__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__getitem__</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__getitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__iter__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__iter__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__len__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__len__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__len__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.__setitem__">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">__setitem__</code><span class="sig-paren">(</span><em>i</em>, <em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__setitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">new_items</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.__setitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -413,113 +394,56 @@
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.append">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">append</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.append" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.append" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.depth_first">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">depth_first</code><span class="sig-paren">(</span><em>top_down=True</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.depth_first" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iterate depth-first.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="k">import</span> <span class="n">UniqueTreeContainer</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">node_a</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">node_b</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">node_c</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">node_d</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">node_a</span><span class="p">,</span> <span class="n">outer_container</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">inner_container</span><span class="p">,</span> <span class="n">node_d</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">node_b</span><span class="p">,</span> <span class="n">node_c</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root_container</span><span class="o">.</span><span class="n">depth_first</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="gp">... </span>
-<span class="go">a</span>
-<span class="go">outer</span>
-<span class="go">inner</span>
-<span class="go">b</span>
-<span class="go">c</span>
-<span class="go">d</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root_container</span><span class="o">.</span><span class="n">depth_first</span><span class="p">(</span><span class="n">top_down</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="gp">... </span>
-<span class="go">a</span>
-<span class="go">b</span>
-<span class="go">c</span>
-<span class="go">inner</span>
-<span class="go">d</span>
-<span class="go">outer</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">depth_first</code><span class="sig-paren">(</span><em class="sig-param">top_down=True</em>, <em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.depth_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.extend">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">extend</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.extend" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.extend" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.index">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">index</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.insert">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">insert</code><span class="sig-paren">(</span><em>i</em>, <em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.insert" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.pop">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">pop</code><span class="sig-paren">(</span><em>i=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.pop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.graphs.Graph.Graph.precede_by">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">precede_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.precede_by" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param">i=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.pop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.recurse">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">recurse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.recurse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">recurse</code><span class="sig-paren">(</span><em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.recurse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="method">
 <dt id="uqbar.graphs.Graph.Graph.remove">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">remove</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.remove" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.graphs.Graph.Graph.replace_with">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">replace_with</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.replace_with" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.graphs.Graph.Graph.succeed_by">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">succeed_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.succeed_by" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.Graph.Graph.remove" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -527,60 +451,54 @@
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.name">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">name</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.attributes">
-<code class="descname">attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.attributes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.children">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="descname">children</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.children" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">children</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.depth">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">depth</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.depth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.edge_attributes">
-<code class="descname">edge_attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.edge_attributes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">edge_attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.edge_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.graph_order">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">graph_order</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.graph_order" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="k">import</span> <span class="n">UniqueTreeContainer</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="kn">import</span> <span class="n">UniqueTreeList</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_a</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_b</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_c</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
@@ -606,61 +524,52 @@
 </div>
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.is_cluster">
-<code class="descname">is_cluster</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.is_cluster" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">is_cluster</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.is_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.is_digraph">
-<code class="descname">is_digraph</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.is_digraph" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">is_digraph</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.is_digraph" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.node_attributes">
-<code class="descname">node_attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.node_attributes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">node_attributes</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.node_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.parent">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">parent</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.parent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.parentage">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">parentage</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.parentage" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.graphs.Graph.Graph.root">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">root</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.root" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.graphs.Graph.Graph.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

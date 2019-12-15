@@ -27,6 +27,7 @@ book
    ~on_config_inited
    ~on_doctree_read
    ~setup
+   ~skip_node
 
 .. autofunction:: on_build_finished
 
@@ -37,3 +38,5 @@ book
 .. autofunction:: on_doctree_read
 
 .. autofunction:: setup
+
+.. autofunction:: skip_node

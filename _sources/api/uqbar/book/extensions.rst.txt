@@ -37,6 +37,7 @@ extensions
    .. autosummary::
       :nosignatures:
 
+      add_option
       depart_block_text
       setup_console
       setup_sphinx
@@ -51,6 +52,8 @@ extensions
 
    .. rubric:: Class & static methods
       :class: class-header
+
+   .. automethod:: Extension.add_option
 
    .. automethod:: Extension.depart_block_text
 
@@ -102,6 +105,10 @@ extensions
 
    .. rubric:: Class & static methods
       :class: class-header
+
+   .. container:: inherited
+
+      .. automethod:: GraphExtension.add_option
 
    .. automethod:: GraphExtension.clean_svg
 

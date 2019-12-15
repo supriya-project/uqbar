@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>graphs &mdash; uqbar 0.3.2 documentation</title>
+  <title>graphs &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -114,6 +114,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -202,7 +203,7 @@
 <span id="graphs"></span><span id="uqbar-graphs"></span><h1>graphs<a class="headerlink" href="#module-uqbar.graphs" title="Permalink to this headline">¶</a></h1>
 <p>Tools for building Graphviz graphs.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-3307ce2b0d9f3880cff3522ba9841d7130c41eeb.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-a4b770dffcec63bdce8b6584a5ee674bdee08560.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -228,6 +229,14 @@
 	edge [color=lightslategrey,
 		penwidth=1
 	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
 	subgraph &quot;cluster_collections.abc&quot; {
 		graph [label=&quot;collections.abc&quot;];
 		node [color=2];
@@ -273,14 +282,6 @@
 			target=_top];
 		&quot;collections.abc.Sized&quot; -&gt; &quot;collections.abc.Collection&quot;;
 	}
-	subgraph cluster_builtins {
-		graph [label=builtins];
-		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
-			label=object,
-			target=_top];
-	}
 	subgraph &quot;cluster_uqbar.containers&quot; {
 		graph [label=&quot;uqbar.containers&quot;];
 		node [color=3];
@@ -288,11 +289,16 @@
 			color=3,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
+			color=3,
+			label=&quot;Unique\nTree\nList&quot;,
+			target=_top];
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;
 		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			color=3,
 			label=&quot;Unique\nTree\nNode&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.graphs&quot; {
 		graph [label=&quot;uqbar.graphs&quot;];
@@ -382,117 +388,117 @@
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Edge.Edge&quot;	 [minlen=2];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Grapher.Grapher&quot;	 [minlen=1];
 	&quot;collections.abc.MutableMapping&quot; -&gt; &quot;uqbar.graphs.Attributes.Attributes&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
-	&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="Grapher.html#uqbar.graphs.Grapher.Grapher" title="uqbar.graphs.Grapher.Grapher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Grapher</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Grapher.html#uqbar.graphs.Grapher.Grapher" title="uqbar.graphs.Grapher.Grapher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Grapher</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Core Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-<td>An attributes listing for a Graphviz graph, cluster, node or edge.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attributes</span></code></a></p></td>
+<td><p>An attributes listing for a Graphviz graph, cluster, node or edge.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Edge.html#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
-<td>A Graphviz edge.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="Edge.html#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edge</span></code></a></p></td>
+<td><p>A Graphviz edge.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="Graph.html#uqbar.graphs.Graph.Graph" title="uqbar.graphs.Graph.Graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph</span></code></a></td>
-<td>A Graphviz graph, subgraph or cluster.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="Graph.html#uqbar.graphs.Graph.Graph" title="uqbar.graphs.Graph.Graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Graph</span></code></a></p></td>
+<td><p>A Graphviz graph, subgraph or cluster.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a></td>
-<td>A Graphviz node.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a></p></td>
+<td><p>A Graphviz node.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">HTML Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="HRule.html#uqbar.graphs.HRule.HRule" title="uqbar.graphs.HRule.HRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HRule</span></code></a></td>
-<td>A Graphviz HTML horizontal rule.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="HRule.html#uqbar.graphs.HRule.HRule" title="uqbar.graphs.HRule.HRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HRule</span></code></a></p></td>
+<td><p>A Graphviz HTML horizontal rule.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="LineBreak.html#uqbar.graphs.LineBreak.LineBreak" title="uqbar.graphs.LineBreak.LineBreak"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineBreak</span></code></a></td>
-<td>A Graphviz HTML line break.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="LineBreak.html#uqbar.graphs.LineBreak.LineBreak" title="uqbar.graphs.LineBreak.LineBreak"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineBreak</span></code></a></p></td>
+<td><p>A Graphviz HTML line break.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="Table.html#uqbar.graphs.Table.Table" title="uqbar.graphs.Table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></td>
-<td>A Graphviz HTML table.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="Table.html#uqbar.graphs.Table.Table" title="uqbar.graphs.Table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p></td>
+<td><p>A Graphviz HTML table.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="TableCell.html#uqbar.graphs.TableCell.TableCell" title="uqbar.graphs.TableCell.TableCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableCell</span></code></a></td>
-<td>A Graphviz HTML table.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="TableCell.html#uqbar.graphs.TableCell.TableCell" title="uqbar.graphs.TableCell.TableCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableCell</span></code></a></p></td>
+<td><p>A Graphviz HTML table.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="TableRow.html#uqbar.graphs.TableRow.TableRow" title="uqbar.graphs.TableRow.TableRow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableRow</span></code></a></td>
-<td>A Graphviz HTML table row.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="TableRow.html#uqbar.graphs.TableRow.TableRow" title="uqbar.graphs.TableRow.TableRow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableRow</span></code></a></p></td>
+<td><p>A Graphviz HTML table row.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Text.html#uqbar.graphs.Text.Text" title="uqbar.graphs.Text.Text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Text</span></code></a></td>
-<td>A Graphviz HTML text node.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="Text.html#uqbar.graphs.Text.Text" title="uqbar.graphs.Text.Text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Text</span></code></a></p></td>
+<td><p>A Graphviz HTML text node.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="VRule.html#uqbar.graphs.VRule.VRule" title="uqbar.graphs.VRule.VRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VRule</span></code></a></td>
-<td>A Graphviz HTML vertical rule.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="VRule.html#uqbar.graphs.VRule.VRule" title="uqbar.graphs.VRule.VRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VRule</span></code></a></p></td>
+<td><p>A Graphviz HTML vertical rule.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Mixins</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attachable</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attachable</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="section-header rubric">Record Field Classes</p>
 <div class="toctree-wrapper compound">
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="RecordField.html#uqbar.graphs.RecordField.RecordField" title="uqbar.graphs.RecordField.RecordField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordField</span></code></a></td>
-<td>A Graphviz record field.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="RecordField.html#uqbar.graphs.RecordField.RecordField" title="uqbar.graphs.RecordField.RecordField"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordField</span></code></a></p></td>
+<td><p>A Graphviz record field.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup" title="uqbar.graphs.RecordGroup.RecordGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordGroup</span></code></a></td>
-<td>A Graphviz record field group.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup" title="uqbar.graphs.RecordGroup.RecordGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecordGroup</span></code></a></p></td>
+<td><p>A Graphviz record field group.</p></td>
 </tr>
 </tbody>
 </table>

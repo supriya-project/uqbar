@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.containers.UniqueTreeNode &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.containers.UniqueTreeNode &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -149,12 +149,13 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.containers.UniqueTreeNode</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">collections</span>
-<span class="kn">import</span> <span class="nn">copy</span>
+<span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 
+<span class="kn">from</span> <span class="nn">uqbar.iterables</span> <span class="kn">import</span> <span class="n">nwise</span>
 
-<div class="viewcode-block" id="UniqueTreeNode"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeNode.html#uqbar.apis.ModuleNode.UniqueTreeNode">[docs]</a><span class="k">class</span> <span class="nc">UniqueTreeNode</span><span class="p">:</span>
+
+<div class="viewcode-block" id="UniqueTreeNode"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode">[docs]</a><span class="k">class</span> <span class="nc">UniqueTreeNode</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A node in a &quot;unique&quot; tree.</span>
 
@@ -168,7 +169,7 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -177,9 +178,7 @@
     <span class="k">def</span> <span class="nf">_cache_named_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name_dictionary</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">:</span>
-                <span class="n">name_dictionary</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-            <span class="n">name_dictionary</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">name_dictionary</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">name_dictionary</span>
 
     <span class="nd">@classmethod</span>
@@ -206,58 +205,41 @@
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_remove_from_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">_remove_named_children_from_parentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_dictionary</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name_dictionary</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentage</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-                <span class="n">named_children</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_named_children</span>
-                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
-                        <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
-                        <span class="k">del</span> <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">_remove_named_children_from_parentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_parent</span><span class="p">,</span> <span class="n">name_dictionary</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">old_parent</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">name_dictionary</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">old_parent</span><span class="o">.</span><span class="n">parentage</span><span class="p">:</span>
+            <span class="n">named_children</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_named_children</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
+                    <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
+                    <span class="k">del</span> <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_restore_named_children_to_parentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_dictionary</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name_dictionary</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentage</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-                <span class="n">named_children</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_named_children</span>
-                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">named_children</span><span class="p">:</span>
-                        <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">_restore_named_children_to_parentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_parent</span><span class="p">,</span> <span class="n">name_dictionary</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">new_parent</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">name_dictionary</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">new_parent</span><span class="o">.</span><span class="n">parentage</span><span class="p">:</span>
+            <span class="n">named_children</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_named_children</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_dictionary</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">named_children</span><span class="p">:</span>
+                    <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">named_children</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">name_dictionary</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">_set_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_parent</span><span class="p">):</span>
+        <span class="n">old_parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span>
         <span class="n">named_children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_named_children</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_remove_named_children_from_parentage</span><span class="p">(</span><span class="n">named_children</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_remove_from_parent</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_remove_named_children_from_parentage</span><span class="p">(</span><span class="n">old_parent</span><span class="p">,</span> <span class="n">named_children</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">new_parent</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_restore_named_children_to_parentage</span><span class="p">(</span><span class="n">named_children</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span>
-
-    <span class="c1">### PUBLIC METHODS ###</span>
-
-<div class="viewcode-block" id="UniqueTreeNode.precede_by"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeNode.html#uqbar.apis.ModuleNode.UniqueTreeNode.precede_by">[docs]</a>    <span class="k">def</span> <span class="nf">precede_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
-            <span class="n">expr</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span><span class="p">]</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">expr</span></div>
-
-<div class="viewcode-block" id="UniqueTreeNode.replace_with"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeNode.html#uqbar.apis.ModuleNode.UniqueTreeNode.replace_with">[docs]</a>    <span class="k">def</span> <span class="nf">replace_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
-            <span class="n">expr</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span><span class="p">]</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">index</span> <span class="p">:</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">expr</span></div>
-
-<div class="viewcode-block" id="UniqueTreeNode.succeed_by"><a class="viewcode-back" href="../../../api/uqbar/containers/UniqueTreeNode.html#uqbar.apis.ModuleNode.UniqueTreeNode.succeed_by">[docs]</a>    <span class="k">def</span> <span class="nf">succeed_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
-            <span class="n">expr</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span><span class="p">]</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">expr</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_restore_named_children_to_parentage</span><span class="p">(</span><span class="n">new_parent</span><span class="p">,</span> <span class="n">named_children</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mark_entire_tree_for_later_update</span><span class="p">()</span>
 
     <span class="c1">### PUBLIC PROPERTIES ###</span>
 
@@ -272,10 +254,10 @@
 
 <span class="sd">        ::</span>
 
-<span class="sd">            &gt;&gt;&gt; from uqbar.containers import UniqueTreeContainer, UniqueTreeNode</span>
-<span class="sd">            &gt;&gt;&gt; root_container = UniqueTreeContainer(name=&quot;root&quot;)</span>
-<span class="sd">            &gt;&gt;&gt; outer_container = UniqueTreeContainer(name=&quot;outer&quot;)</span>
-<span class="sd">            &gt;&gt;&gt; inner_container = UniqueTreeContainer(name=&quot;inner&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; from uqbar.containers import UniqueTreeList, UniqueTreeNode</span>
+<span class="sd">            &gt;&gt;&gt; root_container = UniqueTreeList(name=&quot;root&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; outer_container = UniqueTreeList(name=&quot;outer&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; inner_container = UniqueTreeList(name=&quot;inner&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; node_a = UniqueTreeNode(name=&quot;a&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; node_b = UniqueTreeNode(name=&quot;b&quot;)</span>
 <span class="sd">            &gt;&gt;&gt; node_c = UniqueTreeNode(name=&quot;c&quot;)</span>
@@ -297,11 +279,13 @@
 <span class="sd">            d (1, 1)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">parentage</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parentage</span><span class="p">))</span>
         <span class="n">graph_order</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">parentage</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">parent</span><span class="p">,</span> <span class="n">child</span> <span class="o">=</span> <span class="n">parentage</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
-            <span class="n">graph_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">parent</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">nwise</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parentage</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">graph_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">graph_order</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -335,7 +319,7 @@
         <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">parentage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;parent&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">parentage</span><span class="p">)</span>
 
     <span class="nd">@property</span>

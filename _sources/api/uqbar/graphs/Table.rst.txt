@@ -95,23 +95,11 @@ Table
 
    .. container:: inherited
 
-      .. automethod:: Table.precede_by
-
-   .. container:: inherited
-
       .. automethod:: Table.recurse
 
    .. container:: inherited
 
       .. automethod:: Table.remove
-
-   .. container:: inherited
-
-      .. automethod:: Table.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: Table.succeed_by
 
    .. raw:: html
 

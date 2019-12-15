@@ -42,25 +42,6 @@ HRule
 
       <hr/>
 
-   .. rubric:: Methods
-      :class: class-header
-
-   .. container:: inherited
-
-      .. automethod:: HRule.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: HRule.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: HRule.succeed_by
-
-   .. raw:: html
-
-      <hr/>
-
    .. rubric:: Read/write properties
       :class: class-header
 

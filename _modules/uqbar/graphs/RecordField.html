@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.graphs.RecordField &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.graphs.RecordField &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -149,11 +149,12 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.graphs.RecordField</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Optional</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">uqbar.graphs</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="k">import</span> <span class="n">UniqueTreeNode</span>
-<span class="kn">from</span> <span class="nn">uqbar.graphs</span> <span class="k">import</span> <span class="n">Attachable</span>
+<span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="kn">import</span> <span class="n">UniqueTreeNode</span>
+
+<span class="kn">from</span> <span class="nn">.Attachable</span> <span class="kn">import</span> <span class="n">Attachable</span>
 
 
 <div class="viewcode-block" id="RecordField"><a class="viewcode-back" href="../../../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField">[docs]</a><span class="k">class</span> <span class="nc">RecordField</span><span class="p">(</span><span class="n">Attachable</span><span class="p">,</span> <span class="n">UniqueTreeNode</span><span class="p">):</span>
@@ -218,7 +219,7 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">UniqueTreeNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="n">Attachable</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -227,7 +228,7 @@
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="RecordField.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField.__format__">[docs]</a>    <span class="k">def</span> <span class="nf">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="RecordField.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField.__format__">[docs]</a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># TODO: make the format specification options machine-readable</span>
         <span class="k">if</span> <span class="n">format_spec</span> <span class="o">==</span> <span class="s2">&quot;graphviz&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__format_graphviz__</span><span class="p">()</span>

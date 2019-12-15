@@ -36,18 +36,6 @@ Attachable
 
    .. automethod:: Attachable.attach
 
-   .. container:: inherited
-
-      .. automethod:: Attachable.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: Attachable.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: Attachable.succeed_by
-
    .. raw:: html
 
       <hr/>

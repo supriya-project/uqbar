@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>enums &mdash; uqbar 0.3.2 documentation</title>
+  <title>enums &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ext" href="ext/index.html" />
-    <link rel="prev" title="UniqueTreeNode" href="containers/UniqueTreeNode.html" /> 
+    <link rel="prev" title="UniqueTreeTuple" href="containers/UniqueTreeTuple.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -97,6 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="strings.html">strings</a></li>
@@ -172,7 +173,7 @@
         <a href="ext/index.html" class="btn btn-neutral float-right" title="ext" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="containers/UniqueTreeNode.html" class="btn btn-neutral float-left" title="UniqueTreeNode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="containers/UniqueTreeTuple.html" class="btn btn-neutral float-left" title="UniqueTreeTuple" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -250,23 +251,23 @@
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Enumerations</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.enums.IntEnumeration" title="uqbar.enums.IntEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntEnumeration</span></code></a></td>
-<td>Enumeration which behaves like an integer.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.enums.IntEnumeration" title="uqbar.enums.IntEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntEnumeration</span></code></a></p></td>
+<td><p>Enumeration which behaves like an integer.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.enums.StrictEnumeration" title="uqbar.enums.StrictEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StrictEnumeration</span></code></a></td>
-<td>Sortable enumeration which does not compare to objects not of its type.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.enums.StrictEnumeration" title="uqbar.enums.StrictEnumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StrictEnumeration</span></code></a></p></td>
+<td><p>Sortable enumeration which does not compare to objects not of its type.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="uqbar.enums.IntEnumeration">
-<em class="property">class </em><code class="descname">IntEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">IntEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enumeration which behaves like an integer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.enums</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyEnum</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">IntEnumeration</span><span class="p">):</span>
@@ -288,14 +289,14 @@
 </div>
 <dl class="attribute">
 <dt id="uqbar.enums.IntEnumeration.from_expr">
-<code class="descname">from_expr</code><em class="property"> = &lt;bound method IntEnumeration.from_expr of &lt;enum 'IntEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_expr</code><em class="property"> = &lt;bound method IntEnumeration.from_expr of &lt;enum 'IntEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="uqbar.enums.StrictEnumeration">
-<em class="property">class </em><code class="descname">StrictEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">StrictEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sortable enumeration which does not compare to objects not of its type.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.enums</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyEnum</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">StrictEnumeration</span><span class="p">):</span>
@@ -317,26 +318,26 @@
 </div>
 <dl class="attribute">
 <dt id="uqbar.enums.StrictEnumeration.from_expr">
-<code class="descname">from_expr</code><em class="property"> = &lt;bound method StrictEnumeration.from_expr of &lt;enum 'StrictEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_expr</code><em class="property"> = &lt;bound method StrictEnumeration.from_expr of &lt;enum 'StrictEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <hr/><p class="section-header rubric">Functions</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.enums.from_expr" title="uqbar.enums.from_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_expr</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.enums.from_expr" title="uqbar.enums.from_expr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_expr</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="uqbar.enums.from_expr">
-<code class="descname">from_expr</code><span class="sig-paren">(</span><em>cls</em>, <em>expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.from_expr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_expr</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.from_expr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -352,7 +353,7 @@
         <a href="ext/index.html" class="btn btn-neutral float-right" title="ext" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="containers/UniqueTreeNode.html" class="btn btn-neutral float-left" title="UniqueTreeNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="containers/UniqueTreeTuple.html" class="btn btn-neutral float-left" title="UniqueTreeTuple" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

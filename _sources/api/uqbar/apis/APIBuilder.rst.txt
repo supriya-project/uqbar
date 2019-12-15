@@ -33,6 +33,7 @@ APIBuilder
       initial_source_paths
       member_documenter_classes
       module_documenter_class
+      omit_root
       prune
       root_documenter_class
       target_directory
@@ -80,6 +81,8 @@ APIBuilder
    .. autoattribute:: APIBuilder.member_documenter_classes
 
    .. autoattribute:: APIBuilder.module_documenter_class
+
+   .. autoattribute:: APIBuilder.omit_root
 
    .. autoattribute:: APIBuilder.root_documenter_class
 

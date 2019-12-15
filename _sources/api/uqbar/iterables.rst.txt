@@ -1,0 +1,39 @@
+.. _uqbar--iterables:
+
+iterables
+=========
+
+.. automodule:: uqbar.iterables
+
+.. currentmodule:: uqbar.iterables
+
+.. container:: svg-container
+
+   .. inheritance-diagram:: uqbar
+      :lineage: uqbar.iterables
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~flatten
+   ~group_by_count
+   ~nwise
+   ~repeat_to_length
+   ~zip_cyclic
+
+.. autofunction:: flatten
+
+.. autofunction:: group_by_count
+
+.. autofunction:: nwise
+
+.. autofunction:: repeat_to_length
+
+.. autofunction:: zip_cyclic

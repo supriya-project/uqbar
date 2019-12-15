@@ -16,6 +16,108 @@ sphinx
 
    <hr/>
 
+.. rubric:: Classes
+   :class: section-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~UqbarBookDefaultsDirective
+   ~UqbarBookDirective
+   ~UqbarBookImportDirective
+   ~uqbar_book_defaults_block
+   ~uqbar_book_import_block
+
+.. autoclass:: UqbarBookDefaultsDirective
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      has_content
+      option_spec
+      optional_arguments
+      required_arguments
+      run
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: UqbarBookDefaultsDirective.run
+
+.. autoclass:: UqbarBookDirective
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      final_argument_whitespace
+      has_content
+      option_spec
+      optional_arguments
+      required_arguments
+      run
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: UqbarBookDirective.run
+
+.. autoclass:: UqbarBookImportDirective
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Attributes Summary
+      :class: class-header
+
+   .. autosummary::
+      :nosignatures:
+
+      has_content
+      option_spec
+      optional_arguments
+      required_arguments
+      run
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Methods
+      :class: class-header
+
+   .. automethod:: UqbarBookImportDirective.run
+
+.. autoclass:: uqbar_book_defaults_block
+
+.. autoclass:: uqbar_book_import_block
+
+.. raw:: html
+
+   <hr/>
+
 .. rubric:: Functions
    :class: section-header
 
@@ -28,6 +130,8 @@ sphinx
    ~group_literal_blocks_by_cache_path
    ~interpret_code_blocks
    ~interpret_code_blocks_with_cache
+   ~interpret_import_block
+   ~interpret_literal_block
    ~literal_block_to_cache_path
    ~parse_rst
    ~query_cache_db
@@ -45,6 +149,10 @@ sphinx
 .. autofunction:: interpret_code_blocks
 
 .. autofunction:: interpret_code_blocks_with_cache
+
+.. autofunction:: interpret_import_block
+
+.. autofunction:: interpret_literal_block
 
 .. autofunction:: literal_block_to_cache_path
 

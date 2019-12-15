@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Edge &mdash; uqbar 0.3.2 documentation</title>
+  <title>Edge &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -114,6 +114,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -247,299 +248,230 @@
 </div>
 <dl class="class">
 <dt id="uqbar.graphs.Edge.Edge">
-<em class="property">class </em><code class="descname">Edge</code><span class="sig-paren">(</span><em>attributes=None</em>, <em>is_directed=True</em>, <em>head_port_position=None</em>, <em>tail_port_position=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Edge</code><span class="sig-paren">(</span><em class="sig-param">attributes=None</em>, <em class="sig-param">is_directed=True</em>, <em class="sig-param">head_port_position=None</em>, <em class="sig-param">tail_port_position=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Graphviz edge.</p>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.__format__" title="uqbar.graphs.Edge.Edge.__format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format__</span></code></a></td>
-<td>default object formatter</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.__format__" title="uqbar.graphs.Edge.Edge.__format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format__</span></code></a></p></td>
+<td><p>Default object formatter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.__format_graphviz__" title="uqbar.graphs.Edge.Edge.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.__format_graphviz__" title="uqbar.graphs.Edge.Edge.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.attach" title="uqbar.graphs.Edge.Edge.attach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attach</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.attach" title="uqbar.graphs.Edge.Edge.attach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attach</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.attributes" title="uqbar.graphs.Edge.Edge.attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributes</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.detach" title="uqbar.graphs.Edge.Edge.detach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.attributes" title="uqbar.graphs.Edge.Edge.attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attributes</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head" title="uqbar.graphs.Edge.Edge.head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head_graph_order" title="uqbar.graphs.Edge.Edge.head_graph_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head_graph_order</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.detach" title="uqbar.graphs.Edge.Edge.detach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head_port_position" title="uqbar.graphs.Edge.Edge.head_port_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head_port_position</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.is_directed" title="uqbar.graphs.Edge.Edge.is_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head" title="uqbar.graphs.Edge.Edge.head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail" title="uqbar.graphs.Edge.Edge.tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail_graph_order" title="uqbar.graphs.Edge.Edge.tail_graph_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_graph_order</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head_graph_order" title="uqbar.graphs.Edge.Edge.head_graph_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head_graph_order</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.head_port_position" title="uqbar.graphs.Edge.Edge.head_port_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">head_port_position</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.is_directed" title="uqbar.graphs.Edge.Edge.is_directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail" title="uqbar.graphs.Edge.Edge.tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail_graph_order" title="uqbar.graphs.Edge.Edge.tail_graph_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_graph_order</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail_port_position" title="uqbar.graphs.Edge.Edge.tail_port_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_port_position</span></code></a></td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">rtype:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
-</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge.tail_port_position" title="uqbar.graphs.Edge.Edge.tail_port_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_port_position</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.graphs.Edge.Edge.__format__">
-<em class="property">overridden </em><code class="descname">__format__</code><span class="sig-paren">(</span><em>format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.__format__" title="Permalink to this definition">¶</a></dt>
-<dd><p>default object formatter</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param">format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.__format__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default object formatter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="uqbar.graphs.Edge.Edge.__format_graphviz__">
-<code class="descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="method">
 <dt id="uqbar.graphs.Edge.Edge.attach">
-<code class="descname">attach</code><span class="sig-paren">(</span><em>tail</em>, <em>head</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.attach"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.attach" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">attach</code><span class="sig-paren">(</span><em class="sig-param">tail</em>, <em class="sig-param">head</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.attach"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.attach" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="uqbar.graphs.Edge.Edge.detach">
-<code class="descname">detach</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.detach"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.detach" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">detach</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Edge.html#Edge.detach"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Edge.Edge.detach" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#uqbar.graphs.Edge.Edge" title="uqbar.graphs.Edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.attributes">
-<code class="descname">attributes</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.attributes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">attributes</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="Attributes.html#uqbar.graphs.Attributes.Attributes" title="uqbar.graphs.Attributes.Attributes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.head">
-<code class="descname">head</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">head</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.head_graph_order">
-<code class="descname">head_graph_order</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head_graph_order" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">head_graph_order</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head_graph_order" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.head_port_position">
-<code class="descname">head_port_position</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head_port_position" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">head_port_position</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.head_port_position" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.is_directed">
-<code class="descname">is_directed</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.is_directed" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">is_directed</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.is_directed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.tail">
-<code class="descname">tail</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">tail</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="Node.html#uqbar.graphs.Node.Node" title="uqbar.graphs.Node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a>, <a class="reference internal" href="Attachable.html#uqbar.graphs.Attachable.Attachable" title="uqbar.graphs.Attachable.Attachable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attachable</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.tail_graph_order">
-<code class="descname">tail_graph_order</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail_graph_order" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">tail_graph_order</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail_graph_order" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.graphs.Edge.Edge.tail_port_position">
-<code class="descname">tail_port_position</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail_port_position" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">tail_port_position</code><a class="headerlink" href="#uqbar.graphs.Edge.Edge.tail_port_position" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

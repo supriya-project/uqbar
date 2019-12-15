@@ -24,11 +24,19 @@ containers
 
    DependencyGraph
    UniqueTreeContainer
+   UniqueTreeDict
+   UniqueTreeList
    UniqueTreeNode
+   UniqueTreeSet
+   UniqueTreeTuple
 
 .. autosummary::
    :nosignatures:
 
    ~DependencyGraph.DependencyGraph
    ~UniqueTreeContainer.UniqueTreeContainer
+   ~UniqueTreeDict.UniqueTreeDict
+   ~UniqueTreeList.UniqueTreeList
    ~UniqueTreeNode.UniqueTreeNode
+   ~UniqueTreeSet.UniqueTreeSet
+   ~UniqueTreeTuple.UniqueTreeTuple

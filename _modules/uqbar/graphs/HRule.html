@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.graphs.HRule &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.graphs.HRule &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -149,7 +149,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.graphs.HRule</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">uqbar.containers.UniqueTreeNode</span> <span class="k">import</span> <span class="n">UniqueTreeNode</span>
+<span></span><span class="kn">from</span> <span class="nn">uqbar.containers.UniqueTreeNode</span> <span class="kn">import</span> <span class="n">UniqueTreeNode</span>
 
 
 <div class="viewcode-block" id="HRule"><a class="viewcode-back" href="../../../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule">[docs]</a><span class="k">class</span> <span class="nc">HRule</span><span class="p">(</span><span class="n">UniqueTreeNode</span><span class="p">):</span>
@@ -171,7 +171,7 @@
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="HRule.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule.__format__">[docs]</a>    <span class="k">def</span> <span class="nf">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="HRule.__format__"><a class="viewcode-back" href="../../../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule.__format__">[docs]</a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># TODO: make the format specification options machine-readable</span>
         <span class="k">if</span> <span class="n">format_spec</span> <span class="o">==</span> <span class="s2">&quot;graphviz&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__format_graphviz__</span><span class="p">()</span>

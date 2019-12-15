@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CLI &mdash; uqbar 0.3.2 documentation</title>
+  <title>CLI &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -250,91 +251,88 @@
 </div>
 <dl class="class">
 <dt id="uqbar.cli.CLI.CLI">
-<em class="property">abstract </em><em class="property">class </em><code class="descname">CLI</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><em class="property">class </em><code class="sig-name descname">CLI</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base for CLI scripts.</p>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.__call__" title="uqbar.cli.CLI.CLI.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></td>
-<td>Calls developer script.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.__call__" title="uqbar.cli.CLI.CLI.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></p></td>
+<td><p>Calls developer script.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.argument_parser" title="uqbar.cli.CLI.CLI.argument_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argument_parser</span></code></a></td>
-<td>The script’s instance of argparse.ArgumentParser.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.argument_parser" title="uqbar.cli.CLI.CLI.argument_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argument_parser</span></code></a></p></td>
+<td><p>The script’s instance of argparse.ArgumentParser.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_name</span></code></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_help" title="uqbar.cli.CLI.CLI.formatted_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_help</span></code></a></td>
-<td>Formatted help of developer script.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_help" title="uqbar.cli.CLI.CLI.formatted_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_help</span></code></a></p></td>
+<td><p>Formatted help of developer script.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_usage" title="uqbar.cli.CLI.CLI.formatted_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_usage</span></code></a></td>
-<td>Formatted usage of developer script.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_usage" title="uqbar.cli.CLI.CLI.formatted_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_usage</span></code></a></p></td>
+<td><p>Formatted usage of developer script.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_version" title="uqbar.cli.CLI.CLI.formatted_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_version</span></code></a></td>
-<td>Formatted version of developer script.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.formatted_version" title="uqbar.cli.CLI.CLI.formatted_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">formatted_version</span></code></a></p></td>
+<td><p>Formatted version of developer script.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">long_description</span></code></td>
-<td></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">long_description</span></code></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLI.CLI.program_name" title="uqbar.cli.CLI.CLI.program_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">program_name</span></code></a></td>
-<td>The name of the script, callable from the command line.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLI.CLI.program_name" title="uqbar.cli.CLI.CLI.program_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">program_name</span></code></a></p></td>
+<td><p>The name of the script, callable from the command line.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">short_description</span></code></td>
-<td></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">short_description</span></code></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></td>
-<td></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.cli.CLI.CLI.__call__">
-<em class="property">overridden </em><code class="descname">__call__</code><span class="sig-paren">(</span><em>arguments=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI.__call__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">arguments=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/cli/CLI.html#CLI.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLI.CLI.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls developer script.</p>
 <p>Returns none.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.argument_parser">
-<code class="descname">argument_parser</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.argument_parser" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">argument_parser</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.argument_parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>The script’s instance of argparse.ArgumentParser.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.formatted_help">
-<code class="descname">formatted_help</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_help" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">formatted_help</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_help" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted help of developer script.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.formatted_usage">
-<code class="descname">formatted_usage</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_usage" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">formatted_usage</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_usage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted usage of developer script.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.formatted_version">
-<code class="descname">formatted_version</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_version" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">formatted_version</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.formatted_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted version of developer script.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLI.CLI.program_name">
-<code class="descname">program_name</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.program_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">program_name</code><a class="headerlink" href="#uqbar.cli.CLI.CLI.program_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the script, callable from the command line.</p>
 </dd></dl>
 

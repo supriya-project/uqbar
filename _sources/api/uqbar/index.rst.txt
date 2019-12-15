@@ -30,6 +30,7 @@ uqbar
    ext/index
    graphs/index
    io/index
+   iterables
    objects
    sphinx/index
    strings
@@ -45,6 +46,7 @@ uqbar
    ext
    graphs
    io
+   iterables
    objects
    sphinx
    strings

@@ -26,13 +26,17 @@ Grapher
 
       __call__
       get_format
-      get_graphviz_string
       get_layout
+      get_openable_paths
       get_output_directory
       get_render_command
+      get_render_directory
       get_render_prefix
+      get_string
+      migrate_assets
       open_output_path
-      persist_graphviz_string
+      persist_log
+      persist_string
       run_command
 
    .. raw:: html
@@ -53,18 +57,26 @@ Grapher
 
    .. automethod:: Grapher.get_format
 
-   .. automethod:: Grapher.get_graphviz_string
-
    .. automethod:: Grapher.get_layout
+
+   .. automethod:: Grapher.get_openable_paths
 
    .. automethod:: Grapher.get_output_directory
 
    .. automethod:: Grapher.get_render_command
 
+   .. automethod:: Grapher.get_render_directory
+
    .. automethod:: Grapher.get_render_prefix
+
+   .. automethod:: Grapher.get_string
+
+   .. automethod:: Grapher.migrate_assets
 
    .. automethod:: Grapher.open_output_path
 
-   .. automethod:: Grapher.persist_graphviz_string
+   .. automethod:: Grapher.persist_log
+
+   .. automethod:: Grapher.persist_string
 
    .. automethod:: Grapher.run_command

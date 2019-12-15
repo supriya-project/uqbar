@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RootDocumenter &mdash; uqbar 0.3.2 documentation</title>
+  <title>RootDocumenter &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -112,6 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -249,7 +250,7 @@
 </div>
 <dl class="class">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter">
-<em class="property">class </em><code class="descname">RootDocumenter</code><span class="sig-paren">(</span><em>module_documenters=None</em>, <em>title='API'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/RootDocumenter.html#RootDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">RootDocumenter</code><span class="sig-paren">(</span><em class="sig-param">module_documenters=None</em>, <em class="sig-param">title='API'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/RootDocumenter.html#RootDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter" title="Permalink to this definition">¶</a></dt>
 <dd><p>A basic root documenter.</p>
 <p>This documenter generates only one reStructuredText document: the root API
 index page, which contains information about all of the modules traversed
@@ -260,7 +261,7 @@ by an <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIB
 <span class="gp">... </span>    <span class="n">module_documenters</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.io&quot;</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">ModuleDocumenter</span><span class="p">(</span><span class="s2">&quot;uqbar.strings&quot;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">],</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">documenter</span><span class="p">))</span>
 <span class="go">API</span>
@@ -274,68 +275,65 @@ by an <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIB
 </pre></div>
 </div>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
+<p class="admonition-title">Tip</p>
 <p>Subclass <a class="reference internal" href="#module-uqbar.apis.RootDocumenter" title="uqbar.apis.RootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a> to
 implement your own custom module documentation output.
 You’ll need to provide your desired reStructuredText output
 via an overridden
 <a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="uqbar.apis.RootDocumenter.RootDocumenter.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a>
 implementation.</p>
-<p class="last">See <a class="reference internal" href="SummarizingRootDocumenter.html#module-uqbar.apis.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a> for an example.</p>
+<p>See <a class="reference internal" href="SummarizingRootDocumenter.html#module-uqbar.apis.SummarizingRootDocumenter" title="uqbar.apis.SummarizingRootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code></a> for an example.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>module_documenters</strong> – a list of of documenters for modules and
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_documenters</strong> – a list of of documenters for modules and
 packages of the root documenter; these are generated by an
 <a class="reference internal" href="APIBuilder.html#module-uqbar.apis.APIBuilder" title="uqbar.apis.APIBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">APIBuilder</span></code></a> instance rather than the module
-documenter directly</td>
-</tr>
-</tbody>
-</table>
+documenter directly</p>
+</dd>
+</dl>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="uqbar.apis.RootDocumenter.RootDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
-<td>Return str(self).</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="uqbar.apis.RootDocumenter.RootDocumenter.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="uqbar.apis.RootDocumenter.RootDocumenter.documentation_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_path</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="uqbar.apis.RootDocumenter.RootDocumenter.documentation_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_path</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.module_documenters" title="uqbar.apis.RootDocumenter.RootDocumenter.module_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">module_documenters</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.module_documenters" title="uqbar.apis.RootDocumenter.RootDocumenter.module_documenters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">module_documenters</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.title" title="uqbar.apis.RootDocumenter.RootDocumenter.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.RootDocumenter.RootDocumenter.title" title="uqbar.apis.RootDocumenter.RootDocumenter.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter.__str__">
-<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/RootDocumenter.html#RootDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/RootDocumenter.html#RootDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter.documentation_path">
-<code class="descname">documentation_path</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">documentation_path</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.documentation_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter.module_documenters">
-<code class="descname">module_documenters</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.module_documenters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">module_documenters</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.module_documenters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.apis.RootDocumenter.RootDocumenter.title">
-<code class="descname">title</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.title" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">title</code><a class="headerlink" href="#uqbar.apis.RootDocumenter.RootDocumenter.title" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

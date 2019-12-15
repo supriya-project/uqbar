@@ -43,25 +43,6 @@ Text
 
       <hr/>
 
-   .. rubric:: Methods
-      :class: class-header
-
-   .. container:: inherited
-
-      .. automethod:: Text.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: Text.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: Text.succeed_by
-
-   .. raw:: html
-
-      <hr/>
-
    .. rubric:: Read/write properties
       :class: class-header
 

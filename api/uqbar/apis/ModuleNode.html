@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ModuleNode &mdash; uqbar 0.3.2 documentation</title>
+  <title>ModuleNode &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -112,6 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -253,94 +254,72 @@
 </div>
 <dl class="class">
 <dt id="uqbar.apis.ModuleNode.ModuleNode">
-<em class="property">class </em><code class="descname">ModuleNode</code><span class="sig-paren">(</span><em>name=None</em>, <em>documenter=None</em>, <em>source_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ModuleNode.html#ModuleNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">ModuleNode</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">documenter=None</em>, <em class="sig-param">source_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ModuleNode.html#ModuleNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <a class="reference internal" href="../containers/UniqueTreeNode.html#module-uqbar.containers.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a> subclass used during API
 construction to proxy modules.</p>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.__str__" title="uqbar.apis.ModuleNode.ModuleNode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></td>
-<td>Return str(self).</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.__str__" title="uqbar.apis.ModuleNode.ModuleNode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.documenter" title="uqbar.apis.ModuleNode.ModuleNode.documenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documenter</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.documenter" title="uqbar.apis.ModuleNode.ModuleNode.documenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documenter</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.package_path" title="uqbar.apis.ModuleNode.ModuleNode.package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_path</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.package_path" title="uqbar.apis.ModuleNode.ModuleNode.package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_path</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.source_path" title="uqbar.apis.ModuleNode.ModuleNode.source_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.ModuleNode.ModuleNode.source_path" title="uqbar.apis.ModuleNode.ModuleNode.source_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source_path</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.__str__">
-<em class="property">overridden </em><code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ModuleNode.html#ModuleNode.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.__str__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/ModuleNode.html#ModuleNode.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
-<hr/><p class="class-header rubric">Methods</p>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.apis.ModuleNode.ModuleNode.precede_by">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">precede_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.precede_by" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.apis.ModuleNode.ModuleNode.replace_with">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">replace_with</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.replace_with" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="method">
-<dt id="uqbar.apis.ModuleNode.ModuleNode.succeed_by">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">succeed_by</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.succeed_by" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Read/write properties</p>
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.documenter">
-<code class="descname">documenter</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.documenter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">documenter</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.documenter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.name">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">name</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.source_path">
-<code class="descname">source_path</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.source_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">source_path</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.source_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.depth">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">depth</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.depth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.graph_order">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">graph_order</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.graph_order" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="k">import</span> <span class="n">UniqueTreeContainer</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeContainer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="kn">import</span> <span class="n">UniqueTreeList</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_a</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_b</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">node_c</span> <span class="o">=</span> <span class="n">UniqueTreeNode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
@@ -366,27 +345,27 @@ construction to proxy modules.</p>
 </div>
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.package_path">
-<code class="descname">package_path</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.package_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">package_path</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.package_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.parent">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">parent</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.parent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.parentage">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">parentage</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.parentage" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.apis.ModuleNode.ModuleNode.root">
-<code class="descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="descname">root</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.root" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.apis.ModuleNode.ModuleNode.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

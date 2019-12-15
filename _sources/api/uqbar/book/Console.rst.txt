@@ -44,6 +44,7 @@ console
       flush
       interpret
       push_proxy
+      push_proxy_options
       showsyntaxerror
       showtraceback
       write
@@ -79,6 +80,8 @@ console
       .. automethod:: Console.push
 
    .. automethod:: Console.push_proxy
+
+   .. automethod:: Console.push_proxy_options
 
    .. container:: inherited
 

@@ -42,25 +42,6 @@ ModuleNode
 
       <hr/>
 
-   .. rubric:: Methods
-      :class: class-header
-
-   .. container:: inherited
-
-      .. automethod:: ModuleNode.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: ModuleNode.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: ModuleNode.succeed_by
-
-   .. raw:: html
-
-      <hr/>
-
    .. rubric:: Read/write properties
       :class: class-header
 

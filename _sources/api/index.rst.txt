@@ -183,6 +183,22 @@ Tools for auto-generating API documention.
 
    <hr/>
 
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.sphinx.UqbarBookDefaultsDirective
+   ~uqbar.book.sphinx.UqbarBookDirective
+   ~uqbar.book.sphinx.UqbarBookImportDirective
+   ~uqbar.book.sphinx.uqbar_book_defaults_block
+   ~uqbar.book.sphinx.uqbar_book_import_block
+
+.. raw:: html
+
+   <hr/>
+
 .. rubric:: Functions
    :class: subsection-header
 
@@ -195,6 +211,8 @@ Tools for auto-generating API documention.
    ~uqbar.book.sphinx.group_literal_blocks_by_cache_path
    ~uqbar.book.sphinx.interpret_code_blocks
    ~uqbar.book.sphinx.interpret_code_blocks_with_cache
+   ~uqbar.book.sphinx.interpret_import_block
+   ~uqbar.book.sphinx.interpret_literal_block
    ~uqbar.book.sphinx.literal_block_to_cache_path
    ~uqbar.book.sphinx.parse_rst
    ~uqbar.book.sphinx.query_cache_db
@@ -242,7 +260,11 @@ Specialized container classes.
 
    ~uqbar.containers.DependencyGraph.DependencyGraph
    ~uqbar.containers.UniqueTreeContainer.UniqueTreeContainer
+   ~uqbar.containers.UniqueTreeDict.UniqueTreeDict
+   ~uqbar.containers.UniqueTreeList.UniqueTreeList
    ~uqbar.containers.UniqueTreeNode.UniqueTreeNode
+   ~uqbar.containers.UniqueTreeSet.UniqueTreeSet
+   ~uqbar.containers.UniqueTreeTuple.UniqueTreeTuple
 
 .. raw:: html
 
@@ -426,6 +448,29 @@ Tools for IO and file-system manipulation.
 
    <hr/>
 
+.. rubric:: :ref:`uqbar.iterables <uqbar--iterables>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.iterables.flatten
+   ~uqbar.iterables.group_by_count
+   ~uqbar.iterables.nwise
+   ~uqbar.iterables.repeat_to_length
+   ~uqbar.iterables.zip_cyclic
+
+.. raw:: html
+
+   <hr/>
+
 .. rubric:: :ref:`uqbar.objects <uqbar--objects>`
    :class: section-header
 
@@ -501,6 +546,7 @@ Uqbar Sphinx executable examples extension.
    ~uqbar.sphinx.book.on_config_inited
    ~uqbar.sphinx.book.on_doctree_read
    ~uqbar.sphinx.book.setup
+   ~uqbar.sphinx.book.skip_node
 
 .. raw:: html
 

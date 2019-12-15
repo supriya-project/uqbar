@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.apis.SummarizingModuleDocumenter &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.apis.SummarizingModuleDocumenter &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -151,10 +151,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for uqbar.apis.SummarizingModuleDocumenter</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Tuple</span>  <span class="c1"># noqa</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Tuple</span>  <span class="c1"># noqa</span>
 
-<span class="kn">from</span> <span class="nn">uqbar.apis.MemberDocumenter</span> <span class="k">import</span> <span class="n">MemberDocumenter</span>
-<span class="kn">from</span> <span class="nn">uqbar.apis.ModuleDocumenter</span> <span class="k">import</span> <span class="n">ModuleDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.MemberDocumenter</span> <span class="kn">import</span> <span class="n">MemberDocumenter</span>
+<span class="kn">from</span> <span class="nn">uqbar.apis.ModuleDocumenter</span> <span class="kn">import</span> <span class="n">ModuleDocumenter</span>
 
 
 <div class="viewcode-block" id="SummarizingModuleDocumenter"><a class="viewcode-back" href="../../../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter">[docs]</a><span class="k">class</span> <span class="nc">SummarizingModuleDocumenter</span><span class="p">(</span><span class="n">ModuleDocumenter</span><span class="p">):</span>
@@ -256,7 +256,7 @@
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="SummarizingModuleDocumenter.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__">[docs]</a>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="SummarizingModuleDocumenter.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_preamble</span><span class="p">()</span>
         <span class="n">package_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_path</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">lineage_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_path</span>

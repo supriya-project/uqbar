@@ -95,23 +95,11 @@ TableRow
 
    .. container:: inherited
 
-      .. automethod:: TableRow.precede_by
-
-   .. container:: inherited
-
       .. automethod:: TableRow.recurse
 
    .. container:: inherited
 
       .. automethod:: TableRow.remove
-
-   .. container:: inherited
-
-      .. automethod:: TableRow.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: TableRow.succeed_by
 
    .. raw:: html
 

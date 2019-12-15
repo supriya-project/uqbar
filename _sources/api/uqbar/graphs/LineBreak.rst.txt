@@ -42,25 +42,6 @@ LineBreak
 
       <hr/>
 
-   .. rubric:: Methods
-      :class: class-header
-
-   .. container:: inherited
-
-      .. automethod:: LineBreak.precede_by
-
-   .. container:: inherited
-
-      .. automethod:: LineBreak.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: LineBreak.succeed_by
-
-   .. raw:: html
-
-      <hr/>
-
    .. rubric:: Read/write properties
       :class: class-header
 

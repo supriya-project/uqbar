@@ -100,23 +100,11 @@ Graph
 
    .. container:: inherited
 
-      .. automethod:: Graph.precede_by
-
-   .. container:: inherited
-
       .. automethod:: Graph.recurse
 
    .. container:: inherited
 
       .. automethod:: Graph.remove
-
-   .. container:: inherited
-
-      .. automethod:: Graph.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: Graph.succeed_by
 
    .. raw:: html
 

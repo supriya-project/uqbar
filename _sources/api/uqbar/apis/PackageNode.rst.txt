@@ -95,23 +95,11 @@ PackageNode
 
    .. container:: inherited
 
-      .. automethod:: PackageNode.precede_by
-
-   .. container:: inherited
-
       .. automethod:: PackageNode.recurse
 
    .. container:: inherited
 
       .. automethod:: PackageNode.remove
-
-   .. container:: inherited
-
-      .. automethod:: PackageNode.replace_with
-
-   .. container:: inherited
-
-      .. automethod:: PackageNode.succeed_by
 
    .. raw:: html
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.apis.InheritanceGraph &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.apis.InheritanceGraph &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -155,8 +155,17 @@
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">types</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span>  <span class="c1"># noqa</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Mapping</span><span class="p">,</span>
+    <span class="n">MutableMapping</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Set</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">uqbar.graphs</span>
 <span class="kn">import</span> <span class="nn">uqbar.strings</span>
@@ -208,7 +217,15 @@
 <span class="sd">                node [color=2];</span>
 <span class="sd">                &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot; [label=&quot;Dependency\\nGraph&quot;];</span>
 <span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; [label=&quot;Unique\\nTree\\nContainer&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot; [label=&quot;Unique\\nTree\\nDict&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; [label=&quot;Unique\\nTree\\nList&quot;];</span>
 <span class="sd">                &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; [label=&quot;Unique\\nTree\\nNode&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot; [label=&quot;Unique\\nTree\\nSet&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot; [label=&quot;Unique\\nTree\\nTuple&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;;</span>
 <span class="sd">                &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;</span>
 <span class="sd">            }</span>
 <span class="sd">            &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;;</span>
@@ -223,7 +240,7 @@
 <span class="sd">    ::</span>
 
 <span class="sd">        &gt;&gt;&gt; graph.aspect_ratio</span>
-<span class="sd">        (2, 2)</span>
+<span class="sd">        (3, 4)</span>
 
 <span class="sd">    Lineage paths constrain the classes in the graph to only those whose</span>
 <span class="sd">    antecedents or descendants pass through the classes identified by those</span>
@@ -279,9 +296,25 @@
 <span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; [color=black,</span>
 <span class="sd">                    fontcolor=white,</span>
 <span class="sd">                    label=&quot;Unique\\nTree\\nContainer&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot; [color=black,</span>
+<span class="sd">                    fontcolor=white,</span>
+<span class="sd">                    label=&quot;Unique\\nTree\\nDict&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; [color=black,</span>
+<span class="sd">                    fontcolor=white,</span>
+<span class="sd">                    label=&quot;Unique\\nTree\\nList&quot;];</span>
 <span class="sd">                &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; [color=black,</span>
 <span class="sd">                    fontcolor=white,</span>
 <span class="sd">                    label=&quot;Unique\\nTree\\nNode&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot; [color=black,</span>
+<span class="sd">                    fontcolor=white,</span>
+<span class="sd">                    label=&quot;Unique\\nTree\\nSet&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot; [color=black,</span>
+<span class="sd">                    fontcolor=white,</span>
+<span class="sd">                    label=&quot;Unique\\nTree\\nTuple&quot;];</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;;</span>
+<span class="sd">                &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;;</span>
 <span class="sd">                &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;</span>
 <span class="sd">            }</span>
 <span class="sd">            subgraph &quot;cluster_uqbar.graphs&quot; {</span>
@@ -304,13 +337,13 @@
 <span class="sd">            }</span>
 <span class="sd">            &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.DependencyGraph.DependencyGraph&quot;;</span>
 <span class="sd">            &quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;</span>
-<span class="sd">            &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;</span>
+<span class="sd">            &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;;</span>
 <span class="sd">            &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;;</span>
 <span class="sd">            &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;</span>
 <span class="sd">            &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;;</span>
@@ -323,7 +356,7 @@
 <span class="sd">    ::</span>
 
 <span class="sd">        &gt;&gt;&gt; graph.aspect_ratio</span>
-<span class="sd">        (3, 8)</span>
+<span class="sd">        (4, 7)</span>
 
 <span class="sd">    :param package_paths: a sequence of package path strings, classes or</span>
 <span class="sd">        modules to seed the inheritance graph with</span>
@@ -335,7 +368,7 @@
 
     <span class="c1">### INITIALIZER ###</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">package_paths</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">]],</span>
         <span class="n">lineage_paths</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -362,14 +395,14 @@
 
     <span class="c1">### SPECIAL METHODS ###</span>
 
-<div class="viewcode-block" id="InheritanceGraph.__len__"><a class="viewcode-back" href="../../../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">[docs]</a>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="InheritanceGraph.__len__"><a class="viewcode-back" href="../../../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span>
             <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parents_to_children_paths</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
                 <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_children_to_parents_paths</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="InheritanceGraph.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">[docs]</a>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="InheritanceGraph.__str__"><a class="viewcode-back" href="../../../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_graph</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">format</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;graphviz&quot;</span><span class="p">)</span></div>
 

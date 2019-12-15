@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.book.sphinx &mdash; uqbar 0.3.2 documentation</title>
+  <title>uqbar.book.sphinx &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -155,18 +155,96 @@
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
-<span class="kn">from</span> <span class="nn">docutils</span> <span class="k">import</span> <span class="n">nodes</span>
-<span class="kn">from</span> <span class="nn">docutils.frontend</span> <span class="k">import</span> <span class="n">OptionParser</span>
-<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="k">import</span> <span class="n">Parser</span><span class="p">,</span> <span class="n">directives</span>
-<span class="kn">from</span> <span class="nn">docutils.utils</span> <span class="k">import</span> <span class="n">new_document</span>
+<span class="kn">from</span> <span class="nn">docutils.frontend</span> <span class="kn">import</span> <span class="n">OptionParser</span>
+<span class="kn">from</span> <span class="nn">docutils.nodes</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">General</span><span class="p">,</span> <span class="n">doctest_block</span><span class="p">,</span> <span class="n">literal_block</span>
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">Parser</span><span class="p">,</span> <span class="n">directives</span>
+<span class="kn">from</span> <span class="nn">docutils.utils</span> <span class="kn">import</span> <span class="n">new_document</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.nodes</span> <span class="kn">import</span> <span class="n">set_source_info</span>
 
-<span class="kn">from</span> <span class="nn">uqbar.book.console</span> <span class="k">import</span> <span class="n">Console</span><span class="p">,</span> <span class="n">ConsoleError</span><span class="p">,</span> <span class="n">ConsoleInput</span><span class="p">,</span> <span class="n">ConsoleOutput</span>
+<span class="kn">from</span> <span class="nn">uqbar.book.console</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Console</span><span class="p">,</span>
+    <span class="n">ConsoleError</span><span class="p">,</span>
+    <span class="n">ConsoleInput</span><span class="p">,</span>
+    <span class="n">ConsoleOutput</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">black</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">black</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="UqbarBookDirective"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective">[docs]</a><span class="k">class</span> <span class="nc">UqbarBookDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="n">__documentation_ignore_inherited__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_argument_whitespace</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">option_spec</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;allow-exceptions&quot;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+        <span class="s2">&quot;hide&quot;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="UqbarBookDirective.run"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_has_content</span><span class="p">()</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">literal_block</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+        <span class="n">block</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span>  <span class="c1"># set the content line number</span>
+        <span class="n">set_source_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">spec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">option_spec</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">option</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">spec</span> <span class="o">==</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">:</span>
+                <span class="n">option</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">block</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">option</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">block</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="UqbarBookDefaultsDirective"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective">[docs]</a><span class="k">class</span> <span class="nc">UqbarBookDefaultsDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="n">__documentation_ignore_inherited__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">option_spec</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="UqbarBookDefaultsDirective.run"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">uqbar_book_defaults_block</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">block</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">block</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="UqbarBookImportDirective"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective">[docs]</a><span class="k">class</span> <span class="nc">UqbarBookImportDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+    <span class="n">__documentation_ignore_inherited__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">has_content</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">required_arguments</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">optional_arguments</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">option_spec</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;hide&quot;</span><span class="p">:</span> <span class="n">directives</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="UqbarBookImportDirective.run"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">uqbar_book_import_block</span><span class="p">()</span>
+        <span class="n">block</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">block</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span>  <span class="c1"># set the content line number</span>
+        <span class="n">set_source_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;hide&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+            <span class="n">block</span><span class="p">[</span><span class="s2">&quot;hide&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">block</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="uqbar_book_defaults_block"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_defaults_block">[docs]</a><span class="k">class</span> <span class="nc">uqbar_book_defaults_block</span><span class="p">(</span><span class="n">General</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+    <span class="n">__documentation_ignore_inherited__</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="uqbar_book_import_block"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_import_block">[docs]</a><span class="k">class</span> <span class="nc">uqbar_book_import_block</span><span class="p">(</span><span class="n">General</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+    <span class="n">__documentation_ignore_inherited__</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
 <div class="viewcode-block" id="attr_path_to_defining_path"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.attr_path_to_defining_path">[docs]</a><span class="k">def</span> <span class="nf">attr_path_to_defining_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -191,12 +269,20 @@
 
 
 <div class="viewcode-block" id="collect_literal_blocks"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.collect_literal_blocks">[docs]</a><span class="k">def</span> <span class="nf">collect_literal_blocks</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+    <span class="n">prototype</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">literal_block</span><span class="p">,</span>
+        <span class="n">doctest_block</span><span class="p">,</span>
+        <span class="n">uqbar_book_defaults_block</span><span class="p">,</span>
+        <span class="n">uqbar_book_import_block</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">node</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">doctest_block</span><span class="p">))</span>
-    <span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="p">):</span>
-            <span class="k">continue</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="k">lambda</span> <span class="n">node</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">prototype</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="p">(</span><span class="n">uqbar_book_defaults_block</span><span class="p">,</span> <span class="n">uqbar_book_import_block</span><span class="p">)):</span>
+            <span class="n">contents</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">literal_block</span><span class="p">):</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">contents</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
         <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">blocks</span></div>
 
@@ -264,22 +350,22 @@
             <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">setup_lines</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">console_output</span><span class="p">)</span>
+        <span class="n">default_proxy_options</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
-            <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;&gt;&gt;&gt; &quot;</span><span class="p">,</span> <span class="s2">&quot;... &quot;</span><span class="p">)):</span>
-                    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
-                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;...&quot;</span><span class="p">:</span>
-                    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
-                    <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="n">use_black</span> <span class="ow">and</span> <span class="n">black</span><span class="p">:</span>
-                <span class="n">mode</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">FileMode</span><span class="p">(</span>
-                    <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">uqbar_book_defaults_block</span><span class="p">):</span>
+                <span class="n">default_proxy_options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">attlist</span><span class="p">())</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">proxy_options</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">default_proxy_options</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">attlist</span><span class="p">())}</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">push_proxy_options</span><span class="p">(</span><span class="n">proxy_options</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">uqbar_book_import_block</span><span class="p">):</span>
+                <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span> <span class="o">=</span> <span class="n">interpret_import_block</span><span class="p">(</span>
+                    <span class="n">console</span><span class="p">,</span> <span class="n">block</span>
                 <span class="p">)</span>
-                <span class="n">lines</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">format_str</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-            <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="p">(</span><span class="n">literal_block</span><span class="p">,</span> <span class="n">doctest_block</span><span class="p">)):</span>
+                <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span> <span class="o">=</span> <span class="n">interpret_literal_block</span><span class="p">(</span>
+                    <span class="n">console</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">use_black</span><span class="o">=</span><span class="n">use_black</span><span class="p">,</span>
+                <span class="p">)</span>
             <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
                 <span class="n">error_summary</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
@@ -297,10 +383,14 @@
                 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
                     <span class="n">block</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;allow-exceptions&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">allow_exceptions</span> <span class="ow">or</span> <span class="n">has_exception</span>
                 <span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">error_summary</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">error_summary</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">block</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hide&quot;</span><span class="p">):</span>
+                <span class="n">console_output</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">_</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">console_output</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">ConsoleInput</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">))</span>
+                <span class="p">]</span>
             <span class="n">results</span><span class="p">[</span><span class="n">block</span><span class="p">]</span> <span class="o">=</span> <span class="n">console_output</span>
-    <span class="k">except</span> <span class="n">ConsoleError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">teardown_lines</span><span class="p">:</span>
             <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">teardown_lines</span><span class="p">)</span>
@@ -337,6 +427,40 @@
             <span class="n">cache_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">local_node_mapping</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
             <span class="n">update_cache_db</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">cache_path</span><span class="p">,</span> <span class="n">cache_data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">local_node_mapping</span></div>
+
+
+<div class="viewcode-block" id="interpret_import_block"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_import_block">[docs]</a><span class="k">def</span> <span class="nf">interpret_import_block</span><span class="p">(</span><span class="n">console</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>
+    <span class="n">code_address</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span>
+    <span class="n">module_name</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">attr_name</span> <span class="o">=</span> <span class="n">code_address</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;from </span><span class="si">{module_name}</span><span class="s2"> import </span><span class="si">{attr_name}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="n">ConsoleOutput</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="n">source</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="interpret_literal_block"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_literal_block">[docs]</a><span class="k">def</span> <span class="nf">interpret_literal_block</span><span class="p">(</span><span class="n">console</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">use_black</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">literal_block</span><span class="p">):</span>
+        <span class="n">contents</span> <span class="o">=</span> <span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">contents</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;&gt;&gt;&gt; &quot;</span><span class="p">,</span> <span class="s2">&quot;... &quot;</span><span class="p">)):</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
+        <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;...&quot;</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
+            <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">use_black</span> <span class="ow">and</span> <span class="n">black</span><span class="p">:</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">FileMode</span><span class="p">(</span>
+            <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">format_str</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span></div>
 
 
 <div class="viewcode-block" id="literal_block_to_cache_path"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.literal_block_to_cache_path">[docs]</a><span class="k">def</span> <span class="nf">literal_block_to_cache_path</span><span class="p">(</span><span class="n">block</span><span class="p">):</span>
@@ -378,11 +502,11 @@
                 <span class="n">text</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">grouper</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
                 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">grouper</span><span class="p">:</span>
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ConsoleInput</span><span class="p">):</span>
-                        <span class="n">new_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+                        <span class="n">new_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">literal_block</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
                         <span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">text</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span>
-                <span class="n">new_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">literal_block</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+                <span class="n">new_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">literal_block</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">replacement</span> <span class="ow">in</span> <span class="n">grouper</span><span class="p">:</span>
                     <span class="n">new_nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">replacement</span><span class="o">.</span><span class="n">to_docutils</span><span class="p">())</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CLIAggregator &mdash; uqbar 0.3.2 documentation</title>
+  <title>CLIAggregator &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
@@ -250,7 +251,7 @@
 </div>
 <dl class="class">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator">
-<em class="property">abstract </em><em class="property">class </em><code class="descname">CLIAggregator</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLIAggregator.html#CLIAggregator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><em class="property">class </em><code class="sig-name descname">CLIAggregator</code><a class="reference internal" href="../../../_modules/uqbar/cli/CLIAggregator.html#CLIAggregator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Aggregates CLI scripts.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.cli</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ExampleAggregator</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">CLIAggregator</span><span class="p">):</span>
@@ -277,30 +278,30 @@
 </pre></div>
 </div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.__call__" title="uqbar.cli.CLIAggregator.CLIAggregator.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></td>
-<td>Calls developer script.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.__call__" title="uqbar.cli.CLIAggregator.CLIAggregator.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></p></td>
+<td><p>Calls developer script.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_aliases</span></code></a></td>
-<td>Developer script aliases.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_aliases</span></code></a></p></td>
+<td><p>Developer script aliases.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_classes" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_classes</span></code></a></td>
-<td>Developer scripts classes.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_classes" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_classes</span></code></a></p></td>
+<td><p>Developer scripts classes.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_program_names</span></code></a></td>
-<td>Developer script program names.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names" title="uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli_program_names</span></code></a></p></td>
+<td><p>Developer script program names.</p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="method">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.__call__">
-<em class="property">overridden </em><code class="descname">__call__</code><span class="sig-paren">(</span><em>arguments=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/cli/CLIAggregator.html#CLIAggregator.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.__call__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">arguments=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/cli/CLIAggregator.html#CLIAggregator.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls developer script.</p>
 <p>Returns none.</p>
 </dd></dl>
@@ -309,33 +310,33 @@
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.argument_parser">
-<code class="descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="descname">argument_parser</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.argument_parser" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="sig-name descname">argument_parser</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.argument_parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>The script’s instance of argparse.ArgumentParser.</p>
 </dd></dl>
 
 </div>
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases">
-<code class="descname">cli_aliases</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cli_aliases</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_aliases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Developer script aliases.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_classes">
-<em class="property">abstract</em><code class="descname">cli_classes</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_classes" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract</em><code class="sig-name descname">cli_classes</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_classes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Developer scripts classes.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names">
-<code class="descname">cli_program_names</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">cli_program_names</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.cli_program_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Developer script program names.</p>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.formatted_help">
-<code class="descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="descname">formatted_help</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_help" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="sig-name descname">formatted_help</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_help" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted help of developer script.</p>
 </dd></dl>
 
@@ -343,7 +344,7 @@
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.formatted_usage">
-<code class="descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="descname">formatted_usage</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_usage" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="sig-name descname">formatted_usage</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_usage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted usage of developer script.</p>
 </dd></dl>
 
@@ -351,7 +352,7 @@
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.formatted_version">
-<code class="descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="descname">formatted_version</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_version" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="sig-name descname">formatted_version</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.formatted_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted version of developer script.</p>
 </dd></dl>
 
@@ -359,7 +360,7 @@
 <div class="inherited docutils container">
 <dl class="attribute">
 <dt id="uqbar.cli.CLIAggregator.CLIAggregator.program_name">
-<code class="descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="descname">program_name</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.program_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="CLI.html#uqbar.cli.CLI.CLI" title="uqbar.cli.CLI.CLI"><code class="descclassname docutils literal notranslate"><span class="pre">CLI</span></code></a>).</code><code class="sig-name descname">program_name</code><a class="headerlink" href="#uqbar.cli.CLIAggregator.CLIAggregator.program_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the script, callable from the command line.</p>
 </dd></dl>
 

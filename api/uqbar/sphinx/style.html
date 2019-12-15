@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>style &mdash; uqbar 0.3.2 documentation</title>
+  <title>style &mdash; uqbar 0.4.3 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.4.3
               </div>
             
           
@@ -97,6 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">sphinx</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="api.html">api</a></li>
@@ -193,80 +194,80 @@
 <span id="style"></span><span id="uqbar-sphinx-style"></span><h1>style<a class="headerlink" href="#module-uqbar.sphinx.style" title="Permalink to this headline">¶</a></h1>
 <p>Uqbar Sphinx styling extension.</p>
 <ul class="simple">
-<li>Adds additional information to autodoc entries.</li>
-<li>Adds additional CSS.</li>
+<li><p>Adds additional information to autodoc entries.</p></li>
+<li><p>Adds additional CSS.</p></li>
 </ul>
 <p>Install by adding <code class="docutils literal notranslate"><span class="pre">'uqbar.sphinx.style'</span></code> to the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> list in your
 Sphinx configuration.</p>
 <div class="svg-container docutils container">
 </div>
 <hr/><p class="section-header rubric">Functions</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.depart_classifier" title="uqbar.sphinx.style.depart_classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_classifier</span></code></a></td>
-<td></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.depart_classifier" title="uqbar.sphinx.style.depart_classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_classifier</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.style.depart_definition" title="uqbar.sphinx.style.depart_definition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_definition</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.sphinx.style.depart_definition" title="uqbar.sphinx.style.depart_definition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_definition</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.depart_term" title="uqbar.sphinx.style.depart_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_term</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.depart_term" title="uqbar.sphinx.style.depart_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depart_term</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.style.handle_class" title="uqbar.sphinx.style.handle_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_class</span></code></a></td>
-<td>Styles <code class="docutils literal notranslate"><span class="pre">autoclass</span></code> entries.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.sphinx.style.handle_class" title="uqbar.sphinx.style.handle_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_class</span></code></a></p></td>
+<td><p>Styles <code class="docutils literal notranslate"><span class="pre">autoclass</span></code> entries.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.handle_method" title="uqbar.sphinx.style.handle_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_method</span></code></a></td>
-<td>Styles <code class="docutils literal notranslate"><span class="pre">automethod</span></code> entries.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.handle_method" title="uqbar.sphinx.style.handle_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_method</span></code></a></p></td>
+<td><p>Styles <code class="docutils literal notranslate"><span class="pre">automethod</span></code> entries.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.style.on_builder_inited" title="uqbar.sphinx.style.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></td>
-<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.sphinx.style.on_builder_inited" title="uqbar.sphinx.style.on_builder_inited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_builder_inited</span></code></a></p></td>
+<td><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.on_doctree_read" title="uqbar.sphinx.style.on_doctree_read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_doctree_read</span></code></a></td>
-<td>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.on_doctree_read" title="uqbar.sphinx.style.on_doctree_read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_doctree_read</span></code></a></p></td>
+<td><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.style.setup" title="uqbar.sphinx.style.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></td>
-<td>Sets up Sphinx extension.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.sphinx.style.setup" title="uqbar.sphinx.style.setup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup</span></code></a></p></td>
+<td><p>Sets up Sphinx extension.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.visit_classifier" title="uqbar.sphinx.style.visit_classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_classifier</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.visit_classifier" title="uqbar.sphinx.style.visit_classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_classifier</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#uqbar.sphinx.style.visit_definition" title="uqbar.sphinx.style.visit_definition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_definition</span></code></a></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.sphinx.style.visit_definition" title="uqbar.sphinx.style.visit_definition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_definition</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#uqbar.sphinx.style.visit_term" title="uqbar.sphinx.style.visit_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_term</span></code></a></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.sphinx.style.visit_term" title="uqbar.sphinx.style.visit_term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visit_term</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="uqbar.sphinx.style.depart_classifier">
-<code class="descname">depart_classifier</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_classifier" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">depart_classifier</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_classifier" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.depart_definition">
-<code class="descname">depart_definition</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_definition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">depart_definition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_definition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.depart_term">
-<code class="descname">depart_term</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_term"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_term" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">depart_term</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#depart_term"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.depart_term" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.handle_class">
-<code class="descname">handle_class</code><span class="sig-paren">(</span><em>signature_node</em>, <em>module</em>, <em>object_name</em>, <em>cache</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#handle_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.handle_class" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">handle_class</code><span class="sig-paren">(</span><em class="sig-param">signature_node</em>, <em class="sig-param">module</em>, <em class="sig-param">object_name</em>, <em class="sig-param">cache</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#handle_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.handle_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Styles <code class="docutils literal notranslate"><span class="pre">autoclass</span></code> entries.</p>
 <p>Adds <code class="docutils literal notranslate"><span class="pre">abstract</span></code> prefix to abstract classes.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.handle_method">
-<code class="descname">handle_method</code><span class="sig-paren">(</span><em>signature_node</em>, <em>module</em>, <em>object_name</em>, <em>cache</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#handle_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.handle_method" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">handle_method</code><span class="sig-paren">(</span><em class="sig-param">signature_node</em>, <em class="sig-param">module</em>, <em class="sig-param">object_name</em>, <em class="sig-param">cache</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#handle_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.handle_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Styles <code class="docutils literal notranslate"><span class="pre">automethod</span></code> entries.</p>
 <p>Adds <code class="docutils literal notranslate"><span class="pre">abstract</span></code> prefix to abstract methods.</p>
 <p>Adds link to originating class for inherited methods.</p>
@@ -274,44 +275,41 @@ Sphinx configuration.</p>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.on_builder_inited">
-<code class="descname">on_builder_inited</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#on_builder_inited"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.on_builder_inited" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">on_builder_inited</code><span class="sig-paren">(</span><em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#on_builder_inited"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.on_builder_inited" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event.</p>
 <p>Used for copying over CSS files to theme directory.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.on_doctree_read">
-<code class="descname">on_doctree_read</code><span class="sig-paren">(</span><em>app</em>, <em>document</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#on_doctree_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.on_doctree_read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">on_doctree_read</code><span class="sig-paren">(</span><em class="sig-param">app</em>, <em class="sig-param">document</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#on_doctree_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.on_doctree_read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hooks into Sphinx’s <code class="docutils literal notranslate"><span class="pre">doctree-read</span></code> event.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.setup" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up Sphinx extension.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Dict" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Dict" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.visit_classifier">
-<code class="descname">visit_classifier</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_classifier" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">visit_classifier</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_classifier" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.visit_definition">
-<code class="descname">visit_definition</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_definition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">visit_definition</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_definition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.sphinx.style.visit_term">
-<code class="descname">visit_term</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_term"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_term" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">visit_term</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/sphinx/style.html#visit_term"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.sphinx.style.visit_term" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
