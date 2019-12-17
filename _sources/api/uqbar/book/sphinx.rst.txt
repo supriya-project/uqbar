@@ -126,7 +126,9 @@ sphinx
 
    ~attr_path_to_defining_path
    ~collect_literal_blocks
+   ~console_context
    ~create_cache_db
+   ~find_traceback
    ~group_literal_blocks_by_cache_path
    ~interpret_code_blocks
    ~interpret_code_blocks_with_cache
@@ -142,7 +144,11 @@ sphinx
 
 .. autofunction:: collect_literal_blocks
 
+.. autofunction:: console_context
+
 .. autofunction:: create_cache_db
+
+.. autofunction:: find_traceback
 
 .. autofunction:: group_literal_blocks_by_cache_path
 

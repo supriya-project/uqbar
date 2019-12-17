@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sphinx &mdash; uqbar 0.4.3 documentation</title>
+  <title>sphinx &mdash; uqbar 0.4.4 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.3
+                0.4.4
               </div>
             
           
@@ -444,7 +444,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.collect_literal_blocks" title="uqbar.book.sphinx.collect_literal_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_literal_blocks</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.create_cache_db" title="uqbar.book.sphinx.create_cache_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cache_db</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.console_context" title="uqbar.book.sphinx.console_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console_context</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.create_cache_db" title="uqbar.book.sphinx.create_cache_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cache_db</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.find_traceback" title="uqbar.book.sphinx.find_traceback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_traceback</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" title="uqbar.book.sphinx.group_literal_blocks_by_cache_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_literal_blocks_by_cache_path</span></code></a></p></td>
@@ -490,8 +496,18 @@
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="uqbar.book.sphinx.console_context">
+<code class="sig-name descname">console_context</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">extensions</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">setup_lines=None</em>, <em class="sig-param">teardown_lines=None</em>, <em class="sig-param">document=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#console_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.console_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="uqbar.book.sphinx.create_cache_db">
 <code class="sig-name descname">create_cache_db</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#create_cache_db"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.create_cache_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="uqbar.book.sphinx.find_traceback">
+<code class="sig-name descname">find_traceback</code><span class="sig-paren">(</span><em class="sig-param">console_output</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#find_traceback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.find_traceback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -501,12 +517,12 @@
 
 <dl class="function">
 <dt id="uqbar.book.sphinx.interpret_code_blocks">
-<code class="sig-name descname">interpret_code_blocks</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">allow_exceptions=False</em>, <em class="sig-param">extensions=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">setup_lines=None</em>, <em class="sig-param">teardown_lines=None</em>, <em class="sig-param">logger_func=None</em>, <em class="sig-param">use_black=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">interpret_code_blocks</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">allow_exceptions=False</em>, <em class="sig-param">document=None</em>, <em class="sig-param">extensions=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">setup_lines=None</em>, <em class="sig-param">teardown_lines=None</em>, <em class="sig-param">logger_func=None</em>, <em class="sig-param">use_black=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="uqbar.book.sphinx.interpret_code_blocks_with_cache">
-<code class="sig-name descname">interpret_code_blocks_with_cache</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">cache_path</em>, <em class="sig-param">connection</em>, <em class="sig-param">allow_exceptions=False</em>, <em class="sig-param">extensions=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">setup_lines=None</em>, <em class="sig-param">teardown_lines=None</em>, <em class="sig-param">use_black=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks_with_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">interpret_code_blocks_with_cache</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">cache_path</em>, <em class="sig-param">connection</em>, <em class="sig-param">allow_exceptions=False</em>, <em class="sig-param">document=None</em>, <em class="sig-param">extensions=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">setup_lines=None</em>, <em class="sig-param">teardown_lines=None</em>, <em class="sig-param">use_black=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks_with_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">

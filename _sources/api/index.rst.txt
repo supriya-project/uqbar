@@ -207,7 +207,9 @@ Tools for auto-generating API documention.
 
    ~uqbar.book.sphinx.attr_path_to_defining_path
    ~uqbar.book.sphinx.collect_literal_blocks
+   ~uqbar.book.sphinx.console_context
    ~uqbar.book.sphinx.create_cache_db
+   ~uqbar.book.sphinx.find_traceback
    ~uqbar.book.sphinx.group_literal_blocks_by_cache_path
    ~uqbar.book.sphinx.interpret_code_blocks
    ~uqbar.book.sphinx.interpret_code_blocks_with_cache

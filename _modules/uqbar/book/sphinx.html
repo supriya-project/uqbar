@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.book.sphinx &mdash; uqbar 0.4.3 documentation</title>
+  <title>uqbar.book.sphinx &mdash; uqbar 0.4.4 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.4.3
+                0.4.4
               </div>
             
           
@@ -150,6 +150,7 @@
             
   <h1>Source code for uqbar.book.sphinx</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
@@ -333,9 +334,32 @@
     <span class="k">return</span> <span class="n">cache_mapping</span></div>
 
 
+<div class="viewcode-block" id="find_traceback"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.find_traceback">[docs]</a><span class="k">def</span> <span class="nf">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">)</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
+            <span class="s2">&quot;Traceback (most recent call last):&quot;</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span></div>
+
+
+<div class="viewcode-block" id="console_context"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.console_context">[docs]</a><span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">console_context</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">setup_lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">teardown_lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">document</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">)</span>
+    <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">setup_lines</span> <span class="ow">or</span> <span class="p">[])</span>
+    <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">),</span> <span class="n">document</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="n">console</span>
+    <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">teardown_lines</span> <span class="ow">or</span> <span class="p">[])</span>
+    <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">),</span> <span class="n">document</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="interpret_code_blocks"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_code_blocks">[docs]</a><span class="k">def</span> <span class="nf">interpret_code_blocks</span><span class="p">(</span>
     <span class="n">blocks</span><span class="p">,</span>
     <span class="n">allow_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">document</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">namespace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">setup_lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -344,12 +368,14 @@
     <span class="n">use_black</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">setup_lines</span><span class="p">:</span>
-            <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">setup_lines</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">console_output</span><span class="p">)</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">blocks</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="n">console_context</span><span class="p">(</span>
+        <span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">,</span>
+        <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
+        <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span>
+        <span class="n">setup_lines</span><span class="o">=</span><span class="n">setup_lines</span><span class="p">,</span>
+        <span class="n">teardown_lines</span><span class="o">=</span><span class="n">teardown_lines</span><span class="p">,</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">console</span><span class="p">:</span>
         <span class="n">default_proxy_options</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">uqbar_book_defaults_block</span><span class="p">):</span>
@@ -367,23 +393,13 @@
                     <span class="n">console</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">use_black</span><span class="o">=</span><span class="n">use_black</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
-                <span class="n">error_summary</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">):</span>
-                        <span class="k">continue</span>
-                    <span class="n">output_lines</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">output_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
-                        <span class="s2">&quot;Traceback (most recent call last):&quot;</span>
-                    <span class="p">):</span>
-                        <span class="k">continue</span>
-                    <span class="n">error_summary</span> <span class="o">=</span> <span class="n">output_lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                    <span class="k">break</span>
+                <span class="n">traceback</span> <span class="o">=</span> <span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">logger_func</span><span class="p">:</span>
-                    <span class="n">logger_func</span><span class="p">(</span><span class="n">error_summary</span><span class="p">)</span>
+                    <span class="n">logger_func</span><span class="p">(</span><span class="n">traceback</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
                     <span class="n">block</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;allow-exceptions&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">allow_exceptions</span> <span class="ow">or</span> <span class="n">has_exception</span>
                 <span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">error_summary</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">traceback</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">block</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hide&quot;</span><span class="p">):</span>
                 <span class="n">console_output</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="n">_</span>
@@ -391,11 +407,6 @@
                     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">ConsoleInput</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">))</span>
                 <span class="p">]</span>
             <span class="n">results</span><span class="p">[</span><span class="n">block</span><span class="p">]</span> <span class="o">=</span> <span class="n">console_output</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">teardown_lines</span><span class="p">:</span>
-            <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">teardown_lines</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">console_output</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">results</span></div>
 
 
@@ -404,6 +415,7 @@
     <span class="n">cache_path</span><span class="p">,</span>
     <span class="n">connection</span><span class="p">,</span>
     <span class="n">allow_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">document</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">namespace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">setup_lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -417,6 +429,7 @@
         <span class="n">local_node_mapping</span> <span class="o">=</span> <span class="n">interpret_code_blocks</span><span class="p">(</span>
             <span class="n">blocks</span><span class="p">,</span>
             <span class="n">allow_exceptions</span><span class="o">=</span><span class="n">allow_exceptions</span><span class="p">,</span>
+            <span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">,</span>
             <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
             <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span>
             <span class="n">setup_lines</span><span class="o">=</span><span class="n">setup_lines</span><span class="p">,</span>
