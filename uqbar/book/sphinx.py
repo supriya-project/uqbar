@@ -182,6 +182,14 @@ def group_literal_blocks_by_cache_path(blocks):
     return cache_mapping
 
 
+def find_traceback(console_output):
+    for item in reversed(console_output):
+        if isinstance(item, ConsoleOutput) and item.string.startswith(
+            "Traceback (most recent call last):"
+        ):
+            return item.string
+
+
 def interpret_code_blocks(
     blocks,
     allow_exceptions=False,
@@ -194,11 +202,12 @@ def interpret_code_blocks(
 ):
     results = collections.OrderedDict()
     console = Console(extensions=extensions, namespace=namespace)
+    block = blocks[0] if blocks else None
     try:
         if setup_lines:
             console_output, errored = console.interpret(setup_lines)
             if errored:
-                raise ConsoleError(console_output)
+                raise ConsoleError(find_traceback(console_output), block)
         default_proxy_options = {}
         for block in blocks:
             if isinstance(block, uqbar_book_defaults_block):
@@ -216,23 +225,13 @@ def interpret_code_blocks(
                     console, block, use_black=use_black,
                 )
             if errored:
-                error_summary = None
-                for i, item in enumerate(console_output):
-                    if not isinstance(item, ConsoleOutput):
-                        continue
-                    output_lines = item.string.strip().splitlines()
-                    if not output_lines[0].startswith(
-                        "Traceback (most recent call last):"
-                    ):
-                        continue
-                    error_summary = output_lines[-1]
-                    break
+                traceback = find_traceback(console_output)
                 if logger_func:
-                    logger_func(error_summary)
+                    logger_func(traceback)
                 if not (
                     block.get("allow-exceptions") or allow_exceptions or has_exception
                 ):
-                    raise ConsoleError(error_summary, block)
+                    raise ConsoleError(traceback, block)
             if block.get("hide"):
                 console_output = [
                     _
@@ -244,7 +243,7 @@ def interpret_code_blocks(
         if teardown_lines:
             console_output, errored = console.interpret(teardown_lines)
             if errored:
-                raise ConsoleError(console_output)
+                raise ConsoleError(find_traceback(console_output), block)
     return results
 
 

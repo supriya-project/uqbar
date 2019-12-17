@@ -1,4 +1,4 @@
-.PHONY: docs build
+.PHONY: build docs gh-pages
 
 project = uqbar
 errors = E123,E203,E265,E266,E501,W503
@@ -46,7 +46,14 @@ gh-pages:
 	rm -Rf gh-pages/
 
 isort:
-	isort --multi-line 1 --recursive --trailing-comma --use-parentheses -y ${formatPaths}
+	isort \
+		--case-sensitive \
+		--multi-line 3 \
+		--recursive \
+		--trailing-comma \
+		--use-parentheses \
+		-y \
+		${formatPaths}
 
 mypy:
 	mypy --ignore-missing-imports ${project}/

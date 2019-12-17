@@ -201,10 +201,13 @@ def test_interpret_code_blocks_02():
     def logger_func(message):
         messages.append(message)
 
+    error_message = (
+        "Traceback (most recent call last):\n" '  File "<stdin>", line 1, in <module>\n'
+    )
     if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7"):
-        error_message = "TypeError: must be str, not int"
+        error_message += "TypeError: must be str, not int\n"
     else:
-        error_message = 'TypeError: can only concatenate str (not "int") to str'
+        error_message += 'TypeError: can only concatenate str (not "int") to str\n'
 
     messages = []
     source = normalize(
@@ -244,13 +247,25 @@ def test_interpret_code_blocks_02():
     with pytest.raises(ConsoleError):
         # This does not have a traceback, so it fails.
         uqbar.book.sphinx.interpret_code_blocks(blocks, logger_func=logger_func)
-    assert messages == ["ZeroDivisionError: division by zero"]
+    assert messages == [
+        (
+            "Traceback (most recent call last):\n"
+            '  File "<stdin>", line 2, in <module>\n'
+            "ZeroDivisionError: division by zero\n"
+        )
+    ]
     messages[:] = []
     # This passes because we force it to.
     uqbar.book.sphinx.interpret_code_blocks(
         blocks, allow_exceptions=True, logger_func=logger_func
     )
-    assert messages == ["ZeroDivisionError: division by zero"]
+    assert messages == [
+        (
+            "Traceback (most recent call last):\n"
+            '  File "<stdin>", line 2, in <module>\n'
+            "ZeroDivisionError: division by zero\n"
+        )
+    ]
 
 
 def test_rebuild_document_01():

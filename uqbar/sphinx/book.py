@@ -91,9 +91,18 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
-    # Not quite
-    # Option spec should be updated in `extension_class.setup_sphinx`
-    UqbarBookDirective.option_spec.update(config["uqbar_book_block_options"])
+    # Verify early that any setup / teardown works
+    try:
+        interpret_code_blocks(
+            [],
+            extensions=app.uqbar_book_extensions,
+            setup_lines=config["uqbar_book_console_setup"],
+            teardown_lines=config["uqbar_book_console_teardown"],
+            use_black=bool(config["uqbar_book_use_black"]),
+        )
+    except ConsoleError:
+        logger.error("uqbar.sphinx.book console setup/teardown failed")
+        raise
 
 
 def on_doctree_read(app, document):
@@ -124,7 +133,6 @@ def on_doctree_read(app, document):
                 message = exception.args[0].splitlines()[-1]
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
-                    print("RAISING (B) ???")
                     raise
     rebuild_document(document, node_mapping)
 
