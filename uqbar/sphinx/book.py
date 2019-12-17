@@ -54,6 +54,7 @@ from uqbar.book.sphinx import (
     UqbarBookDirective,
     UqbarBookImportDirective,
     collect_literal_blocks,
+    console_context,
     create_cache_db,
     group_literal_blocks_by_cache_path,
     interpret_code_blocks,
@@ -91,9 +92,17 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
-    # Not quite
-    # Option spec should be updated in `extension_class.setup_sphinx`
-    UqbarBookDirective.option_spec.update(config["uqbar_book_block_options"])
+    # Verify early that any setup / teardown works
+    try:
+        with console_context(
+            extensions=app.uqbar_book_extensions,
+            setup_lines=config["uqbar_book_console_setup"],
+            teardown_lines=config["uqbar_book_console_teardown"],
+        ):
+            pass
+    except ConsoleError:
+        logger.error("uqbar.sphinx.book console setup/teardown failed")
+        raise
 
 
 def on_doctree_read(app, document):
@@ -121,10 +130,13 @@ def on_doctree_read(app, document):
                     local_node_mapping = interpret_code_blocks(literal_blocks, **kwargs)
                 node_mapping.update(local_node_mapping)
             except ConsoleError as exception:
-                message = exception.args[0].splitlines()[-1]
+                # message = exception.args[0].splitlines()[-1]
+                # logger.warning(message, location=exception.args[1])
+                message = "\n    " + "\n    ".join(
+                    line.rstrip() for line in exception.args[0].rstrip().splitlines()
+                )
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
-                    print("RAISING (B) ???")
                     raise
     rebuild_document(document, node_mapping)
 

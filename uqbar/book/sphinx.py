@@ -1,4 +1,5 @@
 import collections
+import contextlib
 import importlib
 import inspect
 import itertools
@@ -182,9 +183,32 @@ def group_literal_blocks_by_cache_path(blocks):
     return cache_mapping
 
 
+def find_traceback(console_output):
+    for item in reversed(console_output):
+        if isinstance(item, ConsoleOutput) and item.string.startswith(
+            "Traceback (most recent call last):"
+        ):
+            return item.string
+
+
+@contextlib.contextmanager
+def console_context(
+    *, extensions, namespace=None, setup_lines=None, teardown_lines=None, document=None
+):
+    console = Console(extensions=extensions, namespace=namespace)
+    console_output, errored = console.interpret(setup_lines or [])
+    if errored:
+        raise ConsoleError(find_traceback(console_output), document)
+    yield console
+    console_output, errored = console.interpret(teardown_lines or [])
+    if errored:
+        raise ConsoleError(find_traceback(console_output), document)
+
+
 def interpret_code_blocks(
     blocks,
     allow_exceptions=False,
+    document=None,
     extensions=None,
     namespace=None,
     setup_lines=None,
@@ -193,12 +217,14 @@ def interpret_code_blocks(
     use_black=False,
 ):
     results = collections.OrderedDict()
-    console = Console(extensions=extensions, namespace=namespace)
-    try:
-        if setup_lines:
-            console_output, errored = console.interpret(setup_lines)
-            if errored:
-                raise ConsoleError(console_output)
+    block = blocks[0] if blocks else None
+    with console_context(
+        document=document,
+        extensions=extensions,
+        namespace=namespace,
+        setup_lines=setup_lines,
+        teardown_lines=teardown_lines,
+    ) as console:
         default_proxy_options = {}
         for block in blocks:
             if isinstance(block, uqbar_book_defaults_block):
@@ -216,23 +242,13 @@ def interpret_code_blocks(
                     console, block, use_black=use_black,
                 )
             if errored:
-                error_summary = None
-                for i, item in enumerate(console_output):
-                    if not isinstance(item, ConsoleOutput):
-                        continue
-                    output_lines = item.string.strip().splitlines()
-                    if not output_lines[0].startswith(
-                        "Traceback (most recent call last):"
-                    ):
-                        continue
-                    error_summary = output_lines[-1]
-                    break
+                traceback = find_traceback(console_output)
                 if logger_func:
-                    logger_func(error_summary)
+                    logger_func(traceback)
                 if not (
                     block.get("allow-exceptions") or allow_exceptions or has_exception
                 ):
-                    raise ConsoleError(error_summary, block)
+                    raise ConsoleError(traceback, block)
             if block.get("hide"):
                 console_output = [
                     _
@@ -240,11 +256,6 @@ def interpret_code_blocks(
                     if not isinstance(_, (ConsoleInput, ConsoleOutput))
                 ]
             results[block] = console_output
-    finally:
-        if teardown_lines:
-            console_output, errored = console.interpret(teardown_lines)
-            if errored:
-                raise ConsoleError(console_output)
     return results
 
 
@@ -253,6 +264,7 @@ def interpret_code_blocks_with_cache(
     cache_path,
     connection,
     allow_exceptions=False,
+    document=None,
     extensions=None,
     namespace=None,
     setup_lines=None,
@@ -266,6 +278,7 @@ def interpret_code_blocks_with_cache(
         local_node_mapping = interpret_code_blocks(
             blocks,
             allow_exceptions=allow_exceptions,
+            document=document,
             extensions=extensions,
             namespace=namespace,
             setup_lines=setup_lines,

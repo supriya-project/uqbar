@@ -5,7 +5,6 @@ import sys
 import pytest
 import sphinx
 
-import uqbar.io
 from uqbar.book.console import ConsoleError
 from uqbar.strings import ansi_escape, normalize
 
@@ -495,7 +494,10 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
     )
     assert normalize(ansi_escape(warning.getvalue())) == normalize(
         """
-        {srcdir}/index.rst:15: WARNING: NameError: name 'this_name_does_not_exist' is not defined
+        {srcdir}/index.rst:15: WARNING:
+            Traceback (most recent call last):
+              File "<stdin>", line 1, in <module>
+            NameError: name 'this_name_does_not_exist' is not defined
         """.format(
             srcdir=app.srcdir
         )
@@ -504,39 +506,35 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
 
 @pytest.mark.sphinx(
     "text",
-    testroot="uqbar-sphinx-book-broken",
-    confoverrides={"uqbar_book_strict": False},
+    testroot="uqbar-sphinx-book",
+    confoverrides={"uqbar_book_console_setup": ["1 / 0"]},
 )
-def test_sphinx_book_text_broken_non_strict(app, status, warning, rm_dirs):
+def test_sphinx_book_text_broken_setup(make_app, app_params):
     """
-    Build completes with warnings.
+    Fail build immediately on console setup error.
     """
-    app.build()
-    assert normalize(ansi_escape(status.getvalue())) == normalize(
-        """
-        Running Sphinx v{sphinx_version}
-        [uqbar-book] initializing cache db
-        building [mo]: targets for 0 po files that are out of date
-        building [text]: targets for 1 source files that are out of date
-        updating environment: [new config] 1 added, 0 changed, 0 removed
-        reading sources... [100%] index
-        looking for now-outdated files... none found
-        pickling environment... done
-        checking consistency... done
-        preparing documents... done
-        writing output... [100%] index
-        build succeeded, 1 warning.
-
-        The text files are in {build_dir}/_build/text.
-        """.format(
-            sphinx_version=sphinx.__version__,
-            build_dir=uqbar.io.relative_to(pathlib.Path.cwd(), app.srcdir),
-        )
+    args, kwargs = app_params
+    with pytest.raises(ConsoleError) as excinfo:
+        make_app(*args, **kwargs)
+    assert excinfo.value.args == (
+        'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nZeroDivisionError: division by zero\n',
+        None,
     )
-    assert normalize(ansi_escape(warning.getvalue())) == normalize(
-        """
-        {srcdir}/index.rst:15: WARNING: NameError: name 'this_name_does_not_exist' is not defined
-        """.format(
-            srcdir=app.srcdir
-        )
+
+
+@pytest.mark.sphinx(
+    "text",
+    testroot="uqbar-sphinx-book",
+    confoverrides={"uqbar_book_console_teardown": ["1 / 0"]},
+)
+def test_sphinx_book_text_broken_teardown(make_app, app_params):
+    """
+    Fail build immediately on console teardown error.
+    """
+    args, kwargs = app_params
+    with pytest.raises(ConsoleError) as excinfo:
+        make_app(*args, **kwargs)
+    assert excinfo.value.args == (
+        'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nZeroDivisionError: division by zero\n',
+        None,
     )

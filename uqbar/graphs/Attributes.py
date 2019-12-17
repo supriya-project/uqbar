@@ -1,4 +1,4 @@
-import collections
+import collections.abc
 import enum
 import math
 import re
@@ -7,7 +7,7 @@ from typing import Any, FrozenSet, Mapping, Optional, Union
 import uqbar.graphs  # noqa
 
 
-class Attributes(collections.MutableMapping):
+class Attributes(collections.abc.MutableMapping):
     """
     An attributes listing for a Graphviz graph, cluster, node or edge.
 
