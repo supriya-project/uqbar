@@ -130,7 +130,11 @@ def on_doctree_read(app, document):
                     local_node_mapping = interpret_code_blocks(literal_blocks, **kwargs)
                 node_mapping.update(local_node_mapping)
             except ConsoleError as exception:
-                message = exception.args[0].splitlines()[-1]
+                # message = exception.args[0].splitlines()[-1]
+                # logger.warning(message, location=exception.args[1])
+                message = "\n    " + "\n    ".join(
+                    line.rstrip() for line in exception.args[0].rstrip().splitlines()
+                )
                 logger.warning(message, location=exception.args[1])
                 if app.config["uqbar_book_strict"]:
                     raise
