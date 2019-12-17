@@ -54,6 +54,7 @@ from uqbar.book.sphinx import (
     UqbarBookDirective,
     UqbarBookImportDirective,
     collect_literal_blocks,
+    console_context,
     create_cache_db,
     group_literal_blocks_by_cache_path,
     interpret_code_blocks,
@@ -93,13 +94,12 @@ def on_config_inited(app, config):
         app.uqbar_book_extensions.append(extension_class)
     # Verify early that any setup / teardown works
     try:
-        interpret_code_blocks(
-            [],
+        with console_context(
             extensions=app.uqbar_book_extensions,
             setup_lines=config["uqbar_book_console_setup"],
             teardown_lines=config["uqbar_book_console_teardown"],
-            use_black=bool(config["uqbar_book_use_black"]),
-        )
+        ):
+            pass
     except ConsoleError:
         logger.error("uqbar.sphinx.book console setup/teardown failed")
         raise

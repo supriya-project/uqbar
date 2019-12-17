@@ -1,4 +1,5 @@
 import collections
+import contextlib
 import importlib
 import inspect
 import itertools
@@ -190,9 +191,24 @@ def find_traceback(console_output):
             return item.string
 
 
+@contextlib.contextmanager
+def console_context(
+    *, extensions, namespace=None, setup_lines=None, teardown_lines=None, document=None
+):
+    console = Console(extensions=extensions, namespace=namespace)
+    console_output, errored = console.interpret(setup_lines or [])
+    if errored:
+        raise ConsoleError(find_traceback(console_output), document)
+    yield console
+    console_output, errored = console.interpret(teardown_lines or [])
+    if errored:
+        raise ConsoleError(find_traceback(console_output), document)
+
+
 def interpret_code_blocks(
     blocks,
     allow_exceptions=False,
+    document=None,
     extensions=None,
     namespace=None,
     setup_lines=None,
@@ -201,13 +217,14 @@ def interpret_code_blocks(
     use_black=False,
 ):
     results = collections.OrderedDict()
-    console = Console(extensions=extensions, namespace=namespace)
     block = blocks[0] if blocks else None
-    try:
-        if setup_lines:
-            console_output, errored = console.interpret(setup_lines)
-            if errored:
-                raise ConsoleError(find_traceback(console_output), block)
+    with console_context(
+        document=document,
+        extensions=extensions,
+        namespace=namespace,
+        setup_lines=setup_lines,
+        teardown_lines=teardown_lines,
+    ) as console:
         default_proxy_options = {}
         for block in blocks:
             if isinstance(block, uqbar_book_defaults_block):
@@ -239,11 +256,6 @@ def interpret_code_blocks(
                     if not isinstance(_, (ConsoleInput, ConsoleOutput))
                 ]
             results[block] = console_output
-    finally:
-        if teardown_lines:
-            console_output, errored = console.interpret(teardown_lines)
-            if errored:
-                raise ConsoleError(find_traceback(console_output), block)
     return results
 
 
@@ -252,6 +264,7 @@ def interpret_code_blocks_with_cache(
     cache_path,
     connection,
     allow_exceptions=False,
+    document=None,
     extensions=None,
     namespace=None,
     setup_lines=None,
@@ -265,6 +278,7 @@ def interpret_code_blocks_with_cache(
         local_node_mapping = interpret_code_blocks(
             blocks,
             allow_exceptions=allow_exceptions,
+            document=document,
             extensions=extensions,
             namespace=namespace,
             setup_lines=setup_lines,

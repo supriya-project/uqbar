@@ -27,8 +27,12 @@ import types
 from typing import Any, Dict, List
 
 from sphinx.util import logging
-from sphinx.util.console import bold  # type: ignore
-from sphinx.util.console import darkgreen, darkred, purple
+from sphinx.util.console import (  # type: ignore
+    bold,
+    darkgreen,
+    darkred,
+    purple,
+)
 
 import uqbar.apis
 
