@@ -183,7 +183,7 @@
   <div class="section" id="uqbar">
 <span id="id1"></span><h1>uqbar<a class="headerlink" href="#uqbar" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-uqbar"></span><div class="svg-container docutils container">
-<div class="graphviz"><object data="../../_images/inheritance-04c0a324c29acc0e13a60194247492aa20aad589.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../_images/inheritance-1f4129176365070185539794a02ea93dfc390c67.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -252,6 +252,51 @@
 			label=&quot;Interactive\nInterpreter&quot;,
 			target=_top];
 		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+	}
+	subgraph &quot;cluster_collections.abc&quot; {
+		graph [label=&quot;collections.abc&quot;];
+		node [color=4];
+		&quot;collections.abc.Collection&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
+			color=4,
+			label=Collection,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Mapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
+			color=4,
+			label=Mapping,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;		 [minlen=1];
+		&quot;collections.abc.Container&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
+			color=4,
+			label=Container,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Container&quot; -&gt; &quot;collections.abc.Collection&quot;;
+		&quot;collections.abc.Iterable&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
+			color=4,
+			label=Iterable,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Iterable&quot; -&gt; &quot;collections.abc.Collection&quot;;
+		&quot;collections.abc.MutableMapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
+			color=4,
+			label=&quot;Mutable\nMapping&quot;,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;		 [minlen=1];
+		&quot;collections.abc.Sized&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
+			color=4,
+			label=Sized,
+			shape=oval,
+			style=bold,
+			target=_top];
+		&quot;collections.abc.Sized&quot; -&gt; &quot;collections.abc.Collection&quot;;
 	}
 	subgraph &quot;cluster_docutils.nodes&quot; {
 		graph [label=&quot;docutils.nodes&quot;];
@@ -584,51 +629,6 @@
 			color=9,
 			label=&quot;inheritance\ndiagram&quot;,
 			target=_top];
-	}
-	subgraph &quot;cluster_collections.abc&quot; {
-		graph [label=&quot;collections.abc&quot;];
-		node [color=4];
-		&quot;collections.abc.Collection&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
-			color=4,
-			label=Collection,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Mapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
-			color=4,
-			label=Mapping,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;		 [minlen=1];
-		&quot;collections.abc.Container&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
-			color=4,
-			label=Container,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Container&quot; -&gt; &quot;collections.abc.Collection&quot;;
-		&quot;collections.abc.Iterable&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
-			color=4,
-			label=Iterable,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Iterable&quot; -&gt; &quot;collections.abc.Collection&quot;;
-		&quot;collections.abc.MutableMapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
-			color=4,
-			label=&quot;Mutable\nMapping&quot;,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;		 [minlen=1];
-		&quot;collections.abc.Sized&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
-			color=4,
-			label=Sized,
-			shape=oval,
-			style=bold,
-			target=_top];
-		&quot;collections.abc.Sized&quot; -&gt; &quot;collections.abc.Collection&quot;;
 	}
 	&quot;abc.ABC&quot; -&gt; &quot;uqbar.cli.CLI.CLI&quot;	 [minlen=1];
 	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	 [minlen=1];
