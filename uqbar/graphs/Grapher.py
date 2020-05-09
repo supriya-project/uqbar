@@ -111,7 +111,8 @@ class Grapher:
             if not old_path.name.startswith(render_prefix):
                 continue
             new_path = output_directory / old_path.name
-            migrated_assets.append(old_path.rename(new_path))
+            old_path.rename(new_path)
+            migrated_assets.append(new_path)
         return migrated_assets
 
     def open_output_path(self, output_path):
@@ -128,10 +129,6 @@ class Grapher:
 
     def run_command(self, command: str) -> Tuple[str, int]:
         completed_process = subprocess.run(
-            command,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
+            command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
         )
-        return completed_process.stdout, completed_process.returncode == 0
+        return completed_process.stdout.decode(), completed_process.returncode == 0
