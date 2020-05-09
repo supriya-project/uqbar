@@ -1,6 +1,8 @@
 API
 ===
 
+.. autofunction:: fake.just_a_function
+
 Text::
 
     >>> print("I am text.")
@@ -36,3 +38,7 @@ Text::
 Text::
 
     >>> print("I am text.")
+
+.. autoclass:: fake.Outer
+   :members:
+   :inherited-members:

@@ -89,6 +89,13 @@ api_content = normalize(
     API
     ***
 
+    fake.just_a_function()
+
+       Just a function.
+
+          >>> print("I am just a function.")
+          I am just a function.
+
     Text:
 
        >>> print("I am text.")
@@ -98,8 +105,8 @@ api_content = normalize(
 
        A grand parent.
 
-          >>> print("I am a grand parent")
-          I am a grand parent
+          >>> print("I am a grand parent.")
+          I am a grand parent.
 
        one()
 
@@ -155,8 +162,8 @@ api_content = normalize(
 
        A parent.
 
-          >>> print("I am a parent")
-          I am a parent
+          >>> print("I am a parent.")
+          I am a parent.
 
        one()
 
@@ -264,8 +271,8 @@ api_content = normalize(
 
        A child.
 
-          >>> print("I am a child")
-          I am a child
+          >>> print("I am a child.")
+          I am a child.
 
        one()
 
@@ -316,6 +323,34 @@ api_content = normalize(
 
        >>> print("I am text.")
        I am text.
+
+    class fake.Outer
+
+       An outer class.
+
+          >>> print("I am an outer class.")
+          I am an outer class.
+
+       class Inner
+
+          An inner class.
+
+             >>> print("I am an inner class.")
+             I am an inner class.
+
+          inner_method()
+
+             Inner: method.
+
+                >>> print("Inner: method.")
+                Inner: method.
+
+       outer_method()
+
+          Outer: method.
+
+             >>> print("Outer: method.")
+             Outer: method.
     """
 )
 
@@ -442,8 +477,13 @@ def test_sphinx_book_text_cached(app, status, warning, rm_dirs):
         ("fake.GrandParent.one", 1),
         ("fake.GrandParent.three", 3),
         ("fake.GrandParent.two", 2),
+        ("fake.Outer", 0),
+        ("fake.Outer.Inner", 0),
+        ("fake.Outer.Inner.inner_method", 0),
+        ("fake.Outer.outer_method", 0),
         ("fake.Parent", 0),
         ("fake.Parent.one", 1),
+        ("fake.just_a_function", 0),
     ]
     assert not warning.getvalue().strip()
     for filename, expected_content in [

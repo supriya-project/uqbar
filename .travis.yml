@@ -1,10 +1,13 @@
 language: python
 dist: xenial
 sudo: false
+cache:
+  - pip
 
 python:
-- "3.7"
-- "3.8"
+- 3.6
+- 3.7
+- 3.8
 
 addons:
   apt:
@@ -23,7 +26,7 @@ script:
 - ls -l
 - make black-check
 - make flake8
-- make mypy
+- if [[ $TRAVIS_PYTHON_VERSION != 3.6 ]]; then make mypy; fi
 - make pytest
 - make docs
 
