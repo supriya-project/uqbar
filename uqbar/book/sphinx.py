@@ -97,27 +97,6 @@ class uqbar_book_import_block(General, Element):
     __documentation_ignore_inherited__ = True
 
 
-def attr_path_to_defining_path(path):
-    class_path, _, attr_name = path.rpartition(".")
-    module_path, _, class_name = class_path.rpartition(".")
-    module = None
-    while module is None:
-        try:
-            module = importlib.import_module(module_path)
-        except ModuleNotFoundError:
-            module_path, _, outer_class_name = module_path.rpartition(".")
-            class_name = outer_class_name + "." + class_name
-    class_ = module
-    for name in class_name.split("."):
-        class_ = getattr(class_, name)
-    attr = {attr.name: attr for attr in inspect.classify_class_attrs(class_)}[attr_name]
-    if attr.defining_class is not class_:
-        return ".".join(
-            [attr.defining_class.__module__, attr.defining_class.__name__, attr_name]
-        )
-    return path
-
-
 def collect_literal_blocks(document):
     prototype = (
         literal_block,
@@ -337,10 +316,31 @@ def literal_block_to_cache_path(block):
     if desc is None:
         return None
     desc_signature = desc[0]
-    name = desc_signature["names"][0]
-    if desc_signature["class"]:
-        return attr_path_to_defining_path(name)
-    return name
+    module_path = desc_signature.attributes["module"]
+    object_path = desc_signature.attributes["fullname"]
+    id_path = desc_signature.attributes["ids"][0]
+    module = importlib.import_module(module_path)
+    outer = inner = module
+    for path in object_path.split("."):
+        outer = inner
+        inner = getattr(outer, path)
+    if isinstance(outer, type):
+        _, _, attr_name = object_path.rpartition(".")
+        try:
+            attr = {attr.name: attr for attr in inspect.classify_class_attrs(outer)}[
+                attr_name
+            ]
+        except KeyError:
+            return id_path
+        if attr.defining_class is not outer:
+            return ".".join(
+                [
+                    attr.defining_class.__module__,
+                    attr.defining_class.__name__,
+                    attr_name,
+                ]
+            )
+    return id_path
 
 
 def parse_rst(rst_string):

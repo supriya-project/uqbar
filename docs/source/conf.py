@@ -35,17 +35,19 @@ import sphinx_rtd_theme
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autodoc.typehints",
     "sphinx.ext.autosummary",
     "sphinx.ext.graphviz",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "sphinx_autodoc_typehints",
     "uqbar.sphinx.api",
     "uqbar.sphinx.book",
     'uqbar.sphinx.inheritance',
     'uqbar.sphinx.style',
 ]
+
+autodoc_typehints = "description"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

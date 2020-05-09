@@ -4,7 +4,7 @@ class GrandParent:
 
     ::
 
-        >>> print("I am a grand parent")
+        >>> print("I am a grand parent.")
 
     """
 
@@ -66,7 +66,7 @@ class Parent(GrandParent):
 
     ::
 
-        >>> print("I am a parent")
+        >>> print("I am a parent.")
 
     """
 
@@ -93,7 +93,7 @@ class Child(Parent):
 
     ::
 
-        >>> print("I am a child")
+        >>> print("I am a child.")
 
     """
 
@@ -107,3 +107,58 @@ class Child(Parent):
 
         """
         pass
+
+
+class Outer:
+    """
+    An outer class.
+
+    ::
+
+        >>> print("I am an outer class.")
+
+    """
+
+    class Inner:
+        """
+        An inner class.
+
+        ::
+
+            >>> print("I am an inner class.")
+
+        """
+
+        def inner_method(self):
+            """
+            Inner: method.
+
+            ::
+
+                >>> print("Inner: method.")
+
+            """
+            pass
+
+    def outer_method(self):
+        """
+        Outer: method.
+
+        ::
+
+            >>> print("Outer: method.")
+
+        """
+        pass
+
+
+def just_a_function():
+    """
+    Just a function.
+
+    ::
+
+        >>> print("I am just a function.")
+
+    """
+    pass

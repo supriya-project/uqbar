@@ -97,7 +97,7 @@ def on_doctree_read(app, document):
     for desc_node in document.traverse(addnodes.desc):
         if desc_node.get("domain") != "py":
             continue
-        signature_node = desc_node.traverse(addnodes.desc_signature)[0]
+        signature_node = list(desc_node.traverse(addnodes.desc_signature))[0]
         module_name = signature_node.get("module")
         object_name = signature_node.get("fullname")
         object_type = desc_node.get("objtype")
