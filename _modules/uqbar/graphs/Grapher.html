@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.graphs.Grapher &mdash; uqbar 0.4.5 documentation</title>
+  <title>uqbar.graphs.Grapher &mdash; uqbar 0.4.6 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.4.5
+                0.4.6
               </div>
             
           
@@ -262,7 +262,8 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">old_path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">render_prefix</span><span class="p">):</span>
                 <span class="k">continue</span>
             <span class="n">new_path</span> <span class="o">=</span> <span class="n">output_directory</span> <span class="o">/</span> <span class="n">old_path</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">migrated_assets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">old_path</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_path</span><span class="p">))</span>
+            <span class="n">old_path</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
+            <span class="n">migrated_assets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">migrated_assets</span></div>
 
 <div class="viewcode-block" id="Grapher.open_output_path"><a class="viewcode-back" href="../../../api/uqbar/graphs/Grapher.html#uqbar.graphs.Grapher.Grapher.open_output_path">[docs]</a>    <span class="k">def</span> <span class="nf">open_output_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
@@ -279,13 +280,9 @@
 
 <div class="viewcode-block" id="Grapher.run_command"><a class="viewcode-back" href="../../../api/uqbar/graphs/Grapher.html#uqbar.graphs.Grapher.Grapher.run_command">[docs]</a>    <span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="n">completed_process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="n">command</span><span class="p">,</span>
-            <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
-            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
-            <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">completed_process</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">completed_process</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span></div></div>
+        <span class="k">return</span> <span class="n">completed_process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">completed_process</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span></div></div>
 </pre></div>
 
            </div>
