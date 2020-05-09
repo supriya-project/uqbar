@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>console &mdash; uqbar 0.4.4 documentation</title>
+  <title>console &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -192,7 +192,7 @@
   <div class="section" id="module-uqbar.book.console">
 <span id="console"></span><span id="uqbar-book-console"></span><h1>console<a class="headerlink" href="#module-uqbar.book.console" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-6ad40aa04d4ad92427c09acc45e7e8c2d821a8b3.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-37894b355991615c12fa849db6a9e356c7d04077.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -221,69 +221,64 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.BaseException&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
-			color=1,
+		&quot;builtins.BaseException&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
 			label=&quot;Base\nException&quot;,
 			target=_top];
-		&quot;builtins.Exception&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
-			color=1,
+		&quot;builtins.Exception&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
 			label=Exception,
 			target=_top];
-		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;		 [minlen=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;	[minlen=1];
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
-		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;		 [minlen=1];
+		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;	[minlen=1];
 	}
 	subgraph cluster_code {
 		graph [label=code];
 		node [color=2];
-		&quot;code.InteractiveConsole&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
-			color=2,
+		&quot;code.InteractiveConsole&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
 			label=&quot;Interactive\nConsole&quot;,
 			target=_top];
-		&quot;code.InteractiveInterpreter&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
-			color=2,
+		&quot;code.InteractiveInterpreter&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
 			label=&quot;Interactive\nInterpreter&quot;,
 			target=_top];
-		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.book.console&quot; {
 		graph [label=&quot;uqbar.book.console&quot;];
 		node [color=3];
-		&quot;uqbar.book.console.Console&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
+		&quot;uqbar.book.console.Console&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
 			color=black,
 			fontcolor=white,
 			label=Console,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleError&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
+		&quot;uqbar.book.console.ConsoleError&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Console\nError&quot;,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleInput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
+		&quot;uqbar.book.console.ConsoleInput&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Console\nInput&quot;,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleOutput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
+		&quot;uqbar.book.console.ConsoleOutput&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Console\nOutput&quot;,
 			target=_top];
-		&quot;uqbar.book.console.MonkeyPatch&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.MonkeyPatch&quot;,
+		&quot;uqbar.book.console.MonkeyPatch&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.MonkeyPatch&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Monkey\nPatch&quot;,
 			target=_top];
 	}
-	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.MonkeyPatch&quot;	 [minlen=1];
-	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	 [minlen=1];
+	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.MonkeyPatch&quot;	[minlen=1];
+	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	[minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Classes</p>
@@ -307,9 +302,9 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.book.console.Console">
-<em class="property">class </em><code class="sig-name descname">Console</code><span class="sig-paren">(</span><em class="sig-param">namespace=None</em>, <em class="sig-param">extensions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Console</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">namespace</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extensions</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interactive console providing a sandboxed namespace for executing code
 examples.</p>
 <div class="example docutils container">
@@ -400,20 +395,10 @@ examples.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.console.Console.flush" title="uqbar.book.console.Console.flush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flush</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.console.Console.interpret" title="uqbar.book.console.Console.interpret"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.console.Console.push_proxy" title="uqbar.book.console.Console.push_proxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">push_proxy</span></code></a></p></td>
 <td><p></p></td>
@@ -433,31 +418,31 @@ examples.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.__enter__">
 <code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.__enter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.__exit__">
-<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param">exc_type</em>, <em class="sig-param">exc_value</em>, <em class="sig-param">traceback</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.__exit__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exc_type</span></em>, <em class="sig-param"><span class="n">exc_value</span></em>, <em class="sig-param"><span class="n">traceback</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.__exit__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.flush">
 <code class="sig-name descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.flush" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.interact">
-<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">interact</code><span class="sig-paren">(</span><em class="sig-param">banner=None</em>, <em class="sig-param">exitmsg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.interact" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">interact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">banner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exitmsg</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.interact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Closely emulate the interactive Python console.</p>
 <p>The optional banner argument specifies the banner to print
 before the first interaction; by default it prints a banner
@@ -472,20 +457,23 @@ a default message is printed.</p>
 </dd></dl>
 
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.interpret">
-<code class="sig-name descname">interpret</code><span class="sig-paren">(</span><em class="sig-param">lines</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.interpret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.interpret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">interpret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.interpret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.interpret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lines</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[List[Any], <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)">bool</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.push">
-<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">push</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.push" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">push</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">line</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.push" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push a line to the interpreter.</p>
 <p>The line should not have a trailing newline; it may have
 internal newlines.  The line is appended to a buffer and the
@@ -499,20 +487,20 @@ with in some way (this is the same as runsource()).</p>
 </dd></dl>
 
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.push_proxy">
-<code class="sig-name descname">push_proxy</code><span class="sig-paren">(</span><em class="sig-param">proxy</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.push_proxy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.push_proxy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">push_proxy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">proxy</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.push_proxy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.push_proxy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.push_proxy_options">
-<code class="sig-name descname">push_proxy_options</code><span class="sig-paren">(</span><em class="sig-param">options=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.push_proxy_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.push_proxy_options" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">push_proxy_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">options</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.push_proxy_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.push_proxy_options" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.raw_input">
-<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">raw_input</code><span class="sig-paren">(</span><em class="sig-param">prompt=''</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.raw_input" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">raw_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prompt</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.raw_input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a prompt and read a line.</p>
 <p>The returned line does not include the trailing newline.
 When the user enters the EOF key sequence, EOFError is raised.</p>
@@ -523,7 +511,7 @@ implementation.</p>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.resetbuffer">
 <code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveConsole" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a>).</code><code class="sig-name descname">resetbuffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.resetbuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the input buffer.</p>
@@ -531,9 +519,9 @@ implementation.</p>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.runcode">
-<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="sig-name descname">runcode</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runcode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="sig-name descname">runcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runcode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a code object.</p>
 <p>When an exception occurs, self.showtraceback() is called to
 display a traceback.  All exceptions are caught except
@@ -545,12 +533,12 @@ caller should be prepared to deal with it.</p>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.runsource">
-<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="sig-name descname">runsource</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">filename='&lt;input&gt;'</em>, <em class="sig-param">symbol='single'</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runsource" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference external" href="https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter" title="(in Python v3.6)"><code class="descclassname docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>).</code><code class="sig-name descname">runsource</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'&lt;input&gt;'</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">'single'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.Console.runsource" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compile and run some source in the interpreter.</p>
 <p>Arguments are as for compile_command().</p>
-<p>One several things can happen:</p>
+<p>One of several things can happen:</p>
 <p>1) The input is incorrect; compile_command() raised an
 exception (SyntaxError or OverflowError).  A syntax traceback
 will be printed by calling the showsyntaxerror() method.</p>
@@ -566,9 +554,9 @@ line.</p>
 </dd></dl>
 
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.showsyntaxerror">
-<em class="property">overridden </em><code class="sig-name descname">showsyntaxerror</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.showsyntaxerror"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.showsyntaxerror" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">showsyntaxerror</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.showsyntaxerror"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.showsyntaxerror" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the syntax error that just occurred.</p>
 <p>This doesn’t display a stack trace because there isn’t one.</p>
 <p>If a filename is given, it is stuffed in the exception instead
@@ -576,13 +564,16 @@ of what was there before (because Python’s parser always uses
 “&lt;string&gt;” when reading from a string).</p>
 <p>The output is written by self.write(), below.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.showtraceback">
 <em class="property">overridden </em><code class="sig-name descname">showtraceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.showtraceback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.showtraceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the exception that just occurred.</p>
@@ -590,29 +581,32 @@ of what was there before (because Python’s parser always uses
 <p>The output is written by self.write(), below.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.Console.write">
-<em class="property">overridden </em><code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.write" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#Console.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.Console.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a string.</p>
 <p>The base implementation writes to sys.stderr; a subclass may
 replace this with a different implementation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.book.console.ConsoleInput">
-<em class="property">class </em><code class="sig-name descname">ConsoleInput</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleInput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleInput" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">ConsoleInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleInput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleInput" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -638,36 +632,36 @@ replace this with a different implementation.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleInput.__delattr__">
-<em class="property">overridden </em><code class="sig-name descname">__delattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__delattr__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__delattr__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__delattr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleInput.__eq__">
-<em class="property">overridden </em><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__eq__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleInput.__hash__">
 <em class="property">overridden </em><code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__hash__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleInput.__repr__">
 <em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleInput.__setattr__">
-<em class="property">overridden </em><code class="sig-name descname">__setattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__setattr__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__setattr__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleInput.__setattr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.book.console.ConsoleOutput">
-<em class="property">class </em><code class="sig-name descname">ConsoleOutput</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleOutput" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">ConsoleOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleOutput" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -693,34 +687,34 @@ replace this with a different implementation.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleOutput.__delattr__">
-<em class="property">overridden </em><code class="sig-name descname">__delattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__delattr__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__delattr__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__delattr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleOutput.__eq__">
-<em class="property">overridden </em><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__eq__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleOutput.__hash__">
 <em class="property">overridden </em><code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__hash__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleOutput.__repr__">
 <em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.ConsoleOutput.__setattr__">
-<em class="property">overridden </em><code class="sig-name descname">__setattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__setattr__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__setattr__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.console.ConsoleOutput.__setattr__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.book.console.MonkeyPatch">
 <em class="property">class </em><code class="sig-name descname">MonkeyPatch</code><a class="reference internal" href="../../../_modules/uqbar/book/console.html#MonkeyPatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.MonkeyPatch" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
@@ -739,12 +733,12 @@ replace this with a different implementation.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.MonkeyPatch.setattr">
 <code class="sig-name descname">setattr</code><span class="sig-paren">(</span><em class="sig-param">target</em>, <em class="sig-param">name</em>, <em class="sig-param">value=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#MonkeyPatch.setattr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.MonkeyPatch.setattr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.book.console.MonkeyPatch.undo">
 <code class="sig-name descname">undo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/console.html#MonkeyPatch.undo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.MonkeyPatch.undo" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -763,7 +757,7 @@ replace this with a different implementation.</p>
 </tr>
 </tbody>
 </table>
-<dl class="exception">
+<dl class="py exception">
 <dt id="uqbar.book.console.ConsoleError">
 <em class="property">exception </em><code class="sig-name descname">ConsoleError</code><a class="reference internal" href="../../../_modules/uqbar/book/console.html#ConsoleError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.book.console.ConsoleError" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

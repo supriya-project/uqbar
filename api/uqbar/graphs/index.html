@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>graphs &mdash; uqbar 0.4.4 documentation</title>
+  <title>graphs &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -203,7 +203,7 @@
 <span id="graphs"></span><span id="uqbar-graphs"></span><h1>graphs<a class="headerlink" href="#module-uqbar.graphs" title="Permalink to this headline">¶</a></h1>
 <p>Tools for building Graphviz graphs.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-a4b770dffcec63bdce8b6584a5ee674bdee08560.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-1a1b4d3e7ce4997c4b657eeb83721fd1c5569a87.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -232,50 +232,43 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
 	}
 	subgraph &quot;cluster_collections.abc&quot; {
 		graph [label=&quot;collections.abc&quot;];
 		node [color=2];
-		&quot;collections.abc.Collection&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
-			color=2,
+		&quot;collections.abc.Collection&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
 			label=Collection,
 			shape=oval,
 			style=bold,
 			target=_top];
-		&quot;collections.abc.Mapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
-			color=2,
+		&quot;collections.abc.Mapping&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
 			label=Mapping,
 			shape=oval,
 			style=bold,
 			target=_top];
-		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;		 [minlen=1];
-		&quot;collections.abc.Container&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
-			color=2,
+		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;	[minlen=1];
+		&quot;collections.abc.Container&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
 			label=Container,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Container&quot; -&gt; &quot;collections.abc.Collection&quot;;
-		&quot;collections.abc.Iterable&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
-			color=2,
+		&quot;collections.abc.Iterable&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
 			label=Iterable,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Iterable&quot; -&gt; &quot;collections.abc.Collection&quot;;
-		&quot;collections.abc.MutableMapping&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
-			color=2,
+		&quot;collections.abc.MutableMapping&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
 			label=&quot;Mutable\nMapping&quot;,
 			shape=oval,
 			style=bold,
 			target=_top];
-		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;		 [minlen=1];
-		&quot;collections.abc.Sized&quot;		 [URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
-			color=2,
+		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;	[minlen=1];
+		&quot;collections.abc.Sized&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
 			label=Sized,
 			shape=oval,
 			style=bold,
@@ -285,121 +278,118 @@
 	subgraph &quot;cluster_uqbar.containers&quot; {
 		graph [label=&quot;uqbar.containers&quot;];
 		node [color=3];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;	[URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
 			label=&quot;Unique\nTree\nList&quot;,
 			target=_top];
 		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[URL=&quot;../api/uqbar/graphs/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			label=&quot;Unique\nTree\nNode&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [minlen=1];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.graphs&quot; {
 		graph [label=&quot;uqbar.graphs&quot;];
 		node [color=4];
-		&quot;uqbar.graphs.Attachable.Attachable&quot;		 [URL=&quot;../api/uqbar/graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
+		&quot;uqbar.graphs.Attachable.Attachable&quot;	[URL=&quot;../api/uqbar/graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
 			color=black,
 			fontcolor=white,
 			label=Attachable,
 			target=_top];
-		&quot;uqbar.graphs.RecordField.RecordField&quot;		 [URL=&quot;../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
+		&quot;uqbar.graphs.RecordField.RecordField&quot;	[URL=&quot;../api/uqbar/graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Record\nField&quot;,
 			target=_top];
 		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
-		&quot;uqbar.graphs.TableCell.TableCell&quot;		 [URL=&quot;../api/uqbar/graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
+		&quot;uqbar.graphs.TableCell.TableCell&quot;	[URL=&quot;../api/uqbar/graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Table\nCell&quot;,
 			target=_top];
 		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
-		&quot;uqbar.graphs.Attributes.Attributes&quot;		 [URL=&quot;../api/uqbar/graphs/Attributes.html#uqbar.graphs.Attributes.Attributes&quot;,
+		&quot;uqbar.graphs.Attributes.Attributes&quot;	[URL=&quot;../api/uqbar/graphs/Attributes.html#uqbar.graphs.Attributes.Attributes&quot;,
 			color=black,
 			fontcolor=white,
 			label=Attributes,
 			target=_top];
-		&quot;uqbar.graphs.Edge.Edge&quot;		 [URL=&quot;../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge&quot;,
+		&quot;uqbar.graphs.Edge.Edge&quot;	[URL=&quot;../api/uqbar/graphs/Edge.html#uqbar.graphs.Edge.Edge&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Edge&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Graph.Graph&quot;		 [URL=&quot;../api/uqbar/graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
+		&quot;uqbar.graphs.Graph.Graph&quot;	[URL=&quot;../api/uqbar/graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Graph&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Grapher.Grapher&quot;		 [URL=&quot;../api/uqbar/graphs/Grapher.html#uqbar.graphs.Grapher.Grapher&quot;,
+		&quot;uqbar.graphs.Grapher.Grapher&quot;	[URL=&quot;../api/uqbar/graphs/Grapher.html#uqbar.graphs.Grapher.Grapher&quot;,
 			color=black,
 			fontcolor=white,
 			label=Grapher,
 			target=_top];
-		&quot;uqbar.graphs.HRule.HRule&quot;		 [URL=&quot;../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
+		&quot;uqbar.graphs.HRule.HRule&quot;	[URL=&quot;../api/uqbar/graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
 			color=black,
 			fontcolor=white,
 			label=HRule,
 			target=_top];
-		&quot;uqbar.graphs.LineBreak.LineBreak&quot;		 [URL=&quot;../api/uqbar/graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
+		&quot;uqbar.graphs.LineBreak.LineBreak&quot;	[URL=&quot;../api/uqbar/graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Line\nBreak&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Node.Node&quot;		 [URL=&quot;../api/uqbar/graphs/Node.html#uqbar.graphs.Node.Node&quot;,
+		&quot;uqbar.graphs.Node.Node&quot;	[URL=&quot;../api/uqbar/graphs/Node.html#uqbar.graphs.Node.Node&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Node&quot;,
 			target=_top];
-		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;		 [URL=&quot;../api/uqbar/graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
+		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[URL=&quot;../api/uqbar/graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Record\nGroup&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Table.Table&quot;		 [URL=&quot;../api/uqbar/graphs/Table.html#uqbar.graphs.Table.Table&quot;,
+		&quot;uqbar.graphs.Table.Table&quot;	[URL=&quot;../api/uqbar/graphs/Table.html#uqbar.graphs.Table.Table&quot;,
 			color=black,
 			fontcolor=white,
 			label=Table,
 			target=_top];
-		&quot;uqbar.graphs.TableRow.TableRow&quot;		 [URL=&quot;../api/uqbar/graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
+		&quot;uqbar.graphs.TableRow.TableRow&quot;	[URL=&quot;../api/uqbar/graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Table\nRow&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Text.Text&quot;		 [URL=&quot;../api/uqbar/graphs/Text.html#uqbar.graphs.Text.Text&quot;,
+		&quot;uqbar.graphs.Text.Text&quot;	[URL=&quot;../api/uqbar/graphs/Text.html#uqbar.graphs.Text.Text&quot;,
 			color=black,
 			fontcolor=white,
 			label=Text,
 			target=_top];
-		&quot;uqbar.graphs.VRule.VRule&quot;		 [URL=&quot;../api/uqbar/graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
+		&quot;uqbar.graphs.VRule.VRule&quot;	[URL=&quot;../api/uqbar/graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
 			color=black,
 			fontcolor=white,
 			label=VRule,
 			target=_top];
 	}
-	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Container&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Iterable&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Sized&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Container&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Iterable&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;collections.abc.Sized&quot;	[minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Edge.Edge&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Grapher.Grapher&quot;	 [minlen=1];
-	&quot;collections.abc.MutableMapping&quot; -&gt; &quot;uqbar.graphs.Attributes.Attributes&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Edge.Edge&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Grapher.Grapher&quot;	[minlen=1];
+	&quot;collections.abc.MutableMapping&quot; -&gt; &quot;uqbar.graphs.Attributes.Attributes&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	[minlen=2];
 	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	[minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	[minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	[minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Classes</p>

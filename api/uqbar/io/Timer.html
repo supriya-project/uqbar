@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Timer &mdash; uqbar 0.4.4 documentation</title>
+  <title>Timer &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -235,18 +235,18 @@
     &quot;builtins.object&quot; -&gt; &quot;uqbar.io.Timer.Timer&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.io.Timer.Timer">
-<em class="property">class </em><code class="sig-name descname">Timer</code><span class="sig-paren">(</span><em class="sig-param">exit_message=None</em>, <em class="sig-param">enter_message=None</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.Timer.Timer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exit_message</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">enter_message</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.Timer.Timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A context manager for timing blocks of code.</p>
 <p>This context manager is not reentrant. Use a separate instance when nesting
 multiple timers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>exit_message</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – message to print on entering the context</p></li>
-<li><p><strong>enter_message</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – message to print on exiting the context</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – whether to print output</p></li>
+<li><p><strong>exit_message</strong> – message to print on entering the context</p></li>
+<li><p><strong>enter_message</strong> – message to print on exiting the context</p></li>
+<li><p><strong>verbose</strong> – whether to print output</p></li>
 </ul>
 </dd>
 </dl>
@@ -258,7 +258,7 @@ multiple timers.</p>
 <span class="gp">... </span>        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span> <span class="o">**</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 <span class="gp">... </span>
 <span class="go">Looping!</span>
-<span class="go">Elapsed time: 0.0036580562591552734</span>
+<span class="go">Elapsed time: 0.0019021034240722656</span>
 </pre></div>
 </div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
@@ -269,152 +269,82 @@ multiple timers.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.__enter__" title="uqbar.io.Timer.Timer.__enter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__enter__</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timer</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.__exit__" title="uqbar.io.Timer.Timer.__exit__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__exit__</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.elapsed_time" title="uqbar.io.Timer.Timer.elapsed_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elapsed_time</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.enter_message" title="uqbar.io.Timer.Timer.enter_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enter_message</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.exit_message" title="uqbar.io.Timer.Timer.exit_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exit_message</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.start_time" title="uqbar.io.Timer.Timer.start_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_time</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.stop_time" title="uqbar.io.Timer.Timer.stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_time</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.io.Timer.Timer.verbose" title="uqbar.io.Timer.Timer.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.io.Timer.Timer.__enter__">
 <code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__enter__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timer</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer">uqbar.io.Timer.Timer</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.io.Timer.Timer.__exit__">
-<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param">exc_type</em>, <em class="sig-param">exc_value</em>, <em class="sig-param">traceback</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__exit__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exc_type</span></em>, <em class="sig-param"><span class="n">exc_value</span></em>, <em class="sig-param"><span class="n">traceback</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__exit__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.elapsed_time">
 <code class="sig-name descname">elapsed_time</code><a class="headerlink" href="#uqbar.io.Timer.Timer.elapsed_time" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.enter_message">
 <code class="sig-name descname">enter_message</code><a class="headerlink" href="#uqbar.io.Timer.Timer.enter_message" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.exit_message">
 <code class="sig-name descname">exit_message</code><a class="headerlink" href="#uqbar.io.Timer.Timer.exit_message" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.start_time">
 <code class="sig-name descname">start_time</code><a class="headerlink" href="#uqbar.io.Timer.Timer.start_time" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.stop_time">
 <code class="sig-name descname">stop_time</code><a class="headerlink" href="#uqbar.io.Timer.Timer.stop_time" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.io.Timer.Timer.verbose">
 <code class="sig-name descname">verbose</code><a class="headerlink" href="#uqbar.io.Timer.Timer.verbose" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 

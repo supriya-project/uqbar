@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LineBreak &mdash; uqbar 0.4.4 documentation</title>
+  <title>LineBreak &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -254,9 +254,9 @@
     &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.graphs.LineBreak.LineBreak">
-<em class="property">class </em><code class="sig-name descname">LineBreak</code><span class="sig-paren">(</span><em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/LineBreak.html#LineBreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">LineBreak</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/LineBreak.html#LineBreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Graphviz HTML line break.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.graphs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">line_break</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">LineBreak</span><span class="p">()</span>
@@ -275,40 +275,38 @@
 <td><p>Default object formatter.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.LineBreak.LineBreak.__format_graphviz__" title="uqbar.graphs.LineBreak.LineBreak.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.LineBreak.LineBreak.__format__">
-<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param">format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/LineBreak.html#LineBreak.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.__format__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_spec</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/LineBreak.html#LineBreak.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.__format__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default object formatter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format_spec</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.LineBreak.LineBreak.__format_graphviz__">
 <code class="sig-name descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/LineBreak.html#LineBreak.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read/write properties</p>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.name">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -316,14 +314,14 @@
 </div>
 <hr/><p class="class-header rubric">Read-only properties</p>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.depth">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.graph_order">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
@@ -355,21 +353,21 @@
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.parent">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.parentage">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.LineBreak.LineBreak.root">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.graphs.LineBreak.LineBreak.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

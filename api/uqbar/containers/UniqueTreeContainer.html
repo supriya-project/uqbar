@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>UniqueTreeContainer &mdash; uqbar 0.4.4 documentation</title>
+  <title>UniqueTreeContainer &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -196,7 +196,7 @@
   <div class="section" id="module-uqbar.containers.UniqueTreeContainer">
 <span id="uniquetreecontainer"></span><span id="uqbar-containers-uniquetreecontainer"></span><h1>UniqueTreeContainer<a class="headerlink" href="#module-uqbar.containers.UniqueTreeContainer" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-e5f16ec2924cd1b415f6b75f021d78f1392dbec1.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-563da3670785600f26ff5f75cbf6fc022757a247.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -225,49 +225,42 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.apis&quot; {
 		graph [label=&quot;uqbar.apis&quot;];
 		node [color=2];
-		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
-			color=2,
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;	[URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
 			label=&quot;Package\nNode&quot;,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.containers&quot; {
 		graph [label=&quot;uqbar.containers&quot;];
 		node [color=3];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeDict.html#uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeDict.html#uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;,
 			label=&quot;Unique\nTree\nDict&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;		 [minlen=1];
-		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;	[minlen=1];
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
 			label=&quot;Unique\nTree\nList&quot;,
 			target=_top];
 		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;
-		&quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeSet.html#uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeSet.html#uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;,
 			label=&quot;Unique\nTree\nSet&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;		 [minlen=2];
-		&quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeTuple.html#uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;	[minlen=2];
+		&quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeTuple.html#uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;,
 			label=&quot;Unique\nTree\nTuple&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;		 [minlen=1];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;	[minlen=1];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			label=&quot;Unique\nTree\nNode&quot;,
 			target=_top];
 		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;;
@@ -275,44 +268,38 @@
 	subgraph &quot;cluster_uqbar.graphs&quot; {
 		graph [label=&quot;uqbar.graphs&quot;];
 		node [color=4];
-		&quot;uqbar.graphs.Graph.Graph&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
-			color=4,
+		&quot;uqbar.graphs.Graph.Graph&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
 			label=&quot;Graph&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Node.Node&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Node.html#uqbar.graphs.Node.Node&quot;,
-			color=4,
+		&quot;uqbar.graphs.Node.Node&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Node.html#uqbar.graphs.Node.Node&quot;,
 			label=&quot;Node&quot;,
 			target=_top];
-		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
-			color=4,
+		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[URL=&quot;../api/uqbar/containers/../graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
 			label=&quot;Record\nGroup&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Table.Table&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Table.html#uqbar.graphs.Table.Table&quot;,
-			color=4,
+		&quot;uqbar.graphs.Table.Table&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Table.html#uqbar.graphs.Table.Table&quot;,
 			label=Table,
 			target=_top];
-		&quot;uqbar.graphs.TableCell.TableCell&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
-			color=4,
+		&quot;uqbar.graphs.TableCell.TableCell&quot;	[URL=&quot;../api/uqbar/containers/../graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
 			label=&quot;Table\nCell&quot;,
 			target=_top];
-		&quot;uqbar.graphs.TableRow.TableRow&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
-			color=4,
+		&quot;uqbar.graphs.TableRow.TableRow&quot;	[URL=&quot;../api/uqbar/containers/../graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
 			label=&quot;Table\nRow&quot;,
 			target=_top];
 	}
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	[minlen=1];
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer">
-<em class="property">class </em><code class="sig-name descname">UniqueTreeContainer</code><span class="sig-paren">(</span><em class="sig-param">children=None</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">UniqueTreeContainer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">children</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -341,55 +328,55 @@
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__contains__">
-<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__contains__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__iter__">
 <code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.__iter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__len__">
 <code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.__len__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth_first">
-<code class="sig-name descname">depth_first</code><span class="sig-paren">(</span><em class="sig-param">top_down=True</em>, <em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.depth_first"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth_first" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">depth_first</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">top_down</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">prototype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.depth_first"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth_first" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.recurse">
-<code class="sig-name descname">recurse</code><span class="sig-paren">(</span><em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.recurse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.recurse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">recurse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prototype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeContainer.html#UniqueTreeContainer.recurse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.recurse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read/write properties</p>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.name">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.children">
 <code class="sig-name descname">children</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.graph_order">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
@@ -421,21 +408,21 @@
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.parent">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.parentage">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.root">
 <code class="sig-prename descclassname">(<a class="reference internal" href="UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

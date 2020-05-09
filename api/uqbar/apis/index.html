@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>apis &mdash; uqbar 0.4.4 documentation</title>
+  <title>apis &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -201,7 +201,7 @@
 <span id="apis"></span><span id="uqbar-apis"></span><h1>apis<a class="headerlink" href="#module-uqbar.apis" title="Permalink to this headline">¶</a></h1>
 <p>Tools for auto-generating API documention.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-48bf94ae7c40a42676a178872865cf51e812f587.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-213f1e583ab5e85395d0e12b25085d4fa6915ae8.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -230,122 +230,116 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.apis&quot; {
 		graph [label=&quot;uqbar.apis&quot;];
 		node [color=2];
-		&quot;uqbar.apis.APIBuilder.APIBuilder&quot;		 [URL=&quot;../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder&quot;,
+		&quot;uqbar.apis.APIBuilder.APIBuilder&quot;	[URL=&quot;../api/uqbar/apis/APIBuilder.html#uqbar.apis.APIBuilder.APIBuilder&quot;,
 			color=black,
 			fontcolor=white,
 			label=APIBuilder,
 			target=_top];
-		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter&quot;,
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;	[URL=&quot;../api/uqbar/apis/ClassDocumenter.html#uqbar.apis.ClassDocumenter.ClassDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Class\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;,
+		&quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;	[URL=&quot;../api/uqbar/apis/SummarizingClassDocumenter.html#uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Summarizing\nClass\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;		 [minlen=1];
-		&quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;,
+		&quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter&quot;	[minlen=1];
+		&quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;	[URL=&quot;../api/uqbar/apis/FunctionDocumenter.html#uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Function\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;		 [URL=&quot;../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph&quot;,
+		&quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;	[URL=&quot;../api/uqbar/apis/InheritanceGraph.html#uqbar.apis.InheritanceGraph.InheritanceGraph&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Inheritance\nGraph&quot;,
 			target=_top];
-		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter&quot;,
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;	[URL=&quot;../api/uqbar/apis/MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Member\nDocumenter&quot;,
 			shape=oval,
 			style=&quot;bold, filled&quot;,
 			target=_top];
-		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;		 [minlen=1];
-		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;		 [minlen=2];
-		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;,
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.ClassDocumenter.ClassDocumenter&quot;	[minlen=1];
+		&quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.FunctionDocumenter.FunctionDocumenter&quot;	[minlen=2];
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;	[URL=&quot;../api/uqbar/apis/ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Module\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;,
+		&quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;	[URL=&quot;../api/uqbar/apis/SummarizingModuleDocumenter.html#uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Summarizing\nModule\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;		 [minlen=1];
-		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
+		&quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter&quot;	[minlen=1];
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;	[URL=&quot;../api/uqbar/apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Module\nNode&quot;,
 			target=_top];
-		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;	[URL=&quot;../api/uqbar/apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Package\nNode&quot;,
 			target=_top];
-		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter&quot;,
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	[URL=&quot;../api/uqbar/apis/RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Root\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [URL=&quot;../api/uqbar/apis/SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;,
+		&quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;	[URL=&quot;../api/uqbar/apis/SummarizingRootDocumenter.html#uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Summarizing\nRoot\nDocumenter&quot;,
 			target=_top];
-		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;		 [minlen=1];
+		&quot;uqbar.apis.RootDocumenter.RootDocumenter&quot; -&gt; &quot;uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.apis.dummy&quot; {
 		graph [label=&quot;uqbar.apis.dummy&quot;];
 		node [color=3];
-		&quot;uqbar.apis.dummy.MyChildClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyChildClass&quot;,
-			color=3,
+		&quot;uqbar.apis.dummy.MyChildClass&quot;	[URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyChildClass&quot;,
 			label=&quot;My\nChild\nClass&quot;,
 			target=_top];
-		&quot;uqbar.apis.dummy.MyParentClass&quot;		 [URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyParentClass&quot;,
-			color=3,
+		&quot;uqbar.apis.dummy.MyParentClass&quot;	[URL=&quot;../api/uqbar/apis/dummy.html#uqbar.apis.dummy.MyParentClass&quot;,
 			label=&quot;My\nParent\nClass&quot;,
 			target=_top];
-		&quot;uqbar.apis.dummy.MyParentClass&quot; -&gt; &quot;uqbar.apis.dummy.MyChildClass&quot;		 [minlen=1];
+		&quot;uqbar.apis.dummy.MyParentClass&quot; -&gt; &quot;uqbar.apis.dummy.MyChildClass&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.containers&quot; {
 		graph [label=&quot;uqbar.containers&quot;];
 		node [color=4];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
-			color=4,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[URL=&quot;../api/uqbar/apis/../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
-			color=4,
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;	[URL=&quot;../api/uqbar/apis/../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
 			label=&quot;Unique\nTree\nList&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [minlen=1];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/apis/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
-			color=4,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;	[minlen=1];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[URL=&quot;../api/uqbar/apis/../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			label=&quot;Unique\nTree\nNode&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [minlen=2];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[minlen=2];
 	}
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.APIBuilder.APIBuilder&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.APIBuilder.APIBuilder&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;	[minlen=2];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;;
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.dummy.MyParentClass&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.ModuleDocumenter.ModuleDocumenter&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.RootDocumenter.RootDocumenter&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.apis.dummy.MyParentClass&quot;	[minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;;
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	[minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>
@@ -440,14 +434,14 @@
 </tr>
 </tbody>
 </table>
-<dl class="function">
+<dl class="py function">
 <dt id="uqbar.apis.collect_source_paths">
-<code class="sig-name descname">collect_source_paths</code><span class="sig-paren">(</span><em class="sig-param">source_paths</em>, <em class="sig-param">recurse_subpackages=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#collect_source_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.collect_source_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">collect_source_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_paths</span></em>, <em class="sig-param"><span class="n">recurse_subpackages</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#collect_source_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.collect_source_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="uqbar.apis.source_path_to_package_path">
-<code class="sig-name descname">source_path_to_package_path</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#source_path_to_package_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.source_path_to_package_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">source_path_to_package_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis.html#source_path_to_package_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.source_path_to_package_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="section-header rubric">Internals</p>

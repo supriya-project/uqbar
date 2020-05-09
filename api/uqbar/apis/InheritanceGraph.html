@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>InheritanceGraph &mdash; uqbar 0.4.4 documentation</title>
+  <title>InheritanceGraph &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -244,9 +244,9 @@
     &quot;builtins.object&quot; -&gt; &quot;uqbar.apis.InheritanceGraph.InheritanceGraph&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph">
-<em class="property">class </em><code class="sig-name descname">InheritanceGraph</code><span class="sig-paren">(</span><em class="sig-param">package_paths</em>, <em class="sig-param">lineage_paths=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">InheritanceGraph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_paths</span></em>, <em class="sig-param"><span class="n">lineage_paths</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>A builder of Graphviz inheritance graphs.</p>
 <p>Here we build the inheritance graph of all classes found in
 <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
@@ -423,9 +423,9 @@ then constrain to those passing through <a class="reference internal" href="../c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>package_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">module</span></code>]]) – a sequence of package path strings, classes or
+<li><p><strong>package_paths</strong> – a sequence of package path strings, classes or
 modules to seed the inheritance graph with</p></li>
-<li><p><strong>lineage_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">module</span></code>]]]) – a sequence of package path strings, classes or
+<li><p><strong>lineage_paths</strong> – a sequence of package path strings, classes or
 modules to constrain the inheritance graph with</p></li>
 </ul>
 </dd>
@@ -438,12 +438,7 @@ modules to constrain the inheritance graph with</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
 <td><p>Return str(self).</p></td>
@@ -466,50 +461,50 @@ modules to constrain the inheritance graph with</p></li>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">
 <code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">
 <em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
-<code class="sig-name descname">build_graph</code><span class="sig-paren">(</span><em class="sig-param">urls=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">build_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">urls</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths">
 <code class="sig-name descname">all_class_paths</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio">
 <code class="sig-name descname">aspect_ratio</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents">
 <code class="sig-name descname">children_to_parents</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children">
 <code class="sig-name descname">parents_to_children</code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

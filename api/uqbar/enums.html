@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>enums &mdash; uqbar 0.4.4 documentation</title>
+  <title>enums &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -265,7 +265,7 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.enums.IntEnumeration">
 <em class="property">class </em><code class="sig-name descname">IntEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enumeration which behaves like an integer.</p>
@@ -287,14 +287,36 @@
 <span class="go">True</span>
 </pre></div>
 </div>
-<dl class="attribute">
+<dl class="py method">
 <dt id="uqbar.enums.IntEnumeration.from_expr">
-<code class="sig-name descname">from_expr</code><em class="property"> = &lt;bound method IntEnumeration.from_expr of &lt;enum 'IntEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">classmethod </em><code class="sig-name descname">from_expr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#IntEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.IntEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience constructor for enumerations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.enums</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyEnum</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">IntEnumeration</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">A_B</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">B_C_D</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="s2">&quot;a b&quot;</span><span class="p">)</span>
+<span class="go">MyEnum.A_B</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">MyEnum.B_C_D</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">MyEnum.E</span>
+</pre></div>
+</div>
+<p>Returns new enumeration item.</p>
+</dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.enums.StrictEnumeration">
 <em class="property">class </em><code class="sig-name descname">StrictEnumeration</code><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sortable enumeration which does not compare to objects not of its type.</p>
@@ -316,10 +338,32 @@
 <span class="go">False</span>
 </pre></div>
 </div>
-<dl class="attribute">
+<dl class="py method">
 <dt id="uqbar.enums.StrictEnumeration.from_expr">
-<code class="sig-name descname">from_expr</code><em class="property"> = &lt;bound method StrictEnumeration.from_expr of &lt;enum 'StrictEnumeration'&gt;&gt;</em><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">classmethod </em><code class="sig-name descname">from_expr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#StrictEnumeration.from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.StrictEnumeration.from_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience constructor for enumerations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.enums</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyEnum</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">StrictEnumeration</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">A_B</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">B_C_D</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="s2">&quot;a b&quot;</span><span class="p">)</span>
+<span class="go">MyEnum.A_B</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">MyEnum.B_C_D</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyEnum</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">MyEnum.E</span>
+</pre></div>
+</div>
+<p>Returns new enumeration item.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -335,9 +379,9 @@
 </tr>
 </tbody>
 </table>
-<dl class="function">
+<dl class="py function">
 <dt id="uqbar.enums.from_expr">
-<code class="sig-name descname">from_expr</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">expr</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.from_expr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">from_expr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/enums.html#from_expr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.enums.from_expr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

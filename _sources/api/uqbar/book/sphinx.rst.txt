@@ -124,7 +124,6 @@ sphinx
 .. autosummary::
    :nosignatures:
 
-   ~attr_path_to_defining_path
    ~collect_literal_blocks
    ~console_context
    ~create_cache_db
@@ -139,8 +138,6 @@ sphinx
    ~query_cache_db
    ~rebuild_document
    ~update_cache_db
-
-.. autofunction:: attr_path_to_defining_path
 
 .. autofunction:: collect_literal_blocks
 

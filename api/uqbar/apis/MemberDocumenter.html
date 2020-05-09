@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MemberDocumenter &mdash; uqbar 0.4.4 documentation</title>
+  <title>MemberDocumenter &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -258,9 +258,9 @@
     &quot;builtins.object&quot; -&gt; &quot;uqbar.apis.MemberDocumenter.MemberDocumenter&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter">
-<em class="property">abstract </em><em class="property">class </em><code class="sig-name descname">MemberDocumenter</code><span class="sig-paren">(</span><em class="sig-param">package_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><em class="property">class </em><code class="sig-name descname">MemberDocumenter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base class for module member documenters.</p>
 <p>Member documenters generate reStructuredText output for classes, functions
 and other objects defined in modules. They also implement the logic for
@@ -283,7 +283,7 @@ implementation.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>package_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the module path and name of the member to document</p>
+<dd class="field-odd"><p><strong>package_path</strong> – the module path and name of the member to document</p>
 </dd>
 </dl>
 <hr/><p class="class-header rubric">Attributes Summary</p>
@@ -297,28 +297,13 @@ implementation.</p>
 <td><p>Return str(self).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.client" title="uqbar.apis.MemberDocumenter.MemberDocumenter.client"><code class="xref py py-obj docutils literal notranslate"><span class="pre">client</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section" title="uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation_section</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.package_path" title="uqbar.apis.MemberDocumenter.MemberDocumenter.package_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_path</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_client</span></code></a></p></td>
 <td><p>Check if the member documenter can document the provided client.</p></td>
@@ -326,65 +311,50 @@ implementation.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.__str__">
 <em class="property">abstract</em><em class="property">overridden </em><em class="property">abstract </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Class &amp; static methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client">
-<em class="property">abstract</em><em class="property">abstract classmethod </em><code class="sig-name descname">validate_client</code><span class="sig-paren">(</span><em class="sig-param">client</em>, <em class="sig-param">module_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter.validate_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract</em><em class="property">abstract classmethod </em><code class="sig-name descname">validate_client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">module_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/MemberDocumenter.html#MemberDocumenter.validate_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the member documenter can document the provided client.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>client</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – the potential client to validate</p></li>
-<li><p><strong>module_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the package path of the module where the client was encountered</p></li>
+<li><p><strong>client</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – the potential client to validate</p></li>
+<li><p><strong>module_path</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the package path of the module where the client was encountered</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.client">
 <code class="sig-name descname">client</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.client" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section">
 <em class="property">abstract</em><code class="sig-name descname">documentation_section</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.documentation_section" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.MemberDocumenter.MemberDocumenter.package_path">
 <code class="sig-name descname">package_path</code><a class="headerlink" href="#uqbar.apis.MemberDocumenter.MemberDocumenter.package_path" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 

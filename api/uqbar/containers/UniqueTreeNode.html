@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>UniqueTreeNode &mdash; uqbar 0.4.4 documentation</title>
+  <title>UniqueTreeNode &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -196,7 +196,7 @@
   <div class="section" id="module-uqbar.containers.UniqueTreeNode">
 <span id="uniquetreenode"></span><span id="uqbar-containers-uniquetreenode"></span><h1>UniqueTreeNode<a class="headerlink" href="#module-uqbar.containers.UniqueTreeNode" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-afaa7294486c075c49a818e239d3adef6d28f44b.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-714f2619bb458c21f0fbd0f54ba6eb96c64c1ca9.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -225,51 +225,43 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.apis&quot; {
 		graph [label=&quot;uqbar.apis&quot;];
 		node [color=2];
-		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
-			color=2,
+		&quot;uqbar.apis.ModuleNode.ModuleNode&quot;	[URL=&quot;../api/uqbar/containers/../apis/ModuleNode.html#uqbar.apis.ModuleNode.ModuleNode&quot;,
 			label=&quot;Module\nNode&quot;,
 			target=_top];
-		&quot;uqbar.apis.PackageNode.PackageNode&quot;		 [URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
-			color=2,
+		&quot;uqbar.apis.PackageNode.PackageNode&quot;	[URL=&quot;../api/uqbar/containers/../apis/PackageNode.html#uqbar.apis.PackageNode.PackageNode&quot;,
 			label=&quot;Package\nNode&quot;,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.containers&quot; {
 		graph [label=&quot;uqbar.containers&quot;];
 		node [color=3];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot;,
 			label=&quot;Unique\nTree\nContainer&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeDict.html#uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeDict.html#uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;,
 			label=&quot;Unique\nTree\nDict&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;		 [minlen=1];
-		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeDict.UniqueTreeDict&quot;	[minlen=1];
+		&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList&quot;,
 			label=&quot;Unique\nTree\nList&quot;,
 			target=_top];
 		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot;;
-		&quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeSet.html#uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeSet.html#uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;,
 			label=&quot;Unique\nTree\nSet&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;		 [minlen=2];
-		&quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeTuple.html#uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;,
-			color=3,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeSet.UniqueTreeSet&quot;	[minlen=2];
+		&quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeTuple.html#uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;,
 			label=&quot;Unique\nTree\nTuple&quot;,
 			target=_top];
-		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;		 [minlen=1];
-		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;		 [URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
+		&quot;uqbar.containers.UniqueTreeContainer.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.UniqueTreeTuple.UniqueTreeTuple&quot;	[minlen=1];
+		&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[URL=&quot;../api/uqbar/containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;,
 			color=black,
 			fontcolor=white,
 			label=&quot;Unique\nTree\nNode&quot;,
@@ -279,77 +271,65 @@
 	subgraph &quot;cluster_uqbar.graphs&quot; {
 		graph [label=&quot;uqbar.graphs&quot;];
 		node [color=4];
-		&quot;uqbar.graphs.Attachable.Attachable&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
-			color=4,
+		&quot;uqbar.graphs.Attachable.Attachable&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Attachable.html#uqbar.graphs.Attachable.Attachable&quot;,
 			label=Attachable,
 			target=_top];
-		&quot;uqbar.graphs.RecordField.RecordField&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
-			color=4,
+		&quot;uqbar.graphs.RecordField.RecordField&quot;	[URL=&quot;../api/uqbar/containers/../graphs/RecordField.html#uqbar.graphs.RecordField.RecordField&quot;,
 			label=&quot;Record\nField&quot;,
 			target=_top];
 		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
-		&quot;uqbar.graphs.TableCell.TableCell&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
-			color=4,
+		&quot;uqbar.graphs.TableCell.TableCell&quot;	[URL=&quot;../api/uqbar/containers/../graphs/TableCell.html#uqbar.graphs.TableCell.TableCell&quot;,
 			label=&quot;Table\nCell&quot;,
 			target=_top];
 		&quot;uqbar.graphs.Attachable.Attachable&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
-		&quot;uqbar.graphs.Graph.Graph&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
-			color=4,
+		&quot;uqbar.graphs.Graph.Graph&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Graph.html#uqbar.graphs.Graph.Graph&quot;,
 			label=&quot;Graph&quot;,
 			target=_top];
-		&quot;uqbar.graphs.HRule.HRule&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
-			color=4,
+		&quot;uqbar.graphs.HRule.HRule&quot;	[URL=&quot;../api/uqbar/containers/../graphs/HRule.html#uqbar.graphs.HRule.HRule&quot;,
 			label=HRule,
 			target=_top];
-		&quot;uqbar.graphs.LineBreak.LineBreak&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
-			color=4,
+		&quot;uqbar.graphs.LineBreak.LineBreak&quot;	[URL=&quot;../api/uqbar/containers/../graphs/LineBreak.html#uqbar.graphs.LineBreak.LineBreak&quot;,
 			label=&quot;Line\nBreak&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Node.Node&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Node.html#uqbar.graphs.Node.Node&quot;,
-			color=4,
+		&quot;uqbar.graphs.Node.Node&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Node.html#uqbar.graphs.Node.Node&quot;,
 			label=&quot;Node&quot;,
 			target=_top];
-		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
-			color=4,
+		&quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[URL=&quot;../api/uqbar/containers/../graphs/RecordGroup.html#uqbar.graphs.RecordGroup.RecordGroup&quot;,
 			label=&quot;Record\nGroup&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Table.Table&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Table.html#uqbar.graphs.Table.Table&quot;,
-			color=4,
+		&quot;uqbar.graphs.Table.Table&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Table.html#uqbar.graphs.Table.Table&quot;,
 			label=Table,
 			target=_top];
-		&quot;uqbar.graphs.TableRow.TableRow&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
-			color=4,
+		&quot;uqbar.graphs.TableRow.TableRow&quot;	[URL=&quot;../api/uqbar/containers/../graphs/TableRow.html#uqbar.graphs.TableRow.TableRow&quot;,
 			label=&quot;Table\nRow&quot;,
 			target=_top];
-		&quot;uqbar.graphs.Text.Text&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/Text.html#uqbar.graphs.Text.Text&quot;,
-			color=4,
+		&quot;uqbar.graphs.Text.Text&quot;	[URL=&quot;../api/uqbar/containers/../graphs/Text.html#uqbar.graphs.Text.Text&quot;,
 			label=Text,
 			target=_top];
-		&quot;uqbar.graphs.VRule.VRule&quot;		 [URL=&quot;../api/uqbar/containers/../graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
-			color=4,
+		&quot;uqbar.graphs.VRule.VRule&quot;	[URL=&quot;../api/uqbar/containers/../graphs/VRule.html#uqbar.graphs.VRule.VRule&quot;,
 			label=VRule,
 			target=_top];
 	}
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	 [minlen=1];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.apis.PackageNode.PackageNode&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Graph.Graph&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Node.Node&quot;	[minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.RecordGroup.RecordGroup&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.Table.Table&quot;	[minlen=1];
 	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableCell.TableCell&quot;;
-	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.apis.ModuleNode.ModuleNode&quot;	[minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Attachable.Attachable&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.HRule.HRule&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.LineBreak.LineBreak&quot;	[minlen=1];
 	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.RecordField.RecordField&quot;;
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	 [minlen=2];
-	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	 [minlen=1];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.Text.Text&quot;	[minlen=2];
+	&quot;uqbar.containers.UniqueTreeNode.UniqueTreeNode&quot; -&gt; &quot;uqbar.graphs.VRule.VRule&quot;	[minlen=1];
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode">
-<em class="property">class </em><code class="sig-name descname">UniqueTreeNode</code><span class="sig-paren">(</span><em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">UniqueTreeNode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>A node in a “unique” tree.</p>
 <p>Unique tree nodes may have at most one parent and may appear only once in
 the tree.</p>
@@ -381,18 +361,18 @@ the tree.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Read/write properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.name">
 <code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth">
 <code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order">
 <code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
@@ -422,17 +402,17 @@ the tree.</p>
 </div>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent">
 <code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage">
 <code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.root">
 <code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>book &mdash; uqbar 0.4.4 documentation</title>
+  <title>book &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -190,7 +190,7 @@
   <div class="section" id="module-uqbar.book">
 <span id="book"></span><span id="uqbar-book"></span><h1>book<a class="headerlink" href="#module-uqbar.book" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-586e0c2dc3d307e5bd9e933b4cfa0adb7fa619f4.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../_images/inheritance-7247ea82f42edc8fb5beef9c66662f2c88ba60eb.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -219,134 +219,112 @@
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
-		&quot;builtins.BaseException&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
-			color=1,
+		&quot;builtins.BaseException&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
 			label=&quot;Base\nException&quot;,
 			target=_top];
-		&quot;builtins.Exception&quot;		 [URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
-			color=1,
+		&quot;builtins.Exception&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
 			label=Exception,
 			target=_top];
-		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;		 [minlen=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			color=1,
+		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;	[minlen=1];
+		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
 			label=object,
 			target=_top];
-		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;		 [minlen=1];
+		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;	[minlen=1];
 	}
 	subgraph cluster_code {
 		graph [label=code];
 		node [color=2];
-		&quot;code.InteractiveConsole&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
-			color=2,
+		&quot;code.InteractiveConsole&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
 			label=&quot;Interactive\nConsole&quot;,
 			target=_top];
-		&quot;code.InteractiveInterpreter&quot;		 [URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
-			color=2,
+		&quot;code.InteractiveInterpreter&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
 			label=&quot;Interactive\nInterpreter&quot;,
 			target=_top];
-		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;		 [minlen=1];
+		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_docutils.nodes&quot; {
 		graph [label=&quot;docutils.nodes&quot;];
 		node [color=3];
-		&quot;docutils.nodes.Body&quot;		 [color=3,
-			label=Body];
-		&quot;docutils.nodes.General&quot;		 [color=3,
-			label=General];
+		&quot;docutils.nodes.Body&quot;	[label=Body];
+		&quot;docutils.nodes.General&quot;	[label=General];
 		&quot;docutils.nodes.Body&quot; -&gt; &quot;docutils.nodes.General&quot;;
-		&quot;docutils.nodes.Element&quot;		 [color=3,
-			label=Element];
-		&quot;docutils.nodes.Node&quot;		 [color=3,
-			label=&quot;Node&quot;];
+		&quot;docutils.nodes.Element&quot;	[label=Element];
+		&quot;docutils.nodes.Node&quot;	[label=&quot;Node&quot;];
 		&quot;docutils.nodes.Node&quot; -&gt; &quot;docutils.nodes.Element&quot;;
 	}
 	subgraph &quot;cluster_docutils.parsers.rst&quot; {
 		graph [label=&quot;docutils.parsers.rst&quot;];
 		node [color=4];
-		&quot;docutils.parsers.rst.Directive&quot;		 [URL=&quot;http://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
-			color=4,
+		&quot;docutils.parsers.rst.Directive&quot;	[URL=&quot;https://www.sphinx-doc.org/en/stable/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
 			label=Directive,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.book.console&quot; {
 		graph [label=&quot;uqbar.book.console&quot;];
 		node [color=5];
-		&quot;uqbar.book.console.Console&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
-			color=5,
+		&quot;uqbar.book.console.Console&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.Console&quot;,
 			label=Console,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleError&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
-			color=5,
+		&quot;uqbar.book.console.ConsoleError&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleError&quot;,
 			label=&quot;Console\nError&quot;,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleInput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
-			color=5,
+		&quot;uqbar.book.console.ConsoleInput&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleInput&quot;,
 			label=&quot;Console\nInput&quot;,
 			target=_top];
-		&quot;uqbar.book.console.ConsoleOutput&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
-			color=5,
+		&quot;uqbar.book.console.ConsoleOutput&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.ConsoleOutput&quot;,
 			label=&quot;Console\nOutput&quot;,
 			target=_top];
-		&quot;uqbar.book.console.MonkeyPatch&quot;		 [URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.MonkeyPatch&quot;,
-			color=5,
+		&quot;uqbar.book.console.MonkeyPatch&quot;	[URL=&quot;../api/uqbar/book/console.html#uqbar.book.console.MonkeyPatch&quot;,
 			label=&quot;Monkey\nPatch&quot;,
 			target=_top];
 	}
 	subgraph &quot;cluster_uqbar.book.extensions&quot; {
 		graph [label=&quot;uqbar.book.extensions&quot;];
 		node [color=6];
-		&quot;uqbar.book.extensions.Extension&quot;		 [URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.Extension&quot;,
-			color=6,
+		&quot;uqbar.book.extensions.Extension&quot;	[URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.Extension&quot;,
 			label=Extension,
 			target=_top];
-		&quot;uqbar.book.extensions.GraphExtension&quot;		 [URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.GraphExtension&quot;,
-			color=6,
+		&quot;uqbar.book.extensions.GraphExtension&quot;	[URL=&quot;../api/uqbar/book/extensions.html#uqbar.book.extensions.GraphExtension&quot;,
 			label=&quot;Graph\nExtension&quot;,
 			target=_top];
-		&quot;uqbar.book.extensions.Extension&quot; -&gt; &quot;uqbar.book.extensions.GraphExtension&quot;		 [minlen=1];
+		&quot;uqbar.book.extensions.Extension&quot; -&gt; &quot;uqbar.book.extensions.GraphExtension&quot;	[minlen=1];
 	}
 	subgraph &quot;cluster_uqbar.book.sphinx&quot; {
 		graph [label=&quot;uqbar.book.sphinx&quot;];
 		node [color=7];
-		&quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;		 [URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;,
-			color=7,
+		&quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;,
 			label=&quot;Uqbar\nBook\nDefaults\nDirective&quot;,
 			target=_top];
-		&quot;uqbar.book.sphinx.UqbarBookDirective&quot;		 [URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective&quot;,
-			color=7,
+		&quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective&quot;,
 			label=&quot;Uqbar\nBook\nDirective&quot;,
 			target=_top];
-		&quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;		 [URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective&quot;,
-			color=7,
+		&quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective&quot;,
 			label=&quot;Uqbar\nBook\nImport\nDirective&quot;,
 			target=_top];
-		&quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;		 [URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_defaults_block&quot;,
-			color=7,
+		&quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_defaults_block&quot;,
 			label=&quot;uqbar\nbook\ndefaults\nblock&quot;,
 			target=_top];
-		&quot;uqbar.book.sphinx.uqbar_book_import_block&quot;		 [URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_import_block&quot;,
-			color=7,
+		&quot;uqbar.book.sphinx.uqbar_book_import_block&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_import_block&quot;,
 			label=&quot;uqbar\nbook\nimport\nblock&quot;,
 			target=_top];
 	}
-	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Body&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Node&quot;	 [minlen=2];
+	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;code.InteractiveInterpreter&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Body&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Node&quot;	[minlen=2];
 	&quot;builtins.object&quot; -&gt; &quot;docutils.parsers.rst.Directive&quot;;
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.MonkeyPatch&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.extensions.Extension&quot;	 [minlen=2];
-	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleInput&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.ConsoleOutput&quot;	[minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.console.MonkeyPatch&quot;	[minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;uqbar.book.extensions.Extension&quot;	[minlen=2];
+	&quot;code.InteractiveConsole&quot; -&gt; &quot;uqbar.book.console.Console&quot;	[minlen=1];
 	&quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;;
 	&quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_import_block&quot;;
 	&quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;;
 	&quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_import_block&quot;;
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	 [minlen=1];
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDirective&quot;	 [minlen=2];
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	 [minlen=1];
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[minlen=1];
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[minlen=2];
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>

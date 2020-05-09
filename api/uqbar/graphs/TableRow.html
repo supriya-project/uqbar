@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TableRow &mdash; uqbar 0.4.4 documentation</title>
+  <title>TableRow &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -262,9 +262,9 @@
     &quot;uqbar.containers.UniqueTreeList.UniqueTreeList&quot; -&gt; &quot;uqbar.graphs.TableRow.TableRow&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.graphs.TableRow.TableRow">
-<em class="property">class </em><code class="sig-name descname">TableRow</code><span class="sig-paren">(</span><em class="sig-param">children=None</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/TableRow.html#TableRow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">TableRow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">children</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/TableRow.html#TableRow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Graphviz HTML table row.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.graphs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">table_row</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">graphs</span><span class="o">.</span><span class="n">TableRow</span><span class="p">()</span>
@@ -283,139 +283,137 @@
 <td><p>Default object formatter.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.TableRow.TableRow.__format_graphviz__" title="uqbar.graphs.TableRow.TableRow.__format_graphviz__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__format_graphviz__</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__contains__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__contains__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__delitem__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__delitem__</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__delitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__delitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__delitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__format__">
-<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param">format_spec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/TableRow.html#TableRow.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__format__" title="Permalink to this definition">¶</a></dt>
+<em class="property">overridden </em><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_spec</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/TableRow.html#TableRow.__format__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__format__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default object formatter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>format_spec</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__format_graphviz__">
 <code class="sig-name descname">__format_graphviz__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/TableRow.html#TableRow.__format_graphviz__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__format_graphviz__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__getitem__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__getitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__iter__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__len__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__len__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.__setitem__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">new_items</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__setitem__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">new_items</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.__setitem__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Methods</p>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.append">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.append" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.append" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.depth_first">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">depth_first</code><span class="sig-paren">(</span><em class="sig-param">top_down=True</em>, <em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.depth_first" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">depth_first</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">top_down</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">prototype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.depth_first" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.extend">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.extend" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.extend" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.index">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.insert">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">expr</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.insert" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.pop">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param">i=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.pop" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.pop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.recurse">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">recurse</code><span class="sig-paren">(</span><em class="sig-param">prototype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.recurse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">recurse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prototype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.recurse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.TableRow.TableRow.remove">
-<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.remove" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeList.html#uqbar.containers.UniqueTreeList.UniqueTreeList" title="uqbar.containers.UniqueTreeList.UniqueTreeList"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeList</span></code></a>).</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.remove" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Read/write properties</p>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.name">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">name</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -423,21 +421,21 @@
 </div>
 <hr/><p class="class-header rubric">Read-only properties</p>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.children">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeContainer.html#uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" title="uqbar.containers.UniqueTreeContainer.UniqueTreeContainer"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a>).</code><code class="sig-name descname">children</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.depth">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">depth</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.graph_order">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">graph_order</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
@@ -469,21 +467,21 @@
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.parent">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parent</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.parentage">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">parentage</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="inherited docutils container">
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.graphs.TableRow.TableRow.root">
 <code class="sig-prename descclassname">(<a class="reference internal" href="../containers/UniqueTreeNode.html#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="uqbar.containers.UniqueTreeNode.UniqueTreeNode"><code class="descclassname docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a>).</code><code class="sig-name descname">root</code><a class="headerlink" href="#uqbar.graphs.TableRow.TableRow.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>APIBuilder &mdash; uqbar 0.4.4 documentation</title>
+  <title>APIBuilder &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -244,9 +244,9 @@
     &quot;builtins.object&quot; -&gt; &quot;uqbar.apis.APIBuilder.APIBuilder&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.apis.APIBuilder.APIBuilder">
-<em class="property">class </em><code class="sig-name descname">APIBuilder</code><span class="sig-paren">(</span><em class="sig-param">initial_source_paths</em>, <em class="sig-param">target_directory</em>, <em class="sig-param">document_empty_modules=True</em>, <em class="sig-param">document_private_members=False</em>, <em class="sig-param">document_private_modules=False</em>, <em class="sig-param">member_documenter_classes=None</em>, <em class="sig-param">module_documenter_class=None</em>, <em class="sig-param">omit_root=False</em>, <em class="sig-param">root_documenter_class=None</em>, <em class="sig-param">title='API'</em>, <em class="sig-param">logger_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">APIBuilder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">initial_source_paths</span></em>, <em class="sig-param"><span class="n">target_directory</span></em>, <em class="sig-param"><span class="n">document_empty_modules</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">document_private_members</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">document_private_modules</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">member_documenter_classes</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">module_documenter_class</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">omit_root</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">root_documenter_class</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">'API'</span></em>, <em class="sig-param"><span class="n">logger_func</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder" title="Permalink to this definition">¶</a></dt>
 <dd><p>A builder of reStructuredText API documentation for Python packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
@@ -279,15 +279,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>initial_source_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]]) – a list of paths to scan for Python sources</p></li>
-<li><p><strong>target_directory</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Union" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – where to write reStructuredText output</p></li>
-<li><p><strong>document_private_members</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – whether to documenter private module members</p></li>
-<li><p><strong>document_private_modules</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – whether to document private modules</p></li>
-<li><p><strong>member_documenter_classes</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>[<a class="reference internal" href="MemberDocumenter.html#uqbar.apis.MemberDocumenter.MemberDocumenter" title="uqbar.apis.MemberDocumenter.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a>]]]) – a list of
+<li><p><strong>initial_source_paths</strong> – a list of paths to scan for Python sources</p></li>
+<li><p><strong>target_directory</strong> – where to write reStructuredText output</p></li>
+<li><p><strong>document_private_members</strong> – whether to documenter private module members</p></li>
+<li><p><strong>document_private_modules</strong> – whether to document private modules</p></li>
+<li><p><strong>member_documenter_classes</strong> – a list of
 <a class="reference internal" href="MemberDocumenter.html#module-uqbar.apis.MemberDocumenter" title="uqbar.apis.MemberDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemberDocumenter</span></code></a> subclasses, defining what classes
 to use to identify and document module members</p></li>
-<li><p><strong>module_documenter_class</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>[<a class="reference internal" href="ModuleDocumenter.html#uqbar.apis.ModuleDocumenter.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter.ModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a>]]) – a <a class="reference internal" href="ModuleDocumenter.html#module-uqbar.apis.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a> subclass</p></li>
-<li><p><strong>root_documenter_class</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Type" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>[<a class="reference internal" href="RootDocumenter.html#uqbar.apis.RootDocumenter.RootDocumenter" title="uqbar.apis.RootDocumenter.RootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a>]]) – a <a class="reference internal" href="RootDocumenter.html#module-uqbar.apis.RootDocumenter" title="uqbar.apis.RootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a> subclass</p></li>
+<li><p><strong>module_documenter_class</strong> – a <a class="reference internal" href="ModuleDocumenter.html#module-uqbar.apis.ModuleDocumenter" title="uqbar.apis.ModuleDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleDocumenter</span></code></a> subclass</p></li>
+<li><p><strong>root_documenter_class</strong> – a <a class="reference internal" href="RootDocumenter.html#module-uqbar.apis.RootDocumenter" title="uqbar.apis.RootDocumenter"><code class="xref py py-class docutils literal notranslate"><span class="pre">RootDocumenter</span></code></a> subclass</p></li>
 </ul>
 </dd>
 </dl>
@@ -343,76 +343,76 @@ to use to identify and document module members</p></li>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.__call__">
 <em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate documentation.</p>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.build_node_tree">
-<code class="sig-name descname">build_node_tree</code><span class="sig-paren">(</span><em class="sig-param">source_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.build_node_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.build_node_tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">build_node_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.build_node_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.build_node_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a node tree.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters">
-<code class="sig-name descname">collect_module_documenters</code><span class="sig-paren">(</span><em class="sig-param">root_node</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.collect_module_documenters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">collect_module_documenters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_node</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.collect_module_documenters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.collect_module_documenters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.prune">
-<code class="sig-name descname">prune</code><span class="sig-paren">(</span><em class="sig-param">visited_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.prune"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.prune" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">prune</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">visited_paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.prune"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.prune" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">documenters</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.write" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">documenters</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/APIBuilder.html#APIBuilder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.write" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.document_empty_modules">
 <code class="sig-name descname">document_empty_modules</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.document_empty_modules" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.document_private_members">
 <code class="sig-name descname">document_private_members</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.document_private_members" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.document_private_modules">
 <code class="sig-name descname">document_private_modules</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.document_private_modules" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.initial_source_paths">
 <code class="sig-name descname">initial_source_paths</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.initial_source_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.member_documenter_classes">
 <code class="sig-name descname">member_documenter_classes</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.member_documenter_classes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.module_documenter_class">
 <code class="sig-name descname">module_documenter_class</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.module_documenter_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.omit_root">
 <code class="sig-name descname">omit_root</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.omit_root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.root_documenter_class">
 <code class="sig-name descname">root_documenter_class</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.root_documenter_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="uqbar.apis.APIBuilder.APIBuilder.target_directory">
 <code class="sig-name descname">target_directory</code><a class="headerlink" href="#uqbar.apis.APIBuilder.APIBuilder.target_directory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>

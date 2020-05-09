@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Grapher &mdash; uqbar 0.4.4 documentation</title>
+  <title>Grapher &mdash; uqbar 0.4.5 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.4.4
+                0.4.5
               </div>
             
           
@@ -246,9 +246,9 @@
     &quot;builtins.object&quot; -&gt; &quot;uqbar.graphs.Grapher.Grapher&quot;;
 }</p></object></div>
 </div>
-<dl class="class">
+<dl class="py class">
 <dt id="uqbar.graphs.Grapher.Grapher">
-<em class="property">class </em><code class="sig-name descname">Grapher</code><span class="sig-paren">(</span><em class="sig-param">graphable</em>, <em class="sig-param">format_='pdf'</em>, <em class="sig-param">layout='dot'</em>, <em class="sig-param">output_directory=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Grapher</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graphable</span></em>, <em class="sig-param"><span class="n">format_</span><span class="o">=</span><span class="default_value">'pdf'</span></em>, <em class="sig-param"><span class="n">layout</span><span class="o">=</span><span class="default_value">'dot'</span></em>, <em class="sig-param"><span class="n">output_directory</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -260,71 +260,31 @@
 <td><p>Call self as a function.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_format" title="uqbar.graphs.Grapher.Grapher.get_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_format</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_layout" title="uqbar.graphs.Grapher.Grapher.get_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layout</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_openable_paths" title="uqbar.graphs.Grapher.Grapher.get_openable_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_openable_paths</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Generator" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_output_directory" title="uqbar.graphs.Grapher.Grapher.get_output_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_output_directory</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_render_command" title="uqbar.graphs.Grapher.Grapher.get_render_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_render_command</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_render_directory" title="uqbar.graphs.Grapher.Grapher.get_render_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_render_directory</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_render_prefix" title="uqbar.graphs.Grapher.Grapher.get_render_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_render_prefix</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.get_string" title="uqbar.graphs.Grapher.Grapher.get_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_string</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.migrate_assets" title="uqbar.graphs.Grapher.Grapher.migrate_assets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">migrate_assets</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.open_output_path" title="uqbar.graphs.Grapher.Grapher.open_output_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_output_path</span></code></a></p></td>
 <td><p></p></td>
@@ -336,129 +296,127 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#uqbar.graphs.Grapher.Grapher.run_command" title="uqbar.graphs.Grapher.Grapher.run_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_command</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">rtype</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]</p>
-</dd>
-</dl>
-</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.__call__">
 <em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call self as a function.</p>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_format">
 <code class="sig-name descname">get_format</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_format" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_layout">
 <code class="sig-name descname">get_layout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_layout" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_openable_paths">
-<code class="sig-name descname">get_openable_paths</code><span class="sig-paren">(</span><em class="sig-param">format_</em>, <em class="sig-param">output_paths</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_openable_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_openable_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_openable_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_</span></em>, <em class="sig-param"><span class="n">output_paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_openable_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_openable_paths" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Generator" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+<dd class="field-odd"><p>Generator[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)">pathlib.Path</a>, <a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a>, <a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_output_directory">
 <code class="sig-name descname">get_output_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_output_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_output_directory" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)">pathlib.Path</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_render_command">
-<code class="sig-name descname">get_render_command</code><span class="sig-paren">(</span><em class="sig-param">format_</em>, <em class="sig-param">input_path</em>, <em class="sig-param">layout</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_command" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_render_command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_</span></em>, <em class="sig-param"><span class="n">input_path</span></em>, <em class="sig-param"><span class="n">layout</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_command" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_render_directory">
 <code class="sig-name descname">get_render_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_directory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_render_prefix">
-<code class="sig-name descname">get_render_prefix</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_prefix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_render_prefix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_render_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_render_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.get_string">
 <code class="sig-name descname">get_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.get_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.get_string" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.migrate_assets">
-<code class="sig-name descname">migrate_assets</code><span class="sig-paren">(</span><em class="sig-param">render_prefix</em>, <em class="sig-param">render_directory</em>, <em class="sig-param">output_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.migrate_assets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.migrate_assets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">migrate_assets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">render_prefix</span></em>, <em class="sig-param"><span class="n">render_directory</span></em>, <em class="sig-param"><span class="n">output_directory</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.migrate_assets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.migrate_assets" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</p>
+<dd class="field-odd"><p>Sequence[<a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)">pathlib.Path</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.open_output_path">
-<code class="sig-name descname">open_output_path</code><span class="sig-paren">(</span><em class="sig-param">output_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.open_output_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.open_output_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">open_output_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.open_output_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.open_output_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.persist_log">
-<code class="sig-name descname">persist_log</code><span class="sig-paren">(</span><em class="sig-param">string</em>, <em class="sig-param">input_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.persist_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.persist_log" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">persist_log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em>, <em class="sig-param"><span class="n">input_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.persist_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.persist_log" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.persist_string">
-<code class="sig-name descname">persist_string</code><span class="sig-paren">(</span><em class="sig-param">string</em>, <em class="sig-param">input_path</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.persist_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.persist_string" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">persist_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em>, <em class="sig-param"><span class="n">input_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.persist_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.persist_string" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="uqbar.graphs.Grapher.Grapher.run_command">
-<code class="sig-name descname">run_command</code><span class="sig-paren">(</span><em class="sig-param">command</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.run_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.run_command" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run_command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">command</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/graphs/Grapher.html#Grapher.run_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.graphs.Grapher.Grapher.run_command" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Tuple" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a>, <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)">int</a>]</p>
 </dd>
 </dl>
 </dd></dl>

@@ -205,7 +205,6 @@ Tools for auto-generating API documention.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.book.sphinx.attr_path_to_defining_path
    ~uqbar.book.sphinx.collect_literal_blocks
    ~uqbar.book.sphinx.console_context
    ~uqbar.book.sphinx.create_cache_db
