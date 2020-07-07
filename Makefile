@@ -53,10 +53,8 @@ isort:  ## Reformat via isort
 	isort \
 		--case-sensitive \
 		--multi-line 3 \
-		--recursive \
 		--trailing-comma \
 		--use-parentheses \
-		-y \
 		${formatPaths}
 
 mypy:  ## Run mypy

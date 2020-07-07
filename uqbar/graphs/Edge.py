@@ -22,8 +22,8 @@ class Edge(object):
         head_port_position: str = None,
         tail_port_position: str = None,
     ) -> None:
-        from .Node import Node
         from .Attachable import Attachable
+        from .Node import Node
 
         self._attributes = Attributes("edge", **(attributes or {}))
         self._head: Optional[Union[Node, Attachable]] = None
@@ -41,8 +41,8 @@ class Edge(object):
         return str(self)
 
     def __format_graphviz__(self) -> str:
-        from .Node import Node
         from .Attachable import Attachable
+        from .Node import Node
 
         connection = "->"
         if not self.is_directed:
@@ -122,8 +122,8 @@ class Edge(object):
         tail: Union["uqbar.graphs.Node", "uqbar.graphs.Attachable"],
         head: Union["uqbar.graphs.Node", "uqbar.graphs.Attachable"],
     ) -> "Edge":
-        from .Node import Node
         from .Attachable import Attachable
+        from .Node import Node
 
         prototype = (Node, Attachable)
         assert isinstance(tail, prototype)
