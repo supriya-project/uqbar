@@ -61,7 +61,7 @@ mypy:  ## Run mypy
 	mypy --ignore-missing-imports ${project}/
 
 pytest:  ## Run pytest
-	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term --showlocals
+	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term
 
 reformat:
 	make isort

@@ -3,9 +3,8 @@ import shutil
 import sys
 
 import pytest
-import sphinx
+import sphinx.errors
 
-from uqbar.book.console import ConsoleError
 from uqbar.strings import ansi_escape, normalize
 
 index_content = normalize(
@@ -518,7 +517,7 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
     """
     Build halts.
     """
-    with pytest.raises(ConsoleError):
+    with pytest.raises(sphinx.errors.ExtensionError):
         app.build()
     assert normalize(ansi_escape(status.getvalue())) == normalize(
         """
@@ -554,12 +553,8 @@ def test_sphinx_book_text_broken_setup(make_app, app_params):
     Fail build immediately on console setup error.
     """
     args, kwargs = app_params
-    with pytest.raises(ConsoleError) as excinfo:
+    with pytest.raises(sphinx.errors.ExtensionError):
         make_app(*args, **kwargs)
-    assert excinfo.value.args == (
-        'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nZeroDivisionError: division by zero\n',
-        None,
-    )
 
 
 @pytest.mark.sphinx(
@@ -572,9 +567,5 @@ def test_sphinx_book_text_broken_teardown(make_app, app_params):
     Fail build immediately on console teardown error.
     """
     args, kwargs = app_params
-    with pytest.raises(ConsoleError) as excinfo:
+    with pytest.raises(sphinx.errors.ExtensionError):
         make_app(*args, **kwargs)
-    assert excinfo.value.args == (
-        'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nZeroDivisionError: division by zero\n',
-        None,
-    )

@@ -15,8 +15,11 @@ from typing import Any, Dict
 from docutils import nodes
 from sphinx import addnodes  # type: ignore
 from sphinx.locale import _
+from sphinx.util import logging
 
 import uqbar.io
+
+logger = logging.getLogger(__name__)
 
 
 def handle_class(signature_node, module, object_name, cache):
