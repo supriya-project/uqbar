@@ -111,32 +111,27 @@ class CLI(abc.ABC):
 
     @property
     def argument_parser(self):
-        r"""The script's instance of argparse.ArgumentParser.
-        """
+        r"""The script's instance of argparse.ArgumentParser."""
         return self._argument_parser
 
     @property
     def formatted_help(self):
-        r"""Formatted help of developer script.
-        """
+        r"""Formatted help of developer script."""
         return self._argument_parser.format_help()
 
     @property
     def formatted_usage(self):
-        r"""Formatted usage of developer script.
-        """
+        r"""Formatted usage of developer script."""
         return self._argument_parser.format_usage()
 
     @property
     def formatted_version(self):
-        r"""Formatted version of developer script.
-        """
+        r"""Formatted version of developer script."""
         return self._argument_parser.format_version()
 
     @property
     def program_name(self):
-        r"""The name of the script, callable from the command line.
-        """
+        r"""The name of the script, callable from the command line."""
         name = "-".join(
             word.lower() for word in uqbar.strings.delimit_words(type(self).__name__)
         )

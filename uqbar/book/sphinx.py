@@ -218,7 +218,9 @@ def interpret_code_blocks(
                 )
             elif isinstance(block, (literal_block, doctest_block)):
                 console_output, errored, has_exception = interpret_literal_block(
-                    console, block, use_black=use_black,
+                    console,
+                    block,
+                    use_black=use_black,
                 )
             if errored:
                 traceback = find_traceback(console_output)
