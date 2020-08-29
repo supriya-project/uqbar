@@ -35,6 +35,7 @@ jobs:
         mypy --version
         make mypy
       if: matrix.python-version != 3.6
+    - uses: kamiazya/setup-graphviz@v1
     - name: Test pytest
       run: |
         pytest --version
