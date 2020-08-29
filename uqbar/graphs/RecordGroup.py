@@ -4,7 +4,7 @@ from uqbar.containers import UniqueTreeList
 
 
 class RecordGroup(UniqueTreeList):
-    """ A Graphviz record field group.
+    """A Graphviz record field group.
 
     ::
 
