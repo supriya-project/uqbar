@@ -21,9 +21,12 @@ install:
 - pip install -e .
 - python -c "import uqbar"
 - pip install -e .[test]
+- black --version
+- isort --version
+- mypy --version
+- pytest --version
 
 script:
-- ls -l
 - make black-check
 - make flake8
 - if [[ $TRAVIS_PYTHON_VERSION != 3.6 ]]; then make mypy; fi
