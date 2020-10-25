@@ -182,7 +182,8 @@ def find_traceback(console_output):
             if lines[0].startswith("Traceback (most recent call last):"):
                 break
             lines.pop(0)
-        return "\n".join(lines)
+        if lines:
+            return "\n".join(lines) + "\n"
 
 
 @contextlib.contextmanager
