@@ -32,7 +32,7 @@ classifiers = [
 ]
 
 install_requires = [
-    "Sphinx>=3.0.0",
+    "Sphinx>=3.2.0",
     "Unidecode>=1.0.0",
     "black>=19.3b0",
     "sphinx-rtd-theme>=0.4.0",

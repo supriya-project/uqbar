@@ -164,10 +164,15 @@ def group_literal_blocks_by_cache_path(blocks):
 
 def find_traceback(console_output):
     for item in reversed(console_output):
-        if isinstance(item, ConsoleOutput) and item.string.startswith(
-            "Traceback (most recent call last):"
-        ):
-            return item.string
+        if not isinstance(item, ConsoleOutput):
+            continue
+        # There could be non-traceback output before the traceback appears.
+        lines = item.string.splitlines()
+        while lines:
+            if lines[0].startswith("Traceback (most recent call last):"):
+                break
+            lines.pop(0)
+        return "\n".join(lines)
 
 
 @contextlib.contextmanager
