@@ -114,6 +114,7 @@ def on_doctree_read(app, document):
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
     kwargs = dict(
+        document=document,
         extensions=app.uqbar_book_extensions,
         setup_lines=app.config["uqbar_book_console_setup"],
         teardown_lines=app.config["uqbar_book_console_teardown"],
