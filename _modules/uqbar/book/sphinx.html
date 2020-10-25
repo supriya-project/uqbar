@@ -1,20 +1,15 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>uqbar.book.sphinx &mdash; uqbar 0.4.7 documentation</title>
+  <title>uqbar.book.sphinx &mdash; uqbar 0.4.8 documentation</title>
   
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
   
   
@@ -22,9 +17,7 @@
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -36,6 +29,12 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> uqbar
+            <a href="../../../index.html" class="icon icon-home"> uqbar
           
 
           
@@ -61,7 +60,7 @@
             
             
               <div class="version">
-                0.4.7
+                0.4.8
               </div>
             
           
@@ -78,7 +77,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -93,7 +91,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -132,7 +129,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -176,8 +173,18 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">black</span>
+
+    <span class="k">def</span> <span class="nf">black_format</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">FileMode</span><span class="p">(</span>
+            <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">black</span><span class="o">.</span><span class="n">format_str</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">black</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="black_format"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.black_format">[docs]</a>    <span class="k">def</span> <span class="nf">black_format</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">lines</span></div>
 
 
 <div class="viewcode-block" id="UqbarBookDirective"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective">[docs]</a><span class="k">class</span> <span class="nc">UqbarBookDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
@@ -318,10 +325,16 @@
 
 <div class="viewcode-block" id="find_traceback"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.find_traceback">[docs]</a><span class="k">def</span> <span class="nf">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">console_output</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">)</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
-            <span class="s2">&quot;Traceback (most recent call last):&quot;</span>
-        <span class="p">):</span>
-            <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ConsoleOutput</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="c1"># There could be non-traceback output before the traceback appears.</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
+                <span class="k">break</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="console_context"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.console_context">[docs]</a><span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
@@ -372,7 +385,9 @@
                 <span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="p">(</span><span class="n">literal_block</span><span class="p">,</span> <span class="n">doctest_block</span><span class="p">)):</span>
                 <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span> <span class="o">=</span> <span class="n">interpret_literal_block</span><span class="p">(</span>
-                    <span class="n">console</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">use_black</span><span class="o">=</span><span class="n">use_black</span><span class="p">,</span>
+                    <span class="n">console</span><span class="p">,</span>
+                    <span class="n">block</span><span class="p">,</span>
+                    <span class="n">use_black</span><span class="o">=</span><span class="n">use_black</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
                 <span class="n">traceback</span> <span class="o">=</span> <span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">)</span>
@@ -449,11 +464,8 @@
             <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
             <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">use_black</span> <span class="ow">and</span> <span class="n">black</span><span class="p">:</span>
-        <span class="n">mode</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">FileMode</span><span class="p">(</span>
-            <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="n">black</span><span class="o">.</span><span class="n">format_str</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">use_black</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">black_format</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span></div>
 
@@ -539,19 +551,11 @@
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Josiah Wolf Oberholtzer
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -562,6 +566,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
