@@ -1,0 +1,46 @@
+name: Testing
+on:
+  pull_request:
+    branches:
+    - master
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install
+      run: pip install -e .
+    - name: Check importability
+      run: python -c "import uqbar"
+    - name: Install test dependencies
+      run: pip install -U -e .[test]
+    - name: Test black
+      run: |
+        black --version
+        make black-check
+    - name: Test flake8
+      run: |
+        flake8 --version
+        make flake8
+    - name: Test mypy
+      run: |
+        mypy --version
+        make mypy
+      if: matrix.python-version != 3.6
+    - uses: kamiazya/setup-graphviz@v1
+    - name: Test pytest
+      run: |
+        pytest --version
+        make pytest
+    - name: Build docs
+      run: |
+        sphinx-build --version
+        make docs

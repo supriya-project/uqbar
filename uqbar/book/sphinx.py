@@ -22,8 +22,18 @@ from uqbar.book.console import (
 
 try:
     import black
+
+    def black_format(lines):
+        mode = black.FileMode(
+            line_length=80, target_versions=[black.TargetVersion.PY36]
+        )
+        return black.format_str("\n".join(lines), mode=mode).splitlines()
+
+
 except ImportError:
-    black = None
+
+    def black_format(lines):
+        return lines
 
 
 class UqbarBookDirective(Directive):
@@ -223,7 +233,9 @@ def interpret_code_blocks(
                 )
             elif isinstance(block, (literal_block, doctest_block)):
                 console_output, errored, has_exception = interpret_literal_block(
-                    console, block, use_black=use_black,
+                    console,
+                    block,
+                    use_black=use_black,
                 )
             if errored:
                 traceback = find_traceback(console_output)
@@ -300,11 +312,8 @@ def interpret_literal_block(console, block, use_black=False):
             lines.append("")
         elif line.startswith("Traceback (most recent call last):"):
             has_exception = True
-    if use_black and black:
-        mode = black.FileMode(
-            line_length=80, target_versions=[black.TargetVersion.PY36]
-        )
-        lines = black.format_str("\n".join(lines), mode=mode).splitlines()
+    if use_black:
+        lines = black_format(lines)
     console_output, errored = console.interpret(lines)
     return console_output, errored, has_exception
 

@@ -34,7 +34,7 @@ classifiers = [
 install_requires = [
     "Sphinx>=3.2.0",
     "Unidecode>=1.0.0",
-    "black>=19.3b0",
+    "black>=19.10b0",
     "sphinx-rtd-theme>=0.4.0",
 ]
 
@@ -43,11 +43,11 @@ if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
 
 extras_require = {
     "test": [
-        "flake8",
-        "isort",
-        "mypy >= 0.660",
-        "pytest >= 4.1.0",
-        "pytest-cov >= 2.6.0",
+        "flake8 >= 3.8.0",
+        "isort >= 5.0.0",
+        "mypy >= 0.782",
+        "pytest >= 4.6.0",
+        "pytest-cov >= 2.10.0",
     ]
 }
 

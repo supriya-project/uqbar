@@ -144,7 +144,8 @@ class CLIAggregator(CLI):
                     key, help="{{{}}} subcommand(s)".format(", ".join(subkeys))
                 )
                 group_subparsers = group_subparser.add_subparsers(
-                    dest="subsubparser_name", title="{} subcommands".format(key),
+                    dest="subsubparser_name",
+                    title="{} subcommands".format(key),
                 )
                 for subkey in subkeys:
                     cli_class = alias_map[key][subkey]
@@ -157,8 +158,7 @@ class CLIAggregator(CLI):
 
     @property
     def cli_aliases(self):
-        r"""Developer script aliases.
-        """
+        r"""Developer script aliases."""
         scripting_groups = []
         aliases = {}
         for cli_class in self.cli_classes:
@@ -213,14 +213,12 @@ class CLIAggregator(CLI):
 
     @abc.abstractproperty
     def cli_classes(self):
-        r"""Developer scripts classes.
-        """
+        r"""Developer scripts classes."""
         return []
 
     @property
     def cli_program_names(self):
-        r"""Developer script program names.
-        """
+        r"""Developer script program names."""
         program_names = {}
         for cli_class in self.cli_classes:
             instance = cli_class()
