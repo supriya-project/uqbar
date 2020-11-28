@@ -41,7 +41,7 @@ def _get_sequence_repr(expr):
         for line in repr(x).splitlines():
             result.append("    " + line)
         result[-1] += ","
-    result.append("    " + braces[-1])
+    result.append(braces[-1])
     return "\n".join(result)
 
 
