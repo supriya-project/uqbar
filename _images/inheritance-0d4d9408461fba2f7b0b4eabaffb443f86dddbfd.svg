@@ -8,6 +8,16 @@
  viewBox="0.00 0.00 510.50 641.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 637)">
 <title>InheritanceGraph</title>
+<g id="clust6" class="cluster">
+<title>cluster_uqbar.book.extensions</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M207,-13C207,-13 369,-13 369,-13 375,-13 381,-19 381,-25 381,-25 381,-66 381,-66 381,-72 375,-78 369,-78 369,-78 207,-78 207,-78 201,-78 195,-72 195,-66 195,-66 195,-25 195,-25 195,-19 201,-13 207,-13"/>
+<text text-anchor="middle" x="288" y="-66" font-family="Arial" font-size="10.00">uqbar.book.extensions</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_uqbar.book.sphinx</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M416,-8C416,-8 488,-8 488,-8 494,-8 500,-14 500,-20 500,-20 500,-353 500,-353 500,-359 494,-365 488,-365 488,-365 416,-365 416,-365 410,-365 404,-359 404,-353 404,-353 404,-20 404,-20 404,-14 410,-8 416,-8"/>
+<text text-anchor="middle" x="452" y="-353" font-family="Arial" font-size="10.00">uqbar.book.sphinx</text>
+</g>
 <g id="clust1" class="cluster">
 <title>cluster_builtins</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-487C20,-487 259,-487 259,-487 265,-487 271,-493 271,-499 271,-499 271,-540 271,-540 271,-546 265,-552 259,-552 259,-552 20,-552 20,-552 14,-552 8,-546 8,-540 8,-540 8,-499 8,-499 8,-493 14,-487 20,-487"/>
@@ -32,16 +42,6 @@
 <title>cluster_uqbar.book.console</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M413.5,-373C413.5,-373 490.5,-373 490.5,-373 496.5,-373 502.5,-379 502.5,-385 502.5,-385 502.5,-608 502.5,-608 502.5,-614 496.5,-620 490.5,-620 490.5,-620 413.5,-620 413.5,-620 407.5,-620 401.5,-614 401.5,-608 401.5,-608 401.5,-385 401.5,-385 401.5,-379 407.5,-373 413.5,-373"/>
 <text text-anchor="middle" x="452" y="-608" font-family="Arial" font-size="10.00">uqbar.book.console</text>
-</g>
-<g id="clust6" class="cluster">
-<title>cluster_uqbar.book.extensions</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M207,-13C207,-13 369,-13 369,-13 375,-13 381,-19 381,-25 381,-25 381,-66 381,-66 381,-72 375,-78 369,-78 369,-78 207,-78 207,-78 201,-78 195,-72 195,-66 195,-66 195,-25 195,-25 195,-19 201,-13 207,-13"/>
-<text text-anchor="middle" x="288" y="-66" font-family="Arial" font-size="10.00">uqbar.book.extensions</text>
-</g>
-<g id="clust7" class="cluster">
-<title>cluster_uqbar.book.sphinx</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M416,-8C416,-8 488,-8 488,-8 494,-8 500,-14 500,-20 500,-20 500,-353 500,-353 500,-359 494,-365 488,-365 488,-365 416,-365 416,-365 410,-365 404,-359 404,-353 404,-353 404,-20 404,-20 404,-14 410,-8 416,-8"/>
-<text text-anchor="middle" x="452" y="-353" font-family="Arial" font-size="10.00">uqbar.book.sphinx</text>
 </g>
 <!-- builtins.BaseException&#45;&gt;builtins.Exception -->
 <g id="edge1" class="edge">
