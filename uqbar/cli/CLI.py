@@ -51,7 +51,8 @@ class CLI(abc.ABC):
     ### SPECIAL METHODS ###
 
     def __call__(self, arguments=None) -> None:
-        r"""Calls developer script.
+        """
+        Calls developer script.
 
         Returns none.
         """
@@ -111,27 +112,37 @@ class CLI(abc.ABC):
 
     @property
     def argument_parser(self):
-        r"""The script's instance of argparse.ArgumentParser."""
+        """
+        The script's instance of argparse.ArgumentParser.
+        """
         return self._argument_parser
 
     @property
     def formatted_help(self):
-        r"""Formatted help of developer script."""
+        """
+        Formatted help of developer script.
+        """
         return self._argument_parser.format_help()
 
     @property
     def formatted_usage(self):
-        r"""Formatted usage of developer script."""
+        """
+        Formatted usage of developer script.
+        """
         return self._argument_parser.format_usage()
 
     @property
     def formatted_version(self):
-        r"""Formatted version of developer script."""
+        """
+        Formatted version of developer script.
+        """
         return self._argument_parser.format_version()
 
     @property
     def program_name(self):
-        r"""The name of the script, callable from the command line."""
+        """
+        The name of the script, callable from the command line.
+        """
         name = "-".join(
             word.lower() for word in uqbar.strings.delimit_words(type(self).__name__)
         )

@@ -28,7 +28,7 @@ def test_objects_get_repr_01():
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
         """
     )
 
@@ -44,7 +44,7 @@ def test_objects_get_repr_02():
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
         """
     )
 
@@ -60,7 +60,7 @@ def test_objects_get_repr_03():
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
         """
     )
 
@@ -79,8 +79,8 @@ def test_objects_get_repr_04():
                 'd',
                 foo='x',
                 quux=['y', 'z'],
-                ),
+            ),
             bar={1, 2, 3},
-            )
+        )
     """
     )

@@ -158,7 +158,9 @@ class CLIAggregator(CLI):
 
     @property
     def cli_aliases(self):
-        r"""Developer script aliases."""
+        """
+        Developer script aliases.
+        """
         scripting_groups = []
         aliases = {}
         for cli_class in self.cli_classes:
@@ -213,12 +215,16 @@ class CLIAggregator(CLI):
 
     @abc.abstractproperty
     def cli_classes(self):
-        r"""Developer scripts classes."""
+        """
+        Developer scripts classes.
+        """
         return []
 
     @property
     def cli_program_names(self):
-        r"""Developer script program names."""
+        """
+        Developer script program names.
+        """
         program_names = {}
         for cli_class in self.cli_classes:
             instance = cli_class()

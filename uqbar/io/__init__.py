@@ -49,7 +49,8 @@ def find_common_prefix(
 
 
 def find_executable(name: str, flags=os.X_OK) -> List[str]:
-    r"""Finds executable `name`.
+    """
+    Finds executable `name`.
 
     Similar to Unix ``which`` command.
 

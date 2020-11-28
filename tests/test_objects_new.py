@@ -30,7 +30,7 @@ def test_objects_new_01():
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
         """
     )
     assert repr(object_b) == uqbar.strings.normalize(
@@ -41,12 +41,12 @@ def test_objects_new_01():
                 'x',
                 'y',
                 bar=[1, 2, 3],
-                ),
+            ),
             'c',
             'd',
             foo='FOO',
             quux=['y', 'z'],
-            )
+        )
         """
     )
     object_c = uqbar.objects.new(
@@ -61,12 +61,12 @@ def test_objects_new_01():
                 'x',
                 'y',
                 bar=[1, 2, 3],
-                ),
+            ),
             'c',
             'd',
             foo='FOO',
             quux=['y', 'z'],
-            )
+        )
         """
     )
     assert repr(object_c) == uqbar.strings.normalize(
@@ -78,11 +78,11 @@ def test_objects_new_01():
                 'y',
                 bar=[4, 5, 6, 7],
                 foo='new FOO',
-                ),
+            ),
             'c',
             'd',
             foo='FOO',
             quux=['y', 'z'],
-            )
+        )
         """
     )

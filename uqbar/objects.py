@@ -112,7 +112,7 @@ def get_repr(expr, multiline=None):
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
 
     """
     signature = _get_object_signature(expr)
@@ -165,7 +165,7 @@ def get_repr(expr, multiline=None):
     if has_lines and parts and multiline is not False:
         for i, part in enumerate(parts):
             parts[i] = "\n".join("    " + line for line in part.split("\n"))
-        parts.append("    )")
+        parts.append(")")
         parts = ",\n".join(parts)
         return "{}(\n{}".format(type(expr).__name__, parts)
 
@@ -317,7 +317,7 @@ def new(expr, *args, **kwargs):
             bar=1234,
             foo=666,
             quux=['y', 'z'],
-            )
+        )
 
     Original object is unchanged:
 
@@ -331,7 +331,7 @@ def new(expr, *args, **kwargs):
             'd',
             foo='x',
             quux=['y', 'z'],
-            )
+        )
 
     """
     # TODO: Clarify old vs. new variable naming here.
