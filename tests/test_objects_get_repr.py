@@ -84,3 +84,26 @@ def test_objects_get_repr_04():
         )
     """
     )
+
+
+def test_objects_get_repr_05():
+    object_a = MyReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
+    object_b = MyReprObject("pqr", [object_a], bar=set([1, 2, 3]))
+    assert repr(object_b) == uqbar.strings.normalize(
+        """
+        MyReprObject(
+            'pqr',
+            [
+                MyReprObject(
+                    'a',
+                    'b',
+                    'c',
+                    'd',
+                    foo='x',
+                    quux=['y', 'z'],
+                ),
+            ],
+            bar={1, 2, 3},
+        )
+    """
+    )
