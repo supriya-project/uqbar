@@ -2,7 +2,6 @@
 .DEFAULT_GOAL := help
 
 project = uqbar
-errors = E123,E203,E265,E266,E501,W503
 origin := $(shell git config --get remote.origin.url)
 formatPaths = ${project}/ tests/ *.py
 testPaths = ${project}/ tests/
@@ -34,7 +33,7 @@ docs:  ## Build the docs
 	make -C docs/ html 
 
 flake8:  ## Run flake8
-	flake8 --max-line-length=90 --isolated --ignore=${errors} ${formatPaths}
+	flake8 ${formatPaths}
 
 gh-pages:  ## Upload docs to GitHub pages
 	rm -Rf gh-pages/
@@ -70,8 +69,8 @@ reformat:
 release:
 	make clean
 	make build
-	twine upload dist/*.tar.gz
 	make docs
+	twine upload dist/*.tar.gz
 	make gh-pages
 
 test:
