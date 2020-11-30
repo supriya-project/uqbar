@@ -35,7 +35,7 @@ install_requires = [
     "Sphinx >= 3.2.0",
     "Unidecode >= 1.0.0",
     "black == 19.10b0",  # Trailing comma behavior in 20.x needs work
-    "sphinx-rtd-theme >= 0.4.0",
+    "sphinx-rtd-theme >= 0.5.0",
 ]
 
 if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):

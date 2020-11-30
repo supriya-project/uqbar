@@ -45,8 +45,6 @@ def handle_method(signature_node, module, object_name, cache):
     """
     Styles ``automethod`` entries.
 
-    Adds ``abstract`` prefix to abstract methods.
-
     Adds link to originating class for inherited methods.
     """
     *class_names, attr_name = object_name.split(".")  # Handle nested classes
@@ -55,7 +53,6 @@ def handle_method(signature_node, module, object_name, cache):
         class_ = getattr(class_, class_name, None)
         if class_ is None:
             return
-    attr = getattr(class_, attr_name)
     try:
         inspected_attr = cache[class_][attr_name]
         defining_class = inspected_attr.defining_class
@@ -87,9 +84,6 @@ def handle_method(signature_node, module, object_name, cache):
                 "overridden ", "overridden ", classes=["property"]
             )
             signature_node.insert(0, emphasis)
-    if getattr(attr, "__isabstractmethod__", False):
-        emphasis = nodes.emphasis("abstract", "abstract", classes=["property"])
-        signature_node.insert(0, emphasis)
 
 
 def on_doctree_read(app, document):
