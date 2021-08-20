@@ -43,11 +43,14 @@ if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
 
 extras_require = {
     "test": [
-        "flake8 >= 3.8.0",
-        "isort >= 5.0.0",
-        "mypy >= 0.782",
-        "pytest >= 4.6.0",
-        "pytest-cov >= 2.10.0",
+        "black == 19.10b0",  # Trailing comma behavior in 20.x needs work
+        "flake8 >= 3.9.0",
+        "isort >= 5.9.0",
+        "mypy >= 0.900",
+        "pytest >= 6.2.0",
+        "pytest-cov >= 2.12.0",
+        "types-PyYAML",
+        "types-docutils",
     ]
 }
 
