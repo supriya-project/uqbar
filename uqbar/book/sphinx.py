@@ -10,7 +10,7 @@ from typing import Any, Dict
 from docutils.frontend import OptionParser
 from docutils.nodes import Element, General, doctest_block, literal_block
 from docutils.parsers.rst import Directive, Parser
-from docutils.parsers.rst.directives import flag, register
+from docutils.parsers.rst.directives import flag, register_directive
 from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
 
@@ -360,7 +360,7 @@ def literal_block_to_cache_path(block):
 def parse_rst(rst_string):
     parser = Parser()
     for name, class_ in []:  # Add custom directives here
-        register(name, class_)
+        register_directive(name, class_)
     settings = OptionParser(components=(Parser,)).get_default_values()
     document = new_document("test", settings)
     parser.parse(rst_string, document)
