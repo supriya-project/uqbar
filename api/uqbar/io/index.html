@@ -3,22 +3,27 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>io &mdash; uqbar 0.5.2 documentation</title>
+  <title>io &mdash; uqbar 0.5.3 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -28,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -53,7 +58,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> uqbar
+            <a href="../../../index.html" class="icon icon-home"> uqbar
           
 
           
@@ -63,7 +68,7 @@
             
             
               <div class="version">
-                0.5.2
+                0.5.3
               </div>
             
           
@@ -153,6 +158,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -168,7 +175,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../_sources/api/uqbar/io/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -179,10 +186,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -306,8 +313,8 @@
 </tbody>
 </table>
 <dl class="py function">
-<dt id="uqbar.io.find_common_prefix">
-<code class="sig-name descname">find_common_prefix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">paths</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_common_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.find_common_prefix">
+<span class="sig-name descname"><span class="pre">find_common_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_common_prefix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the common prefix of two or more paths.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
@@ -331,8 +338,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="uqbar.io.find_executable">
-<code class="sig-name descname">find_executable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_executable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.find_executable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.find_executable">
+<span class="sig-name descname"><span class="pre">find_executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#find_executable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.find_executable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds executable <cite>name</cite>.</p>
 <p>Similar to Unix <code class="docutils literal notranslate"><span class="pre">which</span></code> command.</p>
 <p>Returns list of zero or more full paths to <cite>name</cite>.</p>
@@ -347,8 +354,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="uqbar.io.relative_to">
-<code class="sig-name descname">relative_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_path</span></em>, <em class="sig-param"><span class="n">target_path</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#relative_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.relative_to" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.relative_to">
+<span class="sig-name descname"><span class="pre">relative_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#relative_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.relative_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</p>
 <p>Handles the case of paths without a common prefix.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pathlib</span>
@@ -359,9 +366,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-  File <span class="nb">&quot;/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/pathlib.py&quot;</span>, line <span class="m">904</span>, in <span class="n">relative_to</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{!r}</span><span class="s2"> does not start with </span><span class="si">{!r}</span><span class="s2">&quot;</span>
-<span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; does not start with &#39;foo/bar/baz&#39;</span>
+  File <span class="nb">&quot;/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py&quot;</span>, line <span class="m">928</span>, in <span class="n">relative_to</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{!r}</span><span class="s2"> is not in the subpath of </span><span class="si">{!r}</span><span class="s2">&quot;</span>
+<span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; is not in the subpath of &#39;foo/bar/baz&#39; OR one path is relative and the other is absolute.</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
@@ -383,8 +390,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="uqbar.io.walk">
-<code class="sig-name descname">walk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root_path</span></em>, <em class="sig-param"><span class="n">top_down</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#walk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.walk" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.walk">
+<span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.walk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Walks a directory tree.</p>
 <p>Like <a class="reference external" href="https://docs.python.org/3.6/library/os.html#os.walk" title="(in Python v3.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.walk()</span></code></a> but yielding instances of <a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a>
 instead of strings.</p>
@@ -402,8 +409,8 @@ instead of strings.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="uqbar.io.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">contents</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">logger_func</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.write" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io.html#write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
 <p>Checks if <code class="docutils literal notranslate"><span class="pre">path</span></code> already exists and only write out new contents if the
 old contents do not match.</p>
@@ -429,37 +436,29 @@ old contents do not match.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="DirectoryChange.html" class="btn btn-neutral float-right" title="DirectoryChange" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../graphs/RecordGroup.html" class="btn btn-neutral float-left" title="RecordGroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+        &#169; Copyright 2017, Josiah Wolf Oberholtzer.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

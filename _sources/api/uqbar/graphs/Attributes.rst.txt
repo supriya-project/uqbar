@@ -48,6 +48,10 @@ Attributes
 
    .. container:: inherited
 
+      .. automethod:: Attributes.__class_getitem__
+
+   .. container:: inherited
+
       .. automethod:: Attributes.__contains__
 
    .. automethod:: Attributes.__delitem__

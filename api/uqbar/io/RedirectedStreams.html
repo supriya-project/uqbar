@@ -3,22 +3,27 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>RedirectedStreams &mdash; uqbar 0.5.2 documentation</title>
+  <title>RedirectedStreams &mdash; uqbar 0.5.3 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -28,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -53,7 +58,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> uqbar
+            <a href="../../../index.html" class="icon icon-home"> uqbar
           
 
           
@@ -63,7 +68,7 @@
             
             
               <div class="version">
-                0.5.2
+                0.5.3
               </div>
             
           
@@ -153,6 +158,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -170,7 +177,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../_sources/api/uqbar/io/RedirectedStreams.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -181,10 +188,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="Timer.html" class="btn btn-neutral float-right" title="Timer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Timer.html" class="btn btn-neutral float-right" title="Timer" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="Profiler.html" class="btn btn-neutral float-left" title="Profiler" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Profiler.html" class="btn btn-neutral float-left" title="Profiler" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -239,8 +246,8 @@
 }</p></object></div>
 </div>
 <dl class="py class">
-<dt id="uqbar.io.RedirectedStreams.RedirectedStreams">
-<em class="property">class </em><code class="sig-name descname">RedirectedStreams</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stdout</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stderr</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.RedirectedStreams.RedirectedStreams">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">RedirectedStreams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams" title="Permalink to this definition">¶</a></dt>
 <dd><p>A context manager for capturing <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> output.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
@@ -286,24 +293,24 @@ multiple timers.</p>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt id="uqbar.io.RedirectedStreams.RedirectedStreams.__enter__">
-<code class="sig-name descname">__enter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.__enter__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.RedirectedStreams.RedirectedStreams.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams.__enter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.__enter__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="uqbar.io.RedirectedStreams.RedirectedStreams.__exit__">
-<code class="sig-name descname">__exit__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exc_type</span></em>, <em class="sig-param"><span class="n">exc_value</span></em>, <em class="sig-param"><span class="n">traceback</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.__exit__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.RedirectedStreams.RedirectedStreams.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/RedirectedStreams.html#RedirectedStreams.__exit__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.__exit__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="py attribute">
-<dt id="uqbar.io.RedirectedStreams.RedirectedStreams.stderr">
-<code class="sig-name descname">stderr</code><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.stderr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.RedirectedStreams.RedirectedStreams.stderr">
+<span class="sig-name descname"><span class="pre">stderr</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.stderr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="uqbar.io.RedirectedStreams.RedirectedStreams.stdout">
-<code class="sig-name descname">stdout</code><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.stdout" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="uqbar.io.RedirectedStreams.RedirectedStreams.stdout">
+<span class="sig-name descname"><span class="pre">stdout</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.RedirectedStreams.stdout" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -315,37 +322,29 @@ multiple timers.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Timer.html" class="btn btn-neutral float-right" title="Timer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Profiler.html" class="btn btn-neutral float-left" title="Profiler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="Timer.html" class="btn btn-neutral float-right" title="Timer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Profiler.html" class="btn btn-neutral float-left" title="Profiler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2017, Josiah Wolf Oberholtzer
+        &#169; Copyright 2017, Josiah Wolf Oberholtzer.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
