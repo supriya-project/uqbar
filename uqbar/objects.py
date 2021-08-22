@@ -84,7 +84,7 @@ def get_hash(expr):
     return hash(tuple(hash_values))
 
 
-def get_repr(expr, multiline=None):
+def get_repr(expr, multiline=None, suppress_defaults=True):
     """
     Build a repr string for ``expr`` from its vars and signature.
 
@@ -148,7 +148,7 @@ def get_repr(expr, multiline=None):
 
     # Format **kwargs
     for key, value in sorted(kwargs.items()):
-        if key in defaults and value == defaults[key]:
+        if suppress_defaults and key in defaults and value == defaults[key]:
             continue
         value = _dispatch_formatting(value)
         arg_repr = "{}={}".format(key, value)
@@ -256,6 +256,8 @@ def get_vars(expr):
                 args[name] = value
             elif parameter.default != value:
                 kwargs[name] = value
+            else:
+                kwargs[name] = parameter.default
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
             value = None
