@@ -85,7 +85,7 @@ class GraphExtension(Extension):
                         for key, value in console.proxy_options.items()
                         if key.startswith("graphviz/")
                     },
-                ),
+                )
             ),
         )
 

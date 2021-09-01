@@ -34,7 +34,7 @@ classifiers = [
 install_requires = [
     "Sphinx >= 3.2.0",
     "Unidecode >= 1.0.0",
-    "black == 19.10b0",  # Trailing comma behavior in 20.x needs work
+    "black",
     "sphinx-rtd-theme >= 0.5.0",
 ]
 
@@ -43,7 +43,6 @@ if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
 
 extras_require = {
     "test": [
-        "black == 19.10b0",  # Trailing comma behavior in 20.x needs work
         "flake8 >= 3.9.0",
         "isort >= 5.9.0",
         "mypy >= 0.900",
