@@ -7,14 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Timer &mdash; uqbar 0.5.4 documentation</title>
+  <title>Timer &mdash; uqbar 0.5.5 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
@@ -33,7 +31,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -68,7 +65,7 @@
             
             
               <div class="version">
-                0.5.4
+                0.5.5
               </div>
             
           
@@ -246,21 +243,18 @@
 }</p></object></div>
 </div>
 <dl class="py class">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Timer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exit_message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Timer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exit_message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A context manager for timing blocks of code.</p>
 <p>This context manager is not reentrant. Use a separate instance when nesting
 multiple timers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>exit_message</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – message to print on entering the context</p></li>
-<li><p><strong>enter_message</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – message to print on exiting the context</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – whether to print output</p></li>
+<li><p><strong>exit_message</strong> – message to print on entering the context</p></li>
+<li><p><strong>enter_message</strong> – message to print on exiting the context</p></li>
+<li><p><strong>verbose</strong> – whether to print output</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
@@ -271,7 +265,7 @@ multiple timers.</p>
 <span class="gp">... </span>        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span> <span class="o">**</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 <span class="gp">... </span>
 <span class="go">Looping!</span>
-<span class="go">Elapsed time: 0.0016639232635498047</span>
+<span class="go">Elapsed time: 0.0016372203826904297</span>
 </pre></div>
 </div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
@@ -309,8 +303,8 @@ multiple timers.</p>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.__enter__">
-<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__enter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__enter__" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.__enter__">
+<code class="sig-name descname"><span class="pre">__enter__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__enter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__enter__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#uqbar.io.Timer.Timer" title="uqbar.io.Timer.Timer">uqbar.io.Timer.Timer</a></p>
@@ -319,8 +313,8 @@ multiple timers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.__exit__">
-<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__exit__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__exit__" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.__exit__">
+<code class="sig-name descname"><span class="pre">__exit__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/io/Timer.html#Timer.__exit__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.io.Timer.Timer.__exit__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
@@ -330,33 +324,33 @@ multiple timers.</p>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.elapsed_time">
-<span class="sig-name descname"><span class="pre">elapsed_time</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.elapsed_time" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.elapsed_time">
+<code class="sig-name descname"><span class="pre">elapsed_time</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.elapsed_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.enter_message">
-<span class="sig-name descname"><span class="pre">enter_message</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.enter_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.enter_message">
+<code class="sig-name descname"><span class="pre">enter_message</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.enter_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.exit_message">
-<span class="sig-name descname"><span class="pre">exit_message</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.exit_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.exit_message">
+<code class="sig-name descname"><span class="pre">exit_message</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.exit_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.start_time">
-<span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.start_time" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.start_time">
+<code class="sig-name descname"><span class="pre">start_time</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.start_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.stop_time">
-<span class="sig-name descname"><span class="pre">stop_time</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.stop_time" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.stop_time">
+<code class="sig-name descname"><span class="pre">stop_time</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.stop_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.io.Timer.Timer.verbose">
-<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#uqbar.io.Timer.Timer.verbose" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.io.Timer.Timer.verbose">
+<code class="sig-name descname"><span class="pre">verbose</span></code><a class="headerlink" href="#uqbar.io.Timer.Timer.verbose" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

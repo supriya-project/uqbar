@@ -7,14 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>UniqueTreeNode &mdash; uqbar 0.5.4 documentation</title>
+  <title>UniqueTreeNode &mdash; uqbar 0.5.5 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
@@ -33,7 +31,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -68,7 +65,7 @@
             
             
               <div class="version">
-                0.5.4
+                0.5.5
               </div>
             
           
@@ -338,8 +335,8 @@
 }</p></object></div>
 </div>
 <dl class="py class">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">UniqueTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">UniqueTreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/containers/UniqueTreeNode.html#UniqueTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>A node in a “unique” tree.</p>
 <p>Unique tree nodes may have at most one parent and may appear only once in
 the tree.</p>
@@ -371,28 +368,20 @@ the tree.</p>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Read/write properties</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
-</dd>
-</dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.name" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.name">
+<code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth">
-<span class="sig-name descname"><span class="pre">depth</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth">
+<code class="sig-name descname"><span class="pre">depth</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.depth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order">
-<span class="sig-name descname"><span class="pre">graph_order</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order">
+<code class="sig-name descname"><span class="pre">graph_order</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.graph_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="kn">import</span> <span class="n">UniqueTreeList</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
@@ -421,18 +410,18 @@ the tree.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent">
-<span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent">
+<code class="sig-name descname"><span class="pre">parent</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage">
-<span class="sig-name descname"><span class="pre">parentage</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage">
+<code class="sig-name descname"><span class="pre">parentage</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.parentage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.root">
-<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.root" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.containers.UniqueTreeNode.UniqueTreeNode.root">
+<code class="sig-name descname"><span class="pre">root</span></code><a class="headerlink" href="#uqbar.containers.UniqueTreeNode.UniqueTreeNode.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

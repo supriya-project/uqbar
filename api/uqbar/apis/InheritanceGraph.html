@@ -7,14 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>InheritanceGraph &mdash; uqbar 0.5.4 documentation</title>
+  <title>InheritanceGraph &mdash; uqbar 0.5.5 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
 
@@ -33,7 +31,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -68,7 +65,7 @@
             
             
               <div class="version">
-                0.5.4
+                0.5.5
               </div>
             
           
@@ -255,13 +252,15 @@
 }</p></object></div>
 </div>
 <dl class="py class">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">InheritanceGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineage_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">InheritanceGraph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineage_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>A builder of Graphviz inheritance graphs.</p>
 <p>Here we build the inheritance graph of all classes found in
 <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.apis</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span><span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">],)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 <span class="go">digraph InheritanceGraph {</span>
 <span class="go">    graph [bgcolor=transparent,</span>
@@ -323,7 +322,8 @@ antecedents or descendants pass through the classes identified by those
 lineage paths. Here we collect all classes defined in <a class="reference internal" href="../index.html#module-uqbar" title="uqbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar</span></code></a> and
 then constrain to those passing through <a class="reference internal" href="../containers/index.html#module-uqbar.containers" title="uqbar.containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uqbar.containers</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">uqbar</span><span class="o">.</span><span class="n">apis</span><span class="o">.</span><span class="n">InheritanceGraph</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar&quot;</span><span class="p">],</span> <span class="n">lineage_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">package_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">lineage_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uqbar.containers&quot;</span><span class="p">],</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 <span class="go">digraph InheritanceGraph {</span>
@@ -433,14 +433,11 @@ then constrain to those passing through <a class="reference internal" href="../c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>package_paths</strong> (<em>Sequence</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>module</em><em>]</em><em>]</em>) – a sequence of package path strings, classes or
+<li><p><strong>package_paths</strong> – a sequence of package path strings, classes or
 modules to seed the inheritance graph with</p></li>
-<li><p><strong>lineage_paths</strong> (<em>Sequence</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>module</em><em>]</em><em>]</em>) – a sequence of package path strings, classes or
+<li><p><strong>lineage_paths</strong> – a sequence of package path strings, classes or
 modules to constrain the inheritance graph with</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)">None</a></p>
 </dd>
 </dl>
 <hr/><p class="class-header rubric">Attributes Summary</p>
@@ -475,8 +472,8 @@ modules to constrain the inheritance graph with</p></li>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__len__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__len__">
+<code class="sig-name descname"><span class="pre">__len__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__len__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__len__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)">int</a></p>
@@ -485,8 +482,8 @@ modules to constrain the inheritance graph with</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">
-<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.__str__">
+<em class="property"><span class="pre">overridden</span> </em><code class="sig-name descname"><span class="pre">__str__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -497,29 +494,29 @@ modules to constrain the inheritance graph with</p></li>
 
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
-<span class="sig-name descname"><span class="pre">build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph">
+<code class="sig-name descname"><span class="pre">build_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/apis/InheritanceGraph.html#InheritanceGraph.build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.build_graph" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths">
-<span class="sig-name descname"><span class="pre">all_class_paths</span></span><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths">
+<code class="sig-name descname"><span class="pre">all_class_paths</span></code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.all_class_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio">
-<span class="sig-name descname"><span class="pre">aspect_ratio</span></span><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio">
+<code class="sig-name descname"><span class="pre">aspect_ratio</span></code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.aspect_ratio" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents">
-<span class="sig-name descname"><span class="pre">children_to_parents</span></span><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents">
+<code class="sig-name descname"><span class="pre">children_to_parents</span></code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.children_to_parents" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children">
-<span class="sig-name descname"><span class="pre">parents_to_children</span></span><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children">
+<code class="sig-name descname"><span class="pre">parents_to_children</span></code><a class="headerlink" href="#uqbar.apis.InheritanceGraph.InheritanceGraph.parents_to_children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

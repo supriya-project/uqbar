@@ -7,14 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>strings &mdash; uqbar 0.5.4 documentation</title>
+  <title>strings &mdash; uqbar 0.5.5 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/uqbar.css" type="text/css" />
 
@@ -33,7 +31,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -67,7 +64,7 @@
             
             
               <div class="version">
-                0.5.4
+                0.5.5
               </div>
             
           
@@ -219,13 +216,13 @@
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="uqbar.strings.ansi_escape">
-<span class="sig-name descname"><span class="pre">ansi_escape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#ansi_escape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.ansi_escape" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.strings.ansi_escape">
+<code class="sig-name descname"><span class="pre">ansi_escape</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#ansi_escape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.ansi_escape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="uqbar.strings.delimit_words">
-<span class="sig-name descname"><span class="pre">delimit_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#delimit_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.delimit_words" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.strings.delimit_words">
+<code class="sig-name descname"><span class="pre">delimit_words</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#delimit_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.delimit_words" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delimit a string at word boundaries.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">delimit_words</span><span class="p">(</span><span class="s2">&quot;i want to believe&quot;</span><span class="p">))</span>
@@ -255,8 +252,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="uqbar.strings.normalize">
-<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.normalize" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.strings.normalize">
+<code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizes whitespace.</p>
 <p>Strips leading and trailing blank lines, dedents, and removes trailing
 whitespace from the result.</p>
@@ -271,8 +268,8 @@ whitespace from the result.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="uqbar.strings.to_dash_case">
-<span class="sig-name descname"><span class="pre">to_dash_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_dash_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.to_dash_case" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.strings.to_dash_case">
+<code class="sig-name descname"><span class="pre">to_dash_case</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_dash_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.to_dash_case" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a string to dash-delimited words.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;Tô Đặc Biệt Xe Lửa&quot;</span>
@@ -296,8 +293,8 @@ whitespace from the result.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="uqbar.strings.to_snake_case">
-<span class="sig-name descname"><span class="pre">to_snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_snake_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.to_snake_case" title="Permalink to this definition">¶</a></dt>
+<dt id="uqbar.strings.to_snake_case">
+<code class="sig-name descname"><span class="pre">to_snake_case</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/uqbar/strings.html#to_snake_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.strings.to_snake_case" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a string to underscore-delimited words.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;Tô Đặc Biệt Xe Lửa&quot;</span>
