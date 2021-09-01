@@ -1,12 +1,4 @@
-from uqbar.graphs import (
-    Graph,
-    LineBreak,
-    Node,
-    Table,
-    TableCell,
-    TableRow,
-    Text,
-)
+from uqbar.graphs import Graph, LineBreak, Node, Table, TableCell, TableRow, Text
 from uqbar.strings import normalize
 
 

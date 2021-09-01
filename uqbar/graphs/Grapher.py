@@ -19,9 +19,7 @@ class Grapher:
 
     ### INITIALIZER ###
 
-    def __init__(
-        self, graphable, format_="pdf", layout="dot", output_directory=None,
-    ):
+    def __init__(self, graphable, format_="pdf", layout="dot", output_directory=None):
         if layout not in self._valid_layouts:
             raise ValueError("Invalid layout: {layout!r}")
         if format_ not in self._valid_formats:
@@ -129,6 +127,6 @@ class Grapher:
 
     def run_command(self, command: str) -> Tuple[str, int]:
         completed_process = subprocess.run(
-            command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
         )
         return completed_process.stdout.decode(), completed_process.returncode == 0

@@ -14,12 +14,7 @@ from docutils.parsers.rst.directives import flag, register_directive
 from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
 
-from uqbar.book.console import (
-    Console,
-    ConsoleError,
-    ConsoleInput,
-    ConsoleOutput,
-)
+from uqbar.book.console import Console, ConsoleError, ConsoleInput, ConsoleOutput
 
 try:
     import black
@@ -44,10 +39,7 @@ class UqbarBookDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec: Dict[str, Any] = {
-        "allow-exceptions": flag,
-        "hide": flag,
-    }
+    option_spec: Dict[str, Any] = {"allow-exceptions": flag, "hide": flag}
 
     def run(self):
         self.assert_has_content()
@@ -86,9 +78,7 @@ class UqbarBookImportDirective(Directive):
     has_content = False
     required_arguments = 1
     optional_arguments = 0
-    option_spec = {
-        "hide": flag,
-    }
+    option_spec = {"hide": flag}
 
     def run(self):
         block = uqbar_book_import_block()
@@ -235,7 +225,7 @@ def interpret_code_blocks(
                 )
             elif isinstance(block, (literal_block, doctest_block)):
                 console_output, errored, has_exception = interpret_literal_block(
-                    console, block, use_black=use_black,
+                    console, block, use_black=use_black
                 )
             if errored:
                 traceback = find_traceback(console_output)
