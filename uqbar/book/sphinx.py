@@ -5,6 +5,7 @@ import inspect
 import itertools
 import pickle
 import sqlite3
+import traceback
 from typing import Any, Dict
 
 from docutils.frontend import OptionParser
@@ -24,7 +25,6 @@ try:
             line_length=80, target_versions=[black.TargetVersion.PY36]
         )
         return black.format_str("\n".join(lines), mode=mode).splitlines()
-
 
 except ImportError:
 
@@ -185,10 +185,13 @@ def console_context(
     console_output, errored = console.interpret(setup_lines or [])
     if errored:
         raise ConsoleError(find_traceback(console_output), document)
-    yield console
-    console_output, errored = console.interpret(teardown_lines or [])
-    if errored:
-        raise ConsoleError(find_traceback(console_output), document)
+    try:
+        yield console
+    finally:
+        console.resetbuffer()
+        console_output, errored = console.interpret(teardown_lines or [])
+        if errored:
+            raise ConsoleError(find_traceback(console_output), document)
 
 
 def interpret_code_blocks(
@@ -303,7 +306,10 @@ def interpret_literal_block(console, block, use_black=False):
         elif line.startswith("Traceback (most recent call last):"):
             has_exception = True
     if use_black:
-        lines = black_format(lines)
+        try:
+            lines = black_format(lines)
+        except Exception:
+            raise ConsoleError(traceback.format_exc(), block)
     console_output, errored = console.interpret(lines)
     return console_output, errored, has_exception
 
