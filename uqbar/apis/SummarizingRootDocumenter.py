@@ -163,10 +163,13 @@ class SummarizingRootDocumenter(RootDocumenter):
         settings = mock.Mock(
             auto_id_prefix="",
             id_prefix="",
-            language_code="",
+            language_code="en",
             pep_reference=False,
             rfc_reference=False,
         )
         document = new_document("", settings)
-        summary = extract_summary(lines, document)
+        try:
+            summary = extract_summary(lines, document)
+        except Exception:
+            return ""
         return "\n".join(textwrap.wrap(summary, 79))

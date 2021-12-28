@@ -425,7 +425,8 @@ class InheritanceGraph:
                 if hasattr(module, "__path__"):
                     initial_source_paths.update(getattr(module, "__path__"))
                 else:
-                    initial_source_paths.add(module.__file__)
+                    if module.__file__:
+                        initial_source_paths.add(module.__file__)
             except ModuleNotFoundError:
                 path, _, class_name = path.rpartition(".")
                 module = importlib.import_module(path)
