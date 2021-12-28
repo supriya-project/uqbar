@@ -1,74 +1,36 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>uqbar.book.sphinx &mdash; uqbar 0.5.6 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>uqbar.book.sphinx &mdash; uqbar 0.5.7 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../../index.html" class="icon icon-home"> uqbar
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                0.5.6
+                0.5.7
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,85 +38,35 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Uqbar API</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">uqbar</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-        
       <li>uqbar.book.sphinx</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <h1>Source code for uqbar.book.sphinx</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">contextlib</span>
@@ -163,6 +75,7 @@
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">docutils.frontend</span> <span class="kn">import</span> <span class="n">OptionParser</span>
@@ -182,7 +95,6 @@
             <span class="n">line_length</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">target_versions</span><span class="o">=</span><span class="p">[</span><span class="n">black</span><span class="o">.</span><span class="n">TargetVersion</span><span class="o">.</span><span class="n">PY36</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">black</span><span class="o">.</span><span class="n">format_str</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-
 
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
 
@@ -343,10 +255,13 @@
     <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">setup_lines</span> <span class="ow">or</span> <span class="p">[])</span>
     <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">),</span> <span class="n">document</span><span class="p">)</span>
-    <span class="k">yield</span> <span class="n">console</span>
-    <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">teardown_lines</span> <span class="ow">or</span> <span class="p">[])</span>
-    <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">),</span> <span class="n">document</span><span class="p">)</span></div>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">console</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">resetbuffer</span><span class="p">()</span>
+        <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">teardown_lines</span> <span class="ow">or</span> <span class="p">[])</span>
+        <span class="k">if</span> <span class="n">errored</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">find_traceback</span><span class="p">(</span><span class="n">console_output</span><span class="p">),</span> <span class="n">document</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="interpret_code_blocks"><a class="viewcode-back" href="../../../api/uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_code_blocks">[docs]</a><span class="k">def</span> <span class="nf">interpret_code_blocks</span><span class="p">(</span>
@@ -461,7 +376,10 @@
         <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Traceback (most recent call last):&quot;</span><span class="p">):</span>
             <span class="n">has_exception</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">use_black</span><span class="p">:</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="n">black_format</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">black_format</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ConsoleError</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span> <span class="n">block</span><span class="p">)</span>
     <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">console_output</span><span class="p">,</span> <span class="n">errored</span><span class="p">,</span> <span class="n">has_exception</span></div>
 
@@ -538,46 +456,30 @@
 </pre></div>
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2017, Josiah Wolf Oberholtzer.
-
-    </p>
+    <p>&#169; Copyright 2017, Josiah Wolf Oberholtzer.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
