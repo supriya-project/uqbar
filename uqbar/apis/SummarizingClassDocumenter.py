@@ -1,6 +1,6 @@
 import enum
 import inspect
-from typing import List
+from typing import List, Tuple
 
 from uqbar.apis.ClassDocumenter import ClassDocumenter
 
@@ -88,7 +88,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     __documentation_section__ = "Documenters"
 
-    ignored_special_methods = (
+    ignored_special_methods: Tuple[str, ...] = (
         "__dict__",
         "__getattribute__",
         "__getnewargs__",
