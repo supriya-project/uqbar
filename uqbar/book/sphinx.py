@@ -22,7 +22,7 @@ try:
 
     def black_format(lines):
         mode = black.FileMode(
-            line_length=80, target_versions=[black.TargetVersion.PY36]
+            line_length=80, target_versions=set([black.TargetVersion.PY36])
         )
         return black.format_str("\n".join(lines), mode=mode).splitlines()
 
