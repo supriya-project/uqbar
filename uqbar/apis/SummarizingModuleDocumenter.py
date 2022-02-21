@@ -107,15 +107,16 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         result = self._build_preamble()
         package_path = self.package_path.partition(".")[0]
         lineage_path = self.package_path
-        result.extend(
-            [
-                "",
-                ".. container:: svg-container",
-                "",
-                "   .. inheritance-diagram:: {}".format(package_path),
-                "      :lineage: {}".format(lineage_path),
-            ]
-        )
+        if not self.omit_inheritance_diagrams:
+            result.extend(
+                [
+                    "",
+                    ".. container:: svg-container",
+                    "",
+                    "   .. inheritance-diagram:: {}".format(package_path),
+                    "      :lineage: {}".format(lineage_path),
+                ]
+            )
         if self.is_nominative:
             result.extend(["", str(self.member_documenters[0])])
         else:

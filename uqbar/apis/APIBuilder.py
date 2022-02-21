@@ -53,6 +53,7 @@ class APIBuilder(object):
         :py:class:`~uqbar.apis.MemberDocumenter` subclasses, defining what classes
         to use to identify and document module members
     :param module_documenter_class: a :py:class:`~uqbar.apis.ModuleDocumenter` subclass
+    :param omit_inheritance_diagrams: whether to omit inheritance diagrams
     :param root_documenter_class: a :py:class:`~uqbar.apis.RootDocumenter` subclass
     """
 
@@ -67,6 +68,7 @@ class APIBuilder(object):
         document_private_modules: bool = False,
         member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
         module_documenter_class: Type[ModuleDocumenter] = None,
+        omit_inheritance_diagrams: bool = False,
         omit_root: bool = False,
         root_documenter_class: Type[RootDocumenter] = None,
         title: str = "API",
@@ -89,7 +91,10 @@ class APIBuilder(object):
         if module_documenter_class is None:
             module_documenter_class = ModuleDocumenter
         assert issubclass(module_documenter_class, ModuleDocumenter)
+        omit_inheritance_diagrams = bool(omit_inheritance_diagrams)
+        module_documenter_class.omit_inheritance_diagrams = omit_inheritance_diagrams
         self._module_documenter_class = module_documenter_class
+        self._omit_inheritance_diagrams = bool(omit_inheritance_diagrams)
         self._omit_root = bool(omit_root)
         if root_documenter_class is None:
             root_documenter_class = RootDocumenter
@@ -283,6 +288,10 @@ class APIBuilder(object):
     @property
     def module_documenter_class(self):
         return self._module_documenter_class
+
+    @property
+    def omit_inheritance_diagrams(self):
+        return self._omit_inheritance_diagrams
 
     @property
     def omit_root(self):
