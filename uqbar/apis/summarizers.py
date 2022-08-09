@@ -310,12 +310,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     ::
 
         >>> import uqbar.apis
-        >>> documenter = uqbar.apis.SummarizingModuleDocumenter(
-        ...     'uqbar.io',
-        ...     module_documenters=[
-        ...         uqbar.apis.ModuleDocumenter('uqbar.io.Timer'),
-        ...         ],
-        ...     )
+        >>> documenter = uqbar.apis.SummarizingModuleDocumenter("uqbar.io")
         >>> print(str(documenter))
         .. _uqbar--io:
         <BLANKLINE>
@@ -338,15 +333,29 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         .. rubric:: Classes
            :class: section-header
         <BLANKLINE>
-        .. toctree::
-           :hidden:
-        <BLANKLINE>
-           Timer
-        <BLANKLINE>
         .. autosummary::
            :nosignatures:
         <BLANKLINE>
-           ~Timer.Timer
+           ~DirectoryChange
+           ~Profiler
+           ~RedirectedStreams
+           ~Timer
+        <BLANKLINE>
+        .. autoclass:: DirectoryChange
+           :members:
+           :undoc-members:
+        <BLANKLINE>
+        .. autoclass:: Profiler
+           :members:
+           :undoc-members:
+        <BLANKLINE>
+        .. autoclass:: RedirectedStreams
+           :members:
+           :undoc-members:
+        <BLANKLINE>
+        .. autoclass:: Timer
+           :members:
+           :undoc-members:
         <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
@@ -519,7 +528,7 @@ class SummarizingRootDocumenter(RootDocumenter):
         .. toctree::
            :hidden:
         <BLANKLINE>
-           uqbar/io/index
+           uqbar/io
            uqbar/strings
         <BLANKLINE>
         .. raw:: html
@@ -530,6 +539,21 @@ class SummarizingRootDocumenter(RootDocumenter):
            :class: section-header
         <BLANKLINE>
         Tools for IO and file-system manipulation.
+        <BLANKLINE>
+        .. raw:: html
+        <BLANKLINE>
+           <hr/>
+        <BLANKLINE>
+        .. rubric:: Classes
+           :class: subsection-header
+        <BLANKLINE>
+        .. autosummary::
+           :nosignatures:
+        <BLANKLINE>
+           ~uqbar.io.DirectoryChange
+           ~uqbar.io.Profiler
+           ~uqbar.io.RedirectedStreams
+           ~uqbar.io.Timer
         <BLANKLINE>
         .. raw:: html
         <BLANKLINE>

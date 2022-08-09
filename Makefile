@@ -22,7 +22,6 @@ clean:  ## Remove transitory files
 	find . -name '*.pyc' | xargs rm
 	rm -Rif *.egg-info/
 	rm -Rif .*cache/
-	rm -Rif .tox/
 	rm -Rif __pycache__
 	rm -Rif build/
 	rm -Rif dist/
@@ -32,6 +31,9 @@ clean:  ## Remove transitory files
 
 docs:  ## Build the docs
 	make -C docs/ html 
+
+docs-clean: ## Build documentation from scratch
+	make -C docs/ clean html
 
 flake8:  ## Run flake8
 	flake8 ${formatPaths}

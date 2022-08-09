@@ -69,104 +69,112 @@ def test_02():
     )
     assert str(inheritance_graph) == uqbar.strings.normalize(
         r"""
-        digraph InheritanceGraph {
-            graph [bgcolor=transparent,
-                color=lightsteelblue2,
-                fontname=Arial,
-                fontsize=10,
-                outputorder=edgesfirst,
-                overlap=prism,
-                penwidth=2,
-                rankdir=LR,
-                splines=spline,
-                style="dashed, rounded",
-                truecolor=true];
-            node [colorscheme=pastel19,
-                fontname=Arial,
-                fontsize=10,
-                height=0,
-                penwidth=2,
-                shape=box,
-                style="filled, rounded",
-                width=0];
-            edge [color=lightslategrey,
-                penwidth=1];
-            subgraph cluster_builtins {
-                graph [label=builtins];
-                node [color=1];
-                "builtins.object" [label=object];
+            digraph InheritanceGraph {
+                graph [bgcolor=transparent,
+                    color=lightsteelblue2,
+                    fontname=Arial,
+                    fontsize=10,
+                    outputorder=edgesfirst,
+                    overlap=prism,
+                    penwidth=2,
+                    rankdir=LR,
+                    splines=spline,
+                    style="dashed, rounded",
+                    truecolor=true];
+                node [colorscheme=pastel19,
+                    fontname=Arial,
+                    fontsize=10,
+                    height=0,
+                    penwidth=2,
+                    shape=box,
+                    style="filled, rounded",
+                    width=0];
+                edge [color=lightslategrey,
+                    penwidth=1];
+                subgraph cluster_builtins {
+                    graph [label=builtins];
+                    node [color=1];
+                    "builtins.object" [label=object];
+                }
+                subgraph "cluster_uqbar.apis.nodes" {
+                    graph [label="uqbar.apis.nodes"];
+                    node [color=2];
+                    "uqbar.apis.nodes.ModuleNode" [label="Module\nNode"];
+                    "uqbar.apis.nodes.PackageNode" [label="Package\nNode"];
+                }
+                subgraph "cluster_uqbar.containers" {
+                    graph [label="uqbar.containers"];
+                    node [color=3];
+                    "uqbar.containers.DependencyGraph.DependencyGraph" [color=black,
+                        fontcolor=white,
+                        label="Dependency\nGraph"];
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nContainer"];
+                    "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nDict"];
+                    "uqbar.containers.UniqueTreeList.UniqueTreeList" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nList"];
+                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nNode"];
+                    "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nSet"];
+                    "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [color=black,
+                        fontcolor=white,
+                        label="Unique\nTree\nTuple"];
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
+                    "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
+                    "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
+                }
+                subgraph "cluster_uqbar.graphs.core" {
+                    graph [label="uqbar.graphs.core"];
+                    node [color=4];
+                    "uqbar.graphs.core.Attachable" [label=Attachable];
+                    "uqbar.graphs.core.Graph" [label="Graph"];
+                    "uqbar.graphs.core.Node" [label="Node"];
+                }
+                subgraph "cluster_uqbar.graphs.html" {
+                    graph [label="uqbar.graphs.html"];
+                    node [color=5];
+                    "uqbar.graphs.html.HRule" [label=HRule];
+                    "uqbar.graphs.html.LineBreak" [label="Line\nBreak"];
+                    "uqbar.graphs.html.Table" [label=Table];
+                    "uqbar.graphs.html.TableCell" [label="Table\nCell"];
+                    "uqbar.graphs.html.TableRow" [label="Table\nRow"];
+                    "uqbar.graphs.html.Text" [label=Text];
+                    "uqbar.graphs.html.VRule" [label=VRule];
+                }
+                subgraph "cluster_uqbar.graphs.records" {
+                    graph [label="uqbar.graphs.records"];
+                    node [color=6];
+                    "uqbar.graphs.records.RecordField" [label="Record\nField"];
+                    "uqbar.graphs.records.RecordGroup" [label="Record\nGroup"];
+                }
+                "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
+                "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.nodes.PackageNode";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.core.Graph";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.core.Node";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.Table";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.TableCell";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.TableRow";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.records.RecordGroup";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.nodes.ModuleNode";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.core.Attachable";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.HRule";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.LineBreak";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.Text";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.VRule";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.records.RecordField";
+                "uqbar.graphs.core.Attachable" -> "uqbar.graphs.html.TableCell";
+                "uqbar.graphs.core.Attachable" -> "uqbar.graphs.records.RecordField";
             }
-            subgraph "cluster_uqbar.apis" {
-                graph [label="uqbar.apis"];
-                node [color=2];
-                "uqbar.apis.ModuleNode.ModuleNode" [label="Module\nNode"];
-                "uqbar.apis.PackageNode.PackageNode" [label="Package\nNode"];
-            }
-            subgraph "cluster_uqbar.containers" {
-                graph [label="uqbar.containers"];
-                node [color=3];
-                "uqbar.containers.DependencyGraph.DependencyGraph" [color=black,
-                    fontcolor=white,
-                    label="Dependency\nGraph"];
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nContainer"];
-                "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nDict"];
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nList"];
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nNode"];
-                "uqbar.containers.UniqueTreeSet.UniqueTreeSet" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nSet"];
-                "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple" [color=black,
-                    fontcolor=white,
-                    label="Unique\nTree\nTuple"];
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeDict.UniqueTreeDict";
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeList.UniqueTreeList";
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeSet.UniqueTreeSet";
-                "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" -> "uqbar.containers.UniqueTreeTuple.UniqueTreeTuple";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer";
-            }
-            subgraph "cluster_uqbar.graphs" {
-                graph [label="uqbar.graphs"];
-                node [color=4];
-                "uqbar.graphs.Attachable.Attachable" [label=Attachable];
-                "uqbar.graphs.Graph.Graph" [label="Graph"];
-                "uqbar.graphs.HRule.HRule" [label=HRule];
-                "uqbar.graphs.LineBreak.LineBreak" [label="Line\nBreak"];
-                "uqbar.graphs.Node.Node" [label="Node"];
-                "uqbar.graphs.RecordField.RecordField" [label="Record\nField"];
-                "uqbar.graphs.RecordGroup.RecordGroup" [label="Record\nGroup"];
-                "uqbar.graphs.Table.Table" [label=Table];
-                "uqbar.graphs.TableCell.TableCell" [label="Table\nCell"];
-                "uqbar.graphs.TableRow.TableRow" [label="Table\nRow"];
-                "uqbar.graphs.Text.Text" [label=Text];
-                "uqbar.graphs.VRule.VRule" [label=VRule];
-                "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.RecordField.RecordField";
-                "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.TableCell.TableCell";
-            }
-            "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
-            "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.LineBreak.LineBreak";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.RecordField.RecordField";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Text.Text";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
-        }
     """
     )
     pickle.dumps(inheritance_graph)
@@ -267,39 +275,50 @@ def test_03():
                     "enum.IntEnum" [label="Int\nEnum"];
                     "enum.Enum" -> "enum.IntEnum";
                 }
-                subgraph "cluster_uqbar.apis" {
-                    graph [label="uqbar.apis"];
+                subgraph "cluster_uqbar.apis.builders" {
+                    graph [label="uqbar.apis.builders"];
                     node [color=7];
-                    "uqbar.apis.APIBuilder.APIBuilder" [label=APIBuilder];
-                    "uqbar.apis.ClassDocumenter.ClassDocumenter" [label="Class\nDocumenter"];
-                    "uqbar.apis.FunctionDocumenter.FunctionDocumenter" [label="Function\nDocumenter"];
-                    "uqbar.apis.InheritanceGraph.InheritanceGraph" [label="Inheritance\nGraph"];
-                    "uqbar.apis.MemberDocumenter.MemberDocumenter" [label="Member\nDocumenter",
-                        shape=oval,
-                        style=bold];
-                    "uqbar.apis.ModuleDocumenter.ModuleDocumenter" [label="Module\nDocumenter"];
-                    "uqbar.apis.ModuleNode.ModuleNode" [label="Module\nNode"];
-                    "uqbar.apis.PackageNode.PackageNode" [label="Package\nNode"];
-                    "uqbar.apis.RootDocumenter.RootDocumenter" [label="Root\nDocumenter"];
-                    "uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter" [label="Summarizing\nClass\nDocumenter"];
-                    "uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter" [label="Summarizing\nModule\nDocumenter"];
-                    "uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter" [label="Summarizing\nRoot\nDocumenter"];
-                    "uqbar.apis.ClassDocumenter.ClassDocumenter" -> "uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter";
-                    "uqbar.apis.MemberDocumenter.MemberDocumenter" -> "uqbar.apis.ClassDocumenter.ClassDocumenter";
-                    "uqbar.apis.MemberDocumenter.MemberDocumenter" -> "uqbar.apis.FunctionDocumenter.FunctionDocumenter";
-                    "uqbar.apis.ModuleDocumenter.ModuleDocumenter" -> "uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter";
-                    "uqbar.apis.RootDocumenter.RootDocumenter" -> "uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter";
+                    "uqbar.apis.builders.APIBuilder" [label=APIBuilder];
+                }
+                subgraph "cluster_uqbar.apis.documenters" {
+                    graph [label="uqbar.apis.documenters"];
+                    node [color=8];
+                    "uqbar.apis.documenters.ClassDocumenter" [label="Class\nDocumenter"];
+                    "uqbar.apis.documenters.FunctionDocumenter" [label="Function\nDocumenter"];
+                    "uqbar.apis.documenters.MemberDocumenter" [label="Member\nDocumenter"];
+                    "uqbar.apis.documenters.ModuleDocumenter" [label="Module\nDocumenter"];
+                    "uqbar.apis.documenters.RootDocumenter" [label="Root\nDocumenter"];
+                    "uqbar.apis.documenters.MemberDocumenter" -> "uqbar.apis.documenters.ClassDocumenter";
+                    "uqbar.apis.documenters.MemberDocumenter" -> "uqbar.apis.documenters.FunctionDocumenter";
                 }
                 subgraph "cluster_uqbar.apis.dummy" {
                     graph [label="uqbar.apis.dummy"];
-                    node [color=8];
+                    node [color=9];
                     "uqbar.apis.dummy.MyChildClass" [label="My\nChild\nClass"];
                     "uqbar.apis.dummy.MyParentClass" [label="My\nParent\nClass"];
                     "uqbar.apis.dummy.MyParentClass" -> "uqbar.apis.dummy.MyChildClass";
                 }
+                subgraph "cluster_uqbar.apis.graphs" {
+                    graph [label="uqbar.apis.graphs"];
+                    node [color=1];
+                    "uqbar.apis.graphs.InheritanceGraph" [label="Inheritance\nGraph"];
+                }
+                subgraph "cluster_uqbar.apis.nodes" {
+                    graph [label="uqbar.apis.nodes"];
+                    node [color=2];
+                    "uqbar.apis.nodes.ModuleNode" [label="Module\nNode"];
+                    "uqbar.apis.nodes.PackageNode" [label="Package\nNode"];
+                }
+                subgraph "cluster_uqbar.apis.summarizers" {
+                    graph [label="uqbar.apis.summarizers"];
+                    node [color=3];
+                    "uqbar.apis.summarizers.SummarizingClassDocumenter" [label="Summarizing\nClass\nDocumenter"];
+                    "uqbar.apis.summarizers.SummarizingModuleDocumenter" [label="Summarizing\nModule\nDocumenter"];
+                    "uqbar.apis.summarizers.SummarizingRootDocumenter" [label="Summarizing\nRoot\nDocumenter"];
+                }
                 subgraph "cluster_uqbar.book.console" {
                     graph [label="uqbar.book.console"];
-                    node [color=9];
+                    node [color=4];
                     "uqbar.book.console.Console" [label=Console];
                     "uqbar.book.console.ConsoleError" [label="Console\nError"];
                     "uqbar.book.console.ConsoleInput" [label="Console\nInput"];
@@ -308,14 +327,14 @@ def test_03():
                 }
                 subgraph "cluster_uqbar.book.extensions" {
                     graph [label="uqbar.book.extensions"];
-                    node [color=1];
+                    node [color=5];
                     "uqbar.book.extensions.Extension" [label=Extension];
                     "uqbar.book.extensions.GraphExtension" [label="Graph\nExtension"];
                     "uqbar.book.extensions.Extension" -> "uqbar.book.extensions.GraphExtension";
                 }
                 subgraph "cluster_uqbar.book.sphinx" {
                     graph [label="uqbar.book.sphinx"];
-                    node [color=2];
+                    node [color=6];
                     "uqbar.book.sphinx.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
                     "uqbar.book.sphinx.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
                     "uqbar.book.sphinx.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
@@ -324,7 +343,7 @@ def test_03():
                 }
                 subgraph "cluster_uqbar.containers" {
                     graph [label="uqbar.containers"];
-                    node [color=3];
+                    node [color=7];
                     "uqbar.containers.DependencyGraph.DependencyGraph" [label="Dependency\nGraph"];
                     "uqbar.containers.UniqueTreeContainer.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
                     "uqbar.containers.UniqueTreeDict.UniqueTreeDict" [label="Unique\nTree\nDict"];
@@ -340,42 +359,64 @@ def test_03():
                 }
                 subgraph "cluster_uqbar.enums" {
                     graph [label="uqbar.enums"];
-                    node [color=4];
+                    node [color=8];
                     "uqbar.enums.IntEnumeration" [label="Int\nEnumeration"];
                     "uqbar.enums.StrictEnumeration" [label="Strict\nEnumeration"];
                 }
-                subgraph "cluster_uqbar.graphs" {
-                    graph [label="uqbar.graphs"];
-                    node [color=5];
-                    "uqbar.graphs.Attachable.Attachable" [label=Attachable];
-                    "uqbar.graphs.Attributes.Attributes" [label=Attributes];
-                    "uqbar.graphs.Edge.Edge" [label="Edge"];
-                    "uqbar.graphs.Graph.Graph" [label="Graph"];
-                    "uqbar.graphs.Grapher.Grapher" [label=Grapher];
-                    "uqbar.graphs.HRule.HRule" [label=HRule];
-                    "uqbar.graphs.LineBreak.LineBreak" [label="Line\nBreak"];
-                    "uqbar.graphs.Node.Node" [label="Node"];
-                    "uqbar.graphs.RecordField.RecordField" [label="Record\nField"];
-                    "uqbar.graphs.RecordGroup.RecordGroup" [label="Record\nGroup"];
-                    "uqbar.graphs.Table.Table" [label=Table];
-                    "uqbar.graphs.TableCell.TableCell" [label="Table\nCell"];
-                    "uqbar.graphs.TableRow.TableRow" [label="Table\nRow"];
-                    "uqbar.graphs.Text.Text" [label=Text];
-                    "uqbar.graphs.VRule.VRule" [label=VRule];
-                    "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.RecordField.RecordField";
-                    "uqbar.graphs.Attachable.Attachable" -> "uqbar.graphs.TableCell.TableCell";
+                subgraph "cluster_uqbar.graphs.attrs" {
+                    graph [label="uqbar.graphs.attrs"];
+                    node [color=9];
+                    "uqbar.graphs.attrs.Attributes" [label=Attributes];
+                }
+                subgraph "cluster_uqbar.graphs.core" {
+                    graph [label="uqbar.graphs.core"];
+                    node [color=1];
+                    "uqbar.graphs.core.Attachable" [label=Attachable];
+                    "uqbar.graphs.core.Edge" [label="Edge"];
+                    "uqbar.graphs.core.Graph" [label="Graph"];
+                    "uqbar.graphs.core.Node" [label="Node"];
+                }
+                subgraph "cluster_uqbar.graphs.graphers" {
+                    graph [label="uqbar.graphs.graphers"];
+                    node [color=2];
+                    "uqbar.graphs.graphers.Grapher" [label=Grapher];
+                }
+                subgraph "cluster_uqbar.graphs.html" {
+                    graph [label="uqbar.graphs.html"];
+                    node [color=3];
+                    "uqbar.graphs.html.HRule" [label=HRule];
+                    "uqbar.graphs.html.LineBreak" [label="Line\nBreak"];
+                    "uqbar.graphs.html.Table" [label=Table];
+                    "uqbar.graphs.html.TableCell" [label="Table\nCell"];
+                    "uqbar.graphs.html.TableRow" [label="Table\nRow"];
+                    "uqbar.graphs.html.Text" [label=Text];
+                    "uqbar.graphs.html.VRule" [label=VRule];
+                }
+                subgraph "cluster_uqbar.graphs.records" {
+                    graph [label="uqbar.graphs.records"];
+                    node [color=4];
+                    "uqbar.graphs.records.RecordField" [label="Record\nField"];
+                    "uqbar.graphs.records.RecordGroup" [label="Record\nGroup"];
                 }
                 subgraph "cluster_uqbar.io" {
                     graph [label="uqbar.io"];
-                    node [color=6];
-                    "uqbar.io.DirectoryChange.DirectoryChange" [label="Directory\nChange"];
-                    "uqbar.io.Profiler.Profiler" [label=Profiler];
-                    "uqbar.io.RedirectedStreams.RedirectedStreams" [label="Redirected\nStreams"];
-                    "uqbar.io.Timer.Timer" [label=Timer];
+                    node [color=5];
+                    "uqbar.io.DirectoryChange" [color=black,
+                        fontcolor=white,
+                        label="Directory\nChange"];
+                    "uqbar.io.Profiler" [color=black,
+                        fontcolor=white,
+                        label=Profiler];
+                    "uqbar.io.RedirectedStreams" [color=black,
+                        fontcolor=white,
+                        label="Redirected\nStreams"];
+                    "uqbar.io.Timer" [color=black,
+                        fontcolor=white,
+                        label=Timer];
                 }
                 subgraph "cluster_uqbar.sphinx.inheritance" {
                     graph [label="uqbar.sphinx.inheritance"];
-                    node [color=7];
+                    node [color=6];
                     "uqbar.sphinx.inheritance.InheritanceDiagram" [label="Inheritance\nDiagram"];
                     "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
                 }
@@ -389,26 +430,26 @@ def test_03():
                 "builtins.object" -> "docutils.nodes.Node";
                 "builtins.object" -> "docutils.parsers.rst.Directive";
                 "builtins.object" -> "enum.Enum";
-                "builtins.object" -> "uqbar.apis.APIBuilder.APIBuilder";
-                "builtins.object" -> "uqbar.apis.InheritanceGraph.InheritanceGraph";
-                "builtins.object" -> "uqbar.apis.MemberDocumenter.MemberDocumenter";
-                "builtins.object" -> "uqbar.apis.ModuleDocumenter.ModuleDocumenter";
-                "builtins.object" -> "uqbar.apis.RootDocumenter.RootDocumenter";
+                "builtins.object" -> "uqbar.apis.builders.APIBuilder";
+                "builtins.object" -> "uqbar.apis.documenters.MemberDocumenter";
+                "builtins.object" -> "uqbar.apis.documenters.ModuleDocumenter";
+                "builtins.object" -> "uqbar.apis.documenters.RootDocumenter";
                 "builtins.object" -> "uqbar.apis.dummy.MyParentClass";
+                "builtins.object" -> "uqbar.apis.graphs.InheritanceGraph";
                 "builtins.object" -> "uqbar.book.console.ConsoleInput";
                 "builtins.object" -> "uqbar.book.console.ConsoleOutput";
                 "builtins.object" -> "uqbar.book.console.MonkeyPatch";
                 "builtins.object" -> "uqbar.book.extensions.Extension";
                 "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
                 "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-                "builtins.object" -> "uqbar.graphs.Edge.Edge";
-                "builtins.object" -> "uqbar.graphs.Grapher.Grapher";
-                "builtins.object" -> "uqbar.io.DirectoryChange.DirectoryChange";
-                "builtins.object" -> "uqbar.io.Profiler.Profiler";
-                "builtins.object" -> "uqbar.io.RedirectedStreams.RedirectedStreams";
-                "builtins.object" -> "uqbar.io.Timer.Timer";
+                "builtins.object" -> "uqbar.graphs.core.Edge";
+                "builtins.object" -> "uqbar.graphs.graphers.Grapher";
+                "builtins.object" -> "uqbar.io.DirectoryChange";
+                "builtins.object" -> "uqbar.io.Profiler";
+                "builtins.object" -> "uqbar.io.RedirectedStreams";
+                "builtins.object" -> "uqbar.io.Timer";
                 "code.InteractiveConsole" -> "uqbar.book.console.Console";
-                "collections.abc.MutableMapping" -> "uqbar.graphs.Attributes.Attributes";
+                "collections.abc.MutableMapping" -> "uqbar.graphs.attrs.Attributes";
                 "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_defaults_block";
                 "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_import_block";
                 "docutils.nodes.Element" -> "uqbar.sphinx.inheritance.inheritance_diagram";
@@ -421,20 +462,25 @@ def test_03():
                 "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
                 "enum.Enum" -> "uqbar.enums.StrictEnumeration";
                 "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
-                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.LineBreak.LineBreak";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.RecordField.RecordField";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Text.Text";
-                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.VRule.VRule";
+                "uqbar.apis.documenters.ClassDocumenter" -> "uqbar.apis.summarizers.SummarizingClassDocumenter";
+                "uqbar.apis.documenters.ModuleDocumenter" -> "uqbar.apis.summarizers.SummarizingModuleDocumenter";
+                "uqbar.apis.documenters.RootDocumenter" -> "uqbar.apis.summarizers.SummarizingRootDocumenter";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.nodes.PackageNode";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.core.Graph";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.core.Node";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.Table";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.TableCell";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.html.TableRow";
+                "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.records.RecordGroup";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.nodes.ModuleNode";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.core.Attachable";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.HRule";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.LineBreak";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.Text";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.html.VRule";
+                "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.records.RecordField";
+                "uqbar.graphs.core.Attachable" -> "uqbar.graphs.html.TableCell";
+                "uqbar.graphs.core.Attachable" -> "uqbar.graphs.records.RecordField";
             }
         """
     )

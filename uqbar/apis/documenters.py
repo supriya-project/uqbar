@@ -199,12 +199,7 @@ class ModuleDocumenter:
     ::
 
         >>> import uqbar.apis
-        >>> documenter = uqbar.apis.ModuleDocumenter(
-        ...     'uqbar.io',
-        ...     module_documenters=[
-        ...         uqbar.apis.ModuleDocumenter('uqbar.io.Timer'),
-        ...         ],
-        ...     )
+        >>> documenter = uqbar.apis.ModuleDocumenter("uqbar.io")
         >>> print(str(documenter))
         .. _uqbar--io:
         <BLANKLINE>
@@ -215,9 +210,21 @@ class ModuleDocumenter:
         <BLANKLINE>
         .. currentmodule:: uqbar.io
         <BLANKLINE>
-        .. toctree::
+        .. autoclass:: DirectoryChange
+           :members:
+           :undoc-members:
         <BLANKLINE>
-           Timer
+        .. autoclass:: Profiler
+           :members:
+           :undoc-members:
+        <BLANKLINE>
+        .. autoclass:: RedirectedStreams
+           :members:
+           :undoc-members:
+        <BLANKLINE>
+        .. autoclass:: Timer
+           :members:
+           :undoc-members:
         <BLANKLINE>
         .. autofunction:: find_common_prefix
         <BLANKLINE>
@@ -312,7 +319,7 @@ class ModuleDocumenter:
         result: List[str] = []
         if not documenters:
             return result
-        result.extend(["", ".. toctree::", "   :hidden:"])
+        result.extend(["", ".. toctree::"])
         result.append("")
         module_documenters = [_ for _ in documenters if isinstance(_, type(self))]
         for module_documenter in module_documenters:
@@ -439,7 +446,7 @@ class RootDocumenter:
         <BLANKLINE>
         .. toctree::
         <BLANKLINE>
-           uqbar/io/index
+           uqbar/io
            uqbar/strings
         <BLANKLINE>
 
