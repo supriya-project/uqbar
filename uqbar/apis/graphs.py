@@ -119,11 +119,11 @@ class InheritanceGraph:
                 node [color=1];
                 "builtins.object" [label=object];
             }
-            subgraph "cluster_uqbar.apis" {
-                graph [label="uqbar.apis"];
+            subgraph "cluster_uqbar.apis.nodes" {
+                graph [label="uqbar.apis.nodes"];
                 node [color=2];
-                "uqbar.apis.ModuleNode.ModuleNode" [label="Module\\nNode"];
-                "uqbar.apis.PackageNode.PackageNode" [label="Package\\nNode"];
+                "uqbar.apis.nodes.ModuleNode" [label="Module\\nNode"];
+                "uqbar.apis.nodes.PackageNode" [label="Package\\nNode"];
             }
             subgraph "cluster_uqbar.containers" {
                 graph [label="uqbar.containers"];
@@ -175,14 +175,14 @@ class InheritanceGraph:
             }
             "builtins.object" -> "uqbar.containers.DependencyGraph.DependencyGraph";
             "builtins.object" -> "uqbar.containers.UniqueTreeNode.UniqueTreeNode";
-            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.PackageNode.PackageNode";
+            "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.nodes.PackageNode";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Graph.Graph";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Node.Node";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.RecordGroup.RecordGroup";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.Table.Table";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableCell.TableCell";
             "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.graphs.TableRow.TableRow";
-            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.ModuleNode.ModuleNode";
+            "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.apis.nodes.ModuleNode";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.Attachable.Attachable";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.HRule.HRule";
             "uqbar.containers.UniqueTreeNode.UniqueTreeNode" -> "uqbar.graphs.LineBreak.LineBreak";
