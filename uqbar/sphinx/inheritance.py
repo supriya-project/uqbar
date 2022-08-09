@@ -40,7 +40,7 @@ from docutils.parsers.rst import Directive, directives  # type: ignore
 from sphinx.ext.graphviz import render_dot_html  # type: ignore
 from sphinx.ext.graphviz import render_dot_latex
 from sphinx.writers.html import HTMLTranslator
-from sphinx.writes.latex import LaTeXTranslator
+from sphinx.writers.latex import LaTeXTranslator
 
 import uqbar.apis
 
