@@ -7,138 +7,20 @@ sphinx
 
 .. currentmodule:: uqbar.book.sphinx
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.book.sphinx
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~UqbarBookDefaultsDirective
-   ~UqbarBookDirective
-   ~UqbarBookImportDirective
-   ~uqbar_book_defaults_block
-   ~uqbar_book_import_block
-
 .. autoclass:: UqbarBookDefaultsDirective
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      has_content
-      option_spec
-      optional_arguments
-      required_arguments
-      run
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: UqbarBookDefaultsDirective.run
+   .. automethod:: run
 
 .. autoclass:: UqbarBookDirective
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      final_argument_whitespace
-      has_content
-      option_spec
-      optional_arguments
-      required_arguments
-      run
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: UqbarBookDirective.run
+   .. automethod:: run
 
 .. autoclass:: UqbarBookImportDirective
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      has_content
-      option_spec
-      optional_arguments
-      required_arguments
-      run
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: UqbarBookImportDirective.run
-
-.. autoclass:: uqbar_book_defaults_block
-
-.. autoclass:: uqbar_book_import_block
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~black_format
-   ~collect_literal_blocks
-   ~console_context
-   ~create_cache_db
-   ~find_traceback
-   ~group_literal_blocks_by_cache_path
-   ~interpret_code_blocks
-   ~interpret_code_blocks_with_cache
-   ~interpret_import_block
-   ~interpret_literal_block
-   ~literal_block_to_cache_path
-   ~parse_rst
-   ~query_cache_db
-   ~rebuild_document
-   ~update_cache_db
+   .. automethod:: run
 
 .. autofunction:: black_format
 
@@ -169,3 +51,10 @@ sphinx
 .. autofunction:: rebuild_document
 
 .. autofunction:: update_cache_db
+
+.. autoclass:: uqbar_book_defaults_block
+   :show-inheritance:
+
+
+.. autoclass:: uqbar_book_import_block
+   :show-inheritance:

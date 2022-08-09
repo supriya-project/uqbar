@@ -7,73 +7,18 @@ inheritance
 
 .. currentmodule:: uqbar.sphinx.inheritance
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.sphinx.inheritance
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~InheritanceDiagram
-   ~inheritance_diagram
-
 .. autoclass:: InheritanceDiagram
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      final_argument_whitespace
-      has_content
-      option_spec
-      optional_arguments
-      required_arguments
-      run
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: InheritanceDiagram.run
-
-.. autoclass:: inheritance_diagram
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~build_urls
-   ~html_visit_inheritance_diagram
-   ~latex_visit_inheritance_diagram
-   ~setup
-   ~skip
+   .. automethod:: run
 
 .. autofunction:: build_urls
 
 .. autofunction:: html_visit_inheritance_diagram
+
+.. autoclass:: inheritance_diagram
+   :show-inheritance:
+
 
 .. autofunction:: latex_visit_inheritance_diagram
 

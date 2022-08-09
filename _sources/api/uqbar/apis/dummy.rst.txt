@@ -7,24 +7,9 @@ dummy
 
 .. currentmodule:: uqbar.apis.dummy
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.apis.dummy
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~MyChildClass
-   ~MyParentClass
-
 .. autoclass:: MyChildClass
+   :show-inheritance:
+
 
 .. autoclass:: MyParentClass
+   :show-inheritance:

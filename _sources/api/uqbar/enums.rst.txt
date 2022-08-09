@@ -7,42 +7,16 @@ enums
 
 .. currentmodule:: uqbar.enums
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.enums
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Enumerations
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~IntEnumeration
-   ~StrictEnumeration
-
 .. autoclass:: IntEnumeration
+   :show-inheritance:
    :members:
    :undoc-members:
+
 
 .. autoclass:: StrictEnumeration
+   :show-inheritance:
    :members:
    :undoc-members:
 
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~from_expr
 
 .. autofunction:: from_expr

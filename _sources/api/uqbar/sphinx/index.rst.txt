@@ -7,28 +7,8 @@ sphinx
 
 .. currentmodule:: uqbar.sphinx
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.sphinx
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Subpackages
-   :class: section-header
-
 .. toctree::
    :hidden:
-
-   api
-   book
-   inheritance
-   style
-
-.. autosummary::
-   :nosignatures:
 
    api
    book

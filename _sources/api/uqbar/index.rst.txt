@@ -7,46 +7,17 @@ uqbar
 
 .. currentmodule:: uqbar
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Subpackages
-   :class: section-header
-
 .. toctree::
    :hidden:
 
    apis/index
    book/index
-   cli/index
    containers/index
    enums
    ext/index
    graphs/index
-   io/index
-   iterables
-   objects
-   sphinx/index
-   strings
-
-.. autosummary::
-   :nosignatures:
-
-   apis
-   book
-   cli
-   containers
-   enums
-   ext
-   graphs
    io
    iterables
    objects
-   sphinx
+   sphinx/index
    strings

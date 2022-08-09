@@ -7,27 +7,6 @@ objects
 
 .. currentmodule:: uqbar.objects
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.objects
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~compare_objects
-   ~get_hash
-   ~get_repr
-   ~get_vars
-   ~new
-
 .. autofunction:: compare_objects
 
 .. autofunction:: get_hash

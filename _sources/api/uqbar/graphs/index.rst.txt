@@ -7,112 +7,11 @@ graphs
 
 .. currentmodule:: uqbar.graphs
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.graphs
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
 .. toctree::
    :hidden:
 
-   Grapher
-
-.. autosummary::
-   :nosignatures:
-
-   ~Grapher.Grapher
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Core Classes
-   :class: section-header
-
-.. toctree::
-   :hidden:
-
-   Attributes
-   Edge
-   Graph
-   Node
-
-.. autosummary::
-   :nosignatures:
-
-   ~Attributes.Attributes
-   ~Edge.Edge
-   ~Graph.Graph
-   ~Node.Node
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: HTML Classes
-   :class: section-header
-
-.. toctree::
-   :hidden:
-
-   HRule
-   LineBreak
-   Table
-   TableCell
-   TableRow
-   Text
-   VRule
-
-.. autosummary::
-   :nosignatures:
-
-   ~HRule.HRule
-   ~LineBreak.LineBreak
-   ~Table.Table
-   ~TableCell.TableCell
-   ~TableRow.TableRow
-   ~Text.Text
-   ~VRule.VRule
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Mixins
-   :class: section-header
-
-.. toctree::
-   :hidden:
-
-   Attachable
-
-.. autosummary::
-   :nosignatures:
-
-   ~Attachable.Attachable
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Record Field Classes
-   :class: section-header
-
-.. toctree::
-   :hidden:
-
-   RecordField
-   RecordGroup
-
-.. autosummary::
-   :nosignatures:
-
-   ~RecordField.RecordField
-   ~RecordGroup.RecordGroup
+   attrs
+   core
+   graphers
+   html
+   records

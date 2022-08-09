@@ -26,49 +26,6 @@ Tools for auto-generating API documention.
 
    <hr/>
 
-.. rubric:: Abstract Classes
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.apis.MemberDocumenter.MemberDocumenter
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.apis.APIBuilder.APIBuilder
-   ~uqbar.apis.InheritanceGraph.InheritanceGraph
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Documenters
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.apis.ClassDocumenter.ClassDocumenter
-   ~uqbar.apis.FunctionDocumenter.FunctionDocumenter
-   ~uqbar.apis.ModuleDocumenter.ModuleDocumenter
-   ~uqbar.apis.RootDocumenter.RootDocumenter
-   ~uqbar.apis.SummarizingClassDocumenter.SummarizingClassDocumenter
-   ~uqbar.apis.SummarizingModuleDocumenter.SummarizingModuleDocumenter
-   ~uqbar.apis.SummarizingRootDocumenter.SummarizingRootDocumenter
-
-.. raw:: html
-
-   <hr/>
-
 .. rubric:: Functions
    :class: subsection-header
 
@@ -82,14 +39,54 @@ Tools for auto-generating API documention.
 
    <hr/>
 
-.. rubric:: Internals
+.. rubric:: :ref:`uqbar.apis.builders <uqbar--apis--builders>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
    :class: subsection-header
 
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.apis.ModuleNode.ModuleNode
-   ~uqbar.apis.PackageNode.PackageNode
+   ~uqbar.apis.builders.APIBuilder
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis.documenters <uqbar--apis--documenters>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.documenters.MemberDocumenter
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Documenters
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.documenters.ClassDocumenter
+   ~uqbar.apis.documenters.FunctionDocumenter
+   ~uqbar.apis.documenters.ModuleDocumenter
+   ~uqbar.apis.documenters.RootDocumenter
 
 .. raw:: html
 
@@ -110,6 +107,68 @@ Tools for auto-generating API documention.
 
    ~uqbar.apis.dummy.MyChildClass
    ~uqbar.apis.dummy.MyParentClass
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis.graphs <uqbar--apis--graphs>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.graphs.InheritanceGraph
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis.nodes <uqbar--apis--nodes>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Internals
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.nodes.ModuleNode
+   ~uqbar.apis.nodes.PackageNode
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.apis.summarizers <uqbar--apis--summarizers>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Documenters
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.apis.summarizers.ImmaterialClassDocumenter
+   ~uqbar.apis.summarizers.ImmaterialModuleDocumenter
+   ~uqbar.apis.summarizers.SummarizingClassDocumenter
+   ~uqbar.apis.summarizers.SummarizingModuleDocumenter
+   ~uqbar.apis.summarizers.SummarizingRootDocumenter
 
 .. raw:: html
 
@@ -225,30 +284,17 @@ Tools for auto-generating API documention.
 
    <hr/>
 
-.. rubric:: :ref:`uqbar.cli <uqbar--cli>`
-   :class: section-header
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Abstract Classes
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.cli.CLI.CLI
-   ~uqbar.cli.CLIAggregator.CLIAggregator
-
-.. raw:: html
-
-   <hr/>
-
 .. rubric:: :ref:`uqbar.containers <uqbar--containers>`
    :class: section-header
 
 Specialized container classes.
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.containers.dependency_graph <uqbar--containers--dependency-graph>`
+   :class: section-header
 
 .. raw:: html
 
@@ -260,13 +306,31 @@ Specialized container classes.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.containers.DependencyGraph.DependencyGraph
-   ~uqbar.containers.UniqueTreeContainer.UniqueTreeContainer
-   ~uqbar.containers.UniqueTreeDict.UniqueTreeDict
-   ~uqbar.containers.UniqueTreeList.UniqueTreeList
-   ~uqbar.containers.UniqueTreeNode.UniqueTreeNode
-   ~uqbar.containers.UniqueTreeSet.UniqueTreeSet
-   ~uqbar.containers.UniqueTreeTuple.UniqueTreeTuple
+   ~uqbar.containers.dependency_graph.DependencyGraph
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.containers.unique_tree <uqbar--containers--unique-tree>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.containers.unique_tree.UniqueTreeContainer
+   ~uqbar.containers.unique_tree.UniqueTreeDict
+   ~uqbar.containers.unique_tree.UniqueTreeList
+   ~uqbar.containers.unique_tree.UniqueTreeNode
+   ~uqbar.containers.unique_tree.UniqueTreeSet
+   ~uqbar.containers.unique_tree.UniqueTreeTuple
 
 .. raw:: html
 
@@ -340,13 +404,8 @@ Tools for building Graphviz graphs.
 
    <hr/>
 
-.. rubric:: Classes
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.graphs.Grapher.Grapher
+.. rubric:: :ref:`uqbar.graphs.attrs <uqbar--graphs--attrs>`
+   :class: section-header
 
 .. raw:: html
 
@@ -358,28 +417,28 @@ Tools for building Graphviz graphs.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.graphs.Attributes.Attributes
-   ~uqbar.graphs.Edge.Edge
-   ~uqbar.graphs.Graph.Graph
-   ~uqbar.graphs.Node.Node
+   ~uqbar.graphs.attrs.Attributes
 
 .. raw:: html
 
    <hr/>
 
-.. rubric:: HTML Classes
+.. rubric:: :ref:`uqbar.graphs.core <uqbar--graphs--core>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Core Classes
    :class: subsection-header
 
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.graphs.HRule.HRule
-   ~uqbar.graphs.LineBreak.LineBreak
-   ~uqbar.graphs.Table.Table
-   ~uqbar.graphs.TableCell.TableCell
-   ~uqbar.graphs.TableRow.TableRow
-   ~uqbar.graphs.Text.Text
-   ~uqbar.graphs.VRule.VRule
+   ~uqbar.graphs.core.Edge
+   ~uqbar.graphs.core.Graph
+   ~uqbar.graphs.core.Node
 
 .. raw:: html
 
@@ -391,7 +450,58 @@ Tools for building Graphviz graphs.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.graphs.Attachable.Attachable
+   ~uqbar.graphs.core.Attachable
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.graphs.graphers <uqbar--graphs--graphers>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.graphers.Grapher
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.graphs.html <uqbar--graphs--html>`
+   :class: section-header
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: HTML Classes
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.graphs.html.HRule
+   ~uqbar.graphs.html.LineBreak
+   ~uqbar.graphs.html.Table
+   ~uqbar.graphs.html.TableCell
+   ~uqbar.graphs.html.TableRow
+   ~uqbar.graphs.html.Text
+   ~uqbar.graphs.html.VRule
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: :ref:`uqbar.graphs.records <uqbar--graphs--records>`
+   :class: section-header
 
 .. raw:: html
 
@@ -403,8 +513,8 @@ Tools for building Graphviz graphs.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.graphs.RecordField.RecordField
-   ~uqbar.graphs.RecordGroup.RecordGroup
+   ~uqbar.graphs.records.RecordField
+   ~uqbar.graphs.records.RecordGroup
 
 .. raw:: html
 
@@ -425,10 +535,10 @@ Tools for IO and file-system manipulation.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.io.DirectoryChange.DirectoryChange
-   ~uqbar.io.Profiler.Profiler
-   ~uqbar.io.RedirectedStreams.RedirectedStreams
-   ~uqbar.io.Timer.Timer
+   ~uqbar.io.DirectoryChange
+   ~uqbar.io.Profiler
+   ~uqbar.io.RedirectedStreams
+   ~uqbar.io.Timer
 
 .. raw:: html
 

@@ -7,27 +7,8 @@ book
 
 .. currentmodule:: uqbar.book
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.book
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Subpackages
-   :class: section-header
-
 .. toctree::
    :hidden:
-
-   console
-   extensions
-   sphinx
-
-.. autosummary::
-   :nosignatures:
 
    console
    extensions

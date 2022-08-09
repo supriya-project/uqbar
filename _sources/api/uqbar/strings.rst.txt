@@ -7,27 +7,6 @@ strings
 
 .. currentmodule:: uqbar.strings
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.strings
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~ansi_escape
-   ~delimit_words
-   ~normalize
-   ~to_dash_case
-   ~to_snake_case
-
 .. autofunction:: ansi_escape
 
 .. autofunction:: delimit_words

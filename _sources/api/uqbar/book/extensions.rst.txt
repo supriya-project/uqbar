@@ -7,131 +7,24 @@ extensions
 
 .. currentmodule:: uqbar.book.extensions
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.book.extensions
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~Extension
-   ~GraphExtension
-
 .. autoclass:: Extension
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      add_option
-      depart_block_text
-      setup_console
-      setup_sphinx
-      teardown_console
-      visit_block_html
-      visit_block_latex
-      visit_block_text
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Class & static methods
-      :class: class-header
-
-   .. automethod:: Extension.add_option
-
-   .. automethod:: Extension.depart_block_text
-
-   .. automethod:: Extension.setup_console
-
-   .. automethod:: Extension.setup_sphinx
-
-   .. automethod:: Extension.teardown_console
-
-   .. automethod:: Extension.visit_block_html
-
-   .. automethod:: Extension.visit_block_latex
-
-   .. automethod:: Extension.visit_block_text
+   .. automethod:: add_option
+   .. automethod:: depart_block_text
+   .. automethod:: setup_console
+   .. automethod:: setup_sphinx
+   .. automethod:: teardown_console
+   .. automethod:: visit_block_html
+   .. automethod:: visit_block_latex
+   .. automethod:: visit_block_text
 
 .. autoclass:: GraphExtension
+   :show-inheritance:
 
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      clean_svg
-      graphviz_block
-      render_image
-      setup_console
-      setup_sphinx
-      template
-      to_docutils
-      visit_block_html
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: GraphExtension.to_docutils
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Class & static methods
-      :class: class-header
-
-   .. container:: inherited
-
-      .. automethod:: GraphExtension.add_option
-
-   .. automethod:: GraphExtension.clean_svg
-
-   .. container:: inherited
-
-      .. automethod:: GraphExtension.depart_block_text
-
-   .. automethod:: GraphExtension.render_image
-
-   .. automethod:: GraphExtension.setup_console
-
-   .. automethod:: GraphExtension.setup_sphinx
-
-   .. container:: inherited
-
-      .. automethod:: GraphExtension.teardown_console
-
-   .. automethod:: GraphExtension.visit_block_html
-
-   .. container:: inherited
-
-      .. automethod:: GraphExtension.visit_block_latex
-
-   .. container:: inherited
-
-      .. automethod:: GraphExtension.visit_block_text
+   .. automethod:: clean_svg
+   .. automethod:: render_image
+   .. automethod:: setup_console
+   .. automethod:: setup_sphinx
+   .. automethod:: to_docutils
+   .. automethod:: visit_block_html

@@ -1,498 +1,1198 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sphinx &mdash; uqbar 0.5.7 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../_static/favicon.ico">
+    
+    
+      
+        <title>sphinx - Uqbar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../_static/stylesheets/main.a280224b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="cli" href="../cli/index.html" />
-    <link rel="prev" title="extensions" href="extensions.html" /> 
-</head>
-
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> uqbar
-          </a>
-              <div class="version">
-                0.5.7
-              </div>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Uqbar API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">uqbar</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../apis/index.html">apis</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">book</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="console.html">console</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html">extensions</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">sphinx</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">cli</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../containers/index.html">containers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../enums.html">enums</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ext/index.html">ext</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../graphs/index.html">graphs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../io/index.html">io</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iterables.html">iterables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../objects.html">objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sphinx/index.html">sphinx</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../strings.html">strings</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">uqbar</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Uqbar API</a> &raquo;</li>
-          <li><a href="../index.html">uqbar</a> &raquo;</li>
-          <li><a href="index.html">book</a> &raquo;</li>
-      <li>sphinx</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../../../_sources/api/uqbar/book/sphinx.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="extensions.html" class="btn btn-neutral float-left" title="extensions" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../cli/index.html" class="btn btn-neutral float-right" title="cli" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-  </div>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <div class="section" id="module-uqbar.book.sphinx">
-<span id="sphinx"></span><span id="uqbar-book-sphinx"></span><h1>sphinx<a class="headerlink" href="#module-uqbar.book.sphinx" title="Permalink to this headline">¶</a></h1>
-<div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../_images/inheritance-0f3b70fa4eaf0159d7804bac85b0a3262677b9dd.svg" type="image/svg+xml" class="inheritance graphviz">
-<p class="warning">digraph InheritanceGraph {
-	graph [bgcolor=transparent,
-		color=lightsteelblue2,
-		fontname=Arial,
-		fontsize=10,
-		outputorder=edgesfirst,
-		overlap=prism,
-		penwidth=2,
-		rankdir=LR,
-		splines=spline,
-		style=&quot;dashed, rounded&quot;,
-		truecolor=true
-	];
-	node [colorscheme=pastel19,
-		fontname=Arial,
-		fontsize=10,
-		height=0,
-		penwidth=2,
-		shape=box,
-		style=&quot;filled, rounded&quot;,
-		width=0
-	];
-	edge [color=lightslategrey,
-		penwidth=1
-	];
-	subgraph cluster_builtins {
-		graph [label=builtins];
-		node [color=1];
-		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
-			label=object,
-			target=_top];
-	}
-	subgraph &quot;cluster_docutils.nodes&quot; {
-		graph [label=&quot;docutils.nodes&quot;];
-		node [color=2];
-		&quot;docutils.nodes.Body&quot;	[label=Body];
-		&quot;docutils.nodes.General&quot;	[label=General];
-		&quot;docutils.nodes.Body&quot; -&gt; &quot;docutils.nodes.General&quot;;
-		&quot;docutils.nodes.Element&quot;	[label=Element];
-		&quot;docutils.nodes.Node&quot;	[label=&quot;Node&quot;];
-		&quot;docutils.nodes.Node&quot; -&gt; &quot;docutils.nodes.Element&quot;;
-	}
-	subgraph &quot;cluster_docutils.parsers.rst&quot; {
-		graph [label=&quot;docutils.parsers.rst&quot;];
-		node [color=3];
-		&quot;docutils.parsers.rst.Directive&quot;	[URL=&quot;https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
-			label=Directive,
-			target=_top];
-	}
-	subgraph &quot;cluster_uqbar.book.sphinx&quot; {
-		graph [label=&quot;uqbar.book.sphinx&quot;];
-		node [color=4];
-		&quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Uqbar\nBook\nDefaults\nDirective&quot;,
-			target=_top];
-		&quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Uqbar\nBook\nDirective&quot;,
-			target=_top];
-		&quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;Uqbar\nBook\nImport\nDirective&quot;,
-			target=_top];
-		&quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_defaults_block&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;uqbar\nbook\ndefaults\nblock&quot;,
-			target=_top];
-		&quot;uqbar.book.sphinx.uqbar_book_import_block&quot;	[URL=&quot;../api/uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_import_block&quot;,
-			color=black,
-			fontcolor=white,
-			label=&quot;uqbar\nbook\nimport\nblock&quot;,
-			target=_top];
-	}
-	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Body&quot;	[minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;docutils.nodes.Node&quot;	[minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;docutils.parsers.rst.Directive&quot;;
-	&quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;;
-	&quot;docutils.nodes.Element&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_import_block&quot;;
-	&quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;;
-	&quot;docutils.nodes.General&quot; -&gt; &quot;uqbar.book.sphinx.uqbar_book_import_block&quot;;
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[minlen=1];
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[minlen=2];
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[minlen=1];
-}</p></object></div>
-</div>
-<hr/><p class="section-header rubric">Classes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" title="uqbar.book.sphinx.UqbarBookDefaultsDirective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDefaultsDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookDirective" title="uqbar.book.sphinx.UqbarBookDirective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookImportDirective" title="uqbar.book.sphinx.UqbarBookImportDirective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookImportDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.uqbar_book_defaults_block" title="uqbar.book.sphinx.uqbar_book_defaults_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_defaults_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.uqbar_book_import_block" title="uqbar.book.sphinx.uqbar_book_import_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_import_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py class">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookDefaultsDirective">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookDefaultsDirective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookDefaultsDirective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" title="Permalink to this definition">¶</a></dt>
-<dd><hr/><p class="class-header rubric">Attributes Summary</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_content</span></code></p></td>
-<td><p>May the directive have content?</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">option_spec</span></code></p></td>
-<td><p>Mapping of option names to validator functions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional_arguments</span></code></p></td>
-<td><p>Number of optional arguments after the required arguments.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">required_arguments</span></code></p></td>
-<td><p>Number of required directive arguments.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective.run" title="uqbar.book.sphinx.UqbarBookDefaultsDirective.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<hr/><p class="class-header rubric">Methods</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookDefaultsDirective.run">
-<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookDefaultsDirective.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookDirective">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookDirective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookDirective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDirective" title="Permalink to this definition">¶</a></dt>
-<dd><hr/><p class="class-header rubric">Attributes Summary</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">final_argument_whitespace</span></code></p></td>
-<td><p>May the final argument contain whitespace?</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_content</span></code></p></td>
-<td><p>May the directive have content?</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">option_spec</span></code></p></td>
-<td><p>Mapping of option names to validator functions.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional_arguments</span></code></p></td>
-<td><p>Number of optional arguments after the required arguments.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">required_arguments</span></code></p></td>
-<td><p>Number of required directive arguments.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookDirective.run" title="uqbar.book.sphinx.UqbarBookDirective.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<hr/><p class="class-header rubric">Methods</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookDirective.run">
-<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookDirective.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDirective.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookImportDirective">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookImportDirective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookImportDirective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookImportDirective" title="Permalink to this definition">¶</a></dt>
-<dd><hr/><p class="class-header rubric">Attributes Summary</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_content</span></code></p></td>
-<td><p>May the directive have content?</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">option_spec</span></code></p></td>
-<td><p>Mapping of option names to validator functions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional_arguments</span></code></p></td>
-<td><p>Number of optional arguments after the required arguments.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">required_arguments</span></code></p></td>
-<td><p>Number of required directive arguments.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.UqbarBookImportDirective.run" title="uqbar.book.sphinx.UqbarBookImportDirective.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<hr/><p class="class-header rubric">Methods</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.UqbarBookImportDirective.run">
-<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#UqbarBookImportDirective.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookImportDirective.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.uqbar_book_defaults_block">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uqbar_book_defaults_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rawsource</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#uqbar_book_defaults_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.uqbar_book_defaults_block" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.uqbar_book_import_block">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uqbar_book_import_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rawsource</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#uqbar_book_import_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.uqbar_book_import_block" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<hr/><p class="section-header rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.black_format" title="uqbar.book.sphinx.black_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">black_format</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.collect_literal_blocks" title="uqbar.book.sphinx.collect_literal_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_literal_blocks</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.console_context" title="uqbar.book.sphinx.console_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console_context</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.create_cache_db" title="uqbar.book.sphinx.create_cache_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cache_db</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.find_traceback" title="uqbar.book.sphinx.find_traceback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_traceback</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" title="uqbar.book.sphinx.group_literal_blocks_by_cache_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_literal_blocks_by_cache_path</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.interpret_code_blocks" title="uqbar.book.sphinx.interpret_code_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="uqbar.book.sphinx.interpret_code_blocks_with_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks_with_cache</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.interpret_import_block" title="uqbar.book.sphinx.interpret_import_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_import_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.interpret_literal_block" title="uqbar.book.sphinx.interpret_literal_block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_literal_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.literal_block_to_cache_path" title="uqbar.book.sphinx.literal_block_to_cache_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_block_to_cache_path</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.parse_rst" title="uqbar.book.sphinx.parse_rst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_rst</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.query_cache_db" title="uqbar.book.sphinx.query_cache_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_cache_db</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#uqbar.book.sphinx.rebuild_document" title="uqbar.book.sphinx.rebuild_document"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebuild_document</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#uqbar.book.sphinx.update_cache_db" title="uqbar.book.sphinx.update_cache_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_cache_db</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.black_format">
-<span class="sig-name descname"><span class="pre">black_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#black_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.black_format" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.collect_literal_blocks">
-<span class="sig-name descname"><span class="pre">collect_literal_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#collect_literal_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.collect_literal_blocks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.console_context">
-<span class="sig-name descname"><span class="pre">console_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#console_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.console_context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.create_cache_db">
-<span class="sig-name descname"><span class="pre">create_cache_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#create_cache_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.create_cache_db" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.find_traceback">
-<span class="sig-name descname"><span class="pre">find_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">console_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#find_traceback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.find_traceback" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.group_literal_blocks_by_cache_path">
-<span class="sig-name descname"><span class="pre">group_literal_blocks_by_cache_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#group_literal_blocks_by_cache_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.interpret_code_blocks">
-<span class="sig-name descname"><span class="pre">interpret_code_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.interpret_code_blocks_with_cache">
-<span class="sig-name descname"><span class="pre">interpret_code_blocks_with_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_code_blocks_with_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.interpret_import_block">
-<span class="sig-name descname"><span class="pre">interpret_import_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">console</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_import_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_import_block" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.interpret_literal_block">
-<span class="sig-name descname"><span class="pre">interpret_literal_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">console</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#interpret_literal_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.interpret_literal_block" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.literal_block_to_cache_path">
-<span class="sig-name descname"><span class="pre">literal_block_to_cache_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#literal_block_to_cache_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.literal_block_to_cache_path" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.parse_rst">
-<span class="sig-name descname"><span class="pre">parse_rst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rst_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#parse_rst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.parse_rst" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.query_cache_db">
-<span class="sig-name descname"><span class="pre">query_cache_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#query_cache_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.query_cache_db" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.rebuild_document">
-<span class="sig-name descname"><span class="pre">rebuild_document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_mapping</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#rebuild_document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.rebuild_document" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uqbar.book.sphinx.update_cache_db">
-<span class="sig-name descname"><span class="pre">update_cache_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uqbar/book/sphinx.html#update_cache_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uqbar.book.sphinx.update_cache_db" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="extensions.html" class="btn btn-neutral float-left" title="extensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../cli/index.html" class="btn btn-neutral float-right" title="cli" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2017, Josiah Wolf Oberholtzer.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="Uqbar" class="md-header__button md-logo" aria-label="Uqbar" data-md-component="logo">
+      <img src="../../../_static/icon.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Uqbar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              sphinx
+            
+          </span>
         </div>
       </div>
-    </section>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uqbar
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
 
-</body>
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">Uqbar API</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Uqbar" class="md-nav__button md-logo" aria-label="Uqbar" data-md-component="logo">
+      <img src="../../../_static/icon.svg" alt="logo">
+    </a>
+    Uqbar
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uqbar
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../index.html"><span class="md-ellipsis">Uqbar API</span></a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Uqbar API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Uqbar API</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">uqbar</span></a>
+          
+            <label for="__nav_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="uqbar" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">uqbar</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apis/index.html" class="md-nav__link">
+        <span class="md-ellipsis">apis</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1_2" type="checkbox" id="__nav_1_1_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="index.html"><span class="md-ellipsis">book</span></a>
+          
+            <label for="__nav_1_1_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="book" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">book</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="console.html" class="md-nav__link">
+        <span class="md-ellipsis">console</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extensions.html" class="md-nav__link">
+        <span class="md-ellipsis">extensions</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">sphinx</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">sphinx</span>
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookDefaultsDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Defaults<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookDefaultsDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDefaultsDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookDefaultsDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookImportDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookImportDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Import<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookImportDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookImportDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookImportDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.black_format" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.black_format (Python function)" class="md-ellipsis">black_<wbr>format</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.collect_literal_blocks" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.collect_literal_blocks (Python function)" class="md-ellipsis">collect_<wbr>literal_<wbr>blocks</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.console_context" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.console_context (Python function)" class="md-ellipsis">console_<wbr>context</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.create_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.create_cache_db (Python function)" class="md-ellipsis">create_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.find_traceback" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.find_traceback (Python function)" class="md-ellipsis">find_<wbr>traceback</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.group_literal_blocks_by_cache_path (Python function)" class="md-ellipsis">group_<wbr>literal_<wbr>blocks_<wbr>by_<wbr>cache_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_code_blocks" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_code_blocks (Python function)" class="md-ellipsis">interpret_<wbr>code_<wbr>blocks</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_code_blocks_with_cache (Python function)" class="md-ellipsis">interpret_<wbr>code_<wbr>blocks_<wbr>with_<wbr>cache</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_import_block" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_import_block (Python function)" class="md-ellipsis">interpret_<wbr>import_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_literal_block" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_literal_block (Python function)" class="md-ellipsis">interpret_<wbr>literal_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.literal_block_to_cache_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.literal_block_to_cache_path (Python function)" class="md-ellipsis">literal_<wbr>block_<wbr>to_<wbr>cache_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.parse_rst" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.parse_rst (Python function)" class="md-ellipsis">parse_<wbr>rst</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.query_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.query_cache_db (Python function)" class="md-ellipsis">query_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.rebuild_document" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.rebuild_document (Python function)" class="md-ellipsis">rebuild_<wbr>document</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.update_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.update_cache_db (Python function)" class="md-ellipsis">update_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.uqbar_book_defaults_block" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.uqbar_book_defaults_block (Python class) — Bases: General, Element" class="md-ellipsis">uqbar_<wbr>book_<wbr>defaults_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.uqbar_book_import_block" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.uqbar_book_import_block (Python class) — Bases: General, Element" class="md-ellipsis">uqbar_<wbr>book_<wbr>import_<wbr>block</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/index.html" class="md-nav__link">
+        <span class="md-ellipsis">containers</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums.html" class="md-nav__link">
+        <span class="md-ellipsis">enums</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ext/index.html" class="md-nav__link">
+        <span class="md-ellipsis">ext</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphs/index.html" class="md-nav__link">
+        <span class="md-ellipsis">graphs</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io.html" class="md-nav__link">
+        <span class="md-ellipsis">io</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iterables.html" class="md-nav__link">
+        <span class="md-ellipsis">iterables</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects.html" class="md-nav__link">
+        <span class="md-ellipsis">objects</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sphinx/index.html" class="md-nav__link">
+        <span class="md-ellipsis">sphinx</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../strings.html" class="md-nav__link">
+        <span class="md-ellipsis">strings</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookDefaultsDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Defaults<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookDefaultsDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDefaultsDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookDefaultsDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookImportDirective" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.UqbarBookImportDirective (Python class) — Bases: Directive" class="md-ellipsis">Uqbar<wbr>Book<wbr>Import<wbr>Directive</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UqbarBookImportDirective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.UqbarBookImportDirective.run" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.book.sphinx.UqbarBookImportDirective.run (Python method)" class="md-ellipsis">run</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.black_format" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.black_format (Python function)" class="md-ellipsis">black_<wbr>format</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.collect_literal_blocks" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.collect_literal_blocks (Python function)" class="md-ellipsis">collect_<wbr>literal_<wbr>blocks</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.console_context" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.console_context (Python function)" class="md-ellipsis">console_<wbr>context</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.create_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.create_cache_db (Python function)" class="md-ellipsis">create_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.find_traceback" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.find_traceback (Python function)" class="md-ellipsis">find_<wbr>traceback</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.group_literal_blocks_by_cache_path (Python function)" class="md-ellipsis">group_<wbr>literal_<wbr>blocks_<wbr>by_<wbr>cache_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_code_blocks" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_code_blocks (Python function)" class="md-ellipsis">interpret_<wbr>code_<wbr>blocks</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_code_blocks_with_cache (Python function)" class="md-ellipsis">interpret_<wbr>code_<wbr>blocks_<wbr>with_<wbr>cache</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_import_block" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_import_block (Python function)" class="md-ellipsis">interpret_<wbr>import_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.interpret_literal_block" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.interpret_literal_block (Python function)" class="md-ellipsis">interpret_<wbr>literal_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.literal_block_to_cache_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.literal_block_to_cache_path (Python function)" class="md-ellipsis">literal_<wbr>block_<wbr>to_<wbr>cache_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.parse_rst" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.parse_rst (Python function)" class="md-ellipsis">parse_<wbr>rst</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.query_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.query_cache_db (Python function)" class="md-ellipsis">query_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.rebuild_document" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.rebuild_document (Python function)" class="md-ellipsis">rebuild_<wbr>document</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.update_cache_db" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.book.sphinx.update_cache_db (Python function)" class="md-ellipsis">update_<wbr>cache_<wbr>db</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.uqbar_book_defaults_block" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.uqbar_book_defaults_block (Python class) — Bases: General, Element" class="md-ellipsis">uqbar_<wbr>book_<wbr>defaults_<wbr>block</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uqbar.book.sphinx.uqbar_book_import_block" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.book.sphinx.uqbar_book_import_block (Python class) — Bases: General, Element" class="md-ellipsis">uqbar_<wbr>book_<wbr>import_<wbr>block</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+  <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/blob/main/docs/api/uqbar/book/sphinx.rst" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1 id="module-uqbar.book.sphinx"><span id="sphinx"></span><span id="uqbar-book-sphinx"></span>sphinx<a class="headerlink" href="#module-uqbar.book.sphinx" title="Permalink to this heading">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.UqbarBookDefaultsDirective">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookDefaultsDirective</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive" title="(in Sphinx v6.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Directive</span></code></a></p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.UqbarBookDefaultsDirective.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDefaultsDirective.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.UqbarBookDirective">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookDirective</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDirective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive" title="(in Sphinx v6.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Directive</span></code></a></p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.UqbarBookDirective.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookDirective.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.UqbarBookImportDirective">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UqbarBookImportDirective</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">content_offset</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block_text</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">state_machine</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookImportDirective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive" title="(in Sphinx v6.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Directive</span></code></a></p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.UqbarBookImportDirective.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.UqbarBookImportDirective.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.black_format">
+<span class="sig-name descname"><span class="pre">black_format</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.black_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.collect_literal_blocks">
+<span class="sig-name descname"><span class="pre">collect_literal_blocks</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">document</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.collect_literal_blocks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.console_context">
+<span class="sig-name descname"><span class="pre">console_context</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">extensions</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.console_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.create_cache_db">
+<span class="sig-name descname"><span class="pre">create_cache_db</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">path</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.create_cache_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.find_traceback">
+<span class="sig-name descname"><span class="pre">find_traceback</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">console_output</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.find_traceback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.group_literal_blocks_by_cache_path">
+<span class="sig-name descname"><span class="pre">group_literal_blocks_by_cache_path</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.group_literal_blocks_by_cache_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.interpret_code_blocks">
+<span class="sig-name descname"><span class="pre">interpret_code_blocks</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">allow_exceptions</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">logger_func</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.interpret_code_blocks_with_cache">
+<span class="sig-name descname"><span class="pre">interpret_code_blocks_with_cache</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">allow_exceptions</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">setup_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">teardown_lines</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.interpret_import_block">
+<span class="sig-name descname"><span class="pre">interpret_import_block</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">console</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.interpret_import_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.interpret_literal_block">
+<span class="sig-name descname"><span class="pre">interpret_literal_block</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">console</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">use_black</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.interpret_literal_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.literal_block_to_cache_path">
+<span class="sig-name descname"><span class="pre">literal_block_to_cache_path</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">block</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.literal_block_to_cache_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.parse_rst">
+<span class="sig-name descname"><span class="pre">parse_rst</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">rst_string</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.parse_rst" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.query_cache_db">
+<span class="sig-name descname"><span class="pre">query_cache_db</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.query_cache_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.rebuild_document">
+<span class="sig-name descname"><span class="pre">rebuild_document</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">document</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">node_mapping</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.rebuild_document" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.update_cache_db">
+<span class="sig-name descname"><span class="pre">update_cache_db</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">cache_path</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">data</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.update_cache_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="uqbar.book.sphinx.uqbar_book_defaults_block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uqbar_book_defaults_block</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">rawsource</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attributes</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.uqbar_book_defaults_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">General</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p>
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.book.sphinx.uqbar_book_import_block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uqbar_book_import_block</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">rawsource</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attributes</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.book.sphinx.uqbar_book_import_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">General</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></p>
+</dd></dl>
+
+
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="extensions.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: extensions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              extensions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../containers/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: containers" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              containers
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2017-2022, Josiah Wolf Oberholtzer.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    5.1.1.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../_static/javascripts/bundle.dc1bded0.min.js"></script>
+    
+  </body>
 </html>

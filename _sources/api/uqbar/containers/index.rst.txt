@@ -7,36 +7,8 @@ containers
 
 .. currentmodule:: uqbar.containers
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.containers
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
 .. toctree::
    :hidden:
 
-   DependencyGraph
-   UniqueTreeContainer
-   UniqueTreeDict
-   UniqueTreeList
-   UniqueTreeNode
-   UniqueTreeSet
-   UniqueTreeTuple
-
-.. autosummary::
-   :nosignatures:
-
-   ~DependencyGraph.DependencyGraph
-   ~UniqueTreeContainer.UniqueTreeContainer
-   ~UniqueTreeDict.UniqueTreeDict
-   ~UniqueTreeList.UniqueTreeList
-   ~UniqueTreeNode.UniqueTreeNode
-   ~UniqueTreeSet.UniqueTreeSet
-   ~UniqueTreeTuple.UniqueTreeTuple
+   dependency_graph
+   unique_tree

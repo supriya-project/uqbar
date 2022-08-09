@@ -7,25 +7,6 @@ api
 
 .. currentmodule:: uqbar.sphinx.api
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.sphinx.api
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~logger_func
-   ~on_builder_inited
-   ~setup
-
 .. autofunction:: logger_func
 
 .. autofunction:: on_builder_inited

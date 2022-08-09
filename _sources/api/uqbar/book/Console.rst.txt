@@ -7,210 +7,31 @@ console
 
 .. currentmodule:: uqbar.book.console
 
-.. container:: svg-container
-
-   .. inheritance-diagram:: uqbar
-      :lineage: uqbar.book.console
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~Console
-   ~ConsoleInput
-   ~ConsoleOutput
-   ~MonkeyPatch
-
 .. autoclass:: Console
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      __enter__
-      __exit__
-      flush
-      interpret
-      push_proxy
-      push_proxy_options
-      showsyntaxerror
-      showtraceback
-      write
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Special methods
-      :class: class-header
-
-   .. automethod:: Console.__enter__
-
-   .. automethod:: Console.__exit__
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: Console.flush
-
-   .. container:: inherited
-
-      .. automethod:: Console.interact
-
-   .. automethod:: Console.interpret
-
-   .. container:: inherited
-
-      .. automethod:: Console.push
-
-   .. automethod:: Console.push_proxy
-
-   .. automethod:: Console.push_proxy_options
-
-   .. container:: inherited
-
-      .. automethod:: Console.raw_input
-
-   .. container:: inherited
-
-      .. automethod:: Console.resetbuffer
-
-   .. container:: inherited
-
-      .. automethod:: Console.runcode
-
-   .. container:: inherited
-
-      .. automethod:: Console.runsource
-
-   .. automethod:: Console.showsyntaxerror
-
-   .. automethod:: Console.showtraceback
-
-   .. automethod:: Console.write
-
-.. autoclass:: ConsoleInput
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      __delattr__
-      __eq__
-      __hash__
-      __repr__
-      __setattr__
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Special methods
-      :class: class-header
-
-   .. automethod:: ConsoleInput.__delattr__
-
-   .. automethod:: ConsoleInput.__eq__
-
-   .. automethod:: ConsoleInput.__hash__
-
-   .. automethod:: ConsoleInput.__repr__
-
-   .. automethod:: ConsoleInput.__setattr__
-
-.. autoclass:: ConsoleOutput
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      __delattr__
-      __eq__
-      __hash__
-      __repr__
-      __setattr__
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Special methods
-      :class: class-header
-
-   .. automethod:: ConsoleOutput.__delattr__
-
-   .. automethod:: ConsoleOutput.__eq__
-
-   .. automethod:: ConsoleOutput.__hash__
-
-   .. automethod:: ConsoleOutput.__repr__
-
-   .. automethod:: ConsoleOutput.__setattr__
-
-.. autoclass:: MonkeyPatch
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Attributes Summary
-      :class: class-header
-
-   .. autosummary::
-      :nosignatures:
-
-      setattr
-      undo
-
-   .. raw:: html
-
-      <hr/>
-
-   .. rubric:: Methods
-      :class: class-header
-
-   .. automethod:: MonkeyPatch.setattr
-
-   .. automethod:: MonkeyPatch.undo
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Exceptions
-   :class: section-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~ConsoleError
+   :show-inheritance:
+
+   .. automethod:: __enter__
+   .. automethod:: __exit__
+   .. automethod:: flush
+   .. automethod:: interpret
+   .. automethod:: push_proxy
+   .. automethod:: push_proxy_options
+   .. automethod:: showsyntaxerror
+   .. automethod:: showtraceback
+   .. automethod:: write
 
 .. autoexception:: ConsoleError
+
+.. autoclass:: ConsoleInput
+   :show-inheritance:
+
+
+.. autoclass:: ConsoleOutput
+   :show-inheritance:
+
+
+.. autoclass:: MonkeyPatch
+   :show-inheritance:
+
+   .. automethod:: setattr
+   .. automethod:: undo
