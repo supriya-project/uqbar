@@ -1,3 +1,54 @@
+[project]
+authors = [
+  {name = "Josiah Wolf Oberholtzer", email = "josiah.oberholtzer@gmail.com"}
+]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+  "Sphinx >= 5.0.0",
+  "Unidecode >= 1.3.0",
+  "black",
+]
+description = "Tools for building documentation with Sphinx, Graphviz and LaTeX"
+dynamic = ["version"]
+keywords = [
+  "sphinx",
+  "graphviz",
+  "datastructures"
+  "documentation"
+]
+name = "uqbar"
+readme = "README.md"
+
+[project.optional-dependencies]
+docs = [
+  "sphinx-rtd-theme >= 1.0.0",
+]
+test = [
+  "flake8",
+  "isort",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+  "types-PyYAML",
+  "types-docutils",
+]
+
+[project.urls]
+homepage = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+documentation = "https://josiahwolfoberholtzer.com/uqbar"
+repository = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+
 [tool.black]
 skip-magic-trailing-comma = true
 target-version = ["py37"]
