@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import pathlib
-import sys
-from distutils.version import LooseVersion
 
 import setuptools
 
@@ -21,29 +19,28 @@ def read_version():
 description = "Tools for building documentation with Sphinx, Graphviz and LaTeX"
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: MacOS",
     "Operating System :: POSIX",
-    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
 
-install_requires = ["Sphinx >= 3.2.0", "Unidecode >= 1.0.0", "black"]
-
-if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
-    install_requires.append("dataclasses")
+install_requires = ["Sphinx >= 5.0.0", "Unidecode >= 1.3.0", "black"]
 
 extras_require = {
-    "docs": ["sphinx-rtd-theme >= 0.5.0"],
+    "docs": ["sphinx-rtd-theme >= 1.0.0"],
     "test": [
-        "flake8 >= 3.9.0",
-        "isort >= 5.9.0",
-        "mypy >= 0.900",
-        "pytest >= 6.2.0",
-        "pytest-cov >= 2.12.0",
+        "flake8",
+        "isort",
+        "mypy",
+        "pytest",
+        "pytest-cov",
         "types-PyYAML",
         "types-docutils",
     ],
