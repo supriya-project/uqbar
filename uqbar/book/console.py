@@ -4,7 +4,7 @@ import itertools
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
 
-from uqbar.io import RedirectedStreams
+from ..io import RedirectedStreams
 
 
 @dataclass(frozen=True)

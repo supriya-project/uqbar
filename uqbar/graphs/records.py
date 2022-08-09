@@ -1,9 +1,7 @@
-from typing import Optional
+from typing import Optional, Tuple
 
-import uqbar.graphs  # noqa
-from uqbar.containers import UniqueTreeNode
-
-from .Attachable import Attachable
+from ..containers import UniqueTreeList, UniqueTreeNode
+from .core import Attachable
 
 
 class RecordField(Attachable, UniqueTreeNode):
@@ -94,3 +92,56 @@ class RecordField(Attachable, UniqueTreeNode):
     @property
     def label(self) -> Optional[str]:
         return self._label
+
+
+class RecordGroup(UniqueTreeList):
+    """
+    A Graphviz record field group.
+
+    ::
+
+        >>> import uqbar.graphs
+        >>> group = uqbar.graphs.RecordGroup()
+        >>> group.extend([
+        ...     uqbar.graphs.RecordField(),
+        ...     uqbar.graphs.RecordGroup([
+        ...         uqbar.graphs.RecordField(),
+        ...         uqbar.graphs.RecordField(),
+        ...         ]),
+        ...     uqbar.graphs.RecordField(),
+        ...     ])
+        >>> print(format(group, 'graphviz'))
+        { <f_0> | { <f_0> | <f_0> } | <f_0> }
+
+    """
+
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = "Record Field Classes"
+
+    ### INITIALIZER ###
+
+    def __init__(self, children=None, *, name: str = None) -> None:
+        UniqueTreeList.__init__(self, name=name, children=children)
+
+    ### SPECIAL METHODS ###
+
+    def __format__(self, format_spec=None) -> str:
+        # TODO: make the format specification options machine-readable
+        if format_spec == "graphviz":
+            return self.__format_graphviz__()
+        return str(self)
+
+    def __format_graphviz__(self) -> str:
+        result = " | ".join(_ for _ in (format(_, "graphviz") for _ in self) if _)
+        if result:
+            result = "{{ {} }}".format(result)
+        return result
+
+    ### PRIVATE PROPERTIES ###
+
+    @property
+    def _node_class(self) -> Tuple[type, ...]:
+        import uqbar.graphs
+
+        return (uqbar.graphs.RecordField, uqbar.graphs.RecordGroup)

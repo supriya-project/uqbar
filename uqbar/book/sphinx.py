@@ -15,7 +15,7 @@ from docutils.parsers.rst.directives import flag, register_directive
 from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
 
-from uqbar.book.console import Console, ConsoleError, ConsoleInput, ConsoleOutput
+from .console import Console, ConsoleError, ConsoleInput, ConsoleOutput
 
 try:
     import black

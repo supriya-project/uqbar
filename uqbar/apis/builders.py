@@ -2,14 +2,15 @@ import pathlib
 import shutil
 from typing import Sequence, Type, Union
 
-import uqbar.io
-from uqbar.apis.ClassDocumenter import ClassDocumenter
-from uqbar.apis.FunctionDocumenter import FunctionDocumenter
-from uqbar.apis.MemberDocumenter import MemberDocumenter
-from uqbar.apis.ModuleDocumenter import ModuleDocumenter
-from uqbar.apis.ModuleNode import ModuleNode
-from uqbar.apis.PackageNode import PackageNode
-from uqbar.apis.RootDocumenter import RootDocumenter
+from .. import io
+from .documenters import (
+    ClassDocumenter,
+    FunctionDocumenter,
+    MemberDocumenter,
+    ModuleDocumenter,
+    RootDocumenter,
+)
+from .nodes import ModuleNode, PackageNode
 
 
 class APIBuilder(object):
@@ -31,19 +32,12 @@ class APIBuilder(object):
         wrote index.rst
         wrote uqbar/index.rst
         wrote uqbar/apis/index.rst
-        wrote uqbar/apis/APIBuilder.rst
-        wrote uqbar/apis/ClassDocumenter.rst
-        wrote uqbar/apis/FunctionDocumenter.rst
-        wrote uqbar/apis/InheritanceGraph.rst
-        wrote uqbar/apis/MemberDocumenter.rst
-        wrote uqbar/apis/ModuleDocumenter.rst
-        wrote uqbar/apis/ModuleNode.rst
-        wrote uqbar/apis/PackageNode.rst
-        wrote uqbar/apis/RootDocumenter.rst
-        wrote uqbar/apis/SummarizingClassDocumenter.rst
-        wrote uqbar/apis/SummarizingModuleDocumenter.rst
-        wrote uqbar/apis/SummarizingRootDocumenter.rst
+        wrote uqbar/apis/builders.rst
+        wrote uqbar/apis/documenters.rst
         wrote uqbar/apis/dummy.rst
+        wrote uqbar/apis/graphs.rst
+        wrote uqbar/apis/nodes.rst
+        wrote uqbar/apis/summarizers.rst
 
     :param initial_source_paths: a list of paths to scan for Python sources
     :param target_directory: where to write reStructuredText output
@@ -236,14 +230,14 @@ class APIBuilder(object):
             cwd = pathlib.Path.cwd()
             if str(path).startswith(str(cwd)):
                 path = path.relative_to(pathlib.Path.cwd())
-            uqbar.io.write(
+            io.write(
                 new_documentation, path, verbose=True, logger_func=self._logger_func
             )
             visited_paths.add(path.absolute())
         return visited_paths
 
     def prune(self, visited_paths):
-        generator = uqbar.io.walk(self._target_directory, top_down=False)
+        generator = io.walk(self._target_directory, top_down=False)
         for root_path, directory_paths, file_paths in generator:
             for file_path in file_paths[:]:
                 if file_path.suffix != ".rst":

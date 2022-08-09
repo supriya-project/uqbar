@@ -6,8 +6,7 @@ import subprocess
 
 from docutils.nodes import FixedTextElement, General, SkipNode
 
-from uqbar.graphs import Grapher
-
+from ..graphs import Grapher
 from .console import Console
 from .sphinx import UqbarBookDefaultsDirective, UqbarBookDirective
 

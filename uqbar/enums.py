@@ -1,6 +1,6 @@
 import enum
 
-from uqbar.strings import to_snake_case
+from .strings import to_snake_case
 
 
 def from_expr(cls, expr):

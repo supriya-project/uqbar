@@ -1,6 +1,6 @@
 from xml.dom import minidom  # type: ignore
 
-from uqbar.graphs import Grapher
+from ..graphs import Grapher
 
 
 def load_ipython_extension(ipython):

@@ -10,10 +10,10 @@ help:  ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 black-check:  ## Run black formatting check
-	black --skip-magic-trailing-comma --target-version py36 --diff --check ${formatPaths}
+	black --diff --check ${formatPaths}
 
 black-reformat:  ## Reformat via black
-	black --skip-magic-trailing-comma --target-version py36 ${formatPaths}
+	black ${formatPaths}
 
 build:  ## Build distribution archive
 	python setup.py sdist
@@ -22,15 +22,18 @@ clean:  ## Remove transitory files
 	find . -name '*.pyc' | xargs rm
 	rm -Rif *.egg-info/
 	rm -Rif .*cache/
-	rm -Rif .tox/
 	rm -Rif __pycache__
 	rm -Rif build/
 	rm -Rif dist/
 	rm -Rif htmlcov/
 	rm -Rif prof/
+	rm -Rif wheelhouse/
 
 docs:  ## Build the docs
 	make -C docs/ html 
+
+docs-clean: ## Build documentation from scratch
+	make -C docs/ clean html
 
 flake8:  ## Run flake8
 	flake8 ${formatPaths}
@@ -49,18 +52,13 @@ gh-pages:  ## Upload docs to GitHub pages
 	rm -Rf gh-pages/
 
 isort:  ## Reformat via isort
-	isort \
-		--case-sensitive \
-		--multi-line 3 \
-		--trailing-comma \
-		--use-parentheses \
-		${formatPaths}
+	isort ${formatPaths}
 
 mypy:  ## Run mypy
-	mypy --ignore-missing-imports ${project}/
+	mypy ${project}/
 
 pytest:  ## Run pytest
-	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term
+	pytest tests/ ${project}/
 
 reformat:
 	make isort

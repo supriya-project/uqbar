@@ -208,7 +208,7 @@ def get_vars(expr):
     ::
 
         >>> kwargs
-        {'foo': 'x', 'quux': ['y', 'z']}
+        {'foo': 'x', 'bar': None, 'quux': ['y', 'z']}
 
     """
     # print('TYPE?', type(expr))
@@ -222,7 +222,7 @@ def get_vars(expr):
     if expr is None:
         return args, var_args, kwargs
     for i, (name, parameter) in enumerate(signature.parameters.items()):
-        # print('   ', parameter)
+        # print('   ', parameter, parameter.kind, parameter.default)
 
         if i == 0 and name in ("self", "cls", "class_", "klass"):
             continue
@@ -237,27 +237,29 @@ def get_vars(expr):
             parameter.kind is inspect._POSITIONAL_OR_KEYWORD
             or parameter.kind is inspect._KEYWORD_ONLY
         ):
-            found = False
             for x in (name, "_" + name):
                 try:
                     value = getattr(expr, x)
-                    found = True
                     break
                 except AttributeError:
                     try:
                         value = expr[x]
-                        found = True
                         break
                     except (KeyError, TypeError):
                         pass
-            if not found:
-                raise ValueError("Cannot find value for {!r}".format(name))
-            if parameter.default is inspect._empty:
-                args[name] = value
-            elif parameter.default != value:
-                kwargs[name] = value
             else:
-                kwargs[name] = parameter.default
+                raise ValueError("Cannot find value for {!r}".format(name))
+            # print("        ", value)
+            if parameter.default is inspect._empty:
+                # print("        ??? A")
+                args[name] = value
+                continue
+            elif parameter.default == value:
+                # print("        ??? B")
+                kwargs[name] = value
+                continue
+            # print("        ??? C")
+            kwargs[name] = value
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
             value = None

@@ -7,7 +7,7 @@ import sys
 import tempfile
 from typing import Generator, Sequence, Tuple
 
-from uqbar.io import Timer
+from ..io import Timer
 
 
 class Grapher:

@@ -4,8 +4,6 @@ import math
 import re
 from typing import Any, FrozenSet, Mapping, Optional, Union
 
-import uqbar.graphs  # noqa
-
 
 class Attributes(collections.abc.MutableMapping):
     """
@@ -525,9 +523,7 @@ class Attributes(collections.abc.MutableMapping):
 
     ### INITIALIZER ###
 
-    def __init__(
-        self, mode: Union[str, "uqbar.graphs.Attributes.Mode"], **kwargs
-    ) -> None:
+    def __init__(self, mode: Union[str, "Attributes.Mode"], **kwargs) -> None:
         if not isinstance(mode, self.Mode):
             mode = self.Mode[str(mode).upper()]
         self._mode = mode

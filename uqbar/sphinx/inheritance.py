@@ -35,10 +35,12 @@ import subprocess
 from typing import Any, Dict, List, Mapping
 
 from docutils.nodes import Element  # type: ignore
-from docutils.nodes import General, Node, NodeVisitor, SkipNode
+from docutils.nodes import General, Node, SkipNode
 from docutils.parsers.rst import Directive, directives  # type: ignore
 from sphinx.ext.graphviz import render_dot_html  # type: ignore
 from sphinx.ext.graphviz import render_dot_latex
+from sphinx.writers.html import HTMLTranslator
+from sphinx.writers.latex import LaTeXTranslator
 
 import uqbar.apis
 
@@ -75,7 +77,10 @@ class InheritanceDiagram(Directive):
                 package_paths=package_paths, lineage_paths=lineage_paths
             )
         except Exception as error:
-            warning = node.document.reporter.warning(error.args[0], line=self.lineno)
+            if node.document is not None:
+                warning = node.document.reporter.warning(
+                    error.args[0], line=self.lineno
+                )
             return [warning]
         if not graph.all_class_paths:
             return []
@@ -100,7 +105,7 @@ class InheritanceDiagram(Directive):
         return [node]
 
 
-def build_urls(self: NodeVisitor, node: inheritance_diagram) -> Mapping[str, str]:
+def build_urls(self: HTMLTranslator, node: inheritance_diagram) -> Mapping[str, str]:
     """
     Builds a mapping of class paths to URLs.
     """
@@ -130,7 +135,7 @@ def build_urls(self: NodeVisitor, node: inheritance_diagram) -> Mapping[str, str
 
 
 def html_visit_inheritance_diagram(
-    self: NodeVisitor, node: inheritance_diagram
+    self: HTMLTranslator, node: inheritance_diagram
 ) -> None:
     """
     Builds HTML output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
@@ -157,7 +162,7 @@ def html_visit_inheritance_diagram(
 
 
 def latex_visit_inheritance_diagram(
-    self: NodeVisitor, node: inheritance_diagram
+    self: LaTeXTranslator, node: inheritance_diagram
 ) -> None:
     """
     Builds LaTeX output from an :py:class:`~uqbar.sphinx.inheritance.inheritance_diagram` node.
@@ -170,7 +175,7 @@ def latex_visit_inheritance_diagram(
     raise SkipNode
 
 
-def skip(self: NodeVisitor, node: inheritance_diagram) -> None:
+def skip(self, node: inheritance_diagram) -> None:
     """
     Skip generating output, for non-supported builders.
     """

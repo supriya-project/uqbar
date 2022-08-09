@@ -4,18 +4,23 @@ Tools for auto-generating API documention.
 import importlib
 import pathlib
 
-from .APIBuilder import APIBuilder  # noqa
-from .ClassDocumenter import ClassDocumenter  # noqa
-from .FunctionDocumenter import FunctionDocumenter  # noqa
-from .InheritanceGraph import InheritanceGraph  # noqa
-from .MemberDocumenter import MemberDocumenter  # noqa
-from .ModuleDocumenter import ModuleDocumenter  # noqa
-from .ModuleNode import ModuleNode  # noqa
-from .PackageNode import PackageNode  # noqa
-from .RootDocumenter import RootDocumenter  # noqa
-from .SummarizingClassDocumenter import SummarizingClassDocumenter  # noqa
-from .SummarizingModuleDocumenter import SummarizingModuleDocumenter  # noqa
-from .SummarizingRootDocumenter import SummarizingRootDocumenter  # noqa
+from .builders import APIBuilder
+from .documenters import (
+    ClassDocumenter,
+    FunctionDocumenter,
+    MemberDocumenter,
+    ModuleDocumenter,
+    RootDocumenter,
+)
+from .graphs import InheritanceGraph
+from .nodes import ModuleNode, PackageNode
+from .summarizers import (
+    ImmaterialClassDocumenter,
+    ImmaterialModuleDocumenter,
+    SummarizingClassDocumenter,
+    SummarizingModuleDocumenter,
+    SummarizingRootDocumenter,
+)
 
 
 def collect_source_paths(source_paths, recurse_subpackages=True):
@@ -68,3 +73,23 @@ def source_path_to_package_path(path):
     if parts[-1] == "__init__":
         parts = parts[:-1]
     return ".".join(parts)
+
+
+__all__ = [
+    "APIBuilder",
+    "ClassDocumenter",
+    "FunctionDocumenter",
+    "ImmaterialClassDocumenter",
+    "ImmaterialModuleDocumenter",
+    "InheritanceGraph",
+    "MemberDocumenter",
+    "ModuleDocumenter",
+    "ModuleNode",
+    "PackageNode",
+    "RootDocumenter",
+    "SummarizingClassDocumenter",
+    "SummarizingModuleDocumenter",
+    "SummarizingRootDocumenter",
+    "collect_source_paths",
+    "source_path_to_package_path",
+]

@@ -1,0 +1,87 @@
+[project]
+authors = [
+  {name = "Josiah Wolf Oberholtzer", email = "josiah.oberholtzer@gmail.com"}
+]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+  "Sphinx >= 5.0.0",
+  "Unidecode >= 1.3.0",
+  "black",
+]
+description = "Tools for building documentation with Sphinx, Graphviz and LaTeX"
+dynamic = ["version"]
+keywords = [
+  "sphinx",
+  "graphviz",
+  "datastructures",
+  "documentation",
+]
+name = "uqbar"
+readme = "README.md"
+
+[project.optional-dependencies]
+docs = [
+  "sphinx-immaterial >= 0.8.1",
+]
+test = [
+  "flake8",
+  "isort",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+  "types-PyYAML",
+  "types-docutils",
+]
+
+[project.urls]
+homepage = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+documentation = "https://josiahwolfoberholtzer.com/uqbar"
+repository = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+
+[tool.black]
+skip-magic-trailing-comma = true
+target-version = ["py37"]
+
+[tool.cibuildwheel]
+build = "cp37-* cp38-* cp39-* cp310-*"
+test-command = ['python -c "import uqbar"']
+
+[tool.isort]
+case_sensitive = true
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = [
+  "-vv",
+  "-rf",
+  # "--cov=uqbar",
+  "--cov-branch",
+  "--cov-report=html",
+  "--cov-report=term",
+  "--doctest-modules",
+]
+doctest_optionflags = [
+  "ELLIPSIS",
+  "NORMALIZE_WHITESPACE",
+]
+markers = [
+  "sphinx: mark a test as a Sphinx test."
+]
+testpaths = [
+  "tests",
+  "uqbar",
+]
