@@ -56,7 +56,7 @@ mypy:  ## Run mypy
 	mypy ${project}/
 
 pytest:  ## Run pytest
-	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term
+	pytest tests/ ${project}/
 
 reformat:
 	make isort

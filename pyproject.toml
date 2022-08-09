@@ -8,3 +8,25 @@ profile = "black"
 
 [tool.mypy]
 ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = [
+  "-vv",
+  "-rf",
+  "--cov=uqbar",
+  "--cov-branch",
+  "--cov-report=html",
+  "--cov-report=term",
+  "--doctest-modules",
+]
+doctest_optionflags = [
+  "ELLIPSIS",
+  "NORMALIZE_WHITESPACE",
+]
+markers = [
+  "sphinx: mark a test as a Sphinx test."
+]
+testpaths = [
+  "tests",
+  "uqbar",
+]
