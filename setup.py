@@ -16,7 +16,7 @@ def read_version():
 
 if __name__ == "__main__":
     setuptools.setup(
-        packages=find_packages(
+        packages=setuptools.find_packages(
             include=["uqbar", "uqbar.*"],
         ),
         version=read_version(),
