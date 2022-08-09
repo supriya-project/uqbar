@@ -4,8 +4,18 @@ on:
     branches:
     - main
 jobs:
+  cancel:
+    name: Cancel previous workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
   test:
     name: Test
+    needs: [cancel]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
