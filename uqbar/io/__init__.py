@@ -91,7 +91,7 @@ def relative_to(
         >>> target.relative_to(source)
         Traceback (most recent call last):
           ...
-        ValueError: 'foo/quux/biz' does not start with 'foo/bar/baz'
+        ValueError: ...
 
     ::
 
