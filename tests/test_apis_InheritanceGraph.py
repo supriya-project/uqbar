@@ -312,9 +312,12 @@ def test_03():
                 subgraph "cluster_uqbar.apis.summarizers" {
                     graph [label="uqbar.apis.summarizers"];
                     node [color=3];
+                    "uqbar.apis.summarizers.ImmaterialClassDocumenter" [label="Immaterial\nClass\nDocumenter"];
+                    "uqbar.apis.summarizers.ImmaterialModuleDocumenter" [label="Immaterial\nModule\nDocumenter"];
                     "uqbar.apis.summarizers.SummarizingClassDocumenter" [label="Summarizing\nClass\nDocumenter"];
                     "uqbar.apis.summarizers.SummarizingModuleDocumenter" [label="Summarizing\nModule\nDocumenter"];
                     "uqbar.apis.summarizers.SummarizingRootDocumenter" [label="Summarizing\nRoot\nDocumenter"];
+                    "uqbar.apis.summarizers.SummarizingClassDocumenter" -> "uqbar.apis.summarizers.ImmaterialClassDocumenter";
                 }
                 subgraph "cluster_uqbar.book.console" {
                     graph [label="uqbar.book.console"];
@@ -463,6 +466,7 @@ def test_03():
                 "enum.Enum" -> "uqbar.enums.StrictEnumeration";
                 "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
                 "uqbar.apis.documenters.ClassDocumenter" -> "uqbar.apis.summarizers.SummarizingClassDocumenter";
+                "uqbar.apis.documenters.ModuleDocumenter" -> "uqbar.apis.summarizers.ImmaterialModuleDocumenter";
                 "uqbar.apis.documenters.ModuleDocumenter" -> "uqbar.apis.summarizers.SummarizingModuleDocumenter";
                 "uqbar.apis.documenters.RootDocumenter" -> "uqbar.apis.summarizers.SummarizingRootDocumenter";
                 "uqbar.containers.UniqueTreeList.UniqueTreeList" -> "uqbar.apis.nodes.PackageNode";

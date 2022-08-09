@@ -104,9 +104,9 @@ html_use_index = True
 
 uqbar_api_member_documenter_classes = [
     "uqbar.apis.FunctionDocumenter",
-    "uqbar.apis.ClassDocumenter",
+    "uqbar.apis.ImmaterialClassDocumenter",
 ]
-uqbar_api_module_documenter_class = "uqbar.apis.ModuleDocumenter"
+uqbar_api_module_documenter_class = "uqbar.apis.ImmaterialModuleDocumenter"
 uqbar_api_root_documenter_class = "uqbar.apis.SummarizingRootDocumenter"
 uqbar_api_source_paths = uqbar.__path__
 uqbar_api_title = "Uqbar API"

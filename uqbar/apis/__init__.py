@@ -15,6 +15,8 @@ from .documenters import (
 from .graphs import InheritanceGraph
 from .nodes import ModuleNode, PackageNode
 from .summarizers import (
+    ImmaterialClassDocumenter,
+    ImmaterialModuleDocumenter,
     SummarizingClassDocumenter,
     SummarizingModuleDocumenter,
     SummarizingRootDocumenter,
@@ -77,6 +79,8 @@ __all__ = [
     "APIBuilder",
     "ClassDocumenter",
     "FunctionDocumenter",
+    "ImmaterialClassDocumenter",
+    "ImmaterialModuleDocumenter",
     "InheritanceGraph",
     "MemberDocumenter",
     "ModuleDocumenter",
