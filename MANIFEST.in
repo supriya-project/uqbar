@@ -1,8 +1,16 @@
-include README.md
+global-exclude *.pyc
+global-exclude __pycache__
+
+include .flake8
 include LICENSE
-include setup.py
 include MANIFEST.in
-recursive-exclude test *
-recursive-exclude *.pyc
-recursive-exclude __pycache__
+include Makefile
+include README.md
+include pyproject.toml
+include setup.py
+
+recursive-include docs *
+recursive-include tests *
 recursive-include uqbar *
+
+recursive-exclude docs/build *
