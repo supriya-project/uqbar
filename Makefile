@@ -28,6 +28,7 @@ clean:  ## Remove transitory files
 	rm -Rif dist/
 	rm -Rif htmlcov/
 	rm -Rif prof/
+	rm -Rif wheelhouse/
 
 docs:  ## Build the docs
 	make -C docs/ html 
