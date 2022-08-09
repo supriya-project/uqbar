@@ -78,7 +78,9 @@ class InheritanceDiagram(Directive):
             )
         except Exception as error:
             if node.document is not None:
-                warning = node.document.reporter.warning(error.args[0], line=self.lineno)
+                warning = node.document.reporter.warning(
+                    error.args[0], line=self.lineno
+                )
             return [warning]
         if not graph.all_class_paths:
             return []
