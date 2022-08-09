@@ -59,7 +59,7 @@ jobs:
   package:
     name: Build wheels on ${{ matrix.os }}
     needs: [cancel]
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -87,6 +87,7 @@ jobs:
       run: pip install -e .
     - name: Check importability
       run: python -c "import uqbar"
+    - uses: kamiazya/setup-graphviz@v1
     - name: Install test dependencies
       run: pip install -e .[test]
     - name: Test pytest

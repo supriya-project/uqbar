@@ -53,6 +53,10 @@ repository = "https://github.com/josiah-wolf-oberholtzer/uqbar"
 skip-magic-trailing-comma = true
 target-version = ["py37"]
 
+[tool.cibuildwheel]
+build = "cp37-* cp38-* cp39-* cp310-*"
+test-command = ['python -c "import uqbar"']
+
 [tool.isort]
 case_sensitive = true
 profile = "black"
