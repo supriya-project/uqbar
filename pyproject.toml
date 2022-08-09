@@ -24,8 +24,8 @@ dynamic = ["version"]
 keywords = [
   "sphinx",
   "graphviz",
-  "datastructures"
-  "documentation"
+  "datastructures",
+  "documentation",
 ]
 name = "uqbar"
 readme = "README.md"
