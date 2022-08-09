@@ -8,6 +8,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: [3.7, 3.8, 3.9, "3.10"]
     steps:
@@ -31,10 +32,10 @@ jobs:
         flake8 --version
         make flake8
     - name: Test mypy
+      if: matrix.python-version != 3.6
       run: |
         mypy --version
         make mypy
-      if: matrix.python-version != 3.6
     - uses: kamiazya/setup-graphviz@v1
     - name: Test pytest
       run: |
