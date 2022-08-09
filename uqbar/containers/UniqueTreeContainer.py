@@ -1,6 +1,6 @@
 import copy
 
-from uqbar.containers.UniqueTreeNode import UniqueTreeNode
+from .UniqueTreeNode import UniqueTreeNode
 
 
 class UniqueTreeContainer(UniqueTreeNode):

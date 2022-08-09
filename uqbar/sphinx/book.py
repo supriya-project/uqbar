@@ -48,8 +48,9 @@ from sphinx.util import logging
 from sphinx.util.console import bold  # type: ignore
 
 import uqbar
-from uqbar.book.console import ConsoleError
-from uqbar.book.sphinx import (
+
+from ..book.console import ConsoleError
+from ..book.sphinx import (
     UqbarBookDefaultsDirective,
     UqbarBookDirective,
     UqbarBookImportDirective,

@@ -1,7 +1,7 @@
 import copy
 import typing
 
-from uqbar.iterables import nwise
+from ..iterables import nwise
 
 
 class UniqueTreeNode:
