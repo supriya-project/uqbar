@@ -21,7 +21,7 @@ jobs:
     - name: Check importability
       run: python -c "import uqbar"
     - name: Install test dependencies
-      run: pip install -U -e .[test]
+      run: pip install -e .[test]
     - name: Test black
       run: |
         black --version
@@ -40,6 +40,8 @@ jobs:
       run: |
         pytest --version
         make pytest
+    - name: Install docs dependencies
+      run: pip install -e .[docs]
     - name: Build docs
       run: |
         sphinx-build --version

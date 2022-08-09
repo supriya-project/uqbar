@@ -35,13 +35,15 @@ install_requires = [
     "Sphinx >= 3.2.0",
     "Unidecode >= 1.0.0",
     "black",
-    "sphinx-rtd-theme >= 0.5.0",
 ]
 
 if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7.0"):
     install_requires.append("dataclasses")
 
 extras_require = {
+    "docs": [
+        "sphinx-rtd-theme >= 0.5.0",
+    ],
     "test": [
         "flake8 >= 3.9.0",
         "isort >= 5.9.0",
