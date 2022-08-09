@@ -50,12 +50,7 @@ gh-pages:  ## Upload docs to GitHub pages
 	rm -Rf gh-pages/
 
 isort:  ## Reformat via isort
-	isort \
-		--case-sensitive \
-		--multi-line 3 \
-		--trailing-comma \
-		--use-parentheses \
-		${formatPaths}
+	isort ${formatPaths}
 
 mypy:  ## Run mypy
 	mypy --ignore-missing-imports ${project}/

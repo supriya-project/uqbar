@@ -1,3 +1,7 @@
 [tool.black]
 skip-magic-trailing-comma = true
 target-version = ["py37"]
+
+[tool.isort]
+case_sensitive = true
+profile = "black"
