@@ -53,7 +53,7 @@ isort:  ## Reformat via isort
 	isort ${formatPaths}
 
 mypy:  ## Run mypy
-	mypy --ignore-missing-imports ${project}/
+	mypy ${project}/
 
 pytest:  ## Run pytest
 	pytest --cov=${project}/ --cov=tests/ --cov-report=html --cov-report=term

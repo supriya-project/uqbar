@@ -5,3 +5,6 @@ target-version = ["py37"]
 [tool.isort]
 case_sensitive = true
 profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
