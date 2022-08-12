@@ -17,6 +17,7 @@ black-reformat:  ## Reformat via black
 
 build:  ## Build distribution archive
 	python setup.py sdist
+	python setup.py bdist_wheel --universal
 
 clean:  ## Remove transitory files
 	find . -name '*.pyc' | xargs rm
