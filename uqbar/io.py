@@ -7,7 +7,9 @@ import collections
 import io
 import os
 import pathlib
+import platform
 import pstats
+import subprocess
 import sys
 import time
 from typing import Generator, List, Optional, Sequence, Tuple, Union
@@ -279,6 +281,15 @@ def find_executable(name: str, flags=os.X_OK) -> List[str]:
             if os.access(path_extension, flags):
                 result.append(path_extension)
     return result
+
+
+def open_path(path: pathlib.Path) -> None:
+    viewer = {
+        "Darwin": "open",
+        "Linux": "xdg-open",
+        "Windows": "start",
+    }[platform.system()]
+    subprocess.run([viewer, str(path)], check=True)
 
 
 def relative_to(
