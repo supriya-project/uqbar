@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-docs:
-    name: Update gh-pages
+    name: Build docs
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,9 +19,7 @@ jobs:
       run: pip install -e .[docs]
     - uses: kamiazya/setup-graphviz@v1
     - name: Build docs
-      run: |
-        sphinx-build --version
-        make docs
+      run: make docs
     - uses: actions/upload-artifact@v3
       with:
         name: docs
