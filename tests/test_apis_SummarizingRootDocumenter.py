@@ -35,7 +35,9 @@ def test_str_01(test_path):
     )
     builder()
     paths = sorted((test_path / "docs").rglob("*"))
-    paths = [str(path.relative_to(test_path)).replace(os.path.sep, "/") for path in paths]
+    paths = [
+        str(path.relative_to(test_path)).replace(os.path.sep, "/") for path in paths
+    ]
     assert paths == [
         "docs/fake_package",
         "docs/fake_package/empty_module.rst",
