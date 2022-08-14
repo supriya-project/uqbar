@@ -45,6 +45,8 @@ io
 
 .. autofunction:: find_executable
 
+.. autofunction:: open_path
+
 .. autofunction:: relative_to
 
 .. autofunction:: walk

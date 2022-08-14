@@ -688,6 +688,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uqbar.io.open_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.open_path (Python function)" class="md-ellipsis">open_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#uqbar.io.relative_to" class="md-nav__link">
     <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path." class="md-ellipsis">relative_<wbr>to</span>
   </a>
@@ -1174,6 +1181,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uqbar.io.open_path" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.open_path (Python function)" class="md-ellipsis">open_<wbr>path</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#uqbar.io.relative_to" class="md-nav__link">
     <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path." class="md-ellipsis">relative_<wbr>to</span>
   </a>
@@ -1439,7 +1453,7 @@ multiple timers.</p>
 <span class="gp">... </span>        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 <span class="gp">... </span>
 <span class="go">Looping!</span>
-<span class="go">Elapsed time: 0.0014028549194335938</span>
+<span class="go">Elapsed time: 0.0018644332885742188</span>
 </code></pre></div>
 </div>
 <dl class="py method objdesc">
@@ -1518,11 +1532,16 @@ multiple timers.</p>
 </dd></dl>
 
 <dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="uqbar.io.open_path">
+<span class="sig-name descname"><span class="pre">open_path</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/constants.html#None" title="(in Python v3.6)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.open_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="uqbar.io.relative_to">
 <span class="sig-name descname"><span class="pre">relative_to</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.source_path" title="uqbar.io.relative_to.source_path (Python parameter) — the source path"><span class="n"><span class="pre">source_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.target_path" title="uqbar.io.relative_to.target_path (Python parameter) — the target path"><span class="n"><span class="pre">target_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/pathlib.html#pathlib.Path" title="(in Python v3.6)"><span class="pre">Path</span></a></span></span></span><a class="headerlink" href="#uqbar.io.relative_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</p>
 <p>Handles the case of paths without a common prefix.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pathlib</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">pathlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/biz&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1530,13 +1549,13 @@ multiple timers.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-  File <span class="nb">&quot;/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py&quot;</span>, line <span class="m">928</span>, in <span class="n">relative_to</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/pathlib.py&quot;</span>, line <span class="m">818</span>, in <span class="n">relative_to</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{!r}</span><span class="s2"> is not in the subpath of </span><span class="si">{!r}</span><span class="s2">&quot;</span>
 <span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; is not in the subpath of &#39;foo/bar/baz&#39; OR one path is relative and the other is absolute.</span>
 </code></pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="go">&#39;../../quux/biz&#39;</span>
 </code></pre></div>
 </div>

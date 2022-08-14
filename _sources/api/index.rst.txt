@@ -552,6 +552,7 @@ Tools for IO and file-system manipulation.
 
    ~uqbar.io.find_common_prefix
    ~uqbar.io.find_executable
+   ~uqbar.io.open_path
    ~uqbar.io.relative_to
    ~uqbar.io.walk
    ~uqbar.io.write

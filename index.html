@@ -335,7 +335,7 @@
 <a class="reference external image-reference" href="https://github.com/ambv/black"><img alt="https://img.shields.io/badge/code%20style-black-000000.svg" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <p>Uqbar is a toolkit for building docs, graphs and more.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="_images/inheritance-e914d5df9334eee65fa14d717322974b909e40d7.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="_images/inheritance-81037edb854d20d9c91096aa0feae8cdde4441cc.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -361,144 +361,24 @@
 	edge [color=lightslategrey,
 		penwidth=1
 	];
-	subgraph &quot;cluster_uqbar.containers.unique_tree&quot; {
-		graph [label=&quot;uqbar.containers.unique_tree&quot;];
-		node [color=8];
-		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot;	[label=&quot;Unique\nTree\nContainer&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeDict&quot;	[label=&quot;Unique\nTree\nDict&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeDict&quot;	[minlen=1];
-		&quot;uqbar.containers.unique_tree.UniqueTreeList&quot;	[label=&quot;Unique\nTree\nList&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeList&quot;;
-		&quot;uqbar.containers.unique_tree.UniqueTreeSet&quot;	[label=&quot;Unique\nTree\nSet&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeSet&quot;	[minlen=2];
-		&quot;uqbar.containers.unique_tree.UniqueTreeTuple&quot;	[label=&quot;Unique\nTree\nTuple&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeTuple&quot;	[minlen=3];
-		&quot;uqbar.containers.unique_tree.UniqueTreeNode&quot;	[label=&quot;Unique\nTree\nNode&quot;];
-		&quot;uqbar.containers.unique_tree.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot;;
-	}
-	subgraph &quot;cluster_uqbar.graphs.attrs&quot; {
-		graph [label=&quot;uqbar.graphs.attrs&quot;];
-		node [color=1];
-		&quot;uqbar.graphs.attrs.Attributes&quot;	[label=Attributes];
-	}
-	subgraph &quot;cluster_uqbar.graphs.core&quot; {
-		graph [label=&quot;uqbar.graphs.core&quot;];
-		node [color=2];
-		&quot;uqbar.graphs.core.Attachable&quot;	[label=Attachable];
-		&quot;uqbar.graphs.core.Edge&quot;	[label=&quot;Edge&quot;];
-		&quot;uqbar.graphs.core.Graph&quot;	[label=&quot;Graph&quot;];
-		&quot;uqbar.graphs.core.Node&quot;	[label=&quot;Node&quot;];
-	}
-	subgraph &quot;cluster_uqbar.graphs.graphers&quot; {
-		graph [label=&quot;uqbar.graphs.graphers&quot;];
-		node [color=3];
-		&quot;uqbar.graphs.graphers.Grapher&quot;	[label=Grapher];
-	}
-	subgraph &quot;cluster_uqbar.graphs.html&quot; {
-		graph [label=&quot;uqbar.graphs.html&quot;];
-		node [color=4];
-		&quot;uqbar.graphs.html.HRule&quot;	[label=HRule];
-		&quot;uqbar.graphs.html.LineBreak&quot;	[label=&quot;Line\nBreak&quot;];
-		&quot;uqbar.graphs.html.Table&quot;	[label=Table];
-		&quot;uqbar.graphs.html.TableCell&quot;	[label=&quot;Table\nCell&quot;];
-		&quot;uqbar.graphs.html.TableRow&quot;	[label=&quot;Table\nRow&quot;];
-		&quot;uqbar.graphs.html.Text&quot;	[label=Text];
-		&quot;uqbar.graphs.html.VRule&quot;	[label=VRule];
-	}
-	subgraph &quot;cluster_uqbar.graphs.records&quot; {
-		graph [label=&quot;uqbar.graphs.records&quot;];
-		node [color=5];
-		&quot;uqbar.graphs.records.RecordField&quot;	[label=&quot;Record\nField&quot;];
-		&quot;uqbar.graphs.records.RecordGroup&quot;	[label=&quot;Record\nGroup&quot;];
-	}
-	subgraph &quot;cluster_uqbar.sphinx.inheritance&quot; {
-		graph [label=&quot;uqbar.sphinx.inheritance&quot;];
-		node [color=7];
-		&quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;	[label=&quot;Inheritance\nDiagram&quot;];
-		&quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;	[label=&quot;inheritance\ndiagram&quot;];
-	}
-	subgraph &quot;cluster_docutils.parsers.rst&quot; {
-		graph [label=&quot;docutils.parsers.rst&quot;];
-		node [color=5];
-		&quot;docutils.parsers.rst.Directive&quot;	[URL=&quot;https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
-			label=Directive,
-			target=_top];
-	}
-	subgraph &quot;cluster_uqbar.apis.builders&quot; {
-		graph [label=&quot;uqbar.apis.builders&quot;];
-		node [color=7];
-		&quot;uqbar.apis.builders.APIBuilder&quot;	[label=APIBuilder];
-	}
-	subgraph &quot;cluster_uqbar.apis.documenters&quot; {
-		graph [label=&quot;uqbar.apis.documenters&quot;];
-		node [color=8];
-		&quot;uqbar.apis.documenters.ClassDocumenter&quot;	[label=&quot;Class\nDocumenter&quot;];
-		&quot;uqbar.apis.documenters.FunctionDocumenter&quot;	[label=&quot;Function\nDocumenter&quot;];
-		&quot;uqbar.apis.documenters.MemberDocumenter&quot;	[label=&quot;Member\nDocumenter&quot;];
-		&quot;uqbar.apis.documenters.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.documenters.ClassDocumenter&quot;	[minlen=1];
-		&quot;uqbar.apis.documenters.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.documenters.FunctionDocumenter&quot;	[minlen=2];
-		&quot;uqbar.apis.documenters.ModuleDocumenter&quot;	[label=&quot;Module\nDocumenter&quot;];
-		&quot;uqbar.apis.documenters.RootDocumenter&quot;	[label=&quot;Root\nDocumenter&quot;];
-	}
-	subgraph &quot;cluster_uqbar.apis.graphs&quot; {
-		graph [label=&quot;uqbar.apis.graphs&quot;];
-		node [color=1];
-		&quot;uqbar.apis.graphs.InheritanceGraph&quot;	[label=&quot;Inheritance\nGraph&quot;];
-	}
-	subgraph &quot;cluster_uqbar.apis.summarizers&quot; {
-		graph [label=&quot;uqbar.apis.summarizers&quot;];
-		node [color=3];
-		&quot;uqbar.apis.summarizers.ImmaterialClassDocumenter&quot;	[label=&quot;Immaterial\nClass\nDocumenter&quot;];
-		&quot;uqbar.apis.summarizers.ImmaterialModuleDocumenter&quot;	[label=&quot;Immaterial\nModule\nDocumenter&quot;];
-		&quot;uqbar.apis.summarizers.SummarizingClassDocumenter&quot;	[label=&quot;Summarizing\nClass\nDocumenter&quot;];
-		&quot;uqbar.apis.summarizers.SummarizingClassDocumenter&quot; -&gt; &quot;uqbar.apis.summarizers.ImmaterialClassDocumenter&quot;	[minlen=1];
-		&quot;uqbar.apis.summarizers.SummarizingModuleDocumenter&quot;	[label=&quot;Summarizing\nModule\nDocumenter&quot;];
-		&quot;uqbar.apis.summarizers.SummarizingRootDocumenter&quot;	[label=&quot;Summarizing\nRoot\nDocumenter&quot;];
-	}
-	subgraph &quot;cluster_uqbar.book.console&quot; {
-		graph [label=&quot;uqbar.book.console&quot;];
-		node [color=4];
-		&quot;uqbar.book.console.Console&quot;	[label=Console];
-		&quot;uqbar.book.console.ConsoleError&quot;	[label=&quot;Console\nError&quot;];
-		&quot;uqbar.book.console.ConsoleInput&quot;	[label=&quot;Console\nInput&quot;];
-		&quot;uqbar.book.console.ConsoleOutput&quot;	[label=&quot;Console\nOutput&quot;];
-		&quot;uqbar.book.console.MonkeyPatch&quot;	[label=&quot;Monkey\nPatch&quot;];
-	}
-	subgraph &quot;cluster_uqbar.book.extensions&quot; {
-		graph [label=&quot;uqbar.book.extensions&quot;];
-		node [color=5];
-		&quot;uqbar.book.extensions.Extension&quot;	[label=Extension];
-		&quot;uqbar.book.extensions.GraphExtension&quot;	[label=&quot;Graph\nExtension&quot;];
-		&quot;uqbar.book.extensions.Extension&quot; -&gt; &quot;uqbar.book.extensions.GraphExtension&quot;	[minlen=1];
-	}
-	subgraph &quot;cluster_uqbar.book.sphinx&quot; {
-		graph [label=&quot;uqbar.book.sphinx&quot;];
-		node [color=6];
-		&quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[label=&quot;Uqbar\nBook\nDefaults\nDirective&quot;];
-		&quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[label=&quot;Uqbar\nBook\nDirective&quot;];
-		&quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[label=&quot;Uqbar\nBook\nImport\nDirective&quot;];
-		&quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;	[label=&quot;uqbar\nbook\ndefaults\nblock&quot;];
-		&quot;uqbar.book.sphinx.uqbar_book_import_block&quot;	[label=&quot;uqbar\nbook\nimport\nblock&quot;];
-	}
-	subgraph &quot;cluster_uqbar.containers.dependency_graph&quot; {
-		graph [label=&quot;uqbar.containers.dependency_graph&quot;];
-		node [color=7];
-		&quot;uqbar.containers.dependency_graph.DependencyGraph&quot;	[label=&quot;Dependency\nGraph&quot;];
-	}
 	subgraph cluster_builtins {
 		graph [label=builtins];
 		node [color=1];
 		&quot;builtins.BaseException&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#BaseException&quot;,
+			color=1,
 			label=&quot;Base\nException&quot;,
 			target=_top];
 		&quot;builtins.Exception&quot;	[URL=&quot;https://docs.python.org/3.6/library/exceptions.html#Exception&quot;,
+			color=1,
 			label=Exception,
 			target=_top];
 		&quot;builtins.BaseException&quot; -&gt; &quot;builtins.Exception&quot;	[minlen=1];
 		&quot;builtins.int&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#int&quot;,
+			color=1,
 			label=int,
 			target=_top];
 		&quot;builtins.object&quot;	[URL=&quot;https://docs.python.org/3.6/library/functions.html#object&quot;,
+			color=1,
 			label=object,
 			target=_top];
 		&quot;builtins.object&quot; -&gt; &quot;builtins.BaseException&quot;	[minlen=1];
@@ -508,9 +388,11 @@
 		graph [label=code];
 		node [color=2];
 		&quot;code.InteractiveConsole&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveConsole&quot;,
+			color=2,
 			label=&quot;Interactive\nConsole&quot;,
 			target=_top];
 		&quot;code.InteractiveInterpreter&quot;	[URL=&quot;https://docs.python.org/3.6/library/code.html#code.InteractiveInterpreter&quot;,
+			color=2,
 			label=&quot;Interactive\nInterpreter&quot;,
 			target=_top];
 		&quot;code.InteractiveInterpreter&quot; -&gt; &quot;code.InteractiveConsole&quot;	[minlen=1];
@@ -519,35 +401,41 @@
 		graph [label=&quot;collections.abc&quot;];
 		node [color=3];
 		&quot;collections.abc.Collection&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Collection&quot;,
+			color=3,
 			label=Collection,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Mapping&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Mapping&quot;,
+			color=3,
 			label=Mapping,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Collection&quot; -&gt; &quot;collections.abc.Mapping&quot;	[minlen=1];
 		&quot;collections.abc.Container&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Container&quot;,
+			color=3,
 			label=Container,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Container&quot; -&gt; &quot;collections.abc.Collection&quot;;
 		&quot;collections.abc.Iterable&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Iterable&quot;,
+			color=3,
 			label=Iterable,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Iterable&quot; -&gt; &quot;collections.abc.Collection&quot;;
 		&quot;collections.abc.MutableMapping&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.MutableMapping&quot;,
+			color=3,
 			label=&quot;Mutable\nMapping&quot;,
 			shape=oval,
 			style=bold,
 			target=_top];
 		&quot;collections.abc.Mapping&quot; -&gt; &quot;collections.abc.MutableMapping&quot;	[minlen=1];
 		&quot;collections.abc.Sized&quot;	[URL=&quot;https://docs.python.org/3.6/library/collections.abc.html#collections.abc.Sized&quot;,
+			color=3,
 			label=Sized,
 			shape=oval,
 			style=bold,
@@ -557,50 +445,239 @@
 	subgraph &quot;cluster_docutils.nodes&quot; {
 		graph [label=&quot;docutils.nodes&quot;];
 		node [color=4];
-		&quot;docutils.nodes.Body&quot;	[label=Body];
-		&quot;docutils.nodes.General&quot;	[label=General];
+		&quot;docutils.nodes.Body&quot;	[color=4,
+			label=Body];
+		&quot;docutils.nodes.General&quot;	[color=4,
+			label=General];
 		&quot;docutils.nodes.Body&quot; -&gt; &quot;docutils.nodes.General&quot;;
-		&quot;docutils.nodes.Element&quot;	[label=Element];
-		&quot;docutils.nodes.Node&quot;	[label=&quot;Node&quot;];
+		&quot;docutils.nodes.Element&quot;	[color=4,
+			label=Element];
+		&quot;docutils.nodes.Node&quot;	[color=4,
+			label=&quot;Node&quot;];
 		&quot;docutils.nodes.Node&quot; -&gt; &quot;docutils.nodes.Element&quot;;
+	}
+	subgraph &quot;cluster_docutils.parsers.rst&quot; {
+		graph [label=&quot;docutils.parsers.rst&quot;];
+		node [color=5];
+		&quot;docutils.parsers.rst.Directive&quot;	[URL=&quot;https://www.sphinx-doc.org/en/master/extdev/markupapi.html#docutils.parsers.rst.Directive&quot;,
+			color=5,
+			label=Directive,
+			target=_top];
 	}
 	subgraph cluster_enum {
 		graph [label=enum];
 		node [color=6];
 		&quot;enum.Enum&quot;	[URL=&quot;https://docs.python.org/3.6/library/enum.html#enum.Enum&quot;,
+			color=6,
 			label=Enum,
 			target=_top];
 		&quot;enum.IntEnum&quot;	[URL=&quot;https://docs.python.org/3.6/library/enum.html#enum.IntEnum&quot;,
+			color=6,
 			label=&quot;Int\nEnum&quot;,
 			target=_top];
 		&quot;enum.Enum&quot; -&gt; &quot;enum.IntEnum&quot;;
 	}
+	subgraph &quot;cluster_uqbar.apis.builders&quot; {
+		graph [label=&quot;uqbar.apis.builders&quot;];
+		node [color=7];
+		&quot;uqbar.apis.builders.APIBuilder&quot;	[color=7,
+			label=APIBuilder];
+	}
+	subgraph &quot;cluster_uqbar.apis.documenters&quot; {
+		graph [label=&quot;uqbar.apis.documenters&quot;];
+		node [color=8];
+		&quot;uqbar.apis.documenters.ClassDocumenter&quot;	[color=8,
+			label=&quot;Class\nDocumenter&quot;];
+		&quot;uqbar.apis.documenters.FunctionDocumenter&quot;	[color=8,
+			label=&quot;Function\nDocumenter&quot;];
+		&quot;uqbar.apis.documenters.MemberDocumenter&quot;	[color=8,
+			label=&quot;Member\nDocumenter&quot;];
+		&quot;uqbar.apis.documenters.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.documenters.ClassDocumenter&quot;	[minlen=1];
+		&quot;uqbar.apis.documenters.MemberDocumenter&quot; -&gt; &quot;uqbar.apis.documenters.FunctionDocumenter&quot;	[minlen=2];
+		&quot;uqbar.apis.documenters.ModuleDocumenter&quot;	[color=8,
+			label=&quot;Module\nDocumenter&quot;];
+		&quot;uqbar.apis.documenters.RootDocumenter&quot;	[color=8,
+			label=&quot;Root\nDocumenter&quot;];
+	}
 	subgraph &quot;cluster_uqbar.apis.dummy&quot; {
 		graph [label=&quot;uqbar.apis.dummy&quot;];
 		node [color=9];
-		&quot;uqbar.apis.dummy.MyChildClass&quot;	[label=&quot;My\nChild\nClass&quot;];
-		&quot;uqbar.apis.dummy.MyParentClass&quot;	[label=&quot;My\nParent\nClass&quot;];
+		&quot;uqbar.apis.dummy.MyChildClass&quot;	[color=9,
+			label=&quot;My\nChild\nClass&quot;];
+		&quot;uqbar.apis.dummy.MyParentClass&quot;	[color=9,
+			label=&quot;My\nParent\nClass&quot;];
 		&quot;uqbar.apis.dummy.MyParentClass&quot; -&gt; &quot;uqbar.apis.dummy.MyChildClass&quot;	[minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.apis.graphs&quot; {
+		graph [label=&quot;uqbar.apis.graphs&quot;];
+		node [color=1];
+		&quot;uqbar.apis.graphs.InheritanceGraph&quot;	[color=1,
+			label=&quot;Inheritance\nGraph&quot;];
 	}
 	subgraph &quot;cluster_uqbar.apis.nodes&quot; {
 		graph [label=&quot;uqbar.apis.nodes&quot;];
 		node [color=2];
-		&quot;uqbar.apis.nodes.ModuleNode&quot;	[label=&quot;Module\nNode&quot;];
-		&quot;uqbar.apis.nodes.PackageNode&quot;	[label=&quot;Package\nNode&quot;];
+		&quot;uqbar.apis.nodes.ModuleNode&quot;	[color=2,
+			label=&quot;Module\nNode&quot;];
+		&quot;uqbar.apis.nodes.PackageNode&quot;	[color=2,
+			label=&quot;Package\nNode&quot;];
+	}
+	subgraph &quot;cluster_uqbar.apis.summarizers&quot; {
+		graph [label=&quot;uqbar.apis.summarizers&quot;];
+		node [color=3];
+		&quot;uqbar.apis.summarizers.ImmaterialClassDocumenter&quot;	[color=3,
+			label=&quot;Immaterial\nClass\nDocumenter&quot;];
+		&quot;uqbar.apis.summarizers.ImmaterialModuleDocumenter&quot;	[color=3,
+			label=&quot;Immaterial\nModule\nDocumenter&quot;];
+		&quot;uqbar.apis.summarizers.SummarizingClassDocumenter&quot;	[color=3,
+			label=&quot;Summarizing\nClass\nDocumenter&quot;];
+		&quot;uqbar.apis.summarizers.SummarizingClassDocumenter&quot; -&gt; &quot;uqbar.apis.summarizers.ImmaterialClassDocumenter&quot;	[minlen=1];
+		&quot;uqbar.apis.summarizers.SummarizingModuleDocumenter&quot;	[color=3,
+			label=&quot;Summarizing\nModule\nDocumenter&quot;];
+		&quot;uqbar.apis.summarizers.SummarizingRootDocumenter&quot;	[color=3,
+			label=&quot;Summarizing\nRoot\nDocumenter&quot;];
+	}
+	subgraph &quot;cluster_uqbar.book.console&quot; {
+		graph [label=&quot;uqbar.book.console&quot;];
+		node [color=4];
+		&quot;uqbar.book.console.Console&quot;	[color=4,
+			label=Console];
+		&quot;uqbar.book.console.ConsoleError&quot;	[color=4,
+			label=&quot;Console\nError&quot;];
+		&quot;uqbar.book.console.ConsoleInput&quot;	[color=4,
+			label=&quot;Console\nInput&quot;];
+		&quot;uqbar.book.console.ConsoleOutput&quot;	[color=4,
+			label=&quot;Console\nOutput&quot;];
+		&quot;uqbar.book.console.MonkeyPatch&quot;	[color=4,
+			label=&quot;Monkey\nPatch&quot;];
+	}
+	subgraph &quot;cluster_uqbar.book.extensions&quot; {
+		graph [label=&quot;uqbar.book.extensions&quot;];
+		node [color=5];
+		&quot;uqbar.book.extensions.Extension&quot;	[color=5,
+			label=Extension];
+		&quot;uqbar.book.extensions.GraphExtension&quot;	[color=5,
+			label=&quot;Graph\nExtension&quot;];
+		&quot;uqbar.book.extensions.Extension&quot; -&gt; &quot;uqbar.book.extensions.GraphExtension&quot;	[minlen=1];
+	}
+	subgraph &quot;cluster_uqbar.book.sphinx&quot; {
+		graph [label=&quot;uqbar.book.sphinx&quot;];
+		node [color=6];
+		&quot;uqbar.book.sphinx.UqbarBookDefaultsDirective&quot;	[color=6,
+			label=&quot;Uqbar\nBook\nDefaults\nDirective&quot;];
+		&quot;uqbar.book.sphinx.UqbarBookDirective&quot;	[color=6,
+			label=&quot;Uqbar\nBook\nDirective&quot;];
+		&quot;uqbar.book.sphinx.UqbarBookImportDirective&quot;	[color=6,
+			label=&quot;Uqbar\nBook\nImport\nDirective&quot;];
+		&quot;uqbar.book.sphinx.uqbar_book_defaults_block&quot;	[color=6,
+			label=&quot;uqbar\nbook\ndefaults\nblock&quot;];
+		&quot;uqbar.book.sphinx.uqbar_book_import_block&quot;	[color=6,
+			label=&quot;uqbar\nbook\nimport\nblock&quot;];
+	}
+	subgraph &quot;cluster_uqbar.containers.dependency_graph&quot; {
+		graph [label=&quot;uqbar.containers.dependency_graph&quot;];
+		node [color=7];
+		&quot;uqbar.containers.dependency_graph.DependencyGraph&quot;	[color=7,
+			label=&quot;Dependency\nGraph&quot;];
+	}
+	subgraph &quot;cluster_uqbar.containers.unique_tree&quot; {
+		graph [label=&quot;uqbar.containers.unique_tree&quot;];
+		node [color=8];
+		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot;	[color=8,
+			label=&quot;Unique\nTree\nContainer&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeDict&quot;	[color=8,
+			label=&quot;Unique\nTree\nDict&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeDict&quot;	[minlen=1];
+		&quot;uqbar.containers.unique_tree.UniqueTreeList&quot;	[color=8,
+			label=&quot;Unique\nTree\nList&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeList&quot;;
+		&quot;uqbar.containers.unique_tree.UniqueTreeSet&quot;	[color=8,
+			label=&quot;Unique\nTree\nSet&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeSet&quot;	[minlen=2];
+		&quot;uqbar.containers.unique_tree.UniqueTreeTuple&quot;	[color=8,
+			label=&quot;Unique\nTree\nTuple&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeTuple&quot;	[minlen=3];
+		&quot;uqbar.containers.unique_tree.UniqueTreeNode&quot;	[color=8,
+			label=&quot;Unique\nTree\nNode&quot;];
+		&quot;uqbar.containers.unique_tree.UniqueTreeNode&quot; -&gt; &quot;uqbar.containers.unique_tree.UniqueTreeContainer&quot;;
 	}
 	subgraph &quot;cluster_uqbar.enums&quot; {
 		graph [label=&quot;uqbar.enums&quot;];
 		node [color=9];
-		&quot;uqbar.enums.IntEnumeration&quot;	[label=&quot;Int\nEnumeration&quot;];
-		&quot;uqbar.enums.StrictEnumeration&quot;	[label=&quot;Strict\nEnumeration&quot;];
+		&quot;uqbar.enums.IntEnumeration&quot;	[color=9,
+			label=&quot;Int\nEnumeration&quot;];
+		&quot;uqbar.enums.StrictEnumeration&quot;	[color=9,
+			label=&quot;Strict\nEnumeration&quot;];
+	}
+	subgraph &quot;cluster_uqbar.graphs.attrs&quot; {
+		graph [label=&quot;uqbar.graphs.attrs&quot;];
+		node [color=1];
+		&quot;uqbar.graphs.attrs.Attributes&quot;	[color=1,
+			label=Attributes];
+	}
+	subgraph &quot;cluster_uqbar.graphs.core&quot; {
+		graph [label=&quot;uqbar.graphs.core&quot;];
+		node [color=2];
+		&quot;uqbar.graphs.core.Attachable&quot;	[color=2,
+			label=Attachable];
+		&quot;uqbar.graphs.core.Edge&quot;	[color=2,
+			label=&quot;Edge&quot;];
+		&quot;uqbar.graphs.core.Graph&quot;	[color=2,
+			label=&quot;Graph&quot;];
+		&quot;uqbar.graphs.core.Node&quot;	[color=2,
+			label=&quot;Node&quot;];
+	}
+	subgraph &quot;cluster_uqbar.graphs.graphers&quot; {
+		graph [label=&quot;uqbar.graphs.graphers&quot;];
+		node [color=3];
+		&quot;uqbar.graphs.graphers.Grapher&quot;	[color=3,
+			label=Grapher];
+	}
+	subgraph &quot;cluster_uqbar.graphs.html&quot; {
+		graph [label=&quot;uqbar.graphs.html&quot;];
+		node [color=4];
+		&quot;uqbar.graphs.html.HRule&quot;	[color=4,
+			label=HRule];
+		&quot;uqbar.graphs.html.LineBreak&quot;	[color=4,
+			label=&quot;Line\nBreak&quot;];
+		&quot;uqbar.graphs.html.Table&quot;	[color=4,
+			label=Table];
+		&quot;uqbar.graphs.html.TableCell&quot;	[color=4,
+			label=&quot;Table\nCell&quot;];
+		&quot;uqbar.graphs.html.TableRow&quot;	[color=4,
+			label=&quot;Table\nRow&quot;];
+		&quot;uqbar.graphs.html.Text&quot;	[color=4,
+			label=Text];
+		&quot;uqbar.graphs.html.VRule&quot;	[color=4,
+			label=VRule];
+	}
+	subgraph &quot;cluster_uqbar.graphs.records&quot; {
+		graph [label=&quot;uqbar.graphs.records&quot;];
+		node [color=5];
+		&quot;uqbar.graphs.records.RecordField&quot;	[color=5,
+			label=&quot;Record\nField&quot;];
+		&quot;uqbar.graphs.records.RecordGroup&quot;	[color=5,
+			label=&quot;Record\nGroup&quot;];
 	}
 	subgraph &quot;cluster_uqbar.io&quot; {
 		graph [label=&quot;uqbar.io&quot;];
 		node [color=6];
-		&quot;uqbar.io.DirectoryChange&quot;	[label=&quot;Directory\nChange&quot;];
-		&quot;uqbar.io.Profiler&quot;	[label=Profiler];
-		&quot;uqbar.io.RedirectedStreams&quot;	[label=&quot;Redirected\nStreams&quot;];
-		&quot;uqbar.io.Timer&quot;	[label=Timer];
+		&quot;uqbar.io.DirectoryChange&quot;	[color=6,
+			label=&quot;Directory\nChange&quot;];
+		&quot;uqbar.io.Profiler&quot;	[color=6,
+			label=Profiler];
+		&quot;uqbar.io.RedirectedStreams&quot;	[color=6,
+			label=&quot;Redirected\nStreams&quot;];
+		&quot;uqbar.io.Timer&quot;	[color=6,
+			label=Timer];
+	}
+	subgraph &quot;cluster_uqbar.sphinx.inheritance&quot; {
+		graph [label=&quot;uqbar.sphinx.inheritance&quot;];
+		node [color=7];
+		&quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;	[color=7,
+			label=&quot;Inheritance\nDiagram&quot;];
+		&quot;uqbar.sphinx.inheritance.inheritance_diagram&quot;	[color=7,
+			label=&quot;inheritance\ndiagram&quot;];
 	}
 	&quot;builtins.Exception&quot; -&gt; &quot;uqbar.book.console.ConsoleError&quot;	[minlen=1];
 	&quot;builtins.int&quot; -&gt; &quot;enum.IntEnum&quot;;
