@@ -300,7 +300,7 @@ def relative_to(
 
     ::
 
-        >>> import pathlib
+        >>> import os, pathlib
         >>> source = pathlib.Path('foo/bar/baz')
         >>> target = pathlib.Path('foo/quux/biz')
 
@@ -314,7 +314,7 @@ def relative_to(
     ::
 
         >>> import uqbar.io
-        >>> str(uqbar.io.relative_to(source, target))
+        >>> str(uqbar.io.relative_to(source, target)).replace(os.path.sep, "/")
         '../../quux/biz'
 
     :param source_path: the source path
