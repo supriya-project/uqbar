@@ -369,6 +369,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         <BLANKLINE>
            ~find_common_prefix
            ~find_executable
+           ~open_path
            ~relative_to
            ~walk
            ~write
@@ -376,6 +377,8 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         .. autofunction:: find_common_prefix
         <BLANKLINE>
         .. autofunction:: find_executable
+        <BLANKLINE>
+        .. autofunction:: open_path
         <BLANKLINE>
         .. autofunction:: relative_to
         <BLANKLINE>
@@ -567,6 +570,7 @@ class SummarizingRootDocumenter(RootDocumenter):
         <BLANKLINE>
            ~uqbar.io.find_common_prefix
            ~uqbar.io.find_executable
+           ~uqbar.io.open_path
            ~uqbar.io.relative_to
            ~uqbar.io.walk
            ~uqbar.io.write

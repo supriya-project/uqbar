@@ -3,11 +3,10 @@ import hashlib
 import pathlib
 import re
 import subprocess
-import sys
 import tempfile
 from typing import Generator, Sequence, Tuple
 
-from ..io import Timer
+from ..io import Timer, open_path
 
 
 class Grapher:
@@ -114,10 +113,7 @@ class Grapher:
         return migrated_assets
 
     def open_output_path(self, output_path):
-        viewer = "open"
-        if sys.platform.lower().startswith("linux"):
-            viewer = "xdg-open"
-        subprocess.run(f"{viewer} {output_path}", shell=True, check=True)
+        open_path(output_path)
 
     def persist_log(self, string, input_path):
         input_path.write_text(string)

@@ -1,3 +1,4 @@
+import os
 import pathlib
 import shutil
 import sys
@@ -142,7 +143,9 @@ def test_output_01(test_path):
     builder = uqbar.apis.APIBuilder([test_path / "fake_package"], test_path / "docs")
     builder()
     paths = sorted((test_path / "docs").rglob("*"))
-    paths = [str(path.relative_to(test_path)) for path in paths]
+    paths = [
+        str(path.relative_to(test_path)).replace(os.path.sep, "/") for path in paths
+    ]
     assert paths == [
         "docs/fake_package",
         "docs/fake_package/empty_module.rst",
@@ -222,7 +225,9 @@ def test_output_02(test_path):
     )
     builder()
     paths = sorted((test_path / "docs").rglob("*"))
-    paths = [str(path.relative_to(test_path)) for path in paths]
+    paths = [
+        str(path.relative_to(test_path)).replace(os.path.sep, "/") for path in paths
+    ]
     assert paths == [
         "docs/fake_package",
         "docs/fake_package/_private",
@@ -309,7 +314,9 @@ def test_output_03(test_path):
     )
     builder()
     paths = sorted((test_path / "docs").rglob("*"))
-    paths = [str(path.relative_to(test_path)) for path in paths]
+    paths = [
+        str(path.relative_to(test_path)).replace(os.path.sep, "/") for path in paths
+    ]
     assert paths == [
         "docs/fake_package",
         "docs/fake_package/_private",

@@ -230,6 +230,8 @@ class ModuleDocumenter:
         <BLANKLINE>
         .. autofunction:: find_executable
         <BLANKLINE>
+        .. autofunction:: open_path
+        <BLANKLINE>
         .. autofunction:: relative_to
         <BLANKLINE>
         .. autofunction:: walk
