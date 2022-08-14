@@ -1,3 +1,4 @@
+import os
 import pathlib
 import shutil
 import sys
@@ -533,13 +534,13 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
     )
     assert normalize(ansi_escape(warning.getvalue())) == normalize(
         """
-        {srcdir}/index.rst:15: WARNING:
+        {srcdir}index.rst:15: WARNING:
             <literal_block xml:space="preserve">>>> print(this_name_does_not_exist)</literal_block>
             Traceback (most recent call last):
               File "<stdin>", line 1, in <module>
             NameError: name 'this_name_does_not_exist' is not defined
         """.format(
-            srcdir=app.srcdir
+            srcdir=app.srcdir + os.path.sep
         )
     )
 
