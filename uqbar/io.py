@@ -284,11 +284,9 @@ def find_executable(name: str, flags=os.X_OK) -> List[str]:
 
 
 def open_path(path: pathlib.Path) -> None:
-    viewer = {
-        "Darwin": "open",
-        "Linux": "xdg-open",
-        "Windows": "start",
-    }[platform.system()]
+    viewer = {"Darwin": "open", "Linux": "xdg-open", "Windows": "start"}[
+        platform.system()
+    ]
     subprocess.run([viewer, str(path)], check=True)
 
 
@@ -384,24 +382,22 @@ def write(
     """
     print_func = logger_func or print
     path = pathlib.Path(path)
+    printed_path = str(path).replace(os.path.sep, "/")  # same display on Windows
     if path.exists():
-        with path.open("r") as file_pointer:
-            old_contents = file_pointer.read()
+        old_contents = path.read_text()
         if old_contents == contents:
             if verbose:
-                print_func("preserved {}".format(path))
+                print_func(f"preserved {printed_path}")
             return False
         else:
-            with path.open("w") as file_pointer:
-                file_pointer.write(contents)
+            path.write_text(contents)
             if verbose:
-                print_func("rewrote {}".format(path))
+                print_func(f"rewrote {printed_path}")
             return True
     elif not path.exists():
         if not path.parent.exists():
             path.parent.mkdir(parents=True)
-        with path.open("w") as file_pointer:
-            file_pointer.write(contents)
+        path.write_text(contents)
         if verbose:
-            print_func("wrote {}".format(path))
+            print_func(f"wrote {printed_path}")
     return True
