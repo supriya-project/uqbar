@@ -74,7 +74,6 @@ ignore_missing_imports = true
 addopts = [
   "-vv",
   "-rf",
-  # "--cov=uqbar",
   "--cov-branch",
   "--cov-report=html",
   "--cov-report=term",

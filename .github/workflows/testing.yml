@@ -93,7 +93,5 @@ jobs:
     - uses: kamiazya/setup-graphviz@v1
     - name: Install test dependencies
       run: pip install -e .[test]
-    - name: Test pytest
-      run: |
-        pytest --version
-        make pytest
+    - name: Run pytest
+      run: pytest --cov=uqbar
