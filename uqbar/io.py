@@ -289,7 +289,7 @@ def open_path(path: pathlib.Path) -> None:
     elif platform.system() == "Linux":
         subprocess.run(["xdg-open", str(path)], check=True)
     elif platform.system() == "Windows":
-        os.startfile(str(path))  # noqa
+        os.startfile(str(path))  # type: ignore
 
 
 def relative_to(
