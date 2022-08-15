@@ -284,10 +284,11 @@ def find_executable(name: str, flags=os.X_OK) -> List[str]:
 
 
 def open_path(path: pathlib.Path) -> None:
-    viewer = {"Darwin": "open", "Linux": "xdg-open", "Windows": "start"}[
-        platform.system()
-    ]
-    subprocess.run([viewer, str(path)], check=True)
+    if platform.system() == "Darwin":
+        subprocess.run(["open", str(path)], check=True)
+    elif platform.system() == "Linux":
+        subprocess.run(["xdg-open", str(path)], check=True)
+    os.startfile(str(path))
 
 
 def relative_to(
