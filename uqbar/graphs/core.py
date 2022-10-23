@@ -86,12 +86,12 @@ class Graph(UniqueTreeList):
         self,
         children=None,
         *,
-        attributes: Union[Mapping[str, object], Attributes] = None,
-        edge_attributes: Union[Mapping[str, object], Attributes] = None,
+        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        edge_attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
         is_cluster: bool = False,
         is_digraph: bool = True,
-        name: str = None,
-        node_attributes: Union[Mapping[str, object], Attributes] = None,
+        name: Optional[str] = None,
+        node_attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
     ) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes(
@@ -104,7 +104,7 @@ class Graph(UniqueTreeList):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -244,12 +244,12 @@ class Node(UniqueTreeList):
 
     def __init__(
         self,
-        children: Iterable[
+        children: Optional[Iterable[
             Union["uqbar.graphs.RecordField", "uqbar.graphs.RecordGroup"]
-        ] = None,
+        ]] = None,
         *,
-        attributes: Union[Mapping[str, object], Attributes] = None,
-        name: str = None,
+        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        name: Optional[str] = None,
     ) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes("node", **(attributes or {}))
@@ -352,10 +352,10 @@ class Edge(object):
 
     def __init__(
         self,
-        attributes: Union[Mapping[str, object], Attributes] = None,
+        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
         is_directed: bool = True,
-        head_port_position: str = None,
-        tail_port_position: str = None,
+        head_port_position: Optional[str] = None,
+        tail_port_position: Optional[str] = None,
     ) -> None:
         self._attributes = Attributes("edge", **(attributes or {}))
         self._head: Optional[Union[Node, Attachable]] = None

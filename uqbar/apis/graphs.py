@@ -2,7 +2,7 @@ import collections
 import importlib
 import inspect
 import types
-from typing import Any  # noqa
+from typing import Optional, Any  # noqa
 from typing import Dict, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
 
 import uqbar.graphs
@@ -210,7 +210,7 @@ class InheritanceGraph:
     def __init__(
         self,
         package_paths: Sequence[Union[str, type, types.ModuleType]],
-        lineage_paths: Sequence[Union[str, type, types.ModuleType]] = None,
+        lineage_paths: Optional[Sequence[Union[str, type, types.ModuleType]]] = None,
     ) -> None:
         self._parents_to_children_paths: Dict[str, List[str]] = dict()
         self._children_to_parents_paths: Dict[str, List[str]] = dict()

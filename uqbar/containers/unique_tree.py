@@ -4,6 +4,7 @@ import threading
 import typing
 
 from ..iterables import nwise
+from typing import Optional
 
 
 class UniqueTreeNode:
@@ -20,7 +21,7 @@ class UniqueTreeNode:
 
     ### INITIALIZER ###
 
-    def __init__(self, name: str = None) -> None:
+    def __init__(self, name: Optional[str] = None) -> None:
         self._name = name
         self._parent = None
 

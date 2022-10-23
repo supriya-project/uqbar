@@ -66,7 +66,7 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### INITIALIZER ###
 
-    def __init__(self, label: str = None, *, name: str = None) -> None:
+    def __init__(self, label: Optional[str] = None, *, name: Optional[str] = None) -> None:
         UniqueTreeNode.__init__(self, name=name)
         Attachable.__init__(self)
         if label is not None:
@@ -75,7 +75,7 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -121,7 +121,7 @@ class RecordGroup(UniqueTreeList):
 
     ### INITIALIZER ###
 
-    def __init__(self, children=None, *, name: str = None) -> None:
+    def __init__(self, children=None, *, name: Optional[str] = None) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
 
     ### SPECIAL METHODS ###

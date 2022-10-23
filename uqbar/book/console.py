@@ -137,7 +137,7 @@ class Console(code.InteractiveConsole):
 
     ### INITIALIZER ###
 
-    def __init__(self, namespace: Optional[Dict] = None, extensions: List[Any] = None):
+    def __init__(self, namespace: Optional[Dict] = None, extensions: Optional[List[Any]] = None):
         super().__init__(
             filename="<stdin>",
             locals={**(namespace or {}), "__name__": "__main__", "__package__": None},
@@ -206,7 +206,7 @@ class Console(code.InteractiveConsole):
     def push_proxy_options(self, options=None):
         self.proxy_options = options or {}
 
-    def showsyntaxerror(self, filename: str = None) -> None:
+    def showsyntaxerror(self, filename: Optional[str] = None) -> None:
         super().showsyntaxerror(filename=filename)
         self.errored = True
 

@@ -1,4 +1,4 @@
-from typing import Mapping, Tuple, Union
+from typing import Optional, Mapping, Tuple, Union
 
 from ..containers import UniqueTreeList, UniqueTreeNode
 from .attrs import Attributes
@@ -24,7 +24,7 @@ class HRule(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -53,7 +53,7 @@ class LineBreak(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -113,15 +113,15 @@ class Table(UniqueTreeList):
         self,
         children=None,
         *,
-        attributes: Union[Mapping[str, object], Attributes] = None,
-        name: str = None,
+        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        name: Optional[str] = None,
     ) -> None:
         UniqueTreeList.__init__(self, children=children, name=name)
         self._attributes = Attributes("table", **(attributes or {}))
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -172,7 +172,7 @@ class TableRow(UniqueTreeList):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -233,8 +233,8 @@ class TableCell(UniqueTreeList, Attachable):
         self,
         children=None,
         *,
-        attributes: Union[Mapping[str, object], Attributes] = None,
-        name: str = None,
+        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        name: Optional[str] = None,
     ) -> None:
         if isinstance(children, str):
             children = [Text(children)]
@@ -244,7 +244,7 @@ class TableCell(UniqueTreeList, Attachable):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -299,7 +299,7 @@ class Text(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -340,7 +340,7 @@ class VRule(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
