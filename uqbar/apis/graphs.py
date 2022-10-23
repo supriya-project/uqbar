@@ -2,8 +2,18 @@ import collections
 import importlib
 import inspect
 import types
-from typing import Optional, Any  # noqa
-from typing import Dict, List, Mapping, MutableMapping, Sequence, Set, Tuple, Union
+from typing import (  # noqa
+    Any,
+    Dict,
+    List,
+    Mapping,
+    MutableMapping,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    Union,
+)
 
 import uqbar.graphs
 import uqbar.strings

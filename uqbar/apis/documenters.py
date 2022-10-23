@@ -3,7 +3,7 @@ import importlib
 import inspect
 import pathlib
 import types
-from typing import Optional, List, MutableMapping, Sequence, Tuple, Type, cast
+from typing import List, MutableMapping, Optional, Sequence, Tuple, Type, cast
 
 
 class MemberDocumenter:

@@ -66,7 +66,9 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### INITIALIZER ###
 
-    def __init__(self, label: Optional[str] = None, *, name: Optional[str] = None) -> None:
+    def __init__(
+        self, label: Optional[str] = None, *, name: Optional[str] = None
+    ) -> None:
         UniqueTreeNode.__init__(self, name=name)
         Attachable.__init__(self)
         if label is not None:

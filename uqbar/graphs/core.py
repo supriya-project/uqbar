@@ -244,9 +244,9 @@ class Node(UniqueTreeList):
 
     def __init__(
         self,
-        children: Optional[Iterable[
-            Union["uqbar.graphs.RecordField", "uqbar.graphs.RecordGroup"]
-        ]] = None,
+        children: Optional[
+            Iterable[Union["uqbar.graphs.RecordField", "uqbar.graphs.RecordGroup"]]
+        ] = None,
         *,
         attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
         name: Optional[str] = None,

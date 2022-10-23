@@ -137,7 +137,9 @@ class Console(code.InteractiveConsole):
 
     ### INITIALIZER ###
 
-    def __init__(self, namespace: Optional[Dict] = None, extensions: Optional[List[Any]] = None):
+    def __init__(
+        self, namespace: Optional[Dict] = None, extensions: Optional[List[Any]] = None
+    ):
         super().__init__(
             filename="<stdin>",
             locals={**(namespace or {}), "__name__": "__main__", "__package__": None},

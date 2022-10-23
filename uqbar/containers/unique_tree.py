@@ -2,9 +2,9 @@ import collections
 import copy
 import threading
 import typing
+from typing import Optional
 
 from ..iterables import nwise
-from typing import Optional
 
 
 class UniqueTreeNode:

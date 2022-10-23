@@ -1,4 +1,4 @@
-from typing import Optional, Mapping, Tuple, Union
+from typing import Mapping, Optional, Tuple, Union
 
 from ..containers import UniqueTreeList, UniqueTreeNode
 from .attrs import Attributes

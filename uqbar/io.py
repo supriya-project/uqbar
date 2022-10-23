@@ -167,7 +167,10 @@ class Timer:
     """
 
     def __init__(
-        self, exit_message: Optional[str] = None, enter_message: Optional[str] = None, verbose: bool = True
+        self,
+        exit_message: Optional[str] = None,
+        enter_message: Optional[str] = None,
+        verbose: bool = True,
     ) -> None:
         if enter_message is not None:
             enter_message = str(enter_message)
