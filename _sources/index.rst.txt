@@ -27,11 +27,11 @@ API auto-generation
 .. autosummary::
    :nosignatures:
 
-   uqbar.apis.APIBuilder
-   uqbar.apis.ClassDocumenter
-   uqbar.apis.FunctionDocumenter
-   uqbar.apis.ModuleDocumenter
-   uqbar.apis.RootDocumenter
+   uqbar.apis.builders.APIBuilder
+   uqbar.apis.documenters.ClassDocumenter
+   uqbar.apis.documenters.FunctionDocumenter
+   uqbar.apis.documenters.ModuleDocumenter
+   uqbar.apis.documenters.RootDocumenter
 
 Graphviz graphs
 ---------------
@@ -39,10 +39,10 @@ Graphviz graphs
 .. autosummary::
    :nosignatures:
 
-   uqbar.apis.InheritanceGraph
-   uqbar.graphs.Graph
-   uqbar.graphs.Node
-   uqbar.graphs.Edge
+   uqbar.apis.graphs.InheritanceGraph
+   uqbar.graphs.core.Graph
+   uqbar.graphs.core.Node
+   uqbar.graphs.core.Edge
 
 Generic data-structures
 -----------------------
@@ -50,10 +50,10 @@ Generic data-structures
 .. autosummary::
    :nosignatures:
 
-   uqbar.containers.DependencyGraph
-   uqbar.containers.UniqueTreeNode
-   uqbar.containers.UniqueTreeList
-   uqbar.containers.UniqueTreeSet
+   uqbar.containers.dependency_graph.DependencyGraph
+   uqbar.containers.unique_tree.UniqueTreeNode
+   uqbar.containers.unique_tree.UniqueTreeList
+   uqbar.containers.unique_tree.UniqueTreeSet
 
 Context managers
 ----------------

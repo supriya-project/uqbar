@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../_static/stylesheets/main.a280224b.min.css">
+      <link rel="stylesheet" href="../../../_static/stylesheets/main.30c392bc.min.css">
       
         
         <link rel="stylesheet" href="../../../_static/stylesheets/palette.92c9fe4a.min.css">
@@ -29,12 +29,11 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/google_fonts.css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1592,7 +1591,7 @@ implementation.</p>
 <p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingClassDocumenter</span></code> for an example.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.ClassDocumenter-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.ClassDocumenter-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.ClassDocumenter.__init__.package_path"><span class="n sig-name">package_path</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter.__init__.package_path" title="Permalink to this definition">¶</a></dt><dd><p>the module path and name of the member to document</p>
 </dd>
@@ -1609,7 +1608,7 @@ implementation.</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_client</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.ClassDocumenter.validate_client.client" title="uqbar.apis.documenters.ClassDocumenter.validate_client.client (Python parameter) — the potential client to validate"><span class="n"><span class="pre">client</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><span class="pre">object</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.ClassDocumenter.validate_client.module_path" title="uqbar.apis.documenters.ClassDocumenter.validate_client.module_path (Python parameter) — the package path of the module where the client was encountered"><span class="n"><span class="pre">module_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><span class="pre">str</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><span class="pre">bool</span></a></span></span></span><a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the member documenter can document the provided client.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.ClassDocumenter.validate_client-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.ClassDocumenter.validate_client-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.ClassDocumenter.validate_client.client"><span class="n sig-name">client</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)">object</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.ClassDocumenter.validate_client.client" title="Permalink to this definition">¶</a></dt><dd><p>the potential client to validate</p>
 </dd>
@@ -1645,7 +1644,7 @@ via an overridden
 implementation.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.FunctionDocumenter-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.FunctionDocumenter-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.FunctionDocumenter.__init__.package_path"><span class="n sig-name">package_path</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter.__init__.package_path" title="Permalink to this definition">¶</a></dt><dd><p>the module path and name of the member to document</p>
 </dd>
@@ -1662,7 +1661,7 @@ implementation.</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_client</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client.client" title="uqbar.apis.documenters.FunctionDocumenter.validate_client.client (Python parameter) — the potential client to validate"><span class="n"><span class="pre">client</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><span class="pre">object</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client.module_path" title="uqbar.apis.documenters.FunctionDocumenter.validate_client.module_path (Python parameter) — the package path of the module where the client was encountered"><span class="n"><span class="pre">module_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><span class="pre">str</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><span class="pre">bool</span></a></span></span></span><a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the member documenter can document the provided client.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.FunctionDocumenter.validate_client-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.FunctionDocumenter.validate_client-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.FunctionDocumenter.validate_client.client"><span class="n sig-name">client</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)">object</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.FunctionDocumenter.validate_client.client" title="Permalink to this definition">¶</a></dt><dd><p>the potential client to validate</p>
 </dd>
@@ -1700,7 +1699,7 @@ reStructuredText output via an overridden
 implementation.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.MemberDocumenter-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.MemberDocumenter-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.MemberDocumenter.__init__.package_path"><span class="n sig-name">package_path</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter.__init__.package_path" title="Permalink to this definition">¶</a></dt><dd><p>the module path and name of the member to document</p>
 </dd>
@@ -1727,7 +1726,7 @@ implementation.</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_client</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.MemberDocumenter.validate_client.client" title="uqbar.apis.documenters.MemberDocumenter.validate_client.client (Python parameter) — the potential client to validate"><span class="n"><span class="pre">client</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><span class="pre">object</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.apis.documenters.MemberDocumenter.validate_client.module_path" title="uqbar.apis.documenters.MemberDocumenter.validate_client.module_path (Python parameter) — the package path of the module where the client was encountered"><span class="n"><span class="pre">module_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><span class="pre">str</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><span class="pre">bool</span></a></span></span></span><a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter.validate_client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the member documenter can document the provided client.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.MemberDocumenter.validate_client-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.MemberDocumenter.validate_client-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter.validate_client-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.MemberDocumenter.validate_client.client"><span class="n sig-name">client</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)">object</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.MemberDocumenter.validate_client.client" title="Permalink to this definition">¶</a></dt><dd><p>the potential client to validate</p>
 </dd>
@@ -1797,7 +1796,7 @@ implementation.</p>
 <p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingModuleDocumenter</span></code> for an example.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.ModuleDocumenter-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.ModuleDocumenter-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.ModuleDocumenter-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.ModuleDocumenter-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.ModuleDocumenter.__init__.package_path"><span class="n sig-name">package_path</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)">str</a></span></span><a class="headerlink" href="#uqbar.apis.documenters.ModuleDocumenter.__init__.package_path" title="Permalink to this definition">¶</a></dt><dd><p>the module path of the module to document</p>
 </dd>
@@ -1915,7 +1914,7 @@ implementation.</p>
 <p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">SummarizingRootDocumenter</span></code> for an example.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="uqbar.apis.documenters.RootDocumenter-parameters">Parameters<a class="headerlink" href="#uqbar.apis.documenters.RootDocumenter-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="uqbar.apis.documenters.RootDocumenter-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.apis.documenters.RootDocumenter-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="uqbar.apis.documenters.RootDocumenter.__init__.module_documenters"><span class="n sig-name">module_documenters</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#uqbar.apis.documenters.RootDocumenter.__init__.module_documenters" title="Permalink to this definition">¶</a></dt><dd><p>a list of of documenters for modules and
 packages of the root documenter; these are generated by an
@@ -2008,7 +2007,7 @@ documenter directly</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    5.1.1.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -2027,6 +2026,7 @@ documenter directly</p>
     
     
       <script src="../../../_static/javascripts/bundle.dc1bded0.min.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     
   </body>
 </html>
