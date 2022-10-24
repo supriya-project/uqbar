@@ -80,6 +80,48 @@ index_content = normalize(
 
     * API
 
+      * "just_a_function()"
+
+      * "GrandParent"
+
+        * "GrandParent.one()"
+
+        * "GrandParent.three()"
+
+        * "GrandParent.two()"
+
+      * "Parent"
+
+        * "Parent.one()"
+
+        * "Parent.three()"
+
+        * "Parent.two()"
+
+      * "Uncle"
+
+        * "Uncle.one()"
+
+        * "Uncle.three()"
+
+        * "Uncle.two()"
+
+      * "Child"
+
+        * "Child.one()"
+
+        * "Child.three()"
+
+        * "Child.two()"
+
+      * "Outer"
+
+        * "Outer.Inner"
+
+          * "Outer.Inner.inner_method()"
+
+        * "Outer.outer_method()"
+
     * Directives
     """
 )
