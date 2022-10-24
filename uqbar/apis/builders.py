@@ -1,6 +1,6 @@
 import pathlib
 import shutil
-from typing import Sequence, Type, Union
+from typing import Optional, Sequence, Type, Union
 
 from .. import io
 from .documenters import (
@@ -59,10 +59,10 @@ class APIBuilder(object):
         document_empty_modules: bool = True,
         document_private_members: bool = False,
         document_private_modules: bool = False,
-        member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
-        module_documenter_class: Type[ModuleDocumenter] = None,
+        member_documenter_classes: Optional[Sequence[Type[MemberDocumenter]]] = None,
+        module_documenter_class: Optional[Type[ModuleDocumenter]] = None,
         omit_root: bool = False,
-        root_documenter_class: Type[RootDocumenter] = None,
+        root_documenter_class: Optional[Type[RootDocumenter]] = None,
         title: str = "API",
         logger_func=None,
     ) -> None:

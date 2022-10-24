@@ -24,13 +24,59 @@ def test_sphinx_api_1(app, status, warning):
 
           * enums
 
+            * "FakeEnum"
+
+              * "FakeEnum.BAR"
+
+              * "FakeEnum.BAZ"
+
+              * "FakeEnum.FOO"
+
+              * "FakeEnum.QUUX"
+
           * module
+
+            * "ChildClass"
+
+              * "ChildClass.inheritable_method()"
+
+              * "ChildClass.new_method()"
+
+            * "PublicClass"
+
+              * "PublicClass.class_method()"
+
+              * "PublicClass.inheritable_method()"
+
+              * "PublicClass.method()"
+
+              * "PublicClass.other_method()"
+
+              * "PublicClass.read_only_property"
+
+              * "PublicClass.read_write_property"
+
+              * "PublicClass.static_method()"
+
+            * "public_function()"
 
           * multi
 
             * one
 
+              * "PublicClass"
+
+              * "public_function()"
+
             * two
+
+              * "PublicClass"
+
+              * "public_function()"
+
+            * "PublicClass"
+
+            * "public_function()"
         """
     )
     # Build again, confirm that nothing has changed.

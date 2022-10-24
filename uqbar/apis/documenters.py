@@ -3,7 +3,7 @@ import importlib
 import inspect
 import pathlib
 import types
-from typing import List, MutableMapping, Sequence, Tuple, Type, cast
+from typing import List, MutableMapping, Optional, Sequence, Tuple, Type, cast
 
 
 class MemberDocumenter:
@@ -270,8 +270,8 @@ class ModuleDocumenter:
         self,
         package_path: str,
         document_private_members: bool = False,
-        member_documenter_classes: Sequence[Type[MemberDocumenter]] = None,
-        module_documenters: Sequence["ModuleDocumenter"] = None,
+        member_documenter_classes: Optional[Sequence[Type[MemberDocumenter]]] = None,
+        module_documenters: Optional[Sequence["ModuleDocumenter"]] = None,
     ) -> None:
         self._package_path = package_path
         client = importlib.import_module(package_path)

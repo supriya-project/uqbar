@@ -541,7 +541,7 @@ class Attributes(collections.abc.MutableMapping):
             and self._attributes == other._attributes
         )
 
-    def __format__(self, format_spec: str = None) -> str:
+    def __format__(self, format_spec: Optional[str] = None) -> str:
         if format_spec == "graphviz":
             return self.__format_graphviz__()
         elif format_spec == "html":
