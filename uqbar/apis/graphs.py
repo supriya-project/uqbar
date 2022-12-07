@@ -257,7 +257,7 @@ class InheritanceGraph:
 
     ### PUBLIC METHODS ###
 
-    def build_graph(self, urls=None):
+    def build_graph(self, urls=None) -> "uqbar.graphs.Graph":
         urls = urls or {}
         graph = uqbar.graphs.Graph(
             name="InheritanceGraph",

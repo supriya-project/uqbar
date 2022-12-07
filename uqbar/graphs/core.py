@@ -14,7 +14,7 @@ class Attachable(UniqueTreeNode):
 
     ### INITIALIZER ###
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._edges: Set["Edge"] = set()
 
     ### PRIVATE METHODS ###

@@ -46,7 +46,7 @@ def logger_func(string):
     logger.info("{} {}".format(bold("[uqbar-api]"), string))
 
 
-def on_builder_inited(app):
+def on_builder_inited(app) -> None:
     """
     Hooks into Sphinx's ``builder-inited`` event.
 

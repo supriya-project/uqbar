@@ -86,7 +86,7 @@ def handle_method(signature_node, module, object_name, cache):
             signature_node.insert(0, emphasis)
 
 
-def on_doctree_read(app, document):
+def on_doctree_read(app, document) -> None:
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
