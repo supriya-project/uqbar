@@ -1,6 +1,9 @@
 import code
 import inspect
 import itertools
+import os
+import sys
+import traceback
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -163,6 +166,20 @@ class Console(code.InteractiveConsole):
         for extension in self.extensions or []:
             extension.teardown_console(self)
 
+    ### PRIVATE METHODS ###
+
+    def _showtraceback(self):
+        sys.last_type, sys.last_value, last_tb = ei = sys.exc_info()
+        sys.last_traceback = last_tb
+        try:
+            self.write(
+                "".join(
+                    traceback.format_exception(ei[0], ei[1], last_tb.tb_next.tb_next)
+                )
+            )
+        finally:
+            last_tb = ei = None
+
     ### PUBLIC METHODS ###
 
     def flush(self) -> None:
@@ -213,7 +230,12 @@ class Console(code.InteractiveConsole):
         self.errored = True
 
     def showtraceback(self) -> None:
-        super().showtraceback()
+        if os.environ.get("CI"):
+            # GitHub Actions tracebacks include the code.py module
+            self._showtraceback()
+        else:
+            super().showtraceback()
+
         self.errored = True
 
     def write(self, string: str) -> None:
