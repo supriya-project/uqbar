@@ -169,6 +169,12 @@ class Console(code.InteractiveConsole):
     ### PRIVATE METHODS ###
 
     def _showtraceback(self):
+        """
+        Re-implementation of code.InteractiveConsole's showtraceback().
+
+        No new functionality, but placing it here prevents the addition of
+        extra lines in the trace output when run under GHA.
+        """
         sys.last_type, sys.last_value, last_tb = ei = sys.exc_info()
         sys.last_traceback = last_tb
         try:
