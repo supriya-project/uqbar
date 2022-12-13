@@ -173,9 +173,7 @@ class Console(code.InteractiveConsole):
         sys.last_traceback = last_tb
         try:
             self.write(
-                "".join(
-                    traceback.format_exception(ei[0], ei[1], last_tb.tb_next.tb_next)
-                )
+                "".join(traceback.format_exception(ei[0], ei[1], last_tb.tb_next))
             )
         finally:
             last_tb = ei = None
@@ -235,7 +233,6 @@ class Console(code.InteractiveConsole):
             self._showtraceback()
         else:
             super().showtraceback()
-
         self.errored = True
 
     def write(self, string: str) -> None:
