@@ -16,6 +16,7 @@ def read_version():
 
 if __name__ == "__main__":
     setuptools.setup(
+        package_data={"uqbar": ["py.typed"]},
         packages=setuptools.find_packages(
             include=["uqbar", "uqbar.*"], exclude=["*__pycache__*"]
         ),
