@@ -257,7 +257,7 @@ class InheritanceGraph:
 
     ### PUBLIC METHODS ###
 
-    def build_graph(self, urls=None):
+    def build_graph(self, urls=None) -> uqbar.graphs.Graph:
         urls = urls or {}
         graph = uqbar.graphs.Graph(
             name="InheritanceGraph",
@@ -286,7 +286,7 @@ class InheritanceGraph:
                 "style": ["filled", "rounded"],
             },
         )
-        class_paths_to_nodes: Dict[type, uqbar.graphs.Node] = {}
+        class_paths_to_nodes: Dict[str, uqbar.graphs.Node] = {}
         for class_path in self._all_class_paths:
             node = self._get_or_create_node(class_path, graph, urls)
             class_paths_to_nodes[class_path] = node

@@ -46,7 +46,7 @@ def logger_func(string):
     logger.info("{} {}".format(bold("[uqbar-api]"), string))
 
 
-def on_builder_inited(app):
+def on_builder_inited(app) -> None:
     """
     Hooks into Sphinx's ``builder-inited`` event.
 
@@ -60,16 +60,16 @@ def on_builder_inited(app):
     source_paths = config.uqbar_api_source_paths
     for source_path in source_paths:
         if isinstance(source_path, types.ModuleType):
-            if hasattr(source_path, "__path__"):
-                initial_source_paths.extend(getattr(source_path, "__path__"))
-            else:
+            if hasattr(source_path, "__path__") and source_path.__path__ is not None:
+                initial_source_paths.extend(source_path.__path__)
+            elif hasattr(source_path, "__file__") and source_path.__file__ is not None:
                 initial_source_paths.extend(source_path.__file__)
             continue
         try:
             module = importlib.import_module(source_path)
-            if hasattr(module, "__path__"):
-                initial_source_paths.extend(getattr(module, "__path__"))
-            else:
+            if hasattr(module, "__path__") and module.__path__ is not None:
+                initial_source_paths.extend(module.__path__)
+            elif hasattr(module, "__file__") and module.__file__ is not None:
                 initial_source_paths.append(module.__file__)
         except ImportError:
             initial_source_paths.append(source_path)
