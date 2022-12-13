@@ -106,7 +106,7 @@ def collect_literal_blocks(document):
         uqbar_book_import_block,
     )
     blocks = []
-    for block in document.traverse(lambda node: isinstance(node, prototype)):
+    for block in document.findall(lambda node: isinstance(node, prototype)):
         if not isinstance(block, (uqbar_book_defaults_block, uqbar_book_import_block)):
             contents = block[0]
             if isinstance(contents, literal_block):
