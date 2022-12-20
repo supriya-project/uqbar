@@ -33,11 +33,10 @@ jobs:
         cache-dependency-path: "**/pyproject.toml"
     - name: Install Uqbar
       run: pip install -e .[docs]
-    - uses: kamiazya/setup-graphviz@v1
+    - name: Install Graphviz
+      run: sudo apt-get install --yes graphviz
     - name: Build docs
-      run: |
-        sphinx-build --version
-        make docs
+      run: make docs
 
   lint:
     name: Lint
@@ -54,17 +53,11 @@ jobs:
     - name: Install Uqbar
       run: pip install -e .[test]
     - name: Test black
-      run: |
-        black --version
-        make black-check
+      run: make black-check
     - name: Test flake8
-      run: |
-        flake8 --version
-        make flake8
+      run: make flake8
     - name: Test mypy
-      run: |
-        mypy --version
-        make mypy
+      run: make mypy
 
   test:
     name: Test
@@ -92,8 +85,16 @@ jobs:
       run: pip install -e .
     - name: Check importability
       run: python -c "import uqbar"
-    - uses: kamiazya/setup-graphviz@v1
     - name: Install test dependencies
       run: pip install -e .[test]
+    - name: Install Graphviz
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          sudo apt-get install --yes graphviz
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew install graphviz
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          choco install graphviz
+        fi
     - name: Run pytest
-      run: pytest --cov=uqbar
+      run: pytest --cov uqbar
