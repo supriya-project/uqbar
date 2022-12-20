@@ -96,5 +96,6 @@ jobs:
         elif [ "$RUNNER_OS" == "Windows" ]; then
           choco install graphviz
         fi
+      shell: bash
     - name: Run pytest
       run: pytest --cov uqbar
