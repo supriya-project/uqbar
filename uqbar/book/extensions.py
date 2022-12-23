@@ -42,18 +42,16 @@ class Extension:
         pass
 
     @staticmethod
-    def visit_block_html(self, node):
+    def visit_block_html(node):
         raise SkipNode
 
     @staticmethod
-    def visit_block_latex(self, node):
+    def visit_block_latex(node):
         raise SkipNode
 
-    @staticmethod
     def depart_block_text(self, node):
         self.end_state(wrap=False)
 
-    @staticmethod
     def visit_block_text(self, node):
         self.new_state()
 
@@ -144,7 +142,6 @@ class GraphExtension(Extension):
                 cls.clean_svg(image_file_path)
         return image_file_path
 
-    @staticmethod
     def visit_block_html(self, node):
         absolute_image_file_path = GraphExtension.render_image(
             node, pathlib.Path(self.builder.outdir) / "_images", ".svg"
