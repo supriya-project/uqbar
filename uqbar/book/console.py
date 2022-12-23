@@ -1,7 +1,6 @@
 import code
 import inspect
 import itertools
-import os
 import sys
 import traceback
 from dataclasses import dataclass
@@ -234,11 +233,7 @@ class Console(code.InteractiveConsole):
         self.errored = True
 
     def showtraceback(self) -> None:
-        if os.environ.get("CI"):
-            # GitHub Actions tracebacks include the code.py module
-            self._showtraceback()
-        else:
-            super().showtraceback()
+        self._showtraceback()
         self.errored = True
 
     def write(self, string: str) -> None:
