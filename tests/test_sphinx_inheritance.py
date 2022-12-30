@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 
 
@@ -5,11 +7,16 @@ import pytest
 def test_sphinx_style_html(app, status, warning):
     app.build()
     assert "build succeeded" in status.getvalue()
-    assert not warning.getvalue().strip()
+    warnings = [line.strip() for line in warning.getvalue().splitlines()]
+    if sys.version_info.minor < 11:
+        assert not warnings
+    else:
+        assert len(warnings) == 2
 
 
 @pytest.mark.sphinx("latex", testroot="uqbar-sphinx-style")
 def test_sphinx_style_latex(app, status, warning):
     app.build()
     assert "build succeeded" in status.getvalue()
-    assert not warning.getvalue().strip()
+    warnings = [line.strip() for line in warning.getvalue().splitlines()]
+    assert not warnings

@@ -193,14 +193,3 @@ def test_str_03(test_path):
         .. autoclass:: _PrivateClass
         """
     )
-
-
-def test_str_04(test_path):
-    documenter = uqbar.apis.SummarizingClassDocumenter("fake_package.enums.FakeEnum")
-    assert normalize(str(documenter)) == normalize(
-        """
-        .. autoclass:: FakeEnum
-           :members:
-           :undoc-members:
-        """
-    )
