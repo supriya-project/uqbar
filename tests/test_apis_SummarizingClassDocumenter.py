@@ -253,6 +253,56 @@ def test_str_04(test_path):
 
                .. container:: inherited
 
+                  .. automethod:: FakeEnum.__eq__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__float__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__floor__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__floordiv__
+
+               .. automethod:: FakeEnum.__format__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__ge__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__getitem__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__gt__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__hash__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__index__
+
+               .. container:: inherited
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__rrshift__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__rshift__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__rsub__
+
                .. container:: inherited
 
                   .. automethod:: FakeEnum.__rtruediv__
