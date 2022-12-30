@@ -7,7 +7,7 @@ import pytest
 def test_sphinx_style_html(app, status, warning):
     app.build()
     assert "build succeeded" in status.getvalue()
-    warnings = [line.strip() for line in warning.splitlines()]
+    warnings = [line.strip() for line in warning.getvalue().splitlines()]
     if sys.version_info.minor < 11:
         assert not warnings
     else:
@@ -18,7 +18,7 @@ def test_sphinx_style_html(app, status, warning):
 def test_sphinx_style_latex(app, status, warning):
     app.build()
     assert "build succeeded" in status.getvalue()
-    warnings = [line.strip() for line in warning.splitlines()]
+    warnings = [line.strip() for line in warning.getvalue().splitlines()]
     if sys.version_info.minor < 11:
         assert not warnings
     else:

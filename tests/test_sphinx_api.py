@@ -93,7 +93,7 @@ def test_sphinx_api_2(app, status, warning):
     assert "build succeeded" in status.getvalue()
     assert "8 added, 0 changed, 0 removed" in status.getvalue()
     assert "0 added, 0 changed, 0 removed" not in status.getvalue()
-    warnings = [line.strip() for line in warning.splitlines()]
+    warnings = [line.strip() for line in warning.getvalue().splitlines()]
     if sys.version_info.minor < 11:
         assert not warnings
     else:
