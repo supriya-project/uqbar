@@ -1,4 +1,5 @@
 import pathlib
+import sys
 
 import pytest
 
@@ -92,7 +93,11 @@ def test_sphinx_api_2(app, status, warning):
     assert "build succeeded" in status.getvalue()
     assert "8 added, 0 changed, 0 removed" in status.getvalue()
     assert "0 added, 0 changed, 0 removed" not in status.getvalue()
-    assert not warning.getvalue().strip()
+    warnings = [line.strip() for line in warning.splitlines()]
+    if sys.version_info.minor < 11:
+        assert not warnings
+    else:
+        assert len(warnings) == 2
     path = pathlib.Path(app.srcdir) / "_build" / "text" / "api" / "index.txt"
     assert normalize(path.read_text()) == normalize(
         """
