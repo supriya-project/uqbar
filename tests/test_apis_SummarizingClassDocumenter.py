@@ -197,10 +197,126 @@ def test_str_03(test_path):
 
 def test_str_04(test_path):
     documenter = uqbar.apis.SummarizingClassDocumenter("fake_package.enums.FakeEnum")
-    assert normalize(str(documenter)) == normalize(
-        """
-        .. autoclass:: FakeEnum
-           :members:
-           :undoc-members:
-        """
-    )
+    if sys.version_info.minor < 11:
+        assert normalize(str(documenter)) == normalize(
+            """
+            .. autoclass:: FakeEnum
+               :members:
+               :undoc-members:
+            """
+        )
+    else:
+        assert normalize(str(documenter)) == normalize(
+            """
+            .. autoclass:: FakeEnum
+               :members:
+               :undoc-members:
+
+               .. raw:: html
+
+                  <hr/>
+
+               .. rubric:: Special methods
+                  :class: class-header
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__abs__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__add__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__and__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__bool__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__ceil__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__contains__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__dir__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__divmod__
+
+               .. container:: inherited
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__rtruediv__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__rxor__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__str__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__sub__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__truediv__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__trunc__
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.__xor__
+
+               .. raw:: html
+
+                  <hr/>
+
+               .. rubric:: Methods
+                  :class: class-header
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.as_integer_ratio
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.bit_count
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.bit_length
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.conjugate
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.to_bytes
+
+               .. raw:: html
+
+                  <hr/>
+
+               .. rubric:: Class & static methods
+                  :class: class-header
+
+               .. container:: inherited
+
+                  .. automethod:: FakeEnum.from_bytes
+            """
+        )
