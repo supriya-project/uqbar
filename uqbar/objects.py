@@ -233,10 +233,7 @@ def get_vars(expr):
             except AttributeError:
                 args[name] = expr[name]
 
-        elif (
-            parameter.kind is inspect._POSITIONAL_OR_KEYWORD
-            or parameter.kind is inspect._KEYWORD_ONLY
-        ):
+        elif parameter.kind in (inspect._POSITIONAL_OR_KEYWORD, inspect._KEYWORD_ONLY):
             for x in (name, "_" + name):
                 try:
                     value = getattr(expr, x)
@@ -250,15 +247,19 @@ def get_vars(expr):
             else:
                 raise ValueError("Cannot find value for {!r}".format(name))
             # print("        ", value)
-            if parameter.default is inspect._empty:
+            if parameter.kind is inspect._KEYWORD_ONLY:
                 # print("        ??? A")
+                kwargs[name] = value
+                continue
+            elif parameter.default is inspect._empty:
+                # print("        ??? B")
                 args[name] = value
                 continue
             elif parameter.default == value:
-                # print("        ??? B")
+                # print("        ??? C")
                 kwargs[name] = value
                 continue
-            # print("        ??? C")
+            # print("        ??? D")
             kwargs[name] = value
 
         elif parameter.kind is inspect._VAR_POSITIONAL:
