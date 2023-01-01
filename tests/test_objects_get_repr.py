@@ -17,6 +17,13 @@ class MyReprObject(MyNonReprObject):
         return uqbar.objects.get_repr(self)
 
 
+class MyKwargOnlyObject:
+    def __init__(self, *, foo, bar, baz):
+        self.foo = foo
+        self.bar = bar
+        self.baz = baz
+
+
 def test_objects_get_repr_01():
     my_object = MyNonReprObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
     assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize(
@@ -106,4 +113,17 @@ def test_objects_get_repr_05():
             bar={1, 2, 3},
         )
     """
+    )
+
+
+def test_objects_get_repr_06():
+    my_object = MyKwargOnlyObject(foo="a", bar="b", baz="c")
+    assert uqbar.objects.get_repr(my_object) == uqbar.strings.normalize(
+        """
+        MyKwargOnlyObject(
+            bar='b',
+            baz='c',
+            foo='a',
+        )
+        """
     )
