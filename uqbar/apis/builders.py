@@ -41,7 +41,7 @@ class APIBuilder(object):
 
     :param initial_source_paths: a list of paths to scan for Python sources
     :param target_directory: where to write reStructuredText output
-    :param document_private_members: whether to documenter private module members
+    :param document_private_members: whether to document private module members
     :param document_private_modules: whether to document private modules
     :param member_documenter_classes: a list of
         :py:class:`~uqbar.apis.MemberDocumenter` subclasses, defining what classes
