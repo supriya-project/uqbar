@@ -7,7 +7,6 @@ from .attrs import Attributes
 
 
 class Attachable(UniqueTreeNode):
-
     ### CLASS VARIABLES ###
 
     __documentation_section__ = "Mixins"

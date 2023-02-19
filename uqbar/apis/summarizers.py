@@ -721,6 +721,7 @@ class ImmaterialClassDocumenter(SummarizingClassDocumenter):
         if issubclass(self.client, enum.Enum):  # type: ignore
             result.extend(["   :members:", "   :undoc-members:"])
         result.append("")
+        attrs: List[str] = []
         for attr in sorted(
             inspect.classify_class_attrs(cast(type, self.client)), key=lambda x: x.name
         ):
@@ -730,10 +731,15 @@ class ImmaterialClassDocumenter(SummarizingClassDocumenter):
                 continue
             if attr.name.startswith("__") and attr.name in self.ignored_special_methods:
                 continue
-            if attr.kind in ("method", "class method", "static method"):
-                result.append(f"   .. automethod:: {attr.name}")
-            elif attr.kind in ("property"):
-                result.append(f"   .. autoproperty:: {attr.name}")
+            if attr.kind in ["method", "class method", "static method"]:
+                attrs.append(f"   .. automethod:: {attr.name}")
+            elif attr.kind in ["property"]:
+                attrs.append(f"   .. autoproperty:: {attr.name}")
+            elif attr.kind in ["data"] and isinstance(attr.object, type):
+                attrs.append(
+                    f"   .. autoclass:: {self.client.__module__}::{name}.{attr.name}"
+                )
+        result.extend(sorted(attrs))
         return "\n".join(result)
 
 

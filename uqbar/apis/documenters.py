@@ -295,8 +295,13 @@ class ModuleDocumenter:
     def __str__(self) -> str:
         result = self._build_preamble()
         result.extend(self._build_toc(self.module_documenters or []))
+        member_strings: List[str] = []
         for documenter in self._member_documenters:
-            result.extend(["", str(documenter)])
+            member_strings.append(str(documenter))
+        member_strings.sort(key=lambda x: x.partition("\n")[0].split("::"))
+        for member_string in member_strings:
+            result.append("")
+            result.append(member_string)
         return "\n".join(result)
 
     ### PRIVATE METHODS ###
