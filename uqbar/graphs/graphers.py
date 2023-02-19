@@ -10,7 +10,6 @@ from ..io import Timer, open_path
 
 
 class Grapher:
-
     ### CLASS VARIABLES ###
 
     _valid_formats = ("png", "pdf", "svg")

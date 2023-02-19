@@ -9,19 +9,14 @@ on:
   schedule:
   - cron: "0 0 * * 0"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  cancel:
-    name: Cancel previous workflow
-    runs-on: ubuntu-latest
-    steps:
-    - name: Cancel previous runs
-      uses: styfle/cancel-workflow-action@0.9.1
-      with:
-        access_token: ${{ github.token }}
 
   docs:
     name: Build docs
-    needs: [cancel]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -40,7 +35,6 @@ jobs:
 
   lint:
     name: Lint
-    needs: [cancel]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -61,7 +55,6 @@ jobs:
 
   test:
     name: Test
-    needs: [cancel]
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

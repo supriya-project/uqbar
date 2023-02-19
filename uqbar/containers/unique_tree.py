@@ -183,7 +183,6 @@ class UniqueTreeNode:
 
 
 class UniqueTreeContainer(UniqueTreeNode):
-
     ### INITIALIZER ###
 
     def __init__(self, children=None, name=None):

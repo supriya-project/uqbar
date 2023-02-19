@@ -33,7 +33,6 @@ class Attributes(collections.abc.MutableMapping):
     ### CLASS VARIABLES ###
 
     class Color(object):
-
         __slots__ = ("color",)
 
         def __init__(self, color) -> None:
@@ -54,7 +53,6 @@ class Attributes(collections.abc.MutableMapping):
         TABLE_CELL = 6
 
     class Point(object):
-
         __slots__ = ("x", "y")
 
         def __init__(self, x, y) -> None:

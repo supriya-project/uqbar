@@ -3,7 +3,6 @@ from uqbar.strings import normalize
 
 
 def test_graphs_RecordField():
-
     graph = Graph()
     graph.node_attributes["shape"] = "record"
 
