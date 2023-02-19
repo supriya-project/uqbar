@@ -22,6 +22,14 @@ sphinx
 
    .. automethod:: run
 
+.. autoclass:: uqbar_book_defaults_block
+   :show-inheritance:
+
+
+.. autoclass:: uqbar_book_import_block
+   :show-inheritance:
+
+
 .. autofunction:: black_format
 
 .. autofunction:: collect_literal_blocks
@@ -51,10 +59,3 @@ sphinx
 .. autofunction:: rebuild_document
 
 .. autofunction:: update_cache_db
-
-.. autoclass:: uqbar_book_defaults_block
-   :show-inheritance:
-
-
-.. autoclass:: uqbar_book_import_block
-   :show-inheritance:

@@ -20,8 +20,6 @@ console
    .. automethod:: showtraceback
    .. automethod:: write
 
-.. autoexception:: ConsoleError
-
 .. autoclass:: ConsoleInput
    :show-inheritance:
 
@@ -35,3 +33,5 @@ console
 
    .. automethod:: setattr
    .. automethod:: undo
+
+.. autoexception:: ConsoleError

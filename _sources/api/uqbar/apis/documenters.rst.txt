@@ -10,22 +10,22 @@ documenters
 .. autoclass:: ClassDocumenter
    :show-inheritance:
 
-   .. autoproperty:: documentation_section
    .. automethod:: validate_client
+   .. autoproperty:: documentation_section
 
 .. autoclass:: FunctionDocumenter
    :show-inheritance:
 
-   .. autoproperty:: documentation_section
    .. automethod:: validate_client
+   .. autoproperty:: documentation_section
 
 .. autoclass:: MemberDocumenter
    :show-inheritance:
 
+   .. automethod:: validate_client
    .. autoproperty:: client
    .. autoproperty:: documentation_section
    .. autoproperty:: package_path
-   .. automethod:: validate_client
 
 .. autoclass:: ModuleDocumenter
    :show-inheritance:

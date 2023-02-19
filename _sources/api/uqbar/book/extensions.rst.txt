@@ -22,6 +22,7 @@ extensions
 .. autoclass:: GraphExtension
    :show-inheritance:
 
+   .. autoclass:: uqbar.book.extensions::GraphExtension.graphviz_block
    .. automethod:: clean_svg
    .. automethod:: render_image
    .. automethod:: setup_console

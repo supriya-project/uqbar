@@ -19,8 +19,8 @@ core
    .. automethod:: __format__
    .. automethod:: __format_graphviz__
    .. automethod:: attach
-   .. autoproperty:: attributes
    .. automethod:: detach
+   .. autoproperty:: attributes
    .. autoproperty:: head
    .. autoproperty:: head_graph_order
    .. autoproperty:: head_port_position

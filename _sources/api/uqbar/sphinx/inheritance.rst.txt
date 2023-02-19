@@ -12,13 +12,13 @@ inheritance
 
    .. automethod:: run
 
-.. autofunction:: build_urls
-
-.. autofunction:: html_visit_inheritance_diagram
-
 .. autoclass:: inheritance_diagram
    :show-inheritance:
 
+
+.. autofunction:: build_urls
+
+.. autofunction:: html_visit_inheritance_diagram
 
 .. autofunction:: latex_visit_inheritance_diagram
 

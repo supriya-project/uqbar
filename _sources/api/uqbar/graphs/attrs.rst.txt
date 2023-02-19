@@ -10,6 +10,9 @@ attrs
 .. autoclass:: Attributes
    :show-inheritance:
 
+   .. autoclass:: uqbar.graphs.attrs::Attributes.Color
+   .. autoclass:: uqbar.graphs.attrs::Attributes.Mode
+   .. autoclass:: uqbar.graphs.attrs::Attributes.Point
    .. automethod:: __delitem__
    .. automethod:: __format__
    .. automethod:: __format_graphviz__

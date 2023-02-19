@@ -11,8 +11,8 @@ graphs
    :show-inheritance:
 
    .. automethod:: __len__
+   .. automethod:: build_graph
    .. autoproperty:: all_class_paths
    .. autoproperty:: aspect_ratio
-   .. automethod:: build_graph
    .. autoproperty:: children_to_parents
    .. autoproperty:: parents_to_children

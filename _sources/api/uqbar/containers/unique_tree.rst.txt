@@ -13,9 +13,9 @@ unique_tree
    .. automethod:: __contains__
    .. automethod:: __iter__
    .. automethod:: __len__
-   .. autoproperty:: children
    .. automethod:: depth_first
    .. automethod:: recurse
+   .. autoproperty:: children
 
 .. autoclass:: UniqueTreeDict
    :show-inheritance:
