@@ -141,7 +141,7 @@ def on_doctree_read(app, document):
                     + "\n    "
                     + "\n    ".join(
                         line.rstrip()
-                        for line in exception.args[0].rstrip().splitlines()
+                        for line in (exception.args[0] or "").rstrip().splitlines()
                     )
                 )
                 logger.warning(message, location=exception.args[1])

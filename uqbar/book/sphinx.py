@@ -170,7 +170,10 @@ def find_traceback(console_output):
         # There could be non-traceback output before the traceback appears.
         lines = item.string.splitlines()
         while lines:
-            if lines[0].startswith("Traceback (most recent call last):"):
+            if lines[0].startswith((
+                "Traceback (most recent call last):",
+                "SyntaxError:",
+            )):
                 break
             lines.pop(0)
         if lines:
