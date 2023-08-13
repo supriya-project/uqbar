@@ -1,5 +1,4 @@
 import sys
-from distutils.version import LooseVersion
 
 import pytest
 from docutils.parsers.rst import directives
@@ -204,7 +203,7 @@ def test_interpret_code_blocks_02():
     error_message = (
         "Traceback (most recent call last):\n" '  File "<stdin>", line 1, in <module>\n'
     )
-    if LooseVersion(sys.version.split()[0]) < LooseVersion("3.7"):
+    if sys.version_info < (3, 7):
         error_message += "TypeError: must be str, not int\n"
     else:
         error_message += 'TypeError: can only concatenate str (not "int") to str\n'
