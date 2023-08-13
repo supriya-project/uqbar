@@ -37,8 +37,8 @@ graphviz_output_format = "svg"
 ### INTERSPHINX ###
 
 intersphinx_mapping = {
-    "https://docs.python.org/3.6/": None,
-    "http://www.sphinx-doc.org/en/stable/": None,
+    "https://docs.python.org/3/": None,
+    "https://www.sphinx-doc.org/en/master/": None,
 }
 
 ### THEME ###
