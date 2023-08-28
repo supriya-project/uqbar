@@ -12,6 +12,8 @@ enums
    :members:
    :undoc-members:
 
+   .. automethod:: __dir__
+   .. automethod:: __format__
 
 .. autoclass:: StrictEnumeration
    :show-inheritance:
