@@ -37,8 +37,8 @@ graphviz_output_format = "svg"
 ### INTERSPHINX ###
 
 intersphinx_mapping = {
-    "https://docs.python.org/3/": None,
-    "https://www.sphinx-doc.org/en/master/": None,
+    "python": ("https://docs.python.org/3/", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
 }
 
 ### THEME ###
@@ -59,7 +59,6 @@ html_theme_options = {
     "site_url": "https://josiahwolfoberholtzer.com/uqbar/",
     "repo_url": "https://github.com/josiah-wolf-oberholtzer/uqbar/",
     "repo_name": "uqbar",
-    "repo_type": "github",
     "edit_uri": "blob/main/docs",
     "globaltoc_collapse": True,
     "features": [

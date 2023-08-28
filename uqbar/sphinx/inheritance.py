@@ -32,13 +32,11 @@ import math
 import os
 import pathlib
 import subprocess
-from typing import Any, Dict, List, Mapping
+from typing import Any, Dict, List, Mapping, cast
 
-from docutils.nodes import Element  # type: ignore
-from docutils.nodes import General, Node, SkipNode
-from docutils.parsers.rst import Directive, directives  # type: ignore
-from sphinx.ext.graphviz import render_dot_html  # type: ignore
-from sphinx.ext.graphviz import render_dot_latex
+from docutils.nodes import Element, General, Node, SkipNode
+from docutils.parsers.rst import Directive, directives
+from sphinx.ext.graphviz import graphviz, render_dot_html, render_dot_latex
 from sphinx.writers.html import HTMLTranslator
 from sphinx.writers.latex import LaTeXTranslator
 
@@ -110,27 +108,26 @@ def build_urls(self: HTMLTranslator, node: inheritance_diagram) -> Mapping[str, 
     Builds a mapping of class paths to URLs.
     """
     current_filename = self.builder.current_docname + self.builder.out_suffix
-    urls = {}
+    urls: Dict[str, str] = {}
     for child in node:
+        if not isinstance(child, Element):
+            continue
         # Another document
-        if child.get("refuri") is not None:
-            uri = child.get("refuri")
-            package_path = child["reftitle"]
-            if uri.startswith("http"):
-                _, _, package_path = uri.partition("#")
+        refuri: str | None
+        if (refuri := child.attributes.get("refuri")) is not None:
+            package_path: str = child["reftitle"]
+            if refuri.startswith("http"):
+                _, _, package_path = refuri.partition("#")
             else:
-                uri = (
+                refuri = str(
                     pathlib.Path("..")
                     / pathlib.Path(current_filename).parent
-                    / pathlib.Path(uri)
-                )
-                uri = str(uri).replace(os.path.sep, "/")
-            urls[package_path] = uri
+                    / pathlib.Path(refuri)
+                ).replace(os.path.sep, "/")
+            urls[package_path] = refuri
         # Same document
-        elif child.get("refid") is not None:
-            urls[child["reftitle"]] = (
-                "../" + current_filename + "#" + child.get("refid")
-            )
+        elif (refid := child.get("refid")) is not None:
+            urls[child.attributes["reftitle"]] = "../" + current_filename + "#" + refid
     return urls
 
 
@@ -157,7 +154,9 @@ def html_visit_inheritance_diagram(
         )
         stdout, stderr = process.communicate(dot_code.encode())
         dot_code = stdout.decode()
-    render_dot_html(self, node, dot_code, {}, "inheritance", "inheritance")
+    render_dot_html(
+        self, cast(graphviz, node), dot_code, {}, "inheritance", "inheritance"
+    )
     raise SkipNode
 
 
@@ -171,7 +170,7 @@ def latex_visit_inheritance_diagram(
     graphviz_graph = inheritance_graph.build_graph()
     graphviz_graph.attributes["size"] = 6.0
     dot_code = format(graphviz_graph, "graphviz")
-    render_dot_latex(self, node, dot_code, {}, "inheritance")
+    render_dot_latex(self, cast(graphviz, node), dot_code, {}, "inheritance")
     raise SkipNode
 
 
