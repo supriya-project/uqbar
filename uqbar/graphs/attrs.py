@@ -39,7 +39,7 @@ class Attributes(collections.abc.MutableMapping):
             self.color = str(color)
 
         def __eq__(self, other) -> bool:
-            return type(self) == type(other) and self.color == other.color
+            return isinstance(other, type(self)) and self.color == other.color
 
         def __repr__(self) -> str:
             return "<Color {!r}>".format(self.color)
@@ -60,7 +60,11 @@ class Attributes(collections.abc.MutableMapping):
             self.y = float(y)
 
         def __eq__(self, other) -> bool:
-            return type(self) == type(other) and self.x == other.x and self.y == other.y
+            return (
+                isinstance(other, type(self))
+                and self.x == other.x
+                and self.y == other.y
+            )
 
     __documentation_section__ = "Core Classes"
 
@@ -534,7 +538,7 @@ class Attributes(collections.abc.MutableMapping):
 
     def __eq__(self, other) -> bool:
         return (
-            type(self) == type(other)
+            isinstance(other, type(self))
             and self._mode == other._mode
             and self._attributes == other._attributes
         )

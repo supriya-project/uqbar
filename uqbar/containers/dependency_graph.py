@@ -53,9 +53,8 @@ class DependencyGraph:
         return expr in self._parents_to_children
 
     def __eq__(self, expr):
-        if type(self) != type(expr):
-            return False
-        return self._parents_to_children == expr._parents_to_children
+        if isinstance(expr, type(self)):
+            return self._parents_to_children == expr._parents_to_children
 
     def __getitem__(self, expr):
         if expr not in self:

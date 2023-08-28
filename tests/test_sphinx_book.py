@@ -566,12 +566,13 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
         """
         Running Sphinx v{sphinx_version}
         [uqbar-book] initializing cache db
-        building [mo]: targets for 0 po files that are out of date
+        building [mo]: targets for 0 po files that are out of date{writing}
         building [text]: targets for 1 source files that are out of date
         updating environment: [new config] 1 added, 0 changed, 0 removed
         reading sources... [100%] index
         """.format(
-            sphinx_version=sphinx.__version__
+            sphinx_version=sphinx.__version__,
+            writing="\n\t\twriting output..." if sphinx.version_info > (6,) else "",
         )
     )
     assert normalize(ansi_escape(warning.getvalue())) == normalize(
