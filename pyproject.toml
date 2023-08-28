@@ -13,7 +13,6 @@ classifiers = [
   "Natural Language :: English",
   "Operating System :: MacOS",
   "Operating System :: POSIX",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -35,7 +34,7 @@ keywords = [
 license = {text = "MIT"}
 name = "uqbar"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.optional-dependencies]
 docs = [
@@ -61,7 +60,7 @@ skip-magic-trailing-comma = true
 target-version = ["py311"]
 
 [tool.cibuildwheel]
-build = "cp37-* cp38-* cp39-* cp310-* cp311-*"
+build = "cp38-* cp39-* cp310-* cp311-*"
 test-command = ['python -c "import uqbar"']
 
 [tool.isort]
