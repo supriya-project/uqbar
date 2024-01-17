@@ -2,6 +2,7 @@ import datetime
 import hashlib
 import pathlib
 import re
+import shutil
 import subprocess
 import tempfile
 from typing import Generator, Sequence, Tuple
@@ -107,7 +108,11 @@ class Grapher:
             if not old_path.name.startswith(render_prefix):
                 continue
             new_path = output_directory / old_path.name
-            old_path.rename(new_path)
+            try:
+                old_path.rename(new_path)
+            except OSError:
+                shutil.copy(old_path, new_path)
+                old_path.unlink()
             migrated_assets.append(new_path)
         return migrated_assets
 
