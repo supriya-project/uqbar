@@ -40,6 +40,7 @@ This extension provides the following configuration values:
     block suites
 
 """
+
 import importlib
 from typing import Any, Dict
 

@@ -21,6 +21,7 @@ reStructuredText source files will be generated for the modules given by
 ``uqbar_api_source_paths`` in the directory ``uqbar_api_directory_name``
 relative to your Sphinx source directory.
 """
+
 import importlib
 import pathlib
 import types

@@ -28,6 +28,7 @@ multiple paths, separated by spaces:
        :lineage: path.three path.four path.five
 
 """
+
 import math
 import os
 import pathlib

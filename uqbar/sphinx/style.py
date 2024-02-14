@@ -7,6 +7,7 @@ Uqbar Sphinx styling extension.
 Install by adding ``'uqbar.sphinx.style'`` to the ``extensions`` list in your
 Sphinx configuration.
 """
+
 import importlib
 import inspect
 import pathlib

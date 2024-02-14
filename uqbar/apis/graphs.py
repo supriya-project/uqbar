@@ -399,18 +399,18 @@ class InheritanceGraph:
                     class_stack.append(base)
                 parents_to_children.setdefault(base, set()).add(class_)
                 children_to_parents.setdefault(class_, set()).add(base)
-        sorted_parents_to_children: MutableMapping[
-            type, List[type]
-        ] = collections.OrderedDict()
+        sorted_parents_to_children: MutableMapping[type, List[type]] = (
+            collections.OrderedDict()
+        )
         for parent, children in sorted(
             parents_to_children.items(), key=lambda x: (x[0].__module__, x[0].__name__)
         ):
             sorted_parents_to_children[parent] = sorted(
                 children, key=lambda x: (x.__module__, x.__name__)
             )
-        sorted_children_to_parents: MutableMapping[
-            type, List[type]
-        ] = collections.OrderedDict()
+        sorted_children_to_parents: MutableMapping[type, List[type]] = (
+            collections.OrderedDict()
+        )
         for child, parents in sorted(
             children_to_parents.items(), key=lambda x: (x[0].__module__, x[0].__name__)
         ):
