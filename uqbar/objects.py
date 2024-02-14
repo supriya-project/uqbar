@@ -197,8 +197,8 @@ def get_vars(expr):
 
     ::
 
-        >>> args
-        OrderedDict([('arg1', 'a'), ('arg2', 'b')])
+        >>> dict(args)
+        {'arg1': 'a', 'arg2': 'b'}
 
     ::
 

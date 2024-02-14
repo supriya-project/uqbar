@@ -6,12 +6,12 @@ import cProfile
 import collections
 import io
 import os
-import pathlib
 import platform
 import pstats
 import subprocess
 import sys
 import time
+from pathlib import Path
 from typing import Generator, List, Optional, Sequence, Tuple, Union
 
 
@@ -25,7 +25,7 @@ class DirectoryChange:
     ### INITIALIZER ###
 
     def __init__(self, directory, verbose=False):
-        directory = pathlib.Path(directory).resolve().absolute()
+        directory = Path(directory).resolve().absolute()
         if not directory.is_dir():
             directory = directory.parent
         self._directory = directory
@@ -37,7 +37,7 @@ class DirectoryChange:
     def __enter__(self):
         if self.verbose:
             print("Changing directory to {} ...".format(self.directory))
-        self._directory_stack.append(pathlib.Path.cwd())
+        self._directory_stack.append(Path.cwd())
         os.chdir(str(self._directory))
         return self
 
@@ -227,18 +227,16 @@ class Timer:
         return self._verbose
 
 
-def find_common_prefix(
-    paths: Sequence[Union[str, pathlib.Path]]
-) -> Optional[pathlib.Path]:
+def find_common_prefix(paths: Sequence[Union[str, Path]]) -> Optional[Path]:
     """
     Find the common prefix of two or more paths.
 
     ::
 
-        >>> import pathlib
-        >>> one = pathlib.Path('foo/bar/baz')
-        >>> two = pathlib.Path('foo/quux/biz')
-        >>> three = pathlib.Path('foo/quux/wuux')
+        >>> from pathlib import Path
+        >>> one = Path('foo/bar/baz')
+        >>> two = Path('foo/quux/biz')
+        >>> three = Path('foo/quux/wuux')
 
     ::
 
@@ -250,7 +248,7 @@ def find_common_prefix(
     """
     counter: collections.Counter = collections.Counter()
     for path in paths:
-        path = pathlib.Path(path)
+        path = Path(path)
         counter.update([path])
         counter.update(path.parents)
     valid_paths = sorted(
@@ -272,21 +270,19 @@ def find_executable(name: str, flags=os.X_OK) -> List[str]:
     """
     result = []
     extensions = [x for x in os.environ.get("PATHEXT", "").split(os.pathsep) if x]
-    path = os.environ.get("PATH", None)
-    if path is None:
-        return []
-    for path in os.environ.get("PATH", "").split(os.pathsep):
-        path = os.path.join(path, name)
-        if os.access(path, flags):
-            result.append(path)
+    for directory_name in os.environ.get("PATH", "").split(os.pathsep):
+        executable_path = Path(directory_name) / name
+        executable_path = executable_path.resolve().absolute()
+        if os.access(executable_path, flags):
+            result.append(str(executable_path))
         for extension in extensions:
-            path_extension = path + extension
-            if os.access(path_extension, flags):
-                result.append(path_extension)
+            extension_path = executable_path.with_suffix(extension)
+            if os.access(extension_path, flags):
+                result.append(str(extension_path))
     return result
 
 
-def open_path(path: pathlib.Path) -> None:
+def open_path(path: Path) -> None:
     if platform.system() == "Darwin":
         subprocess.run(["open", str(path)], check=True)
     elif platform.system() == "Linux":
@@ -295,9 +291,7 @@ def open_path(path: pathlib.Path) -> None:
         os.startfile(str(path))  # type: ignore
 
 
-def relative_to(
-    source_path: Union[str, pathlib.Path], target_path: Union[str, pathlib.Path]
-) -> pathlib.Path:
+def relative_to(source_path: Union[str, Path], target_path: Union[str, Path]) -> Path:
     """
     Generates relative path from ``source_path`` to ``target_path``.
 
@@ -305,9 +299,9 @@ def relative_to(
 
     ::
 
-        >>> import os, pathlib
-        >>> source = pathlib.Path('foo/bar/baz')
-        >>> target = pathlib.Path('foo/quux/biz')
+        >>> from pathlib import Path
+        >>> source = Path('foo/bar/baz')
+        >>> target = Path('foo/quux/biz')
 
     ::
 
@@ -318,6 +312,7 @@ def relative_to(
 
     ::
 
+        >>> import os
         >>> import uqbar.io
         >>> str(uqbar.io.relative_to(source, target)).replace(os.path.sep, "/")
         '../../quux/biz'
@@ -325,34 +320,32 @@ def relative_to(
     :param source_path: the source path
     :param target_path: the target path
     """
-    source_path = pathlib.Path(source_path).absolute()
+    source_path = Path(source_path).absolute()
     if source_path.is_file():
         source_path = source_path.parent
-    target_path = pathlib.Path(target_path).absolute()
+    target_path = Path(target_path).absolute()
     common_prefix = find_common_prefix([source_path, target_path])
     if not common_prefix:
         raise ValueError("No common prefix")
     source_path = source_path.relative_to(common_prefix)
     target_path = target_path.relative_to(common_prefix)
-    result = pathlib.Path(*[".."] * len(source_path.parts))
+    result = Path(*[".."] * len(source_path.parts))
     return result / target_path
 
 
 def walk(
-    root_path: Union[str, pathlib.Path], top_down: bool = True
-) -> Generator[
-    Tuple[pathlib.Path, Sequence[pathlib.Path], Sequence[pathlib.Path]], None, None
-]:
+    root_path: Union[str, Path], top_down: bool = True
+) -> Generator[Tuple[Path, Sequence[Path], Sequence[Path]], None, None]:
     """
     Walks a directory tree.
 
-    Like :py:func:`os.walk` but yielding instances of :py:class:`pathlib.Path`
+    Like :py:func:`os.walk` but yielding instances of :py:class:`Path`
     instead of strings.
 
     :param root_path: foo
     :param top_down: bar
     """
-    root_path = pathlib.Path(root_path)
+    root_path = Path(root_path)
     directory_paths, file_paths = [], []
     for path in sorted(root_path.iterdir()):
         if path.is_dir():
@@ -368,10 +361,7 @@ def walk(
 
 
 def write(
-    contents: str,
-    path: Union[str, pathlib.Path],
-    verbose: bool = False,
-    logger_func=None,
+    contents: str, path: Union[str, Path], verbose: bool = False, logger_func=None
 ) -> bool:
     """
     Writes ``contents`` to ``path``.
@@ -386,7 +376,7 @@ def write(
     :param verbose: whether to print output
     """
     print_func = logger_func or print
-    path = pathlib.Path(path)
+    path = Path(path)
     printed_path = str(path).replace(os.path.sep, "/")  # same display on Windows
     if path.exists():
         old_contents = path.read_text()
