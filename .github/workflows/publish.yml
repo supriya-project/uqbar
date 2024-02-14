@@ -36,7 +36,7 @@ jobs:
       run: pipx run build --sdist
     - name: Build universal wheel
       run: pipx run build --wheel
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: dist
         path: dist/*
