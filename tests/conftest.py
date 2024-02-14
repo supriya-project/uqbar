@@ -1,4 +1,5 @@
 import shutil
+import sys
 from pathlib import Path
 
 import pytest
@@ -23,4 +24,10 @@ def remove_sphinx_projects(sphinx_test_tempdir):
 
 @pytest.fixture()
 def rootdir(remove_sphinx_projects):
-    yield Path(__file__).parent / "roots"
+    root_path = Path(__file__).parent / "roots"
+    if sys.version_info > (3, 8):
+        from sphinx.testing.path import path
+
+        yield path(str(root_path))
+    else:
+        yield root_path
