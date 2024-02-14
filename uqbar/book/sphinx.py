@@ -3,12 +3,13 @@ import contextlib
 import importlib
 import inspect
 import itertools
+import logging
 import pickle
 import sqlite3
 import traceback
 from typing import Any, Dict
 
-from docutils.frontend import OptionParser
+from docutils.frontend import get_default_settings
 from docutils.nodes import Element, General, doctest_block, literal_block
 from docutils.parsers.rst import Directive, Parser
 from docutils.parsers.rst.directives import flag, register_directive
@@ -16,6 +17,8 @@ from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
 
 from .console import Console, ConsoleError, ConsoleInput, ConsoleOutput
+
+logger = logging.getLogger(__name__)
 
 try:
     import black
@@ -357,7 +360,7 @@ def parse_rst(rst_string):
     parser = Parser()
     for name, class_ in []:  # Add custom directives here
         register_directive(name, class_)
-    settings = OptionParser(components=(Parser,)).get_default_values()
+    settings = get_default_settings(Parser)
     document = new_document("test", settings)
     parser.parse(rst_string, document)
     document = parser.document
