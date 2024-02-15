@@ -1,6 +1,10 @@
 import collections
 import inspect
 
+from typing import Optional, TypeVar
+
+T = TypeVar("T")
+
 
 def _dispatch_formatting(expr):
     if isinstance(expr, (list, tuple)):
@@ -84,7 +88,7 @@ def get_hash(expr):
     return hash(tuple(hash_values))
 
 
-def get_repr(expr, multiline=None, suppress_defaults=True):
+def get_repr(expr, multiline: Optional[bool] = None, suppress_defaults: bool = True) -> str:
     """
     Build a repr string for ``expr`` from its vars and signature.
 
@@ -292,7 +296,7 @@ def get_vars(expr):
     return args, var_args, kwargs
 
 
-def new(expr, *args, **kwargs):
+def new(expr: T, *args, **kwargs) -> T:
     """
     Template an object.
 
