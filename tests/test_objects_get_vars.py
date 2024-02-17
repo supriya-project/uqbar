@@ -1,5 +1,8 @@
 import collections
 import enum
+from typing import Generic, TypeVar
+
+import pytest
 
 import uqbar.objects
 
@@ -20,19 +23,29 @@ class Enumeration(enum.IntEnum):
     BAZ = 3
 
 
-def test_objects_get_vars_01():
-    my_object = MyObject("a", "b", "c", "d", foo="x", quux=["y", "z"])
-    assert uqbar.objects.get_vars(my_object) == (
-        collections.OrderedDict([("arg1", "a"), ("arg2", "b")]),
-        ["c", "d"],
-        {"bar": None, "foo": "x", "quux": ["y", "z"]},
-    )
+T = TypeVar("T")
 
 
-def test_objects_get_vars_02():
-    my_object = Enumeration.BAZ
-    assert uqbar.objects.get_vars(my_object) == (
-        collections.OrderedDict([("value", 3)]),
-        [],
-        {},
-    )
+class MyGeneric(Generic[T]):
+    def __init__(self, arg: T) -> None:
+        self.arg = arg
+
+
+@pytest.mark.parametrize(
+    "object_, expected",
+    [
+        (
+            MyObject("a", "b", "c", "d", foo="x", quux=["y", "z"]),
+            (
+                collections.OrderedDict([("arg1", "a"), ("arg2", "b")]),
+                ["c", "d"],
+                {"bar": None, "foo": "x", "quux": ["y", "z"]},
+            ),
+        ),
+        (Enumeration.BAZ, (collections.OrderedDict([("value", 3)]), [], {})),
+        (MyGeneric[int](arg=3), (collections.OrderedDict([("arg", 3)]), [], {})),
+    ],
+)
+def test_objects_get_vars(object_, expected):
+    actual = uqbar.objects.get_vars(object_)
+    assert actual == expected
