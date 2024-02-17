@@ -1,6 +1,6 @@
 import collections
 import inspect
-from typing import Optional, TypeVar
+from typing import Any, Dict, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -157,11 +157,9 @@ def get_repr(
         for i, part in enumerate(parts):
             parts[i] = "\n".join("    " + line for line in part.split("\n"))
         parts.append(")")
-        parts = ",\n".join(parts)
-        return "{}(\n{}".format(type(expr).__name__, parts)
+        return "{}(\n{}".format(type(expr).__name__, ",\n".join(parts))
 
-    parts = ", ".join(parts)
-    return "{}({})".format(type(expr).__name__, parts)
+    return "{}({})".format(type(expr).__name__, ", ".join(parts))
 
 
 def get_vars(expr):
@@ -333,7 +331,7 @@ def new(expr: T, *args, **kwargs) -> T:
     current_args, current_var_args, current_kwargs = get_vars(expr)
     new_kwargs = current_kwargs.copy()
 
-    recursive_arguments = {}
+    recursive_arguments: Dict[str, Any] = {}
     for key in tuple(kwargs):
         if "__" in key:
             value = kwargs.pop(key)

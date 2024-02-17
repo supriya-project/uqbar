@@ -33,7 +33,7 @@ import math
 import os
 import pathlib
 import subprocess
-from typing import Any, Dict, List, Mapping, cast
+from typing import Any, Dict, List, Mapping, Optional, cast
 
 from docutils.nodes import Element, General, Node, SkipNode
 from docutils.parsers.rst import Directive, directives
@@ -114,7 +114,7 @@ def build_urls(self: HTMLTranslator, node: inheritance_diagram) -> Mapping[str, 
         if not isinstance(child, Element):
             continue
         # Another document
-        refuri: str | None
+        refuri: Optional[str]
         if (refuri := child.attributes.get("refuri")) is not None:
             package_path: str = child["reftitle"]
             if refuri.startswith("http"):
