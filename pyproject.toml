@@ -52,9 +52,9 @@ test = [
 ]
 
 [project.urls]
-homepage = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+homepage = "https://github.com/supriya-project/uqbar"
 documentation = "https://josiahwolfoberholtzer.com/uqbar"
-repository = "https://github.com/josiah-wolf-oberholtzer/uqbar"
+repository = "https://github.com/supriya-project/uqbar"
 
 [tool.black]
 skip-magic-trailing-comma = true
