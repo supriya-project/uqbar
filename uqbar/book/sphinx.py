@@ -8,6 +8,7 @@ import pickle
 import sqlite3
 import traceback
 from typing import Any, Dict
+from typing_extensions import ClassVar
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import Element, General, doctest_block, literal_block
@@ -42,7 +43,7 @@ class UqbarBookDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec: Dict[str, Any] = {"allow-exceptions": flag, "hide": flag}
+    option_spec: ClassVar[Dict[str, Any]] = {"allow-exceptions": flag, "hide": flag}
 
     def run(self):
         self.assert_has_content()
@@ -66,7 +67,7 @@ class UqbarBookDefaultsDirective(Directive):
     has_content = False
     required_arguments = 0
     optional_arguments = 0
-    option_spec: Dict[str, Any] = {}
+    option_spec: ClassVar[Dict[str, Any]] = {}
 
     def run(self):
         block = uqbar_book_defaults_block()
