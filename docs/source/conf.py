@@ -18,8 +18,8 @@ extensions = [
 ]
 
 add_module_names = False
-author = "Josiah Wolf Oberholtzer"
-copyright = f"2017-{datetime.date.today().year}, Josiah Wolf Oberholtzer"
+author = "Joséphine Wolf Oberholtzer"
+copyright = f"2017-{datetime.date.today().year}, Joséphine Wolf Oberholtzer"
 exclude_patterns = []
 htmlhelp_basename = "uqbardoc"
 language = "en"
@@ -56,8 +56,8 @@ html_theme_options = {
     "icon": {
         "repo": "fontawesome/brands/github",
     },
-    "site_url": "https://josiahwolfoberholtzer.com/uqbar/",
-    "repo_url": "https://github.com/josiah-wolf-oberholtzer/uqbar/",
+    "site_url": "https://supriya-project.github.io/uqbar/",
+    "repo_url": "https://github.com/supriya-project/uqbar/",
     "repo_name": "uqbar",
     "edit_uri": "blob/main/docs",
     "globaltoc_collapse": True,
