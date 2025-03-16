@@ -80,6 +80,7 @@ addopts = [
   "--cov-report=term",
   "--doctest-modules",
 ]
+asyncio_default_fixture_loop_scope = "function"
 doctest_optionflags = [
   "ELLIPSIS",
   "NORMALIZE_WHITESPACE",
