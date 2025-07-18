@@ -201,7 +201,7 @@ def test_interpret_code_blocks_02():
         messages.append(message)
 
     error_message = (
-        "Traceback (most recent call last):\n" '  File "<stdin>", line 1, in <module>\n'
+        'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\n'
     )
     if sys.version_info < (3, 7):
         error_message += "TypeError: must be str, not int\n"
@@ -219,9 +219,7 @@ def test_interpret_code_blocks_02():
             Traceback (most recent call last):
               File "<stdin>", line 1, in <module>
             {error_message}
-        """.format(
-            error_message=error_message
-        )
+        """.format(error_message=error_message)
     )
     document = uqbar.book.sphinx.parse_rst(source)
     blocks = uqbar.book.sphinx.collect_literal_blocks(document)

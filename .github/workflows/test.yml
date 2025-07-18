@@ -47,10 +47,12 @@ jobs:
         cache-dependency-path: "**/pyproject.toml"
     - name: Install Uqbar
       run: pip install -e .[test]
-    - name: Test black
-      run: make black-check
-    - name: Test flake8
-      run: make flake8
+    - name: Run Ruff format checker
+      run: make ruff-format
+    - name: Run Ruff imports checker
+      run: make ruff-imports
+    - name: Run Ruff lint checker
+      run: make ruff-lint
     - name: Test mypy
       run: make mypy
 

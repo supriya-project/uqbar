@@ -41,11 +41,10 @@ docs = [
   "sphinx-immaterial >= 0.11",
 ]
 test = [
-  "flake8",
-  "isort",
   "mypy",
   "pytest",
   "pytest-cov",
+  "ruff",
   "types-PyYAML",
   "types-docutils",
 ]
@@ -55,17 +54,9 @@ homepage = "https://github.com/supriya-project/uqbar"
 documentation = "https://supriya-project.github.io/uqbar"
 repository = "https://github.com/supriya-project/uqbar"
 
-[tool.black]
-skip-magic-trailing-comma = true
-target-version = ["py313"]
-
 [tool.cibuildwheel]
 build = "cp310-* cp311-* cp312-* cp313-*"
 test-command = ['python -c "import uqbar"']
-
-[tool.isort]
-case_sensitive = true
-profile = "black"
 
 [tool.mypy]
 ignore_missing_imports = true
@@ -90,3 +81,7 @@ testpaths = [
   "tests",
   "uqbar",
 ]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+line-length = 88
