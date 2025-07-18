@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -7,6 +8,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+      
+      
+      
+        <link rel="prev" href="graphs/records.html">
+      
+      
+        <link rel="next" href="iterables.html">
       
       
       <link rel="icon" href="../../_static/favicon.ico">
@@ -19,11 +27,13 @@
     
       
         
-        
       
       
 
+
     
+    
+      
     
     
       
@@ -32,10 +42,10 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.359ec555e2989f00f.min.css?v=b000af5c" />
-        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.6ec1c446c2c357833.min.css?v=e2e8fea8" />
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -54,9 +64,6 @@
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +89,8 @@
       <img src="../../_static/icon.svg" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -101,32 +109,40 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -134,24 +150,27 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -160,10 +179,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/supriya-project/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     uqbar
@@ -184,7 +203,7 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
@@ -192,13 +211,18 @@
   
     
   
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Uqbar API
 
-
-  <li class="md-tabs__item">
-    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
-      <span class="md-ellipsis">Uqbar API</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -217,6 +241,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -229,10 +254,10 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/supriya-project/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     uqbar
@@ -244,181 +269,285 @@
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
       
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Uqbar API
+    
+  </span>
+  
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Uqbar API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
     
   
   
+  
+    
+    
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
-      
-      
-      
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../index.html"><span class="md-ellipsis">Uqbar API</span></a>
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
           
-            <label for="__nav_1">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="Uqbar API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">Uqbar API</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
               
   
   
+  <span class="md-ellipsis">
+    uqbar
     
+  </span>
   
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" checked>
-      
-      
-      
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="index.html"><span class="md-ellipsis">uqbar</span></a>
-          
-            <label for="__nav_1_1">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="uqbar" data-md-level="2">
-        <label class="md-nav__title" for="__nav_1_1">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">uqbar</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            uqbar
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="apis/index.html" class="md-nav__link">
-        <span class="md-ellipsis">apis</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    apis
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="book/index.html" class="md-nav__link">
-        <span class="md-ellipsis">book</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    book
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="containers/index.html" class="md-nav__link">
-        <span class="md-ellipsis">containers</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    containers
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="enums.html" class="md-nav__link">
-        <span class="md-ellipsis">enums</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    enums
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="ext/index.html" class="md-nav__link">
-        <span class="md-ellipsis">ext</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    ext
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="graphs/index.html" class="md-nav__link">
-        <span class="md-ellipsis">graphs</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    graphs
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-ellipsis">io</span>
+          
+  
+  
+  <span class="md-ellipsis">
+    io
+    
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="#" class="md-nav__link md-nav__link--active">
-        <span class="md-ellipsis">io</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    io
+    
+  </span>
+  
+
       </a>
       
         
@@ -437,7 +566,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.DirectoryChange (Python class) — Bases: object" class="md-ellipsis">Directory<wbr>Change</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange (Python class) — Bases: object">Directory<wbr>Change</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="DirectoryChange">
@@ -445,28 +579,48 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.DirectoryChange.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.DirectoryChange.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.directory" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.DirectoryChange.directory (Python property)" class="md-ellipsis">directory</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.directory (Python property)">directory</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.verbose" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.DirectoryChange.verbose (Python property)" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.verbose (Python property)">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -478,7 +632,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.Profiler" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.Profiler (Python class) — Bases: object" class="md-ellipsis">Profiler</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler (Python class) — Bases: object">Profiler</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Profiler">
@@ -486,14 +645,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Profiler.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Profiler.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Profiler.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Profiler.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -505,7 +674,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.RedirectedStreams (Python class) — Bases: object" class="md-ellipsis">Redirected<wbr>Streams</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams (Python class) — Bases: object">Redirected<wbr>Streams</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="RedirectedStreams">
@@ -513,28 +687,48 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.RedirectedStreams.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.RedirectedStreams.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.stderr" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.RedirectedStreams.stderr (Python property)" class="md-ellipsis">stderr</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.stderr (Python property)">stderr</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.stdout" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.RedirectedStreams.stdout (Python property)" class="md-ellipsis">stdout</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.stdout (Python property)">stdout</span>
+    </span>
   </a>
   
 </li>
@@ -546,7 +740,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.Timer" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.Timer (Python class) — Bases: object" class="md-ellipsis">Timer</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer (Python class) — Bases: object">Timer</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Timer">
@@ -554,7 +753,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -562,21 +764,36 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.exit_message" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context" class="md-ellipsis">exit_<wbr>message</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context">exit_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.enter_message" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context" class="md-ellipsis">enter_<wbr>message</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context">enter_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.verbose" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -588,56 +805,96 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Timer.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Timer.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.elapsed_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.elapsed_time (Python property)" class="md-ellipsis">elapsed_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.elapsed_time (Python property)">elapsed_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.enter_message" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.enter_message (Python property)" class="md-ellipsis">enter_<wbr>message</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.enter_message (Python property)">enter_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.exit_message" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.exit_message (Python property)" class="md-ellipsis">exit_<wbr>message</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.exit_message (Python property)">exit_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.start_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.start_time (Python property)" class="md-ellipsis">start_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.start_time (Python property)">start_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.stop_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.stop_time (Python property)" class="md-ellipsis">stop_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.stop_time (Python property)">stop_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.verbose" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.verbose (Python property)" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.verbose (Python property)">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -649,7 +906,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.find_common_prefix (Python function) — Find the common prefix of two or more paths." class="md-ellipsis">find_<wbr>common_<wbr>prefix</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_common_prefix (Python function) — Find the common prefix of two or more paths.">find_<wbr>common_<wbr>prefix</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="find_common_prefix">
@@ -657,7 +919,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -665,7 +930,12 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix.paths" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect" class="md-ellipsis">paths</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect">paths</span>
+    </span>
   </a>
   
 </li>
@@ -682,21 +952,36 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.find_executable" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.find_executable (Python function) — Finds executable name." class="md-ellipsis">find_<wbr>executable</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_executable (Python function) — Finds executable name.">find_<wbr>executable</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#uqbar.io.open_path" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.open_path (Python function)" class="md-ellipsis">open_<wbr>path</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.open_path (Python function)">open_<wbr>path</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#uqbar.io.relative_to" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path." class="md-ellipsis">relative_<wbr>to</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path.">relative_<wbr>to</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="relative_to">
@@ -704,7 +989,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -712,14 +1000,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to.source_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.relative_to.source_path (Python parameter) — the source path" class="md-ellipsis">source_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to.source_path (Python parameter) — the source path">source_<wbr>path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to.target_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.relative_to.target_path (Python parameter) — the target path" class="md-ellipsis">target_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to.target_path (Python parameter) — the target path">target_<wbr>path</span>
+    </span>
   </a>
   
 </li>
@@ -736,7 +1034,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.walk" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.walk (Python function) — Walks a directory tree." class="md-ellipsis">walk</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk (Python function) — Walks a directory tree.">walk</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="walk">
@@ -744,7 +1047,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -752,14 +1058,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk.root_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.walk.root_path (Python parameter) — foo" class="md-ellipsis">root_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk.root_path (Python parameter) — foo">root_<wbr>path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk.top_down" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.walk.top_down (Python parameter) — bar" class="md-ellipsis">top_<wbr>down</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk.top_down (Python parameter) — bar">top_<wbr>down</span>
+    </span>
   </a>
   
 </li>
@@ -776,7 +1092,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.write" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.write (Python function) — Writes contents to path." class="md-ellipsis">write</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write (Python function) — Writes contents to path.">write</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="write">
@@ -784,7 +1105,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -792,21 +1116,36 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.contents" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.contents (Python parameter) — the file contents to write" class="md-ellipsis">contents</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.contents (Python parameter) — the file contents to write">contents</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.path (Python parameter) — the path to write to" class="md-ellipsis">path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.path (Python parameter) — the path to write to">path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.verbose" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.verbose (Python parameter) — whether to print output" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.verbose (Python parameter) — whether to print output">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -828,78 +1167,116 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="iterables.html" class="md-nav__link">
-        <span class="md-ellipsis">iterables</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    iterables
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="objects.html" class="md-nav__link">
-        <span class="md-ellipsis">objects</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    objects
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="sphinx/index.html" class="md-nav__link">
-        <span class="md-ellipsis">sphinx</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    sphinx
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="strings.html" class="md-nav__link">
-        <span class="md-ellipsis">strings</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    strings
+    
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
@@ -930,7 +1307,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.DirectoryChange (Python class) — Bases: object" class="md-ellipsis">Directory<wbr>Change</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange (Python class) — Bases: object">Directory<wbr>Change</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="DirectoryChange">
@@ -938,28 +1320,48 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.DirectoryChange.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.DirectoryChange.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.directory" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.DirectoryChange.directory (Python property)" class="md-ellipsis">directory</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.directory (Python property)">directory</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.DirectoryChange.verbose" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.DirectoryChange.verbose (Python property)" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.DirectoryChange.verbose (Python property)">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -971,7 +1373,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.Profiler" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.Profiler (Python class) — Bases: object" class="md-ellipsis">Profiler</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler (Python class) — Bases: object">Profiler</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Profiler">
@@ -979,14 +1386,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Profiler.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Profiler.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Profiler.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Profiler.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Profiler.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -998,7 +1415,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.RedirectedStreams (Python class) — Bases: object" class="md-ellipsis">Redirected<wbr>Streams</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams (Python class) — Bases: object">Redirected<wbr>Streams</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="RedirectedStreams">
@@ -1006,28 +1428,48 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.RedirectedStreams.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.RedirectedStreams.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.stderr" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.RedirectedStreams.stderr (Python property)" class="md-ellipsis">stderr</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.stderr (Python property)">stderr</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.RedirectedStreams.stdout" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.RedirectedStreams.stdout (Python property)" class="md-ellipsis">stdout</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.RedirectedStreams.stdout (Python property)">stdout</span>
+    </span>
   </a>
   
 </li>
@@ -1039,7 +1481,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.Timer" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.io.Timer (Python class) — Bases: object" class="md-ellipsis">Timer</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer (Python class) — Bases: object">Timer</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Timer">
@@ -1047,7 +1494,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1055,21 +1505,36 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.exit_message" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context" class="md-ellipsis">exit_<wbr>message</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context">exit_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.enter_message" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context" class="md-ellipsis">enter_<wbr>message</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context">enter_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__init__.verbose" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -1081,56 +1546,96 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__enter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Timer.__enter__ (Python method)" class="md-ellipsis">__<wbr>enter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__enter__ (Python method)">__<wbr>enter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.__exit__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.io.Timer.__exit__ (Python method)" class="md-ellipsis">__<wbr>exit__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.__exit__ (Python method)">__<wbr>exit__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.elapsed_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.elapsed_time (Python property)" class="md-ellipsis">elapsed_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.elapsed_time (Python property)">elapsed_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.enter_message" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.enter_message (Python property)" class="md-ellipsis">enter_<wbr>message</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.enter_message (Python property)">enter_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.exit_message" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.exit_message (Python property)" class="md-ellipsis">exit_<wbr>message</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.exit_message (Python property)">exit_<wbr>message</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.start_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.start_time (Python property)" class="md-ellipsis">start_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.start_time (Python property)">start_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.stop_time" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.stop_time (Python property)" class="md-ellipsis">stop_<wbr>time</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.stop_time (Python property)">stop_<wbr>time</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.Timer.verbose" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.io.Timer.verbose (Python property)" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.Timer.verbose (Python property)">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -1142,7 +1647,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.find_common_prefix (Python function) — Find the common prefix of two or more paths." class="md-ellipsis">find_<wbr>common_<wbr>prefix</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_common_prefix (Python function) — Find the common prefix of two or more paths.">find_<wbr>common_<wbr>prefix</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="find_common_prefix">
@@ -1150,7 +1660,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1158,7 +1671,12 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.find_common_prefix.paths" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect" class="md-ellipsis">paths</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect">paths</span>
+    </span>
   </a>
   
 </li>
@@ -1175,21 +1693,36 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.find_executable" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.find_executable (Python function) — Finds executable name." class="md-ellipsis">find_<wbr>executable</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.find_executable (Python function) — Finds executable name.">find_<wbr>executable</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#uqbar.io.open_path" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.open_path (Python function)" class="md-ellipsis">open_<wbr>path</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.open_path (Python function)">open_<wbr>path</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#uqbar.io.relative_to" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path." class="md-ellipsis">relative_<wbr>to</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to (Python function) — Generates relative path from source_path to target_path.">relative_<wbr>to</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="relative_to">
@@ -1197,7 +1730,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1205,14 +1741,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to.source_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.relative_to.source_path (Python parameter) — the source path" class="md-ellipsis">source_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to.source_path (Python parameter) — the source path">source_<wbr>path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.relative_to.target_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.relative_to.target_path (Python parameter) — the target path" class="md-ellipsis">target_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.relative_to.target_path (Python parameter) — the target path">target_<wbr>path</span>
+    </span>
   </a>
   
 </li>
@@ -1229,7 +1775,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.walk" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.walk (Python function) — Walks a directory tree." class="md-ellipsis">walk</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk (Python function) — Walks a directory tree.">walk</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="walk">
@@ -1237,7 +1788,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1245,14 +1799,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk.root_path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.walk.root_path (Python parameter) — foo" class="md-ellipsis">root_<wbr>path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk.root_path (Python parameter) — foo">root_<wbr>path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.walk.top_down" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.walk.top_down (Python parameter) — bar" class="md-ellipsis">top_<wbr>down</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.walk.top_down (Python parameter) — bar">top_<wbr>down</span>
+    </span>
   </a>
   
 </li>
@@ -1269,7 +1833,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.io.write" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="uqbar.io.write (Python function) — Writes contents to path." class="md-ellipsis">write</span>
+    
+      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write (Python function) — Writes contents to path.">write</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="write">
@@ -1277,7 +1846,10 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      Parameters
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1285,21 +1857,36 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.contents" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.contents (Python parameter) — the file contents to write" class="md-ellipsis">contents</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.contents (Python parameter) — the file contents to write">contents</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.path" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.path (Python parameter) — the path to write to" class="md-ellipsis">path</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.path (Python parameter) — the path to write to">path</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.io.write.verbose" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="uqbar.io.write.verbose (Python parameter) — whether to print output" class="md-ellipsis">verbose</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.io.write.verbose (Python parameter) — whether to print output">verbose</span>
+    </span>
   </a>
   
 </li>
@@ -1325,20 +1912,20 @@
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset" role="main">
+                
+                
                   
 
 
-  <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/blob/main/docs/api/uqbar/io.rst" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
 
 <h1 id="module-uqbar.io"><span id="io"></span><span id="uqbar-io"></span>io<a class="headerlink" href="#module-uqbar.io" title="Link to this heading">¶</a></h1>
 <p>Tools for IO and file-system manipulation.</p>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.DirectoryChange">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DirectoryChange</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.DirectoryChange" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DirectoryChange</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.DirectoryChange" title="uqbar.io.DirectoryChange.__init__.directory (Python parameter)"><span class="n"><span class="pre">directory</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.DirectoryChange" title="uqbar.io.DirectoryChange.__init__.verbose (Python parameter)"><span class="n"><span class="pre">verbose</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.DirectoryChange" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A context manager for temporarily changing the current working directory.</p>
 <p>This context manager is re-entrant.</p>
 <dl class="py method objdesc">
@@ -1348,25 +1935,25 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.DirectoryChange.__exit__">
-<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.DirectoryChange.__exit__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.DirectoryChange.__exit__" title="uqbar.io.DirectoryChange.__exit__.exc_type (Python parameter)"><span class="n"><span class="pre">exc_type</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.DirectoryChange.__exit__" title="uqbar.io.DirectoryChange.__exit__.exc_value (Python parameter)"><span class="n"><span class="pre">exc_value</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.DirectoryChange.__exit__" title="uqbar.io.DirectoryChange.__exit__.traceback (Python parameter)"><span class="n"><span class="pre">traceback</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.DirectoryChange.__exit__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.DirectoryChange.directory">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directory</span></span><a class="headerlink" href="#uqbar.io.DirectoryChange.directory" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directory</span></span><a class="headerlink" href="#uqbar.io.DirectoryChange.directory" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.DirectoryChange.verbose">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#uqbar.io.DirectoryChange.verbose" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#uqbar.io.DirectoryChange.verbose" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Profiler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Profiler</span></span><a class="headerlink" href="#uqbar.io.Profiler" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Profiler</span></span><a class="headerlink" href="#uqbar.io.Profiler" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A context manager for profiling blocks of code.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Profiler.__enter__">
@@ -1375,19 +1962,19 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Profiler.__exit__">
-<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.Profiler.__exit__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Profiler.__exit__" title="uqbar.io.Profiler.__exit__.exc_type (Python parameter)"><span class="n"><span class="pre">exc_type</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Profiler.__exit__" title="uqbar.io.Profiler.__exit__.exc_value (Python parameter)"><span class="n"><span class="pre">exc_value</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Profiler.__exit__" title="uqbar.io.Profiler.__exit__.traceback (Python parameter)"><span class="n"><span class="pre">traceback</span></span></a></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.Profiler.__exit__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.RedirectedStreams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RedirectedStreams</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.RedirectedStreams" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RedirectedStreams</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.RedirectedStreams" title="uqbar.io.RedirectedStreams.__init__.stdout (Python parameter)"><span class="n"><span class="pre">stdout</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.RedirectedStreams" title="uqbar.io.RedirectedStreams.__init__.stderr (Python parameter)"><span class="n"><span class="pre">stderr</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.RedirectedStreams" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A context manager for capturing <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> output.</p>
 <div class="example docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">io</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">uqbar.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
 </code></pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">string_io</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
@@ -1413,49 +2000,49 @@ multiple timers.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.RedirectedStreams.__exit__">
-<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.RedirectedStreams.__exit__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.RedirectedStreams.__exit__" title="uqbar.io.RedirectedStreams.__exit__.exc_type (Python parameter)"><span class="n"><span class="pre">exc_type</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.RedirectedStreams.__exit__" title="uqbar.io.RedirectedStreams.__exit__.exc_value (Python parameter)"><span class="n"><span class="pre">exc_value</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.RedirectedStreams.__exit__" title="uqbar.io.RedirectedStreams.__exit__.traceback (Python parameter)"><span class="n"><span class="pre">traceback</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.RedirectedStreams.__exit__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.RedirectedStreams.stderr">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stderr</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.stderr" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stderr</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.stderr" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.RedirectedStreams.stdout">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stdout</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.stdout" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stdout</span></span><a class="headerlink" href="#uqbar.io.RedirectedStreams.stdout" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="uqbar.io.Timer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Timer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.exit_message" title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context"><span class="n"><span class="pre">exit_message</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.enter_message" title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context"><span class="n"><span class="pre">enter_message</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.verbose" title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output"><span class="n"><span class="pre">verbose</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.Timer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Timer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.exit_message" title="uqbar.io.Timer.__init__.exit_message (Python parameter) — message to print on entering the context"><span class="n"><span class="pre">exit_message</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.enter_message" title="uqbar.io.Timer.__init__.enter_message (Python parameter) — message to print on exiting the context"><span class="n"><span class="pre">enter_message</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__init__.verbose" title="uqbar.io.Timer.__init__.verbose (Python parameter) — whether to print output"><span class="n"><span class="pre">verbose</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.io.Timer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A context manager for timing blocks of code.</p>
 <p>This context manager is not reentrant. Use a separate instance when nesting
 multiple timers.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="uqbar.io.Timer-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.io.Timer-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="uqbar.io.Timer.__init__.exit_message"><span class="n sig-name">exit_message</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)">None</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.exit_message" title="Permalink to this definition">¶</a></dt><dd><p>message to print on entering the context</p>
+<dt id="uqbar.io.Timer.__init__.exit_message"><span class="n sig-name">exit_message</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.exit_message" title="Permalink to this definition">¶</a></dt><dd><p>message to print on entering the context</p>
 </dd>
-<dt id="uqbar.io.Timer.__init__.enter_message"><span class="n sig-name">enter_message</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)">None</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.enter_message" title="Permalink to this definition">¶</a></dt><dd><p>message to print on exiting the context</p>
+<dt id="uqbar.io.Timer.__init__.enter_message"><span class="n sig-name">enter_message</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.enter_message" title="Permalink to this definition">¶</a></dt><dd><p>message to print on exiting the context</p>
 </dd>
-<dt id="uqbar.io.Timer.__init__.verbose"><span class="n sig-name">verbose</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.verbose" title="Permalink to this definition">¶</a></dt><dd><p>whether to print output</p>
-</dd>
-</dl>
+<dt id="uqbar.io.Timer.__init__.verbose"><span class="n sig-name">verbose</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#uqbar.io.Timer.__init__.verbose" title="Permalink to this definition">¶</a></dt><dd><p>whether to print output</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.io</span> <span class="kn">import</span> <span class="n">Timer</span>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">uqbar.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;Elapsed time:&quot;</span><span class="p">,</span> <span class="s2">&quot;Looping!&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">timer</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 <span class="gp">... </span>
 <span class="go">Looping!</span>
-<span class="go">Elapsed time: 0.0013043880462646484</span>
+<span class="go">Elapsed time: 0.001369476318359375</span>
 </code></pre></div>
 </div>
 <dl class="py method objdesc">
@@ -1465,52 +2052,52 @@ multiple timers.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.__exit__">
-<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.Timer.__exit__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__exit__" title="uqbar.io.Timer.__exit__.exc_type (Python parameter)"><span class="n"><span class="pre">exc_type</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__exit__" title="uqbar.io.Timer.__exit__.exc_value (Python parameter)"><span class="n"><span class="pre">exc_value</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.Timer.__exit__" title="uqbar.io.Timer.__exit__.traceback (Python parameter)"><span class="n"><span class="pre">traceback</span></span></a></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.Timer.__exit__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.elapsed_time">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elapsed_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.elapsed_time" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elapsed_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.elapsed_time" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.enter_message">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enter_message</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.enter_message" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enter_message</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.enter_message" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.exit_message">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exit_message</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.exit_message" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exit_message</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.exit_message" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.start_time">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.start_time" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.start_time" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.stop_time">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.stop_time" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><a class="headerlink" href="#uqbar.io.Timer.stop_time" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.Timer.verbose">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verbose</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><a class="headerlink" href="#uqbar.io.Timer.verbose" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verbose</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><a class="headerlink" href="#uqbar.io.Timer.verbose" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.find_common_prefix">
-<span class="sig-name descname"><span class="pre">find_common_prefix</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.find_common_prefix.paths" title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect"><span class="n"><span class="pre">paths</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_common_prefix</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.find_common_prefix.paths" title="uqbar.io.find_common_prefix.paths (Python parameter) — paths to inspect"><span class="n"><span class="pre">paths</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.find_common_prefix" title="Link to this definition">¶</a></dt>
 <dd><p>Find the common prefix of two or more paths.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">two</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/biz&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">three</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/wuux&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">uqbar.io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">find_common_prefix</span><span class="p">([</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">]))</span>
 <span class="go">&#39;foo&#39;</span>
 </code></pre></div>
@@ -1518,7 +2105,7 @@ multiple timers.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="uqbar.io.find_common_prefix-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.io.find_common_prefix-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="uqbar.io.find_common_prefix.paths"><span class="n sig-name">paths</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.12)">Sequence</a><span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)">Path</a><span class="p">]</span></span></span><a class="headerlink" href="#uqbar.io.find_common_prefix.paths" title="Permalink to this definition">¶</a></dt><dd><p>paths to inspect</p>
+<dt id="uqbar.io.find_common_prefix.paths"><span class="n sig-name">paths</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)">Sequence</a><span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">Path</a><span class="p">]</span></span></span><a class="headerlink" href="#uqbar.io.find_common_prefix.paths" title="Permalink to this definition">¶</a></dt><dd><p>paths to inspect</p>
 </dd>
 </dl>
 </dd>
@@ -1527,7 +2114,7 @@ multiple timers.</p>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.find_executable">
-<span class="sig-name descname"><span class="pre">find_executable</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">1</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span></span><a class="headerlink" href="#uqbar.io.find_executable" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_executable</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.find_executable" title="uqbar.io.find_executable.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.find_executable" title="uqbar.io.find_executable.flags (Python parameter)"><span class="n"><span class="pre">flags</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">1</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span></span><a class="headerlink" href="#uqbar.io.find_executable" title="Link to this definition">¶</a></dt>
 <dd><p>Finds executable <cite>name</cite>.</p>
 <p>Similar to Unix <code class="docutils literal notranslate"><span class="pre">which</span></code> command.</p>
 <p>Returns list of zero or more full paths to <cite>name</cite>.</p>
@@ -1535,15 +2122,15 @@ multiple timers.</p>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.io.open_path">
-<span class="sig-name descname"><span class="pre">open_path</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.open_path" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">open_path</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.open_path" title="uqbar.io.open_path.path (Python parameter)"><span class="n"><span class="pre">path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span></span><a class="headerlink" href="#uqbar.io.open_path" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="uqbar.io.relative_to">
-<span class="sig-name descname"><span class="pre">relative_to</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.source_path" title="uqbar.io.relative_to.source_path (Python parameter) — the source path"><span class="n"><span class="pre">source_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.target_path" title="uqbar.io.relative_to.target_path (Python parameter) — the target path"><span class="n"><span class="pre">target_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></span><a class="headerlink" href="#uqbar.io.relative_to" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">relative_to</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.source_path" title="uqbar.io.relative_to.source_path (Python parameter) — the source path"><span class="n"><span class="pre">source_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.relative_to.target_path" title="uqbar.io.relative_to.target_path (Python parameter) — the target path"><span class="n"><span class="pre">target_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></span><a class="headerlink" href="#uqbar.io.relative_to" title="Link to this definition">¶</a></dt>
 <dd><p>Generates relative path from <code class="docutils literal notranslate"><span class="pre">source_path</span></code> to <code class="docutils literal notranslate"><span class="pre">target_path</span></code>.</p>
 <p>Handles the case of paths without a common prefix.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/bar/baz&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;foo/quux/biz&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1551,13 +2138,13 @@ multiple timers.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.12.2/x64/lib/python3.12/pathlib.py&quot;</span>, line <span class="m">682</span>, in <span class="n">relative_to</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/pathlib/_local.py&quot;</span>, line <span class="m">385</span>, in <span class="n">relative_to</span>
 <span class="w">    </span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> is not in the subpath of </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gr">ValueError</span>: <span class="n">&#39;foo/quux/biz&#39; is not in the subpath of &#39;foo/bar/baz&#39;</span>
 </code></pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">uqbar.io</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">uqbar.io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">uqbar</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="go">&#39;../../quux/biz&#39;</span>
 </code></pre></div>
@@ -1565,9 +2152,9 @@ multiple timers.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="uqbar.io.relative_to-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.io.relative_to-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="uqbar.io.relative_to.source_path"><span class="n sig-name">source_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)">Path</a></span></span><a class="headerlink" href="#uqbar.io.relative_to.source_path" title="Permalink to this definition">¶</a></dt><dd><p>the source path</p>
+<dt id="uqbar.io.relative_to.source_path"><span class="n sig-name">source_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">Path</a></span></span><a class="headerlink" href="#uqbar.io.relative_to.source_path" title="Permalink to this definition">¶</a></dt><dd><p>the source path</p>
 </dd>
-<dt id="uqbar.io.relative_to.target_path"><span class="n sig-name">target_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)">Path</a></span></span><a class="headerlink" href="#uqbar.io.relative_to.target_path" title="Permalink to this definition">¶</a></dt><dd><p>the target path</p>
+<dt id="uqbar.io.relative_to.target_path"><span class="n sig-name">target_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">Path</a></span></span><a class="headerlink" href="#uqbar.io.relative_to.target_path" title="Permalink to this definition">¶</a></dt><dd><p>the target path</p>
 </dd>
 </dl>
 </dd>
@@ -1576,16 +2163,16 @@ multiple timers.</p>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="uqbar.io.walk">
-<span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.walk.root_path" title="uqbar.io.walk.root_path (Python parameter) — foo"><span class="n"><span class="pre">root_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.walk.top_down" title="uqbar.io.walk.top_down (Python parameter) — bar"><span class="n"><span class="pre">top_down</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Generator" title="(in Python v3.12)"><span class="pre">Generator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></span></span><a class="headerlink" href="#uqbar.io.walk" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.walk.root_path" title="uqbar.io.walk.root_path (Python parameter) — foo"><span class="n"><span class="pre">root_path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.walk.top_down" title="uqbar.io.walk.top_down (Python parameter) — bar"><span class="n"><span class="pre">top_down</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Generator" title="(in Python v3.13)"><span class="pre">Generator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.13)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></span></span><a class="headerlink" href="#uqbar.io.walk" title="Link to this definition">¶</a></dt>
 <dd><p>Walks a directory tree.</p>
-<p>Like <a class="reference external" href="https://docs.python.org/3/library/os.html#os.walk" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.walk()</span></code></a> but yielding instances of <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>
+<p>Like <a class="reference external" href="https://docs.python.org/3/library/os.html#os.walk" title="(in Python v3.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.walk()</span></code></a> but yielding instances of <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>
 instead of strings.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="uqbar.io.walk-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.io.walk-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="uqbar.io.walk.root_path"><span class="n sig-name">root_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)">Path</a></span></span><a class="headerlink" href="#uqbar.io.walk.root_path" title="Permalink to this definition">¶</a></dt><dd><p>foo</p>
+<dt id="uqbar.io.walk.root_path"><span class="n sig-name">root_path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">Path</a></span></span><a class="headerlink" href="#uqbar.io.walk.root_path" title="Permalink to this definition">¶</a></dt><dd><p>foo</p>
 </dd>
-<dt id="uqbar.io.walk.top_down"><span class="n sig-name">top_down</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#uqbar.io.walk.top_down" title="Permalink to this definition">¶</a></dt><dd><p>bar</p>
+<dt id="uqbar.io.walk.top_down"><span class="n sig-name">top_down</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#uqbar.io.walk.top_down" title="Permalink to this definition">¶</a></dt><dd><p>bar</p>
 </dd>
 </dl>
 </dd>
@@ -1594,7 +2181,7 @@ instead of strings.</p>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="uqbar.io.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.contents" title="uqbar.io.write.contents (Python parameter) — the file contents to write"><span class="n"><span class="pre">contents</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.path" title="uqbar.io.write.path (Python parameter) — the path to write to"><span class="n"><span class="pre">path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.verbose" title="uqbar.io.write.verbose (Python parameter) — whether to print output"><span class="n"><span class="pre">verbose</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">logger_func</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span></span><a class="headerlink" href="#uqbar.io.write" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.contents" title="uqbar.io.write.contents (Python parameter) — the file contents to write"><span class="n"><span class="pre">contents</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.path" title="uqbar.io.write.path (Python parameter) — the path to write to"><span class="n"><span class="pre">path</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write.verbose" title="uqbar.io.write.verbose (Python parameter) — whether to print output"><span class="n"><span class="pre">verbose</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.io.write" title="uqbar.io.write.logger_func (Python parameter)"><span class="n"><span class="pre">logger_func</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span></span><a class="headerlink" href="#uqbar.io.write" title="Link to this definition">¶</a></dt>
 <dd><p>Writes <code class="docutils literal notranslate"><span class="pre">contents</span></code> to <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
 <p>Checks if <code class="docutils literal notranslate"><span class="pre">path</span></code> already exists and only write out new contents if the
 old contents do not match.</p>
@@ -1602,17 +2189,25 @@ old contents do not match.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="uqbar.io.write-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#uqbar.io.write-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="uqbar.io.write.contents"><span class="n sig-name">contents</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></span></span><a class="headerlink" href="#uqbar.io.write.contents" title="Permalink to this definition">¶</a></dt><dd><p>the file contents to write</p>
+<dt id="uqbar.io.write.contents"><span class="n sig-name">contents</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></span></span><a class="headerlink" href="#uqbar.io.write.contents" title="Permalink to this definition">¶</a></dt><dd><p>the file contents to write</p>
 </dd>
-<dt id="uqbar.io.write.path"><span class="n sig-name">path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)">Path</a></span></span><a class="headerlink" href="#uqbar.io.write.path" title="Permalink to this definition">¶</a></dt><dd><p>the path to write to</p>
+<dt id="uqbar.io.write.path"><span class="n sig-name">path</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a><span class="w"> </span><span class="p">|</span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">Path</a></span></span><a class="headerlink" href="#uqbar.io.write.path" title="Permalink to this definition">¶</a></dt><dd><p>the path to write to</p>
 </dd>
-<dt id="uqbar.io.write.verbose"><span class="n sig-name">verbose</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#uqbar.io.write.verbose" title="Permalink to this definition">¶</a></dt><dd><p>whether to print output</p>
+<dt id="uqbar.io.write.verbose"><span class="n sig-name">verbose</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#uqbar.io.write.verbose" title="Permalink to this definition">¶</a></dt><dd><p>whether to print output</p>
 </dd>
 </dl>
 </dd>
 </dl>
 </dd></dl>
 
+
+
+
+
+
+
+  
+  
 
 
 
@@ -1626,50 +2221,15 @@ old contents do not match.</p>
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="graphs/records.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: records" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              records
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="iterables.html" class="md-footer__link md-footer__link--next" aria-label="Next: iterables" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              iterables
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   
   
@@ -1679,13 +2239,13 @@ old contents do not match.</p>
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2017-2024, Josiah Wolf Oberholtzer.
+        &#169; Copyright 2017-2025, Joséphine Wolf Oberholtzer.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.2.6.
+    8.2.3.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -1701,10 +2261,11 @@ old contents do not match.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
       
-        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script src="../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
     
   </body>
 </html>

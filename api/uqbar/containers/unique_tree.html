@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -7,6 +8,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+      
+      
+      
+        <link rel="prev" href="dependency_graph.html">
+      
+      
+        <link rel="next" href="../enums.html">
       
       
       <link rel="icon" href="../../../_static/favicon.ico">
@@ -19,11 +27,13 @@
     
       
         
-        
       
       
 
+
     
+    
+      
     
     
       
@@ -32,10 +42,10 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.359ec555e2989f00f.min.css?v=b000af5c" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.6ec1c446c2c357833.min.css?v=e2e8fea8" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -54,9 +64,6 @@
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +89,8 @@
       <img src="../../../_static/icon.svg" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -101,32 +109,40 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -134,24 +150,27 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -160,10 +179,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/supriya-project/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     uqbar
@@ -184,7 +203,7 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
@@ -192,13 +211,18 @@
   
     
   
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Uqbar API
 
-
-  <li class="md-tabs__item">
-    <a href="../../index.html" class="md-tabs__link md-tabs__link--active">
-      <span class="md-ellipsis">Uqbar API</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -217,6 +241,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -229,10 +254,10 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/supriya-project/uqbar/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     uqbar
@@ -244,168 +269,261 @@
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
       
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Uqbar API
+    
+  </span>
+  
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Uqbar API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
     
   
   
+  
+    
+    
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
-      
-      
-      
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../index.html"><span class="md-ellipsis">Uqbar API</span></a>
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
           
-            <label for="__nav_1">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="Uqbar API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">Uqbar API</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
               
   
   
+  <span class="md-ellipsis">
+    uqbar
     
+  </span>
   
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" checked>
-      
-      
-      
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../index.html"><span class="md-ellipsis">uqbar</span></a>
-          
-            <label for="__nav_1_1">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="uqbar" data-md-level="2">
-        <label class="md-nav__title" for="__nav_1_1">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">uqbar</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            uqbar
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../apis/index.html" class="md-nav__link">
-        <span class="md-ellipsis">apis</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    apis
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../book/index.html" class="md-nav__link">
-        <span class="md-ellipsis">book</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    book
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
+  
+    
+    
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1_3" type="checkbox" id="__nav_1_1_3" checked>
-      
-      
-      
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="index.html"><span class="md-ellipsis">containers</span></a>
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1_3" checked>
+        
           
-            <label for="__nav_1_1_3">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="containers" data-md-level="3">
-        <label class="md-nav__title" for="__nav_1_1_3">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">containers</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    containers
+    
+  </span>
+  
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_1_1_3" id="__nav_1_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="dependency_graph.html" class="md-nav__link">
-        <span class="md-ellipsis">dependency_<wbr>graph</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    dependency_<wbr>graph
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-ellipsis">unique_<wbr>tree</span>
+          
+  
+  
+  <span class="md-ellipsis">
+    unique_<wbr>tree
+    
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="#" class="md-nav__link md-nav__link--active">
-        <span class="md-ellipsis">unique_<wbr>tree</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    unique_<wbr>tree
+    
+  </span>
+  
+
       </a>
       
         
@@ -424,7 +542,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode" class="md-ellipsis">Unique<wbr>Tree<wbr>Container</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode">Unique<wbr>Tree<wbr>Container</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeContainer">
@@ -432,42 +555,72 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__contains__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__ (Python method)" class="md-ellipsis">__<wbr>contains__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__ (Python method)">__<wbr>contains__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__iter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__iter__ (Python method)" class="md-ellipsis">__<wbr>iter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__iter__ (Python method)">__<wbr>iter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__len__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__len__ (Python method)" class="md-ellipsis">__<wbr>len__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__len__ (Python method)">__<wbr>len__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first (Python method)" class="md-ellipsis">depth_<wbr>first</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first (Python method)">depth_<wbr>first</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.recurse" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.recurse (Python method)" class="md-ellipsis">recurse</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.recurse (Python method)">recurse</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.children" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.children (Python property)" class="md-ellipsis">children</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.children (Python property)">children</span>
+    </span>
   </a>
   
 </li>
@@ -479,7 +632,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeDict (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Dict</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Dict</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeDict">
@@ -487,98 +645,168 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__contains__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__contains__ (Python method)" class="md-ellipsis">__<wbr>contains__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__contains__ (Python method)">__<wbr>contains__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__delitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__ (Python method)" class="md-ellipsis">__<wbr>delitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__ (Python method)">__<wbr>delitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__iter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__iter__ (Python method)" class="md-ellipsis">__<wbr>iter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__iter__ (Python method)">__<wbr>iter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__ (Python method)" class="md-ellipsis">__<wbr>setitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__ (Python method)">__<wbr>setitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.clear" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.clear (Python method)" class="md-ellipsis">clear</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.clear (Python method)">clear</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.depth_first" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.depth_first (Python method)" class="md-ellipsis">depth_<wbr>first</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.depth_first (Python method)">depth_<wbr>first</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.get" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.get (Python method)" class="md-ellipsis">get</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.get (Python method)">get</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.items" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.items (Python method)" class="md-ellipsis">items</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.items (Python method)">items</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.keys" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.keys (Python method)" class="md-ellipsis">keys</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.keys (Python method)">keys</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.recurse" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.recurse (Python method)" class="md-ellipsis">recurse</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.recurse (Python method)">recurse</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.update (Python method)" class="md-ellipsis">update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.update (Python method)">update</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.values" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.values (Python method)" class="md-ellipsis">values</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.values (Python method)">values</span>
+    </span>
   </a>
   
 </li>
@@ -590,7 +818,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeList (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>List</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>List</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeList">
@@ -598,63 +831,108 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__delitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__delitem__ (Python method)" class="md-ellipsis">__<wbr>delitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__delitem__ (Python method)">__<wbr>delitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__ (Python method)" class="md-ellipsis">__<wbr>setitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__ (Python method)">__<wbr>setitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.append" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.append (Python method)" class="md-ellipsis">append</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.append (Python method)">append</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.extend" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.extend (Python method)" class="md-ellipsis">extend</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.extend (Python method)">extend</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.index" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.index (Python method)" class="md-ellipsis">index</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.index (Python method)">index</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.insert" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.insert (Python method)" class="md-ellipsis">insert</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.insert (Python method)">insert</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.remove" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.remove (Python method)" class="md-ellipsis">remove</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.remove (Python method)">remove</span>
+    </span>
   </a>
   
 </li>
@@ -666,7 +944,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeNode (Python class) — Bases: object" class="md-ellipsis">Unique<wbr>Tree<wbr>Node</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode (Python class) — Bases: object">Unique<wbr>Tree<wbr>Node</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeNode">
@@ -674,42 +957,72 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.depth" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.depth (Python property)" class="md-ellipsis">depth</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.depth (Python property)">depth</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.graph_order" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.graph_order (Python property) — Get graph-order tuple for node." class="md-ellipsis">graph_<wbr>order</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.graph_order (Python property) — Get graph-order tuple for node.">graph_<wbr>order</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.name" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.name (Python property)" class="md-ellipsis">name</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.name (Python property)">name</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.parent" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.parent (Python property)" class="md-ellipsis">parent</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.parent (Python property)">parent</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.parentage" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.parentage (Python property)" class="md-ellipsis">parentage</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.parentage (Python property)">parentage</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.root" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.root (Python property)" class="md-ellipsis">root</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.root (Python property)">root</span>
+    </span>
   </a>
   
 </li>
@@ -721,7 +1034,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeSet (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Set</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Set</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeSet">
@@ -729,35 +1047,60 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.add" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.add (Python method)" class="md-ellipsis">add</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.add (Python method)">add</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.clear" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.clear (Python method)" class="md-ellipsis">clear</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.clear (Python method)">clear</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.remove" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.remove (Python method)" class="md-ellipsis">remove</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.remove (Python method)">remove</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.update (Python method)" class="md-ellipsis">update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.update (Python method)">update</span>
+    </span>
   </a>
   
 </li>
@@ -769,7 +1112,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Tuple</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Tuple</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeTuple">
@@ -777,14 +1125,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple.index" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple.index (Python method)" class="md-ellipsis">index</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple.index (Python method)">index</span>
+    </span>
   </a>
   
 </li>
@@ -801,146 +1159,221 @@
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../enums.html" class="md-nav__link">
-        <span class="md-ellipsis">enums</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    enums
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../ext/index.html" class="md-nav__link">
-        <span class="md-ellipsis">ext</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    ext
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../graphs/index.html" class="md-nav__link">
-        <span class="md-ellipsis">graphs</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    graphs
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../io.html" class="md-nav__link">
-        <span class="md-ellipsis">io</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    io
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../iterables.html" class="md-nav__link">
-        <span class="md-ellipsis">iterables</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    iterables
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../objects.html" class="md-nav__link">
-        <span class="md-ellipsis">objects</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    objects
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../sphinx/index.html" class="md-nav__link">
-        <span class="md-ellipsis">sphinx</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    sphinx
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="../strings.html" class="md-nav__link">
-        <span class="md-ellipsis">strings</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    strings
+    
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
@@ -971,7 +1404,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode" class="md-ellipsis">Unique<wbr>Tree<wbr>Container</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode">Unique<wbr>Tree<wbr>Container</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeContainer">
@@ -979,42 +1417,72 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__contains__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__ (Python method)" class="md-ellipsis">__<wbr>contains__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__ (Python method)">__<wbr>contains__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__iter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__iter__ (Python method)" class="md-ellipsis">__<wbr>iter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__iter__ (Python method)">__<wbr>iter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.__len__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.__len__ (Python method)" class="md-ellipsis">__<wbr>len__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.__len__ (Python method)">__<wbr>len__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first (Python method)" class="md-ellipsis">depth_<wbr>first</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first (Python method)">depth_<wbr>first</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.recurse" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.recurse (Python method)" class="md-ellipsis">recurse</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.recurse (Python method)">recurse</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeContainer.children" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeContainer.children (Python property)" class="md-ellipsis">children</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeContainer.children (Python property)">children</span>
+    </span>
   </a>
   
 </li>
@@ -1026,7 +1494,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeDict (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Dict</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Dict</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeDict">
@@ -1034,98 +1507,168 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__contains__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__contains__ (Python method)" class="md-ellipsis">__<wbr>contains__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__contains__ (Python method)">__<wbr>contains__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__delitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__ (Python method)" class="md-ellipsis">__<wbr>delitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__ (Python method)">__<wbr>delitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__iter__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__iter__ (Python method)" class="md-ellipsis">__<wbr>iter__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__iter__ (Python method)">__<wbr>iter__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__ (Python method)" class="md-ellipsis">__<wbr>setitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__ (Python method)">__<wbr>setitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.clear" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.clear (Python method)" class="md-ellipsis">clear</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.clear (Python method)">clear</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.depth_first" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.depth_first (Python method)" class="md-ellipsis">depth_<wbr>first</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.depth_first (Python method)">depth_<wbr>first</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.get" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.get (Python method)" class="md-ellipsis">get</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.get (Python method)">get</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.items" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.items (Python method)" class="md-ellipsis">items</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.items (Python method)">items</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.keys" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.keys (Python method)" class="md-ellipsis">keys</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.keys (Python method)">keys</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.recurse" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.recurse (Python method)" class="md-ellipsis">recurse</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.recurse (Python method)">recurse</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.update (Python method)" class="md-ellipsis">update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.update (Python method)">update</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeDict.values" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeDict.values (Python method)" class="md-ellipsis">values</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeDict.values (Python method)">values</span>
+    </span>
   </a>
   
 </li>
@@ -1137,7 +1680,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeList (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>List</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>List</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeList">
@@ -1145,63 +1693,108 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__delitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__delitem__ (Python method)" class="md-ellipsis">__<wbr>delitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__delitem__ (Python method)">__<wbr>delitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__ (Python method)" class="md-ellipsis">__<wbr>setitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__ (Python method)">__<wbr>setitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.append" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.append (Python method)" class="md-ellipsis">append</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.append (Python method)">append</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.extend" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.extend (Python method)" class="md-ellipsis">extend</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.extend (Python method)">extend</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.index" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.index (Python method)" class="md-ellipsis">index</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.index (Python method)">index</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.insert" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.insert (Python method)" class="md-ellipsis">insert</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.insert (Python method)">insert</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeList.remove" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeList.remove (Python method)" class="md-ellipsis">remove</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeList.remove (Python method)">remove</span>
+    </span>
   </a>
   
 </li>
@@ -1213,7 +1806,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeNode (Python class) — Bases: object" class="md-ellipsis">Unique<wbr>Tree<wbr>Node</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode (Python class) — Bases: object">Unique<wbr>Tree<wbr>Node</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeNode">
@@ -1221,42 +1819,72 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.depth" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.depth (Python property)" class="md-ellipsis">depth</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.depth (Python property)">depth</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.graph_order" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.graph_order (Python property) — Get graph-order tuple for node." class="md-ellipsis">graph_<wbr>order</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.graph_order (Python property) — Get graph-order tuple for node.">graph_<wbr>order</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.name" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.name (Python property)" class="md-ellipsis">name</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.name (Python property)">name</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.parent" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.parent (Python property)" class="md-ellipsis">parent</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.parent (Python property)">parent</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.parentage" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.parentage (Python property)" class="md-ellipsis">parentage</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.parentage (Python property)">parentage</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeNode.root" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="uqbar.containers.unique_tree.UniqueTreeNode.root (Python property)" class="md-ellipsis">root</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeNode.root (Python property)">root</span>
+    </span>
   </a>
   
 </li>
@@ -1268,7 +1896,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeSet (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Set</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Set</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeSet">
@@ -1276,35 +1909,60 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.add" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.add (Python method)" class="md-ellipsis">add</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.add (Python method)">add</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.clear" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.clear (Python method)" class="md-ellipsis">clear</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.clear (Python method)">clear</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.pop" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.pop (Python method)" class="md-ellipsis">pop</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.pop (Python method)">pop</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.remove" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.remove (Python method)" class="md-ellipsis">remove</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.remove (Python method)">remove</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeSet.update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeSet.update (Python method)" class="md-ellipsis">update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeSet.update (Python method)">update</span>
+    </span>
   </a>
   
 </li>
@@ -1316,7 +1974,12 @@
       
         <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple (Python class) — Bases: UniqueTreeContainer" class="md-ellipsis">Unique<wbr>Tree<wbr>Tuple</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple (Python class) — Bases: UniqueTreeContainer">Unique<wbr>Tree<wbr>Tuple</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="UniqueTreeTuple">
@@ -1324,14 +1987,24 @@
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__ (Python method)" class="md-ellipsis">__<wbr>getitem__<wbr></span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__ (Python method)">__<wbr>getitem__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#uqbar.containers.unique_tree.UniqueTreeTuple.index" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="uqbar.containers.unique_tree.UniqueTreeTuple.index (Python method)" class="md-ellipsis">index</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="uqbar.containers.unique_tree.UniqueTreeTuple.index (Python method)">index</span>
+    </span>
   </a>
   
 </li>
@@ -1352,22 +2025,22 @@
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset" role="main">
+                
+                
                   
 
 
-  <a href="https://github.com/josiah-wolf-oberholtzer/uqbar/blob/main/docs/api/uqbar/containers/unique_tree.rst" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
 
 <h1 id="module-uqbar.containers.unique_tree"><span id="unique-tree"></span><span id="uqbar-containers-unique-tree"></span>unique_tree<a class="headerlink" href="#module-uqbar.containers.unique_tree" title="Link to this heading">¶</a></h1>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeContainer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeContainer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeContainer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer.__init__.children (Python parameter)"><span class="n"><span class="pre">children</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uqbar.containers.unique_tree.UniqueTreeNode" title="uqbar.containers.unique_tree.UniqueTreeNode (Python class) — Bases: object"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeNode</span></code></a></p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__">
-<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.__contains__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer.__contains__" title="uqbar.containers.unique_tree.UniqueTreeContainer.__contains__.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.__contains__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1382,39 +2055,39 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first">
-<span class="sig-name descname"><span class="pre">depth_first</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">top_down</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">prototype</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">depth_first</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first.top_down (Python parameter)"><span class="n"><span class="pre">top_down</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" title="uqbar.containers.unique_tree.UniqueTreeContainer.depth_first.prototype (Python parameter)"><span class="n"><span class="pre">prototype</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.depth_first" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeContainer.recurse">
-<span class="sig-name descname"><span class="pre">recurse</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">prototype</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.recurse" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">recurse</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer.recurse" title="uqbar.containers.unique_tree.UniqueTreeContainer.recurse.prototype (Python parameter)"><span class="n"><span class="pre">prototype</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.recurse" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeContainer.children">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">children</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.children" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">children</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeContainer.children" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeDict</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeDict</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict" title="uqbar.containers.unique_tree.UniqueTreeDict.__init__.children (Python parameter)"><span class="n"><span class="pre">children</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict" title="uqbar.containers.unique_tree.UniqueTreeDict.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a></p>
 <p>A dict-like node in a “unique” tree.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.__contains__">
-<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__contains__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.__contains__" title="uqbar.containers.unique_tree.UniqueTreeDict.__contains__.key (Python parameter)"><span class="n"><span class="pre">key</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__contains__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__">
-<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__delitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.__delitem__" title="uqbar.containers.unique_tree.UniqueTreeDict.__delitem__.key (Python parameter)"><span class="n"><span class="pre">key</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__delitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__getitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.__getitem__" title="uqbar.containers.unique_tree.UniqueTreeDict.__getitem__.key (Python parameter)"><span class="n"><span class="pre">key</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__getitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1424,7 +2097,7 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__">
-<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__.key (Python parameter)"><span class="n"><span class="pre">key</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" title="uqbar.containers.unique_tree.UniqueTreeDict.__setitem__.value (Python parameter)"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.__setitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1434,12 +2107,12 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.depth_first">
-<span class="sig-name descname"><span class="pre">depth_first</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">top_down</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.depth_first" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">depth_first</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.depth_first" title="uqbar.containers.unique_tree.UniqueTreeDict.depth_first.top_down (Python parameter)"><span class="n"><span class="pre">top_down</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.depth_first" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.get" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.get" title="uqbar.containers.unique_tree.UniqueTreeDict.get.key (Python parameter)"><span class="n"><span class="pre">key</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.get" title="uqbar.containers.unique_tree.UniqueTreeDict.get.default (Python parameter)"><span class="n"><span class="pre">default</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.get" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1454,7 +2127,7 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.pop">
-<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.pop" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.pop" title="uqbar.containers.unique_tree.UniqueTreeDict.pop.args (Python parameter)"><span class="n"><span class="pre">args</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.pop" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1464,7 +2137,7 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeDict.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.update" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeDict.update" title="uqbar.containers.unique_tree.UniqueTreeDict.update.kwargs (Python parameter)"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeDict.update" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1476,7 +2149,7 @@
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeList</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeList</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList" title="uqbar.containers.unique_tree.UniqueTreeList.__init__.children (Python parameter)"><span class="n"><span class="pre">children</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList" title="uqbar.containers.unique_tree.UniqueTreeList.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a></p>
 <p>A list-like node in a “unique” tree.</p>
 <p>List nodes may contain zero or more other nodes.</p>
@@ -1484,68 +2157,68 @@
 the tree.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.__delitem__">
-<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">i</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__delitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.__delitem__" title="uqbar.containers.unique_tree.UniqueTreeList.__delitem__.i (Python parameter)"><span class="n"><span class="pre">i</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__delitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__getitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.__getitem__" title="uqbar.containers.unique_tree.UniqueTreeList.__getitem__.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__getitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.__setitem__">
-<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">new_items</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__.i (Python parameter)"><span class="n"><span class="pre">i</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" title="uqbar.containers.unique_tree.UniqueTreeList.__setitem__.new_items (Python parameter)"><span class="n"><span class="pre">new_items</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.__setitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.append">
-<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.append" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.append" title="uqbar.containers.unique_tree.UniqueTreeList.append.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.append" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.extend">
-<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.extend" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.extend" title="uqbar.containers.unique_tree.UniqueTreeList.extend.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.extend" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.index">
-<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.index" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.index" title="uqbar.containers.unique_tree.UniqueTreeList.index.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.index" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.insert">
-<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.insert" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.insert" title="uqbar.containers.unique_tree.UniqueTreeList.insert.i (Python parameter)"><span class="n"><span class="pre">i</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.insert" title="uqbar.containers.unique_tree.UniqueTreeList.insert.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.insert" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.pop">
-<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="o">-</span><span class="mi">1</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.pop" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.pop" title="uqbar.containers.unique_tree.UniqueTreeList.pop.i (Python parameter)"><span class="n"><span class="pre">i</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="o">-</span><span class="mi">1</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.pop" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeList.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">node</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.remove" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeList.remove" title="uqbar.containers.unique_tree.UniqueTreeList.remove.node (Python parameter)"><span class="n"><span class="pre">node</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeList.remove" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeNode</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeNode</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeNode" title="uqbar.containers.unique_tree.UniqueTreeNode.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A node in a “unique” tree.</p>
 <p>Unique tree nodes may have at most one parent and may appear only once in
 the tree.</p>
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.depth">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">depth</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.depth" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">depth</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.depth" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.graph_order">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_order</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.graph_order" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_order</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.graph_order" title="Link to this definition">¶</a></dt>
 <dd><p>Get graph-order tuple for node.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uqbar.containers</span> <span class="kn">import</span> <span class="n">UniqueTreeList</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">uqbar.containers</span><span class="w"> </span><span class="kn">import</span> <span class="n">UniqueTreeList</span><span class="p">,</span> <span class="n">UniqueTreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">root_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">outer_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inner_container</span> <span class="o">=</span> <span class="n">UniqueTreeList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
@@ -1573,34 +2246,34 @@ the tree.</p>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.name" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.parent">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.parent" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.parent" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.parentage">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parentage</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.parentage" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parentage</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.parentage" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeNode.root">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.root" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeNode.root" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeSet">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeSet</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeSet</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeSet" title="uqbar.containers.unique_tree.UniqueTreeSet.__init__.children (Python parameter)"><span class="n"><span class="pre">children</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeSet" title="uqbar.containers.unique_tree.UniqueTreeSet.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a></p>
 <p>A set-like node in a “unique” tree.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeSet.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">node</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.add" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeSet.add" title="uqbar.containers.unique_tree.UniqueTreeSet.add.node (Python parameter)"><span class="n"><span class="pre">node</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.add" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
@@ -1615,33 +2288,41 @@ the tree.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeSet.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">node</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.remove" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeSet.remove" title="uqbar.containers.unique_tree.UniqueTreeSet.remove.node (Python parameter)"><span class="n"><span class="pre">node</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.remove" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeSet.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.update" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeSet.update" title="uqbar.containers.unique_tree.UniqueTreeSet.update.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeSet.update" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeTuple">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeTuple</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UniqueTreeTuple</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeTuple" title="uqbar.containers.unique_tree.UniqueTreeTuple.__init__.children (Python parameter)"><span class="n"><span class="pre">children</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeTuple" title="uqbar.containers.unique_tree.UniqueTreeTuple.__init__.name (Python parameter)"><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uqbar.containers.unique_tree.UniqueTreeContainer" title="uqbar.containers.unique_tree.UniqueTreeContainer (Python class) — Bases: UniqueTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniqueTreeContainer</span></code></a></p>
 <p>A tuple-like node in a “unique” tree.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__" title="uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple.__getitem__" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="uqbar.containers.unique_tree.UniqueTreeTuple.index">
-<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple.index" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#uqbar.containers.unique_tree.UniqueTreeTuple.index" title="uqbar.containers.unique_tree.UniqueTreeTuple.index.expr (Python parameter)"><span class="n"><span class="pre">expr</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#uqbar.containers.unique_tree.UniqueTreeTuple.index" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
+
+
+
+
+
+
+  
+  
 
 
 
@@ -1655,50 +2336,15 @@ the tree.</p>
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="dependency_graph.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: dependency_graph" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              dependency_graph
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../enums.html" class="md-footer__link md-footer__link--next" aria-label="Next: enums" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              enums
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   
   
@@ -1708,13 +2354,13 @@ the tree.</p>
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2017-2024, Josiah Wolf Oberholtzer.
+        &#169; Copyright 2017-2025, Joséphine Wolf Oberholtzer.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.2.6.
+    8.2.3.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -1730,10 +2376,11 @@ the tree.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
       
-        <script src="../../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script src="../../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
     
   </body>
 </html>

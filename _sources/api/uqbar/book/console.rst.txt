@@ -23,10 +23,12 @@ console
 .. autoclass:: ConsoleInput
    :show-inheritance:
 
+   .. automethod:: __replace__
 
 .. autoclass:: ConsoleOutput
    :show-inheritance:
 
+   .. automethod:: __replace__
 
 .. autoclass:: MonkeyPatch
    :show-inheritance:
