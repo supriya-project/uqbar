@@ -228,8 +228,10 @@ class Console(code.InteractiveConsole):
     def push_proxy_options(self, options=None):
         self.proxy_options = options or {}
 
-    def showsyntaxerror(self, filename: Optional[str] = None) -> None:
-        super().showsyntaxerror(filename=filename)
+    def showsyntaxerror(
+        self, filename: Optional[str] = None, *, source: str = ""
+    ) -> None:
+        super().showsyntaxerror(filename=filename, source=source)
         self.errored = True
 
     def showtraceback(self) -> None:

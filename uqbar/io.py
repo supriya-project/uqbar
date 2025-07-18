@@ -2,8 +2,8 @@
 Tools for IO and file-system manipulation.
 """
 
-import cProfile
 import collections
+import cProfile
 import io
 import os
 import platform

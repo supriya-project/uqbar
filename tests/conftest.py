@@ -1,5 +1,4 @@
 import shutil
-import sys
 from pathlib import Path
 
 import pytest
@@ -11,7 +10,7 @@ collect_ignore = ["roots"]
 
 
 @pytest.fixture(scope="session")
-def remove_sphinx_projects(sphinx_test_tempdir):
+def remove_sphinx_projects(sphinx_test_tempdir) -> None:
     # Even upon exception, remove any directory from temp area
     # which looks like a Sphinx project. This ONLY runs once.
     roots_path = Path(sphinx_test_tempdir)
@@ -23,11 +22,5 @@ def remove_sphinx_projects(sphinx_test_tempdir):
 
 
 @pytest.fixture()
-def rootdir(remove_sphinx_projects):
-    root_path = Path(__file__).parent / "roots"
-    if sys.version_info > (3, 8):
-        from sphinx.testing.path import path
-
-        yield path(str(root_path))
-    else:
-        yield root_path
+def rootdir(remove_sphinx_projects) -> Path:
+    return Path(__file__).parent / "roots"

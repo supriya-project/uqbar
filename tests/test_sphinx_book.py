@@ -564,6 +564,7 @@ def test_sphinx_book_text_broken_strict(app, status, warning, rm_dirs):
     assert normalize(ansi_escape(status.getvalue())) == normalize(
         """
         Running Sphinx v{sphinx_version}
+        loading translations [en]... done
         [uqbar-book] initializing cache db
         building [mo]: targets for 0 po files that are out of date{writing}
         building [text]: targets for 1 source files that are out of date

@@ -8,7 +8,6 @@ import pickle
 import sqlite3
 import traceback
 from typing import Any, Dict
-from typing_extensions import ClassVar
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import Element, General, doctest_block, literal_block
@@ -16,6 +15,7 @@ from docutils.parsers.rst import Directive, Parser
 from docutils.parsers.rst.directives import flag, register_directive
 from docutils.utils import new_document
 from sphinx.util.nodes import set_source_info
+from typing_extensions import ClassVar
 
 from .console import Console, ConsoleError, ConsoleInput, ConsoleOutput
 
@@ -26,7 +26,7 @@ try:
 
     def black_format(lines):
         mode = black.FileMode(
-            line_length=80, target_versions=set([black.TargetVersion.PY36])
+            line_length=80, target_versions=set([black.TargetVersion.PY310])
         )
         return black.format_str("\n".join(lines), mode=mode).splitlines()
 

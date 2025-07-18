@@ -8,7 +8,7 @@ def test_sphinx_style_html(app, status, warning):
     app.build()
     assert "build succeeded" in status.getvalue()
     warnings = [line.strip() for line in warning.getvalue().splitlines()]
-    if sys.version_info.minor < 11:
+    if sys.version_info.minor < 11 or sys.version_info.minor >= 13:
         assert not warnings
     else:
         assert len(warnings) == 2

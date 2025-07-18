@@ -24,7 +24,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.12"
+        python-version: "3.13"
         cache: pip
         cache-dependency-path: "**/pyproject.toml"
     - name: Install Uqbar
@@ -42,15 +42,17 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.12"
+        python-version: "3.13"
         cache: pip
         cache-dependency-path: "**/pyproject.toml"
     - name: Install Uqbar
       run: pip install -e .[test]
-    - name: Test black
-      run: make black-check
-    - name: Test flake8
-      run: make flake8
+    - name: Run Ruff format checker
+      run: make ruff-format
+    - name: Run Ruff imports checker
+      run: make ruff-imports
+    - name: Run Ruff lint checker
+      run: make ruff-lint
     - name: Test mypy
       run: make mypy
 
@@ -61,12 +63,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
         include:
         - os: macos-latest
-          python-version: "3.11"
+          python-version: "3.13"
         - os: windows-latest
-          python-version: "3.11"
+          python-version: "3.13"
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
