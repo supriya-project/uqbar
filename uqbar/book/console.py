@@ -1,3 +1,4 @@
+import ast
 import code
 import inspect
 import itertools
@@ -146,6 +147,7 @@ class Console(code.InteractiveConsole):
             filename="<stdin>",
             locals={**(namespace or {}), "__name__": "__main__", "__package__": None},
         )
+        self.compile.compiler.flags |= ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
         self.extensions = extensions
         self.errored = False
         self.results: List[Any] = []
@@ -167,7 +169,7 @@ class Console(code.InteractiveConsole):
 
     ### PRIVATE METHODS ###
 
-    def _showtraceback(self):
+    def _showtraceback(self, *args):
         """
         Re-implementation of code.InteractiveConsole's showtraceback().
 
