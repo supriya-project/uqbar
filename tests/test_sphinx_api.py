@@ -181,7 +181,7 @@ def test_sphinx_api_2(app, status, warning):
             """
         )
     else:
-        assert len(warnings) == 2
+        assert len(warnings) == 0 if sys.version_info.minor >= 13 else 2
         assert normalize(path.read_text()) == normalize(
             """
             API
