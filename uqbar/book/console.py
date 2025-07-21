@@ -4,9 +4,10 @@ import itertools
 import sys
 import traceback
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 from ..io import RedirectedStreams
+from .extensions import Extension
 
 
 @dataclass(frozen=True)
@@ -27,17 +28,17 @@ unset = object()
 
 
 class MonkeyPatch(object):
-    def __init__(self):
-        self._attributes = []
+    def __init__(self) -> None:
+        self._attributes: list[tuple[Any, str, Any]] = []
 
-    def setattr(self, target, name, value=unset):
+    def setattr(self, target: Any, name: str, value: Any = unset) -> None:
         oldval = getattr(target, name, unset)
         if inspect.isclass(target):
             oldval = target.__dict__.get(name, unset)
         self._attributes.append((target, name, oldval))
         setattr(target, name, value)
 
-    def undo(self):
+    def undo(self) -> None:
         for obj, name, value in reversed(self._attributes):
             if value is not unset:
                 setattr(obj, name, value)
@@ -140,34 +141,36 @@ class Console(code.InteractiveConsole):
     ### INITIALIZER ###
 
     def __init__(
-        self, namespace: Optional[Dict] = None, extensions: Optional[List[Any]] = None
-    ):
+        self,
+        namespace: dict[str, Any] | None = None,
+        extensions: list[Extension] | None = None,
+    ) -> None:
         super().__init__(
             filename="<stdin>",
             locals={**(namespace or {}), "__name__": "__main__", "__package__": None},
         )
         self.extensions = extensions
         self.errored = False
-        self.results: List[Any] = []
-        self.monkeypatch = None
-        self.proxy_options: Dict[str, Dict[str, Any]] = {}
+        self.results: list[Any] = []
+        self.monkeypatch = MonkeyPatch()
+        self.proxy_options: dict[str, dict[str, Any]] = {}
 
     ### SPECIAL METHODS ###
 
-    def __enter__(self):
+    def __enter__(self) -> "Console":
         self.monkeypatch = MonkeyPatch()
         for extension in self.extensions or []:
             extension.setup_console(self, self.monkeypatch)
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
         self.monkeypatch.undo()
         for extension in self.extensions or []:
             extension.teardown_console(self)
 
     ### PRIVATE METHODS ###
 
-    def _showtraceback(self):
+    def _showtraceback(self) -> None:
         """
         Re-implementation of code.InteractiveConsole's showtraceback().
 
@@ -178,17 +181,23 @@ class Console(code.InteractiveConsole):
         sys.last_traceback = last_tb
         try:
             self.write(
-                "".join(traceback.format_exception(ei[0], ei[1], last_tb.tb_next))
+                "".join(
+                    traceback.format_exception(
+                        ei[0], ei[1], last_tb.tb_next if last_tb else None
+                    )
+                )
             )
         finally:
-            last_tb = ei = None
+            last_tb = ei = None  # type: ignore
 
     ### PUBLIC METHODS ###
 
     def flush(self) -> None:
         pass
 
-    def interpret(self, lines: List[str]) -> Tuple[List[Any], bool]:
+    def interpret(
+        self, lines: list[str]
+    ) -> tuple[list[ConsoleInput | ConsoleOutput | Extension], bool]:
         self.resetbuffer()
         self.errored = False
         self.results[:] = []
@@ -222,15 +231,13 @@ class Console(code.InteractiveConsole):
                 results.extend(grouper)
         return results, self.errored
 
-    def push_proxy(self, proxy):
+    def push_proxy(self, proxy: Extension) -> None:
         self.results.append(proxy)
 
-    def push_proxy_options(self, options=None):
+    def push_proxy_options(self, options: dict | None = None) -> None:
         self.proxy_options = options or {}
 
-    def showsyntaxerror(
-        self, filename: Optional[str] = None, *, source: str = ""
-    ) -> None:
+    def showsyntaxerror(self, filename: str | None = None, *, source: str = "") -> None:
         super().showsyntaxerror(filename=filename, source=source)
         self.errored = True
 
