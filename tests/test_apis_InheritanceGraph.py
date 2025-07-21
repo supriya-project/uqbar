@@ -339,12 +339,12 @@ def test_03_py310():
                 }
                 subgraph "cluster_uqbar.containers.dependency_graph" {
                     graph [label="uqbar.containers.dependency_graph"];
-                    node [color=7];
+                    node [color=6];
                     "uqbar.containers.dependency_graph.DependencyGraph" [label="Dependency\nGraph"];
                 }
                 subgraph "cluster_uqbar.containers.unique_tree" {
                     graph [label="uqbar.containers.unique_tree"];
-                    node [color=8];
+                    node [color=7];
                     "uqbar.containers.unique_tree.UniqueTreeContainer" [label="Unique\nTree\nContainer"];
                     "uqbar.containers.unique_tree.UniqueTreeDict" [label="Unique\nTree\nDict"];
                     "uqbar.containers.unique_tree.UniqueTreeList" [label="Unique\nTree\nList"];
@@ -359,18 +359,18 @@ def test_03_py310():
                 }
                 subgraph "cluster_uqbar.enums" {
                     graph [label="uqbar.enums"];
-                    node [color=9];
+                    node [color=8];
                     "uqbar.enums.IntEnumeration" [label="Int\nEnumeration"];
                     "uqbar.enums.StrictEnumeration" [label="Strict\nEnumeration"];
                 }
                 subgraph "cluster_uqbar.graphs.attrs" {
                     graph [label="uqbar.graphs.attrs"];
-                    node [color=1];
+                    node [color=9];
                     "uqbar.graphs.attrs.Attributes" [label=Attributes];
                 }
                 subgraph "cluster_uqbar.graphs.core" {
                     graph [label="uqbar.graphs.core"];
-                    node [color=2];
+                    node [color=1];
                     "uqbar.graphs.core.Attachable" [label=Attachable];
                     "uqbar.graphs.core.Edge" [label="Edge"];
                     "uqbar.graphs.core.Graph" [label="Graph"];
@@ -378,12 +378,12 @@ def test_03_py310():
                 }
                 subgraph "cluster_uqbar.graphs.graphers" {
                     graph [label="uqbar.graphs.graphers"];
-                    node [color=3];
+                    node [color=2];
                     "uqbar.graphs.graphers.Grapher" [label=Grapher];
                 }
                 subgraph "cluster_uqbar.graphs.html" {
                     graph [label="uqbar.graphs.html"];
-                    node [color=4];
+                    node [color=3];
                     "uqbar.graphs.html.HRule" [label=HRule];
                     "uqbar.graphs.html.LineBreak" [label="Line\nBreak"];
                     "uqbar.graphs.html.Table" [label=Table];
@@ -394,13 +394,13 @@ def test_03_py310():
                 }
                 subgraph "cluster_uqbar.graphs.records" {
                     graph [label="uqbar.graphs.records"];
-                    node [color=5];
+                    node [color=4];
                     "uqbar.graphs.records.RecordField" [label="Record\nField"];
                     "uqbar.graphs.records.RecordGroup" [label="Record\nGroup"];
                 }
                 subgraph "cluster_uqbar.io" {
                     graph [label="uqbar.io"];
-                    node [color=6];
+                    node [color=5];
                     "uqbar.io.DirectoryChange" [color=black,
                         fontcolor=white,
                         label="Directory\nChange"];
@@ -416,7 +416,7 @@ def test_03_py310():
                 }
                 subgraph "cluster_uqbar.sphinx.inheritance" {
                     graph [label="uqbar.sphinx.inheritance"];
-                    node [color=7];
+                    node [color=6];
                     "uqbar.sphinx.inheritance.InheritanceDiagram" [label="Inheritance\nDiagram"];
                     "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
                 }
