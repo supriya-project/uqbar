@@ -44,6 +44,7 @@ test = [
   "mypy",
   "pytest",
   "pytest-cov",
+  "pytest-asyncio",
   "ruff",
   "types-PyYAML",
   "types-docutils",
