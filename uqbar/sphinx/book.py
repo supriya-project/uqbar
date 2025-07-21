@@ -41,6 +41,7 @@ This extension provides the following configuration values:
 
 """
 
+import asyncio
 import importlib
 from typing import Any, Dict
 
@@ -84,6 +85,19 @@ def on_config_inited(app, config):
     """
     Hooks into Sphinx's ``config-inited`` event.
     """
+    async def verify_console_context():
+        # Verify early that any setup / teardown works
+        try:
+            async with console_context(
+                extensions=app.uqbar_book_extensions,
+                setup_lines=config["uqbar_book_console_setup"],
+                teardown_lines=config["uqbar_book_console_teardown"],
+            ):
+                pass
+        except ConsoleError:
+            logger.error("uqbar.sphinx.book console setup/teardown failed")
+            raise
+
     extension_paths = config["uqbar_book_extensions"] or [
         "uqbar.book.extensions.GraphExtension"
     ]
@@ -94,17 +108,7 @@ def on_config_inited(app, config):
         extension_class = getattr(module, class_name)
         extension_class.setup_sphinx(app)
         app.uqbar_book_extensions.append(extension_class)
-    # Verify early that any setup / teardown works
-    try:
-        with console_context(
-            extensions=app.uqbar_book_extensions,
-            setup_lines=config["uqbar_book_console_setup"],
-            teardown_lines=config["uqbar_book_console_teardown"],
-        ):
-            pass
-    except ConsoleError:
-        logger.error("uqbar.sphinx.book console setup/teardown failed")
-        raise
+    asyncio.run(verify_console_context())
 
 
 def on_doctree_read(app, document):
@@ -122,32 +126,37 @@ def on_doctree_read(app, document):
         teardown_lines=app.config["uqbar_book_console_teardown"],
         use_black=bool(app.config["uqbar_book_use_black"]),
     )
-    for cache_path, literal_block_groups in cache_mapping.items():
-        for literal_blocks in literal_block_groups:
-            try:
-                if use_cache:
-                    local_node_mapping = interpret_code_blocks_with_cache(
-                        literal_blocks, cache_path, app.connection, **kwargs
+
+    async def interpret() -> None:
+        for cache_path, literal_block_groups in cache_mapping.items():
+            for literal_blocks in literal_block_groups:
+                try:
+                    if use_cache:
+                        local_node_mapping = await interpret_code_blocks_with_cache(
+                            literal_blocks, cache_path, app.connection, **kwargs
+                        )
+                    else:
+                        local_node_mapping = await interpret_code_blocks(literal_blocks, **kwargs)
+                    node_mapping.update(local_node_mapping)
+                except ConsoleError as exception:
+                    message = (
+                        "\n    "
+                        + "\n    ".join(
+                            line.rstrip()
+                            for line in str(exception.args[1]).rstrip().splitlines()
+                        )
+                        + "\n    "
+                        + "\n    ".join(
+                            line.rstrip()
+                            for line in exception.args[0].rstrip().splitlines()
+                        )
                     )
-                else:
-                    local_node_mapping = interpret_code_blocks(literal_blocks, **kwargs)
-                node_mapping.update(local_node_mapping)
-            except ConsoleError as exception:
-                message = (
-                    "\n    "
-                    + "\n    ".join(
-                        line.rstrip()
-                        for line in str(exception.args[1]).rstrip().splitlines()
-                    )
-                    + "\n    "
-                    + "\n    ".join(
-                        line.rstrip()
-                        for line in exception.args[0].rstrip().splitlines()
-                    )
-                )
-                logger.warning(message, location=exception.args[1])
-                if app.config["uqbar_book_strict"]:
-                    raise
+                    logger.warning(message, location=exception.args[1])
+                    if app.config["uqbar_book_strict"]:
+                        raise
+
+    asyncio.run(interpret())
+
     rebuild_document(document, node_mapping)
 
 

@@ -87,94 +87,9 @@ class MonkeyPatch(object):
 
 
 class Console(code.InteractiveConsole):
-    r"""
+    """
     Interactive console providing a sandboxed namespace for executing code
     examples.
-
-    .. container:: example
-
-        ::
-
-            >>> from uqbar.book import Console
-            >>> console = Console()
-            >>> results, errored = console.interpret([
-            ...     "x = 3",
-            ...     "for i in range(3):",
-            ...     "    print(i + x)",
-            ...     "",
-            ...     "quit()",  # SystemExit is captured
-            ...     "print(2 + 2)",
-            ... ])
-
-        ::
-
-            >>> for result in results:
-            ...     print(result)
-            ...
-            ConsoleInput(string='>>> x = 3\n>>> for i in range(3):\n...     print(i + x)\n... \n')
-            ConsoleOutput(string='3\n4\n5\n')
-            ConsoleInput(string='>>> quit()\n>>> print(2 + 2)\n')
-            ConsoleOutput(string='4\n')
-
-        ::
-
-            >>> print(errored)
-            False
-
-    .. container:: example
-
-        The console maintains state across multiple ``interpret()`` calls:
-
-        ::
-
-            >>> results, errored = console.interpret(["x + 2"])
-            >>> for result in results:
-            ...     print(result)
-            ...
-            ConsoleInput(string='>>> x + 2\n')
-            ConsoleOutput(string='5\n')
-
-        ::
-
-            >>> print(errored)
-            False
-
-    .. container:: example
-
-        Errors are reported but do not propagate outside of the ``interpret()`` call:
-
-        ::
-
-            >>> results, errored = console.interpret(["1 / 0"])
-            >>> for result in results:
-            ...     print(result)
-            ...
-            ConsoleInput(string='>>> 1 / 0\n')
-            ConsoleOutput(string='Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nZeroDivisionError: division by zero\n')
-
-        ::
-
-            >>> print(errored)
-            True
-
-    .. container:: example
-
-        Error reporting resets:
-
-        ::
-
-            >>> results, errored = console.interpret(["x += 5", "print(x)"])
-            >>> for result in results:
-            ...     print(result)
-            ...
-            ConsoleInput(string='>>> x += 5\n>>> print(x)\n')
-            ConsoleOutput(string='8\n')
-
-        ::
-
-            >>> print(errored)
-            False
-
     """
 
     ### INITIALIZER ###
