@@ -270,11 +270,37 @@ class Console(code.InteractiveConsole):
                 results.extend(grouper)
         return results, self.errored
 
+    async def push_async(self, line, filename=None, _symbol="single") -> bool:
+        self.buffer.append(line)
+        source = "\n".join(self.buffer)
+        if filename is None:
+            filename = self.filename
+        more = await self.runsource_async(source, filename, symbol=_symbol)
+        if not more:
+            self.resetbuffer()
+        return more
+
     def push_proxy(self, proxy: "Extension") -> None:
         self.results.append(proxy)
 
     def push_proxy_options(self, options: dict | None = None) -> None:
         self.proxy_options = options or {}
+
+    async def runcode_async(self, code) -> Any:
+        pass
+
+    async def runsource_async(
+        self, source, filename="<input>", symbol="single"
+    ) -> bool:
+        try:
+            code = self.compile(source, filename, symbol)
+        except (OverflowError, SyntaxError, ValueError):
+            self.showsyntaxerror(filename, source=source)
+            return False
+        if code is None:
+            return True
+        await self.runcode_async(code)
+        return False
 
     def showsyntaxerror(self, filename: str | None = None, *, source: str = "") -> None:
         super().showsyntaxerror(filename=filename, source=source)
