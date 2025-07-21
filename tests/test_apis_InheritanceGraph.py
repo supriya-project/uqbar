@@ -317,30 +317,26 @@ def test_03_py310():
                     "uqbar.apis.summarizers.SummarizingRootDocumenter" [label="Summarizing\nRoot\nDocumenter"];
                     "uqbar.apis.summarizers.SummarizingClassDocumenter" -> "uqbar.apis.summarizers.ImmaterialClassDocumenter";
                 }
-                subgraph "cluster_uqbar.book.console" {
-                    graph [label="uqbar.book.console"];
+                subgraph "cluster_uqbar.book" {
+                    graph [label="uqbar.book"];
                     node [color=4];
-                    "uqbar.book.console.Console" [label=Console];
-                    "uqbar.book.console.ConsoleError" [label="Console\nError"];
-                    "uqbar.book.console.ConsoleInput" [label="Console\nInput"];
-                    "uqbar.book.console.ConsoleOutput" [label="Console\nOutput"];
-                    "uqbar.book.console.MonkeyPatch" [label="Monkey\nPatch"];
+                    "uqbar.book.Console" [label=Console];
+                    "uqbar.book.ConsoleError" [label="Console\nError"];
+                    "uqbar.book.ConsoleInput" [label="Console\nInput"];
+                    "uqbar.book.ConsoleOutput" [label="Console\nOutput"];
+                    "uqbar.book.Extension" [label=Extension];
+                    "uqbar.book.MonkeyPatch" [label="Monkey\nPatch"];
+                    "uqbar.book.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
+                    "uqbar.book.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
+                    "uqbar.book.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
+                    "uqbar.book.uqbar_book_defaults_block" [label="uqbar\nbook\ndefaults\nblock"];
+                    "uqbar.book.uqbar_book_import_block" [label="uqbar\nbook\nimport\nblock"];
                 }
                 subgraph "cluster_uqbar.book.extensions" {
                     graph [label="uqbar.book.extensions"];
                     node [color=5];
-                    "uqbar.book.extensions.Extension" [label=Extension];
                     "uqbar.book.extensions.GraphExtension" [label="Graph\nExtension"];
-                    "uqbar.book.extensions.Extension" -> "uqbar.book.extensions.GraphExtension";
-                }
-                subgraph "cluster_uqbar.book.sphinx" {
-                    graph [label="uqbar.book.sphinx"];
-                    node [color=6];
-                    "uqbar.book.sphinx.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
-                    "uqbar.book.sphinx.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
-                    "uqbar.book.sphinx.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
-                    "uqbar.book.sphinx.uqbar_book_defaults_block" [label="uqbar\nbook\ndefaults\nblock"];
-                    "uqbar.book.sphinx.uqbar_book_import_block" [label="uqbar\nbook\nimport\nblock"];
+                    "uqbar.book.Extension" -> "uqbar.book.extensions.GraphExtension";
                 }
                 subgraph "cluster_uqbar.containers.dependency_graph" {
                     graph [label="uqbar.containers.dependency_graph"];
@@ -425,7 +421,7 @@ def test_03_py310():
                     "uqbar.sphinx.inheritance.InheritanceDiagram" [label="Inheritance\nDiagram"];
                     "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
                 }
-                "builtins.Exception" -> "uqbar.book.console.ConsoleError";
+                "builtins.Exception" -> "uqbar.book.ConsoleError";
                 "builtins.int" -> "enum.IntEnum";
                 "builtins.object" -> "code.InteractiveInterpreter";
                 "builtins.object" -> "collections.abc.Container";
@@ -441,9 +437,9 @@ def test_03_py310():
                 "builtins.object" -> "uqbar.apis.documenters.RootDocumenter";
                 "builtins.object" -> "uqbar.apis.dummy.MyParentClass";
                 "builtins.object" -> "uqbar.apis.graphs.InheritanceGraph";
-                "builtins.object" -> "uqbar.book.console.ConsoleInput";
-                "builtins.object" -> "uqbar.book.console.ConsoleOutput";
-                "builtins.object" -> "uqbar.book.console.MonkeyPatch";
+                "builtins.object" -> "uqbar.book.ConsoleInput";
+                "builtins.object" -> "uqbar.book.ConsoleOutput";
+                "builtins.object" -> "uqbar.book.MonkeyPatch";
                 "builtins.object" -> "uqbar.book.extensions.Extension";
                 "builtins.object" -> "uqbar.containers.dependency_graph.DependencyGraph";
                 "builtins.object" -> "uqbar.containers.unique_tree.UniqueTreeNode";
@@ -453,17 +449,17 @@ def test_03_py310():
                 "builtins.object" -> "uqbar.io.Profiler";
                 "builtins.object" -> "uqbar.io.RedirectedStreams";
                 "builtins.object" -> "uqbar.io.Timer";
-                "code.InteractiveConsole" -> "uqbar.book.console.Console";
+                "code.InteractiveConsole" -> "uqbar.book.Console";
                 "collections.abc.MutableMapping" -> "uqbar.graphs.attrs.Attributes";
-                "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_defaults_block";
-                "docutils.nodes.Element" -> "uqbar.book.sphinx.uqbar_book_import_block";
+                "docutils.nodes.Element" -> "uqbar.book.uqbar_book_defaults_block";
+                "docutils.nodes.Element" -> "uqbar.book.uqbar_book_import_block";
                 "docutils.nodes.Element" -> "uqbar.sphinx.inheritance.inheritance_diagram";
-                "docutils.nodes.General" -> "uqbar.book.sphinx.uqbar_book_defaults_block";
-                "docutils.nodes.General" -> "uqbar.book.sphinx.uqbar_book_import_block";
+                "docutils.nodes.General" -> "uqbar.book.uqbar_book_defaults_block";
+                "docutils.nodes.General" -> "uqbar.book.uqbar_book_import_block";
                 "docutils.nodes.General" -> "uqbar.sphinx.inheritance.inheritance_diagram";
-                "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookDefaultsDirective";
-                "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookDirective";
-                "docutils.parsers.rst.Directive" -> "uqbar.book.sphinx.UqbarBookImportDirective";
+                "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDefaultsDirective";
+                "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDirective";
+                "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookImportDirective";
                 "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
                 "enum.Enum" -> "uqbar.enums.StrictEnumeration";
                 "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
