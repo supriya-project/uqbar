@@ -336,7 +336,6 @@ def test_03_py310():
                     graph [label="uqbar.book.extensions"];
                     node [color=5];
                     "uqbar.book.extensions.GraphExtension" [label="Graph\nExtension"];
-                    "uqbar.book.Extension" -> "uqbar.book.extensions.GraphExtension";
                 }
                 subgraph "cluster_uqbar.containers.dependency_graph" {
                     graph [label="uqbar.containers.dependency_graph"];
@@ -440,7 +439,7 @@ def test_03_py310():
                 "builtins.object" -> "uqbar.book.ConsoleInput";
                 "builtins.object" -> "uqbar.book.ConsoleOutput";
                 "builtins.object" -> "uqbar.book.MonkeyPatch";
-                "builtins.object" -> "uqbar.book.extensions.Extension";
+                "builtins.object" -> "uqbar.book.Extension";
                 "builtins.object" -> "uqbar.containers.dependency_graph.DependencyGraph";
                 "builtins.object" -> "uqbar.containers.unique_tree.UniqueTreeNode";
                 "builtins.object" -> "uqbar.graphs.core.Edge";
@@ -467,6 +466,7 @@ def test_03_py310():
                 "uqbar.apis.documenters.ModuleDocumenter" -> "uqbar.apis.summarizers.ImmaterialModuleDocumenter";
                 "uqbar.apis.documenters.ModuleDocumenter" -> "uqbar.apis.summarizers.SummarizingModuleDocumenter";
                 "uqbar.apis.documenters.RootDocumenter" -> "uqbar.apis.summarizers.SummarizingRootDocumenter";
+                "uqbar.book.Extension" -> "uqbar.book.extensions.GraphExtension";
                 "uqbar.containers.unique_tree.UniqueTreeList" -> "uqbar.apis.nodes.PackageNode";
                 "uqbar.containers.unique_tree.UniqueTreeList" -> "uqbar.graphs.core.Graph";
                 "uqbar.containers.unique_tree.UniqueTreeList" -> "uqbar.graphs.core.Node";
