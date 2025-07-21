@@ -95,7 +95,7 @@ source_d = """
 """
 
 
-def test_parse_rst_01():
+def test_parse_rst_01() -> None:
     document = parse_rst(source_a)
     assert normalize(document.pformat()) == normalize(
         """
@@ -113,7 +113,7 @@ def test_parse_rst_01():
     )
 
 
-def test_parse_rst_02():
+def test_parse_rst_02() -> None:
     document = parse_rst(source_b)
     assert normalize(document.pformat()) == normalize(
         """
@@ -133,7 +133,7 @@ def test_parse_rst_02():
     )
 
 
-def test_collect_literal_blocks_01():
+def test_collect_literal_blocks_01() -> None:
     document = parse_rst(source_a)
     blocks = collect_literal_blocks(document)
     expected = [
@@ -158,7 +158,7 @@ def test_collect_literal_blocks_01():
     assert actual == expected
 
 
-def test_collect_literal_blocks_02():
+def test_collect_literal_blocks_02() -> None:
     document = parse_rst(source_b)
     blocks = collect_literal_blocks(document)
     expected = [
@@ -186,7 +186,7 @@ def test_collect_literal_blocks_02():
 
 
 @pytest.mark.asyncio
-async def test_interpret_code_blocks_01():
+async def test_interpret_code_blocks_01() -> None:
     document = parse_rst(source_a)
     blocks = collect_literal_blocks(document)
     node_mapping = await interpret_code_blocks(blocks)
@@ -205,7 +205,7 @@ async def test_interpret_code_blocks_01():
 
 
 @pytest.mark.asyncio
-async def test_interpret_code_blocks_02():
+async def test_interpret_code_blocks_02() -> None:
     def logger_func(message):
         messages.append(message)
 
@@ -273,7 +273,7 @@ async def test_interpret_code_blocks_02():
 
 
 @pytest.mark.asyncio
-async def test_rebuild_document_01():
+async def test_rebuild_document_01() -> None:
     document = parse_rst(source_a)
     blocks = collect_literal_blocks(document)
     node_mapping = await interpret_code_blocks(blocks)
@@ -295,7 +295,7 @@ async def test_rebuild_document_01():
 
 
 @pytest.mark.asyncio
-async def test_rebuild_document_02():
+async def test_rebuild_document_02() -> None:
     document = parse_rst(source_b)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
@@ -331,7 +331,7 @@ async def test_rebuild_document_02():
 
 
 @pytest.mark.asyncio
-async def test_rebuild_document_03():
+async def test_rebuild_document_03() -> None:
     document = parse_rst(source_c)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
@@ -388,7 +388,7 @@ async def test_rebuild_document_03():
 
 
 @pytest.mark.asyncio
-async def test_rebuild_document_04():
+async def test_rebuild_document_04() -> None:
     document = parse_rst(source_d)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]

@@ -222,7 +222,7 @@ class Console(code.InteractiveConsole):
             self.write(
                 "".join(
                     traceback.format_exception(
-                        ei[0], ei[1], last_tb.tb_next
+                        ei[0], ei[1], last_tb.tb_next if last_tb else None
                     )
                 )
             )
