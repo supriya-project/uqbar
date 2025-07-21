@@ -7,7 +7,7 @@ import pickle
 import sqlite3
 import traceback
 from pathlib import Path
-from typing import Any, Dict, Generator
+from typing import Any, Callable, Dict, Generator
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import Element, General, doctest_block, document, literal_block
@@ -130,7 +130,9 @@ def create_cache_db(path: Path | str) -> sqlite3.Connection:
     return connection
 
 
-def query_cache_db(connection: sqlite3.Connection, cache_path: str):
+def query_cache_db(
+    connection: sqlite3.Connection, cache_path: str
+) -> list[list[ConsoleInput | ConsoleOutput | Extension]] | None:
     result = None
     for row in connection.execute(
         "SELECT data, hits FROM cache WHERE path = ?", (cache_path,)
@@ -145,7 +147,11 @@ def query_cache_db(connection: sqlite3.Connection, cache_path: str):
     return pickle.loads(result)
 
 
-def update_cache_db(connection: sqlite3.Connection, cache_path: str, data):
+def update_cache_db(
+    connection: sqlite3.Connection,
+    cache_path: str,
+    data: list[list[ConsoleInput | ConsoleOutput | Extension]],
+) -> None:
     connection.execute(
         "INSERT INTO cache VALUES (?, ?, 0)", (cache_path, pickle.dumps(data))
     )
@@ -211,16 +217,25 @@ def interpret_code_blocks(
         | uqbar_book_import_block
     ],
     *,
-    allow_exceptions=False,
-    document=None,
-    extensions=None,
-    namespace=None,
-    setup_lines=None,
-    teardown_lines=None,
-    logger_func=None,
-    use_black=False,
-):
-    results = {}
+    allow_exceptions: bool = False,
+    document: document,
+    extensions: list[Extension] | None = None,
+    logger_func: Callable[[str], None] | None = None,
+    namespace: dict[str, Any] | None = None,
+    setup_lines: list[str] | None = None,
+    teardown_lines: list[str] | None = None,
+    use_black: bool = False,
+) -> dict[
+    doctest_block | literal_block | uqbar_book_defaults_block | uqbar_book_import_block,
+    list[ConsoleInput | ConsoleOutput | Extension],
+]:
+    results: dict[
+        doctest_block
+        | literal_block
+        | uqbar_book_defaults_block
+        | uqbar_book_import_block,
+        list[ConsoleInput | ConsoleOutput | Extension],
+    ] = {}
     block = blocks[0] if blocks else None
     with console_context(
         document=document,
@@ -270,34 +285,37 @@ def interpret_code_blocks_with_cache(
         | uqbar_book_defaults_block
         | uqbar_book_import_block
     ],
+    cache_path: str,
+    connection: sqlite3.Connection,
     *,
-    cache_path,
-    connection,
-    allow_exceptions=False,
-    document=None,
-    extensions=None,
-    namespace=None,
-    setup_lines=None,
-    teardown_lines=None,
-    use_black=False,
-):
-    cache_data = query_cache_db(connection, cache_path)
-    if cache_data is not None:
-        local_node_mapping = dict(zip(blocks, cache_data))
-    else:
-        local_node_mapping = interpret_code_blocks(
-            blocks,
-            allow_exceptions=allow_exceptions,
-            document=document,
-            extensions=extensions,
-            namespace=namespace,
-            setup_lines=setup_lines,
-            teardown_lines=teardown_lines,
-            use_black=use_black,
-        )
-        if cache_path is not None:
-            cache_data = list(local_node_mapping.values())
-            update_cache_db(connection, cache_path, cache_data)
+    allow_exceptions: bool = False,
+    document: document,
+    extensions: list[Extension] | None = None,
+    logger_func: Callable[[str], None] | None = None,
+    namespace: dict[str, Any] | None = None,
+    setup_lines: list[str] | None = None,
+    teardown_lines: list[str] | None = None,
+    use_black: bool = False,
+) -> dict[
+    doctest_block | literal_block | uqbar_book_defaults_block | uqbar_book_import_block,
+    list[ConsoleInput | ConsoleOutput | Extension],
+]:
+    if (cache_data := query_cache_db(connection, cache_path)) is not None:
+        return dict(zip(blocks, cache_data))
+    local_node_mapping = interpret_code_blocks(
+        blocks,
+        allow_exceptions=allow_exceptions,
+        document=document,
+        extensions=extensions,
+        logger_func=logger_func,
+        namespace=namespace,
+        setup_lines=setup_lines,
+        teardown_lines=teardown_lines,
+        use_black=use_black,
+    )
+    if cache_path is not None:
+        cache_data = list(local_node_mapping.values())
+        update_cache_db(connection, cache_path, cache_data)
     return local_node_mapping
 
 
