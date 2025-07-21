@@ -50,8 +50,8 @@ from sphinx.util.console import bold  # type: ignore
 
 import uqbar
 
-from ..book.console import ConsoleError
-from ..book.sphinx import (
+from ..book import (
+    ConsoleError,
     UqbarBookDefaultsDirective,
     UqbarBookDirective,
     UqbarBookImportDirective,
