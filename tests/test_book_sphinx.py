@@ -3,10 +3,17 @@ import sys
 import pytest
 from docutils.parsers.rst import directives
 
-import uqbar.book.sphinx
-from uqbar.book.console import ConsoleError, ConsoleInput, ConsoleOutput
+from uqbar.book import (
+    ConsoleError,
+    ConsoleInput,
+    ConsoleOutput,
+    UqbarBookDirective,
+    collect_literal_blocks,
+    interpret_code_blocks,
+    parse_rst,
+    rebuild_document,
+)
 from uqbar.book.extensions import GraphExtension
-from uqbar.book.sphinx import UqbarBookDirective
 from uqbar.strings import normalize
 
 
@@ -89,7 +96,7 @@ source_d = """
 
 
 def test_parse_rst_01():
-    document = uqbar.book.sphinx.parse_rst(source_a)
+    document = parse_rst(source_a)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">
@@ -107,7 +114,7 @@ def test_parse_rst_01():
 
 
 def test_parse_rst_02():
-    document = uqbar.book.sphinx.parse_rst(source_b)
+    document = parse_rst(source_b)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">
@@ -127,8 +134,8 @@ def test_parse_rst_02():
 
 
 def test_collect_literal_blocks_01():
-    document = uqbar.book.sphinx.parse_rst(source_a)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source_a)
+    blocks = collect_literal_blocks(document)
     expected = [
         """
         <literal_block xml:space="preserve">
@@ -152,8 +159,8 @@ def test_collect_literal_blocks_01():
 
 
 def test_collect_literal_blocks_02():
-    document = uqbar.book.sphinx.parse_rst(source_b)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source_b)
+    blocks = collect_literal_blocks(document)
     expected = [
         """
         <literal_block xml:space="preserve">
@@ -179,9 +186,9 @@ def test_collect_literal_blocks_02():
 
 
 def test_interpret_code_blocks_01():
-    document = uqbar.book.sphinx.parse_rst(source_a)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    node_mapping = uqbar.book.sphinx.interpret_code_blocks(blocks)
+    document = parse_rst(source_a)
+    blocks = collect_literal_blocks(document)
+    node_mapping = interpret_code_blocks(blocks)
     assert list(node_mapping.values()) == [
         [ConsoleInput(string=">>> string = 'Hello, world!'\n")],
         [
@@ -221,10 +228,10 @@ def test_interpret_code_blocks_02():
             {error_message}
         """.format(error_message=error_message)
     )
-    document = uqbar.book.sphinx.parse_rst(source)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source)
+    blocks = collect_literal_blocks(document)
     # This has a traceback, so it passes.
-    uqbar.book.sphinx.interpret_code_blocks(blocks, logger_func=logger_func)
+    interpret_code_blocks(blocks, logger_func=logger_func)
     assert messages == [error_message]
     messages[:] = []
     source = normalize(
@@ -239,11 +246,11 @@ def test_interpret_code_blocks_02():
             "This is fine"
         """
     )
-    document = uqbar.book.sphinx.parse_rst(source)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source)
+    blocks = collect_literal_blocks(document)
     with pytest.raises(ConsoleError):
         # This does not have a traceback, so it fails.
-        uqbar.book.sphinx.interpret_code_blocks(blocks, logger_func=logger_func)
+        interpret_code_blocks(blocks, logger_func=logger_func)
     assert messages == [
         (
             "Traceback (most recent call last):\n"
@@ -253,9 +260,7 @@ def test_interpret_code_blocks_02():
     ]
     messages[:] = []
     # This passes because we force it to.
-    uqbar.book.sphinx.interpret_code_blocks(
-        blocks, allow_exceptions=True, logger_func=logger_func
-    )
+    interpret_code_blocks(blocks, allow_exceptions=True, logger_func=logger_func)
     assert messages == [
         (
             "Traceback (most recent call last):\n"
@@ -266,10 +271,10 @@ def test_interpret_code_blocks_02():
 
 
 def test_rebuild_document_01():
-    document = uqbar.book.sphinx.parse_rst(source_a)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
-    node_mapping = uqbar.book.sphinx.interpret_code_blocks(blocks)
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    document = parse_rst(source_a)
+    blocks = collect_literal_blocks(document)
+    node_mapping = interpret_code_blocks(blocks)
+    rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">
@@ -287,13 +292,11 @@ def test_rebuild_document_01():
 
 
 def test_rebuild_document_02():
-    document = uqbar.book.sphinx.parse_rst(source_b)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source_b)
+    blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = uqbar.book.sphinx.interpret_code_blocks(
-        blocks, extensions=extensions
-    )
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">
@@ -324,13 +327,11 @@ def test_rebuild_document_02():
 
 
 def test_rebuild_document_03():
-    document = uqbar.book.sphinx.parse_rst(source_c)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source_c)
+    blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = uqbar.book.sphinx.interpret_code_blocks(
-        blocks, extensions=extensions
-    )
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">
@@ -382,13 +383,11 @@ def test_rebuild_document_03():
 
 
 def test_rebuild_document_04():
-    document = uqbar.book.sphinx.parse_rst(source_d)
-    blocks = uqbar.book.sphinx.collect_literal_blocks(document)
+    document = parse_rst(source_d)
+    blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = uqbar.book.sphinx.interpret_code_blocks(
-        blocks, extensions=extensions
-    )
-    uqbar.book.sphinx.rebuild_document(document, node_mapping)
+    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
         <document source="test">

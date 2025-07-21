@@ -1,4 +1,3 @@
-import abc
 import copy
 import hashlib
 import pathlib
@@ -7,55 +6,7 @@ import subprocess
 from docutils.nodes import FixedTextElement, General, SkipNode
 
 from ..graphs import Grapher
-from .console import Console
-from .sphinx import UqbarBookDefaultsDirective, UqbarBookDirective
-
-
-class Extension:
-    @classmethod
-    def add_option(cls, key, value):
-        UqbarBookDirective.option_spec[key] = value
-        UqbarBookDefaultsDirective.option_spec[key] = value
-
-    @classmethod
-    @abc.abstractmethod
-    def setup_console(cls, console: Console, monkeypatch):
-        """
-        Perform console setup tasks before executing a suite of code blocks,
-        e.g. monkeypatching IO operations to allow media capture.
-        """
-        raise NotImplementedError
-
-    @classmethod
-    @abc.abstractmethod
-    def setup_sphinx(cls, app):
-        """
-        Setup Sphinx, e.g. register custom nodes and visitors.
-        """
-        raise NotImplementedError
-
-    @classmethod
-    def teardown_console(cls, app):
-        """
-        Perform console teardown tasks.
-        """
-        pass
-
-    @staticmethod
-    def visit_block_html(self, node):
-        raise SkipNode
-
-    @staticmethod
-    def visit_block_latex(self, node):
-        raise SkipNode
-
-    @staticmethod
-    def depart_block_text(self, node):
-        self.end_state(wrap=False)
-
-    @staticmethod
-    def visit_block_text(self, node):
-        self.new_state()
+from . import Extension
 
 
 class GraphExtension(Extension):
