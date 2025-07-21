@@ -7,18 +7,6 @@ extensions
 
 .. currentmodule:: uqbar.book.extensions
 
-.. autoclass:: Extension
-   :show-inheritance:
-
-   .. automethod:: add_option
-   .. automethod:: depart_block_text
-   .. automethod:: setup_console
-   .. automethod:: setup_sphinx
-   .. automethod:: teardown_console
-   .. automethod:: visit_block_html
-   .. automethod:: visit_block_latex
-   .. automethod:: visit_block_text
-
 .. autoclass:: GraphExtension
    :show-inheritance:
 

@@ -548,20 +548,37 @@
 </tbody>
 </table>
 <hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/book/index.html#uqbar-book"><span class="std std-ref">uqbar.book</span></a></p>
-<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/book/console.html#uqbar-book-console"><span class="std std-ref">uqbar.book.console</span></a></p>
 <hr/><p class="subsection-header rubric">Classes</p>
 <table class="autosummary longtable docutils data align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/console.html#uqbar.book.console.Console" title="uqbar.book.console.Console (Python class) — Bases: InteractiveConsole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Console</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.Console" title="uqbar.book.Console (Python class) — Bases: InteractiveConsole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Console</span></code></a></p></td>
 <td><p>Interactive console providing a sandboxed namespace for executing code examples.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/console.html#uqbar.book.console.ConsoleInput" title="uqbar.book.console.ConsoleInput (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleInput</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.ConsoleInput" title="uqbar.book.ConsoleInput (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleInput</span></code></a></p></td>
 <td><p>ConsoleInput(string: str)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/console.html#uqbar.book.console.ConsoleOutput" title="uqbar.book.console.ConsoleOutput (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleOutput</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.ConsoleOutput" title="uqbar.book.ConsoleOutput (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleOutput</span></code></a></p></td>
 <td><p>ConsoleOutput(string: str)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/console.html#uqbar.book.console.MonkeyPatch" title="uqbar.book.console.MonkeyPatch (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MonkeyPatch</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.Extension" title="uqbar.book.Extension (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Extension</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.MonkeyPatch" title="uqbar.book.MonkeyPatch (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MonkeyPatch</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.UqbarBookDefaultsDirective" title="uqbar.book.UqbarBookDefaultsDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDefaultsDirective</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.UqbarBookDirective" title="uqbar.book.UqbarBookDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDirective</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.UqbarBookImportDirective" title="uqbar.book.UqbarBookImportDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookImportDirective</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.uqbar_book_defaults_block" title="uqbar.book.uqbar_book_defaults_block (Python class) — Bases: General, Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_defaults_block</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.uqbar_book_import_block" title="uqbar.book.uqbar_book_import_block (Python class) — Bases: General, Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_import_block</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -569,7 +586,57 @@
 <hr/><p class="subsection-header rubric">Exceptions</p>
 <table class="autosummary longtable docutils data align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/console.html#uqbar.book.console.ConsoleError" title="uqbar.book.console.ConsoleError (Python exception)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleError</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.ConsoleError" title="uqbar.book.ConsoleError (Python exception)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConsoleError</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Functions</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.black_format" title="uqbar.book.black_format (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">black_format</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.collect_literal_blocks" title="uqbar.book.collect_literal_blocks (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_literal_blocks</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.console_context" title="uqbar.book.console_context (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console_context</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.create_cache_db" title="uqbar.book.create_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cache_db</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.find_traceback" title="uqbar.book.find_traceback (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_traceback</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.group_literal_blocks_by_cache_path" title="uqbar.book.group_literal_blocks_by_cache_path (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_literal_blocks_by_cache_path</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.interpret_code_blocks" title="uqbar.book.interpret_code_blocks (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.interpret_code_blocks_with_cache" title="uqbar.book.interpret_code_blocks_with_cache (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks_with_cache</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.interpret_import_block" title="uqbar.book.interpret_import_block (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_import_block</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.interpret_literal_block" title="uqbar.book.interpret_literal_block (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_literal_block</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.literal_block_to_cache_path" title="uqbar.book.literal_block_to_cache_path (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_block_to_cache_path</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.parse_rst" title="uqbar.book.parse_rst (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_rst</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.query_cache_db" title="uqbar.book.query_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_cache_db</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.rebuild_document" title="uqbar.book.rebuild_document (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebuild_document</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/index.html#uqbar.book.update_cache_db" title="uqbar.book.update_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_cache_db</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -578,81 +645,7 @@
 <hr/><p class="subsection-header rubric">Classes</p>
 <table class="autosummary longtable docutils data align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/extensions.html#uqbar.book.extensions.Extension" title="uqbar.book.extensions.Extension (Python class) — Bases: object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Extension</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/extensions.html#uqbar.book.extensions.GraphExtension" title="uqbar.book.extensions.GraphExtension (Python class) — Bases: Extension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GraphExtension</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<hr/><p class="section-header rubric"><a class="reference internal" href="uqbar/book/sphinx.html#uqbar-book-sphinx"><span class="std std-ref">uqbar.book.sphinx</span></a></p>
-<hr/><p class="subsection-header rubric">Classes</p>
-<table class="autosummary longtable docutils data align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDefaultsDirective" title="uqbar.book.sphinx.UqbarBookDefaultsDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDefaultsDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookDirective" title="uqbar.book.sphinx.UqbarBookDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.UqbarBookImportDirective" title="uqbar.book.sphinx.UqbarBookImportDirective (Python class) — Bases: Directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UqbarBookImportDirective</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_defaults_block" title="uqbar.book.sphinx.uqbar_book_defaults_block (Python class) — Bases: General, Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_defaults_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.uqbar_book_import_block" title="uqbar.book.sphinx.uqbar_book_import_block (Python class) — Bases: General, Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uqbar_book_import_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<hr/><p class="subsection-header rubric">Functions</p>
-<table class="autosummary longtable docutils data align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.black_format" title="uqbar.book.sphinx.black_format (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">black_format</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.collect_literal_blocks" title="uqbar.book.sphinx.collect_literal_blocks (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_literal_blocks</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.console_context" title="uqbar.book.sphinx.console_context (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console_context</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.create_cache_db" title="uqbar.book.sphinx.create_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_cache_db</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.find_traceback" title="uqbar.book.sphinx.find_traceback (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_traceback</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.group_literal_blocks_by_cache_path" title="uqbar.book.sphinx.group_literal_blocks_by_cache_path (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_literal_blocks_by_cache_path</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_code_blocks" title="uqbar.book.sphinx.interpret_code_blocks (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_code_blocks_with_cache" title="uqbar.book.sphinx.interpret_code_blocks_with_cache (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_code_blocks_with_cache</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_import_block" title="uqbar.book.sphinx.interpret_import_block (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_import_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.interpret_literal_block" title="uqbar.book.sphinx.interpret_literal_block (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpret_literal_block</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.literal_block_to_cache_path" title="uqbar.book.sphinx.literal_block_to_cache_path (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_block_to_cache_path</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.parse_rst" title="uqbar.book.sphinx.parse_rst (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_rst</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.query_cache_db" title="uqbar.book.sphinx.query_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_cache_db</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.rebuild_document" title="uqbar.book.sphinx.rebuild_document (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rebuild_document</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/sphinx.html#uqbar.book.sphinx.update_cache_db" title="uqbar.book.sphinx.update_cache_db (Python function)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_cache_db</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="uqbar/book/extensions.html#uqbar.book.extensions.GraphExtension" title="uqbar.book.extensions.GraphExtension (Python class) — Bases: Extension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GraphExtension</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

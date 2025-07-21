@@ -181,23 +181,22 @@ Tools for auto-generating API documention.
 
    <hr/>
 
-.. rubric:: :ref:`uqbar.book.console <uqbar--book--console>`
-   :class: section-header
-
-.. raw:: html
-
-   <hr/>
-
 .. rubric:: Classes
    :class: subsection-header
 
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.book.console.Console
-   ~uqbar.book.console.ConsoleInput
-   ~uqbar.book.console.ConsoleOutput
-   ~uqbar.book.console.MonkeyPatch
+   ~uqbar.book.Console
+   ~uqbar.book.ConsoleInput
+   ~uqbar.book.ConsoleOutput
+   ~uqbar.book.Extension
+   ~uqbar.book.MonkeyPatch
+   ~uqbar.book.UqbarBookDefaultsDirective
+   ~uqbar.book.UqbarBookDirective
+   ~uqbar.book.UqbarBookImportDirective
+   ~uqbar.book.uqbar_book_defaults_block
+   ~uqbar.book.uqbar_book_import_block
 
 .. raw:: html
 
@@ -209,7 +208,33 @@ Tools for auto-generating API documention.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.book.console.ConsoleError
+   ~uqbar.book.ConsoleError
+
+.. raw:: html
+
+   <hr/>
+
+.. rubric:: Functions
+   :class: subsection-header
+
+.. autosummary::
+   :nosignatures:
+
+   ~uqbar.book.black_format
+   ~uqbar.book.collect_literal_blocks
+   ~uqbar.book.console_context
+   ~uqbar.book.create_cache_db
+   ~uqbar.book.find_traceback
+   ~uqbar.book.group_literal_blocks_by_cache_path
+   ~uqbar.book.interpret_code_blocks
+   ~uqbar.book.interpret_code_blocks_with_cache
+   ~uqbar.book.interpret_import_block
+   ~uqbar.book.interpret_literal_block
+   ~uqbar.book.literal_block_to_cache_path
+   ~uqbar.book.parse_rst
+   ~uqbar.book.query_cache_db
+   ~uqbar.book.rebuild_document
+   ~uqbar.book.update_cache_db
 
 .. raw:: html
 
@@ -228,57 +253,7 @@ Tools for auto-generating API documention.
 .. autosummary::
    :nosignatures:
 
-   ~uqbar.book.extensions.Extension
    ~uqbar.book.extensions.GraphExtension
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: :ref:`uqbar.book.sphinx <uqbar--book--sphinx>`
-   :class: section-header
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Classes
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.book.sphinx.UqbarBookDefaultsDirective
-   ~uqbar.book.sphinx.UqbarBookDirective
-   ~uqbar.book.sphinx.UqbarBookImportDirective
-   ~uqbar.book.sphinx.uqbar_book_defaults_block
-   ~uqbar.book.sphinx.uqbar_book_import_block
-
-.. raw:: html
-
-   <hr/>
-
-.. rubric:: Functions
-   :class: subsection-header
-
-.. autosummary::
-   :nosignatures:
-
-   ~uqbar.book.sphinx.black_format
-   ~uqbar.book.sphinx.collect_literal_blocks
-   ~uqbar.book.sphinx.console_context
-   ~uqbar.book.sphinx.create_cache_db
-   ~uqbar.book.sphinx.find_traceback
-   ~uqbar.book.sphinx.group_literal_blocks_by_cache_path
-   ~uqbar.book.sphinx.interpret_code_blocks
-   ~uqbar.book.sphinx.interpret_code_blocks_with_cache
-   ~uqbar.book.sphinx.interpret_import_block
-   ~uqbar.book.sphinx.interpret_literal_block
-   ~uqbar.book.sphinx.literal_block_to_cache_path
-   ~uqbar.book.sphinx.parse_rst
-   ~uqbar.book.sphinx.query_cache_db
-   ~uqbar.book.sphinx.rebuild_document
-   ~uqbar.book.sphinx.update_cache_db
 
 .. raw:: html
 

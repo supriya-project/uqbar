@@ -10,6 +10,103 @@ book
 .. toctree::
    :hidden:
 
-   console
    extensions
-   sphinx
+
+.. autoclass:: Console
+   :show-inheritance:
+
+   .. automethod:: __enter__
+   .. automethod:: __exit__
+   .. automethod:: flush
+   .. automethod:: interpret
+   .. automethod:: push_async
+   .. automethod:: push_proxy
+   .. automethod:: push_proxy_options
+   .. automethod:: runcode_async
+   .. automethod:: runsource_async
+   .. automethod:: showsyntaxerror
+   .. automethod:: showtraceback
+   .. automethod:: write
+
+.. autoclass:: ConsoleInput
+   :show-inheritance:
+
+   .. automethod:: __replace__
+
+.. autoclass:: ConsoleOutput
+   :show-inheritance:
+
+   .. automethod:: __replace__
+
+.. autoclass:: Extension
+   :show-inheritance:
+
+   .. automethod:: add_option
+   .. automethod:: depart_block_text
+   .. automethod:: setup_console
+   .. automethod:: setup_sphinx
+   .. automethod:: teardown_console
+   .. automethod:: visit_block_html
+   .. automethod:: visit_block_latex
+   .. automethod:: visit_block_text
+
+.. autoclass:: MonkeyPatch
+   :show-inheritance:
+
+   .. automethod:: setattr
+   .. automethod:: undo
+
+.. autoclass:: UqbarBookDefaultsDirective
+   :show-inheritance:
+
+   .. automethod:: run
+
+.. autoclass:: UqbarBookDirective
+   :show-inheritance:
+
+   .. automethod:: run
+
+.. autoclass:: UqbarBookImportDirective
+   :show-inheritance:
+
+   .. automethod:: run
+
+.. autoclass:: uqbar_book_defaults_block
+   :show-inheritance:
+
+
+.. autoclass:: uqbar_book_import_block
+   :show-inheritance:
+
+
+.. autoexception:: ConsoleError
+
+.. autofunction:: black_format
+
+.. autofunction:: collect_literal_blocks
+
+.. autofunction:: console_context
+
+.. autofunction:: create_cache_db
+
+.. autofunction:: find_traceback
+
+.. autofunction:: group_literal_blocks_by_cache_path
+
+.. autofunction:: interpret_code_blocks
+
+.. autofunction:: interpret_code_blocks_with_cache
+
+.. autofunction:: interpret_import_block
+
+.. autofunction:: interpret_literal_block
+
+.. autofunction:: literal_block_to_cache_path
+
+.. autofunction:: parse_rst
+
+.. autofunction:: query_cache_db
+
+.. autofunction:: rebuild_document
+
+.. autofunction:: update_cache_db
