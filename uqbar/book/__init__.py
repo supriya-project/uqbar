@@ -1,4 +1,5 @@
 import abc
+import ast
 import code
 import contextlib
 import importlib
@@ -9,6 +10,7 @@ import pickle
 import sqlite3
 import sys
 import traceback
+import types
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, AsyncGenerator, Callable, Dict, Union
@@ -103,6 +105,7 @@ class Console(code.InteractiveConsole):
             filename="<stdin>",
             locals={**(namespace or {}), "__name__": "__main__", "__package__": None},
         )
+        self.compile.compiler.flags |= ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
         self.extensions = extensions
         self.errored = False
         self.results: list[Any] = []
@@ -124,7 +127,7 @@ class Console(code.InteractiveConsole):
 
     ### PRIVATE METHODS ###
 
-    def _showtraceback(self) -> None:
+    def _showtraceback(self, *args) -> None:
         """
         Re-implementation of code.InteractiveConsole's showtraceback().
 
@@ -202,11 +205,14 @@ class Console(code.InteractiveConsole):
         self.proxy_options = options or {}
 
     async def runcode_async(self, code) -> Any:
+        func = types.FunctionType(code, self.locals)
         try:
-            exec(code, self.locals)
+            if inspect.iscoroutine(coro := func()):
+                return await coro
+            return coro
         except SystemExit:
             raise
-        except:
+        except BaseException:
             self.showtraceback()
 
     async def runsource_async(

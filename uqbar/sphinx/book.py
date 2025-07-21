@@ -85,6 +85,7 @@ def on_config_inited(app, config):
     """
     Hooks into Sphinx's ``config-inited`` event.
     """
+
     async def verify_console_context():
         # Verify early that any setup / teardown works
         try:
@@ -136,7 +137,9 @@ def on_doctree_read(app, document):
                             literal_blocks, cache_path, app.connection, **kwargs
                         )
                     else:
-                        local_node_mapping = await interpret_code_blocks(literal_blocks, **kwargs)
+                        local_node_mapping = await interpret_code_blocks(
+                            literal_blocks, **kwargs
+                        )
                     node_mapping.update(local_node_mapping)
                 except ConsoleError as exception:
                     message = (

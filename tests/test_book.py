@@ -94,6 +94,19 @@ source_d = """
 
 """
 
+source_e = """
+::
+
+    >>> async def hello_world():
+    ...     print("Hello, world!")
+    ...
+
+::
+
+    >>> await(hello_world())
+    Hello, world!
+"""
+
 
 @pytest.mark.parametrize(
     "source, expected",
@@ -129,7 +142,7 @@ source_d = """
                 <literal_block xml:space="preserve">
                     >>> uqbar.graphs.Grapher(g)()
             """,
-        ), 
+        ),
     ],
 )
 def test_parse_rst(source: str, expected: str) -> None:
@@ -180,7 +193,7 @@ def test_parse_rst(source: str, expected: str) -> None:
                 <literal_block xml:space="preserve">
                     >>> uqbar.graphs.Grapher(g)()
                 """,
-            ]
+            ],
         ),
     ],
 )
@@ -323,7 +336,7 @@ async def test_interpret_code_blocks_02() -> None:
                         node_1;
                         node_0 -> node_1;
                     }
-            """
+            """,
         ),
         (
             source_c,
@@ -372,7 +385,7 @@ async def test_interpret_code_blocks_02() -> None:
                     }
                 <literal_block xml:space="preserve">
                     2
-            """
+            """,
         ),
         (
             source_d,
@@ -384,7 +397,20 @@ async def test_interpret_code_blocks_02() -> None:
                         node_1;
                         node_0 -> node_1;
                     }
+            """,
+        ),
+        (
+            source_e,
             """
+            <document source="test">
+                <literal_block xml:space="preserve">
+                    >>> async def hello_world():
+                    ...     print("Hello, world!")
+                    ...
+                <literal_block xml:space="preserve">
+                    >>> await(hello_world())
+                    Hello, world!
+            """,
         ),
     ],
 )
