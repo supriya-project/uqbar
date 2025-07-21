@@ -11,7 +11,7 @@ import sys
 import traceback
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable, Dict, Generator, Union
+from typing import Any, AsyncGenerator, Callable, Dict, Union
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import (
@@ -222,7 +222,7 @@ class Console(code.InteractiveConsole):
             self.write(
                 "".join(
                     traceback.format_exception(
-                        ei[0], ei[1], last_tb.tb_next if last_tb else None
+                        ei[0], ei[1], last_tb.tb_next
                     )
                 )
             )
@@ -234,7 +234,7 @@ class Console(code.InteractiveConsole):
     def flush(self) -> None:
         pass
 
-    def interpret(
+    async def interpret(
         self, lines: list[str]
     ) -> tuple[list[Union[ConsoleInput, ConsoleOutput, "Extension"]], bool]:
         self.resetbuffer()
@@ -246,14 +246,14 @@ class Console(code.InteractiveConsole):
             for line_number, line in enumerate(lines, 1):
                 self.results.append(ConsoleInput(prompt + line + "\n"))
                 try:
-                    is_incomplete_statement = self.push(line)
+                    is_incomplete_statement = await self.push_async(line)
                 except SystemExit:
                     self.resetbuffer()
                 prompt = "... " if is_incomplete_statement else ">>> "
             if is_incomplete_statement:
                 self.results.append(ConsoleInput(prompt + "\n"))
                 try:
-                    is_incomplete_statement = self.push("\n")
+                    is_incomplete_statement = await self.push_async("\n")
                 except SystemExit:
                     self.resetbuffer()
             if is_incomplete_statement:
@@ -287,7 +287,12 @@ class Console(code.InteractiveConsole):
         self.proxy_options = options or {}
 
     async def runcode_async(self, code) -> Any:
-        pass
+        try:
+            exec(code, self.locals)
+        except SystemExit:
+            raise
+        except:
+            self.showtraceback()
 
     async def runsource_async(
         self, source, filename="<input>", symbol="single"
@@ -515,24 +520,24 @@ def find_traceback(
     return ""
 
 
-@contextlib.contextmanager
-def console_context(
+@contextlib.asynccontextmanager
+async def console_context(
     *, extensions, namespace=None, setup_lines=None, teardown_lines=None, document=None
-) -> Generator[Console, None, None]:
+) -> AsyncGenerator[Console, None]:
     console = Console(extensions=extensions, namespace=namespace)
-    console_output, errored = console.interpret(setup_lines or [])
+    console_output, errored = await console.interpret(setup_lines or [])
     if errored:
         raise ConsoleError(find_traceback(console_output), document)
     try:
         yield console
     finally:
         console.resetbuffer()
-        console_output, errored = console.interpret(teardown_lines or [])
+        console_output, errored = await console.interpret(teardown_lines or [])
         if errored:
             raise ConsoleError(find_traceback(console_output), document)
 
 
-def interpret_code_blocks(
+async def interpret_code_blocks(
     blocks: list[
         doctest_block
         | literal_block
@@ -560,7 +565,7 @@ def interpret_code_blocks(
         list[ConsoleInput | ConsoleOutput | Extension],
     ] = {}
     block = blocks[0] if blocks else None
-    with console_context(
+    async with console_context(
         document=document,
         extensions=extensions,
         namespace=namespace,
@@ -576,11 +581,11 @@ def interpret_code_blocks(
                 proxy_options = {**default_proxy_options, **dict(block.attlist())}
                 console.push_proxy_options(proxy_options)
             if isinstance(block, uqbar_book_import_block):
-                console_output, errored, has_exception = interpret_import_block(
+                console_output, errored, has_exception = await interpret_import_block(
                     console, block
                 )
             elif isinstance(block, (literal_block, doctest_block)):
-                console_output, errored, has_exception = interpret_literal_block(
+                console_output, errored, has_exception = await interpret_literal_block(
                     console, block, use_black=use_black
                 )
             if errored:
@@ -601,7 +606,7 @@ def interpret_code_blocks(
     return results
 
 
-def interpret_code_blocks_with_cache(
+async def interpret_code_blocks_with_cache(
     blocks: list[
         doctest_block
         | literal_block
@@ -625,7 +630,7 @@ def interpret_code_blocks_with_cache(
 ]:
     if (cache_data := query_cache_db(connection, cache_path)) is not None:
         return dict(zip(blocks, cache_data))
-    local_node_mapping = interpret_code_blocks(
+    local_node_mapping = await interpret_code_blocks(
         blocks,
         allow_exceptions=allow_exceptions,
         document=document,
@@ -642,7 +647,7 @@ def interpret_code_blocks_with_cache(
     return local_node_mapping
 
 
-def interpret_import_block(
+async def interpret_import_block(
     console: Console, block: uqbar_book_import_block
 ) -> tuple[list[ConsoleInput | ConsoleOutput | Extension], bool, bool]:
     code_address = block["path"]
@@ -651,12 +656,12 @@ def interpret_import_block(
     attr = getattr(module, attr_name)
     source = inspect.getsource(attr)
     lines = [f"from {module_name} import {attr_name}"]
-    output, errored = console.interpret(lines)
+    output, errored = await console.interpret(lines)
     output = [ConsoleOutput(string=source)]
     return output, errored, False
 
 
-def interpret_literal_block(
+async def interpret_literal_block(
     console: Console, block: doctest_block | literal_block, use_black: bool = False
 ) -> tuple[list[ConsoleInput | ConsoleOutput | Extension], bool, bool]:
     has_exception = False
@@ -677,7 +682,7 @@ def interpret_literal_block(
             lines = black_format(lines)
         except Exception:
             raise ConsoleError(traceback.format_exc(), block)
-    console_output, errored = console.interpret(lines)
+    console_output, errored = await console.interpret(lines)
     return console_output, errored, has_exception
 
 

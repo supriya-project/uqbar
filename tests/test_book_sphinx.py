@@ -185,10 +185,11 @@ def test_collect_literal_blocks_02():
     assert actual == expected
 
 
-def test_interpret_code_blocks_01():
+@pytest.mark.asyncio
+async def test_interpret_code_blocks_01():
     document = parse_rst(source_a)
     blocks = collect_literal_blocks(document)
-    node_mapping = interpret_code_blocks(blocks)
+    node_mapping = await interpret_code_blocks(blocks)
     assert list(node_mapping.values()) == [
         [ConsoleInput(string=">>> string = 'Hello, world!'\n")],
         [
@@ -203,7 +204,8 @@ def test_interpret_code_blocks_01():
     ]
 
 
-def test_interpret_code_blocks_02():
+@pytest.mark.asyncio
+async def test_interpret_code_blocks_02():
     def logger_func(message):
         messages.append(message)
 
@@ -231,7 +233,7 @@ def test_interpret_code_blocks_02():
     document = parse_rst(source)
     blocks = collect_literal_blocks(document)
     # This has a traceback, so it passes.
-    interpret_code_blocks(blocks, logger_func=logger_func)
+    await interpret_code_blocks(blocks, logger_func=logger_func)
     assert messages == [error_message]
     messages[:] = []
     source = normalize(
@@ -250,7 +252,7 @@ def test_interpret_code_blocks_02():
     blocks = collect_literal_blocks(document)
     with pytest.raises(ConsoleError):
         # This does not have a traceback, so it fails.
-        interpret_code_blocks(blocks, logger_func=logger_func)
+        await interpret_code_blocks(blocks, logger_func=logger_func)
     assert messages == [
         (
             "Traceback (most recent call last):\n"
@@ -260,7 +262,7 @@ def test_interpret_code_blocks_02():
     ]
     messages[:] = []
     # This passes because we force it to.
-    interpret_code_blocks(blocks, allow_exceptions=True, logger_func=logger_func)
+    await interpret_code_blocks(blocks, allow_exceptions=True, logger_func=logger_func)
     assert messages == [
         (
             "Traceback (most recent call last):\n"
@@ -270,10 +272,11 @@ def test_interpret_code_blocks_02():
     ]
 
 
-def test_rebuild_document_01():
+@pytest.mark.asyncio
+async def test_rebuild_document_01():
     document = parse_rst(source_a)
     blocks = collect_literal_blocks(document)
-    node_mapping = interpret_code_blocks(blocks)
+    node_mapping = await interpret_code_blocks(blocks)
     rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
@@ -291,11 +294,12 @@ def test_rebuild_document_01():
     )
 
 
-def test_rebuild_document_02():
+@pytest.mark.asyncio
+async def test_rebuild_document_02():
     document = parse_rst(source_b)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    node_mapping = await interpret_code_blocks(blocks, extensions=extensions)
     rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
@@ -326,11 +330,12 @@ def test_rebuild_document_02():
     )
 
 
-def test_rebuild_document_03():
+@pytest.mark.asyncio
+async def test_rebuild_document_03():
     document = parse_rst(source_c)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    node_mapping = await interpret_code_blocks(blocks, extensions=extensions)
     rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
@@ -382,11 +387,12 @@ def test_rebuild_document_03():
     )
 
 
-def test_rebuild_document_04():
+@pytest.mark.asyncio
+async def test_rebuild_document_04():
     document = parse_rst(source_d)
     blocks = collect_literal_blocks(document)
     extensions = [GraphExtension]
-    node_mapping = interpret_code_blocks(blocks, extensions=extensions)
+    node_mapping = await interpret_code_blocks(blocks, extensions=extensions)
     rebuild_document(document, node_mapping)
     assert normalize(document.pformat()) == normalize(
         """
