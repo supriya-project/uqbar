@@ -438,8 +438,8 @@ def test_03_py310():
                 "builtins.object" -> "uqbar.apis.graphs.InheritanceGraph";
                 "builtins.object" -> "uqbar.book.ConsoleInput";
                 "builtins.object" -> "uqbar.book.ConsoleOutput";
-                "builtins.object" -> "uqbar.book.MonkeyPatch";
                 "builtins.object" -> "uqbar.book.Extension";
+                "builtins.object" -> "uqbar.book.MonkeyPatch";
                 "builtins.object" -> "uqbar.containers.dependency_graph.DependencyGraph";
                 "builtins.object" -> "uqbar.containers.unique_tree.UniqueTreeNode";
                 "builtins.object" -> "uqbar.graphs.core.Edge";
