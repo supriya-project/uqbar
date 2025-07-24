@@ -56,6 +56,7 @@ from ..book import (
     UqbarBookDefaultsDirective,
     UqbarBookDirective,
     UqbarBookImportDirective,
+    UqbarShellDirective,
     collect_literal_blocks,
     console_context,
     create_cache_db,
@@ -198,6 +199,7 @@ def setup(app) -> Dict[str, Any]:
     app.add_directive("book", UqbarBookDirective)
     app.add_directive("book-defaults", UqbarBookDefaultsDirective)
     app.add_directive("book-import", UqbarBookImportDirective)
+    app.add_directive("shell", UqbarShellDirective)
 
     for node_class in [uqbar_book_defaults_block, uqbar_book_import_block]:
         app.add_node(

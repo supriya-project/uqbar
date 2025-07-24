@@ -329,6 +329,7 @@ def test_03_py310():
                     "uqbar.book.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
                     "uqbar.book.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
                     "uqbar.book.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
+                    "uqbar.book.UqbarShellDirective" [label="Uqbar\nShell\nDirective"];
                     "uqbar.book.uqbar_book_defaults_block" [label="uqbar\nbook\ndefaults\nblock"];
                     "uqbar.book.uqbar_book_import_block" [label="uqbar\nbook\nimport\nblock"];
                 }
@@ -459,6 +460,7 @@ def test_03_py310():
                 "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDefaultsDirective";
                 "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDirective";
                 "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookImportDirective";
+                "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarShellDirective";
                 "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
                 "enum.Enum" -> "uqbar.enums.StrictEnumeration";
                 "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
@@ -645,6 +647,7 @@ def test_03_py311():
                 "uqbar.book.UqbarBookDefaultsDirective" [label="Uqbar\nBook\nDefaults\nDirective"];
                 "uqbar.book.UqbarBookDirective" [label="Uqbar\nBook\nDirective"];
                 "uqbar.book.UqbarBookImportDirective" [label="Uqbar\nBook\nImport\nDirective"];
+                "uqbar.book.UqbarShellDirective" [label="Uqbar\nShell\nDirective"];
                 "uqbar.book.uqbar_book_defaults_block" [label="uqbar\nbook\ndefaults\nblock"];
                 "uqbar.book.uqbar_book_import_block" [label="uqbar\nbook\nimport\nblock"];
             }
@@ -775,6 +778,7 @@ def test_03_py311():
             "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDefaultsDirective";
             "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookDirective";
             "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarBookImportDirective";
+            "docutils.parsers.rst.Directive" -> "uqbar.book.UqbarShellDirective";
             "docutils.parsers.rst.Directive" -> "uqbar.sphinx.inheritance.InheritanceDiagram";
             "enum.Enum" -> "uqbar.enums.StrictEnumeration";
             "enum.IntEnum" -> "uqbar.enums.IntEnumeration";
