@@ -383,7 +383,7 @@
 </a>
 <p>Uqbar is a toolkit for building docs, graphs and more.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="_images/inheritance-25051a69be90b16bae15996d09451eca39adf5c5.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="_images/inheritance-4a4da3e8eb920efdd862f780067146da83a5ca3d.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -611,6 +611,8 @@
 			label=&quot;Uqbar\nBook\nDirective&quot;];
 		&quot;uqbar.book.UqbarBookImportDirective&quot;	[color=4,
 			label=&quot;Uqbar\nBook\nImport\nDirective&quot;];
+		&quot;uqbar.book.UqbarShellDirective&quot;	[color=4,
+			label=&quot;Uqbar\nShell\nDirective&quot;];
 		&quot;uqbar.book.uqbar_book_defaults_block&quot;	[color=4,
 			label=&quot;uqbar\nbook\ndefaults\nblock&quot;];
 		&quot;uqbar.book.uqbar_book_import_block&quot;	[color=4,
@@ -766,7 +768,8 @@
 	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.UqbarBookDefaultsDirective&quot;	[minlen=1];
 	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.UqbarBookDirective&quot;	[minlen=2];
 	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.UqbarBookImportDirective&quot;	[minlen=3];
-	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;	[minlen=1];
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.book.UqbarShellDirective&quot;	[minlen=1];
+	&quot;docutils.parsers.rst.Directive&quot; -&gt; &quot;uqbar.sphinx.inheritance.InheritanceDiagram&quot;	[minlen=2];
 	&quot;enum.Enum&quot; -&gt; &quot;uqbar.enums.StrictEnumeration&quot;	[minlen=2];
 	&quot;enum.IntEnum&quot; -&gt; &quot;uqbar.enums.IntEnumeration&quot;	[minlen=1];
 	&quot;uqbar.apis.documenters.ClassDocumenter&quot; -&gt; &quot;uqbar.apis.summarizers.SummarizingClassDocumenter&quot;	[minlen=1];

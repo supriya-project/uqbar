@@ -71,6 +71,11 @@ book
 
    .. automethod:: run
 
+.. autoclass:: UqbarShellDirective
+   :show-inheritance:
+
+   .. automethod:: run
+
 .. autoclass:: uqbar_book_defaults_block
    :show-inheritance:
 

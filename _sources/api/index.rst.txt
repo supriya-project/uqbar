@@ -195,6 +195,7 @@ Tools for auto-generating API documention.
    ~uqbar.book.UqbarBookDefaultsDirective
    ~uqbar.book.UqbarBookDirective
    ~uqbar.book.UqbarBookImportDirective
+   ~uqbar.book.UqbarShellDirective
    ~uqbar.book.uqbar_book_defaults_block
    ~uqbar.book.uqbar_book_import_block
 
