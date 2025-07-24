@@ -8,6 +8,7 @@ import itertools
 import logging
 import pickle
 import sqlite3
+import subprocess
 import sys
 import traceback
 import types
@@ -25,7 +26,7 @@ from docutils.nodes import (
     literal_block,
 )
 from docutils.parsers.rst import Directive, Parser
-from docutils.parsers.rst.directives import flag
+from docutils.parsers.rst.directives import flag, path
 from docutils.utils import new_document
 from sphinx.addnodes import desc_signature
 from sphinx.util.nodes import set_source_info
@@ -317,6 +318,42 @@ class UqbarBookDirective(Directive):
             if spec == flag:
                 option = True
             block[key] = option
+        return [block]
+
+
+class UqbarShellDirective(Directive):
+    __documentation_ignore_inherited__ = True
+
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec: ClassVar[Dict[str, Any]] = {"cwd": path}
+
+    def run(self) -> list[literal_block]:
+        self.assert_has_content()
+        result: list[str] = []
+        working_directory = Path.cwd()
+        if cwd := self.options.get("cwd"):
+            if (desired_directory := Path(cwd)).is_absolute():
+                working_directory = desired_directory
+            else:
+                working_directory = working_directory / desired_directory
+        working_directory = working_directory.resolve()
+        for line in self.content:
+            result.append(f"{working_directory.name}$ {line}")
+            result.append(
+                subprocess.run(
+                    line,
+                    capture_output=True,
+                    cwd=working_directory,
+                    shell=True,
+                    text=True,
+                ).stdout
+            )
+        code = "\n".join(result)
+        block = literal_block(code, code)
+        block.line = self.content_offset
         return [block]
 
 
