@@ -328,7 +328,11 @@ class UqbarShellDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec: ClassVar[Dict[str, Any]] = {"cwd": path}
+    option_spec: ClassVar[Dict[str, Any]] = {
+        "cwd": path,
+        "user": str,
+        "host": str,
+    }
 
     def run(self) -> list[literal_block]:
         self.assert_has_content()
@@ -340,8 +344,10 @@ class UqbarShellDirective(Directive):
             else:
                 working_directory = working_directory / desired_directory
         working_directory = working_directory.resolve()
+        user = self.options.get("user", "user")
+        host = self.options.get("host", "host")
         for line in self.content:
-            result.append(f"{working_directory.name}$ {line}")
+            result.append(f"{user}@{host}:~/{working_directory.name}$ {line}")
             result.append(
                 subprocess.run(
                     line,
@@ -353,6 +359,7 @@ class UqbarShellDirective(Directive):
             )
         code = "\n".join(result)
         block = literal_block(code, code)
+        block.attributes["language"] = "console"
         block.line = self.content_offset
         return [block]
 
