@@ -33,6 +33,7 @@ from sphinx.util.nodes import set_source_info
 from typing_extensions import ClassVar
 
 from ..io import RedirectedStreams
+from ..strings import ansi_escape
 
 try:
     import black
@@ -349,13 +350,15 @@ class UqbarShellDirective(Directive):
         for line in self.content:
             result.append(f"{user}@{host}:~/{working_directory.name}$ {line}")
             result.append(
-                subprocess.run(
-                    line,
-                    capture_output=True,
-                    cwd=working_directory,
-                    shell=True,
-                    text=True,
-                ).stdout
+                ansi_escape(
+                    subprocess.run(
+                        line,
+                        capture_output=True,
+                        cwd=working_directory,
+                        shell=True,
+                        text=True,
+                    ).stdout
+                )
             )
         code = "\n".join(result)
         block = literal_block(code, code)
