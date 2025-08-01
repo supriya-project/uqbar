@@ -353,9 +353,10 @@ class UqbarShellDirective(Directive):
                 ansi_escape(
                     subprocess.run(
                         line,
-                        capture_output=True,
                         cwd=working_directory,
                         shell=True,
+                        stderr=subprocess.STDOUT,
+                        stdout=subprocess.PIPE,
                         text=True,
                     ).stdout
                 )

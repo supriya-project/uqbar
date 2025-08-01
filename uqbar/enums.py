@@ -1,15 +1,16 @@
 import enum
+from typing import SupportsInt, Type, TypeVar
 
 from .strings import to_snake_case
 
+E = TypeVar("E", bound=enum.IntEnum)
 
-def from_expr(cls, expr):
+
+def from_expr(cls: Type[E], expr: E | SupportsInt | str | None) -> E:
     if isinstance(expr, cls):
         return expr
-    elif isinstance(expr, float):
+    elif isinstance(expr, SupportsInt):
         return cls(int(expr))
-    elif isinstance(expr, int):
-        return cls(expr)
     elif isinstance(expr, str):
         coerced_expr = to_snake_case(expr.strip()).upper()
         try:
