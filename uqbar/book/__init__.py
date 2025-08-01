@@ -331,6 +331,7 @@ class UqbarShellDirective(Directive):
     final_argument_whitespace = True
     option_spec: ClassVar[Dict[str, Any]] = {
         "cwd": path,
+        "rel": path,
         "user": str,
         "host": str,
     }
@@ -343,19 +344,29 @@ class UqbarShellDirective(Directive):
             if (desired_directory := Path(cwd)).is_absolute():
                 working_directory = desired_directory
             else:
-                working_directory = working_directory / desired_directory
+                working_directory = Path.cwd() / desired_directory
         working_directory = working_directory.resolve()
+        relative_directory: Path | None = None
+        if rel := self.options.get("rel"):
+            if (desired_directory := Path(rel)).is_absolute():
+                relative_directory = desired_directory
+            else:
+                relative_directory = (Path.cwd() / desired_directory).resolve()
         user = self.options.get("user", "user")
         host = self.options.get("host", "host")
+        path = working_directory.name
+        if relative_directory:
+            path = str(working_directory.relative_to(relative_directory.parent))
         for line in self.content:
-            result.append(f"{user}@{host}:~/{working_directory.name}$ {line}")
+            result.append(f"{user}@{host}:~/{path}$ {line}")
             result.append(
                 ansi_escape(
                     subprocess.run(
                         line,
-                        capture_output=True,
                         cwd=working_directory,
                         shell=True,
+                        stderr=subprocess.STDOUT,
+                        stdout=subprocess.PIPE,
                         text=True,
                     ).stdout
                 )
@@ -672,9 +683,9 @@ def literal_block_to_cache_path(block: literal_block) -> str | None:
     id_path = desc_signature_node.attributes["ids"][0]
     module = importlib.import_module(module_path)
     outer = inner = module
-    for path in object_path.split("."):
+    for path_ in object_path.split("."):
         outer = inner
-        inner = getattr(outer, path)
+        inner = getattr(outer, path_)
     if isinstance(outer, type):
         _, _, attr_name = object_path.rpartition(".")
         try:
