@@ -3,7 +3,7 @@ from typing import SupportsInt, Type, TypeVar
 
 from .strings import to_snake_case
 
-E = TypeVar("E", bound=enum.IntEnum)
+E = TypeVar("E", bound=enum.Enum)
 
 
 def from_expr(cls: Type[E], expr: E | SupportsInt | str | None) -> E:
