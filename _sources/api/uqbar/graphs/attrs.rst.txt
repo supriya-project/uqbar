@@ -14,7 +14,6 @@ attrs
    .. autoclass:: uqbar.graphs.attrs::Attributes.Mode
    .. autoclass:: uqbar.graphs.attrs::Attributes.Point
    .. automethod:: __delitem__
-   .. automethod:: __format__
    .. automethod:: __format_graphviz__
    .. automethod:: __format_html__
    .. automethod:: __getitem__

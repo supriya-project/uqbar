@@ -16,7 +16,6 @@ core
 .. autoclass:: Edge
    :show-inheritance:
 
-   .. automethod:: __format__
    .. automethod:: __format_graphviz__
    .. automethod:: attach
    .. automethod:: detach
@@ -32,7 +31,6 @@ core
 .. autoclass:: Graph
    :show-inheritance:
 
-   .. automethod:: __format__
    .. automethod:: __format_graphviz__
    .. autoproperty:: attributes
    .. autoproperty:: edge_attributes
@@ -43,7 +41,6 @@ core
 .. autoclass:: Node
    :show-inheritance:
 
-   .. automethod:: __format__
    .. automethod:: __format_graphviz__
    .. automethod:: attach
    .. autoproperty:: attributes

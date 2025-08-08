@@ -31,12 +31,10 @@ book
 .. autoclass:: ConsoleInput
    :show-inheritance:
 
-   .. automethod:: __replace__
 
 .. autoclass:: ConsoleOutput
    :show-inheritance:
 
-   .. automethod:: __replace__
 
 .. autoclass:: Extension
    :show-inheritance:
