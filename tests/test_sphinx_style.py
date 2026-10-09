@@ -60,7 +60,7 @@ def test_sphinx_style_1(app, status, warning):
 
                classmethod ("PublicClass").class_method()
 
-               static ("PublicClass").static_method(cls)
+               static ("PublicClass").static_method()
 
                -[ Read/write properties ]-
 
@@ -109,7 +109,7 @@ def test_sphinx_style_1(app, status, warning):
 
                classmethod class_method()
 
-               static static_method(cls)
+               static static_method()
 
                -[ Read/write properties ]-
 

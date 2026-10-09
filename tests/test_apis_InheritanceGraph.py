@@ -740,6 +740,7 @@ def test_03_py311():
                 "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
             }
             "builtins.Exception" -> "uqbar.book.ConsoleError";
+            "builtins.Exception" -> "uqbar.graphs.core.GraphError";
             "builtins.int" -> "enum.IntEnum";
             "builtins.object" -> "code.InteractiveInterpreter";
             "builtins.object" -> "collections.abc.Container";

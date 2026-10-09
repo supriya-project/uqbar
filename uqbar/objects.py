@@ -146,8 +146,7 @@ def get_repr(
         has_lines = True
         kwargs_parts[key] = arg_repr
 
-    for part in args_parts.values():
-        parts.append(part)
+    parts.extend(args_parts.values())
     parts.extend(var_args_parts)
     for _, part in sorted(kwargs_parts.items()):
         parts.append(part)

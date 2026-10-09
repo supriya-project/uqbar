@@ -19,7 +19,7 @@ extensions = [
 
 add_module_names = False
 author = "Joséphine Wolf Oberholtzer"
-copyright = f"2017-{datetime.datetime.now(tz=datetime.tzinfo.utc).year}, Joséphine Wolf Oberholtzer"
+copyright = f"2017-{datetime.datetime.now(tz=datetime.timezone.utc).year}, Joséphine Wolf Oberholtzer"
 exclude_patterns = []
 htmlhelp_basename = "uqbardoc"
 language = "en"
