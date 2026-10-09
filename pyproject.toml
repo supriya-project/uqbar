@@ -34,7 +34,7 @@ license = {text = "MIT"}
 name = "uqbar"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.10.0"
+version = "0.10.1"
 
 [project.urls]
 homepage = "https://github.com/supriya-project/uqbar"
