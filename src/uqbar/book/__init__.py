@@ -40,7 +40,7 @@ try:
 
     def black_format(lines: list[str]) -> list[str]:
         mode = black.FileMode(
-            line_length=80, target_versions={black.TargetVersion.PY310}
+            line_length=80, target_versions={black.TargetVersion.PY311}
         )
         return black.format_str("\n".join(lines), mode=mode).splitlines()
 
@@ -360,9 +360,9 @@ class UqbarShellDirective(Directive):
             result.append(f"{user}@{host}:~/{path}$ {line}")
             result.append(
                 ansi_escape(
-                    subprocess.run(
+                    # It's OK for subprocesses to fail
+                    subprocess.run(  # noqa: PLW1510
                         line,
-                        check=True,
                         cwd=working_directory,
                         shell=True,
                         stderr=subprocess.STDOUT,
