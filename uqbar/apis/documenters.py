@@ -110,6 +110,7 @@ class FunctionDocumenter(MemberDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
+        assert hasattr(self.client, "__name__")
         return f".. autofunction:: {self.client.__name__}"
 
     ### PUBLIC METHODS ###
@@ -162,6 +163,7 @@ class ClassDocumenter(MemberDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
+        assert hasattr(self.client, "__name__")
         name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
             return f".. autoexception:: {name}"

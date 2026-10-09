@@ -121,6 +121,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
+        assert hasattr(self.client, "__name__")
         name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
             return f".. autoexception:: {name}"
@@ -172,6 +173,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         result: list[str] = []
         if not attributes:
             return result
+        assert hasattr(self.client, "__name__")
         result.extend(
             [
                 "",
@@ -689,6 +691,7 @@ class ImmaterialClassDocumenter(SummarizingClassDocumenter):
     ignored_special_methods: tuple[str, ...] = IGNORED_SPECIAL_METHODS
 
     def __str__(self) -> str:
+        assert hasattr(self.client, "__name__")
         name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
             return f".. autoexception:: {name}"

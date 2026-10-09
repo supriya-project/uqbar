@@ -120,7 +120,7 @@ def get_repr(
     var_args_parts = []
     kwargs_parts = {}
     has_lines = bool(multiline)
-    parts = []
+    parts: list[str] = []
 
     # Format keyword-optional arguments.
     # print(type(expr), args)
