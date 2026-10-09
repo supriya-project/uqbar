@@ -91,7 +91,7 @@ jobs:
     - name: Install Uqbar
       run: uv sync --no-dev
     - name: Check importability
-      run: python -c "import uqbar"
+      run: uv run python -c "import uqbar"
     - name: Install test dependencies
       run: uv sync
     - name: Run pytest
