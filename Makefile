@@ -26,7 +26,7 @@ clean: ## Remove transitory files
 	rm -Rif wheelhouse/
 
 docs: ## Build the docs
-	make -C docs/ html 
+	make -C docs/ html
 
 docs-clean: ## Build documentation from scratch
 	make -C docs/ clean html
