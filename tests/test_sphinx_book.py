@@ -454,17 +454,17 @@ def test_sphinx_book_html_cached(app, status, warning, rm_dirs):
     dot_paths = [path for path in image_path.iterdir() if path.suffix == ".dot"]
     dot_sources = {normalize(path.read_text()) for path in dot_paths}
     assert dot_sources == {
-            normalize(
-                """
+        normalize(
+            """
                 digraph G {
                     node_0;
                     node_1;
                     node_0 -> node_1;
                 }
                 """
-            ),
-            normalize(
-                """
+        ),
+        normalize(
+            """
                 digraph G {
                     node_0;
                     node_1;
@@ -473,9 +473,9 @@ def test_sphinx_book_html_cached(app, status, warning, rm_dirs):
                     node_1 -> node_2;
                 }
                 """
-            ),
-            normalize(
-                """
+        ),
+        normalize(
+            """
                 digraph G {
                     node_0;
                     node_1;
@@ -486,8 +486,8 @@ def test_sphinx_book_html_cached(app, status, warning, rm_dirs):
                     node_2 -> node_3;
                 }
                 """
-            ),
-        }
+        ),
+    }
     for dot_path in dot_paths:
         assert dot_path.with_suffix(".svg").exists()
 

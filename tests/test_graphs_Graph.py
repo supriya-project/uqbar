@@ -205,7 +205,10 @@ class TestCase(unittest.TestCase):
             },
             edge_attributes={"penwidth": 2},
             node_attributes={
-                "fontname": "Arial", "fontsize": 12, "penwidth": 2, "style": ("filled", "rounded")
+                "fontname": "Arial",
+                "fontsize": 12,
+                "penwidth": 2,
+                "style": ("filled", "rounded"),
             },
         )
         assert format(graph, "graphviz") == uqbar.strings.normalize(
