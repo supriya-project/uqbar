@@ -2,7 +2,8 @@ import collections.abc
 import enum
 import math
 import re
-from typing import Any, FrozenSet, Mapping, Optional, Union
+from collections.abc import Mapping
+from typing import Any, Union
 
 
 class Attributes(collections.abc.MutableMapping):
@@ -32,7 +33,7 @@ class Attributes(collections.abc.MutableMapping):
 
     ### CLASS VARIABLES ###
 
-    class Color(object):
+    class Color:
         __slots__ = ("color",)
 
         def __init__(self, color) -> None:
@@ -42,7 +43,7 @@ class Attributes(collections.abc.MutableMapping):
             return isinstance(other, type(self)) and self.color == other.color
 
         def __repr__(self) -> str:
-            return "<Color {!r}>".format(self.color)
+            return f"<Color {self.color!r}>"
 
     class Mode(enum.Enum):
         CLUSTER = 1
@@ -52,7 +53,7 @@ class Attributes(collections.abc.MutableMapping):
         TABLE = 5
         TABLE_CELL = 6
 
-    class Point(object):
+    class Point:
         __slots__ = ("x", "y")
 
         def __init__(self, x, y) -> None:
@@ -179,7 +180,7 @@ class Attributes(collections.abc.MutableMapping):
         ["avg_dist", "graph_dist", "none", "power_dist", "rng", "spring", "triangle"]
     )
 
-    _styles: FrozenSet[str] = frozenset()
+    _styles: frozenset[str] = frozenset()
 
     _word_pattern = re.compile(r"^\w+$")
 
@@ -521,7 +522,7 @@ class Attributes(collections.abc.MutableMapping):
 
     ### VALIDATORS ###
 
-    _validators: Optional[Mapping[str, object]] = None
+    _validators: Mapping[str, object] | None = None
 
     ### INITIALIZER ###
 
@@ -543,7 +544,7 @@ class Attributes(collections.abc.MutableMapping):
             and self._attributes == other._attributes
         )
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         if format_spec == "graphviz":
             return self.__format_graphviz__()
         elif format_spec == "html":
@@ -557,7 +558,7 @@ class Attributes(collections.abc.MutableMapping):
         attributes = sorted(self._attributes.items())
         for i, (key, value) in enumerate(attributes, 1):
             value = self._format_value(value).split("\n")
-            value[0] = "{}={}".format(key, value[0])
+            value[0] = f"{key}={value[0]}"
             if i < len(attributes):
                 value[-1] += ","
             if i == 1:
@@ -574,8 +575,8 @@ class Attributes(collections.abc.MutableMapping):
         for key, value in sorted(self._attributes.items()):
             value = self._format_value(value)
             if not value.startswith('"'):
-                value = '"{}"'.format(value)
-            result.append("{}={}".format(key.upper(), value))
+                value = f'"{value}"'
+            result.append(f"{key.upper()}={value}")
         return " ".join(result)
 
     def __getitem__(self, key) -> Any:
@@ -612,15 +613,16 @@ class Attributes(collections.abc.MutableMapping):
             if value.startswith("<") and value.endswith(">"):
                 return value
             should_quote = False
-            if not cls._word_pattern.match(value):
-                should_quote = True
-            elif value and value[0].isdigit():
-                should_quote = True
-            elif value.lower() in ("digraph", "edge", "graph", "node", "subgraph"):
+            if (
+                not cls._word_pattern.match(value)
+                or value
+                and value[0].isdigit()
+                or value.lower() in ("digraph", "edge", "graph", "node", "subgraph")
+            ):
                 should_quote = True
             if should_quote:
                 value = value.replace('"', r"\"")
-                value = '"{}"'.format(value)
+                value = f'"{value}"'
             return value
         raise ValueError(value)
 

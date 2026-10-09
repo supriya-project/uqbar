@@ -14,7 +14,7 @@ extensions = [
     "uqbar.sphinx.api",
     "uqbar.sphinx.book",
     "uqbar.sphinx.inheritance",
-    "sphinx_immaterial"
+    "sphinx_immaterial",
 ]
 
 add_module_names = False

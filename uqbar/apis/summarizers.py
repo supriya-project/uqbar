@@ -127,7 +127,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         attributes = self._classify_class_attributes()
         (
             class_methods,
-            data,
+            _data,
             methods,
             readonly_properties,
             readwrite_properties,

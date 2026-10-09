@@ -11,7 +11,7 @@ Sphinx configuration.
 import importlib
 import inspect
 import pathlib
-from typing import Any, Dict
+from typing import Any
 
 from docutils import nodes
 from sphinx import addnodes  # type: ignore
@@ -61,12 +61,12 @@ def handle_method(signature_node, module, object_name, cache):
         # TODO: This is a hack to handle bad interaction between enum and inspect
         defining_class = class_
     if defining_class is not class_:
-        reftarget = "{}.{}".format(defining_class.__module__, defining_class.__name__)
+        reftarget = f"{defining_class.__module__}.{defining_class.__name__}"
         xref_node = addnodes.pending_xref(
             "", refdomain="py", refexplicit=True, reftype="class", reftarget=reftarget
         )
         name_node = nodes.literal(
-            "", "{}".format(defining_class.__name__), classes=["descclassname"]
+            "", f"{defining_class.__name__}", classes=["descclassname"]
         )
         xref_node.append(name_node)
         desc_annotation = list(signature_node.findall(addnodes.desc_annotation))
@@ -91,11 +91,11 @@ def on_doctree_read(app, document) -> None:
     """
     Hooks into Sphinx's ``doctree-read`` event.
     """
-    cache: Dict[type, Dict[str, object]] = {}
+    cache: dict[type, dict[str, object]] = {}
     for desc_node in document.findall(addnodes.desc):
         if desc_node.get("domain") != "py":
             continue
-        signature_node = list(desc_node.findall(addnodes.desc_signature))[0]
+        signature_node = next(iter(desc_node.findall(addnodes.desc_signature)))
         module_name = signature_node.get("module")
         object_name = signature_node.get("fullname")
         object_type = desc_node.get("objtype")
@@ -159,7 +159,7 @@ def depart_term(self, node):
 # Setup
 
 
-def setup(app) -> Dict[str, Any]:
+def setup(app) -> dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

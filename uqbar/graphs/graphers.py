@@ -5,7 +5,7 @@ import re
 import shutil
 import subprocess
 import tempfile
-from typing import Generator, Sequence, Tuple
+from collections.abc import Generator, Sequence
 
 from ..io import Timer, open_path
 
@@ -125,7 +125,7 @@ class Grapher:
     def persist_string(self, string, input_path):
         input_path.write_text(string)
 
-    def run_command(self, command: str) -> Tuple[str, int]:
+    def run_command(self, command: str) -> tuple[str, int]:
         completed_process = subprocess.run(
             command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
         )

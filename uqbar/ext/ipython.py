@@ -27,8 +27,8 @@ def patch_grapher():
             if svg_element.attributes.get("width", None):
                 del svg_element.attributes["width"]
         else:
-            height = "{}pt".format(int(view_box[-1] * 0.6))
-            width = "{}pt".format(int(view_box[-2] * 0.6))
+            height = f"{int(view_box[-1] * 0.6)}pt"
+            width = f"{int(view_box[-2] * 0.6)}pt"
             svg_element.setAttribute("height", height)
             svg_element.setAttribute("width", width)
         svg_element.setAttribute("preserveAspectRatio", "xMinYMin")

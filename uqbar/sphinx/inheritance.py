@@ -33,7 +33,8 @@ import math
 import os
 import pathlib
 import subprocess
-from typing import Any, Dict, List, Mapping, Optional, cast
+from collections.abc import Mapping
+from typing import Any, cast
 
 from docutils.nodes import Element, General, Node, SkipNode
 from docutils.parsers.rst import Directive, directives
@@ -65,7 +66,7 @@ class InheritanceDiagram(Directive):
 
     __documentation_ignore_inherited__ = True
 
-    def run(self) -> List[Node]:
+    def run(self) -> list[Node]:
         node = inheritance_diagram()
         node.document = self.state.document
         package_paths = self.arguments[0].split()
@@ -95,7 +96,7 @@ class InheritanceDiagram(Directive):
             if module_name not in ("__builtins__", "builtins"):
                 url_name = class_path
             refnodes, _ = class_role(
-                "class", ":class:`{}`".format(url_name), url_name, 0, self.state
+                "class", f":class:`{url_name}`", url_name, 0, self.state
             )
             node.extend(refnodes)
         # Store the graph object so we can use it to generate the dot file
@@ -109,12 +110,12 @@ def build_urls(self: HTMLTranslator, node: inheritance_diagram) -> Mapping[str, 
     Builds a mapping of class paths to URLs.
     """
     current_filename = self.builder.current_docname + self.builder.out_suffix
-    urls: Dict[str, str] = {}
+    urls: dict[str, str] = {}
     for child in node:
         if not isinstance(child, Element):
             continue
         # Another document
-        refuri: Optional[str]
+        refuri: str | None
         if (refuri := child.attributes.get("refuri")) is not None:
             package_path: str = child["reftitle"]
             if refuri.startswith("http"):
@@ -153,7 +154,7 @@ def html_visit_inheritance_diagram(
             stdin=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
-        stdout, stderr = process.communicate(dot_code.encode())
+        stdout, _stderr = process.communicate(dot_code.encode())
         dot_code = stdout.decode()
     render_dot_html(
         self, cast(graphviz, node), dot_code, {}, "inheritance", "inheritance"
@@ -182,7 +183,7 @@ def skip(self, node: inheritance_diagram) -> None:
     raise SkipNode
 
 
-def setup(app) -> Dict[str, Any]:
+def setup(app) -> dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

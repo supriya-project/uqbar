@@ -1,6 +1,6 @@
 import pathlib
 import shutil
-from typing import Optional, Sequence, Type, Union
+from collections.abc import Sequence
 
 from .. import io
 from .documenters import (
@@ -13,7 +13,7 @@ from .documenters import (
 from .nodes import ModuleNode, PackageNode
 
 
-class APIBuilder(object):
+class APIBuilder:
     """
     A builder of reStructuredText API documentation for Python packages.
 
@@ -54,15 +54,15 @@ class APIBuilder(object):
 
     def __init__(
         self,
-        initial_source_paths: Sequence[Union[str, pathlib.Path]],
-        target_directory: Union[str, pathlib.Path],
+        initial_source_paths: Sequence[str | pathlib.Path],
+        target_directory: str | pathlib.Path,
         document_empty_modules: bool = True,
         document_private_members: bool = False,
         document_private_modules: bool = False,
-        member_documenter_classes: Optional[Sequence[Type[MemberDocumenter]]] = None,
-        module_documenter_class: Optional[Type[ModuleDocumenter]] = None,
+        member_documenter_classes: Sequence[type[MemberDocumenter]] | None = None,
+        module_documenter_class: type[ModuleDocumenter] | None = None,
         omit_root: bool = False,
-        root_documenter_class: Optional[Type[RootDocumenter]] = None,
+        root_documenter_class: type[RootDocumenter] | None = None,
         title: str = "API",
         logger_func=None,
     ) -> None:
@@ -122,7 +122,7 @@ class APIBuilder(object):
         cwd = pathlib.Path.cwd()
         if str(path).startswith(str(cwd)):
             path = path.relative_to(cwd)
-        message = "{} {}".format(message, path)
+        message = f"{message} {path}"
         (self._logger_func or print)(message)
 
     ### PUBLIC METHODS ###
@@ -183,10 +183,10 @@ class APIBuilder(object):
         # Build documenters, bottom-up.
         # This allows parent documenters to easily aggregate their children.
         for node in root.depth_first(top_down=False):
-            kwargs = dict(
-                document_private_members=self.document_private_members,
-                member_documenter_classes=self.member_documenter_classes,
-            )
+            kwargs = {
+                "document_private_members": self.document_private_members,
+                "member_documenter_classes": self.member_documenter_classes,
+            }
             if isinstance(node, ModuleNode):
                 node.documenter = self.module_documenter_class(
                     node.package_path, **kwargs

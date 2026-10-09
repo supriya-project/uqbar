@@ -12,9 +12,10 @@ import subprocess
 import sys
 import traceback
 import types
+from collections.abc import AsyncGenerator, Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, AsyncGenerator, Callable, Dict, Union
+from typing import Any, ClassVar, Dict, Union
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import (
@@ -30,7 +31,7 @@ from docutils.parsers.rst.directives import flag, path
 from docutils.utils import new_document
 from sphinx.addnodes import desc_signature
 from sphinx.util.nodes import set_source_info
-from typing_extensions import ClassVar
+from typing_extensions import Self
 
 from ..io import RedirectedStreams
 from ..strings import ansi_escape
@@ -40,7 +41,7 @@ try:
 
     def black_format(lines: list[str]) -> list[str]:
         mode = black.FileMode(
-            line_length=80, target_versions=set([black.TargetVersion.PY310])
+            line_length=80, target_versions={black.TargetVersion.PY310}
         )
         return black.format_str("\n".join(lines), mode=mode).splitlines()
 
@@ -70,7 +71,7 @@ class ConsoleError(Exception):
 unset = object()
 
 
-class MonkeyPatch(object):
+class MonkeyPatch:
     def __init__(self) -> None:
         self._attributes: list[tuple[Any, str, Any]] = []
 
@@ -116,7 +117,7 @@ class Console(code.InteractiveConsole):
 
     ### SPECIAL METHODS ###
 
-    def __enter__(self) -> "Console":
+    def __enter__(self) -> Self:
         self.monkeypatch = MonkeyPatch()
         for extension in self.extensions or []:
             extension.setup_console(self, self.monkeypatch)
@@ -270,7 +271,6 @@ class Extension:
         """
         Perform console teardown tasks.
         """
-        pass
 
     @staticmethod
     def visit_block_html(self, node):
@@ -304,7 +304,7 @@ class UqbarBookDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec: ClassVar[Dict[str, Any]] = {"allow-exceptions": flag, "hide": flag}
+    option_spec: ClassVar[dict[str, Any]] = {"allow-exceptions": flag, "hide": flag}
 
     def run(self) -> list[literal_block]:
         self.assert_has_content()
@@ -329,7 +329,7 @@ class UqbarShellDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec: ClassVar[Dict[str, Any]] = {
+    option_spec: ClassVar[dict[str, Any]] = {
         "cwd": path,
         "rel": path,
         "user": str,
@@ -384,7 +384,7 @@ class UqbarBookDefaultsDirective(Directive):
     has_content = False
     required_arguments = 0
     optional_arguments = 0
-    option_spec: ClassVar[Dict[str, Any]] = {}
+    option_spec: ClassVar[dict[str, Any]] = {}
 
     def run(self) -> list[uqbar_book_defaults_block]:
         block = uqbar_book_defaults_block()
@@ -630,7 +630,7 @@ async def interpret_import_block(
     console: Console, block: uqbar_book_import_block
 ) -> tuple[list[ConsoleInput | ConsoleOutput | Extension], bool, bool]:
     code_address = block["path"]
-    module_name, sep, attr_name = code_address.rpartition(":")
+    module_name, _sep, attr_name = code_address.rpartition(":")
     module = importlib.import_module(module_name)
     attr = getattr(module, attr_name)
     source = inspect.getsource(attr)
@@ -695,13 +695,7 @@ def literal_block_to_cache_path(block: literal_block) -> str | None:
         except KeyError:
             return id_path
         if attr.defining_class is not outer:
-            return ".".join(
-                [
-                    attr.defining_class.__module__,
-                    attr.defining_class.__name__,
-                    attr_name,
-                ]
-            )
+            return f"{attr.defining_class.__module__}.{attr.defining_class.__name__}.{attr_name}"
     return id_path
 
 

@@ -4,7 +4,7 @@ Tools for string manipulation.
 
 import re
 import textwrap
-from typing import Generator
+from collections.abc import Generator
 
 import unidecode  # type: ignore
 

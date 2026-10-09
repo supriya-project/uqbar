@@ -75,7 +75,7 @@ class GraphExtension(Extension):
         sha256.update(node[0].encode())
         sha256.update(node["layout"].encode())
         hexdigest = sha256.hexdigest()
-        base_path = output_path / "graphviz-{}".format(hexdigest)
+        base_path = output_path / f"graphviz-{hexdigest}"
         base_path.parent.mkdir(exist_ok=True, parents=True)
         image_file_path = base_path.with_suffix(suffix)
         dot_file_path = base_path.with_suffix(".dot")

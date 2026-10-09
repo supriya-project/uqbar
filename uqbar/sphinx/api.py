@@ -25,7 +25,7 @@ relative to your Sphinx source directory.
 import importlib
 import pathlib
 import types
-from typing import Any, Dict, List
+from typing import Any
 
 from sphinx.util import logging
 from sphinx.util.console import bold, darkgreen, darkred, purple  # type: ignore
@@ -57,7 +57,7 @@ def on_builder_inited(app) -> None:
     target_directory = (
         pathlib.Path(app.builder.env.srcdir) / config.uqbar_api_directory_name
     )
-    initial_source_paths: List[str] = []
+    initial_source_paths: list[str] = []
     source_paths = config.uqbar_api_source_paths
     for source_path in source_paths:
         if isinstance(source_path, types.ModuleType):
@@ -109,7 +109,7 @@ def on_builder_inited(app) -> None:
     api_builder()
 
 
-def setup(app) -> Dict[str, Any]:
+def setup(app) -> dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

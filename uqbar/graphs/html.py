@@ -1,4 +1,4 @@
-from typing import Mapping, Optional, Tuple, Union
+from collections.abc import Mapping
 
 from ..containers import UniqueTreeList, UniqueTreeNode
 from .attrs import Attributes
@@ -24,7 +24,7 @@ class HRule(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -53,7 +53,7 @@ class LineBreak(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -113,15 +113,15 @@ class Table(UniqueTreeList):
         self,
         children=None,
         *,
-        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
-        name: Optional[str] = None,
+        attributes: Mapping[str, object] | Attributes | None = None,
+        name: str | None = None,
     ) -> None:
         UniqueTreeList.__init__(self, children=children, name=name)
         self._attributes = Attributes("table", **(attributes or {}))
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -132,12 +132,12 @@ class Table(UniqueTreeList):
         start, stop = "<TABLE", "</TABLE>"
         attributes = format(self._attributes, "html")
         if attributes:
-            start += " {}".format(attributes)
+            start += f" {attributes}"
         start += ">"
         result.append(start)
         for child in self:
             for line in format(child, "graphviz").splitlines():
-                result.append("    {}".format(line))
+                result.append(f"    {line}")
         result.append(stop)
         join_character = ""
         if len(result) > 2:
@@ -147,7 +147,7 @@ class Table(UniqueTreeList):
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         import uqbar.graphs
 
         return (uqbar.graphs.TableRow, uqbar.graphs.HRule)
@@ -172,7 +172,7 @@ class TableRow(UniqueTreeList):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -183,7 +183,7 @@ class TableRow(UniqueTreeList):
         result.append("<TR>")
         for child in self:
             for line in format(child, "graphviz").splitlines():
-                result.append("    {}".format(line))
+                result.append(f"    {line}")
         result.append("</TR>")
         join_character = ""
         if len(result) > 2:
@@ -193,7 +193,7 @@ class TableRow(UniqueTreeList):
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         import uqbar.graphs
 
         return (uqbar.graphs.TableCell, uqbar.graphs.VRule)
@@ -233,8 +233,8 @@ class TableCell(UniqueTreeList, Attachable):
         self,
         children=None,
         *,
-        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
-        name: Optional[str] = None,
+        attributes: Mapping[str, object] | Attributes | None = None,
+        name: str | None = None,
     ) -> None:
         if isinstance(children, str):
             children = [Text(children)]
@@ -244,7 +244,7 @@ class TableCell(UniqueTreeList, Attachable):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -254,10 +254,10 @@ class TableCell(UniqueTreeList, Attachable):
         result = []
         start, stop = "<TD", "</TD>"
         if self.edges:
-            start += ' PORT="{}"'.format(self._get_port_name())
+            start += f' PORT="{self._get_port_name()}"'
         attributes = format(self._attributes, "html")
         if attributes:
-            start += " {}".format(attributes)
+            start += f" {attributes}"
         start += ">"
         result.append(start)
         for child in self:
@@ -268,7 +268,7 @@ class TableCell(UniqueTreeList, Attachable):
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         import uqbar.graphs
 
         return (uqbar.graphs.Table, uqbar.graphs.LineBreak, uqbar.graphs.Text)
@@ -299,7 +299,7 @@ class Text(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -340,7 +340,7 @@ class VRule(UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()

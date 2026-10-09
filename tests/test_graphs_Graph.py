@@ -191,22 +191,22 @@ class TestCase(unittest.TestCase):
     def test_initialized_with_attributes(self):
         graph = uqbar.graphs.Graph(
             name="g",
-            attributes=dict(
-                bgcolor="transparent",
-                color="lightslategrey",
-                dpi=72,
-                fontname="Arial",
-                outputorder="edgesfirst",
-                overlap="prism",
-                rankdir="LR",
-                ranksep=1,
-                splines="spline",
-                style=("dotted", "rounded"),
-            ),
-            edge_attributes=dict(penwidth=2),
-            node_attributes=dict(
-                fontname="Arial", fontsize=12, penwidth=2, style=("filled", "rounded")
-            ),
+            attributes={
+                "bgcolor": "transparent",
+                "color": "lightslategrey",
+                "dpi": 72,
+                "fontname": "Arial",
+                "outputorder": "edgesfirst",
+                "overlap": "prism",
+                "rankdir": "LR",
+                "ranksep": 1,
+                "splines": "spline",
+                "style": ("dotted", "rounded"),
+            },
+            edge_attributes={"penwidth": 2},
+            node_attributes={
+                "fontname": "Arial", "fontsize": 12, "penwidth": 2, "style": ("filled", "rounded")
+            },
         )
         assert format(graph, "graphviz") == uqbar.strings.normalize(
             """

@@ -21,7 +21,7 @@ class ModuleNode(uqbar.containers.UniqueTreeNode):
     ### SPECIAL METHODS ###
 
     def __str__(self):
-        return "{}".format(self.name)
+        return f"{self.name}"
 
     ### PUBLIC PROPERTIES ###
 
@@ -66,7 +66,7 @@ class PackageNode(uqbar.containers.UniqueTreeList):
     ### SPECIAL METHODS ###
 
     def __str__(self):
-        result = ["{}/".format(self.name)]
+        result = [f"{self.name}/"]
         for child in self:
             result.extend("    " + line for line in str(child).splitlines())
         return "\n".join(result)

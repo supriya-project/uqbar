@@ -11,8 +11,10 @@ import pstats
 import subprocess
 import sys
 import time
+from collections.abc import Generator, Sequence
 from pathlib import Path
-from typing import Generator, List, Optional, Sequence, Tuple, Union
+
+from typing_extensions import Self
 
 
 class DirectoryChange:
@@ -36,7 +38,7 @@ class DirectoryChange:
 
     def __enter__(self):
         if self.verbose:
-            print("Changing directory to {} ...".format(self.directory))
+            print(f"Changing directory to {self.directory} ...")
         self._directory_stack.append(Path.cwd())
         os.chdir(str(self._directory))
         return self
@@ -44,7 +46,7 @@ class DirectoryChange:
     def __exit__(self, exc_type, exc_value, traceback):
         original_directory = self._directory_stack.pop()
         if self.verbose:
-            print("Returning to {} ...".format(original_directory))
+            print(f"Returning to {original_directory} ...")
         os.chdir(str(original_directory))
 
     ### PUBLIC PROPERTIES ###
@@ -63,7 +65,7 @@ class Profiler:
     A context manager for profiling blocks of code.
     """
 
-    def __enter__(self) -> "Profiler":
+    def __enter__(self) -> Self:
         self._profiler = cProfile.Profile()
         self._profiler.enable()
         return self
@@ -168,8 +170,8 @@ class Timer:
 
     def __init__(
         self,
-        exit_message: Optional[str] = None,
-        enter_message: Optional[str] = None,
+        exit_message: str | None = None,
+        enter_message: str | None = None,
         verbose: bool = True,
     ) -> None:
         if enter_message is not None:
@@ -178,13 +180,13 @@ class Timer:
         if exit_message is not None:
             exit_message = str(exit_message)
         self._exit_message = exit_message
-        self._start_time: Optional[float] = None
-        self._stop_time: Optional[float] = None
+        self._start_time: float | None = None
+        self._stop_time: float | None = None
         self._verbose = bool(verbose)
 
     ### SPECIAL METHODS ###
 
-    def __enter__(self) -> "Timer":
+    def __enter__(self) -> Self:
         if self.enter_message and self.verbose:
             print(self.enter_message)
         self._stop_time = None
@@ -199,7 +201,7 @@ class Timer:
     ### PUBLIC PROPERTIES ###
 
     @property
-    def elapsed_time(self) -> Union[float, None]:
+    def elapsed_time(self) -> float | None:
         if self.start_time is not None:
             if self.stop_time is not None:
                 return self.stop_time - self.start_time
@@ -207,19 +209,19 @@ class Timer:
         return None
 
     @property
-    def enter_message(self) -> Union[str, None]:
+    def enter_message(self) -> str | None:
         return self._enter_message
 
     @property
-    def exit_message(self) -> Union[str, None]:
+    def exit_message(self) -> str | None:
         return self._exit_message
 
     @property
-    def start_time(self) -> Union[float, None]:
+    def start_time(self) -> float | None:
         return self._start_time
 
     @property
-    def stop_time(self) -> Union[float, None]:
+    def stop_time(self) -> float | None:
         return self._stop_time
 
     @property
@@ -227,7 +229,7 @@ class Timer:
         return self._verbose
 
 
-def find_common_prefix(paths: Sequence[Union[str, Path]]) -> Optional[Path]:
+def find_common_prefix(paths: Sequence[str | Path]) -> Path | None:
     """
     Find the common prefix of two or more paths.
 
@@ -260,7 +262,7 @@ def find_common_prefix(paths: Sequence[Union[str, Path]]) -> Optional[Path]:
     return None
 
 
-def find_executable(name: str, flags=os.X_OK) -> List[str]:
+def find_executable(name: str, flags=os.X_OK) -> list[str]:
     """
     Finds executable `name`.
 
@@ -291,7 +293,7 @@ def open_path(path: Path) -> None:
         os.startfile(str(path))  # type: ignore
 
 
-def relative_to(source_path: Union[str, Path], target_path: Union[str, Path]) -> Path:
+def relative_to(source_path: str | Path, target_path: str | Path) -> Path:
     """
     Generates relative path from ``source_path`` to ``target_path``.
 
@@ -334,8 +336,8 @@ def relative_to(source_path: Union[str, Path], target_path: Union[str, Path]) ->
 
 
 def walk(
-    root_path: Union[str, Path], top_down: bool = True
-) -> Generator[Tuple[Path, Sequence[Path], Sequence[Path]], None, None]:
+    root_path: str | Path, top_down: bool = True
+) -> Generator[tuple[Path, Sequence[Path], Sequence[Path]], None, None]:
     """
     Walks a directory tree.
 
@@ -361,7 +363,7 @@ def walk(
 
 
 def write(
-    contents: str, path: Union[str, Path], verbose: bool = False, logger_func=None
+    contents: str, path: str | Path, verbose: bool = False, logger_func=None
 ) -> bool:
     """
     Writes ``contents`` to ``path``.

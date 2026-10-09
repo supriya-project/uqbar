@@ -14,7 +14,7 @@ class Attachable(UniqueTreeNode):
     ### INITIALIZER ###
 
     def __init__(self) -> None:
-        self._edges: Set["Edge"] = set()
+        self._edges: set[Edge] = set()
 
     ### PRIVATE METHODS ###
 
@@ -24,7 +24,7 @@ class Attachable(UniqueTreeNode):
         if node is not None:
             node_name = node._get_canonical_name()
         port_name = self._get_port_name()
-        return "{}:{}".format(node_name, port_name)
+        return f"{node_name}:{port_name}"
 
     def _get_node(self) -> Optional["Node"]:
         parent = self.parent
@@ -66,7 +66,7 @@ class Attachable(UniqueTreeNode):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def edges(self) -> Set["Edge"]:
+    def edges(self) -> set["Edge"]:
         return set(self._edges)
 
 
@@ -85,12 +85,12 @@ class Graph(UniqueTreeList):
         self,
         children=None,
         *,
-        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
-        edge_attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        attributes: Mapping[str, object] | Attributes | None = None,
+        edge_attributes: Mapping[str, object] | Attributes | None = None,
         is_cluster: bool = False,
         is_digraph: bool = True,
-        name: Optional[str] = None,
-        node_attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        name: str | None = None,
+        node_attributes: Mapping[str, object] | Attributes | None = None,
     ) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes(
@@ -103,7 +103,7 @@ class Graph(UniqueTreeList):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
@@ -116,17 +116,17 @@ class Graph(UniqueTreeList):
             if not graph.parent:
                 name = graph.name or "G"
                 if graph.is_digraph:
-                    string = "digraph {} {{".format(Attributes._format_value(name))
+                    string = f"digraph {Attributes._format_value(name)} {{"
                 else:
-                    string = "graph {} {{".format(Attributes._format_value(name))
+                    string = f"graph {Attributes._format_value(name)} {{"
             else:
                 if graph.name is not None:
                     name = graph.name
                     if graph.is_cluster:
-                        name = "cluster_{}".format(name)
+                        name = f"cluster_{name}"
                 else:
                     name = graph._get_canonical_name()
-                string = "subgraph {} {{".format(Attributes._format_value(name))
+                string = f"subgraph {Attributes._format_value(name)} {{"
             result.append(string)
             if graph.attributes:
                 attributes = "graph {}".format(
@@ -158,13 +158,13 @@ class Graph(UniqueTreeList):
             result.append("}")
             return result
 
-        all_edges: Set[Edge] = set()
+        all_edges: set[Edge] = set()
         for child in self.depth_first():
             for edge in getattr(child, "edges", ()):
                 if edge.tail.root is not edge.head.root:
                     continue
                 all_edges.add(edge)
-        edge_parents: Dict[Graph, List[Edge]] = {}
+        edge_parents: dict[Graph, list[Edge]] = {}
         for edge in sorted(
             all_edges, key=lambda edge: (edge.tail_graph_order, edge.head_graph_order)
         ):
@@ -185,18 +185,18 @@ class Graph(UniqueTreeList):
             if root:
                 instances = root[self.name]
                 if not isinstance(instances, type(self)):
-                    name = "{}_{}".format(name, instances.index(self))
+                    name = f"{name}_{instances.index(self)}"
             suffix = name
         elif self.graph_order:
             suffix = "_".join(str(x) for x in self.graph_order)
         else:
             suffix = "0"
-        return "{}_{}".format(name_prefix, suffix)
+        return f"{name_prefix}_{suffix}"
 
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         return (Graph, Node)
 
     ### PUBLIC PROPERTIES ###
@@ -243,16 +243,17 @@ class Node(UniqueTreeList):
 
     def __init__(
         self,
-        children: Optional[
-            Iterable[Union["uqbar.graphs.RecordField", "uqbar.graphs.RecordGroup"]]
-        ] = None,
+        children: Iterable[
+            Union["uqbar.graphs.RecordField", "uqbar.graphs.RecordGroup"]
+        ]
+        | None = None,
         *,
-        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
-        name: Optional[str] = None,
+        attributes: Mapping[str, object] | Attributes | None = None,
+        name: str | None = None,
     ) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
         self._attributes = Attributes("node", **(attributes or {}))
-        self._edges: Set[Edge] = set()
+        self._edges: set[Edge] = set()
 
     ### SPECIAL METHODS ###
 
@@ -276,7 +277,7 @@ class Node(UniqueTreeList):
             attributes["label"] = label
         if len(attributes):
             attributes = format(attributes, "graphviz").split("\n")
-            result[0] = "{} {}".format(result[0], attributes[0])
+            result[0] = f"{result[0]} {attributes[0]}"
             result.extend(attributes[1:])
         else:
             result[-1] += ";"
@@ -291,13 +292,13 @@ class Node(UniqueTreeList):
             if root:
                 instances = root[self.name]
                 if instances is not self:
-                    return "{}_{}".format(self.name, instances.index(self))
+                    return f"{self.name}_{instances.index(self)}"
             return self.name
         elif self.graph_order:
             suffix = "_".join(str(x) for x in self.graph_order)
         else:
             suffix = "0"
-        return "{}_{}".format(prefix, suffix)
+        return f"{prefix}_{suffix}"
 
     ### PUBLIC METHODS ###
 
@@ -321,7 +322,7 @@ class Node(UniqueTreeList):
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         from .html import Table  # avoid circular imports
         from .records import RecordField, RecordGroup  # avoid circular imports
 
@@ -334,11 +335,11 @@ class Node(UniqueTreeList):
         return self._attributes
 
     @property
-    def edges(self) -> Set["Edge"]:
+    def edges(self) -> set["Edge"]:
         return set(self._edges)
 
 
-class Edge(object):
+class Edge:
     """
     A Graphviz edge.
     """
@@ -351,16 +352,16 @@ class Edge(object):
 
     def __init__(
         self,
-        attributes: Optional[Union[Mapping[str, object], Attributes]] = None,
+        attributes: Mapping[str, object] | Attributes | None = None,
         is_directed: bool = True,
-        head_port_position: Optional[str] = None,
-        tail_port_position: Optional[str] = None,
+        head_port_position: str | None = None,
+        tail_port_position: str | None = None,
     ) -> None:
         self._attributes = Attributes("edge", **(attributes or {}))
-        self._head: Optional[Union[Node, Attachable]] = None
+        self._head: Node | Attachable | None = None
         self._head_port_position = head_port_position
         self._is_directed = bool(is_directed)
-        self._tail: Optional[Union[Node, Attachable]] = None
+        self._tail: Node | Attachable | None = None
         self._tail_port_position = tail_port_position
 
     ### SPECIAL METHODS ###
@@ -410,11 +411,11 @@ class Edge(object):
             head_parts.append(self.head_port_position)
         head_name = ":".join(Attributes._format_value(part) for part in head_parts)
 
-        edge_definition = "{} {} {}".format(tail_name, connection, head_name)
+        edge_definition = f"{tail_name} {connection} {head_name}"
         result = [edge_definition]
         if len(self.attributes):
             attributes = format(self.attributes, "graphviz").split("\n")
-            result[0] = "{} {}".format(result[0], attributes[0])
+            result[0] = f"{result[0]} {attributes[0]}"
             result.extend(attributes[1:])
         else:
             result[-1] += ";"
@@ -427,7 +428,7 @@ class Edge(object):
             raise ValueError(self.tail)
         elif self.head is None:
             raise ValueError(self.head)
-        highest_parent: Optional[Graph] = None
+        highest_parent: Graph | None = None
         tail_parentage = list(self.tail.parentage[1:])
         head_parentage = list(self.head.parentage[1:])
         while (
@@ -445,9 +446,7 @@ class Edge(object):
 
     ### PUBLIC METHODS ###
 
-    def attach(
-        self, tail: Union[Node, Attachable], head: Union[Node, Attachable]
-    ) -> "Edge":
+    def attach(self, tail: Node | Attachable, head: Node | Attachable) -> "Edge":
         prototype = (Node, Attachable)
         assert isinstance(tail, prototype)
         assert isinstance(head, prototype)
@@ -474,17 +473,17 @@ class Edge(object):
         return self._attributes
 
     @property
-    def head(self) -> Optional[Union[Node, Attachable]]:
+    def head(self) -> Node | Attachable | None:
         return self._head
 
     @property
-    def head_graph_order(self) -> Tuple[int, ...]:
+    def head_graph_order(self) -> tuple[int, ...]:
         if self.head is None:
             return ()
         return self.head.graph_order
 
     @property
-    def head_port_position(self) -> Optional[str]:
+    def head_port_position(self) -> str | None:
         return self._head_port_position
 
     @property
@@ -492,15 +491,15 @@ class Edge(object):
         return self._is_directed
 
     @property
-    def tail(self) -> Optional[Union[Node, Attachable]]:
+    def tail(self) -> Node | Attachable | None:
         return self._tail
 
     @property
-    def tail_graph_order(self) -> Tuple[int, ...]:
+    def tail_graph_order(self) -> tuple[int, ...]:
         if self.tail is None:
             return ()
         return self.tail.graph_order
 
     @property
-    def tail_port_position(self) -> Optional[str]:
+    def tail_port_position(self) -> str | None:
         return self._tail_port_position

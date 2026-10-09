@@ -43,7 +43,7 @@ This extension provides the following configuration values:
 
 import asyncio
 import importlib
-from typing import Any, Dict
+from typing import Any
 
 from docutils.nodes import SkipNode
 from sphinx.util import logging
@@ -121,13 +121,13 @@ def on_doctree_read(app, document):
     cache_mapping = group_literal_blocks_by_cache_path(literal_blocks)
     node_mapping = {}
     use_cache = bool(app.config["uqbar_book_use_cache"])
-    kwargs = dict(
-        document=document,
-        extensions=app.uqbar_book_extensions,
-        setup_lines=app.config["uqbar_book_console_setup"],
-        teardown_lines=app.config["uqbar_book_console_teardown"],
-        use_black=bool(app.config["uqbar_book_use_black"]),
-    )
+    kwargs = {
+        "document": document,
+        "extensions": app.uqbar_book_extensions,
+        "setup_lines": app.config["uqbar_book_console_setup"],
+        "teardown_lines": app.config["uqbar_book_console_teardown"],
+        "use_black": bool(app.config["uqbar_book_use_black"]),
+    }
 
     async def interpret() -> None:
         for cache_path, literal_block_groups in cache_mapping.items():
@@ -176,14 +176,14 @@ def on_build_finished(app, exception):
         if not hits:
             continue
         logger.info(bold("[uqbar-book]"), nonl=True)
-        logger.info(" Cache hits for {}: {}".format(path, hits))
+        logger.info(f" Cache hits for {path}: {hits}")
 
 
 def skip_node(self, node):
     raise SkipNode
 
 
-def setup(app) -> Dict[str, Any]:
+def setup(app) -> dict[str, Any]:
     """
     Sets up Sphinx extension.
     """

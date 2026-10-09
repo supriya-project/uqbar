@@ -1,8 +1,6 @@
 import collections
 import copy
 import threading
-import typing
-from typing import Optional
 
 from ..iterables import nwise
 
@@ -17,11 +15,11 @@ class UniqueTreeNode:
 
     ### CLASS VARIABLES ###
 
-    _state_flag_names: typing.Tuple[str, ...] = ()
+    _state_flag_names: tuple[str, ...] = ()
 
     ### INITIALIZER ###
 
-    def __init__(self, name: Optional[str] = None) -> None:
+    def __init__(self, name: str | None = None) -> None:
         self._name = name
         self._parent = None
 
@@ -38,8 +36,7 @@ class UniqueTreeNode:
         for x in nodes:
             yield x
             if hasattr(x, "_children"):
-                for y in cls._iterate_nodes(x):
-                    yield y
+                yield from cls._iterate_nodes(x)
 
     def _get_node_state_flags(self):
         state_flags = {}
@@ -156,7 +153,7 @@ class UniqueTreeNode:
                     del named_children[old_name]
             if expr is not None:
                 if expr not in named_children:
-                    named_children[expr] = set([self])
+                    named_children[expr] = {self}
                 else:
                     named_children[expr].add(self)
         self._name = expr
@@ -200,8 +197,7 @@ class UniqueTreeContainer(UniqueTreeNode):
         return False
 
     def __iter__(self):
-        for child in self._children:
-            yield child
+        yield from self._children
 
     def __len__(self):
         return len(self._children)
@@ -225,9 +221,8 @@ class UniqueTreeContainer(UniqueTreeNode):
 
     def depth_first(self, top_down=True, prototype=None):
         for child in tuple(self):
-            if top_down:
-                if not prototype or isinstance(child, prototype):
-                    yield child
+            if top_down and (not prototype or isinstance(child, prototype)):
+                yield child
             if isinstance(child, UniqueTreeContainer):
                 yield from child.depth_first(top_down=top_down, prototype=prototype)
             if not top_down:

@@ -1,4 +1,3 @@
-import sys
 
 import pytest
 from docutils.parsers.rst import directives
@@ -232,14 +231,11 @@ async def test_interpret_code_blocks_02() -> None:
     error_message = (
         'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\n'
     )
-    if sys.version_info < (3, 7):
-        error_message += "TypeError: must be str, not int\n"
-    else:
-        error_message += 'TypeError: can only concatenate str (not "int") to str\n'
+    error_message += 'TypeError: can only concatenate str (not "int") to str\n'
 
     messages = []
     source = normalize(
-        """
+        f"""
         This will interpret happily.
 
         ::
@@ -248,7 +244,7 @@ async def test_interpret_code_blocks_02() -> None:
             Traceback (most recent call last):
               File "<stdin>", line 1, in <module>
             {error_message}
-        """.format(error_message=error_message)
+        """
     )
     document = parse_rst(source)
     blocks = collect_literal_blocks(document)

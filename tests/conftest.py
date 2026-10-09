@@ -15,10 +15,9 @@ def remove_sphinx_projects(sphinx_test_tempdir) -> None:
     # which looks like a Sphinx project. This ONLY runs once.
     roots_path = Path(sphinx_test_tempdir)
     for path in roots_path.iterdir():
-        if path.is_dir():
-            if (Path(path) / "_build").exists():
-                # This directory is a Sphinx project, remove it
-                shutil.rmtree(path)
+        if path.is_dir() and (Path(path) / "_build").exists():
+            # This directory is a Sphinx project, remove it
+            shutil.rmtree(path)
 
 
 @pytest.fixture()

@@ -17,7 +17,6 @@ class GrandParent:
             >>> print("Grand parent: one.")
 
         """
-        pass
 
     def two(self):
         """
@@ -28,7 +27,6 @@ class GrandParent:
             >>> print("Grand parent: two.")
 
         """
-        pass
 
     def three(self):
         """
@@ -57,7 +55,6 @@ class GrandParent:
 
         And that, my friends, is a graph.
         """
-        pass
 
 
 class Parent(GrandParent):
@@ -79,7 +76,6 @@ class Parent(GrandParent):
             >>> print("Parent: one.")
 
         """
-        pass
 
 
 class Uncle(GrandParent):
@@ -106,7 +102,6 @@ class Child(Parent):
             >>> print("Child: two.")
 
         """
-        pass
 
 
 class Outer:
@@ -138,7 +133,6 @@ class Outer:
                 >>> print("Inner: method.")
 
             """
-            pass
 
     def outer_method(self):
         """
@@ -149,7 +143,6 @@ class Outer:
             >>> print("Outer: method.")
 
         """
-        pass
 
 
 def just_a_function():
@@ -161,4 +154,3 @@ def just_a_function():
         >>> print("I am just a function.")
 
     """
-    pass

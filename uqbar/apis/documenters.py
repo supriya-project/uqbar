@@ -3,7 +3,8 @@ import importlib
 import inspect
 import pathlib
 import types
-from typing import List, MutableMapping, Optional, Sequence, Tuple, Type, cast
+from collections.abc import MutableMapping, Sequence
+from typing import cast
 
 
 class MemberDocumenter:
@@ -109,7 +110,7 @@ class FunctionDocumenter(MemberDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
-        return ".. autofunction:: {}".format(getattr(self.client, "__name__"))
+        return f".. autofunction:: {self.client.__name__}"
 
     ### PUBLIC METHODS ###
 
@@ -161,18 +162,18 @@ class ClassDocumenter(MemberDocumenter):
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
-        name = getattr(self.client, "__name__")
+        name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
-            return ".. autoexception:: {}".format(name)
+            return f".. autoexception:: {name}"
         return "\n".join(
-            [".. autoclass:: {}".format(name), "   :members:", "   :undoc-members:"]
+            [f".. autoclass:: {name}", "   :members:", "   :undoc-members:"]
         )
 
     ### PUBLIC METHODS ###
 
     @classmethod
     def validate_client(cls, client: object, module_path: str) -> bool:
-        return isinstance(client, type) and getattr(client, "__module__") == module_path
+        return isinstance(client, type) and client.__module__ == module_path
 
     ### PUBLIC PROPERTIES ###
 
@@ -180,7 +181,7 @@ class ClassDocumenter(MemberDocumenter):
     def documentation_section(self) -> str:
         client = cast(type, self.client)
         if hasattr(client, "__documentation_section__"):
-            section = getattr(client, "__documentation_section__")
+            section = client.__documentation_section__
             if section is not None:
                 return section
         if inspect.isabstract(client):
@@ -270,8 +271,8 @@ class ModuleDocumenter:
         self,
         package_path: str,
         document_private_members: bool = False,
-        member_documenter_classes: Optional[Sequence[Type[MemberDocumenter]]] = None,
-        module_documenters: Optional[Sequence["ModuleDocumenter"]] = None,
+        member_documenter_classes: Sequence[type[MemberDocumenter]] | None = None,
+        module_documenters: Sequence["ModuleDocumenter"] | None = None,
     ) -> None:
         self._package_path = package_path
         client = importlib.import_module(package_path)
@@ -295,7 +296,7 @@ class ModuleDocumenter:
     def __str__(self) -> str:
         result = self._build_preamble()
         result.extend(self._build_toc(self.module_documenters or []))
-        member_strings: List[str] = []
+        member_strings: list[str] = []
         for documenter in self._member_documenters:
             member_strings.append(str(documenter))
         member_strings.sort(key=lambda x: x.partition("\n")[0].split("::"))
@@ -314,7 +315,7 @@ class ModuleDocumenter:
             client = getattr(self.client, name)
             for class_ in self.member_documenter_classes:
                 if class_.validate_client(client, self.package_path):
-                    path = "{}.{}".format(client.__module__, client.__name__)
+                    path = f"{client.__module__}.{client.__name__}"
                     documenter = class_(path)
                     documenters.append(documenter)
                     break
@@ -322,8 +323,8 @@ class ModuleDocumenter:
 
     ### PRIVATE METHODS ###
 
-    def _build_toc(self, documenters, **kwargs) -> List[str]:
-        result: List[str] = []
+    def _build_toc(self, documenters, **kwargs) -> list[str]:
+        result: list[str] = []
         if not documenters:
             return result
         result.extend(["", ".. toctree::"])
@@ -332,7 +333,7 @@ class ModuleDocumenter:
         for module_documenter in module_documenters:
             path = self._build_toc_path(module_documenter)
             if path:
-                result.append("   {}".format(path))
+                result.append(f"   {path}")
         return result
 
     def _build_toc_path(self, documenter):
@@ -348,16 +349,16 @@ class ModuleDocumenter:
             path = "_" + path
         return path
 
-    def _build_preamble(self) -> List[str]:
-        result: List[str] = [
-            ".. _{}:".format(self.reference_name),
+    def _build_preamble(self) -> list[str]:
+        result: list[str] = [
+            f".. _{self.reference_name}:",
             "",
             self.package_name,
             "=" * len(self.package_name),
             "",
-            ".. automodule:: {}".format(self.package_path),
+            f".. automodule:: {self.package_path}",
             "",
-            ".. currentmodule:: {}".format(self.package_path),
+            f".. currentmodule:: {self.package_path}",
         ]
         return result
 
@@ -393,7 +394,7 @@ class ModuleDocumenter:
         return parts[-1] == parts[-2]
 
     @property
-    def member_documenter_classes(self) -> Sequence[Type[MemberDocumenter]]:
+    def member_documenter_classes(self) -> Sequence[type[MemberDocumenter]]:
         return self._member_documenter_classes
 
     @property
@@ -403,8 +404,8 @@ class ModuleDocumenter:
     @property
     def member_documenters_by_section(
         self,
-    ) -> Sequence[Tuple[str, Sequence[MemberDocumenter]]]:
-        result: MutableMapping[str, List[MemberDocumenter]] = {}
+    ) -> Sequence[tuple[str, Sequence[MemberDocumenter]]]:
+        result: MutableMapping[str, list[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(documenter.documentation_section, []).append(documenter)
         return sorted(result.items())
@@ -500,8 +501,8 @@ class RootDocumenter:
             for module_documenter in self.module_documenters:
                 path = module_documenter.package_path.replace(".", "/")
                 if module_documenter.is_package:
-                    path = "{}/index".format(path)
-                result.append("   {}".format(path))
+                    path = f"{path}/index"
+                result.append(f"   {path}")
             result.append("")
         return "\n".join(result)
 

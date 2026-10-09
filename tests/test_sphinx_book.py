@@ -452,9 +452,8 @@ def test_sphinx_book_html_cached(app, status, warning, rm_dirs):
     assert not warning.getvalue().strip()
     image_path = pathlib.Path(app.outdir) / "_images"
     dot_paths = [path for path in image_path.iterdir() if path.suffix == ".dot"]
-    dot_sources = set(normalize(path.read_text()) for path in dot_paths)
-    assert dot_sources == set(
-        [
+    dot_sources = {normalize(path.read_text()) for path in dot_paths}
+    assert dot_sources == {
             normalize(
                 """
                 digraph G {
@@ -488,8 +487,7 @@ def test_sphinx_book_html_cached(app, status, warning, rm_dirs):
                 }
                 """
             ),
-        ]
-    )
+        }
     for dot_path in dot_paths:
         assert dot_path.with_suffix(".svg").exists()
 

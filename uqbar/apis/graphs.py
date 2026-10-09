@@ -219,13 +219,13 @@ class InheritanceGraph:
 
     def __init__(
         self,
-        package_paths: Sequence[Union[str, type, types.ModuleType]],
-        lineage_paths: Optional[Sequence[Union[str, type, types.ModuleType]]] = None,
+        package_paths: Sequence[str | type | types.ModuleType],
+        lineage_paths: Sequence[str | type | types.ModuleType] | None = None,
     ) -> None:
-        self._parents_to_children_paths: Dict[str, List[str]] = dict()
-        self._children_to_parents_paths: Dict[str, List[str]] = dict()
-        self._all_class_paths: List[str] = []
-        self._lineage_class_paths: List[str] = []
+        self._parents_to_children_paths: dict[str, list[str]] = {}
+        self._children_to_parents_paths: dict[str, list[str]] = {}
+        self._all_class_paths: list[str] = []
+        self._lineage_class_paths: list[str] = []
         self._package_paths = self._initialize_package_paths(package_paths)
         self._lineage_paths = self._initialize_package_paths(lineage_paths or [])
         initial_classes = self._collect_classes(self._package_paths)
@@ -286,7 +286,7 @@ class InheritanceGraph:
                 "style": ["filled", "rounded"],
             },
         )
-        class_paths_to_nodes: Dict[str, uqbar.graphs.Node] = {}
+        class_paths_to_nodes: dict[str, uqbar.graphs.Node] = {}
         for class_path in self._all_class_paths:
             node = self._get_or_create_node(class_path, graph, urls)
             class_paths_to_nodes[class_path] = node
@@ -334,7 +334,7 @@ class InheritanceGraph:
         if module_name in graph:
             cluster = graph[module_name]
         else:
-            attributes = dict(label=module_name)
+            attributes = {"label": module_name}
             cluster = uqbar.graphs.Graph(
                 name=module_name, is_cluster=True, attributes=attributes
             )
@@ -346,13 +346,13 @@ class InheritanceGraph:
         url_name = class_name
         if module_name not in ("__builtins__", "builtins"):
             url_name = module_name + "." + class_name
-        node_name = "{}.{}".format(module_name, class_name)
+        node_name = f"{module_name}.{class_name}"
         if node_name in graph:
             node = graph[node_name]
         else:
             cluster = self._get_or_create_cluster(class_path, graph)
             label = r"\n".join(uqbar.strings.delimit_words(class_name))
-            attributes = dict(label=label)
+            attributes = {"label": label}
             class_ = None
             try:
                 """
@@ -381,13 +381,13 @@ class InheritanceGraph:
 
     def _build_mappings(
         self, classes: Sequence[type]
-    ) -> Tuple[Mapping[type, Sequence[type]], Mapping[type, Sequence[type]]]:
+    ) -> tuple[Mapping[type, Sequence[type]], Mapping[type, Sequence[type]]]:
         """
         Collect all bases and organize into parent/child mappings.
         """
-        parents_to_children: MutableMapping[type, Set[type]] = {}
-        children_to_parents: MutableMapping[type, Set[type]] = {}
-        visited_classes: Set[type] = set()
+        parents_to_children: MutableMapping[type, set[type]] = {}
+        children_to_parents: MutableMapping[type, set[type]] = {}
+        visited_classes: set[type] = set()
         class_stack = list(classes)
         while class_stack:
             class_ = class_stack.pop()
@@ -399,7 +399,7 @@ class InheritanceGraph:
                     class_stack.append(base)
                 parents_to_children.setdefault(base, set()).add(class_)
                 children_to_parents.setdefault(class_, set()).add(base)
-        sorted_parents_to_children: MutableMapping[type, List[type]] = (
+        sorted_parents_to_children: MutableMapping[type, list[type]] = (
             collections.OrderedDict()
         )
         for parent, children in sorted(
@@ -408,7 +408,7 @@ class InheritanceGraph:
             sorted_parents_to_children[parent] = sorted(
                 children, key=lambda x: (x.__module__, x.__name__)
             )
-        sorted_children_to_parents: MutableMapping[type, List[type]] = (
+        sorted_children_to_parents: MutableMapping[type, list[type]] = (
             collections.OrderedDict()
         )
         for child, parents in sorted(
@@ -428,13 +428,13 @@ class InheritanceGraph:
         import uqbar.apis
 
         classes = []
-        initial_source_paths: Set[str] = set()
+        initial_source_paths: set[str] = set()
         # Graph source paths and classes
         for path in package_paths:
             try:
                 module = importlib.import_module(path)
                 if hasattr(module, "__path__"):
-                    initial_source_paths.update(getattr(module, "__path__"))
+                    initial_source_paths.update(module.__path__)
                 else:
                     if module.__file__:
                         initial_source_paths.add(module.__file__)
@@ -482,19 +482,19 @@ class InheritanceGraph:
             all_class_paths.add(child_path)
         self._all_class_paths = sorted(all_class_paths)
         self._lineage_class_paths = sorted(
-            set(class_to_path(class_) for class_ in lineage_classes)
+            {class_to_path(class_) for class_ in lineage_classes}
         )
 
     def _initialize_package_paths(self, package_paths: Sequence[Any]) -> Sequence[str]:
         result = []
         for path in package_paths:
             if isinstance(path, type):
-                result.append("{}.{}".format(path.__module__, path.__name__))
+                result.append(f"{path.__module__}.{path.__name__}")
             elif isinstance(path, types.ModuleType):
                 result.append(path.__name__)
             elif not isinstance(path, str):
                 path = type(path)
-                result.append("{}.{}".format(path.__module__, path.__name__))
+                result.append(f"{path.__module__}.{path.__name__}")
             else:
                 result.append(path)
         return tuple(sorted(result))

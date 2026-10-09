@@ -1,6 +1,6 @@
 import collections
 import inspect
-from typing import Any, Dict, Optional, TypeVar
+from typing import Any, TypeVar
 
 T = TypeVar("T")
 
@@ -74,7 +74,7 @@ def get_hash(expr):
 
 
 def get_repr(
-    expr, multiline: Optional[bool] = None, suppress_defaults: bool = True
+    expr, multiline: bool | None = None, suppress_defaults: bool = True
 ) -> str:
     """
     Build a repr string for ``expr`` from its vars and signature.
@@ -108,7 +108,7 @@ def get_repr(
     """
     signature = _get_object_signature(expr)
     if signature is None:
-        return "{}()".format(type(expr).__name__)
+        return f"{type(expr).__name__}()"
 
     defaults = {}
     for name, parameter in signature.parameters.items():
@@ -142,11 +142,11 @@ def get_repr(
         if suppress_defaults and key in defaults and value == defaults[key]:
             continue
         value = _dispatch_formatting(value)
-        arg_repr = "{}={}".format(key, value)
+        arg_repr = f"{key}={value}"
         has_lines = True
         kwargs_parts[key] = arg_repr
 
-    for _, part in args_parts.items():
+    for part in args_parts.values():
         parts.append(part)
     parts.extend(var_args_parts)
     for _, part in sorted(kwargs_parts.items()):
@@ -231,7 +231,7 @@ def get_vars(expr):
                         except (KeyError, TypeError):
                             pass
                 else:
-                    raise ValueError("Cannot find value for {!r}".format(name))
+                    raise ValueError(f"Cannot find value for {name!r}")
                 # print("        ", value)
                 if parameter.kind is inspect._KEYWORD_ONLY:
                     # print("        ??? A")
@@ -331,7 +331,7 @@ def new(expr: T, *args, **kwargs) -> T:
     current_args, current_var_args, current_kwargs = get_vars(expr)
     new_kwargs = current_kwargs.copy()
 
-    recursive_arguments: Dict[str, Any] = {}
+    recursive_arguments: dict[str, Any] = {}
     for key in tuple(kwargs):
         if "__" in key:
             value = kwargs.pop(key)

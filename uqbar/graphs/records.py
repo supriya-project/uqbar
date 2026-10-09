@@ -1,5 +1,3 @@
-from typing import Optional, Tuple
-
 from ..containers import UniqueTreeList, UniqueTreeNode
 from .core import Attachable
 
@@ -66,9 +64,7 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### INITIALIZER ###
 
-    def __init__(
-        self, label: Optional[str] = None, *, name: Optional[str] = None
-    ) -> None:
+    def __init__(self, label: str | None = None, *, name: str | None = None) -> None:
         UniqueTreeNode.__init__(self, name=name)
         Attachable.__init__(self)
         if label is not None:
@@ -77,22 +73,22 @@ class RecordField(Attachable, UniqueTreeNode):
 
     ### SPECIAL METHODS ###
 
-    def __format__(self, format_spec: Optional[str] = None) -> str:
+    def __format__(self, format_spec: str | None = None) -> str:
         # TODO: make the format specification options machine-readable
         if format_spec == "graphviz":
             return self.__format_graphviz__()
         return str(self)
 
     def __format_graphviz__(self) -> str:
-        result = "<{}>".format(self._get_port_name())
+        result = f"<{self._get_port_name()}>"
         if self.label:
-            result = "{} {}".format(result, self.label)
+            result = f"{result} {self.label}"
         return result
 
     ### PUBLIC PROPERTIES ###
 
     @property
-    def label(self) -> Optional[str]:
+    def label(self) -> str | None:
         return self._label
 
 
@@ -123,7 +119,7 @@ class RecordGroup(UniqueTreeList):
 
     ### INITIALIZER ###
 
-    def __init__(self, children=None, *, name: Optional[str] = None) -> None:
+    def __init__(self, children=None, *, name: str | None = None) -> None:
         UniqueTreeList.__init__(self, name=name, children=children)
 
     ### SPECIAL METHODS ###
@@ -137,13 +133,13 @@ class RecordGroup(UniqueTreeList):
     def __format_graphviz__(self) -> str:
         result = " | ".join(_ for _ in (format(_, "graphviz") for _ in self) if _)
         if result:
-            result = "{{ {} }}".format(result)
+            result = f"{{ {result} }}"
         return result
 
     ### PRIVATE PROPERTIES ###
 
     @property
-    def _node_class(self) -> Tuple[type, ...]:
+    def _node_class(self) -> tuple[type, ...]:
         import uqbar.graphs
 
         return (uqbar.graphs.RecordField, uqbar.graphs.RecordGroup)

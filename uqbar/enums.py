@@ -1,12 +1,12 @@
 import enum
-from typing import SupportsInt, Type, TypeVar
+from typing import SupportsInt, TypeVar
 
 from .strings import to_snake_case
 
 E = TypeVar("E", bound=enum.Enum)
 
 
-def from_expr(cls: Type[E], expr: E | SupportsInt | str | None) -> E:
+def from_expr(cls: type[E], expr: E | SupportsInt | str | None) -> E:
     if isinstance(expr, cls):
         return expr
     elif isinstance(expr, SupportsInt):
@@ -27,7 +27,7 @@ def from_expr(cls: Type[E], expr: E | SupportsInt | str | None) -> E:
             pass
     elif expr is None:
         return cls(0)
-    message = "Cannot instantiate {} from {!r}.".format(cls.__name__, expr)
+    message = f"Cannot instantiate {cls.__name__} from {expr!r}."
     raise ValueError(message)
 
 
@@ -58,8 +58,6 @@ class IntEnumeration(enum.IntEnum):
 
     """
 
-    pass
-
     # ### SPECIAL METHODS ### #
 
     def __dir__(self):
@@ -77,7 +75,7 @@ class IntEnumeration(enum.IntEnum):
         return sorted(names)
 
     def __repr__(self):
-        return "{}.{}".format(type(self).__name__, self.name)
+        return f"{type(self).__name__}.{self.name}"
 
     # ### PUBLIC METHODS ### #
 
@@ -184,7 +182,7 @@ class StrictEnumeration(enum.Enum):
         return NotImplemented
 
     def __repr__(self):
-        return "{}.{}".format(type(self).__name__, self.name)
+        return f"{type(self).__name__}.{self.name}"
 
     # ### PUBLIC METHODS ### #
 
