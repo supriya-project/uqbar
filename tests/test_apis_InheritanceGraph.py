@@ -865,5 +865,5 @@ def test_04():
     )
     pickle.dumps(inheritance_graph)
     pickle.dumps(uqbar.apis.dummy.MyChildClass)
-    with pytest.raises(AttributeError):
+    with pytest.raises(pickle.PicklingError):
         pickle.dumps(uqbar.apis.dummy.MyParentClass)

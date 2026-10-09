@@ -1,7 +1,8 @@
 import enum
 import inspect
 import textwrap
-from typing import List, MutableMapping, Tuple, cast
+from collections.abc import MutableMapping
+from typing import cast
 from unittest import mock
 
 from sphinx.ext.autosummary import extract_summary  # type: ignore
@@ -13,6 +14,32 @@ from .documenters import (
     MemberDocumenter,
     ModuleDocumenter,
     RootDocumenter,
+)
+
+IGNORED_SPECIAL_METHODS: tuple[str, ...] = (
+    "__annotate_func__",
+    "__delattr__",
+    "__dict__",
+    "__eq__",
+    "__format__",
+    "__getattribute__",
+    "__getnewargs__",
+    "__getstate__",
+    "__hash__",
+    "__init__",
+    "__new__",
+    "__postinit__",
+    "__reduce__",
+    "__reduce_ex__",
+    "__replace__",
+    "__repr__",
+    "__setattr__",
+    "__setstate__",
+    "__sizeof__",
+    "__str__",
+    "__subclasshook__",
+    "fromkeys",
+    "pipe_cloexec",
 )
 
 
@@ -50,17 +77,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
            .. autosummary::
               :nosignatures:
         <BLANKLINE>
-              __str__
               ignored_special_methods
-        <BLANKLINE>
-           .. raw:: html
-        <BLANKLINE>
-              <hr/>
-        <BLANKLINE>
-           .. rubric:: Special methods
-              :class: class-header
-        <BLANKLINE>
-           .. automethod:: SummarizingClassDocumenter.__str__
         <BLANKLINE>
            .. raw:: html
         <BLANKLINE>
@@ -99,27 +116,14 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     __documentation_section__ = "Documenters"
 
-    ignored_special_methods: Tuple[str, ...] = (
-        "__dict__",
-        "__getattribute__",
-        "__getnewargs__",
-        "__getstate__",
-        "__init__",
-        "__reduce__",
-        "__reduce_ex__",
-        "__setstate__",
-        "__sizeof__",
-        "__subclasshook__",
-        "fromkeys",
-        "pipe_cloexec",
-    )
+    ignored_special_methods = IGNORED_SPECIAL_METHODS
 
     ### SPECIAL METHODS ###
 
     def __str__(self) -> str:
-        name = getattr(self.client, "__name__")
+        name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
-            return ".. autoexception:: {}".format(name)
+            return f".. autoexception:: {name}"
         attributes = self._classify_class_attributes()
         (
             class_methods,
@@ -130,7 +134,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             special_methods,
             static_methods,
         ) = attributes
-        result = [".. autoclass:: {}".format(name)]
+        result = [f".. autoclass:: {name}"]
         if issubclass(self.client, enum.Enum):  # type: ignore
             result.extend(["   :members:", "   :undoc-members:"])
         else:
@@ -164,8 +168,8 @@ class SummarizingClassDocumenter(ClassDocumenter):
 
     def _build_attribute_section(
         self, attributes, directive: str, title: str
-    ) -> List[str]:
-        result: List[str] = []
+    ) -> list[str]:
+        result: list[str] = []
         if not attributes:
             return result
         result.extend(
@@ -175,26 +179,26 @@ class SummarizingClassDocumenter(ClassDocumenter):
                 "",
                 "      <hr/>",
                 "",
-                "   .. rubric:: {}".format(title),
+                f"   .. rubric:: {title}",
                 "      :class: class-header",
             ]
         )
         for attribute in attributes:
             result.append("")
-            autodoc_directive = "   .. {}:: {}.{}".format(
-                directive, getattr(self.client, "__name__"), attribute.name
+            autodoc_directive = (
+                f"   .. {directive}:: {self.client.__name__}.{attribute.name}"
             )
             if attribute.defining_class is self.client:
                 result.append(autodoc_directive)
             else:
                 result.append("   .. container:: inherited")
                 result.append("")
-                result.append("   {}".format(autodoc_directive))
+                result.append(f"   {autodoc_directive}")
         return result
 
-    def _build_member_autosummary(self, attributes) -> List[str]:
-        result: List[str] = []
-        all_attributes: List[inspect.Attribute] = []
+    def _build_member_autosummary(self, attributes) -> list[str]:
+        result: list[str] = []
+        all_attributes: list[inspect.Attribute] = []
         for attribute_section in attributes:
             all_attributes.extend(
                 attribute
@@ -220,7 +224,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             ]
         )
         for attribute in all_attributes:
-            result.append("      {}".format(attribute.name))
+            result.append(f"      {attribute.name}")
         return result
 
     def _classify_class_attributes(self):
@@ -233,9 +237,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
         static_methods = []
         attrs = inspect.classify_class_attrs(self.client)
         for attr in attrs:
-            if attr.defining_class is object:
-                continue
-            elif (
+            if attr.defining_class is object or (
                 getattr(self.client, "__documentation_ignore_inherited__", None)
                 and attr.defining_class is not self.client
             ):
@@ -412,8 +414,8 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
                 "",
                 ".. container:: svg-container",
                 "",
-                "   .. inheritance-diagram:: {}".format(package_path),
-                "      :lineage: {}".format(lineage_path),
+                f"   .. inheritance-diagram:: {package_path}",
+                f"      :lineage: {lineage_path}",
             ]
         )
         if self.is_nominative:
@@ -448,7 +450,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
                         "",
                         "   <hr/>",
                         "",
-                        ".. rubric:: {}".format(section),
+                        f".. rubric:: {section}",
                         "   :class: section-header",
                     ]
                 )
@@ -466,8 +468,8 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
 
     def _build_toc(
         self, documenters, show_full_paths: bool = False, **kwargs
-    ) -> List[str]:
-        result: List[str] = []
+    ) -> list[str]:
+        result: list[str] = []
         if not documenters:
             return result
         toctree_paths = set()
@@ -478,7 +480,7 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
         if toctree_paths:
             result.extend(["", ".. toctree::", "   :hidden:", ""])
             for toctree_path in sorted(toctree_paths):
-                result.append("   {}".format(toctree_path))
+                result.append(f"   {toctree_path}")
         result.extend(["", ".. autosummary::", "   :nosignatures:", ""])
         for documenter in documenters:
             template = "   ~{}"
@@ -491,8 +493,8 @@ class SummarizingModuleDocumenter(ModuleDocumenter):
     ### PUBLIC PROPERTIES ###
 
     @property
-    def member_documenters_by_section(self) -> List[Tuple[str, List[MemberDocumenter]]]:
-        result: MutableMapping[str, List[MemberDocumenter]] = {}
+    def member_documenters_by_section(self) -> list[tuple[str, list[MemberDocumenter]]]:
+        result: MutableMapping[str, list[MemberDocumenter]] = {}
         for documenter in self.member_documenters:
             result.setdefault(documenter.documentation_section, []).append(documenter)
         for module_documenter in self.module_documenters or []:
@@ -541,8 +543,6 @@ class SummarizingRootDocumenter(RootDocumenter):
         .. rubric:: :ref:`uqbar.io <uqbar--io>`
            :class: section-header
         <BLANKLINE>
-        Tools for IO and file-system manipulation.
-        <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
            <hr/>
@@ -582,8 +582,6 @@ class SummarizingRootDocumenter(RootDocumenter):
         .. rubric:: :ref:`uqbar.strings <uqbar--strings>`
            :class: section-header
         <BLANKLINE>
-        Tools for string manipulation.
-        <BLANKLINE>
         .. raw:: html
         <BLANKLINE>
            <hr/>
@@ -619,7 +617,7 @@ class SummarizingRootDocumenter(RootDocumenter):
             path = documenter.package_path.replace(".", "/")
             if documenter.is_package:
                 path += "/index"
-            result.append("   {}".format(path))
+            result.append(f"   {path}")
         for module_documenter, documenters_by_section in self._recurse(self):
             result.extend(
                 [
@@ -628,9 +626,7 @@ class SummarizingRootDocumenter(RootDocumenter):
                     "",
                     "   <hr/>",
                     "",
-                    ".. rubric:: :ref:`{} <{}>`".format(
-                        module_documenter.package_path, module_documenter.reference_name
-                    ),
+                    f".. rubric:: :ref:`{module_documenter.package_path} <{module_documenter.reference_name}>`",
                     "   :class: section-header",
                 ]
             )
@@ -645,7 +641,7 @@ class SummarizingRootDocumenter(RootDocumenter):
                         "",
                         "   <hr/>",
                         "",
-                        ".. rubric:: {}".format(section_name),
+                        f".. rubric:: {section_name}",
                         "   :class: subsection-header",
                         "",
                         ".. autosummary::",
@@ -654,7 +650,7 @@ class SummarizingRootDocumenter(RootDocumenter):
                     ]
                 )
                 for documenter in documenters:
-                    result.append("   ~{}".format(documenter.package_path))
+                    result.append(f"   ~{documenter.package_path}")
         return "\n".join(result)
 
     def _recurse(self, documenter):
@@ -690,40 +686,17 @@ class ImmaterialClassDocumenter(SummarizingClassDocumenter):
     Class documenter that plays well with sphinx-immaterial theme.
     """
 
-    ignored_special_methods: Tuple[str, ...] = (
-        "__delattr__",
-        "__dict__",
-        "__eq__",
-        "__format__",
-        "__getattribute__",
-        "__getnewargs__",
-        "__getstate__",
-        "__hash__",
-        "__init__",
-        "__new__",
-        "__postinit__",
-        "__reduce__",
-        "__reduce_ex__",
-        "__replace__",
-        "__repr__",
-        "__setattr__",
-        "__setstate__",
-        "__sizeof__",
-        "__str__",
-        "__subclasshook__",
-        "fromkeys",
-        "pipe_cloexec",
-    )
+    ignored_special_methods: tuple[str, ...] = IGNORED_SPECIAL_METHODS
 
     def __str__(self) -> str:
-        name = getattr(self.client, "__name__")
+        name = self.client.__name__
         if issubclass(self.client, Exception):  # type: ignore
-            return ".. autoexception:: {}".format(name)
-        result = [".. autoclass:: {}".format(name), "   :show-inheritance:"]
+            return f".. autoexception:: {name}"
+        result = [f".. autoclass:: {name}", "   :show-inheritance:"]
         if issubclass(self.client, enum.Enum):  # type: ignore
             result.extend(["   :members:", "   :undoc-members:"])
         result.append("")
-        attrs: List[str] = []
+        attrs: list[str] = []
         for attr in sorted(
             inspect.classify_class_attrs(cast(type, self.client)), key=lambda x: x.name
         ):
@@ -750,8 +723,8 @@ class ImmaterialModuleDocumenter(ModuleDocumenter):
     Module documenter that plays well with sphinx-immaterial theme.
     """
 
-    def _build_toc(self, documenters, **kwargs) -> List[str]:
-        result: List[str] = []
+    def _build_toc(self, documenters, **kwargs) -> list[str]:
+        result: list[str] = []
         if not documenters:
             return result
         result.extend(["", ".. toctree::", "   :hidden:"])
@@ -760,5 +733,5 @@ class ImmaterialModuleDocumenter(ModuleDocumenter):
         for module_documenter in module_documenters:
             path = self._build_toc_path(module_documenter)
             if path:
-                result.append("   {}".format(path))
+                result.append(f"   {path}")
         return result
