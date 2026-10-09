@@ -15,7 +15,7 @@ import types
 from collections.abc import AsyncGenerator, Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, ClassVar, Union
+from typing import Any, ClassVar, Self, Union
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import (
@@ -31,7 +31,6 @@ from docutils.parsers.rst.directives import flag, path
 from docutils.utils import new_document
 from sphinx.addnodes import desc_signature
 from sphinx.util.nodes import set_source_info
-from typing_extensions import Self
 
 from ..io import RedirectedStreams
 from ..strings import ansi_escape

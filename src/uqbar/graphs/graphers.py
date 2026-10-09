@@ -90,7 +90,7 @@ class Grapher:
 
     def get_render_prefix(self, string) -> str:
         timestamp = re.sub(
-            r"[^\w]", "-", datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
+            r"[^\w]", "-", datetime.datetime.now(tz=datetime.UTC).isoformat()
         )
         checksum = hashlib.sha1(string.encode()).hexdigest()[:7]
         return f"{timestamp}-{checksum}"

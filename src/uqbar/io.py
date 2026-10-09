@@ -13,8 +13,7 @@ import sys
 import time
 from collections.abc import Generator, Sequence
 from pathlib import Path
-
-from typing_extensions import Self
+from typing import Self
 
 
 class DirectoryChange:

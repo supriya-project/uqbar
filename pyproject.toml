@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=40.6.0", "wheel"]
+requires = ["setuptools", "wheel"]
 
 [project]
 authors = [
@@ -33,17 +33,13 @@ keywords = [
 license = {text = "MIT"}
 name = "uqbar"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 version = "0.9.6"
 
 [project.urls]
 homepage = "https://github.com/supriya-project/uqbar"
 documentation = "https://supriya-project.github.io/uqbar"
 repository = "https://github.com/supriya-project/uqbar"
-
-[tool.cibuildwheel]
-build = "cp310-* cp311-* cp312-* cp313-*"
-test-command = ['python -c "import uqbar"']
 
 [tool.mypy]
 ignore_missing_imports = true
@@ -66,12 +62,22 @@ markers = [
 ]
 testpaths = [
   "tests",
-  "uqbar",
+  "src",
 ]
 
 [tool.ruff]
 extend-include = ["*.ipynb"]
 line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint.pep8-naming]
+ignore-names = ["test_*"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+supriya = ["py.typed"]
 
 [dependency-groups]
 dev = [
