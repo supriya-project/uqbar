@@ -693,6 +693,7 @@ def test_03_py311():
                 "uqbar.graphs.core.Attachable" [label=Attachable];
                 "uqbar.graphs.core.Edge" [label="Edge"];
                 "uqbar.graphs.core.Graph" [label="Graph"];
+                "uqbar.graphs.core.GraphError" [label="Graph\nError"];
                 "uqbar.graphs.core.Node" [label="Node"];
             }
             subgraph "cluster_uqbar.graphs.graphers" {
