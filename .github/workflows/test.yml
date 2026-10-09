@@ -1,4 +1,4 @@
-name: Testing
+name: Test
 
 on:
   pull_request:
@@ -15,46 +15,48 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   docs:
     name: Build docs
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
-        python-version: "3.13"
-        cache: pip
-        cache-dependency-path: "**/pyproject.toml"
-    - name: Install Uqbar
-      run: pip install -e .[docs]
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      with:
+        python-version: "3.14"
     - name: Install Graphviz
       run: sudo apt-get install --yes graphviz
     - name: Build docs
       run: make docs
+    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      with:
+        name: docs
+        path: ./docs/build/html
 
   lint:
     name: Lint
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
-        python-version: "3.13"
-        cache: pip
-        cache-dependency-path: "**/pyproject.toml"
-    - name: Install Uqbar
-      run: pip install -e .[test]
-    - name: Run Ruff format checker
-      run: make ruff-format
-    - name: Run Ruff imports checker
-      run: make ruff-imports
-    - name: Run Ruff lint checker
-      run: make ruff-lint
-    - name: Test mypy
-      run: make mypy
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      with:
+        python-version: "3.14"
+    - name: Run pre-commit
+      uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
+    - name: Run mypy
+      run: uv run make mypy
 
   test:
     name: Test
@@ -63,26 +65,19 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         include:
         - os: macos-latest
-          python-version: "3.13"
+          python-version: "3.14"
         - os: windows-latest
-          python-version: "3.13"
+          python-version: "3.14"
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
       with:
         python-version: ${{ matrix.python-version }}
-        cache: pip
-        cache-dependency-path: "**/pyproject.toml"
-    - name: Install Uqbar
-      run: pip install -e .
-    - name: Check importability
-      run: python -c "import uqbar"
-    - name: Install test dependencies
-      run: pip install -e .[test]
     - name: Install Graphviz
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
@@ -93,5 +88,11 @@ jobs:
           choco install graphviz
         fi
       shell: bash
+    - name: Install Uqbar
+      run: uv sync --no-dev
+    - name: Check importability
+      run: python -c "import uqbar"
+    - name: Install test dependencies
+      run: uv sync
     - name: Run pytest
-      run: pytest --cov uqbar
+      run: uv run pytest --cov uqbar
