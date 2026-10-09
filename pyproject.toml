@@ -24,7 +24,6 @@ dependencies = [
   "black",
 ]
 description = "Tools for building documentation with Sphinx, Graphviz and LaTeX"
-dynamic = ["version"]
 keywords = [
   "sphinx",
   "graphviz",
@@ -35,21 +34,7 @@ license = {text = "MIT"}
 name = "uqbar"
 readme = "README.md"
 requires-python = ">=3.10"
-
-[project.optional-dependencies]
-docs = [
-  "sphinx-immaterial >= 0.11",
-]
-test = [
-  "mypy",
-  "prek",
-  "pytest",
-  "pytest-cov",
-  "pytest-asyncio",
-  "ruff",
-  "types-PyYAML",
-  "types-docutils",
-]
+version = "0.9.6"
 
 [project.urls]
 homepage = "https://github.com/supriya-project/uqbar"
@@ -87,3 +72,16 @@ testpaths = [
 [tool.ruff]
 extend-include = ["*.ipynb"]
 line-length = 88
+
+[dependency-groups]
+dev = [
+  "mypy",
+  "prek",
+  "pytest",
+  "pytest-cov",
+  "pytest-asyncio",
+  "ruff",
+  "sphinx-immaterial >= 0.11",
+  "types-PyYAML",
+  "types-docutils",
+]
