@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import pathlib
 
 import setuptools
@@ -10,7 +9,7 @@ def read_version():
     with version_path.open() as file_pointer:
         file_contents = file_pointer.read()
     local_dict = {}
-    exec(file_contents, None, local_dict)
+    exec(file_contents, None, local_dict)  # noqa: S102
     return local_dict["__version__"]
 
 

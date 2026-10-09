@@ -62,7 +62,7 @@ class InheritanceDiagram(Directive):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {"lineage": directives.unchanged}
+    option_spec = {"lineage": directives.unchanged}  # noqa: RUF012
 
     __documentation_ignore_inherited__ = True
 
@@ -76,7 +76,7 @@ class InheritanceDiagram(Directive):
             graph = uqbar.apis.InheritanceGraph(
                 package_paths=package_paths, lineage_paths=lineage_paths
             )
-        except Exception as error:
+        except Exception as error:  # noqa: BLE001
             if node.document is not None:
                 warning = node.document.reporter.warning(
                     error.args[0], line=self.lineno

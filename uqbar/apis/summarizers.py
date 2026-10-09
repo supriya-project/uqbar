@@ -245,7 +245,7 @@ class SummarizingClassDocumenter(ClassDocumenter):
             # Handle un-gettable attrs like Flask-SQLAlchemy's Model's `query`
             try:
                 getattr(self.client, attr.name)
-            except Exception:
+            except Exception:  # noqa: BLE001 S112
                 continue
             if attr.kind == "method":
                 if attr.name not in self.ignored_special_methods:
@@ -676,7 +676,7 @@ class SummarizingRootDocumenter(RootDocumenter):
         document = new_document("", settings)
         try:
             summary = extract_summary(lines, document)
-        except Exception:
+        except Exception:  # noqa: BLE001
             return ""
         return "\n".join(textwrap.wrap(summary, 79))
 

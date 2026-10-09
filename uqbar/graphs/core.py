@@ -6,6 +6,10 @@ from ..containers import UniqueTreeList, UniqueTreeNode
 from .attrs import Attributes
 
 
+class GraphError(Exception):
+    pass
+
+
 class Attachable(UniqueTreeNode):
     ### CLASS VARIABLES ###
 
@@ -441,7 +445,7 @@ class Edge:
             head_parentage.pop()
         if highest_parent is None:
             message = "highest parent can not be none."
-            raise Exception(message)
+            raise GraphError(message)
         return highest_parent
 
     ### PUBLIC METHODS ###

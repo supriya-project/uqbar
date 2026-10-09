@@ -16,7 +16,7 @@ class PublicClass:
         pass
 
     @staticmethod
-    def static_method(cls):
+    def static_method():
         pass
 
     @property

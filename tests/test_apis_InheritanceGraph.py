@@ -176,7 +176,7 @@ def test_02():
 
 
 @pytest.mark.xfail(
-    sys.version_info.minor >= 11, reason="ReprEnum introduced in 3.11", strict=True
+    sys.version_info >= (3, 11, 0), reason="ReprEnum introduced in 3.11", strict=True
 )
 def test_03_py310():
     inheritance_graph = uqbar.apis.InheritanceGraph(
@@ -492,7 +492,7 @@ def test_03_py310():
 
 
 @pytest.mark.xfail(
-    sys.version_info.minor < 11, reason="ReprEnum introduced in 3.11", strict=True
+    sys.version_info < (3, 11), reason="ReprEnum introduced in 3.11", strict=True
 )
 def test_03_py311():
     inheritance_graph = uqbar.apis.InheritanceGraph(

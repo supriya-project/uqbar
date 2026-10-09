@@ -15,7 +15,7 @@ import types
 from collections.abc import AsyncGenerator, Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, ClassVar, Dict, Union
+from typing import Any, ClassVar, Union
 
 from docutils.frontend import get_default_settings
 from docutils.nodes import (
@@ -215,7 +215,7 @@ class Console(code.InteractiveConsole):
             return coro
         except SystemExit:
             raise
-        except BaseException:
+        except BaseException:  # noqa: BLE001
             self.showtraceback()
 
     async def runsource_async(
@@ -273,19 +273,19 @@ class Extension:
         """
 
     @staticmethod
-    def visit_block_html(self, node):
+    def visit_block_html(self, node):  # noqa: PLW0211
         raise SkipNode
 
     @staticmethod
-    def visit_block_latex(self, node):
+    def visit_block_latex(self, node):  # noqa: PLW0211
         raise SkipNode
 
     @staticmethod
-    def depart_block_text(self, node):
+    def depart_block_text(self, node):  # noqa: PLW0211
         self.end_state(wrap=False)
 
     @staticmethod
-    def visit_block_text(self, node):
+    def visit_block_text(self, node):  # noqa: PLW0211
         self.new_state()
 
 
@@ -363,6 +363,7 @@ class UqbarShellDirective(Directive):
                 ansi_escape(
                     subprocess.run(
                         line,
+                        check=True,
                         cwd=working_directory,
                         shell=True,
                         stderr=subprocess.STDOUT,
@@ -399,7 +400,7 @@ class UqbarBookImportDirective(Directive):
     has_content = False
     required_arguments = 1
     optional_arguments = 0
-    option_spec = {"hide": flag}
+    option_spec = {"hide": flag}  # noqa: RUF012
 
     def run(self) -> list[uqbar_book_import_block]:
         block = uqbar_book_import_block()
@@ -659,7 +660,7 @@ async def interpret_literal_block(
     if use_black:
         try:
             lines = black_format(lines)
-        except Exception:
+        except Exception:  # noqa: BLE001
             raise ConsoleError(traceback.format_exc(), block)
     console_output, errored = await console.interpret(lines)
     return console_output, errored, has_exception

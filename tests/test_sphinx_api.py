@@ -95,7 +95,7 @@ def test_sphinx_api_2(app, status, warning):
     assert "0 added, 0 changed, 0 removed" not in status.getvalue()
     path = pathlib.Path(app.srcdir) / "_build" / "text" / "api" / "index.txt"
     warnings = [line.strip() for line in warning.getvalue().splitlines()]
-    if sys.version_info.minor < 11:
+    if sys.version_info < (3, 11):
         assert not warnings
         assert normalize(path.read_text()) == normalize(
             """
@@ -181,7 +181,7 @@ def test_sphinx_api_2(app, status, warning):
             """
         )
     else:
-        assert len(warnings) == 0 if sys.version_info.minor >= 13 else 2
+        assert len(warnings) == 0 if sys.version_info >= (3, 13, 0) else 2
         assert normalize(path.read_text()) == normalize(
             """
             API

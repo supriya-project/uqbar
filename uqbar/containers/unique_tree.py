@@ -225,9 +225,8 @@ class UniqueTreeContainer(UniqueTreeNode):
                 yield child
             if isinstance(child, UniqueTreeContainer):
                 yield from child.depth_first(top_down=top_down, prototype=prototype)
-            if not top_down:
-                if not prototype or isinstance(child, prototype):
-                    yield child
+            if not top_down and (not prototype or isinstance(child, prototype)):
+                yield child
 
     def recurse(self, prototype=None):
         return self.depth_first(prototype=prototype)
@@ -314,7 +313,7 @@ class UniqueTreeList(UniqueTreeContainer):
         parentage = self.parentage
         for new_node in new_nodes:
             if not isinstance(new_node, self._node_class):
-                raise ValueError(f"Expected {self._node_class}, got {type(new_node)}")
+                raise TypeError(f"Expected {self._node_class}, got {type(new_node)}")
             elif new_node in parentage:
                 raise ValueError("Cannot set parent node as child.")
 
@@ -402,7 +401,7 @@ class UniqueTreeTuple(UniqueTreeContainer):
         parentage = self.parentage
         for new_node in new_nodes:
             if not isinstance(new_node, self._node_class):
-                raise ValueError(f"Expected {self._node_class}, got {type(new_node)}")
+                raise TypeError(f"Expected {self._node_class}, got {type(new_node)}")
             elif new_node in parentage:
                 raise ValueError("Cannot set parent node as child.")
 
@@ -450,7 +449,7 @@ class UniqueTreeSet(UniqueTreeContainer):
         parentage = self.parentage
         for new_node in new_nodes:
             if not isinstance(new_node, self._node_class):
-                raise ValueError(f"Expected {self._node_class}, got {type(new_node)}")
+                raise TypeError(f"Expected {self._node_class}, got {type(new_node)}")
             elif new_node in parentage:
                 raise ValueError("Cannot set parent node as child.")
 
@@ -552,7 +551,7 @@ class UniqueTreeDict(UniqueTreeContainer):
         parentage = self.parentage
         for _, new_node in new_items:
             if not isinstance(new_node, self._node_class):
-                raise ValueError(f"Expected {self._node_class}, got {type(new_node)}")
+                raise TypeError(f"Expected {self._node_class}, got {type(new_node)}")
             elif new_node in parentage:
                 raise ValueError("Cannot set parent node as child.")
 

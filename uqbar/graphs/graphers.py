@@ -89,7 +89,9 @@ class Grapher:
         return pathlib.Path(tempfile.mkdtemp())
 
     def get_render_prefix(self, string) -> str:
-        timestamp = re.sub(r"[^\w]", "-", datetime.datetime.now().isoformat())
+        timestamp = re.sub(
+            r"[^\w]", "-", datetime.datetime.now(tz=datetime.tzinfo.utc).isoformat()
+        )
         checksum = hashlib.sha1(string.encode()).hexdigest()[:7]
         return f"{timestamp}-{checksum}"
 
@@ -127,6 +129,10 @@ class Grapher:
 
     def run_command(self, command: str) -> tuple[str, int]:
         completed_process = subprocess.run(
-            command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+            command,
+            check=True,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
         )
         return completed_process.stdout.decode(), completed_process.returncode == 0

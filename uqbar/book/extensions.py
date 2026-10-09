@@ -51,7 +51,7 @@ class GraphExtension(Extension):
     def __init__(self, graphable, layout):
         try:
             self.graphable = copy.deepcopy(graphable)
-        except Exception:
+        except Exception:  # noqa: BLE001
             self.graphable = copy.deepcopy(graphable.__graph__())
         self.layout = layout
 
@@ -96,7 +96,7 @@ class GraphExtension(Extension):
         return image_file_path
 
     @staticmethod
-    def visit_block_html(self, node):
+    def visit_block_html(self, node):  # noqa: PLW0211
         absolute_image_file_path = GraphExtension.render_image(
             node, pathlib.Path(self.builder.outdir) / "_images", ".svg"
         )
