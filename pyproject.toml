@@ -42,6 +42,7 @@ docs = [
 ]
 test = [
   "mypy",
+  "prek",
   "pytest",
   "pytest-cov",
   "pytest-asyncio",
