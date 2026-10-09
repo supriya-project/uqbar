@@ -691,6 +691,7 @@ class ImmaterialClassDocumenter(SummarizingClassDocumenter):
     """
 
     ignored_special_methods: Tuple[str, ...] = (
+        "__annotate_func__",
         "__delattr__",
         "__dict__",
         "__eq__",
