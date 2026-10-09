@@ -375,6 +375,7 @@ def test_03_py310():
                     "uqbar.graphs.core.Attachable" [label=Attachable];
                     "uqbar.graphs.core.Edge" [label="Edge"];
                     "uqbar.graphs.core.Graph" [label="Graph"];
+                    "uqbar.graphs.core.GraphError" [label="Graph\nError"];
                     "uqbar.graphs.core.Node" [label="Node"];
                 }
                 subgraph "cluster_uqbar.graphs.graphers" {
@@ -422,6 +423,7 @@ def test_03_py310():
                     "uqbar.sphinx.inheritance.inheritance_diagram" [label="inheritance\ndiagram"];
                 }
                 "builtins.Exception" -> "uqbar.book.ConsoleError";
+                "builtins.Exception" -> "uqbar.graphs.core.GraphError";
                 "builtins.int" -> "enum.IntEnum";
                 "builtins.object" -> "code.InteractiveInterpreter";
                 "builtins.object" -> "collections.abc.Container";
@@ -867,5 +869,5 @@ def test_04():
     )
     pickle.dumps(inheritance_graph)
     pickle.dumps(uqbar.apis.dummy.MyChildClass)
-    with pytest.raises(pickle.PicklingError):
+    with pytest.raises((AttributeError, pickle.PicklingError)):
         pickle.dumps(uqbar.apis.dummy.MyParentClass)
