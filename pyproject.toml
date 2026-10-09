@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=40.6.0", "wheel"]
+requires = ["setuptools", "wheel"]
 
 [project]
 authors = [
@@ -13,10 +13,10 @@ classifiers = [
   "Natural Language :: English",
   "Operating System :: MacOS",
   "Operating System :: POSIX",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
   "Sphinx >= 8",
@@ -24,7 +24,6 @@ dependencies = [
   "black",
 ]
 description = "Tools for building documentation with Sphinx, Graphviz and LaTeX"
-dynamic = ["version"]
 keywords = [
   "sphinx",
   "graphviz",
@@ -34,30 +33,13 @@ keywords = [
 license = {text = "MIT"}
 name = "uqbar"
 readme = "README.md"
-requires-python = ">=3.10"
-
-[project.optional-dependencies]
-docs = [
-  "sphinx-immaterial >= 0.11",
-]
-test = [
-  "mypy",
-  "pytest",
-  "pytest-cov",
-  "pytest-asyncio",
-  "ruff",
-  "types-PyYAML",
-  "types-docutils",
-]
+requires-python = ">=3.11"
+version = "0.9.6"
 
 [project.urls]
 homepage = "https://github.com/supriya-project/uqbar"
 documentation = "https://supriya-project.github.io/uqbar"
 repository = "https://github.com/supriya-project/uqbar"
-
-[tool.cibuildwheel]
-build = "cp310-* cp311-* cp312-* cp313-*"
-test-command = ['python -c "import uqbar"']
 
 [tool.mypy]
 ignore_missing_imports = true
@@ -80,9 +62,32 @@ markers = [
 ]
 testpaths = [
   "tests",
-  "uqbar",
+  "src",
 ]
 
 [tool.ruff]
 extend-include = ["*.ipynb"]
 line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint.pep8-naming]
+ignore-names = ["test_*"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+supriya = ["py.typed"]
+
+[dependency-groups]
+dev = [
+  "mypy",
+  "prek",
+  "pytest",
+  "pytest-cov",
+  "pytest-asyncio",
+  "ruff",
+  "sphinx-immaterial >= 0.11",
+  "types-PyYAML",
+  "types-docutils",
+]

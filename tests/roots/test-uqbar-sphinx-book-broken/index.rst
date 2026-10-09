@@ -11,5 +11,5 @@ Fake Docs
     ZeroDivisionError: division by zero
 
 ::
-    
+
     >>> print(this_name_does_not_exist)

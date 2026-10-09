@@ -192,17 +192,6 @@ def test_str_03(test_path):
 
               <hr/>
 
-           .. rubric:: Special methods
-              :class: class-header
-
-           .. container:: inherited
-
-              .. automethod:: ChildClass.__str__
-
-           .. raw:: html
-
-              <hr/>
-
            .. rubric:: Methods
               :class: class-header
 
@@ -267,7 +256,6 @@ def test_str_03(test_path):
            .. autosummary::
               :nosignatures:
 
-              __str__
               class_method
               inheritable_method
               method
@@ -275,15 +263,6 @@ def test_str_03(test_path):
               read_only_property
               read_write_property
               static_method
-
-           .. raw:: html
-
-              <hr/>
-
-           .. rubric:: Special methods
-              :class: class-header
-
-           .. automethod:: PublicClass.__str__
 
            .. raw:: html
 

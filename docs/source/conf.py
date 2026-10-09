@@ -14,12 +14,14 @@ extensions = [
     "uqbar.sphinx.api",
     "uqbar.sphinx.book",
     "uqbar.sphinx.inheritance",
-    "sphinx_immaterial"
+    "sphinx_immaterial",
 ]
 
 add_module_names = False
 author = "Joséphine Wolf Oberholtzer"
-copyright = f"2017-{datetime.date.today().year}, Joséphine Wolf Oberholtzer"
+copyright = (
+    f"2017-{datetime.datetime.now(tz=datetime.UTC).year}, Joséphine Wolf Oberholtzer"
+)
 exclude_patterns = []
 htmlhelp_basename = "uqbardoc"
 language = "en"
