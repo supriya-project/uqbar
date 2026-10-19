@@ -18,7 +18,7 @@ jobs:
         persist-credentials: false
     - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       with:
-        python-version: "3.14"
+        python-version: "3.15"
     - name: Install Uqbar
       run: uv sync
     - name: Install graphviz
@@ -38,7 +38,7 @@ jobs:
         persist-credentials: false
     - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       with:
-        python-version: "3.14"
+        python-version: "3.15"
     - name: Build
       run: uv build --clear --sdist --wheel
     - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
