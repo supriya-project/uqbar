@@ -30,7 +30,7 @@ jobs:
         persist-credentials: false
     - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       with:
-        python-version: "3.14"
+        python-version: "3.15"
     - name: Install Graphviz
       run: sudo apt-get install --yes graphviz
     - name: Build docs
@@ -52,7 +52,7 @@ jobs:
         persist-credentials: false
     - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       with:
-        python-version: "3.14"
+        python-version: "3.15"
     - name: Run pre-commit
       uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
     - name: Run mypy
@@ -65,12 +65,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.11", "3.12", "3.13", "3.14", "3.15"]
         include:
         - os: macos-latest
-          python-version: "3.14"
+          python-version: "3.15"
         - os: windows-latest
-          python-version: "3.14"
+          python-version: "3.15"
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
